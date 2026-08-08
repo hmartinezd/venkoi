@@ -1,12 +1,17 @@
-import { Section } from '@/components/layout/Section';
-import { Container } from '@/components/layout/Container';
-import { Button } from '@/components/ui/Button';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { getLocalizedPath } from '@/i18n/routing';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+
+import { HeroSection } from '@/components/home/HeroSection';
+import { ProductsIntro } from '@/components/home/ProductsIntro';
+import { ZaikoFeature } from '@/components/home/ZaikoFeature';
+import { CustomSoftwareSection } from '@/components/home/CustomSoftwareSection';
+import { LocalSection } from '@/components/home/LocalSection';
+import { PhilosophySection } from '@/components/home/PhilosophySection';
+import { AboutPreview } from '@/components/home/AboutPreview';
+import { FinalCta } from '@/components/home/FinalCta';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -36,79 +41,103 @@ export default async function HomePage({ params }: PageProps) {
   const currentLocale = parseLocale(locale);
   setRequestLocale(currentLocale);
 
-  const t = await getTranslations('home');
-  const common = await getTranslations('common');
+  const tHome = await getTranslations('home');
 
   return (
     <>
-      <Section className="pt-20 pb-24">
-        <Container className="grid gap-12 lg:grid-cols-[55%_40%] lg:items-center">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-orange">{t('eyebrow')}</p>
-            <h1 className="mt-6 text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
-              {t('heading')}
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-foreground-muted sm:text-lg">{t('body')}</p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Button href={getLocalizedPath('productsZaiko', currentLocale)}>{t('primaryCta')}</Button>
-              <Button variant="secondary" href={getLocalizedPath('customSoftware', currentLocale)}>
-                {t('secondaryCta')}
-              </Button>
-            </div>
-            <p className="mt-8 text-sm text-foreground-muted">{common('location')}</p>
-          </div>
+      <HeroSection
+        locale={currentLocale}
+        eyebrow={tHome('hero.eyebrow')}
+        heading={tHome('hero.heading')}
+        body={tHome('hero.body')}
+        primaryCta={tHome('hero.primaryCta')}
+        secondaryCta={tHome('hero.secondaryCta')}
+        location={tHome('hero.location')}
+      />
 
-          <div className="relative isolate">
-            <div className="absolute inset-0 rounded-[32px] bg-surface p-8 shadow-card ring-1 ring-border" />
-            <div className="relative space-y-6 rounded-[32px] border border-border bg-white p-8">
-              <div className="h-64 rounded-[28px] bg-surface-muted" />
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl border border-border bg-surface px-5 py-4">
-                  <div className="h-3 w-14 rounded-full bg-orange-subtle" />
-                  <p className="mt-4 text-sm font-semibold text-ink">VENKOI</p>
-                  <p className="mt-2 text-sm text-foreground-muted">Platform foundation for product-ready software.</p>
-                </div>
-                <div className="rounded-3xl border border-border bg-surface px-5 py-4">
-                  <div className="h-3 w-10 rounded-full bg-orange-subtle" />
-                  <p className="mt-4 text-sm font-semibold text-ink">Zaiko</p>
-                  <p className="mt-2 text-sm text-foreground-muted">Restaurant operations software architecture.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <ProductsIntro
+        eyebrow={tHome('productsIntro.eyebrow')}
+        heading={tHome('productsIntro.heading')}
+        body={tHome('productsIntro.body')}
+      />
 
-      <Section variant="muted" className="pb-24">
-        <Container>
-          <div className="grid gap-10 rounded-[28px] border border-border bg-surface p-8 sm:grid-cols-[1fr_1fr]">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-orange">Design System</p>
-              <h2 className="mt-4 text-3xl font-semibold text-ink sm:text-4xl">A thoughtful foundation for future Venkoi pages.</h2>
-              <p className="mt-4 max-w-xl text-base leading-8 text-foreground-muted">
-                This milestone establishes responsive layout, tokens, locale-aware routing, and the architecture for product pages and marketing content.
-              </p>
-            </div>
-            <div className="space-y-4 rounded-[20px] border border-border bg-background p-6">
-              <div className="rounded-3xl bg-surface p-5">
-                <p className="text-sm font-semibold text-ink">Buttons</p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <span className="inline-flex items-center rounded-[14px] bg-ink px-4 py-2 text-sm font-semibold text-white">Primary</span>
-                  <span className="inline-flex items-center rounded-[14px] border border-border px-4 py-2 text-sm font-semibold text-ink">Secondary</span>
-                  <span className="inline-flex items-center rounded-[14px] px-4 py-2 text-sm font-semibold text-ink">Text CTA</span>
-                </div>
-              </div>
-              <div className="rounded-3xl bg-surface p-5">
-                <p className="text-sm font-semibold text-ink">Surfaces</p>
-                <p className="mt-3 text-sm leading-6 text-foreground-muted">
-                  Reusable cards and sections emphasize spacing, hierarchy, and subtle borders rather than decoration.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <ZaikoFeature
+        locale={currentLocale}
+        eyebrow={tHome('zaiko.eyebrow')}
+        heading={tHome('zaiko.heading')}
+        body={tHome('zaiko.body')}
+        discoverCta={tHome('zaiko.discoverCta')}
+        demoCta={tHome('zaiko.demoCta')}
+        badge={tHome('zaiko.badge')}
+        badgeText={tHome('zaiko.badgeText')}
+        theme1Title={tHome('zaiko.theme1Title')}
+        theme1Desc={tHome('zaiko.theme1Desc')}
+        theme2Title={tHome('zaiko.theme2Title')}
+        theme2Desc={tHome('zaiko.theme2Desc')}
+        theme3Title={tHome('zaiko.theme3Title')}
+        theme3Desc={tHome('zaiko.theme3Desc')}
+        theme4Title={tHome('zaiko.theme4Title')}
+        theme4Desc={tHome('zaiko.theme4Desc')}
+      />
+
+      <CustomSoftwareSection
+        locale={currentLocale}
+        eyebrow={tHome('customSoftware.eyebrow')}
+        heading={tHome('customSoftware.heading')}
+        body={tHome('customSoftware.body')}
+        cta={tHome('customSoftware.cta')}
+        mobileTitle={tHome('customSoftware.mobileTitle')}
+        mobileDesc={tHome('customSoftware.mobileDesc')}
+        webTitle={tHome('customSoftware.webTitle')}
+        webDesc={tHome('customSoftware.webDesc')}
+        backendTitle={tHome('customSoftware.backendTitle')}
+        backendDesc={tHome('customSoftware.backendDesc')}
+      />
+
+      <LocalSection
+        eyebrow={tHome('local.eyebrow')}
+        heading={tHome('local.heading')}
+        body={tHome('local.body')}
+        tampaTitle={tHome('local.tampaTitle')}
+        tampaDesc={tHome('local.tampaDesc')}
+        southFloridaTitle={tHome('local.southFloridaTitle')}
+        southFloridaDesc={tHome('local.southFloridaDesc')}
+        beyondTitle={tHome('local.beyondTitle')}
+        beyondDesc={tHome('local.beyondDesc')}
+        prominentStatement={tHome('local.prominentStatement')}
+      />
+
+      <PhilosophySection
+        heading={tHome('philosophy.heading')}
+        item1Num={tHome('philosophy.item1Num')}
+        item1Title={tHome('philosophy.item1Title')}
+        item1Desc={tHome('philosophy.item1Desc')}
+        item2Num={tHome('philosophy.item2Num')}
+        item2Title={tHome('philosophy.item2Title')}
+        item2Desc={tHome('philosophy.item2Desc')}
+        item3Num={tHome('philosophy.item3Num')}
+        item3Title={tHome('philosophy.item3Title')}
+        item3Desc={tHome('philosophy.item3Desc')}
+      />
+
+      <AboutPreview
+        locale={currentLocale}
+        eyebrow={tHome('aboutPreview.eyebrow')}
+        heading={tHome('aboutPreview.heading')}
+        p1={tHome('aboutPreview.p1')}
+        p2={tHome('aboutPreview.p2')}
+        p3={tHome('aboutPreview.p3')}
+        cta={tHome('aboutPreview.cta')}
+      />
+
+      <FinalCta
+        locale={currentLocale}
+        heading={tHome('finalCta.heading')}
+        body={tHome('finalCta.body')}
+        demoCta={tHome('finalCta.demoCta')}
+        talkCta={tHome('finalCta.talkCta')}
+        locationLine={tHome('finalCta.locationLine')}
+      />
     </>
   );
 }
-

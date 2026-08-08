@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, ReactElement } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'text';
 
 type SharedProps = {
   variant?: ButtonVariant;
@@ -18,9 +18,15 @@ type ActionProps = SharedProps & ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-ink text-white border-transparent hover:bg-[#0f1217] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange',
-  secondary: 'bg-surface text-ink border border-border hover:border-ink focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange',
-  ghost: 'bg-transparent text-ink hover:text-ink/90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange'
+  primary: 'bg-ink text-white border border-transparent hover:bg-ink/90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange shadow-sm',
+  secondary: 'bg-surface text-ink border border-border hover:border-ink hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange',
+  text: 'bg-transparent text-ink border border-transparent p-0 hover:text-orange focus-visible:ring-2 focus-visible:ring-orange'
+};
+
+const baseClasses: Record<ButtonVariant, string> = {
+  primary: 'inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
+  secondary: 'inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
+  text: 'inline-flex items-center justify-center text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60'
 };
 
 export function Button(props: LinkProps): ReactElement;
@@ -28,7 +34,7 @@ export function Button(props: ActionProps): ReactElement;
 export function Button(props: LinkProps | ActionProps) {
   const { className = '', variant = 'primary', children } = props;
   const classes = cn(
-    'inline-flex items-center justify-center rounded-[14px] border px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
+    baseClasses[variant],
     variantStyles[variant],
     className
   );
@@ -49,3 +55,4 @@ export function Button(props: LinkProps | ActionProps) {
     </button>
   );
 }
+

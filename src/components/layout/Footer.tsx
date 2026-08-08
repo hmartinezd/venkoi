@@ -1,66 +1,119 @@
-import { footerNavigation, LocalizedLink } from '@/i18n/navigation';
+import { LocalizedLink } from '@/i18n/navigation';
 import { internalRoutes } from '@/i18n/routing';
-import { localeLabels, type Locale } from '@/i18n/config';
+import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 
 export function Footer({ locale }: { locale: Locale }) {
-  const t = useTranslations();
+  const tFooter = useTranslations('footer');
+  const tNav = useTranslations('navigation');
+  const tCommon = useTranslations('common');
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-surface py-12 text-sm text-foreground-muted">
-      <div className="mx-auto grid max-w-screen-2xl gap-12 px-4 sm:px-6 lg:px-8 xl:grid-cols-[1.5fr_1fr]">
+    <footer className="border-t border-border bg-surface py-14 text-sm text-foreground-muted">
+      <div className="mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:px-8 xl:grid-cols-[1.4fr_1fr]">
         <div className="space-y-4">
-          <p className="font-semibold text-ink">VENKOI</p>
-          <p>{t('footer.title')}</p>
-          <p>{t('common.location')}</p>
+          <span className="font-bold tracking-[0.2em] text-xl text-ink">VENKOI</span>
+          <p className="text-base text-ink font-medium">{tFooter('tagline')}</p>
+          <p className="text-xs text-foreground-muted">{tFooter('locationText')}</p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-3">
           <div className="space-y-3">
-            <p className="font-semibold text-ink">{t('footer.sectionProducts')}</p>
-            {footerNavigation.products.map((item) => (
-              <LocalizedLink key={item.id} href={internalRoutes[item.routeKey]} locale={locale} className="block transition hover:text-ink">
-                {t(`navigation.${item.labelKey}`)}
-              </LocalizedLink>
-            ))}
+            <p className="font-semibold text-ink uppercase text-xs tracking-wider">
+              {tFooter('sectionProducts')}
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <LocalizedLink
+                  href={internalRoutes.productsZaiko}
+                  locale={locale}
+                  className="transition hover:text-ink"
+                >
+                  {tNav('zaiko')}
+                </LocalizedLink>
+              </li>
+            </ul>
           </div>
 
           <div className="space-y-3">
-            <p className="font-semibold text-ink">{t('footer.sectionCompany')}</p>
-            {footerNavigation.company.map((item) => (
-              <LocalizedLink key={item.id} href={internalRoutes[item.routeKey]} locale={locale} className="block transition hover:text-ink">
-                {t(`navigation.${item.labelKey}`)}
-              </LocalizedLink>
-            ))}
+            <p className="font-semibold text-ink uppercase text-xs tracking-wider">
+              {tFooter('sectionCompany')}
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <LocalizedLink
+                  href={internalRoutes.about}
+                  locale={locale}
+                  className="transition hover:text-ink"
+                >
+                  {tNav('about')}
+                </LocalizedLink>
+              </li>
+              <li>
+                <LocalizedLink
+                  href={internalRoutes.contact}
+                  locale={locale}
+                  className="transition hover:text-ink"
+                >
+                  {tNav('contact')}
+                </LocalizedLink>
+              </li>
+            </ul>
           </div>
 
           <div className="space-y-3">
-            <p className="font-semibold text-ink">{t('footer.sectionWorkWithUs')}</p>
-            {footerNavigation.workWithUs.map((item) => (
-              <LocalizedLink key={item.id} href={internalRoutes[item.routeKey]} locale={locale} className="block transition hover:text-ink">
-                {t(`navigation.${item.labelKey}`)}
-              </LocalizedLink>
-            ))}
+            <p className="font-semibold text-ink uppercase text-xs tracking-wider">
+              {tFooter('sectionWorkWithUs')}
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <LocalizedLink
+                  href={internalRoutes.customSoftware}
+                  locale={locale}
+                  className="transition hover:text-ink"
+                >
+                  {tNav('customSoftware')}
+                </LocalizedLink>
+              </li>
+              <li>
+                <LocalizedLink
+                  href={internalRoutes.demo}
+                  locale={locale}
+                  className="transition hover:text-ink"
+                >
+                  {tCommon('demo')}
+                </LocalizedLink>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-screen-2xl border-t border-border px-4 pt-6 sm:px-6 lg:px-8">
+      <div className="mx-auto mt-12 max-w-[1240px] border-t border-border px-4 pt-8 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 text-xs text-foreground-muted sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3">
+            {locales.map((localeKey, idx) => (
+              <span key={localeKey} className="flex items-center gap-3">
+                <LocalizedLink
+                  href={internalRoutes.home}
+                  locale={localeKey}
+                  className={`transition hover:text-ink ${localeKey === locale ? 'font-semibold text-ink' : ''}`}
+                >
+                  {localeLabels[localeKey]}
+                </LocalizedLink>
+                {idx < locales.length - 1 ? <span>|</span> : null}
+              </span>
+            ))}
+          </div>
+
           <div className="flex items-center gap-4">
-            <span>{localeLabels[locale]}</span>
-            <span>{t('common.locationShort')}</span>
+            <span className="cursor-default text-foreground-muted">{tCommon('privacy')}</span>
+            <span>·</span>
+            <span className="cursor-default text-foreground-muted">{tCommon('terms')}</span>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <button type="button" disabled className="cursor-not-allowed text-foreground-muted">
-              {t('common.privacy')}
-            </button>
-            <button type="button" disabled className="cursor-not-allowed text-foreground-muted">
-              {t('common.terms')}
-            </button>
-          </div>
-          <div>{t('common.copyright', { year: currentYear })}</div>
+
+          <div>{tCommon('copyright', { year: currentYear })}</div>
         </div>
       </div>
     </footer>
