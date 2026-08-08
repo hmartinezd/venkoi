@@ -4,5 +4,20 @@ export function getSiteOrigin(): string {
 }
 
 export function isProductionEnv(): boolean {
-  return process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+  const vercelEnv = process.env.VERCEL_ENV;
+
+  if (vercelEnv) {
+    return vercelEnv === 'production';
+  }
+
+  return process.env.NODE_ENV === 'production';
 }
+
+export function isPreviewEnv(): boolean {
+  return process.env.VERCEL_ENV === 'preview';
+}
+
+export function isDeployedEnv(): boolean {
+  return isProductionEnv() || isPreviewEnv();
+}
+

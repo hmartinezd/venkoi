@@ -34,4 +34,12 @@ export function isDemoEnabledProduct(slug: string): boolean {
   return PRODUCTS.some((product) => product.slug === slug && product.demoEnabled);
 }
 
+export function getDefaultDemoProduct(): Product {
+  const demoProducts = getDemoEnabledProducts();
+  if (demoProducts.length === 0) {
+    throw new Error('[Product Registry] No demo-enabled product found in product registry.');
+  }
+  return demoProducts[0];
+}
+
 

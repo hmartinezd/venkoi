@@ -42,9 +42,15 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
-  const [hasStarted, setHasStarted] = useState(false);
+  const hasStartedRef = useRef(false);
 
   const lead_type = initialType === 'custom-software' ? 'CUSTOM_PROJECT' : 'GENERAL_CONTACT';
+
+  useEffect(() => {
+    if (status === 'success') {
+      successRef.current?.focus();
+    }
+  }, [status]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -73,8 +79,8 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    if (!hasStarted) {
-      setHasStarted(true);
+    if (!hasStartedRef.current) {
+      hasStartedRef.current = true;
       trackCustomEvent('contact_form_start', { locale, leadType: lead_type });
     }
 

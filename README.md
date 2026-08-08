@@ -51,6 +51,12 @@ If upgrading an existing database that already ran `001_create_leads.sql`, apply
 psql "$DATABASE_URL" -f db/migrations/002_harden_leads.sql
 ```
 
+## Environment & SEO Indexing Architecture
+
+- **Vercel Production** (`VERCEL_ENV=production`): Fully indexable (`Allow: /` in `robots.txt`, `index, follow` metadata).
+- **Vercel Preview** (`VERCEL_ENV=preview`): Non-indexable (`Disallow: /` in `robots.txt`, `noindex, nofollow` metadata), even when running Next.js in production mode (`NODE_ENV=production`).
+- **Canonical Origin**: `SITE_URL` (defaults to `https://venkoi.com`) remains the production canonical domain across all environments, ensuring preview deployments point canonical tags to the production domain without creating duplicate content issues on `*.vercel.app`.
+
 ## Production Launch Setup Checklist
 
 Follow these step-by-step instructions when launching to production:
@@ -74,6 +80,6 @@ Follow these step-by-step instructions when launching to production:
 17. **Form Testing**: Conduct end-to-end submissions on English (`/en/demo`, `/en/contact`) and Spanish (`/es/demo`, `/es/contacto`) forms.
 18. **Verify Emails**: Confirm both internal alert emails and user acknowledgement emails arrive successfully.
 19. **Verify Sitemap**: Check `https://venkoi.com/sitemap.xml` returns valid XML.
-20. **Verify Robots**: Check `https://venkoi.com/robots.txt` specifies production indexing rules.
+20. **Verify Robots**: Check `https://venkoi.com/robots.txt` specifies production indexing rules (`Allow: /` in Production, `Disallow: /` in Preview).
 21. **Verify Canonical Tags**: Inspect `<link rel="canonical">` and `hreflang` metadata on live HTML pages.
 22. **Verify Social Assets**: Test social card sharing previews (OpenGraph & Twitter images) on social platforms or debuggers.

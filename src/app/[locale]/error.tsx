@@ -23,9 +23,6 @@ export default function Error({
     <section className="min-h-[70vh] flex items-center justify-center py-20 bg-background text-foreground">
       <div className="max-w-md w-full mx-auto px-4 text-center space-y-6">
         <div className="space-y-3">
-          <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-            ERROR
-          </span>
           <h1 className="text-3xl font-bold tracking-tight text-ink">
             {t('title')}
           </h1>

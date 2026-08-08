@@ -1,12 +1,13 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { checkBotId } from 'botid/server';
 import { processLeadSubmission } from '@/server/leads/service';
+import { isDeployedEnv } from '@/lib/site-config';
 
 const MAX_BODY_BYTES = 100 * 1024; // 100 KB max payload limit
 
 export async function POST(request: NextRequest) {
   // 1. Official Vercel BotID Verification BEFORE processing
-  const isProduction = process.env.NODE_ENV === 'production';
+  const isDeployed = isDeployedEnv();
   try {
     const verification = await checkBotId();
     if (verification.isBot) {
@@ -16,14 +17,14 @@ export async function POST(request: NextRequest) {
       );
     }
   } catch (err) {
-    if (isProduction) {
-      console.error('[BotID Check] Production BotID verification error:', err instanceof Error ? err.message : 'Verification failed');
+    if (isDeployed) {
+      console.error('[BotID Check] Deployed BotID verification error:', err instanceof Error ? err.message : 'Verification failed');
       return NextResponse.json(
         { ok: false, code: 'SUBMISSION_ERROR' },
         { status: 500 }
       );
     }
-    console.warn('[BotID Check] Non-production verification warning:', err instanceof Error ? err.message : err);
+    console.warn('[BotID Check] Non-deployed verification warning:', err instanceof Error ? err.message : err);
   }
 
   // 2. Validate Content-Type header

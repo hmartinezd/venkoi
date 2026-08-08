@@ -12,11 +12,13 @@ export function FormStatus({ status, title, message, className }: FormStatusProp
   if (status === 'idle' || (!title && !message)) return null;
 
   const isSuccess = status === 'success';
+  const role = isSuccess ? 'status' : 'alert';
+  const ariaLive = isSuccess ? 'polite' : 'assertive';
 
   return (
     <div
-      role="status"
-      aria-live="polite"
+      role={role}
+      aria-live={ariaLive}
       className={cn(
         'rounded-2xl p-6 border transition-all duration-200 space-y-2',
         isSuccess

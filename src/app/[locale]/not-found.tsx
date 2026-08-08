@@ -11,7 +11,7 @@ export default async function NotFound() {
       <Container className="max-w-2xl text-center space-y-8">
         <div className="space-y-4">
           <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-            404 ERROR
+            404
           </span>
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
             {t('title')}

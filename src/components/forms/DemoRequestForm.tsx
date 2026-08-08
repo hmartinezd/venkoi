@@ -6,6 +6,7 @@ import { FormField } from './FormField';
 import { FormStatus } from './FormStatus';
 import { Button } from '@/components/ui/Button';
 import { trackCustomEvent } from '@/lib/analytics';
+import { getDefaultDemoProduct } from '@/lib/products';
 import type { Locale } from '@/i18n/config';
 
 interface DemoRequestFormProps {
@@ -16,9 +17,10 @@ interface DemoRequestFormProps {
 
 export function DemoRequestForm({
   locale,
-  initialProduct = 'zaiko',
+  initialProduct,
   initialInterest = ''
 }: DemoRequestFormProps) {
+  const activeProduct = initialProduct || getDefaultDemoProduct().slug;
   const t = useTranslations('demoPage.form');
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
@@ -49,7 +51,13 @@ export function DemoRequestForm({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
-  const [hasStarted, setHasStarted] = useState(false);
+  const hasStartedRef = useRef(false);
+
+  useEffect(() => {
+    if (status === 'success') {
+      successRef.current?.focus();
+    }
+  }, [status]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -78,9 +86,9 @@ export function DemoRequestForm({
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    if (!hasStarted) {
-      setHasStarted(true);
-      trackCustomEvent('demo_form_start', { locale, product: initialProduct });
+    if (!hasStartedRef.current) {
+      hasStartedRef.current = true;
+      trackCustomEvent('demo_form_start', { locale, product: activeProduct });
     }
 
     const { name, value, type } = e.target;
@@ -106,7 +114,7 @@ export function DemoRequestForm({
     setErrors({});
     setStatus('idle');
 
-    trackCustomEvent('demo_form_submit', { locale, product: initialProduct });
+    trackCustomEvent('demo_form_submit', { locale, product: activeProduct });
 
     // Inline client validation
     const clientErrors: Record<string, string> = {};
@@ -128,7 +136,7 @@ export function DemoRequestForm({
 
     const payload = {
       lead_type: 'DEMO',
-      product: initialProduct || 'zaiko',
+      product: activeProduct,
       first_name: formData.first_name,
       last_name: formData.last_name,
       email: formData.email,
@@ -177,7 +185,7 @@ export function DemoRequestForm({
         setStatus('success');
         trackCustomEvent('demo_form_success', {
           locale,
-          product: initialProduct || 'zaiko',
+          product: activeProduct,
           earlyAccess: formData.early_access_interest
         });
       }

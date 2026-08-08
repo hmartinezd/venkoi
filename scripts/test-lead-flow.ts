@@ -1,7 +1,10 @@
 import { leadSubmissionSchema } from '../src/server/leads/validation';
 import { processLeadSubmission } from '../src/server/leads/service';
+import { testSiteConfig } from './test-site-config';
 
 async function runTests() {
+  testSiteConfig();
+
   console.log('=== RUNNING LEAD INFRASTRUCTURE & VALIDATION TESTS ===\n');
 
   let passed = 0;

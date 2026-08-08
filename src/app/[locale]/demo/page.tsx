@@ -3,7 +3,7 @@ import { Section } from '@/components/layout/Section';
 import { DemoRequestForm } from '@/components/forms/DemoRequestForm';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
-import { isDemoEnabledProduct } from '@/lib/products';
+import { isDemoEnabledProduct, getDefaultDemoProduct } from '@/lib/products';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -42,8 +42,9 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const t = await getTranslations('demoPage');
 
+  const defaultProduct = getDefaultDemoProduct().slug;
   const selectedProduct =
-    typeof product === 'string' && isDemoEnabledProduct(product) ? product : 'zaiko';
+    typeof product === 'string' && isDemoEnabledProduct(product) ? product : defaultProduct;
   const selectedInterest = typeof interest === 'string' ? interest : '';
 
   const isZaiko = selectedProduct === 'zaiko';
