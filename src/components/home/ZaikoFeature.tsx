@@ -107,10 +107,10 @@ export function ZaikoFeature({
             <div className="flex items-center justify-between pb-3 border-b border-border">
               <div className="flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-orange" />
-                <span className="text-xs font-bold tracking-wider text-ink uppercase">Zaiko Overview</span>
+                <span className="text-xs font-bold tracking-wider text-ink uppercase">Zaiko</span>
               </div>
-              <span className="text-[11px] text-foreground-muted font-medium uppercase tracking-wider bg-surface-muted px-2 py-0.5 rounded">
-                Product Experience
+              <span className="text-[11px] text-orange font-bold uppercase tracking-wider bg-orange-subtle px-2.5 py-0.5 rounded">
+                01
               </span>
             </div>
 
@@ -118,8 +118,8 @@ export function ZaikoFeature({
             <div className="space-y-3">
               <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
                 <div className="space-y-1">
-                  <p className="font-semibold text-ink">Inventory Tracking</p>
-                  <p className="text-[11px] text-foreground-muted">Raw ingredients & product stock</p>
+                  <p className="font-semibold text-ink">{theme1Title}</p>
+                  <p className="text-[11px] text-foreground-muted">{theme1Desc}</p>
                 </div>
                 <div className="text-right">
                   <span className="h-2 w-12 rounded-full bg-orange/40 inline-block" />
@@ -128,8 +128,8 @@ export function ZaikoFeature({
 
               <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
                 <div className="space-y-1">
-                  <p className="font-semibold text-ink">Purchasing & Receiving</p>
-                  <p className="text-[11px] text-foreground-muted">Vendor orders & delivery intake</p>
+                  <p className="font-semibold text-ink">{theme2Title}</p>
+                  <p className="text-[11px] text-foreground-muted">{theme2Desc}</p>
                 </div>
                 <div className="text-right">
                   <span className="h-2 w-10 rounded-full bg-border-strong inline-block" />
@@ -138,8 +138,8 @@ export function ZaikoFeature({
 
               <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
                 <div className="space-y-1">
-                  <p className="font-semibold text-ink">Cost Visibility</p>
-                  <p className="text-[11px] text-foreground-muted">Unit costs & inventory value</p>
+                  <p className="font-semibold text-ink">{theme3Title}</p>
+                  <p className="text-[11px] text-foreground-muted">{theme3Desc}</p>
                 </div>
                 <div className="text-right">
                   <span className="h-2 w-14 rounded-full bg-orange/60 inline-block" />
@@ -150,17 +150,14 @@ export function ZaikoFeature({
             {/* Abstract Activity Stream Motif */}
             <div className="rounded-xl border border-border bg-surface p-4 space-y-3">
               <div className="flex items-center justify-between text-xs font-semibold text-ink">
-                <span>Product Activity</span>
-                <span className="text-orange text-[11px] font-medium">Movement Stream</span>
+                <span>{theme4Title}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-orange" />
               </div>
               <div className="space-y-2">
                 <div className="h-1.5 w-full rounded-full bg-surface-muted overflow-hidden">
                   <div className="h-full w-3/4 rounded-full bg-orange" />
                 </div>
-                <div className="flex items-center justify-between text-[11px] text-foreground-muted pt-0.5">
-                  <span>Stock Movements & Transfers</span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-                </div>
+                <p className="text-[11px] text-foreground-muted pt-0.5">{theme4Desc}</p>
               </div>
             </div>
           </div>

@@ -1,0 +1,11 @@
+# Zaiko Product Screenshot Directory
+
+This directory is prepared to host official Zaiko product screenshots in WebP format when available:
+
+- zaiko-hero.webp
+- zaiko-inventory.webp
+- zaiko-purchases.webp
+- zaiko-activity.webp
+- zaiko-costs.webp
+
+The `ZaikoProductVisual` component supports loading these images automatically when provided, or rendering responsive high-fidelity abstract UI compositions when images are absent.

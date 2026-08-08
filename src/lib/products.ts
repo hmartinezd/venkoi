@@ -1,13 +1,13 @@
-export type ProductStatus = 'available' | 'comingSoon';
+export type ProductStatus = 'earlyAccess' | 'available' | 'comingSoon';
 
 export type Product = {
-  id: 'zaiko';
-  slug: 'zaiko';
+  id: string;
+  slug: string;
   name: string;
   status: ProductStatus;
   shortDescription: string;
   demoEnabled: boolean;
-  pricingEnabled: false;
+  pricingEnabled: boolean;
 };
 
 export const PRODUCTS: Product[] = [
@@ -15,7 +15,7 @@ export const PRODUCTS: Product[] = [
     id: 'zaiko',
     slug: 'zaiko',
     name: 'Zaiko',
-    status: 'available',
+    status: 'earlyAccess',
     shortDescription: 'Restaurant inventory and operations software built for teams that move fast.',
     demoEnabled: true,
     pricingEnabled: false
@@ -25,3 +25,4 @@ export const PRODUCTS: Product[] = [
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((product) => product.slug === slug);
 }
+

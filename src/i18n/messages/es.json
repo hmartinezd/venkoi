@@ -181,6 +181,12 @@
     "eyebrow": "SOLICITA UNA DEMO",
     "heading": "Ve el software de Venkoi en acción.",
     "body": "Experimenta cómo Zaiko y las soluciones digitales a medida de Venkoi pueden optimizar tu operación.",
+    "zaiko": {
+      "eyebrow": "ZAIKO DEMO",
+      "heading": "Ve Zaiko en acción.",
+      "body": "Cuéntanos un poco sobre tu restaurante y te ayudaremos a dar el siguiente paso para ver cómo Zaiko puede adaptarse a tu operación.",
+      "earlyAccessBadge": "Acceso anticipado · 3 meses gratis"
+    },
     "earlyAccessTitle": "Programa de Acceso Anticipado",
     "badge": "ACCESO ANTICIPADO",
     "badgeText": "Prueba Zaiko gratis durante 3 meses en acceso anticipado.",
@@ -188,14 +194,74 @@
     "zaikoCta": "Conocer Zaiko"
   },
   "zaikoPage": {
-    "eyebrow": "ZAIKO · UN PRODUCTO VENKOI",
-    "heading": "Software de inventario y operaciones para restaurantes.",
-    "body": "Zaiko ofrece una forma clara y confiable de gestionar inventario, compras, costos y movimientos de productos desde una sola plataforma.",
-    "earlyAccessBadge": "ACCESO ANTICIPADO",
-    "badge": "ACCESO ANTICIPADO · Prueba gratuita de 3 meses disponible",
-    "overviewText": "Zaiko ofrece a los equipos de hostelería una forma clara de supervisar inventarios, compras y movimientos de productos desde una sola plataforma.",
-    "demoCta": "Solicita una demo",
-    "ctaText": "Explora las funciones de Zaiko"
+    "nav": {
+      "productName": "Zaiko",
+      "subtitle": "Un Producto Venkoi",
+      "overview": "Visión General",
+      "inventory": "Inventario",
+      "purchases": "Compras",
+      "activity": "Actividad",
+      "costs": "Costos",
+      "requestDemo": "Solicita una demo"
+    },
+    "hero": {
+      "eyebrow": "ZAIKO · UN PRODUCTO VENKOI",
+      "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
+      "body": "Zaiko ayuda a los restaurantes a entender y gestionar su inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado.",
+      "primaryCta": "Solicita una demo",
+      "secondaryCta": "Únete al acceso anticipado",
+      "microcopy": "3 meses gratis durante el acceso anticipado.",
+      "noCreditCard": "Sin necesidad de tarjeta de crédito."
+    },
+    "intro": {
+      "eyebrow": "UNA VISIÓN MÁS CLARA",
+      "heading": "Una forma más clara de ver el inventario de tu restaurante.",
+      "body": "Gestionar inventario no debería significar saltar entre hojas de cálculo, recibos, sistemas desconectados y suposiciones. Zaiko reúne la información esencial del inventario para que tu equipo pueda entender mejor lo que está ocurriendo y tomar decisiones con mayor claridad."
+    },
+    "areas": {
+      "inventory": {
+        "eyebrow": "INVENTARIO",
+        "heading": "Conoce lo que tienes y dónde está.",
+        "body": "Zaiko ofrece a tu restaurante una forma más clara de entender el inventario disponible y mantenerlo organizado alrededor de la forma en que realmente funciona tu operación."
+      },
+      "purchases": {
+        "eyebrow": "COMPRAS",
+        "heading": "Mantén organizadas las compras y recepciones.",
+        "body": "Integra la actividad de compras dentro de la misma visión del inventario para que sea más fácil seguir los productos que entran y los costos relacionados con ellos."
+      },
+      "activity": {
+        "eyebrow": "ACTIVIDAD",
+        "heading": "Sigue cómo se mueve el inventario dentro de tu operación.",
+        "body": "Zaiko reúne la actividad del inventario en un historial claro para que sea más fácil entender qué cambió y seguir el movimiento de los productos a lo largo del tiempo."
+      },
+      "costs": {
+        "eyebrow": "COSTOS",
+        "heading": "Entiende cuánto te está costando realmente tu inventario.",
+        "body": "Mantén más visibles los costos de inventario y compras para que los cambios en los productos no se pierdan entre hojas de cálculo y registros desconectados."
+      }
+    },
+    "workflow": {
+      "eyebrow": "EXPERIENCIA DE PRODUCTO",
+      "heading": "Una sola historia de inventario en lugar de piezas desconectadas.",
+      "body": "Zaiko está diseñado para hacer más fácil entender juntas las diferentes partes del inventario: lo que entró, lo que tienes, lo que cambió y cuánto costó."
+    },
+    "earlyAccess": {
+      "eyebrow": "ACCESO ANTICIPADO",
+      "heading": "Usa Zaiko gratis durante 3 meses.",
+      "body": "Únete a nuestro programa de acceso anticipado y usa Zaiko gratis durante 3 meses.",
+      "primaryCta": "Solicita una demo",
+      "secondaryCta": "Únete al acceso anticipado"
+    },
+    "finalCta": {
+      "heading": "¿Listo para una visión más clara de tu inventario?",
+      "body": "Comienza con el acceso anticipado o solicita una demostración adaptada a la operación de tu restaurante.",
+      "primaryCta": "Solicita una demo",
+      "secondaryCta": "Únete al acceso anticipado"
+    },
+    "seo": {
+      "title": "Zaiko | Software de Inventario para Restaurantes de Venkoi",
+      "description": "Zaiko ayuda a restaurantes a gestionar inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado."
+    }
   },
   "seo": {
     "title": "Venkoi | Productos de Software y Desarrollo a Medida en Tampa Bay",
