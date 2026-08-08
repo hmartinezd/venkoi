@@ -251,4 +251,3 @@ export function Header({ locale }: { locale: Locale }) {
     </header>
   );
 }
-

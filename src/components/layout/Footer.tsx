@@ -128,4 +128,3 @@ export function Footer({ locale }: { locale: Locale }) {
     </footer>
   );
 }
-
