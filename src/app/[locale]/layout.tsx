@@ -4,7 +4,14 @@ import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/i18n/config';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Geist } from 'next/font/google';
 import type { ReactNode } from 'react';
+
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
+  display: 'swap'
+});
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -31,7 +38,7 @@ export default async function LocaleLayout({ params, children }: PageProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={currentLocale} suppressHydrationWarning>
+    <html lang={currentLocale} className={geist.variable} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         <NextIntlClientProvider messages={messages} locale={currentLocale}>
           <a id="skip-to-content" href={`/${currentLocale}#content`}>
@@ -45,4 +52,5 @@ export default async function LocaleLayout({ params, children }: PageProps) {
     </html>
   );
 }
+
 

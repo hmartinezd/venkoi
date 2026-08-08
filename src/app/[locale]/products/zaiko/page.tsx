@@ -48,7 +48,7 @@ export default async function ZaikoPage({ params }: PageProps) {
               {t('eyebrow')}
             </span>
             <span className="inline-flex items-center rounded-md bg-orange-subtle px-2.5 py-0.5 text-[11px] font-bold text-orange uppercase tracking-wider">
-              EARLY ACCESS
+              {t('earlyAccessBadge')}
             </span>
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-tight">
@@ -63,12 +63,12 @@ export default async function ZaikoPage({ params }: PageProps) {
           <div className="space-y-2">
             <h2 className="text-xl font-bold text-ink">{t('badge')}</h2>
             <p className="text-sm text-foreground-muted leading-relaxed">
-              Zaiko helps hospitality teams monitor stock, track receipts, and control product activity from one centralized platform.
+              {t('overviewText')}
             </p>
           </div>
 
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
-            <Button href={`/${currentLocale}${getLocalizedPath('demo', currentLocale)}`} variant="primary">
+            <Button href={getLocalizedPath('demo', currentLocale)} variant="primary">
               {t('demoCta')}
             </Button>
             <Button href={getLocalizedPath('contact', currentLocale)} variant="secondary">
@@ -80,3 +80,4 @@ export default async function ZaikoPage({ params }: PageProps) {
     </Section>
   );
 }
+

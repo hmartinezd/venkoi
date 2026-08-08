@@ -1,13 +1,19 @@
-import { LocalizedLink } from '@/i18n/navigation';
-import { internalRoutes } from '@/i18n/routing';
+'use client';
+
+import { LocalizedLink, usePathname } from '@/i18n/navigation';
+import { internalRoutes, getRouteKeyFromPath } from '@/i18n/routing';
 import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 
 export function Footer({ locale }: { locale: Locale }) {
+  const pathname = usePathname();
   const tFooter = useTranslations('footer');
   const tNav = useTranslations('navigation');
   const tCommon = useTranslations('common');
   const currentYear = new Date().getFullYear();
+
+  const routeKey = getRouteKeyFromPath(pathname);
+  const currentPath = internalRoutes[routeKey];
 
   return (
     <footer className="border-t border-border bg-surface py-14 text-sm text-foreground-muted">
@@ -96,7 +102,7 @@ export function Footer({ locale }: { locale: Locale }) {
             {locales.map((localeKey, idx) => (
               <span key={localeKey} className="flex items-center gap-3">
                 <LocalizedLink
-                  href={internalRoutes.home}
+                  href={currentPath}
                   locale={localeKey}
                   className={`transition hover:text-ink ${localeKey === locale ? 'font-semibold text-ink' : ''}`}
                 >
@@ -119,3 +125,4 @@ export function Footer({ locale }: { locale: Locale }) {
     </footer>
   );
 }
+

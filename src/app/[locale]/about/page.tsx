@@ -61,7 +61,7 @@ export default async function AboutPage({ params }: PageProps) {
         <Container className="space-y-12">
           <div className="max-w-3xl space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-              STRATEGIC DIRECTION
+              {t('strategicDirectionEyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               {t('productDirectionHeading')}
@@ -72,11 +72,11 @@ export default async function AboutPage({ params }: PageProps) {
           </div>
 
           <div className="grid gap-8 md:grid-cols-12 md:items-stretch">
-            {/* Primary Strategic Pillar: Venkoi Products (Larger Column) */}
+            {/* Primary Pillar: Venkoi Products */}
             <div className="md:col-span-7 rounded-2xl border-2 border-orange/40 bg-background p-8 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
-                  PRIMARY STRATEGIC PILLAR
+                  {t('primaryPillarBadge')}
                 </span>
                 <h3 className="text-2xl font-bold text-ink">{t('venkoiProductsTitle')}</h3>
                 <p className="text-sm text-foreground-muted leading-relaxed">
@@ -85,7 +85,7 @@ export default async function AboutPage({ params }: PageProps) {
               </div>
               <div className="pt-4 border-t border-border">
                 <Button href={getLocalizedPath('productsZaiko', currentLocale)} variant="secondary">
-                  Explore Zaiko
+                  {t('exploreZaikoCta')}
                 </Button>
               </div>
             </div>
@@ -94,7 +94,7 @@ export default async function AboutPage({ params }: PageProps) {
             <div className="md:col-span-5 rounded-2xl border border-border bg-background p-8 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <span className="text-xs font-bold text-foreground-muted uppercase tracking-wider">
-                  CLIENT SOLUTIONS
+                  {t('clientSolutionsBadge')}
                 </span>
                 <h3 className="text-2xl font-bold text-ink">{t('customSoftwareTitle')}</h3>
                 <p className="text-sm text-foreground-muted leading-relaxed">
@@ -103,7 +103,7 @@ export default async function AboutPage({ params }: PageProps) {
               </div>
               <div className="pt-4 border-t border-border">
                 <Button href={getLocalizedPath('customSoftware', currentLocale)} variant="secondary">
-                  Custom Software Services
+                  {t('customSoftwareCta')}
                 </Button>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default async function AboutPage({ params }: PageProps) {
         <Container className="max-w-4xl space-y-8">
           <div className="space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-              FOUNDATION & EXPANSION
+              {t('foundationExpansionEyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
               {t('localGlobalHeading')}
@@ -131,3 +131,4 @@ export default async function AboutPage({ params }: PageProps) {
     </>
   );
 }
+

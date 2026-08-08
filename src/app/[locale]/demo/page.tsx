@@ -61,16 +61,16 @@ export default async function DemoPage({ params }: PageProps) {
 
         <div className="rounded-2xl border border-border bg-surface p-8 space-y-6">
           <div className="space-y-2">
-            <h2 className="text-xl font-bold text-ink">Early Access Program</h2>
+            <h2 className="text-xl font-bold text-ink">{t('earlyAccessTitle')}</h2>
             <p className="text-sm text-foreground-muted leading-relaxed">{t('badgeText')}</p>
           </div>
 
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
             <Button href={getLocalizedPath('contact', currentLocale)} variant="primary">
-              Contact Team Directly
+              {t('contactCta')}
             </Button>
             <Button href={getLocalizedPath('productsZaiko', currentLocale)} variant="secondary">
-              Explore Zaiko Product
+              {t('zaikoCta')}
             </Button>
           </div>
         </div>
@@ -78,3 +78,4 @@ export default async function DemoPage({ params }: PageProps) {
     </Section>
   );
 }
+

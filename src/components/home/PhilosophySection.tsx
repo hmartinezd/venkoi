@@ -2,6 +2,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 
 export function PhilosophySection({
+  eyebrow = 'PRODUCT PHILOSOPHY',
   heading,
   item1Num,
   item1Title,
@@ -13,6 +14,7 @@ export function PhilosophySection({
   item3Title,
   item3Desc
 }: {
+  eyebrow?: string;
   heading: string;
   item1Num: string;
   item1Title: string;
@@ -35,7 +37,7 @@ export function PhilosophySection({
       <Container className="space-y-12">
         <div className="max-w-3xl space-y-3">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-            PRODUCT PHILOSOPHY
+            {eyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {heading}
@@ -58,3 +60,4 @@ export function PhilosophySection({
     </Section>
   );
 }
+

@@ -46,60 +46,62 @@ export function HeroSection({
 
           <div className="pt-6 border-t border-border/80">
             <p className="text-xs font-medium text-foreground-muted flex items-center gap-2">
-              <span className="inline-block h-2 w-2 rounded-full bg-orange animate-pulse" />
+              <span className="inline-block h-2 w-2 rounded-full bg-orange" />
               {location}
             </p>
           </div>
         </div>
 
-        {/* Abstract Brand Composition Right Visual */}
+        {/* Abstract Product Composition Right Visual */}
         <div className="relative isolate w-full">
           <div className="rounded-3xl border border-border bg-surface p-6 shadow-card space-y-6">
             {/* Header bar */}
             <div className="flex items-center justify-between pb-4 border-b border-border">
               <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full bg-orange" />
-                <span className="text-xs font-bold tracking-widest text-ink">VENKOI ARCHITECTURE</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-orange" />
+                <span className="text-xs font-bold tracking-widest text-ink uppercase">Venkoi Software</span>
               </div>
               <span className="text-[11px] font-semibold text-foreground-muted uppercase tracking-wider bg-surface-muted px-2.5 py-1 rounded-md">
-                SYSTEM V2
+                Products & Solutions
               </span>
             </div>
 
             {/* Main Visual Panels */}
             <div className="grid gap-4 sm:grid-cols-2">
-              {/* Product Component Box */}
-              <div className="rounded-2xl border border-border bg-surface-muted p-5 space-y-3 transition hover:border-border-strong">
+              {/* Primary Product Card */}
+              <div className="rounded-2xl border border-orange/30 bg-orange-subtle/30 p-5 space-y-3 transition hover:border-orange/60">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-ink">Zaiko Engine</span>
-                  <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="text-xs font-bold text-ink">Zaiko</span>
+                  <span className="text-[10px] font-bold text-orange uppercase tracking-wider bg-orange-subtle px-2 py-0.5 rounded">
+                    Product 01
+                  </span>
                 </div>
                 <div className="space-y-1.5">
-                  <div className="h-2.5 w-full rounded-full bg-border" />
-                  <div className="h-2.5 w-3/4 rounded-full bg-orange/40" />
+                  <div className="h-2 w-full rounded-full bg-orange/40" />
+                  <div className="h-2 w-3/4 rounded-full bg-orange/70" />
                 </div>
-                <p className="text-[11px] text-foreground-muted pt-2">Operational Inventory Logic</p>
+                <p className="text-[11px] text-foreground-muted pt-2 font-medium">Hospitality Operations</p>
               </div>
 
-              {/* Custom Solutions Box */}
+              {/* Custom Solutions Card */}
               <div className="rounded-2xl border border-border bg-surface-muted p-5 space-y-3 transition hover:border-border-strong">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-ink">Custom Core</span>
-                  <span className="h-2 w-2 rounded-full bg-orange" />
+                  <span className="text-xs font-bold text-ink">Custom Solutions</span>
+                  <span className="h-2 w-2 rounded-full bg-ink/30" />
                 </div>
                 <div className="space-y-1.5">
-                  <div className="h-2.5 w-full rounded-full bg-ink/20" />
-                  <div className="h-2.5 w-1/2 rounded-full bg-border" />
+                  <div className="h-2 w-full rounded-full bg-ink/20" />
+                  <div className="h-2 w-1/2 rounded-full bg-border-strong" />
                 </div>
-                <p className="text-[11px] text-foreground-muted pt-2">Mobile & Web Integration</p>
+                <p className="text-[11px] text-foreground-muted pt-2 font-medium">Mobile & Digital Platforms</p>
               </div>
             </div>
 
             {/* Bottom Graphic Matrix */}
-            <div className="rounded-2xl border border-border/80 bg-ink p-5 text-white space-y-3">
+            <div className="rounded-2xl border border-border bg-ink p-5 text-white space-y-3">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-white/90">Tampa Bay Native Platform</span>
-                <span className="text-orange text-[11px] font-mono font-bold">28.0&apos; N / 82.4&apos; W</span>
+                <span className="font-semibold text-white/90">Based in Tampa Bay</span>
+                <span className="text-orange text-[11px] font-semibold tracking-wider uppercase">Florida</span>
               </div>
               <div className="grid grid-cols-4 gap-2 pt-1">
                 <div className="h-1.5 rounded-full bg-orange" />
@@ -114,3 +116,4 @@ export function HeroSection({
     </Section>
   );
 }
+

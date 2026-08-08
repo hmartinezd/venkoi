@@ -94,59 +94,72 @@ export function ZaikoFeature({
             <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
               {discoverCta}
             </Button>
-            <Button href={`/${locale}${getLocalizedPath('demo', locale)}`} variant="secondary">
+            <Button href={getLocalizedPath('demo', locale)} variant="secondary">
               {demoCta}
             </Button>
           </div>
         </div>
 
-        {/* Right Abstract Product Composition (Replaceable with real Zaiko screenshots later) */}
+        {/* Right Abstract Product Composition */}
         <div className="lg:col-span-6">
           <div className="rounded-2xl border border-border bg-background p-6 shadow-card space-y-5">
             {/* Top Bar */}
             <div className="flex items-center justify-between pb-3 border-b border-border">
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-orange" />
-                <span className="text-xs font-bold tracking-wider text-ink">ZAIKO OPERATIONS CONTROL</span>
+                <div className="h-2.5 w-2.5 rounded-full bg-orange" />
+                <span className="text-xs font-bold tracking-wider text-ink uppercase">Zaiko Overview</span>
               </div>
-              <span className="text-[11px] text-foreground-muted font-mono">LIVE / INVENTORY</span>
+              <span className="text-[11px] text-foreground-muted font-medium uppercase tracking-wider bg-surface-muted px-2 py-0.5 rounded">
+                Product Experience
+              </span>
             </div>
 
-            {/* Structured Rows Abstract Graphic */}
+            {/* Abstract Structured Rows */}
             <div className="space-y-3">
-              {[
-                { label: 'Raw Ingredients & Proteins', code: 'SEC-A1', qty: '48 items', status: 'Optimal' },
-                { label: 'Beverages & Bar Supply', code: 'SEC-B2', qty: '124 items', status: 'Receiving' },
-                { label: 'Dry Goods & Paper Store', code: 'SEC-C3', qty: '86 items', status: 'Audit Ready' }
-              ].map((row, i) => (
-                <div key={i} className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
-                  <div className="space-y-1">
-                    <p className="font-semibold text-ink">{row.label}</p>
-                    <p className="text-[11px] text-foreground-muted font-mono">{row.code}</p>
-                  </div>
-                  <div className="text-right space-y-1">
-                    <span className="font-mono font-medium text-ink bg-surface-muted px-2 py-0.5 rounded">
-                      {row.qty}
-                    </span>
-                    <p className="text-[10px] text-orange font-semibold">{row.status}</p>
-                  </div>
+              <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
+                <div className="space-y-1">
+                  <p className="font-semibold text-ink">Inventory Tracking</p>
+                  <p className="text-[11px] text-foreground-muted">Raw ingredients & product stock</p>
                 </div>
-              ))}
+                <div className="text-right">
+                  <span className="h-2 w-12 rounded-full bg-orange/40 inline-block" />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
+                <div className="space-y-1">
+                  <p className="font-semibold text-ink">Purchasing & Receiving</p>
+                  <p className="text-[11px] text-foreground-muted">Vendor orders & delivery intake</p>
+                </div>
+                <div className="text-right">
+                  <span className="h-2 w-10 rounded-full bg-border-strong inline-block" />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
+                <div className="space-y-1">
+                  <p className="font-semibold text-ink">Cost Visibility</p>
+                  <p className="text-[11px] text-foreground-muted">Unit costs & inventory value</p>
+                </div>
+                <div className="text-right">
+                  <span className="h-2 w-14 rounded-full bg-orange/60 inline-block" />
+                </div>
+              </div>
             </div>
 
-            {/* Inventory Movement Graphic */}
+            {/* Abstract Activity Stream Motif */}
             <div className="rounded-xl border border-border bg-surface p-4 space-y-3">
               <div className="flex items-center justify-between text-xs font-semibold text-ink">
-                <span>Inventory Activity Stream</span>
-                <span className="text-orange text-[11px]">Real-time Tracking</span>
+                <span>Product Activity</span>
+                <span className="text-orange text-[11px] font-medium">Movement Stream</span>
               </div>
               <div className="space-y-2">
-                <div className="flex items-center justify-between text-xs text-foreground-muted pt-1">
-                  <span>Stock Transfer & Receipt</span>
-                  <span className="font-mono text-ink font-medium">99.4% Verified</span>
+                <div className="h-1.5 w-full rounded-full bg-surface-muted overflow-hidden">
+                  <div className="h-full w-3/4 rounded-full bg-orange" />
                 </div>
-                <div className="h-2 w-full rounded-full bg-surface-muted overflow-hidden">
-                  <div className="h-full w-4/5 rounded-full bg-orange" />
+                <div className="flex items-center justify-between text-[11px] text-foreground-muted pt-0.5">
+                  <span>Stock Movements & Transfers</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-orange" />
                 </div>
               </div>
             </div>
@@ -156,3 +169,4 @@ export function ZaikoFeature({
     </Section>
   );
 }
+

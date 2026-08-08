@@ -65,12 +65,12 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
         </Container>
       </Section>
 
-      {/* Primary Capability: Mobile Applications (Large Featured Treatment) */}
+      {/* Primary Capability: Mobile Applications */}
       <Section variant="surface" className="py-16 md:py-24 border-y border-border">
         <Container className="space-y-12">
           <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
-              PRIMARY CAPABILITY · MOBILE FIRST
+              {t('primaryCapabilityEyebrow')}
             </span>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               {t('mobileSectionTitle')}
@@ -83,23 +83,23 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
               <span className="text-xs font-mono font-bold text-orange">01</span>
-              <h3 className="text-lg font-bold text-ink">User-Centric Architecture</h3>
+              <h3 className="text-lg font-bold text-ink">{t('mobileFeature1Title')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                Designed specifically for the physical context, connectivity, and screen sizes of real users in the field.
+                {t('mobileFeature1Desc')}
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
               <span className="text-xs font-mono font-bold text-orange">02</span>
-              <h3 className="text-lg font-bold text-ink">High Performance</h3>
+              <h3 className="text-lg font-bold text-ink">{t('mobileFeature2Title')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                Built with modern native and cross-platform mobile frameworks for maximum speed, security, and responsiveness.
+                {t('mobileFeature2Desc')}
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
               <span className="text-xs font-mono font-bold text-orange">03</span>
-              <h3 className="text-lg font-bold text-ink">Offline Resilience</h3>
+              <h3 className="text-lg font-bold text-ink">{t('mobileFeature3Title')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                Data persistence and background sync logic so tools remain fully operational without constant connection.
+                {t('mobileFeature3Desc')}
               </p>
             </div>
           </div>
@@ -110,13 +110,13 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
       <Section variant="light" className="py-16 md:py-24">
         <Container className="grid gap-8 md:grid-cols-2">
           <div className="rounded-2xl border border-border bg-surface p-8 space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-orange">WEB PLATFORMS</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-orange">{t('webEyebrow')}</span>
             <h3 className="text-2xl font-bold text-ink">{t('webTitle')}</h3>
             <p className="text-sm text-foreground-muted leading-relaxed">{t('webBody')}</p>
           </div>
 
           <div className="rounded-2xl border border-border bg-surface p-8 space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-orange">BACKEND & INTEGRATIONS</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-orange">{t('backendEyebrow')}</span>
             <h3 className="text-2xl font-bold text-ink">{t('backendTitle')}</h3>
             <p className="text-sm text-foreground-muted leading-relaxed">{t('backendBody')}</p>
           </div>
@@ -128,7 +128,7 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
         <Container className="max-w-3xl space-y-8">
           <div className="space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-              DEVELOPMENT APPROACH
+              {t('approachEyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               {t('ideaTitle')}
@@ -148,3 +148,4 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
     </>
   );
 }
+

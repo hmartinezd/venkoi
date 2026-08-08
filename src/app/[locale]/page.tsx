@@ -86,6 +86,7 @@ export default async function HomePage({ params }: PageProps) {
         heading={tHome('customSoftware.heading')}
         body={tHome('customSoftware.body')}
         cta={tHome('customSoftware.cta')}
+        primaryFocus={tHome('customSoftware.primaryFocus')}
         mobileTitle={tHome('customSoftware.mobileTitle')}
         mobileDesc={tHome('customSoftware.mobileDesc')}
         webTitle={tHome('customSoftware.webTitle')}
@@ -108,6 +109,7 @@ export default async function HomePage({ params }: PageProps) {
       />
 
       <PhilosophySection
+        eyebrow={tHome('philosophy.eyebrow')}
         heading={tHome('philosophy.heading')}
         item1Num={tHome('philosophy.item1Num')}
         item1Title={tHome('philosophy.item1Title')}

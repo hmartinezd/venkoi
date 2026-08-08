@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, ReactElement } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'text';
@@ -41,6 +42,16 @@ export function Button(props: LinkProps | ActionProps) {
 
   if ('href' in props && typeof props.href === 'string') {
     const { href, target, rel, ...rest } = props as LinkProps;
+    const isInternal = href.startsWith('/') && !href.startsWith('//');
+
+    if (isInternal) {
+      return (
+        <Link className={classes} href={href as any} {...rest}>
+          {children}
+        </Link>
+      );
+    }
+
     return (
       <a className={classes} href={href} target={target} rel={rel} {...rest}>
         {children}
@@ -55,4 +66,5 @@ export function Button(props: LinkProps | ActionProps) {
     </button>
   );
 }
+
 

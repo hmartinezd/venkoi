@@ -23,7 +23,10 @@
   "header": {
     "logoTitle": "Venkoi home",
     "language": "Language",
-    "productsDropdown": "Products"
+    "productsDropdown": "Products",
+    "productBadge": "Product",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "footer": {
     "tagline": "Software that moves business forward.",
@@ -67,6 +70,7 @@
       "eyebrow": "CUSTOM SOFTWARE",
       "heading": "When the right software doesn't exist, we build it.",
       "body": "Have an idea, a business problem, or a workflow that existing software can't solve? Venkoi designs and develops custom software for businesses, startups, and entrepreneurs — with a strong focus on mobile experiences and the technology behind them.",
+      "primaryFocus": "PRIMARY FOCUS",
       "cta": "Tell us about your project",
       "mobileTitle": "MOBILE APPLICATIONS",
       "mobileDesc": "Modern mobile experiences built around the people who actually use them — from customer-facing products to internal business tools.",
@@ -88,6 +92,7 @@
       "prominentStatement": "Talk directly to the people building your software."
     },
     "philosophy": {
+      "eyebrow": "PRODUCT PHILOSOPHY",
       "heading": "Software should remove complexity, not create more of it.",
       "item1Num": "01",
       "item1Title": "Simple by design",
@@ -121,12 +126,22 @@
     "body": "We design and build custom digital products around your idea, your users, and the way your business actually works.",
     "primaryCta": "Tell us what you're building",
     "secondaryCue": "Start with an idea.",
+    "primaryCapabilityEyebrow": "PRIMARY CAPABILITY · MOBILE FIRST",
     "mobileSectionTitle": "Mobile first when mobile is where the work happens.",
     "mobileSectionBody": "From customer-facing products to internal tools, we design mobile experiences around the people, workflows, and environments where they're actually used.",
+    "mobileFeature1Title": "User-Centered Experience",
+    "mobileFeature1Desc": "Designed specifically for the physical context, connectivity, and screen sizes of real users in the field.",
+    "mobileFeature2Title": "Field & Mobile Workflows",
+    "mobileFeature2Desc": "Built around customer-facing applications and internal operational tools that work where your team works.",
+    "mobileFeature3Title": "Core Business Integration",
+    "mobileFeature3Desc": "Seamless connection with your backend systems, APIs, and business data for reliable operation.",
+    "webEyebrow": "WEB PLATFORMS",
     "webTitle": "Web Platforms",
     "webBody": "Responsive applications, dashboards, and management tools built around the workflows your business actually needs.",
+    "backendEyebrow": "BACKEND & INTEGRATIONS",
     "backendTitle": "Backend & Integrations",
     "backendBody": "The APIs, business logic, and integrations that keep applications, systems, and data working together.",
+    "approachEyebrow": "DEVELOPMENT APPROACH",
     "ideaTitle": "You don't need a finished specification.",
     "ideaBody": "Bring us the idea, the problem, or the process that isn't working. We'll help turn it into a product that can actually be built.",
     "ideaCta": "Tell us about your project"
@@ -135,12 +150,18 @@
     "eyebrow": "ABOUT VENKOI",
     "heading": "Software should make business easier.",
     "body": "Venkoi is a software company based in Tampa Bay, Florida, focused on building useful digital products and custom software around real problems.",
-    "productDirectionHeading": "Products first. Solutions when you need them.",
-    "productDirectionBody": "Our long-term focus is creating software products that can help many businesses. When an existing product isn't the right answer, we also work directly with companies and entrepreneurs to create one.",
+    "strategicDirectionEyebrow": "STRATEGIC DIRECTION",
+    "productDirectionHeading": "Products first. Custom solutions when needed.",
+    "productDirectionBody": "Our long-term focus is creating software products that solve common business problems. When an existing product isn't the right answer, we also work directly with companies and entrepreneurs to create tailored custom solutions.",
+    "primaryPillarBadge": "PRIMARY DIRECTION",
     "venkoiProductsTitle": "Venkoi Products",
     "venkoiProductsDesc": "Scalable products such as Zaiko designed for widespread operational needs.",
+    "exploreZaikoCta": "Explore Zaiko",
+    "clientSolutionsBadge": "CLIENT SOLUTIONS",
     "customSoftwareTitle": "Custom Software",
     "customSoftwareDesc": "Tailored solutions created for specific business problems and unique workflows.",
+    "customSoftwareCta": "Custom Software Services",
+    "foundationExpansionEyebrow": "FOUNDATION & EXPANSION",
     "localGlobalHeading": "Close enough to understand. Built to go further.",
     "localGlobalBody": "Venkoi is starting in Tampa Bay, working close to the businesses and people using the software we create. That proximity helps us understand real workflows and real problems — while the products we build are designed to grow far beyond one market."
   },
@@ -148,23 +169,31 @@
     "eyebrow": "CONTACT VENKOI",
     "heading": "Let's start a conversation.",
     "body": "Whether you have a project in mind, a question about our products, or just want to connect, we'd love to hear from you.",
-    "locationBoxTitle": "Venkoi HQ",
+    "locationEyebrow": "LOCATION",
+    "inquiriesEyebrow": "INQUIRIES",
+    "locationBoxTitle": "Based in Tampa Bay",
     "locationBoxDesc": "Based in Tampa Bay, Florida · Serving clients across South Florida & beyond.",
-    "emailBoxTitle": "Direct Contact",
-    "emailBoxDesc": "Reach out directly for custom development inquiries or product demos."
+    "emailBoxTitle": "Direct Inquiries",
+    "emailBoxDesc": "Reach out directly for custom development inquiries or product demos.",
+    "demoCta": "Request a Demo"
   },
   "demoPage": {
     "eyebrow": "REQUEST A DEMO",
     "heading": "See Venkoi software in action.",
     "body": "Experience how Zaiko and custom Venkoi digital solutions can streamline your operation.",
+    "earlyAccessTitle": "Early Access Program",
     "badge": "EARLY ACCESS",
-    "badgeText": "Try Zaiko free for 3 months during early access."
+    "badgeText": "Try Zaiko free for 3 months during early access.",
+    "contactCta": "Contact Team Directly",
+    "zaikoCta": "Explore Zaiko Product"
   },
   "zaikoPage": {
     "eyebrow": "ZAIKO · A VENKOI PRODUCT",
     "heading": "Restaurant inventory & operations software.",
     "body": "Zaiko provides a clear, reliable way to manage inventory, purchases, costs, and product activity from a single platform.",
+    "earlyAccessBadge": "EARLY ACCESS",
     "badge": "EARLY ACCESS · Free 3-month trial available",
+    "overviewText": "Zaiko helps hospitality teams monitor stock, track receipts, and control product activity from one centralized platform.",
     "demoCta": "Request a Demo",
     "ctaText": "Explore Zaiko Features"
   },

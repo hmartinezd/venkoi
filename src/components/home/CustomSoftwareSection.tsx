@@ -15,7 +15,8 @@ export function CustomSoftwareSection({
   webTitle,
   webDesc,
   backendTitle,
-  backendDesc
+  backendDesc,
+  primaryFocus = 'PRIMARY FOCUS'
 }: {
   locale: Locale;
   eyebrow: string;
@@ -28,6 +29,7 @@ export function CustomSoftwareSection({
   webDesc: string;
   backendTitle: string;
   backendDesc: string;
+  primaryFocus?: string;
 }) {
   return (
     <Section variant="dark" className="py-20 md:py-28">
@@ -57,7 +59,7 @@ export function CustomSoftwareSection({
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 rounded-lg bg-orange-subtle px-3 py-1 text-xs font-bold text-orange">
                 <span>01</span>
-                <span>PRIMARY FOCUS</span>
+                <span>{primaryFocus}</span>
               </div>
               <h3 className="text-2xl font-bold text-white sm:text-3xl">
                 {mobileTitle}
@@ -70,21 +72,17 @@ export function CustomSoftwareSection({
             {/* Mobile Graphic Motif */}
             <div className="rounded-xl border border-white/10 bg-black/40 p-5 space-y-3">
               <div className="flex items-center justify-between text-xs text-white/80">
-                <span className="font-semibold">Native & Cross-Platform Mobile</span>
-                <span className="text-orange text-[11px] font-mono">iOS & Android Core</span>
+                <span className="font-semibold">Mobile Workflows & Applications</span>
+                <span className="text-orange text-[11px]">User-Centered</span>
               </div>
-              <div className="grid grid-cols-3 gap-2">
-                <div className="rounded-lg bg-white/10 p-3 text-center">
-                  <span className="block text-xs font-bold text-white">UX First</span>
-                  <span className="text-[10px] text-white/60">Touch Workflows</span>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="rounded-lg bg-white/10 p-3 text-left space-y-1">
+                  <span className="block text-xs font-bold text-white">Customer-Facing</span>
+                  <span className="text-[11px] text-white/70 block">Mobile experiences for your clients</span>
                 </div>
-                <div className="rounded-lg bg-white/10 p-3 text-center">
-                  <span className="block text-xs font-bold text-white">Offline Ready</span>
-                  <span className="text-[10px] text-white/60">Local Sync</span>
-                </div>
-                <div className="rounded-lg bg-white/10 p-3 text-center">
-                  <span className="block text-xs font-bold text-white">High Speed</span>
-                  <span className="text-[10px] text-white/60">Native Tech</span>
+                <div className="rounded-lg bg-white/10 p-3 text-left space-y-1">
+                  <span className="block text-xs font-bold text-white">Internal Tools</span>
+                  <span className="text-[11px] text-white/70 block">Field tools built for team workflows</span>
                 </div>
               </div>
             </div>
@@ -111,3 +109,4 @@ export function CustomSoftwareSection({
     </Section>
   );
 }
+

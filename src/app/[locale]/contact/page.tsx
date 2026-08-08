@@ -56,18 +56,18 @@ export default async function ContactPage({ params }: PageProps) {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-border bg-surface p-8 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-orange">LOCATION</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-orange">{t('locationEyebrow')}</span>
             <h2 className="text-xl font-bold text-ink">{t('locationBoxTitle')}</h2>
             <p className="text-sm text-foreground-muted leading-relaxed">{t('locationBoxDesc')}</p>
           </div>
 
           <div className="rounded-2xl border border-border bg-surface p-8 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-orange">INQUIRIES</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-orange">{t('inquiriesEyebrow')}</span>
             <h2 className="text-xl font-bold text-ink">{t('emailBoxTitle')}</h2>
             <p className="text-sm text-foreground-muted leading-relaxed">{t('emailBoxDesc')}</p>
             <div className="pt-2">
-              <Button href={`/${currentLocale}${getLocalizedPath('demo', currentLocale)}`} variant="primary" className="text-xs">
-                Request a Demo
+              <Button href={getLocalizedPath('demo', currentLocale)} variant="primary" className="text-xs">
+                {t('demoCta')}
               </Button>
             </div>
           </div>
@@ -76,3 +76,4 @@ export default async function ContactPage({ params }: PageProps) {
     </Section>
   );
 }
+

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath } from '@/i18n/routing';
+import { internalRoutes, getRouteKeyFromPath, getLocalizedPath } from '@/i18n/routing';
 import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
@@ -60,8 +60,18 @@ export function Header({ locale }: { locale: Locale }) {
         setDropdownOpen(false);
       }
     }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setDropdownOpen(false);
+        setMenuOpen(false);
+      }
+    }
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   return (
@@ -120,7 +130,7 @@ export function Header({ locale }: { locale: Locale }) {
                       {tNav('zaiko')}
                     </span>
                     <span className="rounded-md bg-orange-subtle px-2 py-0.5 text-[10px] font-bold text-orange uppercase tracking-wider">
-                      Product
+                      {tHeader('productBadge')}
                     </span>
                   </div>
                   <span className="mt-1 text-xs text-foreground-muted">
@@ -159,7 +169,7 @@ export function Header({ locale }: { locale: Locale }) {
         {/* Desktop CTA & Language Switcher */}
         <div className="hidden items-center gap-6 md:flex">
           <LanguageSwitcher locale={locale} pathname={pathname} />
-          <Button href={`/${locale}${internalRoutes.demo}`} variant="primary" className="text-xs">
+          <Button href={getLocalizedPath('demo', locale)} variant="primary" className="text-xs">
             {tCommon('demo')}
           </Button>
         </div>
@@ -169,7 +179,8 @@ export function Header({ locale }: { locale: Locale }) {
           <LanguageSwitcher locale={locale} pathname={pathname} />
           <button
             type="button"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={menuOpen ? tHeader('closeMenu') : tHeader('openMenu')}
+            aria-expanded={menuOpen}
             onClick={() => setMenuOpen((current) => !current)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-ink transition hover:bg-surface-muted"
           >
@@ -227,7 +238,7 @@ export function Header({ locale }: { locale: Locale }) {
 
           <div className="mt-6 pt-4 border-t border-border">
             <Button
-              href={`/${locale}${internalRoutes.demo}`}
+              href={getLocalizedPath('demo', locale)}
               variant="primary"
               className="w-full justify-center"
               onClick={() => setMenuOpen(false)}
@@ -240,3 +251,4 @@ export function Header({ locale }: { locale: Locale }) {
     </header>
   );
 }
+

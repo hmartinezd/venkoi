@@ -23,14 +23,17 @@
   "header": {
     "logoTitle": "Inicio Venkoi",
     "language": "Idioma",
-    "productsDropdown": "Productos"
+    "productsDropdown": "Productos",
+    "productBadge": "Producto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
   },
   "footer": {
-    "tagline": "Software que hace avanzar los negocios.",
+    "tagline": "Software que impulsa tu negocio.",
     "sectionProducts": "Productos",
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
-    "locationText": "Tampa Bay, Florida · Sirviendo a Tampa Bay, South Florida y más allá"
+    "locationText": "Tampa Bay, Florida · Con sede en Tampa Bay, trabajando con clientes en South Florida y más allá"
   },
   "home": {
     "hero": {
@@ -67,6 +70,7 @@
       "eyebrow": "SOFTWARE A MEDIDA",
       "heading": "Cuando el software adecuado no existe, lo creamos.",
       "body": "¿Tienes una idea, un problema de negocio o un proceso que las soluciones existentes no resuelven? Venkoi diseña y desarrolla software a medida para empresas, startups y emprendedores, con especial énfasis en experiencias móviles y la tecnología que las hace funcionar.",
+      "primaryFocus": "ENFOQUE PRINCIPAL",
       "cta": "Cuéntanos sobre tu proyecto",
       "mobileTitle": "APLICACIONES MÓVILES",
       "mobileDesc": "Experiencias móviles modernas creadas alrededor de las personas que realmente las usan, desde productos para clientes hasta herramientas internas de negocio.",
@@ -76,7 +80,7 @@
       "backendDesc": "APIs, lógica de negocio e integraciones que conectan tus aplicaciones, sistemas y datos."
     },
     "local": {
-      "eyebrow": "LOCALES POR ELECCIÓN",
+      "eyebrow": "PRESENCIA LOCAL",
       "heading": "El buen software comienza entendiendo el negocio detrás de él.",
       "body": "Estamos en Tampa Bay y creemos que trabajar cerca de las personas que usan el software conduce a mejores productos y mejores soluciones.",
       "tampaTitle": "TAMPA BAY",
@@ -88,6 +92,7 @@
       "prominentStatement": "Habla directamente con las personas que están creando tu software."
     },
     "philosophy": {
+      "eyebrow": "FILOSOFÍA DE PRODUCTO",
       "heading": "El software debe eliminar complejidad, no crear más.",
       "item1Num": "01",
       "item1Title": "Simple por diseño",
@@ -121,12 +126,22 @@
     "body": "Diseñamos y desarrollamos productos digitales a medida alrededor de tu idea, tus usuarios y la forma en que realmente funciona tu negocio.",
     "primaryCta": "Cuéntanos qué quieres crear",
     "secondaryCue": "Empieza con una idea.",
+    "primaryCapabilityEyebrow": "CAPACIDAD PRINCIPAL · ENFOQUE MÓVIL",
     "mobileSectionTitle": "Enfoque móvil cuando en el móvil es donde ocurre el trabajo.",
     "mobileSectionBody": "Desde productos orientados al cliente hasta herramientas internas, diseñamos experiencias móviles adaptadas a las personas, procesos y entornos donde realmente se utilizan.",
+    "mobileFeature1Title": "Experiencia Centrada en el Usuario",
+    "mobileFeature1Desc": "Diseñada específicamente para el contexto físico, la conectividad y las pantallas de los usuarios en el terreno.",
+    "mobileFeature2Title": "Flujos de Trabajo Móviles",
+    "mobileFeature2Desc": "Creadas alrededor de aplicaciones para clientes y herramientas operativas internas que funcionan donde trabaja tu equipo.",
+    "mobileFeature3Title": "Integración con el Negocio",
+    "mobileFeature3Desc": "Conexión fluida con tus sistemas backend, APIs y datos del negocio para una operación confiable.",
+    "webEyebrow": "PLATAFORMAS WEB",
     "webTitle": "Plataformas Web",
     "webBody": "Aplicaciones responsive, dashboards y herramientas de gestión diseñadas alrededor de los procesos que tu negocio realmente necesita.",
+    "backendEyebrow": "BACKEND E INTEGRACIONES",
     "backendTitle": "Backend e Integraciones",
     "backendBody": "Las APIs, lógica de negocio e integraciones que mantienen tus aplicaciones, sistemas y datos funcionando juntos.",
+    "approachEyebrow": "ENFOQUE DE DESARROLLO",
     "ideaTitle": "No necesitas una especificación terminada.",
     "ideaBody": "Tráenos la idea, el problema o el proceso que no funciona. Te ayudaremos a convertirlo en un producto que realmente se pueda construir.",
     "ideaCta": "Cuéntanos sobre tu proyecto"
@@ -135,12 +150,18 @@
     "eyebrow": "SOBRE VENKOI",
     "heading": "El software debe hacer que los negocios sean más simples.",
     "body": "Venkoi es una compañía de software con sede en Tampa Bay, Florida, enfocada en crear productos digitales útiles y software a medida alrededor de problemas reales.",
-    "productDirectionHeading": "PRODUCTOS PRIMERO. SOLUCIONES CUANDO LAS NECESITAS.",
-    "productDirectionBody": "Nuestro enfoque a largo plazo es crear productos de software que puedan ayudar a muchos negocios. Cuando un producto existente no es la respuesta adecuada, también trabajamos directamente con empresas y emprendedores para crear uno.",
+    "strategicDirectionEyebrow": "ORIENTACIÓN ESTRATÉGICA",
+    "productDirectionHeading": "Productos primero. Soluciones a medida cuando las necesitas.",
+    "productDirectionBody": "Nuestro enfoque principal es crear productos de software escalables como Zaiko que resuelven problemas operativos comunes. Cuando un producto estándar no es la respuesta, desarrollamos soluciones a medida adaptadas a las necesidades específicas del cliente.",
+    "primaryPillarBadge": "DIRECCIÓN PRINCIPAL",
     "venkoiProductsTitle": "Productos Venkoi",
     "venkoiProductsDesc": "Productos escalables como Zaiko diseñados para necesidades operativas generales.",
+    "exploreZaikoCta": "Conoce Zaiko",
+    "clientSolutionsBadge": "SOLUCIONES PARA CLIENTES",
     "customSoftwareTitle": "Software a Medida",
     "customSoftwareDesc": "Soluciones adaptadas creadas para problemas de negocio específicos y procesos únicos.",
+    "customSoftwareCta": "Servicios de Software a Medida",
+    "foundationExpansionEyebrow": "BASE Y EXPANSIÓN",
     "localGlobalHeading": "Lo suficientemente cerca para entender. Creado para llegar más lejos.",
     "localGlobalBody": "Venkoi está comenzando en Tampa Bay, trabajando cerca de los negocios y las personas que usan el software que creamos. Esa cercanía nos ayuda a entender procesos y problemas reales, mientras los productos que construimos están diseñados para crecer mucho más allá de un solo mercado."
   },
@@ -148,23 +169,31 @@
     "eyebrow": "CONTACTO VENKOI",
     "heading": "Hablemos.",
     "body": "Ya sea que tengas un proyecto en mente, una consulta sobre nuestros productos o simplemente quieras conectar, nos encantaría escucharte.",
-    "locationBoxTitle": "Sede Venkoi",
+    "locationEyebrow": "UBICACIÓN",
+    "inquiriesEyebrow": "CONSULTAS",
+    "locationBoxTitle": "Con sede en Tampa Bay",
     "locationBoxDesc": "Con sede en Tampa Bay, Florida · Trabajando con clientes en South Florida y más allá.",
     "emailBoxTitle": "Contacto Directo",
-    "emailBoxDesc": "Escríbenos directamente para consultas de desarrollo a medida o demos de producto."
+    "emailBoxDesc": "Escríbenos directamente para consultas sobre software a medida o demos de producto.",
+    "demoCta": "Solicitar una demo"
   },
   "demoPage": {
     "eyebrow": "SOLICITA UNA DEMO",
     "heading": "Ve el software de Venkoi en acción.",
     "body": "Experimenta cómo Zaiko y las soluciones digitales a medida de Venkoi pueden optimizar tu operación.",
+    "earlyAccessTitle": "Programa de Acceso Anticipado",
     "badge": "ACCESO ANTICIPADO",
-    "badgeText": "Prueba Zaiko gratis durante 3 meses en acceso anticipado."
+    "badgeText": "Prueba Zaiko gratis durante 3 meses en acceso anticipado.",
+    "contactCta": "Contactar al Equipo",
+    "zaikoCta": "Conocer Zaiko"
   },
   "zaikoPage": {
     "eyebrow": "ZAIKO · UN PRODUCTO VENKOI",
     "heading": "Software de inventario y operaciones para restaurantes.",
     "body": "Zaiko ofrece una forma clara y confiable de gestionar inventario, compras, costos y movimientos de productos desde una sola plataforma.",
+    "earlyAccessBadge": "ACCESO ANTICIPADO",
     "badge": "ACCESO ANTICIPADO · Prueba gratuita de 3 meses disponible",
+    "overviewText": "Zaiko ofrece a los equipos de hostelería una forma clara de supervisar inventarios, compras y movimientos de productos desde una sola plataforma.",
     "demoCta": "Solicita una demo",
     "ctaText": "Explora las funciones de Zaiko"
   },
