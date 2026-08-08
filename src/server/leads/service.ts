@@ -36,7 +36,7 @@ export async function processLeadSubmission(rawPayload: unknown): Promise<Proces
   try {
     lead = await createLead(validatedData);
   } catch (err) {
-    console.error('[Lead Service] Database persistence failed during lead submission:', err);
+    console.error('[Lead Service] Database persistence failed during lead submission:', err instanceof Error ? err.message : 'Persistence error');
     return {
       ok: false,
       code: 'SUBMISSION_ERROR'
@@ -48,7 +48,7 @@ export async function processLeadSubmission(rawPayload: unknown): Promise<Proces
   try {
     await sendLeadEmails(lead);
   } catch (emailErr) {
-    console.error(`[Lead Service] Notification email failed for lead ${lead.id}:`, emailErr);
+    console.error(`[Lead Service] Notification email failed for lead ${lead.id}:`, emailErr instanceof Error ? emailErr.message : 'Email error');
   }
 
   return {

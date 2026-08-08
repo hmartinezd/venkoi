@@ -6,6 +6,7 @@ const MAX_BODY_BYTES = 100 * 1024; // 100 KB max payload limit
 
 export async function POST(request: NextRequest) {
   // 1. Official Vercel BotID Verification BEFORE processing
+  const isProduction = process.env.NODE_ENV === 'production';
   try {
     const verification = await checkBotId();
     if (verification.isBot) {
@@ -15,14 +16,37 @@ export async function POST(request: NextRequest) {
       );
     }
   } catch (err) {
-    // If BotID throws during local dev/unconfigured environment, log warning & continue
-    console.warn('[BotID Check] Verification skipped or errored:', err);
+    if (isProduction) {
+      console.error('[BotID Check] Production BotID verification error:', err instanceof Error ? err.message : 'Verification failed');
+      return NextResponse.json(
+        { ok: false, code: 'SUBMISSION_ERROR' },
+        { status: 500 }
+      );
+    }
+    console.warn('[BotID Check] Non-production verification warning:', err instanceof Error ? err.message : err);
   }
 
-  // 2. Parse payload JSON with size check
-  let bodyText = '';
+  // 2. Validate Content-Type header
+  const contentType = request.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    return NextResponse.json(
+      { ok: false, code: 'VALIDATION_ERROR' },
+      { status: 415 }
+    );
+  }
+
+  // 3. Byte-accurate request size check & payload extraction
+  const contentLengthHeader = request.headers.get('content-length');
+  if (contentLengthHeader && parseInt(contentLengthHeader, 10) > MAX_BODY_BYTES) {
+    return NextResponse.json(
+      { ok: false, code: 'VALIDATION_ERROR' },
+      { status: 413 }
+    );
+  }
+
+  let arrayBuffer: ArrayBuffer;
   try {
-    bodyText = await request.text();
+    arrayBuffer = await request.arrayBuffer();
   } catch {
     return NextResponse.json(
       { ok: false, code: 'VALIDATION_ERROR' },
@@ -30,12 +54,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (bodyText.length > MAX_BODY_BYTES) {
+  if (arrayBuffer.byteLength > MAX_BODY_BYTES) {
     return NextResponse.json(
       { ok: false, code: 'VALIDATION_ERROR' },
       { status: 413 }
     );
   }
+
+  const decoder = new TextDecoder('utf-8');
+  const bodyText = decoder.decode(arrayBuffer);
 
   let body: unknown;
   try {
@@ -47,7 +74,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 3. Process Lead submission (Validation -> Persist -> Email)
+  // 4. Process Lead submission (Validation -> Persist -> Email)
   const result = await processLeadSubmission(body);
 
   if (!result.ok) {
@@ -63,4 +90,5 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }
+
 

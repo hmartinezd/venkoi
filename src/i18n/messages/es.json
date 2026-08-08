@@ -9,7 +9,8 @@
     "demo": "Solicitar una demo",
     "startConversation": "Hablemos",
     "contactUs": "Cuéntanos sobre tu proyecto",
-    "learnMore": "Conoce más sobre Venkoi"
+    "learnMore": "Conoce más sobre Venkoi",
+    "skipToContent": "Saltar al contenido"
   },
   "navigation": {
     "products": "Productos",
@@ -335,5 +336,16 @@
   "seo": {
     "title": "Venkoi | Productos de Software y Desarrollo a Medida en Tampa Bay",
     "description": "Venkoi es una empresa de software en Tampa Bay que crea productos y soluciones móviles y web a medida para empresas en South Florida y más allá."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o puede haber cambiado de ubicación.",
+    "cta": "Volver a Venkoi"
+  },
+  "errorBoundary": {
+    "title": "Algo salió mal",
+    "description": "Ocurrió un error inesperado. Por favor, vuelve a intentarlo o regresa a la página principal.",
+    "tryAgain": "Intentar de nuevo",
+    "goHome": "Volver a Venkoi"
   }
 }

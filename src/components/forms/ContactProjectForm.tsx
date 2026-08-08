@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { FormField } from './FormField';
 import { FormStatus } from './FormStatus';
 import { Button } from '@/components/ui/Button';
+import { trackCustomEvent } from '@/lib/analytics';
 import type { Locale } from '@/i18n/config';
 
 interface ContactProjectFormProps {
@@ -14,6 +15,8 @@ interface ContactProjectFormProps {
 
 export function ContactProjectForm({ locale, initialType = '' }: ContactProjectFormProps) {
   const t = useTranslations('contactPage.form');
+  const formRef = useRef<HTMLFormElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -39,6 +42,9 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
+  const [hasStarted, setHasStarted] = useState(false);
+
+  const lead_type = initialType === 'custom-software' ? 'CUSTOM_PROJECT' : 'GENERAL_CONTACT';
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -54,9 +60,24 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     }
   }, []);
 
+  const focusFirstError = (errObj: Record<string, string>) => {
+    const firstFieldKey = Object.keys(errObj)[0];
+    if (firstFieldKey && formRef.current) {
+      const inputElement = formRef.current.querySelector<HTMLElement>(`[name="${firstFieldKey}"]`);
+      if (inputElement) {
+        inputElement.focus();
+      }
+    }
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    if (!hasStarted) {
+      setHasStarted(true);
+      trackCustomEvent('contact_form_start', { locale, leadType: lead_type });
+    }
+
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -75,6 +96,8 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     setErrors({});
     setStatus('idle');
 
+    trackCustomEvent('contact_form_submit', { locale, leadType: lead_type });
+
     // Client inline validation
     const clientErrors: Record<string, string> = {};
     if (!formData.name.trim()) clientErrors.name = t('required');
@@ -88,11 +111,9 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     if (Object.keys(clientErrors).length > 0) {
       setErrors(clientErrors);
       setPending(false);
+      setTimeout(() => focusFirstError(clientErrors), 50);
       return;
     }
-
-    // Lead type: CUSTOM_PROJECT if query has type=custom-software, else GENERAL_CONTACT
-    const lead_type = initialType === 'custom-software' ? 'CUSTOM_PROJECT' : 'GENERAL_CONTACT';
 
     const payload = {
       lead_type,
@@ -131,6 +152,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
             else mappedFieldErrors[key] = t('submissionError');
           }
           setErrors(mappedFieldErrors);
+          setTimeout(() => focusFirstError(mappedFieldErrors), 50);
         }
         if (data.code === 'BOT_BLOCKED') {
           setStatusMessage(t('botBlocked'));
@@ -139,6 +161,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
         }
       } else {
         setStatus('success');
+        trackCustomEvent('contact_form_success', { locale, leadType: lead_type });
       }
     } catch {
       setStatus('error');
@@ -150,16 +173,18 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
 
   if (status === 'success') {
     return (
-      <FormStatus
-        status="success"
-        title={t('successTitle')}
-        message={t('successMessage')}
-      />
+      <div ref={successRef} tabIndex={-1} className="focus:outline-hidden">
+        <FormStatus
+          status="success"
+          title={t('successTitle')}
+          message={t('successMessage')}
+        />
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
+    <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-6">
       {status === 'error' && statusMessage ? (
         <FormStatus status="error" message={statusMessage} />
       ) : null}

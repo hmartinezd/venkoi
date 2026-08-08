@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
+import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -42,9 +43,29 @@ export default async function HomePage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const tHome = await getTranslations('home');
+  const origin = getSiteOrigin();
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Venkoi',
+    url: origin,
+    logo: `${origin}/brand/venkoi-logo-dark.png`,
+    description: tHome('hero.body'),
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Tampa Bay',
+      addressRegion: 'FL',
+      addressCountry: 'US'
+    }
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection
         locale={currentLocale}
         eyebrow={tHome('hero.eyebrow')}

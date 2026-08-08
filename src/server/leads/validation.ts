@@ -56,6 +56,7 @@ export const leadSubmissionSchema = z
     referrer: z.preprocess(normalizeString, z.string().max(500).nullable().optional()),
     website: z.preprocess(normalizeString, z.string().nullable().optional()) // Honeypot
   })
+  .strict()
   .superRefine((data, ctx) => {
     // Honeypot check
     if (data.website) {

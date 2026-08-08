@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "botid": "^1.5.11",
     "next": "^15.5.23",
     "next-intl": "^3.26.5",

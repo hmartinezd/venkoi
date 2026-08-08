@@ -1,20 +1,45 @@
 import type { Metadata } from 'next';
 import { Locale, locales } from '@/i18n/config';
 import { getLocalizedPath, type RouteKey } from '@/i18n/routing';
+import { getSiteOrigin, isProductionEnv } from '@/lib/site-config';
 
-export function createMetadata({ title, description, routeKey, locale }: { title: string; description: string; routeKey: RouteKey; locale: Locale; }): Metadata {
-  const origin = 'https://venkoi.com';
+interface CreateMetadataOptions {
+  title: string;
+  description: string;
+  routeKey: RouteKey;
+  locale: Locale;
+  noIndex?: boolean;
+}
+
+export function createMetadata({
+  title,
+  description,
+  routeKey,
+  locale,
+  noIndex = false
+}: CreateMetadataOptions): Metadata {
+  const origin = getSiteOrigin();
   const pathname = getLocalizedPath(routeKey, locale);
   const canonical = `${origin}${pathname}`;
+  const enCanonical = `${origin}${getLocalizedPath(routeKey, 'en')}`;
+
+  const languageAlternates = locales.reduce((result, next) => {
+    return {
+      ...result,
+      [next]: `${origin}${getLocalizedPath(routeKey, next)}`
+    };
+  }, {} as Record<string, string>);
+
   const alternates = {
     canonical,
-    languages: locales.reduce((result, next) => {
-      return {
-        ...result,
-        [next]: `${origin}${getLocalizedPath(routeKey, next)}`
-      };
-    }, {} as Record<string, string>)
+    languages: {
+      ...languageAlternates,
+      'x-default': enCanonical
+    }
   };
+
+  const isProd = isProductionEnv();
+  const shouldIndex = !noIndex && isProd;
 
   return {
     title,
@@ -25,7 +50,8 @@ export function createMetadata({ title, description, routeKey, locale }: { title
       title,
       description,
       type: 'website',
-      url: canonical
+      url: canonical,
+      siteName: 'Venkoi'
     },
     twitter: {
       card: 'summary_large_image',
@@ -33,8 +59,12 @@ export function createMetadata({ title, description, routeKey, locale }: { title
       description
     },
     robots: {
-      index: true,
-      follow: true
+      index: shouldIndex,
+      follow: isProd,
+      googleBot: {
+        index: shouldIndex,
+        follow: isProd
+      }
     }
   };
 }

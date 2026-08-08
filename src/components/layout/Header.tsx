@@ -9,6 +9,8 @@ import { BrandLogo } from '@/components/brand/BrandLogo';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
+import { trackCustomEvent } from '@/lib/analytics';
+
 function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: string }) {
   const routeKey = getRouteKeyFromPath(pathname);
   const currentPath = internalRoutes[routeKey];
@@ -20,6 +22,11 @@ function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: stri
           <LocalizedLink
             href={currentPath}
             locale={localeKey}
+            onClick={() => {
+              if (localeKey !== locale) {
+                trackCustomEvent('language_switch', { locale: localeKey });
+              }
+            }}
             className={cn(
               'transition-colors py-1 px-1.5 rounded hover:text-ink',
               localeKey === locale

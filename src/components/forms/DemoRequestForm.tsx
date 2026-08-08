@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { FormField } from './FormField';
 import { FormStatus } from './FormStatus';
 import { Button } from '@/components/ui/Button';
+import { trackCustomEvent } from '@/lib/analytics';
 import type { Locale } from '@/i18n/config';
 
 interface DemoRequestFormProps {
@@ -19,6 +20,8 @@ export function DemoRequestForm({
   initialInterest = ''
 }: DemoRequestFormProps) {
   const t = useTranslations('demoPage.form');
+  const formRef = useRef<HTMLFormElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -46,6 +49,7 @@ export function DemoRequestForm({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -61,9 +65,24 @@ export function DemoRequestForm({
     }
   }, []);
 
+  const focusFirstError = (errObj: Record<string, string>) => {
+    const firstFieldKey = Object.keys(errObj)[0];
+    if (firstFieldKey && formRef.current) {
+      const inputElement = formRef.current.querySelector<HTMLElement>(`[name="${firstFieldKey}"]`);
+      if (inputElement) {
+        inputElement.focus();
+      }
+    }
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    if (!hasStarted) {
+      setHasStarted(true);
+      trackCustomEvent('demo_form_start', { locale, product: initialProduct });
+    }
+
     const { name, value, type } = e.target;
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
@@ -87,6 +106,8 @@ export function DemoRequestForm({
     setErrors({});
     setStatus('idle');
 
+    trackCustomEvent('demo_form_submit', { locale, product: initialProduct });
+
     // Inline client validation
     const clientErrors: Record<string, string> = {};
     if (!formData.first_name.trim()) clientErrors.first_name = t('required');
@@ -101,6 +122,7 @@ export function DemoRequestForm({
     if (Object.keys(clientErrors).length > 0) {
       setErrors(clientErrors);
       setPending(false);
+      setTimeout(() => focusFirstError(clientErrors), 50);
       return;
     }
 
@@ -144,6 +166,7 @@ export function DemoRequestForm({
             else mappedFieldErrors[key] = t('submissionError');
           }
           setErrors(mappedFieldErrors);
+          setTimeout(() => focusFirstError(mappedFieldErrors), 50);
         }
         if (data.code === 'BOT_BLOCKED') {
           setStatusMessage(t('botBlocked'));
@@ -152,6 +175,11 @@ export function DemoRequestForm({
         }
       } else {
         setStatus('success');
+        trackCustomEvent('demo_form_success', {
+          locale,
+          product: initialProduct || 'zaiko',
+          earlyAccess: formData.early_access_interest
+        });
       }
     } catch {
       setStatus('error');
@@ -163,16 +191,18 @@ export function DemoRequestForm({
 
   if (status === 'success') {
     return (
-      <FormStatus
-        status="success"
-        title={t('successTitle')}
-        message={t('successMessage')}
-      />
+      <div ref={successRef} tabIndex={-1} className="focus:outline-hidden">
+        <FormStatus
+          status="success"
+          title={t('successTitle')}
+          message={t('successMessage')}
+        />
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
+    <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-6">
       {status === 'error' && statusMessage ? (
         <FormStatus status="error" message={statusMessage} />
       ) : null}

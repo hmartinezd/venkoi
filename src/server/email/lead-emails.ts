@@ -102,7 +102,7 @@ export async function sendLeadEmails(lead: LeadRecord): Promise<void> {
 
   results.forEach((result) => {
     if (result.status === 'rejected') {
-      console.error(`[Email Service] Notification email failed for lead ${lead.id}:`, result.reason);
+      console.error(`[Email Service] Notification email failed for lead ${lead.id}:`, result.reason instanceof Error ? result.reason.message : 'Email delivery failed');
     }
   });
 }

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${t('eyebrow')} | ${seo('title')}`,
     description: t('body'),
     routeKey: 'demo',
-    locale: currentLocale
+    locale: currentLocale,
+    noIndex: true
   });
 }
 

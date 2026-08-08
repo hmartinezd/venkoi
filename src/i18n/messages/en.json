@@ -9,7 +9,8 @@
     "demo": "Request a Demo",
     "startConversation": "Start a Conversation",
     "contactUs": "Tell us about your project",
-    "learnMore": "Learn more about Venkoi"
+    "learnMore": "Learn more about Venkoi",
+    "skipToContent": "Skip to content"
   },
   "navigation": {
     "products": "Products",
@@ -335,5 +336,16 @@
   "seo": {
     "title": "Venkoi | Software Products & Custom Development in Tampa Bay",
     "description": "Venkoi is a Tampa Bay software company creating software products and custom mobile and web solutions for businesses in South Florida and beyond."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or may have moved.",
+    "cta": "Back to Venkoi"
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again or return to the homepage.",
+    "tryAgain": "Try again",
+    "goHome": "Back to Venkoi"
   }
 }

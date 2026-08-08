@@ -1,6 +1,6 @@
 # Venkoi
 
-A production-ready Next.js marketing site and digital product platform for Venkoi.
+A Next.js marketing site and digital product platform for Venkoi prepared for production deployment.
 
 ## Stack
 
@@ -12,6 +12,7 @@ A production-ready Next.js marketing site and digital product platform for Venko
 - Neon Serverless PostgreSQL
 - Resend (Transactional emails)
 - Vercel BotID (Bot protection)
+- Vercel Web Analytics & Speed Insights
 
 ## Local Setup
 
@@ -22,33 +23,57 @@ A production-ready Next.js marketing site and digital product platform for Venko
 ## Available Commands
 
 - `npm run dev` - start local development server
-- `npm run build` - run lint, typecheck, and Next.js build
+- `npm run build` - run lint, typecheck, and Next.js production build
 - `npm run lint` - run ESLint checks
 - `npm run typecheck` - run TypeScript type checking
 
-## Lead Infrastructure Setup
+## Lead Infrastructure & Database Migrations Setup
 
-To enable production lead persistence and email notifications:
+To enable lead persistence and email notifications:
 
-1. **Neon PostgreSQL Database Setup**:
-   - Create a PostgreSQL database on [Neon](https://neon.tech).
-   - Copy the serverless database connection URL (`postgresql://...`).
-   - Configure `DATABASE_URL` in your Vercel Environment Variables (and `.env.local` for local development).
+### New Database Setup
 
-2. **Database Migration**:
-   - Apply the SQL migration in `db/migrations/001_create_leads.sql` to your Neon database via the Neon SQL Console or psql:
-     ```bash
-     psql "$DATABASE_URL" -f db/migrations/001_create_leads.sql
-     ```
+If setting up a fresh Neon PostgreSQL instance:
 
-3. **Resend Email Service Setup**:
-   - Create an account on [Resend](https://resend.com).
-   - Verify your Venkoi sending domain (e.g. `venkoi.com`).
-   - Create an API key in Resend.
-   - Configure `RESEND_API_KEY` in Vercel Environment Variables.
-   - Configure `RESEND_FROM_EMAIL` (e.g., `Venkoi <notifications@venkoi.com>`).
-   - Configure `LEADS_NOTIFICATION_EMAIL` (the recipient team address for internal lead alerts).
+1. Create a PostgreSQL database on [Neon](https://neon.tech).
+2. Copy the serverless database connection URL (`postgresql://...`).
+3. Configure `DATABASE_URL` in your environment variables.
+4. Execute both migration scripts in sequence using `psql` or the Neon SQL Console:
+   ```bash
+   psql "$DATABASE_URL" -f db/migrations/001_create_leads.sql
+   psql "$DATABASE_URL" -f db/migrations/002_harden_leads.sql
+   ```
 
-4. **Deployment & Verification**:
-   - Redeploy the application on Vercel.
-   - Test both English (`/en/demo`, `/en/contact`) and Spanish (`/es/demo`, `/es/contacto`) form submissions.
+### Existing Database Upgrade
+
+If upgrading an existing database that already ran `001_create_leads.sql`, apply the hardening migration:
+```bash
+psql "$DATABASE_URL" -f db/migrations/002_harden_leads.sql
+```
+
+## Production Launch Setup Checklist
+
+Follow these step-by-step instructions when launching to production:
+
+1. **Custom Domain**: Configure your production custom domain (`venkoi.com`) in Vercel Project Settings.
+2. **Site Origin**: Configure `SITE_URL=https://venkoi.com` in Vercel Environment Variables.
+3. **Database Connection**: Create a Neon PostgreSQL instance and retrieve the serverless connection string.
+4. **Database URL**: Set `DATABASE_URL` in Vercel Environment Variables.
+5. **Apply Migration 001**: Execute `db/migrations/001_create_leads.sql`.
+6. **Apply Migration 002**: Execute `db/migrations/002_harden_leads.sql`.
+7. **Verify Schema**: Confirm tables and constraints (`chk_leads_lead_type`, `chk_leads_locale`, etc.) exist in Neon.
+8. **Resend Setup**: Create an account on [Resend](https://resend.com).
+9. **Domain Verification**: Verify your sending domain (`venkoi.com`) in Resend DNS settings.
+10. **Resend API Key**: Configure `RESEND_API_KEY` in Vercel Environment Variables.
+11. **Sender Email**: Set `RESEND_FROM_EMAIL` (e.g. `Venkoi <notifications@venkoi.com>`).
+12. **Notification Recipient**: Set `LEADS_NOTIFICATION_EMAIL` for internal team lead alerts.
+13. **Vercel Analytics**: Enable Vercel Web Analytics in the Vercel Dashboard project settings.
+14. **Speed Insights**: Enable Vercel Speed Insights in the Vercel Dashboard project settings.
+15. **Bot Protection**: Verify BotID traffic and rules in Vercel Firewall.
+16. **Redeploy**: Trigger a production deployment on Vercel.
+17. **Form Testing**: Conduct end-to-end submissions on English (`/en/demo`, `/en/contact`) and Spanish (`/es/demo`, `/es/contacto`) forms.
+18. **Verify Emails**: Confirm both internal alert emails and user acknowledgement emails arrive successfully.
+19. **Verify Sitemap**: Check `https://venkoi.com/sitemap.xml` returns valid XML.
+20. **Verify Robots**: Check `https://venkoi.com/robots.txt` specifies production indexing rules.
+21. **Verify Canonical Tags**: Inspect `<link rel="canonical">` and `hreflang` metadata on live HTML pages.
+22. **Verify Social Assets**: Test social card sharing previews (OpenGraph & Twitter images) on social platforms or debuggers.

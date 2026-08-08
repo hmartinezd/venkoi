@@ -8,6 +8,7 @@ import { ZaikoEarlyAccess } from '@/components/product/zaiko/ZaikoEarlyAccess';
 import { ZaikoFinalCta } from '@/components/product/zaiko/ZaikoFinalCta';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
+import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -50,6 +51,8 @@ export default async function ZaikoPage({ params }: PageProps) {
   const tFinalCta = await getTranslations('zaikoPage.finalCta');
   const tSeo = await getTranslations('zaikoPage.seo');
 
+  const origin = getSiteOrigin();
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -59,7 +62,7 @@ export default async function ZaikoPage({ params }: PageProps) {
     author: {
       '@type': 'Organization',
       name: 'Venkoi',
-      url: 'https://venkoi.com'
+      url: origin
     }
   };
 

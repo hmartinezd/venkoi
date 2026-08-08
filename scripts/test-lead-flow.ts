@@ -148,7 +148,19 @@ async function runTests() {
   });
   assert(t12.success, 'Valid CUSTOM_PROJECT payload parses successfully');
 
-  // 12. Process lead submission without DATABASE_URL (must fail, NEVER report success)
+  // 13. Unknown extra field (strict mode test)
+  const t13 = leadSubmissionSchema.safeParse({
+    lead_type: 'DEMO',
+    product: 'zaiko',
+    first_name: 'John',
+    last_name: 'Doe',
+    company: 'Test Resto',
+    email: 'john@example.com',
+    unknown_hacker_field: 'malicious_input'
+  });
+  assert(!t13.success, 'Reject unknown extra field in payload (strict mode)');
+
+  // 14. Process lead submission without DATABASE_URL (must fail, NEVER report success)
   delete process.env.DATABASE_URL;
   const processResult = await processLeadSubmission({
     lead_type: 'DEMO',

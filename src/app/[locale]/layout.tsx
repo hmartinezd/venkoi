@@ -1,11 +1,20 @@
+import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/i18n/config';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Geist } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { getSiteOrigin } from '@/lib/site-config';
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(getSiteOrigin())
+};
 
 const geist = Geist({
   subsets: ['latin'],
@@ -35,22 +44,28 @@ export default async function LocaleLayout({ params, children }: PageProps) {
 
   setRequestLocale(currentLocale);
 
-  const messages = await getMessages();
+  const [messages, t] = await Promise.all([
+    getMessages(),
+    getTranslations({ locale: currentLocale, namespace: 'common' })
+  ]);
 
   return (
     <html lang={currentLocale} className={geist.variable} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         <NextIntlClientProvider messages={messages} locale={currentLocale}>
           <a id="skip-to-content" href={`/${currentLocale}#content`}>
-            Skip to content
+            {t('skipToContent')}
           </a>
           <Header locale={currentLocale} />
           <main id="content">{children}</main>
           <Footer locale={currentLocale} />
         </NextIntlClientProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
 }
+
 
 
