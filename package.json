@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:next": "next build --no-lint",
+    "build": "npm run lint && npm run typecheck && npm run build:next",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -21,15 +22,17 @@
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^1.2.0",
+    "@eslint/eslintrc": "^3.2.0",
+    "@next/eslint-plugin-next": "^15.5.23",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20.0.0",
-    "@types/react": "^19.0.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "autoprefixer": "^10.5.4",
     "eslint": "^8.57.1",
-    "@next/eslint-plugin-next": "^16.3.0",
+    "eslint-config-next": "^15.5.23",
     "prettier": "^2.8.0",
     "typescript": "^5.4.0"
   }

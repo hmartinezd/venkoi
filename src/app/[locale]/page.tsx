@@ -1,30 +1,43 @@
 import { Section } from '@/components/layout/Section';
 import { Container } from '@/components/layout/Container';
 import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getLocalizedPath } from '@/i18n/routing';
-import type { Locale } from '@/i18n/config';
+import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
-import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
-type Messages = typeof import('@/i18n/messages/en.json');
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
 
-export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
+function parseLocale(locale: string): Locale {
+  if (locales.includes(locale as Locale)) {
+    return locale as Locale;
+  }
+  notFound();
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const messages = await getMessages({ locale }) as Messages;
+  const currentLocale = parseLocale(locale);
+  const seo = await getTranslations({ locale: currentLocale, namespace: 'seo' });
   return createMetadata({
-    title: messages.seo.title,
-    description: messages.seo.description,
+    title: seo('title'),
+    description: seo('description'),
     routeKey: 'home',
-    locale: locale as Locale
+    locale: currentLocale
   });
 }
 
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
-  const t = useTranslations('home');
-  const common = useTranslations('common');
+  const currentLocale = parseLocale(locale);
+  setRequestLocale(currentLocale);
+
+  const t = await getTranslations('home');
+  const common = await getTranslations('common');
 
   return (
     <>
@@ -37,8 +50,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-foreground-muted sm:text-lg">{t('body')}</p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Button href={getLocalizedPath('productsZaiko', locale as Locale)}>{t('primaryCta')}</Button>
-              <Button variant="secondary" href={getLocalizedPath('customSoftware', locale as Locale)}>
+              <Button href={getLocalizedPath('productsZaiko', currentLocale)}>{t('primaryCta')}</Button>
+              <Button variant="secondary" href={getLocalizedPath('customSoftware', currentLocale)}>
                 {t('secondaryCta')}
               </Button>
             </div>
@@ -98,3 +111,4 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     </>
   );
 }
+

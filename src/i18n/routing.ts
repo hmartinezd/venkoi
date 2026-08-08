@@ -58,8 +58,19 @@ const pathToRoute = Object.entries(internalRoutes).reduce((map, [key, value]) =>
 }, {} as Record<string, RouteKey>);
 
 export function getLocalizedPath(routeKey: RouteKey, locale: Locale): string {
-  const pathname = internalRoutes[routeKey];
-  return pathname === '/' ? `/${locale}` : `/${locale}${pathname}`;
+  const internalPath = internalRoutes[routeKey];
+  const pathnameConfig = pathnames[internalPath as keyof typeof pathnames];
+
+  if (typeof pathnameConfig === 'string') {
+    return internalPath === '/' ? `/${locale}` : `/${locale}${internalPath}`;
+  }
+
+  if (pathnameConfig && typeof pathnameConfig === 'object' && locale in pathnameConfig) {
+    const localizedSegment = pathnameConfig[locale as keyof typeof pathnameConfig];
+    return `/${locale}${localizedSegment}`;
+  }
+
+  return internalPath === '/' ? `/${locale}` : `/${locale}${internalPath}`;
 }
 
 export function getLocalizedRouteFromPath(pathname: string, locale: Locale): string {

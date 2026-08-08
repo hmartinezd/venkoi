@@ -1,26 +1,41 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import type { Locale } from '@/i18n/config';
+import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
-type Messages = typeof import('@/i18n/messages/en.json');
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
 
-export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
+function parseLocale(locale: string): Locale {
+  if (locales.includes(locale as Locale)) {
+    return locale as Locale;
+  }
+  notFound();
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const messages = (await getMessages({ locale })) as Messages;
+  const currentLocale = parseLocale(locale);
+  const t = await getTranslations({ locale: currentLocale, namespace: 'about' });
+  const seo = await getTranslations({ locale: currentLocale, namespace: 'seo' });
   return createMetadata({
-    title: `${messages.about.title} | ${messages.seo.title}`,
-    description: messages.about.intro,
+    title: `${t('title')} | ${seo('title')}`,
+    description: t('intro'),
     routeKey: 'about',
-    locale: locale as Locale
+    locale: currentLocale
   });
 }
 
-export default function AboutPage() {
-  const t = useTranslations('about');
+export default async function AboutPage({ params }: PageProps) {
+  const { locale } = await params;
+  const currentLocale = parseLocale(locale);
+  setRequestLocale(currentLocale);
+
+  const t = await getTranslations('about');
 
   return (
     <Section className="pt-20 pb-24">
@@ -37,3 +52,4 @@ export default function AboutPage() {
     </Section>
   );
 }
+
