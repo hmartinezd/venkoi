@@ -175,7 +175,35 @@
     "locationBoxDesc": "Based in Tampa Bay, Florida · Serving clients across South Florida & beyond.",
     "emailBoxTitle": "Direct Inquiries",
     "emailBoxDesc": "Reach out directly for custom development inquiries or product demos.",
-    "demoCta": "Request a Demo"
+    "demoCta": "Request a Demo",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "interest": "What are you interested in?",
+      "interestOptions": {
+        "mobile": "Mobile application",
+        "web": "Web application",
+        "custom": "Custom business software",
+        "product": "Product development",
+        "unsure": "I'm not sure yet"
+      },
+      "projectStage": "Project stage",
+      "stageOptions": {
+        "idea": "Just an idea",
+        "planning": "Planning",
+        "existingProduct": "Existing product",
+        "needsImprovement": "Existing software needs improvement"
+      },
+      "message": "Tell us about your idea or problem",
+      "submit": "Start the Conversation",
+      "submitting": "Submitting...",
+      "successTitle": "Thanks — we received your message.",
+      "successMessage": "We'll review the information you shared about your project and be in touch soon.",
+      "required": "Required field",
+      "invalidEmail": "Please enter a valid email address"
+    }
   },
   "demoPage": {
     "eyebrow": "REQUEST A DEMO",
@@ -185,13 +213,43 @@
       "eyebrow": "ZAIKO DEMO",
       "heading": "See Zaiko in action.",
       "body": "Tell us a little about your restaurant and we'll help you take the next step toward seeing how Zaiko could fit your operation.",
-      "earlyAccessBadge": "Early Access · 3 months free"
+      "earlyAccessBadge": "Early Access · 3 months free",
+      "title": "Zaiko Restaurant Demo"
     },
     "earlyAccessTitle": "Early Access Program",
     "badge": "EARLY ACCESS",
     "badgeText": "Try Zaiko free for 3 months during early access.",
     "contactCta": "Contact Team Directly",
-    "zaikoCta": "Explore Zaiko Product"
+    "zaikoCta": "Explore Zaiko Product",
+    "form": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Work email",
+      "phone": "Phone",
+      "company": "Restaurant / Company name",
+      "locationCount": "Number of locations",
+      "locationOptions": {
+        "1": "1",
+        "2-5": "2–5",
+        "6-20": "6–20",
+        "20+": "20+"
+      },
+      "currentSystem": "Current inventory system",
+      "systemOptions": {
+        "none": "None",
+        "spreadsheet": "Spreadsheet",
+        "pos": "POS tools",
+        "other": "Other software"
+      },
+      "message": "What would you like Zaiko to help with?",
+      "earlyAccess": "I'm interested in the 3-month Early Access program.",
+      "submit": "Request My Demo",
+      "submitting": "Submitting...",
+      "successTitle": "Thanks — we received your request.",
+      "successMessage": "We'll be in touch to learn more about your restaurant and coordinate your demo.",
+      "required": "Required field",
+      "invalidEmail": "Please enter a valid work email address"
+    }
   },
   "zaikoPage": {
     "nav": {

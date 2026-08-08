@@ -240,31 +240,29 @@ export function ZaikoProductVisual({ type, className = '' }: ZaikoProductVisualP
       <div className="flex items-center justify-between pb-4 border-b border-white/10">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-orange" />
-          <span className="text-xs font-bold uppercase tracking-widest text-white/90">Zaiko Workflow</span>
+          <div className="h-2.5 w-28 rounded-full bg-white/70" />
         </div>
-        <span className="text-[10px] font-bold text-orange uppercase tracking-wider bg-orange/20 px-2.5 py-1 rounded">
-          Unified
-        </span>
+        <div className="h-5 w-16 rounded bg-orange/20 border border-orange/30" />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-4">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-3">
-          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">01 · Purchases</span>
+          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">01</span>
           <div className="h-2 w-full rounded-full bg-white/30" />
           <div className="h-1.5 w-2/3 rounded-full bg-white/20" />
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-3">
-          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">02 · Inventory</span>
+          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">02</span>
           <div className="h-2 w-full rounded-full bg-white/30" />
           <div className="h-1.5 w-4/5 rounded-full bg-white/20" />
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-3">
-          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">03 · Activity</span>
+          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">03</span>
           <div className="h-2 w-full rounded-full bg-white/30" />
           <div className="h-1.5 w-1/2 rounded-full bg-white/20" />
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-3">
-          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">04 · Costs</span>
+          <span className="text-[11px] font-bold text-orange uppercase tracking-wider">04</span>
           <div className="h-2 w-full rounded-full bg-white/30" />
           <div className="h-1.5 w-3/4 rounded-full bg-white/20" />
         </div>
@@ -272,3 +270,4 @@ export function ZaikoProductVisual({ type, className = '' }: ZaikoProductVisualP
     </div>
   );
 }
+

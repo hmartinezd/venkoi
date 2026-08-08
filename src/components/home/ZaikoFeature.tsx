@@ -94,7 +94,7 @@ export function ZaikoFeature({
             <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
               {discoverCta}
             </Button>
-            <Button href={getLocalizedPath('demo', locale)} variant="secondary">
+            <Button href={getLocalizedPath('demo', locale) + '?product=zaiko'} variant="secondary">
               {demoCta}
             </Button>
           </div>

@@ -85,7 +85,7 @@ export function Header({ locale }: { locale: Locale }) {
     >
       <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <LocalizedLink href={internalRoutes.home} locale={locale} className="flex items-center gap-2">
-          <BrandLogo variant="dark" priority />
+          <BrandLogo variant="dark" size="header" priority />
         </LocalizedLink>
 
         {/* Desktop Nav */}

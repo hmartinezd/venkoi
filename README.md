@@ -1,19 +1,17 @@
 # Venkoi
 
-A production-ready Next.js foundation for the VENKOI website.
-
-## Purpose
-
-This milestone creates the architecture, internationalization system, responsive shell, and design system foundation for the Venkoi marketing site.
+A production-ready Next.js marketing site and digital product platform for Venkoi.
 
 ## Stack
 
-- Next.js App Router
+- Next.js 15.5 App Router
 - TypeScript
-- React
-- Tailwind CSS
-- next-intl
-- ESLint
+- React 18
+- Tailwind CSS 4
+- next-intl (English & Spanish localization)
+- Neon Serverless PostgreSQL
+- Resend (Transactional emails)
+- Vercel BotID (Bot protection)
 
 ## Local Setup
 
@@ -24,58 +22,33 @@ This milestone creates the architecture, internationalization system, responsive
 ## Available Commands
 
 - `npm run dev` - start local development server
-- `npm run build` - build production app
-- `npm run lint` - run ESLint
-- `npm run typecheck` - run TypeScript checks
+- `npm run build` - run lint, typecheck, and Next.js build
+- `npm run lint` - run ESLint checks
+- `npm run typecheck` - run TypeScript type checking
 
-## Directory Structure
+## Lead Infrastructure Setup
 
-- `src/app` - app router pages and localized routes
-- `src/components` - reusable UI and layout components
-- `src/i18n` - locale configuration, route mapping, and navigation structure
-- `src/lib` - application utilities, SEO helpers, and product registry
-- `src/app/[locale]/page.tsx` - localized homepage entry
-- `src/app/[locale]/products/zaiko/page.tsx` - Zaiko placeholder route
+To enable production lead persistence and email notifications:
 
-## Internationalization
+1. **Neon PostgreSQL Database Setup**:
+   - Create a PostgreSQL database on [Neon](https://neon.tech).
+   - Copy the serverless database connection URL (`postgresql://...`).
+   - Configure `DATABASE_URL` in your Vercel Environment Variables (and `.env.local` for local development).
 
-This project uses `next-intl` with locale-prefixed routes under `src/app/[locale]`.
+2. **Database Migration**:
+   - Apply the SQL migration in `db/migrations/001_create_leads.sql` to your Neon database via the Neon SQL Console or psql:
+     ```bash
+     psql "$DATABASE_URL" -f db/migrations/001_create_leads.sql
+     ```
 
-- English: `/en/*`
-- Spanish: `/es/*`
+3. **Resend Email Service Setup**:
+   - Create an account on [Resend](https://resend.com).
+   - Verify your Venkoi sending domain (e.g. `venkoi.com`).
+   - Create an API key in Resend.
+   - Configure `RESEND_API_KEY` in Vercel Environment Variables.
+   - Configure `RESEND_FROM_EMAIL` (e.g., `Venkoi <notifications@venkoi.com>`).
+   - Configure `LEADS_NOTIFICATION_EMAIL` (the recipient team address for internal lead alerts).
 
-Messages are stored in `src/i18n/messages/en.json` and `src/i18n/messages/es.json` and are loaded at the locale layout level.
-
-### Localized Routes
-
-Public paths are mapped in `src/i18n/routing.ts`.
-Language switching preserves the equivalent page path whenever possible.
-
-## Product Registry
-
-Product definitions are centralized in `src/lib/products.ts`.
-Zaiko is registered as the first product with `pricingEnabled: false`.
-
-## Logo Asset Replacement
-
-The temporary brand wordmark is implemented in `src/components/brand/BrandLogo.tsx`.
-
-To replace it later:
-
-- drop `venkoi-logo-dark.svg`, `venkoi-logo-light.svg`, and `venkoi-mark.svg` into `public/brand/`
-- update `BrandLogo` to render the final SVG asset instead of text
-
-## What is intentionally NOT implemented yet
-
-- Full homepage marketing content
-- Zaiko pricing, checkout, or subscription flows
-- Customer login or authentication
-- Contact/demo backend forms
-- Fake testimonials, metrics, or customer logos
-
-## Future Milestones
-
-- Milestone 2: Marketing Pages
-- Milestone 3: Zaiko Product Experience
-- Milestone 4: Lead Infrastructure
-- Milestone 5: Production Hardening
+4. **Deployment & Verification**:
+   - Redeploy the application on Vercel.
+   - Test both English (`/en/demo`, `/en/contact`) and Spanish (`/es/demo`, `/es/contacto`) form submissions.

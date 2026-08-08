@@ -1,8 +1,7 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { Button } from '@/components/ui/Button';
+import { DemoRequestForm } from '@/components/forms/DemoRequestForm';
 import { locales, type Locale } from '@/i18n/config';
-import { getLocalizedPath } from '@/i18n/routing';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -49,6 +48,9 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   const bodyText = isZaiko ? t('zaiko.body') : t('body');
   const badgeText = isEarlyAccess ? t('zaiko.earlyAccessBadge') : t('badgeText');
 
+  const selectedProduct = typeof product === 'string' ? product : 'zaiko';
+  const selectedInterest = typeof interest === 'string' ? interest : '';
+
   return (
     <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">
       <Container className="max-w-4xl space-y-10">
@@ -70,12 +72,12 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
           </p>
         </div>
 
-        {/* Demo Request / Early Access Shell */}
-        <div className="rounded-2xl border border-border bg-surface p-8 space-y-6 shadow-card">
+        {/* Demo Request / Early Access Form Shell */}
+        <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 space-y-6 shadow-card">
           <div className="space-y-2 border-b border-border pb-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-xl font-bold text-ink">
-                {isZaiko ? 'Zaiko Restaurant Demo' : t('earlyAccessTitle')}
+                {isZaiko ? t('zaiko.title') : t('earlyAccessTitle')}
               </h2>
               {isEarlyAccess && (
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange">
@@ -89,14 +91,11 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             </p>
           </div>
 
-          <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
-            <Button href={getLocalizedPath('contact', currentLocale)} variant="primary">
-              {t('contactCta')}
-            </Button>
-            <Button href={getLocalizedPath('productsZaiko', currentLocale)} variant="secondary">
-              {t('zaikoCta')}
-            </Button>
-          </div>
+          <DemoRequestForm
+            locale={currentLocale}
+            initialProduct={selectedProduct}
+            initialInterest={selectedInterest}
+          />
         </div>
       </Container>
     </Section>

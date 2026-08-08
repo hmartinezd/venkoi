@@ -175,7 +175,35 @@
     "locationBoxDesc": "Con sede en Tampa Bay, Florida · Trabajando con clientes en South Florida y más allá.",
     "emailBoxTitle": "Contacto Directo",
     "emailBoxDesc": "Escríbenos directamente para consultas sobre software a medida o demos de producto.",
-    "demoCta": "Solicitar una demo"
+    "demoCta": "Solicitar una demo",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "phone": "Teléfono",
+      "company": "Empresa",
+      "interest": "¿Qué te interesa?",
+      "interestOptions": {
+        "mobile": "Aplicación móvil",
+        "web": "Aplicación web",
+        "custom": "Software a medida para el negocio",
+        "product": "Desarrollo de producto",
+        "unsure": "Aún no estoy seguro"
+      },
+      "projectStage": "Etapa del proyecto",
+      "stageOptions": {
+        "idea": "Solo una idea",
+        "planning": "Planificación",
+        "existingProduct": "Producto existente",
+        "needsImprovement": "Software existente que necesita mejoras"
+      },
+      "message": "Cuéntanos sobre tu idea o problema",
+      "submit": "Hablemos",
+      "submitting": "Enviando...",
+      "successTitle": "Gracias — recibimos tu mensaje.",
+      "successMessage": "Revisaremos la información que compartiste sobre tu proyecto y nos pondremos en contacto contigo.",
+      "required": "Campo obligatorio",
+      "invalidEmail": "Por favor ingresa un email válido"
+    }
   },
   "demoPage": {
     "eyebrow": "SOLICITA UNA DEMO",
@@ -185,13 +213,43 @@
       "eyebrow": "ZAIKO DEMO",
       "heading": "Ve Zaiko en acción.",
       "body": "Cuéntanos un poco sobre tu restaurante y te ayudaremos a dar el siguiente paso para ver cómo Zaiko puede adaptarse a tu operación.",
-      "earlyAccessBadge": "Acceso anticipado · 3 meses gratis"
+      "earlyAccessBadge": "Acceso anticipado · 3 meses gratis",
+      "title": "Demo de Restaurante Zaiko"
     },
     "earlyAccessTitle": "Programa de Acceso Anticipado",
     "badge": "ACCESO ANTICIPADO",
     "badgeText": "Prueba Zaiko gratis durante 3 meses en acceso anticipado.",
     "contactCta": "Contactar al Equipo",
-    "zaikoCta": "Conocer Zaiko"
+    "zaikoCta": "Conocer Zaiko",
+    "form": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Email de trabajo",
+      "phone": "Teléfono",
+      "company": "Restaurante / Empresa",
+      "locationCount": "Número de locales",
+      "locationOptions": {
+        "1": "1",
+        "2-5": "2–5",
+        "6-20": "6–20",
+        "20+": "20+"
+      },
+      "currentSystem": "Sistema de inventario actual",
+      "systemOptions": {
+        "none": "Ninguno",
+        "spreadsheet": "Hoja de cálculo",
+        "pos": "Herramientas del POS",
+        "other": "Otro software"
+      },
+      "message": "¿En qué te gustaría que Zaiko ayudara a tu operación?",
+      "earlyAccess": "Me interesa el programa de acceso anticipado gratuito durante 3 meses.",
+      "submit": "Solicitar mi demo",
+      "submitting": "Enviando...",
+      "successTitle": "Gracias — recibimos tu solicitud.",
+      "successMessage": "Nos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.",
+      "required": "Campo obligatorio",
+      "invalidEmail": "Por favor ingresa un email de trabajo válido"
+    }
   },
   "zaikoPage": {
     "nav": {

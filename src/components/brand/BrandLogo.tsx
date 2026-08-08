@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 
 export interface BrandLogoProps {
   variant?: 'dark' | 'light';
+  size?: 'header' | 'footer' | 'custom';
   className?: string;
   priority?: boolean;
 }
@@ -16,8 +17,15 @@ const logoAssets = {
 const LOGO_NATIVE_WIDTH = 353;
 const LOGO_NATIVE_HEIGHT = 101;
 
+const sizeClasses = {
+  header: 'h-11 md:h-12',
+  footer: 'h-10',
+  custom: '',
+};
+
 export function BrandLogo({
   variant = 'dark',
+  size = 'custom',
   className,
   priority = false,
 }: BrandLogoProps) {
@@ -30,8 +38,14 @@ export function BrandLogo({
       width={LOGO_NATIVE_WIDTH}
       height={LOGO_NATIVE_HEIGHT}
       priority={priority}
-      className={cn('h-8 w-auto object-contain shrink-0', className)}
+      className={cn(
+        'w-auto object-contain shrink-0',
+        size === 'custom' && !className && 'h-8',
+        sizeClasses[size],
+        className
+      )}
     />
   );
 }
+
 

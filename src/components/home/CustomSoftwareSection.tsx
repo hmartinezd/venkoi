@@ -46,7 +46,7 @@ export function CustomSoftwareSection({
             {body}
           </p>
           <div className="pt-2">
-            <Button href={getLocalizedPath('customSoftware', locale)} variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white">
+            <Button href={getLocalizedPath('contact', locale) + '?type=custom-software'} variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white">
               {cta}
             </Button>
           </div>

@@ -21,7 +21,7 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:px-8 xl:grid-cols-[1.4fr_1fr]">
         <div className="space-y-4">
           <LocalizedLink href={internalRoutes.home} locale={locale} className="inline-block">
-            <BrandLogo variant="dark" />
+            <BrandLogo variant="dark" size="footer" />
           </LocalizedLink>
           <p className="text-base text-ink font-medium">{tFooter('tagline')}</p>
           <p className="text-xs text-foreground-muted">{tFooter('locationText')}</p>

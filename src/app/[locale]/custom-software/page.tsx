@@ -54,7 +54,7 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
             {t('body')}
           </p>
           <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
-            <Button href={getLocalizedPath('contact', currentLocale)} variant="primary">
+            <Button href={getLocalizedPath('contact', currentLocale) + '?type=custom-software'} variant="primary">
               {t('primaryCta')}
             </Button>
             <span className="text-xs font-semibold text-foreground-muted flex items-center gap-2">
@@ -139,7 +139,7 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
           </div>
 
           <div className="pt-2">
-            <Button href={getLocalizedPath('contact', currentLocale)} variant="primary" className="bg-orange text-white hover:bg-orange/90">
+            <Button href={getLocalizedPath('contact', currentLocale) + '?type=custom-software'} variant="primary" className="bg-orange text-white hover:bg-orange/90">
               {t('ideaCta')}
             </Button>
           </div>

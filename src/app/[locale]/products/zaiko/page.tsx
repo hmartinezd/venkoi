@@ -55,7 +55,6 @@ export default async function ZaikoPage({ params }: PageProps) {
     '@type': 'SoftwareApplication',
     name: 'Zaiko',
     applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web',
     description: tSeo('description'),
     author: {
       '@type': 'Organization',
