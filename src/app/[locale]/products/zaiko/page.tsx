@@ -7,20 +7,22 @@ import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
+  const { locale } = await params;
   const messages = await import(`@/i18n/messages/${locale}.json`);
   return createMetadata({
     title: `${messages.products.zaikoTitle} | ${messages.seo.title}`,
     description: messages.products.zaikoIntro,
     routeKey: 'productsZaiko',
-    locale
+    locale: locale as Locale
   });
 }
 
-export default function ZaikoPage({ params }: { params: { locale: string } }) {
+export default async function ZaikoPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = useTranslations('products');
-  const locale = params.locale as Locale;
 
   return (
     <Section className="pt-20 pb-24">
@@ -33,7 +35,7 @@ export default function ZaikoPage({ params }: { params: { locale: string } }) {
         <div className="rounded-[28px] border border-border bg-surface p-10">
           <p className="text-base leading-8 text-foreground-muted">{t('placeholder')}</p>
           <div className="mt-8 inline-flex rounded-[14px] border border-border bg-background px-5 py-3 text-sm font-semibold text-ink">
-            <Link href={getLocalizedPath('demo', locale)} locale={false} className="transition hover:text-orange">
+            <Link href={getLocalizedPath('demo', locale as Locale) as any} locale={false} className="transition hover:text-orange">
               {t('placeholder')}
             </Link>
           </div>

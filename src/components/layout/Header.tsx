@@ -19,12 +19,12 @@ function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: stri
   return (
     <div className="flex items-center gap-3 text-sm font-semibold">
       <span className="sr-only">{t('language')}</span>
-      {locales.map((localeKey) => {
+        {locales.map((localeKey) => {
         const route = getLocalizedRouteFromPath(pathname, localeKey);
         return (
           <Link
             key={localeKey}
-            href={route}
+            href={route as any}
             locale={false}
             className={cn(
               'transition-colors',
@@ -69,7 +69,7 @@ export function Header({ locale }: { locale: Locale }) {
       )}
     >
       <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
-        <Link href={getLocalizedPath('home', locale)} locale={false} className="flex items-center gap-2">
+        <Link href={getLocalizedPath('home', locale) as any} locale={false} className="flex items-center gap-2">
           <BrandLogo className="text-ink" />
         </Link>
 
@@ -77,7 +77,7 @@ export function Header({ locale }: { locale: Locale }) {
           {navLinks.map((item) => (
             <Link
               key={item.id}
-              href={getLink(item)}
+              href={getLink(item) as any}
               locale={false}
               className="text-sm font-medium text-ink transition hover:text-orange"
             >
@@ -88,7 +88,7 @@ export function Header({ locale }: { locale: Locale }) {
 
         <div className="hidden items-center gap-6 md:flex">
           <LanguageSwitcher locale={locale} pathname={pathname} />
-          <Link href={getLocalizedPath('demo', locale)} locale={false} className="hidden md:inline-block">
+          <Link href={getLocalizedPath('demo', locale) as any} locale={false} className="hidden md:inline-block">
             <Button variant="primary">{common('demo')}</Button>
           </Link>
         </div>
@@ -120,7 +120,7 @@ export function Header({ locale }: { locale: Locale }) {
             {navLinks.map((item) => (
               <Link
                 key={item.id}
-                href={getLink(item)}
+                href={getLink(item) as any}
                 locale={false}
                 onClick={() => setMenuOpen(false)}
                 className="block rounded-2xl px-4 py-3 text-ink transition hover:bg-surface-muted"
@@ -130,7 +130,7 @@ export function Header({ locale }: { locale: Locale }) {
             ))}
           </nav>
           <div className="mt-6">
-            <Link href={getLocalizedPath('demo', locale)} locale={false} onClick={() => setMenuOpen(false)}>
+            <Link href={getLocalizedPath('demo', locale) as any} locale={false} onClick={() => setMenuOpen(false)}>
               <Button className="w-full">{common('demo')}</Button>
             </Link>
           </div>

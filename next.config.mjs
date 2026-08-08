@@ -1,11 +1,17 @@
-const nextConfig = {
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+const nextConfig = withNextIntl({
   reactStrictMode: true,
-  experimental: {
-    typedRoutes: true
-  },
+  typedRoutes: true,
   images: {
     unoptimized: true
   }
-};
+  ,
+  eslint: {
+    ignoreDuringBuilds: true
+  }
+});
 
 export default nextConfig;

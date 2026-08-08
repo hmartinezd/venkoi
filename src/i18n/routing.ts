@@ -48,6 +48,11 @@ export function getLocalizedRouteFromPath(pathname: string, locale: Locale): str
   return localizedRoutes[routeKey][locale];
 }
 
+export function getRouteKeyFromSegments(segments: string[]): RouteKey {
+  const path = `/${segments.join('/')}`.replace(/\/+$/, '');
+  return pathToRoute[path] || 'home';
+}
+
 export function getLocaleFromPath(pathname: string): Locale | undefined {
   const normalized = pathname.replace(/\/+$/, '');
   return locales.find((locale) => normalized === `/${locale}` || normalized.startsWith(`/${locale}/`));

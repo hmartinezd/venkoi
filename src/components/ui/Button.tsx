@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, ReactElement } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 
@@ -23,24 +23,28 @@ const variantStyles: Record<ButtonVariant, string> = {
   ghost: 'bg-transparent text-ink hover:text-ink/90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange'
 };
 
+export function Button(props: LinkProps): ReactElement;
+export function Button(props: ActionProps): ReactElement;
 export function Button(props: LinkProps | ActionProps) {
-  const { className = '', variant = 'primary', children, ...rest } = props as SharedProps & Record<string, unknown>;
+  const { className = '', variant = 'primary', children } = props;
   const classes = cn(
     'inline-flex items-center justify-center rounded-[14px] border px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
     variantStyles[variant],
     className
   );
 
-  if ('href' in rest && typeof rest.href === 'string') {
+  if ('href' in props && typeof props.href === 'string') {
+    const { href, target, rel, ...rest } = props as LinkProps;
     return (
-      <a className={classes} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>
+      <a className={classes} href={href} target={target} rel={rel} {...rest}>
         {children}
       </a>
     );
   }
 
+  const { type = 'button', disabled, ...rest } = props as ActionProps;
   return (
-    <button className={classes} {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}>
+    <button className={classes} type={type} disabled={disabled} {...rest}>
       {children}
     </button>
   );

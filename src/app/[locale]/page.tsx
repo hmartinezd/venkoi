@@ -7,21 +7,21 @@ import type { Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
+  const { locale } = await params;
   const messages = await import(`@/i18n/messages/${locale}.json`);
   return createMetadata({
     title: messages.seo.title,
     description: messages.seo.description,
     routeKey: 'home',
-    locale
+    locale: locale as Locale
   });
 }
 
-export default function HomePage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = useTranslations('home');
   const common = useTranslations('common');
 
@@ -36,8 +36,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-foreground-muted sm:text-lg">{t('body')}</p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Button href={getLocalizedPath('productsZaiko', locale)}>{t('primaryCta')}</Button>
-              <Button variant="secondary" href={getLocalizedPath('customSoftware', locale)}>
+              <Button href={getLocalizedPath('productsZaiko', locale as Locale)}>{t('primaryCta')}</Button>
+              <Button variant="secondary" href={getLocalizedPath('customSoftware', locale as Locale)}>
                 {t('secondaryCta')}
               </Button>
             </div>

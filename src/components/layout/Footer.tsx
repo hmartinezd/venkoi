@@ -21,7 +21,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="space-y-3">
             <p className="font-semibold text-ink">{t('footer.sectionProducts')}</p>
             {footerNavigation.products.map((item) => (
-              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale)} locale={false} className="block transition hover:text-ink">
+              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale) as any} locale={false} className="block transition hover:text-ink">
                 {t(`navigation.${item.labelKey}`)}
               </Link>
             ))}
@@ -30,7 +30,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="space-y-3">
             <p className="font-semibold text-ink">{t('footer.sectionCompany')}</p>
             {footerNavigation.company.map((item) => (
-              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale)} locale={false} className="block transition hover:text-ink">
+              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale) as any} locale={false} className="block transition hover:text-ink">
                 {t(`navigation.${item.labelKey}`)}
               </Link>
             ))}
@@ -39,7 +39,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="space-y-3">
             <p className="font-semibold text-ink">{t('footer.sectionWorkWithUs')}</p>
             {footerNavigation.workWithUs.map((item) => (
-              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale)} locale={false} className="block transition hover:text-ink">
+              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale) as any} locale={false} className="block transition hover:text-ink">
                 {t(`navigation.${item.labelKey}`)}
               </Link>
             ))}

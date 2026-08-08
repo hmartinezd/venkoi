@@ -43,7 +43,11 @@ export const headerNavigation: NavigationItem[] = [
   }
 ];
 
-export const footerNavigation = {
+export const footerNavigation: {
+  products: NavigationItem[];
+  company: NavigationItem[];
+  workWithUs: NavigationItem[];
+} = {
   products: [
     {
       id: 'zaiko',

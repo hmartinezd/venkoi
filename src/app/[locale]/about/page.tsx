@@ -5,14 +5,16 @@ import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
+  const { locale } = await params;
   const messages = await import(`@/i18n/messages/${locale}.json`);
   return createMetadata({
     title: `${messages.about.title} | ${messages.seo.title}`,
     description: messages.about.intro,
     routeKey: 'about',
-    locale
+    locale: locale as Locale
   });
 }
 
