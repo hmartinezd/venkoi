@@ -1,9 +1,37 @@
-import type { PropsWithChildren } from 'react';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
-export function BrandLogo({ className }: PropsWithChildren<{ className?: string }>) {
+export interface BrandLogoProps {
+  variant?: 'dark' | 'light';
+  className?: string;
+  priority?: boolean;
+}
+
+const logoAssets = {
+  dark: '/brand/venkoi-logo-dark.png',
+  light: '/brand/venkoi-logo-light.png',
+} as const;
+
+// Native asset dimensions (353x101)
+const LOGO_NATIVE_WIDTH = 353;
+const LOGO_NATIVE_HEIGHT = 101;
+
+export function BrandLogo({
+  variant = 'dark',
+  className,
+  priority = false,
+}: BrandLogoProps) {
+  const logoSrc = logoAssets[variant];
+
   return (
-    <span className={className} aria-label="Venkoi logo">
-      <span className="font-semibold tracking-[0.18em] text-2xl md:text-3xl">VENKOI</span>
-    </span>
+    <Image
+      src={logoSrc}
+      alt="Venkoi"
+      width={LOGO_NATIVE_WIDTH}
+      height={LOGO_NATIVE_HEIGHT}
+      priority={priority}
+      className={cn('h-8 w-auto object-contain shrink-0', className)}
+    />
   );
 }
+

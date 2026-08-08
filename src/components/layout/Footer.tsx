@@ -4,6 +4,7 @@ import { LocalizedLink, usePathname } from '@/i18n/navigation';
 import { internalRoutes, getRouteKeyFromPath } from '@/i18n/routing';
 import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
+import { BrandLogo } from '@/components/brand/BrandLogo';
 
 export function Footer({ locale }: { locale: Locale }) {
   const pathname = usePathname();
@@ -19,7 +20,9 @@ export function Footer({ locale }: { locale: Locale }) {
     <footer className="border-t border-border bg-surface py-14 text-sm text-foreground-muted">
       <div className="mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:px-8 xl:grid-cols-[1.4fr_1fr]">
         <div className="space-y-4">
-          <span className="font-bold tracking-[0.2em] text-xl text-ink">VENKOI</span>
+          <LocalizedLink href={internalRoutes.home} locale={locale} className="inline-block">
+            <BrandLogo variant="dark" />
+          </LocalizedLink>
           <p className="text-base text-ink font-medium">{tFooter('tagline')}</p>
           <p className="text-xs text-foreground-muted">{tFooter('locationText')}</p>
         </div>
