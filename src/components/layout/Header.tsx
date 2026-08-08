@@ -53,10 +53,6 @@ export function Header({ locale }: { locale: Locale }) {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-
   function getLink(item: NavigationItem) {
     return getLocalizedPath(item.routeKey, locale);
   }

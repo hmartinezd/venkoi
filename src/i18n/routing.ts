@@ -1,29 +1,29 @@
-import { locales, type Locale } from './config';
+import { defaultLocale, locales, type Locale } from './config';
 
 export const localizedRoutes = {
   home: {
-    en: '/en',
-    es: '/es'
+    en: '/',
+    es: '/'
   },
   productsZaiko: {
-    en: '/en/products/zaiko',
-    es: '/es/productos/zaiko'
+    en: '/products/zaiko',
+    es: '/productos/zaiko'
   },
   customSoftware: {
-    en: '/en/custom-software',
-    es: '/es/software-a-medida'
+    en: '/custom-software',
+    es: '/software-a-medida'
   },
   about: {
-    en: '/en/about',
-    es: '/es/nosotros'
+    en: '/about',
+    es: '/nosotros'
   },
   contact: {
-    en: '/en/contact',
-    es: '/es/contacto'
+    en: '/contact',
+    es: '/contacto'
   },
   demo: {
-    en: '/en/demo',
-    es: '/es/demo'
+    en: '/demo',
+    es: '/demo'
   }
 } as const;
 
@@ -31,25 +31,45 @@ export type RouteKey = keyof typeof localizedRoutes;
 
 const pathToRoute = Object.entries(localizedRoutes).reduce(
   (map, [key, value]) => {
-    map[value.en] = key as RouteKey;
-    map[value.es] = key as RouteKey;
+    const enPath = value.en;
+    const esPath = value.es;
+    const prefixedEn = enPath === '/' ? '/en' : `/en${enPath}`;
+    const prefixedEs = esPath === '/' ? '/es' : `/es${esPath}`;
+
+    map[enPath] = key as RouteKey;
+    map[esPath] = key as RouteKey;
+    map[prefixedEn] = key as RouteKey;
+    map[prefixedEs] = key as RouteKey;
+
     return map;
   },
   {} as Record<string, RouteKey>
 );
 
+export const routing = {
+  locales,
+  defaultLocale,
+  localePrefix: 'always',
+  pathnames: localizedRoutes
+} as const;
+
+function normalizePathname(pathname: string) {
+  return pathname.replace(/\/+$|^\/+/, '/') || '/';
+}
+
 export function getLocalizedPath(routeKey: RouteKey, locale: Locale): string {
-  return localizedRoutes[routeKey][locale];
+  const pathname = localizedRoutes[routeKey][locale];
+  return pathname === '/' ? `/${locale}` : `/${locale}${pathname}`;
 }
 
 export function getLocalizedRouteFromPath(pathname: string, locale: Locale): string {
-  const normalized = pathname.replace(/\/+$/, '');
+  const normalized = normalizePathname(pathname);
   const routeKey = pathToRoute[normalized] || 'home';
-  return localizedRoutes[routeKey][locale];
+  return getLocalizedPath(routeKey, locale);
 }
 
 export function getRouteKeyFromSegments(segments: string[]): RouteKey {
-  const path = `/${segments.join('/')}`.replace(/\/+$/, '');
+  const path = normalizePathname(`/${segments.join('/')}`);
   return pathToRoute[path] || 'home';
 }
 

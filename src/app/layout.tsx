@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { defaultLocale } from '@/i18n/config';
 
 export const metadata: Metadata = {
   title: 'Venkoi',
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={defaultLocale} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

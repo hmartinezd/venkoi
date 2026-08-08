@@ -1,10 +1,8 @@
-import type { Locale } from './config';
+import { getRequestConfig } from 'next-intl/server';
+import { defaultLocale, locales } from '@/i18n/config';
 
-export default function getRequestConfig({ locale, requestLocale }: any) {
-  const resolvedLocale = (locale ?? requestLocale) as Locale | undefined;
-  return {
-    locales: ['en', 'es'] as const,
-    defaultLocale: 'en' as Locale,
-    locale: resolvedLocale
-  };
-}
+export default getRequestConfig(({ locale, requestLocale }) => ({
+  locales,
+  defaultLocale,
+  locale: locale ?? requestLocale
+}));

@@ -8,10 +8,6 @@ const nextConfig = withNextIntl({
   images: {
     unoptimized: true
   }
-  ,
-  eslint: {
-    ignoreDuringBuilds: true
-  }
 });
 
 export default nextConfig;
