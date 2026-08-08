@@ -1,0 +1,64 @@
+{
+  "common": {
+    "location": "Con sede en Tampa Bay · Trabajando con clientes en South Florida y más allá",
+    "locationShort": "Con sede en Tampa Bay · Trabajando con clientes en South Florida y más allá",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "copyright": "© {year} Venkoi. Todos los derechos reservados.",
+    "demo": "Solicitar una demostración"
+  },
+  "navigation": {
+    "products": "Productos",
+    "zaiko": "Zaiko",
+    "customSoftware": "Software a Medida",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "demo": "Demostración"
+  },
+  "header": {
+    "logoTitle": "Inicio Venkoi",
+    "language": "Idioma"
+  },
+  "footer": {
+    "title": "Software que hace avanzar los negocios.",
+    "sectionProducts": "Productos",
+    "sectionCompany": "Empresa",
+    "sectionWorkWithUs": "Trabaja con Nosotros"
+  },
+  "home": {
+    "eyebrow": "COMPAÑÍA DE SOFTWARE DE TAMPA BAY",
+    "heading": "Software creado para la forma en que realmente funciona tu negocio.",
+    "body": "En Venkoi creamos productos de software modernos y soluciones digitales a medida que ayudan a empresas a trabajar de forma más simple, rápida e inteligente.",
+    "primaryCta": "Conoce nuestros productos",
+    "secondaryCta": "Crea con Venkoi"
+  },
+  "products": {
+    "zaikoTitle": "Zaiko",
+    "zaikoIntro": "Software de inventario y operaciones para restaurantes diseñado para equipos de hostelería.",
+    "placeholder": "Una página de producto enfocada en Zaiko estará disponible pronto."
+  },
+  "customSoftware": {
+    "title": "Software a Medida",
+    "intro": "Construye las soluciones móviles, web y backend que tu negocio necesita.",
+    "placeholder": "Los servicios de software a medida de Venkoi se están afinando para este sitio."
+  },
+  "about": {
+    "title": "Sobre Venkoi",
+    "intro": "Una empresa de software en Tampa Bay que crea productos y trabaja con clientes en South Florida y más allá.",
+    "placeholder": "La historia y el enfoque de Venkoi aparecerán aquí pronto."
+  },
+  "contact": {
+    "title": "Contacto",
+    "intro": "Una forma sencilla de contactar a Venkoi para consultas, alianzas e interés en productos.",
+    "placeholder": "Los detalles de contacto y los próximos pasos se preparan para el próximo hito."
+  },
+  "demo": {
+    "title": "Demostración",
+    "intro": "Ve cómo Zaiko y los futuros productos de Venkoi pueden ayudar a tu equipo a trabajar mejor.",
+    "placeholder": "Los detalles de solicitud de demostración se agregarán en una etapa posterior."
+  },
+  "seo": {
+    "title": "Venkoi | Productos de Software y Desarrollo a Medida en Tampa Bay",
+    "description": "Venkoi es una empresa de software en Tampa Bay que crea productos y soluciones móviles y web a medida para empresas en South Florida y más allá."
+  }
+}

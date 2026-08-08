@@ -1,0 +1,101 @@
+:root {
+  color-scheme: light;
+  --venkoi-ink: #14161c;
+  --venkoi-orange: #f84d25;
+  --venkoi-background: #f7f8fa;
+  --venkoi-surface: #ffffff;
+  --venkoi-surface-muted: #f2f3f6;
+  --venkoi-surface-dark: #1f242d;
+  --venkoi-foreground: #14161c;
+  --venkoi-foreground-muted: #5c6470;
+  --venkoi-border: #e5e7eb;
+  --venkoi-border-strong: #cbd2db;
+  --venkoi-orange-subtle: rgba(248, 77, 37, 0.12);
+  --venkoi-focus: #f84d25;
+  --venkoi-success: #12b76a;
+  --venkoi-error: #ef4444;
+  --venkoi-warning: #f59e0b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-geist), Inter, system-ui, sans-serif;
+  background: var(--venkoi-background);
+  color: var(--venkoi-foreground);
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--venkoi-focus);
+  outline-offset: 2px;
+}
+
+#skip-to-content {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#skip-to-content:focus-visible {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1rem;
+  background: var(--venkoi-ink);
+  color: white;
+  border-radius: 999px;
+  z-index: 999;
+}
+
+:root {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "common": {
+    "location": "Based in Tampa Bay · Serving South Florida and beyond",
+    "locationShort": "Based in Tampa Bay · Serving South Florida and beyond",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "copyright": "© {year} Venkoi. All rights reserved.",
+    "demo": "Request a Demo"
+  },
+  "navigation": {
+    "products": "Products",
+    "zaiko": "Zaiko",
+    "customSoftware": "Custom Software",
+    "about": "About",
+    "contact": "Contact",
+    "demo": "Demo"
+  },
+  "header": {
+    "logoTitle": "Venkoi home",
+    "language": "Language"
+  },
+  "footer": {
+    "title": "Software that moves business forward.",
+    "sectionProducts": "Products",
+    "sectionCompany": "Company",
+    "sectionWorkWithUs": "Work With Us"
+  },
+  "home": {
+    "eyebrow": "TAMPA BAY SOFTWARE COMPANY",
+    "heading": "Software built for the way business actually works.",
+    "body": "Venkoi creates modern software products and custom digital solutions that help businesses work simpler, faster, and smarter.",
+    "primaryCta": "Explore our products",
+    "secondaryCta": "Build with Venkoi"
+  },
+  "products": {
+    "zaikoTitle": "Zaiko",
+    "zaikoIntro": "Restaurant inventory and operations software designed for teams in hospitality.",
+    "placeholder": "A focused product page for Zaiko is coming soon."
+  },
+  "customSoftware": {
+    "title": "Custom Software",
+    "intro": "Build the mobile, web, and backend solutions your business needs.",
+    "placeholder": "Custom software services from Venkoi are being refined for this site."
+  },
+  "about": {
+    "title": "About Venkoi",
+    "intro": "A Tampa Bay software company creating products and working with clients across South Florida and beyond.",
+    "placeholder": "The Venkoi story and approach will appear here soon."
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "A simple way to reach Venkoi for questions, partnerships, and product interest.",
+    "placeholder": "Contact details and next steps are being prepared for the next milestone."
+  },
+  "demo": {
+    "title": "Demo",
+    "intro": "See how Zaiko and future Venkoi products can help your team work better.",
+    "placeholder": "Demo request details will be added in a later milestone."
+  },
+  "seo": {
+    "title": "Venkoi | Software Products & Custom Development in Tampa Bay",
+    "description": "Venkoi is a Tampa Bay software company creating software products and custom mobile and web solutions for businesses in South Florida and beyond."
+  }
+}
