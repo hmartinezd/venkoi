@@ -1,6 +1,5 @@
 import { leadSubmissionSchema } from '../src/server/leads/validation';
 import { processLeadSubmission } from '../src/server/leads/service';
-import { checkBotId } from '../src/server/leads/bot';
 
 async function runTests() {
   console.log('=== RUNNING LEAD INFRASTRUCTURE & VALIDATION TESTS ===\n');
@@ -21,6 +20,7 @@ async function runTests() {
   // 1. Missing email
   const t1 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
+    product: 'zaiko',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto'
@@ -30,6 +30,7 @@ async function runTests() {
   // 2. Invalid email
   const t2 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
+    product: 'zaiko',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto',
@@ -40,74 +41,131 @@ async function runTests() {
   // 3. Missing required fields for DEMO
   const t3 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
+    product: 'zaiko',
     email: 'john@example.com'
   });
   assert(!t3.success, 'Reject DEMO missing first/last name & company');
 
-  // 4. Oversized message (>5000 chars)
-  const longMsg = 'a'.repeat(5001);
+  // 4. Invalid product for DEMO
   const t4 = leadSubmissionSchema.safeParse({
+    lead_type: 'DEMO',
+    product: 'garbage_product',
+    first_name: 'John',
+    last_name: 'Doe',
+    company: 'Test Resto',
+    email: 'john@example.com'
+  });
+  assert(!t4.success, 'Reject DEMO with non-demo-enabled product');
+
+  // 5. Valid product for DEMO
+  const t5 = leadSubmissionSchema.safeParse({
+    lead_type: 'DEMO',
+    product: 'zaiko',
+    first_name: 'John',
+    last_name: 'Doe',
+    company: 'Test Resto',
+    email: 'john@example.com',
+    location_count: '2_5',
+    current_system: 'pos_tools'
+  });
+  assert(t5.success, 'Accept DEMO with valid demo product & stable enums');
+
+  // 6. Oversized message (>5000 chars)
+  const longMsg = 'a'.repeat(5001);
+  const t6 = leadSubmissionSchema.safeParse({
     lead_type: 'GENERAL_CONTACT',
     name: 'Jane',
     email: 'jane@example.com',
     message: longMsg
   });
-  assert(!t4.success, 'Reject oversized message');
+  assert(!t6.success, 'Reject oversized message');
 
-  // 5. Invalid lead type
-  const t5 = leadSubmissionSchema.safeParse({
+  // 7. Invalid lead type
+  const t7 = leadSubmissionSchema.safeParse({
     lead_type: 'INVALID_TYPE',
     email: 'jane@example.com',
     message: 'Hello'
   });
-  assert(!t5.success, 'Reject invalid lead type');
+  assert(!t7.success, 'Reject invalid lead type');
 
-  // 6. Populated honeypot (website)
-  const t6 = leadSubmissionSchema.safeParse({
+  // 8. Invalid enum values
+  const t8 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
+    product: 'zaiko',
+    first_name: 'John',
+    last_name: 'Doe',
+    company: 'Test Resto',
+    email: 'john@example.com',
+    location_count: 'invalid_location_count'
+  });
+  assert(!t8.success, 'Reject invalid location_count enum');
+
+  const t9 = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Alice',
+    email: 'alice@example.com',
+    message: 'We need custom software',
+    interest: 'invalid_interest',
+    project_stage: 'idea'
+  });
+  assert(!t9.success, 'Reject invalid interest enum');
+
+  // 9. Populated honeypot (website)
+  const t10 = leadSubmissionSchema.safeParse({
+    lead_type: 'DEMO',
+    product: 'zaiko',
     first_name: 'Spam',
     last_name: 'Bot',
     email: 'spam@bot.com',
     company: 'Spam Co',
     website: 'http://spam-link.com'
   });
-  assert(!t6.success, 'Reject populated honeypot field');
+  assert(!t10.success, 'Reject populated honeypot field');
 
-  // 7. Normalization: lowercase email & trim strings
-  const t7 = leadSubmissionSchema.safeParse({
+  // 10. Normalization: lowercase email & trim strings
+  const t11 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
+    product: 'zaiko',
     first_name: '  John  ',
     last_name: '  Doe  ',
     company: '  Tasty Tacos  ',
     email: '  JOHN.DOE@EXAMPLE.COM  '
   });
-  assert(t7.success, 'Valid DEMO payload parses');
-  if (t7.success) {
-    assert(t7.data.email === 'john.doe@example.com', 'Email normalized to lowercase');
-    assert(t7.data.first_name === 'John', 'First name trimmed');
+  assert(t11.success, 'Valid DEMO payload parses and normalizes');
+  if (t11.success) {
+    assert(t11.data.email === 'john.doe@example.com', 'Email normalized to lowercase');
+    assert(t11.data.first_name === 'John', 'First name trimmed');
   }
 
-  // 8. BotID verification helper check
-  const fakeBotRequest = new Request('http://localhost/api/leads', {
-    headers: { 'x-test-bot': 'true' }
+  // 11. Valid CUSTOM_PROJECT payload
+  const t12 = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Carlos Ruiz',
+    email: 'carlos@example.com',
+    interest: 'custom_business_software',
+    project_stage: 'planning',
+    message: 'Need a logistics management dashboard for Florida operations.'
   });
-  const botCheck = checkBotId(fakeBotRequest);
-  assert(botCheck.isBot, 'BotID check flags test bot header');
+  assert(t12.success, 'Valid CUSTOM_PROJECT payload parses successfully');
 
-  // 9. Process lead submission end-to-end (memory fallback mode when no DB connection)
+  // 12. Process lead submission without DATABASE_URL (must fail, NEVER report success)
+  delete process.env.DATABASE_URL;
   const processResult = await processLeadSubmission({
     lead_type: 'DEMO',
+    product: 'zaiko',
     first_name: 'Alice',
     last_name: 'Smith',
     email: 'alice@restaurant.com',
     company: 'Ocean Grill',
-    location_count: '2–5',
-    current_system: 'Spreadsheet',
+    location_count: '2_5',
+    current_system: 'spreadsheet',
     early_access_interest: true,
     locale: 'en'
   });
-  assert(processResult.success, 'Process lead submission succeeds with valid payload');
-  assert(Boolean(processResult.leadId?.startsWith('lead_')), 'Generates valid lead ID');
+  assert(!processResult.ok, 'Process lead submission fails without DATABASE_URL');
+  if (!processResult.ok) {
+    assert(processResult.code === 'SUBMISSION_ERROR', 'Returns SUBMISSION_ERROR code on DB absence');
+  }
 
   console.log(`\n=== SUMMARY: ${passed} PASSED, ${failed} FAILED ===\n`);
 
@@ -120,3 +178,4 @@ runTests().catch((err) => {
   console.error('Test execution error:', err);
   process.exit(1);
 });
+

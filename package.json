@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
+    "botid": "^1.5.11",
     "next": "^15.5.23",
     "next-intl": "^3.26.5",
     "react": "^18.2.0",

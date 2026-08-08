@@ -46,9 +46,10 @@ export async function createLead(payload: ValidatedLeadPayload): Promise<LeadRec
 
   const sql = getDb();
   if (!sql) {
-    console.warn(`[DB Client] DATABASE_URL not set. Lead ${leadId} processed in memory.`);
-    return leadRecord;
+    console.error('[DB Client] DATABASE_URL is missing or invalid. Lead persistence aborted.');
+    throw new Error('DATABASE_UNAVAILABLE');
   }
+
 
   await sql`
     INSERT INTO leads (

@@ -1,13 +1,10 @@
-import { getResendClient, getFromEmail, getNotificationEmail } from './client';
+import { getEmailConfig, type EmailConfig } from './client';
 import type { LeadRecord } from '../leads/types';
 
-export async function sendInternalNotificationEmail(lead: LeadRecord): Promise<void> {
-  const resend = getResendClient();
-  if (!resend) {
-    console.warn(`[Email Service] RESEND_API_KEY not set. Internal notification skipped for lead ${lead.id}.`);
-    return;
-  }
-
+export async function sendInternalNotificationEmail(
+  lead: LeadRecord,
+  config: EmailConfig
+): Promise<void> {
   let subjectTag = 'General Inquiry';
   if (lead.lead_type === 'DEMO') {
     subjectTag = lead.early_access_interest ? 'Zaiko Early Access Demo' : 'Zaiko Demo';
@@ -16,8 +13,6 @@ export async function sendInternalNotificationEmail(lead: LeadRecord): Promise<v
   }
 
   const subject = `[Venkoi Lead] ${subjectTag} — ${lead.name || lead.first_name || lead.email}`;
-  const from = getFromEmail();
-  const to = getNotificationEmail();
 
   const detailsList = [
     `Lead ID: ${lead.id}`,
@@ -41,27 +36,18 @@ export async function sendInternalNotificationEmail(lead: LeadRecord): Promise<v
     `Message:\n${lead.message || 'N/A'}`
   ].join('\n');
 
-  try {
-    await resend.emails.send({
-      from,
-      to,
-      subject,
-      text: `New lead received:\n\n${detailsList}`
-    });
-  } catch (err) {
-    console.error(`Notification email failed for lead ${lead.id}:`, err);
-  }
+  await config.resend.emails.send({
+    from: config.fromEmail,
+    to: config.notificationEmail,
+    subject,
+    text: `New lead received:\n\n${detailsList}`
+  });
 }
 
-export async function sendUserAcknowledgementEmail(lead: LeadRecord): Promise<void> {
-  const resend = getResendClient();
-  if (!resend) {
-    console.warn(`[Email Service] RESEND_API_KEY not set. User acknowledgement skipped for lead ${lead.id}.`);
-    return;
-  }
-
-  const from = getFromEmail();
-  const to = lead.email;
+export async function sendUserAcknowledgementEmail(
+  lead: LeadRecord,
+  config: EmailConfig
+): Promise<void> {
   const isSpanish = lead.locale === 'es';
 
   let subject = '';
@@ -94,27 +80,30 @@ export async function sendUserAcknowledgementEmail(lead: LeadRecord): Promise<vo
     }
   }
 
-  try {
-    await resend.emails.send({
-      from,
-      to,
-      subject,
-      text: body
-    });
-  } catch (err) {
-    console.error(`User acknowledgement email failed for lead ${lead.id}:`, err);
-  }
+  await config.resend.emails.send({
+    from: config.fromEmail,
+    to: lead.email,
+    subject,
+    text: body
+  });
 }
 
 export async function sendLeadEmails(lead: LeadRecord): Promise<void> {
+  const config = getEmailConfig();
+  if (!config) {
+    console.warn(`[Email Service] Email delivery skipped for lead ${lead.id}: incomplete Resend environment configuration.`);
+    return;
+  }
+
   const results = await Promise.allSettled([
-    sendInternalNotificationEmail(lead),
-    sendUserAcknowledgementEmail(lead)
+    sendInternalNotificationEmail(lead, config),
+    sendUserAcknowledgementEmail(lead, config)
   ]);
 
   results.forEach((result) => {
     if (result.status === 'rejected') {
-      console.error(`Notification email failed for lead ${lead.id}:`, result.reason);
+      console.error(`[Email Service] Notification email failed for lead ${lead.id}:`, result.reason);
     }
   });
 }
+

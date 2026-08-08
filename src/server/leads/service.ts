@@ -3,55 +3,57 @@ import { createLead } from './repository';
 import { sendLeadEmails } from '../email/lead-emails';
 import type { LeadRecord } from './types';
 
-export interface ProcessLeadResult {
-  success: boolean;
-  leadId?: string;
-  errors?: Record<string, string>;
-  message?: string;
-}
+export type ProcessLeadResult =
+  | { ok: true; leadId?: string }
+  | { ok: false; code: 'VALIDATION_ERROR'; fieldErrors?: Record<string, string> }
+  | { ok: false; code: 'SUBMISSION_ERROR' };
 
 export async function processLeadSubmission(rawPayload: unknown): Promise<ProcessLeadResult> {
   // 1. Zod validation & Honeypot check
   const parseResult = leadSubmissionSchema.safeParse(rawPayload);
 
   if (!parseResult.success) {
-    const formattedErrors: Record<string, string> = {};
+    const fieldErrors: Record<string, string> = {};
     for (const issue of parseResult.error.issues) {
+      if (issue.message === 'SPAM_DETECTED') {
+        // Honeypot hit - return generic validation error without detail
+        return { ok: false, code: 'VALIDATION_ERROR' };
+      }
       const field = issue.path[0] ? String(issue.path[0]) : '_global';
-      formattedErrors[field] = issue.message;
+      fieldErrors[field] = issue.message;
     }
     return {
-      success: false,
-      errors: formattedErrors,
-      message: 'Validation failed'
+      ok: false,
+      code: 'VALIDATION_ERROR',
+      fieldErrors
     };
   }
 
   const validatedData = parseResult.data;
 
-  // 2. Persist lead in PostgreSQL
+  // 2. Persist lead in PostgreSQL (Required for success)
   let lead: LeadRecord;
   try {
     lead = await createLead(validatedData);
   } catch (err) {
-    console.error('Database persistence failed during lead submission:', err);
-    // Requirement 22: Generic error, do not expose SQL/connection/stack traces
+    console.error('[Lead Service] Database persistence failed during lead submission:', err);
     return {
-      success: false,
-      message: 'An error occurred while processing your request. Please try again later.'
+      ok: false,
+      code: 'SUBMISSION_ERROR'
     };
   }
 
   // 3. Send emails asynchronously (DB persistence succeeded)
-  // Requirement 23: If email delivery fails, the form submission is STILL SUCCESSFUL.
+  // Requirement 24: If email delivery fails, lead submission is STILL SUCCESSFUL.
   try {
     await sendLeadEmails(lead);
   } catch (emailErr) {
-    console.error(`Notification email failed for lead ${lead.id}:`, emailErr);
+    console.error(`[Lead Service] Notification email failed for lead ${lead.id}:`, emailErr);
   }
 
   return {
-    success: true,
+    ok: true,
     leadId: lead.id
   };
 }
+

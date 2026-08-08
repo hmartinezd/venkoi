@@ -1,7 +1,12 @@
 import { z } from 'zod';
 import type { LeadType } from './types';
+import { isDemoEnabledProduct } from '@/lib/products';
 
 const ALLOWED_LEAD_TYPES: [LeadType, ...LeadType[]] = ['DEMO', 'CUSTOM_PROJECT', 'GENERAL_CONTACT'];
+const LOCATION_COUNTS = ['1', '2_5', '6_20', '20_plus'] as const;
+const CURRENT_SYSTEMS = ['none', 'spreadsheet', 'pos_tools', 'other'] as const;
+const INTERESTS = ['mobile', 'web', 'custom_business_software', 'product_development', 'unsure'] as const;
+const PROJECT_STAGES = ['idea', 'planning', 'existing_product', 'needs_improvement'] as const;
 
 const normalizeString = (val: unknown): string | null => {
   if (typeof val !== 'string') return null;
@@ -11,24 +16,36 @@ const normalizeString = (val: unknown): string | null => {
 
 export const leadSubmissionSchema = z
   .object({
-    lead_type: z.enum(ALLOWED_LEAD_TYPES),
+    lead_type: z.enum(ALLOWED_LEAD_TYPES, { error: 'INVALID_OPTION' }),
     product: z.preprocess(normalizeString, z.string().max(50).nullable().optional()),
     first_name: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
     last_name: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
     name: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
     email: z
-      .string({ message: 'Email is required' })
+      .string({ error: 'REQUIRED' })
       .trim()
       .toLowerCase()
-      .email('Invalid email address')
-      .max(255, 'Email is too long'),
+      .email('INVALID_EMAIL')
+      .max(255, 'TOO_LONG'),
     phone: z.preprocess(normalizeString, z.string().max(50).nullable().optional()),
     company: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
-    location_count: z.preprocess(normalizeString, z.string().max(50).nullable().optional()),
-    current_system: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
-    interest: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
-    project_stage: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
-    message: z.preprocess(normalizeString, z.string().max(5000).nullable().optional()),
+    location_count: z.preprocess(
+      normalizeString,
+      z.enum(LOCATION_COUNTS, { error: 'INVALID_OPTION' }).nullable().optional()
+    ),
+    current_system: z.preprocess(
+      normalizeString,
+      z.enum(CURRENT_SYSTEMS, { error: 'INVALID_OPTION' }).nullable().optional()
+    ),
+    interest: z.preprocess(
+      normalizeString,
+      z.enum(INTERESTS, { error: 'INVALID_OPTION' }).nullable().optional()
+    ),
+    project_stage: z.preprocess(
+      normalizeString,
+      z.enum(PROJECT_STAGES, { error: 'INVALID_OPTION' }).nullable().optional()
+    ),
+    message: z.preprocess(normalizeString, z.string().max(5000, 'TOO_LONG').nullable().optional()),
     early_access_interest: z.boolean().optional().default(false),
     locale: z.enum(['en', 'es']).default('en'),
     source_path: z.preprocess(normalizeString, z.string().max(500).nullable().optional()),
@@ -44,31 +61,38 @@ export const leadSubmissionSchema = z
     if (data.website) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: 'Spam detected',
+        message: 'SPAM_DETECTED',
         path: ['website']
       });
       return;
     }
 
     if (data.lead_type === 'DEMO') {
+      if (!data.product || !isDemoEnabledProduct(data.product)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'INVALID_PRODUCT',
+          path: ['product']
+        });
+      }
       if (!data.first_name) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'First name is required',
+          message: 'REQUIRED',
           path: ['first_name']
         });
       }
       if (!data.last_name) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'Last name is required',
+          message: 'REQUIRED',
           path: ['last_name']
         });
       }
       if (!data.company) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'Restaurant or company name is required',
+          message: 'REQUIRED',
           path: ['company']
         });
       }
@@ -77,14 +101,14 @@ export const leadSubmissionSchema = z
       if (!data.name && (!data.first_name || !data.last_name)) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'Name is required',
+          message: 'REQUIRED',
           path: ['name']
         });
       }
       if (!data.message) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: 'Message is required',
+          message: 'REQUIRED',
           path: ['message']
         });
       }
@@ -92,3 +116,4 @@ export const leadSubmissionSchema = z
   });
 
 export type ValidatedLeadPayload = z.infer<typeof leadSubmissionSchema>;
+

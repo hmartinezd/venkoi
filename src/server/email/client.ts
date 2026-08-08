@@ -1,17 +1,24 @@
 import { Resend } from 'resend';
 
-export function getResendClient(): Resend | null {
+export interface EmailConfig {
+  resend: Resend;
+  fromEmail: string;
+  notificationEmail: string;
+}
+
+export function getEmailConfig(): EmailConfig | null {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  const fromEmail = process.env.RESEND_FROM_EMAIL;
+  const notificationEmail = process.env.LEADS_NOTIFICATION_EMAIL;
+
+  if (!apiKey || !fromEmail || !notificationEmail) {
     return null;
   }
-  return new Resend(apiKey);
+
+  return {
+    resend: new Resend(apiKey),
+    fromEmail,
+    notificationEmail
+  };
 }
 
-export function getFromEmail(): string {
-  return process.env.RESEND_FROM_EMAIL || 'Venkoi <notifications@venkoi.com>';
-}
-
-export function getNotificationEmail(): string {
-  return process.env.LEADS_NOTIFICATION_EMAIL || 'leads@venkoi.com';
-}

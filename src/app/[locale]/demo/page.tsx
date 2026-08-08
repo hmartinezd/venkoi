@@ -3,6 +3,7 @@ import { Section } from '@/components/layout/Section';
 import { DemoRequestForm } from '@/components/forms/DemoRequestForm';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
+import { isDemoEnabledProduct } from '@/lib/products';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -40,16 +41,18 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const t = await getTranslations('demoPage');
 
-  const isZaiko = product === 'zaiko';
-  const isEarlyAccess = interest === 'early-access';
+  const selectedProduct =
+    typeof product === 'string' && isDemoEnabledProduct(product) ? product : 'zaiko';
+  const selectedInterest = typeof interest === 'string' ? interest : '';
+
+  const isZaiko = selectedProduct === 'zaiko';
+  const isEarlyAccess = selectedInterest === 'early-access';
 
   const eyebrowText = isZaiko ? t('zaiko.eyebrow') : t('eyebrow');
   const headingText = isZaiko ? t('zaiko.heading') : t('heading');
   const bodyText = isZaiko ? t('zaiko.body') : t('body');
   const badgeText = isEarlyAccess ? t('zaiko.earlyAccessBadge') : t('badgeText');
 
-  const selectedProduct = typeof product === 'string' ? product : 'zaiko';
-  const selectedInterest = typeof interest === 'string' ? interest : '';
 
   return (
     <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">

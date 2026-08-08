@@ -104,14 +104,6 @@ export function DemoRequestForm({
       return;
     }
 
-    // Map localized selection strings
-    const currentSystemMap: Record<string, string> = {
-      none: 'None',
-      spreadsheet: 'Spreadsheet',
-      pos: 'POS tools',
-      other: 'Other software'
-    };
-
     const payload = {
       lead_type: 'DEMO',
       product: initialProduct || 'zaiko',
@@ -121,7 +113,7 @@ export function DemoRequestForm({
       phone: formData.phone,
       company: formData.company,
       location_count: formData.location_count,
-      current_system: currentSystemMap[formData.current_system] || formData.current_system,
+      current_system: formData.current_system,
       message: formData.message,
       early_access_interest: formData.early_access_interest,
       locale,
@@ -140,18 +132,30 @@ export function DemoRequestForm({
 
       const data = await res.json();
 
-      if (!res.ok || !data.success) {
+      if (!res.ok || !data.ok) {
         setStatus('error');
-        if (data.errors) {
-          setErrors(data.errors);
+        if (data.fieldErrors) {
+          const mappedFieldErrors: Record<string, string> = {};
+          for (const [key, code] of Object.entries(data.fieldErrors as Record<string, string>)) {
+            if (code === 'REQUIRED') mappedFieldErrors[key] = t('required');
+            else if (code === 'INVALID_EMAIL') mappedFieldErrors[key] = t('invalidEmail');
+            else if (code === 'TOO_LONG') mappedFieldErrors[key] = t('tooLong');
+            else if (code === 'INVALID_OPTION') mappedFieldErrors[key] = t('invalidOption');
+            else mappedFieldErrors[key] = t('submissionError');
+          }
+          setErrors(mappedFieldErrors);
         }
-        setStatusMessage(data.message || 'Submission failed. Please check your entries.');
+        if (data.code === 'BOT_BLOCKED') {
+          setStatusMessage(t('botBlocked'));
+        } else {
+          setStatusMessage(t('submissionError'));
+        }
       } else {
         setStatus('success');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
-      setStatusMessage('Network error. Please try again later.');
+      setStatusMessage(t('networkError'));
     } finally {
       setPending(false);
     }
@@ -194,6 +198,7 @@ export function DemoRequestForm({
               {...fieldProps}
               type="text"
               name="first_name"
+              maxLength={100}
               autoComplete="given-name"
               value={formData.first_name}
               onChange={handleChange}
@@ -208,6 +213,7 @@ export function DemoRequestForm({
               {...fieldProps}
               type="text"
               name="last_name"
+              maxLength={100}
               autoComplete="family-name"
               value={formData.last_name}
               onChange={handleChange}
@@ -224,6 +230,7 @@ export function DemoRequestForm({
               {...fieldProps}
               type="email"
               name="email"
+              maxLength={255}
               autoComplete="email"
               inputMode="email"
               value={formData.email}
@@ -239,6 +246,7 @@ export function DemoRequestForm({
               {...fieldProps}
               type="tel"
               name="phone"
+              maxLength={50}
               autoComplete="tel"
               inputMode="tel"
               value={formData.phone}
@@ -255,6 +263,7 @@ export function DemoRequestForm({
             {...fieldProps}
             type="text"
             name="company"
+            maxLength={200}
             autoComplete="organization"
             value={formData.company}
             onChange={handleChange}
@@ -274,9 +283,9 @@ export function DemoRequestForm({
               className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             >
               <option value="1">{t('locationOptions.1')}</option>
-              <option value="2–5">{t('locationOptions.2-5')}</option>
-              <option value="6–20">{t('locationOptions.6-20')}</option>
-              <option value="20+">{t('locationOptions.20+')}</option>
+              <option value="2_5">{t('locationOptions.2-5')}</option>
+              <option value="6_20">{t('locationOptions.6-20')}</option>
+              <option value="20_plus">{t('locationOptions.20+')}</option>
             </select>
           )}
         </FormField>
@@ -292,7 +301,7 @@ export function DemoRequestForm({
             >
               <option value="none">{t('systemOptions.none')}</option>
               <option value="spreadsheet">{t('systemOptions.spreadsheet')}</option>
-              <option value="pos">{t('systemOptions.pos')}</option>
+              <option value="pos_tools">{t('systemOptions.pos')}</option>
               <option value="other">{t('systemOptions.other')}</option>
             </select>
           )}
@@ -305,6 +314,7 @@ export function DemoRequestForm({
             {...fieldProps}
             name="message"
             rows={4}
+            maxLength={5000}
             value={formData.message}
             onChange={handleChange}
             className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y"
@@ -339,3 +349,4 @@ export function DemoRequestForm({
     </form>
   );
 }
+

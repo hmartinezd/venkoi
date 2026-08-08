@@ -20,7 +20,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     email: '',
     phone: '',
     company: '',
-    interest: 'custom',
+    interest: 'custom_business_software',
     project_stage: 'idea',
     message: '',
     website: '' // Honeypot
@@ -91,21 +91,6 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
       return;
     }
 
-    const interestMap: Record<string, string> = {
-      mobile: 'Mobile application',
-      web: 'Web application',
-      custom: 'Custom business software',
-      product: 'Product development',
-      unsure: "I'm not sure yet"
-    };
-
-    const stageMap: Record<string, string> = {
-      idea: 'Just an idea',
-      planning: 'Planning',
-      existingProduct: 'Existing product',
-      needsImprovement: 'Existing software needs improvement'
-    };
-
     // Lead type: CUSTOM_PROJECT if query has type=custom-software, else GENERAL_CONTACT
     const lead_type = initialType === 'custom-software' ? 'CUSTOM_PROJECT' : 'GENERAL_CONTACT';
 
@@ -115,8 +100,8 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
       email: formData.email,
       phone: formData.phone,
       company: formData.company,
-      interest: interestMap[formData.interest] || formData.interest,
-      project_stage: stageMap[formData.project_stage] || formData.project_stage,
+      interest: formData.interest,
+      project_stage: formData.project_stage,
       message: formData.message,
       locale,
       website: formData.website,
@@ -134,18 +119,30 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
 
       const data = await res.json();
 
-      if (!res.ok || !data.success) {
+      if (!res.ok || !data.ok) {
         setStatus('error');
-        if (data.errors) {
-          setErrors(data.errors);
+        if (data.fieldErrors) {
+          const mappedFieldErrors: Record<string, string> = {};
+          for (const [key, code] of Object.entries(data.fieldErrors as Record<string, string>)) {
+            if (code === 'REQUIRED') mappedFieldErrors[key] = t('required');
+            else if (code === 'INVALID_EMAIL') mappedFieldErrors[key] = t('invalidEmail');
+            else if (code === 'TOO_LONG') mappedFieldErrors[key] = t('tooLong');
+            else if (code === 'INVALID_OPTION') mappedFieldErrors[key] = t('invalidOption');
+            else mappedFieldErrors[key] = t('submissionError');
+          }
+          setErrors(mappedFieldErrors);
         }
-        setStatusMessage(data.message || 'Submission failed. Please check your entries.');
+        if (data.code === 'BOT_BLOCKED') {
+          setStatusMessage(t('botBlocked'));
+        } else {
+          setStatusMessage(t('submissionError'));
+        }
       } else {
         setStatus('success');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
-      setStatusMessage('Network error. Please try again later.');
+      setStatusMessage(t('networkError'));
     } finally {
       setPending(false);
     }
@@ -188,6 +185,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
               {...fieldProps}
               type="text"
               name="name"
+              maxLength={200}
               autoComplete="name"
               value={formData.name}
               onChange={handleChange}
@@ -202,6 +200,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
               {...fieldProps}
               type="email"
               name="email"
+              maxLength={255}
               autoComplete="email"
               inputMode="email"
               value={formData.email}
@@ -219,6 +218,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
               {...fieldProps}
               type="tel"
               name="phone"
+              maxLength={50}
               autoComplete="tel"
               inputMode="tel"
               value={formData.phone}
@@ -234,6 +234,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
               {...fieldProps}
               type="text"
               name="company"
+              maxLength={200}
               autoComplete="organization"
               value={formData.company}
               onChange={handleChange}
@@ -255,8 +256,8 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
             >
               <option value="mobile">{t('interestOptions.mobile')}</option>
               <option value="web">{t('interestOptions.web')}</option>
-              <option value="custom">{t('interestOptions.custom')}</option>
-              <option value="product">{t('interestOptions.product')}</option>
+              <option value="custom_business_software">{t('interestOptions.custom')}</option>
+              <option value="product_development">{t('interestOptions.product')}</option>
               <option value="unsure">{t('interestOptions.unsure')}</option>
             </select>
           )}
@@ -273,8 +274,8 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
             >
               <option value="idea">{t('stageOptions.idea')}</option>
               <option value="planning">{t('stageOptions.planning')}</option>
-              <option value="existingProduct">{t('stageOptions.existingProduct')}</option>
-              <option value="needsImprovement">{t('stageOptions.needsImprovement')}</option>
+              <option value="existing_product">{t('stageOptions.existingProduct')}</option>
+              <option value="needs_improvement">{t('stageOptions.needsImprovement')}</option>
             </select>
           )}
         </FormField>
@@ -286,6 +287,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
             {...fieldProps}
             name="message"
             rows={5}
+            maxLength={5000}
             value={formData.message}
             onChange={handleChange}
             className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y"
@@ -306,3 +308,4 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     </form>
   );
 }
+

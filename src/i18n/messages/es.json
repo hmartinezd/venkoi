@@ -202,7 +202,12 @@
       "successTitle": "Gracias — recibimos tu mensaje.",
       "successMessage": "Revisaremos la información que compartiste sobre tu proyecto y nos pondremos en contacto contigo.",
       "required": "Campo obligatorio",
-      "invalidEmail": "Por favor ingresa un email válido"
+      "invalidEmail": "Por favor ingresa un email válido",
+      "submissionError": "No pudimos enviar tu solicitud en este momento. Inténtalo nuevamente.",
+      "networkError": "Error de red. Inténtalo más tarde.",
+      "tooLong": "El texto excede la longitud máxima.",
+      "invalidOption": "Opción seleccionada no válida.",
+      "botBlocked": "Solicitud bloqueada por comprobaciones de seguridad."
     }
   },
   "demoPage": {
@@ -248,9 +253,15 @@
       "successTitle": "Gracias — recibimos tu solicitud.",
       "successMessage": "Nos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.",
       "required": "Campo obligatorio",
-      "invalidEmail": "Por favor ingresa un email de trabajo válido"
+      "invalidEmail": "Por favor ingresa un email de trabajo válido",
+      "submissionError": "No pudimos enviar tu solicitud en este momento. Inténtalo nuevamente.",
+      "networkError": "Error de red. Inténtalo más tarde.",
+      "tooLong": "El texto excede la longitud máxima.",
+      "invalidOption": "Opción seleccionada no válida.",
+      "botBlocked": "Solicitud bloqueada por comprobaciones de seguridad."
     }
   },
+
   "zaikoPage": {
     "nav": {
       "productName": "Zaiko",
