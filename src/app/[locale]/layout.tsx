@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { defaultLocale, locales, type Locale } from '@/i18n/config';
+import { locales, type Locale } from '@/i18n/config';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import type { ReactNode } from 'react';
@@ -22,18 +23,18 @@ export async function generateStaticParams() {
 }
 
 export default async function LocaleLayout({ params, children }: PageProps) {
-  const resolved = await params;
-  const locale = parseLocale(resolved.locale);
-  const messages = await import(`@/i18n/messages/${locale}.json`);
+  const { locale } = await params;
+  const currentLocale = parseLocale(locale);
+  const messages = await getMessages({ locale: currentLocale }) as typeof import('@/i18n/messages/en.json');
 
   return (
-    <NextIntlClientProvider messages={messages} locale={locale}>
-      <a id="skip-to-content" href={`/${locale}#content`}>
+    <NextIntlClientProvider messages={messages} locale={currentLocale}>
+      <a id="skip-to-content" href={`/${currentLocale}#content`}>
         Skip to content
       </a>
-      <Header locale={locale} />
+      <Header locale={currentLocale} />
       <main id="content">{children}</main>
-      <Footer locale={locale} />
+      <Footer locale={currentLocale} />
     </NextIntlClientProvider>
   );
 }

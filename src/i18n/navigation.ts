@@ -1,15 +1,25 @@
-import { localizedRoutes } from './routing';
+import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
+import { routing, type RouteKey } from './routing';
+
+export const {
+  Link: LocalizedLink,
+  usePathname,
+  useRouter,
+  getPathname,
+  redirect,
+  permanentRedirect
+} = createLocalizedPathnamesNavigation(routing);
 
 export type NavigationChild = {
   id: string;
   labelKey: string;
-  routeKey: keyof typeof localizedRoutes;
+  routeKey: RouteKey;
 };
 
 export type NavigationItem = {
   id: string;
   labelKey: string;
-  routeKey: keyof typeof localizedRoutes;
+  routeKey: RouteKey;
   children?: NavigationChild[];
 };
 

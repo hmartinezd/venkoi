@@ -1,8 +1,7 @@
-import { footerNavigation } from '@/i18n/navigation';
-import { getLocalizedPath } from '@/i18n/routing';
+import { footerNavigation, LocalizedLink } from '@/i18n/navigation';
+import { internalRoutes } from '@/i18n/routing';
 import { localeLabels, type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 
 export function Footer({ locale }: { locale: Locale }) {
   const t = useTranslations();
@@ -21,27 +20,27 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="space-y-3">
             <p className="font-semibold text-ink">{t('footer.sectionProducts')}</p>
             {footerNavigation.products.map((item) => (
-              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale) as any} locale={false} className="block transition hover:text-ink">
+              <LocalizedLink key={item.id} href={internalRoutes[item.routeKey]} locale={locale} className="block transition hover:text-ink">
                 {t(`navigation.${item.labelKey}`)}
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
 
           <div className="space-y-3">
             <p className="font-semibold text-ink">{t('footer.sectionCompany')}</p>
             {footerNavigation.company.map((item) => (
-              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale) as any} locale={false} className="block transition hover:text-ink">
+              <LocalizedLink key={item.id} href={internalRoutes[item.routeKey]} locale={locale} className="block transition hover:text-ink">
                 {t(`navigation.${item.labelKey}`)}
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
 
           <div className="space-y-3">
             <p className="font-semibold text-ink">{t('footer.sectionWorkWithUs')}</p>
             {footerNavigation.workWithUs.map((item) => (
-              <Link key={item.id} href={getLocalizedPath(item.routeKey, locale) as any} locale={false} className="block transition hover:text-ink">
+              <LocalizedLink key={item.id} href={internalRoutes[item.routeKey]} locale={locale} className="block transition hover:text-ink">
                 {t(`navigation.${item.labelKey}`)}
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
         </div>

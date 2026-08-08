@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Locale, locales } from '@/i18n/config';
-import { getLocalizedPath, localizedRoutes } from '@/i18n/routing';
+import { getLocalizedPath, type RouteKey } from '@/i18n/routing';
 
-export function createMetadata({ title, description, routeKey, locale }: { title: string; description: string; routeKey: keyof typeof localizedRoutes; locale: Locale; }): Metadata {
+export function createMetadata({ title, description, routeKey, locale }: { title: string; description: string; routeKey: RouteKey; locale: Locale; }): Metadata {
   const origin = 'https://venkoi.com';
   const pathname = getLocalizedPath(routeKey, locale);
   const canonical = `${origin}${pathname}`;

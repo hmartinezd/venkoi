@@ -6,12 +6,13 @@ import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { getMessages } from 'next-intl/server';
 
-export const dynamic = 'force-dynamic';
+type Messages = typeof import('@/i18n/messages/en.json');
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
   const { locale } = await params;
-  const messages = await import(`@/i18n/messages/${locale}.json`);
+  const messages = (await getMessages({ locale })) as Messages;
   return createMetadata({
     title: `${messages.products.zaikoTitle} | ${messages.seo.title}`,
     description: messages.products.zaikoIntro,
