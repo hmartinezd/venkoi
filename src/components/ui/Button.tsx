@@ -51,7 +51,7 @@ export function Button(props: LinkProps | ActionProps) {
 
     if (isInternal || !isStringHref) {
       return (
-        <Link className={classes} href={href} {...rest}>
+        <Link className={classes} href={href as NextLinkProps['href']} {...rest}>
           {children}
         </Link>
       );
