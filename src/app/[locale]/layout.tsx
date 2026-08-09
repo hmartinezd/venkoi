@@ -1,6 +1,6 @@
 import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/i18n/config';
 import { Header } from '@/components/layout/Header';
@@ -44,10 +44,7 @@ export default async function LocaleLayout({ params, children }: PageProps) {
 
   setRequestLocale(currentLocale);
 
-  const [messages, t] = await Promise.all([
-    getMessages(),
-    getTranslations({ locale: currentLocale, namespace: 'common' })
-  ]);
+  const messages = await getMessages();
 
   return (
     <html lang={currentLocale} className={geist.variable} suppressHydrationWarning>
