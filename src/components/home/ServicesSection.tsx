@@ -96,7 +96,7 @@ export function ServicesSection({
             </div>
             <div className="pt-4 border-t border-white/10 flex justify-end">
               <Button
-                href={getLocalizedPath('contact', locale) + '?type=services&interest=website'}
+                href={getLocalizedPath('contact', locale) + '?type=services&interest=web'}
                 variant="secondary"
                 className="text-xs bg-white/10 text-white border-white/20 hover:bg-white/20"
                 onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_web' })}

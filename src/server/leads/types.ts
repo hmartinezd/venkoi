@@ -3,7 +3,7 @@ export type LeadStatus = 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'CONVERTED' | 'CLOS
 
 export type LocationCountEnum = '1' | '2_5' | '6_20' | '20_plus';
 export type CurrentSystemEnum = 'none' | 'spreadsheet' | 'pos_tools' | 'other';
-export type InterestEnum = 'mobile' | 'website' | 'web_application' | 'unsure';
+export type InterestEnum = 'mobile' | 'web' | 'unsure';
 export type ProjectStageEnum = 'idea' | 'planning' | 'existing_product' | 'needs_improvement';
 
 export interface LeadInput {

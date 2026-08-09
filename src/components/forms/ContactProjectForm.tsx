@@ -24,7 +24,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     phone: '',
     company: '',
     interest: '',
-    project_stage: 'idea',
+    project_stage: '',
     message: '',
     website: '' // Honeypot
   });
@@ -59,10 +59,14 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     if (typeof window !== 'undefined') {
       const searchParams = new URLSearchParams(window.location.search);
       const queryInterest = searchParams.get('interest');
-      const validInterests = ['mobile', 'website', 'web_application', 'unsure'];
+      const validInterests = ['mobile', 'web', 'website', 'web_application', 'unsure'];
 
       if (queryInterest && validInterests.includes(queryInterest)) {
-        setFormData((prev) => ({ ...prev, interest: queryInterest }));
+        const mappedInterest =
+          queryInterest === 'website' || queryInterest === 'web_application'
+            ? 'web'
+            : queryInterest;
+        setFormData((prev) => ({ ...prev, interest: mappedInterest }));
       }
 
       setAcquisition({
@@ -297,8 +301,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
             >
               <option value="">{t('interestOptions.select')}</option>
               <option value="mobile">{t('interestOptions.mobile')}</option>
-              <option value="website">{t('interestOptions.website')}</option>
-              <option value="web_application">{t('interestOptions.web_application')}</option>
+              <option value="web">{t('interestOptions.web')}</option>
               <option value="unsure">{t('interestOptions.unsure')}</option>
             </select>
           )}
@@ -313,6 +316,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
               onChange={handleChange}
               className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             >
+              <option value="">{t('stageOptions.select')}</option>
               <option value="idea">{t('stageOptions.idea')}</option>
               <option value="planning">{t('stageOptions.planning')}</option>
               <option value="existing_product">{t('stageOptions.existingProduct')}</option>
