@@ -23,7 +23,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     email: '',
     phone: '',
     company: '',
-    interest: 'custom_business_software',
+    interest: '',
     project_stage: 'idea',
     message: '',
     website: '' // Honeypot
@@ -44,7 +44,10 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
   const [statusMessage, setStatusMessage] = useState('');
   const hasStartedRef = useRef(false);
 
-  const lead_type = initialType === 'custom-software' ? 'CUSTOM_PROJECT' : 'GENERAL_CONTACT';
+  const lead_type =
+    initialType === 'services' || initialType === 'custom-software'
+      ? 'CUSTOM_PROJECT'
+      : 'GENERAL_CONTACT';
 
   useEffect(() => {
     if (status === 'success') {
@@ -55,6 +58,13 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const searchParams = new URLSearchParams(window.location.search);
+      const queryInterest = searchParams.get('interest');
+      const validInterests = ['mobile', 'website', 'web_application', 'unsure'];
+
+      if (queryInterest && validInterests.includes(queryInterest)) {
+        setFormData((prev) => ({ ...prev, interest: queryInterest }));
+      }
+
       setAcquisition({
         source_path: window.location.pathname,
         referrer: document.referrer || '',
@@ -285,10 +295,10 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
               onChange={handleChange}
               className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             >
+              <option value="">{t('interestOptions.select')}</option>
               <option value="mobile">{t('interestOptions.mobile')}</option>
-              <option value="web">{t('interestOptions.web')}</option>
-              <option value="custom_business_software">{t('interestOptions.custom')}</option>
-              <option value="product_development">{t('interestOptions.product')}</option>
+              <option value="website">{t('interestOptions.website')}</option>
+              <option value="web_application">{t('interestOptions.web_application')}</option>
               <option value="unsure">{t('interestOptions.unsure')}</option>
             </select>
           )}

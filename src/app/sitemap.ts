@@ -6,7 +6,7 @@ import { locales } from '@/i18n/config';
 const sitemapRoutes: RouteKey[] = [
   'home',
   'productsZaiko',
-  'customSoftware',
+  'services',
   'about',
   'contact'
 ];

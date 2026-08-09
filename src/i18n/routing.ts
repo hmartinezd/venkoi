@@ -4,7 +4,7 @@ import { defaultLocale, locales, type Locale } from './config';
 export const internalRoutes = {
   home: '/',
   productsZaiko: '/products/zaiko',
-  customSoftware: '/custom-software',
+  services: '/services',
   about: '/about',
   contact: '/contact',
   demo: '/demo'
@@ -18,9 +18,9 @@ const pathnames = {
     en: '/products/zaiko',
     es: '/productos/zaiko'
   },
-  '/custom-software': {
-    en: '/custom-software',
-    es: '/software-a-medida'
+  '/services': {
+    en: '/services',
+    es: '/servicios'
   },
   '/about': {
     en: '/about',

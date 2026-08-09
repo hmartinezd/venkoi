@@ -78,11 +78,11 @@ export function Footer({ locale }: { locale: Locale }) {
             <ul className="space-y-2">
               <li>
                 <LocalizedLink
-                  href={internalRoutes.customSoftware}
+                  href={internalRoutes.services}
                   locale={locale}
                   className="transition hover:text-ink"
                 >
-                  {tNav('customSoftware')}
+                  {tNav('services')}
                 </LocalizedLink>
               </li>
               <li>

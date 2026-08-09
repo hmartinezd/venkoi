@@ -30,8 +30,8 @@ export async function generateSocialCardResponse(locale: string): Promise<ImageR
     : 'Software built for the way business actually works.';
 
   const subheading = isSpanish
-    ? 'Productos de software y desarrollo a medida en Tampa Bay, South Florida y más allá.'
-    : 'Software products and custom digital solutions in Tampa Bay, South Florida & beyond.';
+    ? 'Productos de software, aplicaciones móviles, páginas web y aplicaciones web en Tampa Bay, South Florida y más allá.'
+    : 'Software products, mobile applications, websites, and web applications in Tampa Bay, South Florida & beyond.';
 
   return new ImageResponse(
     (
@@ -118,9 +118,7 @@ export async function generateSocialCardResponse(locale: string): Promise<ImageR
               }}
             />
           ) : (
-            <div style={{ color: '#FFFFFF', fontSize: '32px', fontWeight: 800, letterSpacing: '-0.03em' }}>
-              VENKOI
-            </div>
+            <div />
           )}
 
           <div

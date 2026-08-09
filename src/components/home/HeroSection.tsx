@@ -39,7 +39,7 @@ export function HeroSection({
             <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
               {primaryCta}
             </Button>
-            <Button href={getLocalizedPath('customSoftware', locale)} variant="secondary">
+            <Button href={getLocalizedPath('services', locale)} variant="secondary">
               {secondaryCta}
             </Button>
           </div>

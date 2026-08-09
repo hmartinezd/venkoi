@@ -90,20 +90,20 @@ export default async function AboutPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Secondary Pillar: Custom Software */}
+            {/* Secondary Pillar: Services */}
             <div className="md:col-span-5 rounded-2xl border border-border bg-background p-8 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <span className="text-xs font-bold text-foreground-muted uppercase tracking-wider">
                   {t('clientSolutionsBadge')}
                 </span>
-                <h3 className="text-2xl font-bold text-ink">{t('customSoftwareTitle')}</h3>
+                <h3 className="text-2xl font-bold text-ink">{t('servicesTitle')}</h3>
                 <p className="text-sm text-foreground-muted leading-relaxed">
-                  {t('customSoftwareDesc')}
+                  {t('servicesDesc')}
                 </p>
               </div>
               <div className="pt-4 border-t border-border">
-                <Button href={getLocalizedPath('customSoftware', currentLocale)} variant="secondary">
-                  {t('customSoftwareCta')}
+                <Button href={getLocalizedPath('services', currentLocale)} variant="secondary">
+                  {t('servicesCta')}
                 </Button>
               </div>
             </div>

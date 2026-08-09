@@ -37,9 +37,9 @@ export const headerNavigation: NavigationItem[] = [
     ]
   },
   {
-    id: 'customSoftware',
-    labelKey: 'customSoftware',
-    routeKey: 'customSoftware'
+    id: 'services',
+    labelKey: 'services',
+    routeKey: 'services'
   },
   {
     id: 'about',
@@ -79,9 +79,9 @@ export const footerNavigation: {
   ],
   workWithUs: [
     {
-      id: 'customSoftware',
-      labelKey: 'customSoftware',
-      routeKey: 'customSoftware'
+      id: 'services',
+      labelKey: 'services',
+      routeKey: 'services'
     }
   ]
 };

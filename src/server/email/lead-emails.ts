@@ -9,7 +9,15 @@ export async function sendInternalNotificationEmail(
   if (lead.lead_type === 'DEMO') {
     subjectTag = lead.early_access_interest ? 'Zaiko Early Access Demo' : 'Zaiko Demo';
   } else if (lead.lead_type === 'CUSTOM_PROJECT') {
-    subjectTag = 'Custom Software Inquiry';
+    if (lead.interest === 'mobile') {
+      subjectTag = 'Mobile Application Inquiry';
+    } else if (lead.interest === 'website') {
+      subjectTag = 'Website Inquiry';
+    } else if (lead.interest === 'web_application') {
+      subjectTag = 'Web Application Inquiry';
+    } else {
+      subjectTag = 'Services Inquiry';
+    }
   }
 
   const subject = `[Venkoi Lead] ${subjectTag} — ${lead.name || lead.first_name || lead.email}`;

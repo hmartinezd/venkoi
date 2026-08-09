@@ -107,11 +107,30 @@ async function runTests() {
     lead_type: 'CUSTOM_PROJECT',
     name: 'Alice',
     email: 'alice@example.com',
-    message: 'We need custom software',
+    message: 'We need a mobile app',
     interest: 'invalid_interest',
     project_stage: 'idea'
   });
   assert(!t9.success, 'Reject invalid interest enum');
+
+  // Test legacy interest values are rejected by public Zod API validation
+  const tLegacy1 = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Legacy User',
+    email: 'legacy@example.com',
+    message: 'Test message',
+    interest: 'custom_business_software'
+  });
+  assert(!tLegacy1.success, 'Reject legacy interest custom_business_software in public API');
+
+  const tLegacy2 = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Legacy User 2',
+    email: 'legacy2@example.com',
+    message: 'Test message',
+    interest: 'product_development'
+  });
+  assert(!tLegacy2.success, 'Reject legacy interest product_development in public API');
 
   // 9. Populated honeypot (website)
   const t10 = leadSubmissionSchema.safeParse({
@@ -140,16 +159,19 @@ async function runTests() {
     assert(t11.data.first_name === 'John', 'First name trimmed');
   }
 
-  // 11. Valid CUSTOM_PROJECT payload
-  const t12 = leadSubmissionSchema.safeParse({
-    lead_type: 'CUSTOM_PROJECT',
-    name: 'Carlos Ruiz',
-    email: 'carlos@example.com',
-    interest: 'custom_business_software',
-    project_stage: 'planning',
-    message: 'Need a logistics management dashboard for Florida operations.'
+  // 11. Valid CUSTOM_PROJECT payloads with active interests
+  const activeInterests = ['mobile', 'website', 'web_application', 'unsure'] as const;
+  activeInterests.forEach((interestVal) => {
+    const res = leadSubmissionSchema.safeParse({
+      lead_type: 'CUSTOM_PROJECT',
+      name: 'Carlos Ruiz',
+      email: 'carlos@example.com',
+      interest: interestVal,
+      project_stage: 'planning',
+      message: 'Need a logistics app for Florida operations.'
+    });
+    assert(res.success, `Valid CUSTOM_PROJECT with interest '${interestVal}' parses successfully`);
   });
-  assert(t12.success, 'Valid CUSTOM_PROJECT payload parses successfully');
 
   // 13. Unknown extra field (strict mode test)
   const t13 = leadSubmissionSchema.safeParse({

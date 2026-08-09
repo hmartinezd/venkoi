@@ -6,6 +6,20 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig = withNextIntl({
   reactStrictMode: true,
   typedRoutes: true,
+  async redirects() {
+    return [
+      {
+        source: '/en/custom-software',
+        destination: '/en/services',
+        permanent: true
+      },
+      {
+        source: '/es/software-a-medida',
+        destination: '/es/servicios',
+        permanent: true
+      }
+    ];
+  },
   async headers() {
     return [
       {

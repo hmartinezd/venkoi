@@ -149,11 +149,11 @@ export function Header({ locale }: { locale: Locale }) {
           </div>
 
           <LocalizedLink
-            href={internalRoutes.customSoftware}
+            href={internalRoutes.services}
             locale={locale}
             className="text-sm font-medium text-ink transition hover:text-orange"
           >
-            {tNav('customSoftware')}
+            {tNav('services')}
           </LocalizedLink>
 
           <LocalizedLink
@@ -218,12 +218,12 @@ export function Header({ locale }: { locale: Locale }) {
               <span className="text-xs text-foreground-muted">{tNav('zaikoSubtitle')}</span>
             </LocalizedLink>
             <LocalizedLink
-              href={internalRoutes.customSoftware}
+              href={internalRoutes.services}
               locale={locale}
               onClick={() => setMenuOpen(false)}
               className="block rounded-xl px-4 py-3 text-ink transition hover:bg-surface-muted"
             >
-              {tNav('customSoftware')}
+              {tNav('services')}
             </LocalizedLink>
             <LocalizedLink
               href={internalRoutes.about}

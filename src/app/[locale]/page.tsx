@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation';
 import { HeroSection } from '@/components/home/HeroSection';
 import { ProductsIntro } from '@/components/home/ProductsIntro';
 import { ZaikoFeature } from '@/components/home/ZaikoFeature';
-import { CustomSoftwareSection } from '@/components/home/CustomSoftwareSection';
+import { ServicesSection } from '@/components/home/ServicesSection';
 import { LocalSection } from '@/components/home/LocalSection';
 import { PhilosophySection } from '@/components/home/PhilosophySection';
 import { AboutPreview } from '@/components/home/AboutPreview';
@@ -101,19 +101,16 @@ export default async function HomePage({ params }: PageProps) {
         theme4Desc={tHome('zaiko.theme4Desc')}
       />
 
-      <CustomSoftwareSection
+      <ServicesSection
         locale={currentLocale}
-        eyebrow={tHome('customSoftware.eyebrow')}
-        heading={tHome('customSoftware.heading')}
-        body={tHome('customSoftware.body')}
-        cta={tHome('customSoftware.cta')}
-        primaryFocus={tHome('customSoftware.primaryFocus')}
-        mobileTitle={tHome('customSoftware.mobileTitle')}
-        mobileDesc={tHome('customSoftware.mobileDesc')}
-        webTitle={tHome('customSoftware.webTitle')}
-        webDesc={tHome('customSoftware.webDesc')}
-        backendTitle={tHome('customSoftware.backendTitle')}
-        backendDesc={tHome('customSoftware.backendDesc')}
+        eyebrow={tHome('services.eyebrow')}
+        heading={tHome('services.heading')}
+        body={tHome('services.body')}
+        cta={tHome('services.cta')}
+        mobileTitle={tHome('services.mobileTitle')}
+        mobileDesc={tHome('services.mobileDesc')}
+        webTitle={tHome('services.webTitle')}
+        webDesc={tHome('services.webDesc')}
       />
 
       <LocalSection

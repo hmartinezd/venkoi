@@ -38,17 +38,18 @@ If setting up a fresh Neon PostgreSQL instance:
 1. Create a PostgreSQL database on [Neon](https://neon.tech).
 2. Copy the serverless database connection URL (`postgresql://...`).
 3. Configure `DATABASE_URL` in your environment variables.
-4. Execute both migration scripts in sequence using `psql` or the Neon SQL Console:
+4. Execute migration scripts in sequence using `psql` or the Neon SQL Console:
    ```bash
    psql "$DATABASE_URL" -f db/migrations/001_create_leads.sql
    psql "$DATABASE_URL" -f db/migrations/002_harden_leads.sql
+   psql "$DATABASE_URL" -f db/migrations/003_update_service_interests.sql
    ```
 
 ### Existing Database Upgrade
 
-If upgrading an existing database that already ran `001_create_leads.sql`, apply the hardening migration:
+If upgrading an existing database at migration 002, apply migration 003:
 ```bash
-psql "$DATABASE_URL" -f db/migrations/002_harden_leads.sql
+psql "$DATABASE_URL" -f db/migrations/003_update_service_interests.sql
 ```
 
 ## Environment & SEO Indexing Architecture
@@ -67,7 +68,8 @@ Follow these step-by-step instructions when launching to production:
 4. **Database URL**: Set `DATABASE_URL` in Vercel Environment Variables.
 5. **Apply Migration 001**: Execute `db/migrations/001_create_leads.sql`.
 6. **Apply Migration 002**: Execute `db/migrations/002_harden_leads.sql`.
-7. **Verify Schema**: Confirm tables and constraints (`chk_leads_lead_type`, `chk_leads_locale`, etc.) exist in Neon.
+7. **Apply Migration 003**: Execute `db/migrations/003_update_service_interests.sql`.
+8. **Verify Schema**: Confirm tables and constraints (`chk_leads_lead_type`, `chk_leads_interest`, `chk_leads_locale`, etc.) exist in Neon.
 8. **Resend Setup**: Create an account on [Resend](https://resend.com).
 9. **Domain Verification**: Verify your sending domain (`venkoi.com`) in Resend DNS settings.
 10. **Resend API Key**: Configure `RESEND_API_KEY` in Vercel Environment Variables.
