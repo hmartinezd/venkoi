@@ -12,7 +12,13 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:routing": "tsx scripts/test-routing-regression.ts",
+    "test:navigation": "tsx scripts/test-navigation-intent.ts",
+    "test:site-config": "tsx scripts/test-site-config.ts",
+    "test:leads": "tsx scripts/test-lead-flow.ts",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:leads",
+    "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
@@ -40,6 +46,7 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.5.23",
     "prettier": "^2.8.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.4.0"
   }
 }

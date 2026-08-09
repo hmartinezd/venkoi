@@ -74,6 +74,7 @@ export function ZaikoExplorer({
           {areaKeys.map((area) => (
             <button
               key={area}
+              type="button"
               onClick={() => setActiveArea(area)}
               aria-pressed={activeArea === area}
               className={`px-4 py-2 rounded-full text-sm transition-all border outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 ${
@@ -88,7 +89,7 @@ export function ZaikoExplorer({
         </div>
 
         {/* Active Panel */}
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center min-h-[480px]">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:min-h-[480px]">
           {/* Content Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-4">
@@ -131,7 +132,7 @@ export function ZaikoExplorer({
               </TrackedButton>
               <a
                 href={`#${activeArea}`}
-                className="text-sm font-bold text-ink hover:text-orange transition-colors flex items-center gap-1 group"
+                className="text-sm font-bold text-ink hover:text-orange transition-colors flex items-center gap-1 group outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm"
               >
                 {detailLinkLabel.replace('{area}', activeContent.label)}
                 <span className="group-hover:translate-x-0.5 transition-transform">→</span>

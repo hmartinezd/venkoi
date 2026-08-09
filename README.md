@@ -23,9 +23,25 @@ A Next.js marketing site and digital product platform for Venkoi prepared for pr
 ## Available Commands
 
 - `npm run dev` - start local development server
+- `npm run quality` - run full quality gate: lint, typecheck, regression tests, and production build
+- `npm run test:regression` - run all local-safe regression scripts
 - `npm run build` - run lint, typecheck, and Next.js production build
 - `npm run lint` - run ESLint checks
 - `npm run typecheck` - run TypeScript type checking
+
+## Quality Gate & Regression Harness
+
+The repository includes a technical quality gate that runs on every Pull Request and push to `main` via GitHub Actions.
+
+### Regression Suite
+- **Routing**: Validates localized path generation and route key detection.
+- **Navigation Intent**: Ensures search parameter normalization for contact and demo intents.
+- **Site Config**: Verifies environment-specific behavior (Production vs Preview vs Development).
+- **Lead Flow**: Validates lead validation logic and ensures safe failure semantics when the database is unavailable.
+
+Before merging to `main`, ensure `npm run quality` passes locally. This command performs a complete verification including the production build.
+
+> **CI Status**: Once the Quality workflow has proven stable, the repository owner may optionally require its status check as a branch protection rule before merging.
 
 ## Lead Infrastructure & Database Migrations Setup
 
