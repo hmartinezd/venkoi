@@ -360,6 +360,13 @@
       "heading": "Inventory gets harder when the information lives in different places.",
       "body": "Purchases may be tracked one way, quantities another, cost changes somewhere else, and movement may be difficult to reconstruct later. Zaiko is designed to bring those pieces into one clearer inventory picture."
     },
+    "explorer": {
+      "eyebrow": "EXPLORE ZAIKO",
+      "heading": "See each part of your inventory story more clearly.",
+      "body": "Explore the four areas Zaiko brings together. Select an area to see what it is designed to help you understand.",
+      "detailLink": "See more about {area}",
+      "demoCta": "Request a Demo"
+    },
     "areas": {
       "inventory": {
         "eyebrow": "INVENTORY",

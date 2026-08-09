@@ -360,6 +360,13 @@
       "heading": "El inventario se complica cuando la información está repartida en distintos lugares.",
       "body": "Las compras pueden registrarse de una forma, las cantidades de otra, los cambios de costo en otro lugar y los movimientos pueden ser difíciles de reconstruir después. Zaiko está diseñado para reunir esas piezas en una visión más clara del inventario."
     },
+    "explorer": {
+      "eyebrow": "EXPLORA ZAIKO",
+      "heading": "Ve con más claridad cada parte de la historia de tu inventario.",
+      "body": "Explora las cuatro áreas que Zaiko reúne. Selecciona una para ver qué está diseñada para ayudarte a entender.",
+      "detailLink": "Ver más sobre {area}",
+      "demoCta": "Solicitar una demo"
+    },
     "areas": {
       "inventory": {
         "eyebrow": "INVENTARIO",

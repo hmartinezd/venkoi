@@ -7,6 +7,7 @@ import { ZaikoWorkflow } from '@/components/product/zaiko/ZaikoWorkflow';
 import { ZaikoEarlyAccess } from '@/components/product/zaiko/ZaikoEarlyAccess';
 import { ZaikoFinalCta } from '@/components/product/zaiko/ZaikoFinalCta';
 import { ZaikoProblemSection } from '@/components/product/zaiko/ZaikoProblemSection';
+import { ZaikoExplorer } from '@/components/product/zaiko/ZaikoExplorer';
 import { ZaikoAudience } from '@/components/product/zaiko/ZaikoAudience';
 import { ZaikoFaq } from '@/components/product/zaiko/ZaikoFaq';
 import { locales, type Locale } from '@/i18n/config';
@@ -49,6 +50,7 @@ export default async function ZaikoPage({ params }: PageProps) {
   const tHero = await getTranslations('zaikoPage.hero');
   const tIntro = await getTranslations('zaikoPage.intro');
   const tProblem = await getTranslations('zaikoPage.problem');
+  const tExplorer = await getTranslations('zaikoPage.explorer');
   const tAreas = await getTranslations('zaikoPage.areas');
   const tWorkflow = await getTranslations('zaikoPage.workflow');
   const tAudience = await getTranslations('zaikoPage.audience');
@@ -69,6 +71,53 @@ export default async function ZaikoPage({ params }: PageProps) {
     incoming: tVisuals('incoming'),
     history: tVisuals('history'),
     trend: tVisuals('trend')
+  };
+
+  const explorerAreas = {
+    inventory: {
+      label: tNav('inventory'),
+      eyebrow: tAreas('inventory.eyebrow'),
+      heading: tAreas('inventory.heading'),
+      body: tAreas('inventory.body'),
+      supporting: [
+        tAreas('inventory.supporting.0'),
+        tAreas('inventory.supporting.1'),
+        tAreas('inventory.supporting.2')
+      ]
+    },
+    purchases: {
+      label: tNav('purchases'),
+      eyebrow: tAreas('purchases.eyebrow'),
+      heading: tAreas('purchases.heading'),
+      body: tAreas('purchases.body'),
+      supporting: [
+        tAreas('purchases.supporting.0'),
+        tAreas('purchases.supporting.1'),
+        tAreas('purchases.supporting.2')
+      ]
+    },
+    activity: {
+      label: tNav('activity'),
+      eyebrow: tAreas('activity.eyebrow'),
+      heading: tAreas('activity.heading'),
+      body: tAreas('activity.body'),
+      supporting: [
+        tAreas('activity.supporting.0'),
+        tAreas('activity.supporting.1'),
+        tAreas('activity.supporting.2')
+      ]
+    },
+    costs: {
+      label: tNav('costs'),
+      eyebrow: tAreas('costs.eyebrow'),
+      heading: tAreas('costs.heading'),
+      body: tAreas('costs.body'),
+      supporting: [
+        tAreas('costs.supporting.0'),
+        tAreas('costs.supporting.1'),
+        tAreas('costs.supporting.2')
+      ]
+    }
   };
 
   const jsonLd = {
@@ -144,6 +193,18 @@ export default async function ZaikoPage({ params }: PageProps) {
         eyebrow={tProblem('eyebrow')}
         heading={tProblem('heading')}
         body={tProblem('body')}
+      />
+
+      {/* Product Explorer */}
+      <ZaikoExplorer
+        locale={currentLocale}
+        eyebrow={tExplorer('eyebrow')}
+        heading={tExplorer('heading')}
+        body={tExplorer('body')}
+        detailLinkLabel={tExplorer('detailLink')}
+        demoCtaLabel={tExplorer('demoCta')}
+        areas={explorerAreas}
+        visualLabels={visualLabels}
       />
 
       {/* 4 Core Product Feature Areas */}
