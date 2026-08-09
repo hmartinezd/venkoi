@@ -43,15 +43,21 @@ export default async function InsightsPage({ params }: PageProps) {
   const articles = [
     {
       routeKey: 'insightRestaurantInventory' as const,
-      data: tArticles('restaurantInventory') as any
+      category: tArticles('restaurantInventory.category'),
+      title: tArticles('restaurantInventory.title'),
+      description: tArticles('restaurantInventory.description')
     },
     {
       routeKey: 'insightStartSoftwareProject' as const,
-      data: tArticles('startSoftwareProject') as any
+      category: tArticles('startSoftwareProject.category'),
+      title: tArticles('startSoftwareProject.title'),
+      description: tArticles('startSoftwareProject.description')
     },
     {
       routeKey: 'insightWebsiteOrWebApp' as const,
-      data: tArticles('websiteOrWebApp') as any
+      category: tArticles('websiteOrWebApp.category'),
+      title: tArticles('websiteOrWebApp.title'),
+      description: tArticles('websiteOrWebApp.description')
     }
   ];
 
@@ -88,9 +94,9 @@ export default async function InsightsPage({ params }: PageProps) {
               <InsightCard
                 key={article.routeKey}
                 locale={currentLocale}
-                category={article.data.category}
-                title={article.data.title}
-                description={article.data.description}
+                category={article.category}
+                title={article.title}
+                description={article.description}
                 routeKey={article.routeKey}
                 readMoreLabel={t('readMore')}
               />
