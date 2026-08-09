@@ -77,7 +77,7 @@ export function ZaikoExplorer({
               type="button"
               onClick={() => setActiveArea(area)}
               aria-pressed={activeArea === area}
-              className={`px-4 py-2 rounded-full text-sm transition-all border outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 ${
+              className={`px-4 py-2 rounded-full text-sm transition-all border focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 ${
                 activeArea === area
                   ? 'bg-orange text-white border-orange shadow-sm font-bold'
                   : 'bg-surface text-foreground-muted border-border hover:border-orange/50 hover:text-ink font-medium'
@@ -132,7 +132,7 @@ export function ZaikoExplorer({
               </TrackedButton>
               <a
                 href={`#${activeArea}`}
-                className="text-sm font-bold text-ink hover:text-orange transition-colors flex items-center gap-1 group outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm"
+                className="text-sm font-bold text-ink hover:text-orange transition-colors flex items-center gap-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm"
               >
                 {detailLinkLabel.replace('{area}', activeContent.label)}
                 <span className="group-hover:translate-x-0.5 transition-transform">→</span>
