@@ -53,11 +53,13 @@ export default async function LocaleLayout({ params, children }: PageProps) {
     <html lang={currentLocale} className={geist.variable} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         <NextIntlClientProvider messages={messages} locale={currentLocale}>
-          <a id="skip-to-content" href={`/${currentLocale}#content`}>
+          <a id="skip-to-content" href="#content">
             {t('skipToContent')}
           </a>
           <Header locale={currentLocale} />
-          <main id="content">{children}</main>
+          <main id="content" tabIndex={-1} className="outline-hidden">
+            {children}
+          </main>
           <Footer locale={currentLocale} />
         </NextIntlClientProvider>
         <Analytics />

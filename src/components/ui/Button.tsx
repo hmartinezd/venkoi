@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, ReactElement } from 'react';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, ReactElement, ComponentProps } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'text';
 
@@ -10,9 +10,9 @@ type SharedProps = {
   children: ReactNode;
 };
 
-type LinkProps = SharedProps & AnchorHTMLAttributes<HTMLAnchorElement> & {
-  href: string;
-};
+type NextLinkProps = ComponentProps<typeof Link>;
+
+type LinkProps = SharedProps & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps> & NextLinkProps;
 
 type ActionProps = SharedProps & ButtonHTMLAttributes<HTMLButtonElement> & {
   href?: undefined;
@@ -40,20 +40,23 @@ export function Button(props: LinkProps | ActionProps) {
     className
   );
 
-  if ('href' in props && typeof props.href === 'string') {
+  if ('href' in props && props.href !== undefined) {
     const { href, target, rel, ...rest } = props as LinkProps;
-    const isInternal = href.startsWith('/') && !href.startsWith('//');
 
-    if (isInternal) {
+    // Check if it's a string href and if it's internal
+    const isStringHref = typeof href === 'string';
+    const isInternal = isStringHref && href.startsWith('/') && !href.startsWith('//');
+
+    if (isInternal || !isStringHref) {
       return (
-        <Link className={classes} href={href as any} {...rest}>
+        <Link className={classes} href={href} {...rest}>
           {children}
         </Link>
       );
     }
 
     return (
-      <a className={classes} href={href} target={target} rel={rel} {...rest}>
+      <a className={classes} href={href as string} target={target} rel={rel} {...rest}>
         {children}
       </a>
     );
@@ -66,5 +69,6 @@ export function Button(props: LinkProps | ActionProps) {
     </button>
   );
 }
+
 
 

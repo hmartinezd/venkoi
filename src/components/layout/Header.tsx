@@ -1,74 +1,32 @@
 'use client';
 
-import { useEffect, useState, useRef, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useEffect, useState, useRef } from 'react';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath, getLocalizedPath, type RouteKey, type InternalPathname } from '@/i18n/routing';
-import { localeLabels, locales, type Locale } from '@/i18n/config';
+import { internalRoutes, getRouteKeyFromPath, getLocalizedPath, type Locale } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
-
-import { trackCustomEvent } from '@/lib/analytics';
-import { getSafeLocalizedIntentQuery } from '@/lib/navigation-intent';
-
-function LanguageSwitcherContent({ locale, pathname }: { locale: Locale; pathname: string }) {
-  const routeKey = getRouteKeyFromPath(pathname);
-  const currentPath = internalRoutes[routeKey];
-  const searchParams = useSearchParams();
-
-  return (
-    <div className="flex items-center gap-2 text-xs font-semibold tracking-wider">
-      {locales.map((localeKey, index) => {
-        const safeParams = getSafeLocalizedIntentQuery(routeKey, searchParams);
-        const query = Object.fromEntries(safeParams.entries());
-
-        return (
-          <span key={localeKey} className="flex items-center gap-2">
-            <LocalizedLink
-              href={{ pathname: currentPath, query }}
-              locale={localeKey}
-              onClick={() => {
-                if (localeKey !== locale) {
-                  trackCustomEvent('language_switch', { locale: localeKey });
-                }
-              }}
-              className={cn(
-                'transition-colors py-1 px-1.5 rounded hover:text-ink',
-                localeKey === locale
-                  ? 'text-ink font-bold border-b-2 border-orange'
-                  : 'text-foreground-muted'
-              )}
-            >
-              {localeLabels[localeKey]}
-            </LocalizedLink>
-            {index < locales.length - 1 ? <span className="text-border-strong">|</span> : null}
-          </span>
-        );
-      })}
-    </div>
-  );
-}
-
-function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: string }) {
-  return (
-    <Suspense fallback={<div className="h-6 w-20 animate-pulse bg-surface-muted rounded" />}>
-      <LanguageSwitcherContent locale={locale} pathname={pathname} />
-    </Suspense>
-  );
-}
+import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 
 export function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
+  const routeKey = getRouteKeyFromPath(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownTriggerRef = useRef<HTMLButtonElement>(null);
+  const mobileTriggerRef = useRef<HTMLButtonElement>(null);
 
   const tNav = useTranslations('navigation');
   const tHeader = useTranslations('header');
   const tCommon = useTranslations('common');
+
+  const isProductsActive = routeKey === 'productsZaiko';
+  const isServicesActive = ['services', 'servicesMobile', 'servicesWeb'].includes(routeKey);
+  const isAboutActive = routeKey === 'about';
+  const isContactActive = routeKey === 'contact';
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 12);
@@ -85,8 +43,14 @@ export function Header({ locale }: { locale: Locale }) {
     }
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        setDropdownOpen(false);
-        setMenuOpen(false);
+        if (dropdownOpen) {
+          setDropdownOpen(false);
+          dropdownTriggerRef.current?.focus();
+        }
+        if (menuOpen) {
+          setMenuOpen(false);
+          mobileTriggerRef.current?.focus();
+        }
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -95,7 +59,7 @@ export function Header({ locale }: { locale: Locale }) {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [dropdownOpen, menuOpen]);
 
   return (
     <header
@@ -117,6 +81,7 @@ export function Header({ locale }: { locale: Locale }) {
           <div className="relative" ref={dropdownRef}>
             <button
               type="button"
+              ref={dropdownTriggerRef}
               onClick={() => setDropdownOpen((prev) => !prev)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -126,7 +91,11 @@ export function Header({ locale }: { locale: Locale }) {
               }}
               aria-expanded={dropdownOpen}
               aria-haspopup="true"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink transition hover:text-orange focus:outline-hidden"
+              aria-controls="products-navigation"
+              className={cn(
+                'inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-orange focus:outline-hidden',
+                isProductsActive ? 'text-orange' : 'text-ink'
+              )}
             >
               <span>{tHeader('productsDropdown')}</span>
               <svg
@@ -141,15 +110,25 @@ export function Header({ locale }: { locale: Locale }) {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute left-0 mt-3 w-72 rounded-2xl border border-border bg-surface p-3 shadow-card transition-all">
+              <div
+                id="products-navigation"
+                className="absolute left-0 mt-3 w-72 rounded-2xl border border-border bg-surface p-3 shadow-card transition-all"
+              >
                 <LocalizedLink
                   href={internalRoutes.productsZaiko}
                   locale={locale}
                   onClick={() => setDropdownOpen(false)}
-                  className="group flex flex-col rounded-xl p-3 hover:bg-surface-muted transition"
+                  aria-current={routeKey === 'productsZaiko' ? 'page' : undefined}
+                  className={cn(
+                    'group flex flex-col rounded-xl p-3 transition',
+                    routeKey === 'productsZaiko' ? 'bg-surface-muted' : 'hover:bg-surface-muted'
+                  )}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-ink group-hover:text-orange">
+                    <span className={cn(
+                      'text-sm font-semibold group-hover:text-orange',
+                      routeKey === 'productsZaiko' ? 'text-orange' : 'text-ink'
+                    )}>
                       {tNav('zaiko')}
                     </span>
                     <span className="rounded-md bg-orange-subtle px-2 py-0.5 text-[10px] font-bold text-orange uppercase tracking-wider">
@@ -167,7 +146,11 @@ export function Header({ locale }: { locale: Locale }) {
           <LocalizedLink
             href={internalRoutes.services}
             locale={locale}
-            className="text-sm font-medium text-ink transition hover:text-orange"
+            aria-current={isServicesActive ? 'page' : undefined}
+            className={cn(
+              'text-sm font-medium transition hover:text-orange',
+              isServicesActive ? 'text-orange' : 'text-ink'
+            )}
           >
             {tNav('services')}
           </LocalizedLink>
@@ -175,7 +158,11 @@ export function Header({ locale }: { locale: Locale }) {
           <LocalizedLink
             href={internalRoutes.about}
             locale={locale}
-            className="text-sm font-medium text-ink transition hover:text-orange"
+            aria-current={isAboutActive ? 'page' : undefined}
+            className={cn(
+              'text-sm font-medium transition hover:text-orange',
+              isAboutActive ? 'text-orange' : 'text-ink'
+            )}
           >
             {tNav('about')}
           </LocalizedLink>
@@ -183,7 +170,11 @@ export function Header({ locale }: { locale: Locale }) {
           <LocalizedLink
             href={internalRoutes.contact}
             locale={locale}
-            className="text-sm font-medium text-ink transition hover:text-orange"
+            aria-current={isContactActive ? 'page' : undefined}
+            className={cn(
+              'text-sm font-medium transition hover:text-orange',
+              isContactActive ? 'text-orange' : 'text-ink'
+            )}
           >
             {tNav('contact')}
           </LocalizedLink>
@@ -191,7 +182,7 @@ export function Header({ locale }: { locale: Locale }) {
 
         {/* Desktop CTA & Language Switcher */}
         <div className="hidden items-center gap-6 md:flex">
-          <LanguageSwitcher locale={locale} pathname={pathname} />
+          <LanguageSwitcher locale={locale} variant="header" />
           <Button href={getLocalizedPath('demo', locale)} variant="primary" className="text-xs">
             {tCommon('demo')}
           </Button>
@@ -199,11 +190,13 @@ export function Header({ locale }: { locale: Locale }) {
 
         {/* Mobile menu button */}
         <div className="flex items-center gap-3 md:hidden">
-          <LanguageSwitcher locale={locale} pathname={pathname} />
+          <LanguageSwitcher locale={locale} variant="mobile" />
           <button
             type="button"
+            ref={mobileTriggerRef}
             aria-label={menuOpen ? tHeader('closeMenu') : tHeader('openMenu')}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((current) => !current)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-ink transition hover:bg-surface-muted"
           >
@@ -222,13 +215,20 @@ export function Header({ locale }: { locale: Locale }) {
 
       {/* Mobile Drawer */}
       {menuOpen ? (
-        <div className="absolute top-[72px] inset-x-0 border-b border-border bg-surface/98 p-6 backdrop-blur-lg md:hidden shadow-lg animate-in slide-in-from-top-2">
+        <div
+          id="mobile-navigation"
+          className="absolute top-[72px] inset-x-0 border-b border-border bg-surface/98 p-6 backdrop-blur-lg md:hidden shadow-lg animate-in slide-in-from-top-2"
+        >
           <nav className="grid gap-3 text-base font-medium">
             <LocalizedLink
               href={internalRoutes.productsZaiko}
               locale={locale}
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-between rounded-xl px-4 py-3 text-ink transition hover:bg-surface-muted"
+              aria-current={routeKey === 'productsZaiko' ? 'page' : undefined}
+              className={cn(
+                'flex items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                routeKey === 'productsZaiko' ? 'text-orange' : 'text-ink'
+              )}
             >
               <span>{tNav('zaiko')}</span>
               <span className="text-xs text-foreground-muted">{tNav('zaikoSubtitle')}</span>
@@ -237,7 +237,11 @@ export function Header({ locale }: { locale: Locale }) {
               href={internalRoutes.services}
               locale={locale}
               onClick={() => setMenuOpen(false)}
-              className="block rounded-xl px-4 py-3 text-ink transition hover:bg-surface-muted"
+              aria-current={isServicesActive ? 'page' : undefined}
+              className={cn(
+                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                isServicesActive ? 'text-orange' : 'text-ink'
+              )}
             >
               {tNav('services')}
             </LocalizedLink>
@@ -245,7 +249,11 @@ export function Header({ locale }: { locale: Locale }) {
               href={internalRoutes.about}
               locale={locale}
               onClick={() => setMenuOpen(false)}
-              className="block rounded-xl px-4 py-3 text-ink transition hover:bg-surface-muted"
+              aria-current={isAboutActive ? 'page' : undefined}
+              className={cn(
+                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                isAboutActive ? 'text-orange' : 'text-ink'
+              )}
             >
               {tNav('about')}
             </LocalizedLink>
@@ -253,7 +261,11 @@ export function Header({ locale }: { locale: Locale }) {
               href={internalRoutes.contact}
               locale={locale}
               onClick={() => setMenuOpen(false)}
-              className="block rounded-xl px-4 py-3 text-ink transition hover:bg-surface-muted"
+              aria-current={isContactActive ? 'page' : undefined}
+              className={cn(
+                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                isContactActive ? 'text-orange' : 'text-ink'
+              )}
             >
               {tNav('contact')}
             </LocalizedLink>
@@ -274,3 +286,4 @@ export function Header({ locale }: { locale: Locale }) {
     </header>
   );
 }
+

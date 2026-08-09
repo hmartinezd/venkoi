@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { LocalizedLink } from '@/i18n/navigation';
+import { Button } from '@/components/ui/Button';
 
 export default function Error({
   error,
@@ -32,16 +33,15 @@ export default function Error({
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-          <button
-            type="button"
+          <Button
             onClick={reset}
-            className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-orange px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-hover transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange"
+            className="w-full sm:w-auto"
           >
             {t('tryAgain')}
-          </button>
+          </Button>
           <LocalizedLink
             href="/"
-            className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground hover:bg-surface-hover transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-ink transition duration-200 hover:border-ink hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange"
           >
             {t('goHome')}
           </LocalizedLink>
@@ -50,3 +50,4 @@ export default function Error({
     </section>
   );
 }
+
