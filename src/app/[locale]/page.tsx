@@ -107,6 +107,7 @@ export default async function HomePage({ params }: PageProps) {
         heading={tHome('services.heading')}
         body={tHome('services.body')}
         cta={tHome('services.cta')}
+        learnMore={tHome('services.learnMore')}
         mobileTitle={tHome('services.mobileTitle')}
         mobileDesc={tHome('services.mobileDesc')}
         webTitle={tHome('services.webTitle')}

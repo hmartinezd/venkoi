@@ -13,6 +13,7 @@ export function ServicesSection({
   heading,
   body,
   cta,
+  learnMore,
   mobileTitle,
   mobileDesc,
   webTitle,
@@ -23,6 +24,7 @@ export function ServicesSection({
   heading: string;
   body: string;
   cta: string;
+  learnMore: string;
   mobileTitle: string;
   mobileDesc: string;
   webTitle: string;
@@ -71,12 +73,12 @@ export function ServicesSection({
             </div>
             <div className="pt-4 border-t border-white/10 flex justify-end">
               <Button
-                href={getLocalizedPath('contact', locale) + '?type=services&interest=mobile'}
+                href={getLocalizedPath('servicesMobile', locale)}
                 variant="secondary"
                 className="text-xs bg-white/10 text-white border-white/20 hover:bg-white/20"
-                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_mobile' })}
+                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_mobile_detail' })}
               >
-                {cta}
+                {learnMore}
               </Button>
             </div>
           </div>
@@ -96,12 +98,12 @@ export function ServicesSection({
             </div>
             <div className="pt-4 border-t border-white/10 flex justify-end">
               <Button
-                href={getLocalizedPath('contact', locale) + '?type=services&interest=web'}
+                href={getLocalizedPath('servicesWeb', locale)}
                 variant="secondary"
                 className="text-xs bg-white/10 text-white border-white/20 hover:bg-white/20"
-                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_web' })}
+                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_web_detail' })}
               >
-                {cta}
+                {learnMore}
               </Button>
             </div>
           </div>

@@ -87,6 +87,24 @@ export function Footer({ locale }: { locale: Locale }) {
               </li>
               <li>
                 <LocalizedLink
+                  href={internalRoutes.servicesMobile}
+                  locale={locale}
+                  className="transition hover:text-ink"
+                >
+                  {tNav('mobileApplications')}
+                </LocalizedLink>
+              </li>
+              <li>
+                <LocalizedLink
+                  href={internalRoutes.servicesWeb}
+                  locale={locale}
+                  className="transition hover:text-ink"
+                >
+                  {tNav('webApplications')}
+                </LocalizedLink>
+              </li>
+              <li>
+                <LocalizedLink
                   href={internalRoutes.demo}
                   locale={locale}
                   className="transition hover:text-ink"

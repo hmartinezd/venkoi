@@ -19,7 +19,9 @@
     "services": "Services",
     "about": "About",
     "contact": "Contact",
-    "demo": "Demo"
+    "demo": "Demo",
+    "mobileApplications": "Mobile Applications",
+    "webApplications": "Websites & Web Applications"
   },
   "header": {
     "logoTitle": "Venkoi home",
@@ -72,6 +74,7 @@
       "heading": "Have an idea? We can help you build it.",
       "body": "Venkoi helps turn ideas into mobile applications, websites, and web applications — from design and development through testing.",
       "cta": "Tell us about your idea",
+      "learnMore": "Learn more",
       "mobileTitle": "MOBILE APPLICATIONS",
       "mobileDesc": "Mobile applications for iOS and Android built around real users, goals, and workflows.",
       "webTitle": "WEBSITES & WEB APPLICATIONS",
@@ -158,6 +161,8 @@
     "ideaTitle": "You don't need a finished specification.",
     "ideaBody": "Bring us the idea, the problem, or what you want to create. We'll help turn it into something clear, useful, and ready to build.",
     "ideaCta": "Tell us about your idea",
+    "exploreMobile": "Explore Mobile Applications",
+    "exploreWeb": "Explore Websites & Web Applications",
     "seoTitle": "Services | Mobile Apps & Web Development | Venkoi",
     "seoDescription": "Venkoi designs, builds, and tests mobile applications for iOS and Android, websites, and web applications in Tampa Bay, South Florida, and beyond."
   },
@@ -361,5 +366,50 @@
     "description": "An unexpected error occurred. Please try again or return to the homepage.",
     "tryAgain": "Try again",
     "goHome": "Back to Venkoi"
+  },
+  "mobileServicePage": {
+    "eyebrow": "MOBILE APPLICATIONS",
+    "heroHeading": "Mobile experiences built around real people and real goals.",
+    "heroBody": "Venkoi designs, builds, and tests mobile applications for iOS and Android, helping turn ideas into useful experiences from early definition through launch-ready development.",
+    "primaryCta": "Tell us about your mobile app",
+    "secondaryCta": "How we work",
+    "rangeHeading": "Mobile applications for different kinds of ideas.",
+    "rangeItem1": "Customer-facing experiences",
+    "rangeItem2": "Internal tools",
+    "rangeItem3": "Workflow-driven applications",
+    "rangeItem4": "New applications",
+    "rangeItem5": "Existing applications that need improvement",
+    "platformHeading": "Built for iOS and Android.",
+    "platformBody": "The right technical approach depends on the product. We focus first on the experience, requirements, and long-term needs, then choose an implementation approach that fits the project.",
+    "processHeading": "A lifecycle built for mobile products.",
+    "existingHeading": "Already have an app?",
+    "existingBody": "We can also help improve an existing mobile experience — whether the goal is to refine usability, add functionality, modernize the experience, or solve specific product problems.",
+    "seoTitle": "Mobile App Development for iOS & Android | Venkoi",
+    "seoDescription": "Venkoi designs, builds, and tests mobile applications for iOS and Android, from early ideas through useful, production-ready digital experiences in Tampa Bay, South Florida, and beyond."
+  },
+  "webServicePage": {
+    "eyebrow": "WEBSITES & WEB APPLICATIONS",
+    "heroHeading": "The web experience should fit the idea — not the other way around.",
+    "heroBody": "From straightforward websites to more interactive web applications, Venkoi helps define, design, build, and test the web experience that fits what you want to accomplish.",
+    "primaryCta": "Tell us about your web project",
+    "secondaryCta": "How we work",
+    "rangeHeading": "From a clear web presence to more interactive experiences.",
+    "rangeItem1": "Simple websites",
+    "rangeItem2": "Content-rich websites",
+    "rangeItem3": "Interactive experiences",
+    "rangeItem4": "Web applications",
+    "rangeItem5": "Existing websites or applications that need improvement",
+    "noTechHeading": "You don't need to arrive with the technical answer.",
+    "noTechBody": "Tell us what you want people to be able to do, what problem you want to solve, or what you want to create. We'll help shape the right approach.",
+    "processHeading": "A lifecycle built for web products.",
+    "existingHeading": "Already have something online?",
+    "existingBody": "Venkoi can also help improve an existing website or web application when it needs a clearer experience, new functionality, modernization, or focused improvements.",
+    "seoTitle": "Website & Web Application Development | Venkoi",
+    "seoDescription": "Venkoi designs, builds, and tests websites and web applications, from straightforward web experiences to more interactive products in Tampa Bay, South Florida, and beyond."
+  },
+  "breadcrumbs": {
+    "services": "Services",
+    "mobileApplications": "Mobile Applications",
+    "webApplications": "Websites & Web Applications"
   }
 }

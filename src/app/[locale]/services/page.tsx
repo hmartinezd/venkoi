@@ -105,8 +105,8 @@ export default async function ServicesPage({ params }: PageProps) {
           </div>
 
           <div className="pt-2">
-            <Button href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=mobile'} variant="secondary">
-              {t('primaryCta')}
+            <Button href={getLocalizedPath('servicesMobile', currentLocale)} variant="secondary">
+              {t('exploreMobile')}
             </Button>
           </div>
         </Container>
@@ -131,8 +131,8 @@ export default async function ServicesPage({ params }: PageProps) {
           </div>
 
           <div className="pt-2">
-            <Button href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=web'} variant="secondary">
-              {t('primaryCta')}
+            <Button href={getLocalizedPath('servicesWeb', currentLocale)} variant="secondary">
+              {t('exploreWeb')}
             </Button>
           </div>
         </Container>

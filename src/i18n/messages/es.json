@@ -19,7 +19,9 @@
     "services": "Servicios",
     "about": "Nosotros",
     "contact": "Contacto",
-    "demo": "Demostración"
+    "demo": "Demostración",
+    "mobileApplications": "Aplicaciones Móviles",
+    "webApplications": "Páginas Web y Aplicaciones Web"
   },
   "header": {
     "logoTitle": "Inicio Venkoi",
@@ -72,6 +74,7 @@
       "heading": "¿Tienes una idea? Podemos ayudarte a crearla.",
       "body": "En Venkoi ayudamos a convertir ideas en aplicaciones móviles, páginas web y aplicaciones web — desde el diseño y el desarrollo hasta las pruebas.",
       "cta": "Cuéntanos tu idea",
+      "learnMore": "Conocer más",
       "mobileTitle": "APLICACIONES MÓVILES",
       "mobileDesc": "Aplicaciones móviles para iOS y Android creadas alrededor de usuarios, objetivos y procesos reales.",
       "webTitle": "PÁGINAS WEB Y APLICACIONES WEB",
@@ -158,6 +161,8 @@
     "ideaTitle": "No necesitas una especificación terminada.",
     "ideaBody": "Tráenos la idea, el problema o lo que quieres crear. Te ayudaremos a convertirlo en algo claro, útil y listo para construir.",
     "ideaCta": "Cuéntanos tu idea",
+    "exploreMobile": "Conoce más sobre Aplicaciones Móviles",
+    "exploreWeb": "Conoce más sobre Páginas y Aplicaciones Web",
     "seoTitle": "Servicios | Apps Móviles y Desarrollo Web | Venkoi",
     "seoDescription": "Venkoi diseña, desarrolla y prueba aplicaciones móviles para iOS y Android, páginas web y aplicaciones web en Tampa Bay, South Florida y más allá."
   },
@@ -361,5 +366,50 @@
     "description": "Ocurrió un error inesperado. Por favor, vuelve a intentarlo o regresa a la página principal.",
     "tryAgain": "Intentar de nuevo",
     "goHome": "Volver a Venkoi"
+  },
+  "mobileServicePage": {
+    "eyebrow": "APLICACIONES MÓVILES",
+    "heroHeading": "Experiencias móviles creadas alrededor de personas y objetivos reales.",
+    "heroBody": "En Venkoi diseñamos, desarrollamos y probamos aplicaciones móviles para iOS y Android, ayudando a convertir ideas en experiencias útiles desde la definición inicial hasta un producto listo para avanzar.",
+    "primaryCta": "Cuéntanos sobre tu aplicación",
+    "secondaryCta": "Cómo trabajamos",
+    "rangeHeading": "Aplicaciones móviles para diferentes tipos de ideas.",
+    "rangeItem1": "Experiencias para clientes",
+    "rangeItem2": "Herramientas internas",
+    "rangeItem3": "Aplicaciones basadas en flujos de trabajo",
+    "rangeItem4": "Nuevas aplicaciones",
+    "rangeItem5": "Aplicaciones existentes que necesitan mejoras",
+    "platformHeading": "Para iOS y Android.",
+    "platformBody": "El enfoque técnico adecuado depende del producto. Primero entendemos la experiencia, los requerimientos y las necesidades a largo plazo, y a partir de ahí elegimos la forma de desarrollo que mejor se adapte al proyecto.",
+    "processHeading": "Un ciclo de vida creado para productos móviles.",
+    "existingHeading": "¿Ya tienes una aplicación?",
+    "existingBody": "También podemos ayudar a mejorar una experiencia móvil existente, ya sea que el objetivo sea refinar la usabilidad, añadir funcionalidad, modernizar la experiencia o resolver problemas específicos del producto.",
+    "seoTitle": "Desarrollo de Apps Móviles para iOS y Android | Venkoi",
+    "seoDescription": "Venkoi diseña, desarrolla y prueba aplicaciones móviles para iOS y Android, desde la idea inicial hasta experiencias digitales útiles en Tampa Bay, South Florida y más allá."
+  },
+  "webServicePage": {
+    "eyebrow": "PÁGINAS WEB Y APLICACIONES WEB",
+    "heroHeading": "La experiencia web debe adaptarse a la idea, no al revés.",
+    "heroBody": "Desde páginas web sencillas hasta aplicaciones web más interactivas, en Venkoi te ayudamos a definir, diseñar, desarrollar y probar la experiencia web adecuada para lo que quieres lograr.",
+    "primaryCta": "Cuéntanos sobre tu proyecto web",
+    "secondaryCta": "Cómo trabajamos",
+    "rangeHeading": "Desde una presencia web clara hasta experiencias más interactivas.",
+    "rangeItem1": "Páginas web sencillas",
+    "rangeItem2": "Sitios web con gran cantidad de contenido",
+    "rangeItem3": "Experiencias interactivas",
+    "rangeItem4": "Aplicaciones web",
+    "rangeItem5": "Páginas o aplicaciones web existentes que necesitan mejoras",
+    "noTechHeading": "No necesitas llegar con la respuesta técnica.",
+    "noTechBody": "Cuéntanos qué quieres que las personas puedan hacer, qué problema quieres resolver o qué quieres crear. Te ayudaremos a definir el enfoque adecuado.",
+    "processHeading": "Un ciclo de vida creado para productos web.",
+    "existingHeading": "¿Ya tienes algo en línea?",
+    "existingBody": "Venkoi también puede ayudar a mejorar una página o aplicación web existente cuando necesita una experiencia más clara, nueva funcionalidad, modernización o mejoras específicas.",
+    "seoTitle": "Desarrollo de Páginas y Aplicaciones Web | Venkoi",
+    "seoDescription": "Venkoi diseña, desarrolla y prueba páginas web y aplicaciones web, desde experiencias sencillas hasta productos web más interactivos en Tampa Bay, South Florida y más allá."
+  },
+  "breadcrumbs": {
+    "services": "Servicios",
+    "mobileApplications": "Aplicaciones Móviles",
+    "webApplications": "Páginas Web y Aplicaciones Web"
   }
 }

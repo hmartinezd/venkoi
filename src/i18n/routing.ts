@@ -5,6 +5,8 @@ export const internalRoutes = {
   home: '/',
   productsZaiko: '/products/zaiko',
   services: '/services',
+  servicesMobile: '/services/mobile-applications',
+  servicesWeb: '/services/websites-web-applications',
   about: '/about',
   contact: '/contact',
   demo: '/demo'
@@ -21,6 +23,14 @@ const pathnames = {
   '/services': {
     en: '/services',
     es: '/servicios'
+  },
+  '/services/mobile-applications': {
+    en: '/services/mobile-applications',
+    es: '/servicios/aplicaciones-moviles'
+  },
+  '/services/websites-web-applications': {
+    en: '/services/websites-web-applications',
+    es: '/servicios/paginas-web-aplicaciones-web'
   },
   '/about': {
     en: '/about',
@@ -49,8 +59,20 @@ const pathToRoute = Object.entries(internalRoutes).reduce((map, [key, value]) =>
   const normalizedPath = normalizePathname(value);
 
   map[normalizedPath] = routeKey;
+
+  const pathnameConfig = pathnames[value as keyof typeof pathnames];
+
   locales.forEach((locale) => {
-    const localizedPath = value === '/' ? `/${locale}` : `/${locale}${value}`;
+    let localizedSegment: string;
+    if (typeof pathnameConfig === 'string') {
+      localizedSegment = pathnameConfig;
+    } else if (pathnameConfig && typeof pathnameConfig === 'object' && locale in pathnameConfig) {
+      localizedSegment = (pathnameConfig as any)[locale];
+    } else {
+      localizedSegment = value;
+    }
+
+    const localizedPath = localizedSegment === '/' ? `/${locale}` : `/${locale}${localizedSegment}`;
     map[normalizePathname(localizedPath)] = routeKey;
   });
 

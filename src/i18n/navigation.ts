@@ -82,6 +82,16 @@ export const footerNavigation: {
       id: 'services',
       labelKey: 'services',
       routeKey: 'services'
+    },
+    {
+      id: 'mobileApplications',
+      labelKey: 'mobileApplications',
+      routeKey: 'servicesMobile'
+    },
+    {
+      id: 'webApplications',
+      labelKey: 'webApplications',
+      routeKey: 'servicesWeb'
     }
   ]
 };

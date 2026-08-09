@@ -7,6 +7,8 @@ const sitemapRoutes: RouteKey[] = [
   'home',
   'productsZaiko',
   'services',
+  'servicesMobile',
+  'servicesWeb',
   'about',
   'contact'
 ];
@@ -32,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url,
         lastModified,
         changeFrequency: routeKey === 'home' ? 'weekly' : 'monthly',
-        priority: routeKey === 'home' ? 1.0 : routeKey === 'productsZaiko' ? 0.9 : 0.8,
+        priority: routeKey === 'home' ? 1.0 : (routeKey === 'productsZaiko' || routeKey === 'servicesMobile' || routeKey === 'servicesWeb') ? 0.9 : 0.8,
         alternates: {
           languages
         }
