@@ -18,6 +18,7 @@ export type SafeAnalyticsProperties = {
   source?: string;
   earlyAccess?: boolean;
   leadType?: string;
+  interest?: string;
 };
 
 /**
@@ -38,6 +39,7 @@ export function trackCustomEvent(
     if (properties?.source) safeProps.source = String(properties.source);
     if (typeof properties?.earlyAccess === 'boolean') safeProps.earlyAccess = properties.earlyAccess;
     if (properties?.leadType) safeProps.leadType = String(properties.leadType);
+    if (properties?.interest) safeProps.interest = String(properties.interest);
 
     track(eventName, safeProps);
   } catch (err) {

@@ -189,6 +189,31 @@
     "eyebrow": "CONTACTO VENKOI",
     "heading": "Hablemos.",
     "body": "Escríbenos para consultar sobre un producto Venkoi, una aplicación móvil, una página web o una aplicación web.",
+    "intent": {
+      "mobile": {
+        "eyebrow": "PROYECTO DE APLICACIÓN MÓVIL",
+        "heading": "Cuéntanos sobre la aplicación móvil que quieres crear.",
+        "body": "No necesitas una especificación terminada. Cuéntanos la idea, el problema que quieres resolver o qué quieres que la aplicación ayude a las personas a hacer."
+      },
+      "web": {
+        "eyebrow": "PROYECTO WEB",
+        "heading": "Cuéntanos qué quieres crear en la web.",
+        "body": "Ya sea que se convierta en una página web, una aplicación web o algo intermedio, comienza con lo que quieres lograr y te ayudaremos a definir el enfoque adecuado."
+      },
+      "unsure": {
+        "eyebrow": "EMPIEZA CON LA IDEA",
+        "heading": "¿Aún no sabes qué necesitas? No hay problema.",
+        "body": "Cuéntanos qué quieres lograr, qué problema estás tratando de resolver o qué tienes en mente. Podemos ayudarte a aclarar la dirección correcta."
+      }
+    },
+    "projectTypeIndicator": "Tipo de proyecto",
+    "nextSteps": {
+      "heading": "¿Qué pasa después?",
+      "step1": "Revisamos lo que compartiste.",
+      "step2": "Nos ponemos en contacto para entender mejor la idea o el problema.",
+      "step3": "Si parece que encaja bien, definimos juntos el siguiente paso útil.",
+      "differentiator": "Habla directamente con las personas que están creando tu software."
+    },
     "locationEyebrow": "UBICACIÓN",
     "inquiriesEyebrow": "CONSULTAS",
     "locationBoxTitle": "Con sede en Tampa Bay",
@@ -217,6 +242,7 @@
         "needsImprovement": "Software existente que necesita mejoras"
       },
       "message": "Cuéntanos sobre tu idea o problema",
+      "messageHint": "Cuéntanos el objetivo, para quién es, qué quieres que las personas hagan o qué existe actualmente.",
       "submit": "Hablemos",
       "submitting": "Enviando...",
       "successTitle": "Gracias — recibimos tu mensaje.",
@@ -240,6 +266,26 @@
       "body": "Cuéntanos un poco sobre tu restaurante y te ayudaremos a dar el siguiente paso para ver cómo Zaiko puede adaptarse a tu operación.",
       "earlyAccessBadge": "Acceso anticipado · 3 meses gratis",
       "title": "Demo de Restaurante Zaiko"
+    },
+    "standard": {
+      "successTitle": "Gracias — recibimos tu solicitud de demo.",
+      "successMessage": "Revisaremos la información que compartiste y nos pondremos en contacto para ver cómo Zaiko podría adaptarse a la operación de tu restaurante."
+    },
+    "earlyAccess": {
+      "eyebrow": "ACCESO ANTICIPADO DE ZAIKO",
+      "heading": "Prueba Zaiko a través de nuestro acceso anticipado.",
+      "body": "Únete a nuestro programa de acceso anticipado y usa Zaiko gratis durante 3 meses mientras continuamos mejorando el producto junto a operadores de restaurantes.",
+      "formTitle": "Solicitud de acceso anticipado",
+      "badge": "3 meses gratis durante el acceso anticipado.",
+      "successTitle": "Gracias — recibimos tu solicitud de acceso anticipado.",
+      "successMessage": "Revisaremos tu información y nos pondremos en contacto sobre el siguiente paso para probar Zaiko a través del acceso anticipado."
+    },
+    "nextSteps": {
+      "heading": "¿Qué pasa después?",
+      "step1": "Cuéntanos sobre tu restaurante.",
+      "step2": "Aprendemos un poco sobre cómo gestionas el inventario actualmente.",
+      "step3": "Coordinamos el siguiente paso adecuado para ver Zaiko.",
+      "step3EarlyAccess": "Nos ponemos en contacto para ver si el acceso anticipado es el siguiente paso adecuado."
     },
     "earlyAccessTitle": "Programa de Acceso Anticipado",
     "badge": "ACCESO ANTICIPADO",

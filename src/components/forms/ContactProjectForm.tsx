@@ -6,15 +6,22 @@ import { FormField } from './FormField';
 import { FormStatus } from './FormStatus';
 import { Button } from '@/components/ui/Button';
 import { trackCustomEvent } from '@/lib/analytics';
+import { normalizeServiceInterest, type ServiceInterest } from '@/lib/services';
 import type { Locale } from '@/i18n/config';
 
 interface ContactProjectFormProps {
   locale: Locale;
   initialType?: string;
+  initialInterest?: ServiceInterest | '';
 }
 
-export function ContactProjectForm({ locale, initialType = '' }: ContactProjectFormProps) {
+export function ContactProjectForm({
+  locale,
+  initialType = '',
+  initialInterest = ''
+}: ContactProjectFormProps) {
   const t = useTranslations('contactPage.form');
+  const tp = useTranslations('contactPage');
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
@@ -23,7 +30,7 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     email: '',
     phone: '',
     company: '',
-    interest: '',
+    interest: initialInterest,
     project_stage: '',
     message: '',
     website: '' // Honeypot
@@ -58,16 +65,6 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const searchParams = new URLSearchParams(window.location.search);
-      const queryInterest = searchParams.get('interest');
-      const validInterests = ['mobile', 'web', 'website', 'web_application', 'unsure'];
-
-      if (queryInterest && validInterests.includes(queryInterest)) {
-        const mappedInterest =
-          queryInterest === 'website' || queryInterest === 'web_application'
-            ? 'web'
-            : queryInterest;
-        setFormData((prev) => ({ ...prev, interest: mappedInterest }));
-      }
 
       setAcquisition({
         source_path: window.location.pathname,
@@ -95,7 +92,11 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
   ) => {
     if (!hasStartedRef.current) {
       hasStartedRef.current = true;
-      trackCustomEvent('contact_form_start', { locale, leadType: lead_type });
+      trackCustomEvent('contact_form_start', {
+        locale,
+        leadType: lead_type,
+        interest: formData.interest
+      });
     }
 
     const { name, value } = e.target;
@@ -116,7 +117,11 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
     setErrors({});
     setStatus('idle');
 
-    trackCustomEvent('contact_form_submit', { locale, leadType: lead_type });
+    trackCustomEvent('contact_form_submit', {
+      locale,
+      leadType: lead_type,
+      interest: formData.interest
+    });
 
     // Client inline validation
     const clientErrors: Record<string, string> = {};
@@ -181,7 +186,11 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
         }
       } else {
         setStatus('success');
-        trackCustomEvent('contact_form_success', { locale, leadType: lead_type });
+        trackCustomEvent('contact_form_success', {
+          locale,
+          leadType: lead_type,
+          interest: formData.interest
+        });
       }
     } catch {
       setStatus('error');
@@ -208,6 +217,17 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
       {status === 'error' && statusMessage ? (
         <FormStatus status="error" message={statusMessage} />
       ) : null}
+
+      {initialInterest && (
+        <div className="rounded-xl bg-orange/5 border border-orange/10 px-4 py-3 flex flex-col gap-0.5">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-orange/80">
+            {tp('projectTypeIndicator')}
+          </span>
+          <span className="text-sm font-bold text-ink">
+            {t(`interestOptions.${initialInterest}`)}
+          </span>
+        </div>
+      )}
 
       {/* Hidden Honeypot Field */}
       <div className="hidden" aria-hidden="true">
@@ -328,15 +348,20 @@ export function ContactProjectForm({ locale, initialType = '' }: ContactProjectF
 
       <FormField label={t('message')} required error={errors.message}>
         {(fieldProps) => (
-          <textarea
-            {...fieldProps}
-            name="message"
-            rows={5}
-            maxLength={5000}
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y"
-          />
+          <div className="space-y-2">
+            <textarea
+              {...fieldProps}
+              name="message"
+              rows={5}
+              maxLength={5000}
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y"
+            />
+            <p className="text-[11px] text-foreground-muted leading-relaxed italic">
+              {t('messageHint')}
+            </p>
+          </div>
         )}
       </FormField>
 

@@ -50,11 +50,23 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   const isZaiko = selectedProduct === 'zaiko';
   const isEarlyAccess = selectedInterest === 'early-access';
 
-  const eyebrowText = isZaiko ? t('zaiko.eyebrow') : t('eyebrow');
-  const headingText = isZaiko ? t('zaiko.heading') : t('heading');
-  const bodyText = isZaiko ? t('zaiko.body') : t('body');
-  const badgeText = isEarlyAccess ? t('zaiko.earlyAccessBadge') : t('badgeText');
+  let eyebrowText = isZaiko ? t('zaiko.eyebrow') : t('eyebrow');
+  let headingText = isZaiko ? t('zaiko.heading') : t('heading');
+  let bodyText = isZaiko ? t('zaiko.body') : t('body');
 
+  if (isZaiko && isEarlyAccess) {
+    eyebrowText = t('earlyAccess.eyebrow');
+    headingText = t('earlyAccess.heading');
+    bodyText = t('earlyAccess.body');
+  }
+
+  const formTitle = isEarlyAccess
+    ? t('earlyAccess.formTitle')
+    : (isZaiko ? t('zaiko.title') : t('earlyAccessTitle'));
+
+  const formDesc = isEarlyAccess
+    ? t('earlyAccess.badge')
+    : (isZaiko ? t('zaiko.earlyAccessBadge') : t('badgeText'));
 
   return (
     <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">
@@ -64,9 +76,11 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
               {eyebrowText}
             </span>
-            <span className="inline-flex items-center rounded-md bg-orange-subtle px-2.5 py-0.5 text-[11px] font-bold text-orange uppercase tracking-wider">
-              {isEarlyAccess ? t('zaiko.earlyAccessBadge') : t('badge')}
-            </span>
+            {isEarlyAccess && (
+              <span className="inline-flex items-center rounded-md bg-orange/10 px-2 py-0.5 text-[10px] font-bold text-orange uppercase tracking-wider border border-orange/20">
+                {t('badge')}
+              </span>
+            )}
           </div>
 
           <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-tight">
@@ -82,17 +96,17 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
           <div className="space-y-2 border-b border-border pb-6">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-xl font-bold text-ink">
-                {isZaiko ? t('zaiko.title') : t('earlyAccessTitle')}
+                {formTitle}
               </h2>
               {isEarlyAccess && (
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange">
                   <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-                  {t('zaiko.earlyAccessBadge')}
+                  {t('badge')}
                 </span>
               )}
             </div>
             <p className="text-sm text-foreground-muted leading-relaxed">
-              {badgeText}
+              {formDesc}
             </p>
           </div>
 
@@ -101,6 +115,23 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             initialProduct={selectedProduct}
             initialInterest={selectedInterest}
           />
+        </div>
+
+        {/* What Happens Next Section */}
+        <div className="rounded-2xl border border-border bg-surface p-8 space-y-8">
+          <h2 className="text-2xl font-bold text-ink">{t('nextSteps.heading')}</h2>
+          <div className="grid gap-8 sm:grid-cols-3">
+            {[1, 2, 3].map((step) => (
+              <div key={step} className="space-y-4">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange text-sm font-bold">
+                  {step}
+                </span>
+                <p className="text-sm text-foreground-muted leading-relaxed">
+                  {step === 3 && isEarlyAccess ? t('nextSteps.step3EarlyAccess') : t(`nextSteps.step${step}`)}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </Section>

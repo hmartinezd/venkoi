@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
 import { internalRoutes, getRouteKeyFromPath, getLocalizedPath } from '@/i18n/routing';
 import { localeLabels, locales, type Locale } from '@/i18n/config';
@@ -14,31 +15,43 @@ import { trackCustomEvent } from '@/lib/analytics';
 function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: string }) {
   const routeKey = getRouteKeyFromPath(pathname);
   const currentPath = internalRoutes[routeKey];
+  const searchParams = useSearchParams();
 
   return (
     <div className="flex items-center gap-2 text-xs font-semibold tracking-wider">
-      {locales.map((localeKey, index) => (
-        <span key={localeKey} className="flex items-center gap-2">
-          <LocalizedLink
-            href={currentPath}
-            locale={localeKey}
-            onClick={() => {
-              if (localeKey !== locale) {
-                trackCustomEvent('language_switch', { locale: localeKey });
-              }
-            }}
-            className={cn(
-              'transition-colors py-1 px-1.5 rounded hover:text-ink',
-              localeKey === locale
-                ? 'text-ink font-bold border-b-2 border-orange'
-                : 'text-foreground-muted'
-            )}
-          >
-            {localeLabels[localeKey]}
-          </LocalizedLink>
-          {index < locales.length - 1 ? <span className="text-border-strong">|</span> : null}
-        </span>
-      ))}
+      {locales.map((localeKey, index) => {
+        // Preserving safe meaningful intent params
+        const safeParams = new URLSearchParams();
+        ['type', 'interest', 'product'].forEach((key) => {
+          const val = searchParams.get(key);
+          if (val) safeParams.set(key, val);
+        });
+        const search = safeParams.toString();
+        const href = search ? `${currentPath}?${search}` : currentPath;
+
+        return (
+          <span key={localeKey} className="flex items-center gap-2">
+            <LocalizedLink
+              href={href as any}
+              locale={localeKey}
+              onClick={() => {
+                if (localeKey !== locale) {
+                  trackCustomEvent('language_switch', { locale: localeKey });
+                }
+              }}
+              className={cn(
+                'transition-colors py-1 px-1.5 rounded hover:text-ink',
+                localeKey === locale
+                  ? 'text-ink font-bold border-b-2 border-orange'
+                  : 'text-foreground-muted'
+              )}
+            >
+              {localeLabels[localeKey]}
+            </LocalizedLink>
+            {index < locales.length - 1 ? <span className="text-border-strong">|</span> : null}
+          </span>
+        );
+      })}
     </div>
   );
 }

@@ -22,6 +22,7 @@ export function DemoRequestForm({
 }: DemoRequestFormProps) {
   const activeProduct = initialProduct || getDefaultDemoProduct().slug;
   const t = useTranslations('demoPage.form');
+  const tp = useTranslations('demoPage');
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
@@ -198,12 +199,20 @@ export function DemoRequestForm({
   };
 
   if (status === 'success') {
+    const successTitle = formData.early_access_interest
+      ? tp('earlyAccess.successTitle')
+      : tp('standard.successTitle');
+
+    const successMessage = formData.early_access_interest
+      ? tp('earlyAccess.successMessage')
+      : tp('standard.successMessage');
+
     return (
       <div ref={successRef} tabIndex={-1} className="focus:outline-hidden">
         <FormStatus
           status="success"
-          title={t('successTitle')}
-          message={t('successMessage')}
+          title={successTitle}
+          message={successMessage}
         />
       </div>
     );
@@ -360,18 +369,25 @@ export function DemoRequestForm({
         )}
       </FormField>
 
-      <div className="flex items-start gap-3 pt-2">
-        <input
-          id="demo-early-access"
-          type="checkbox"
-          name="early_access_interest"
-          checked={formData.early_access_interest}
-          onChange={handleChange}
-          className="mt-1 h-4 w-4 rounded border-border text-orange focus:ring-orange"
-        />
-        <label htmlFor="demo-early-access" className="text-sm font-medium text-ink cursor-pointer">
-          {t('earlyAccess')}
-        </label>
+      <div className="flex flex-col gap-2 pt-2">
+        <div className="flex items-start gap-3">
+          <input
+            id="demo-early-access"
+            type="checkbox"
+            name="early_access_interest"
+            checked={formData.early_access_interest}
+            onChange={handleChange}
+            className="mt-1 h-4 w-4 rounded border-border text-orange focus:ring-orange"
+          />
+          <label htmlFor="demo-early-access" className="text-sm font-medium text-ink cursor-pointer">
+            {t('earlyAccess')}
+          </label>
+        </div>
+        {formData.early_access_interest && (
+          <p className="text-[11px] text-orange font-bold pl-7 animate-in fade-in slide-in-from-left-1">
+            {tp('earlyAccess.badge')}
+          </p>
+        )}
       </div>
 
       <div className="pt-2">
