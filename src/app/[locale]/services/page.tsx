@@ -23,19 +23,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
   const t = await getTranslations({ locale: currentLocale, namespace: 'servicesPage' });
-  const isSpanish = currentLocale === 'es';
-
-  const title = isSpanish
-    ? 'Servicios | Apps Móviles y Desarrollo Web | Venkoi'
-    : 'Services | Mobile Apps & Web Development | Venkoi';
-
-  const description = isSpanish
-    ? 'Venkoi diseña y desarrolla aplicaciones móviles, páginas web y aplicaciones web para empresas y emprendedores en Tampa Bay, South Florida y más allá.'
-    : 'Venkoi designs and builds mobile applications, websites, and web applications for businesses, startups, and entrepreneurs in Tampa Bay, South Florida, and beyond.';
 
   return createMetadata({
-    title,
-    description,
+    title: t('seoTitle'),
+    description: t('seoDescription'),
     routeKey: 'services',
     locale: currentLocale
   });
@@ -94,27 +85,21 @@ export default async function ServicesPage({ params }: PageProps) {
               <span className="text-xs font-mono font-bold text-orange">01</span>
               <h3 className="text-lg font-bold text-ink">{t('mobileTheme1')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                {currentLocale === 'es'
-                  ? 'Diseñadas para la experiencia de tus clientes finales en plataformas móviles.'
-                  : 'Designed specifically for your customers on mobile platforms.'}
+                {t('mobileTheme1Desc')}
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
               <span className="text-xs font-mono font-bold text-orange">02</span>
               <h3 className="text-lg font-bold text-ink">{t('mobileTheme2')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                {currentLocale === 'es'
-                  ? 'Herramientas operativas creadas para los equipos y flujos de trabajo de la empresa.'
-                  : 'Operational tools built for team and business workflows.'}
+                {t('mobileTheme2Desc')}
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
               <span className="text-xs font-mono font-bold text-orange">03</span>
               <h3 className="text-lg font-bold text-ink">{t('mobileTheme3')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                {currentLocale === 'es'
-                  ? 'Soluciones preparadas para operar en entornos y procesos reales.'
-                  : 'Solutions built to operate effectively in real-world environments.'}
+                {t('mobileTheme3Desc')}
               </p>
             </div>
           </div>
@@ -140,31 +125,74 @@ export default async function ServicesPage({ params }: PageProps) {
             <p className="text-base text-foreground-muted leading-relaxed">
               {t('webBody')}
             </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-border bg-surface p-6 space-y-2">
-              <span className="text-xs font-mono font-bold text-orange">01</span>
-              <h3 className="text-base font-bold text-ink">{t('webTheme1')}</h3>
-            </div>
-            <div className="rounded-2xl border border-border bg-surface p-6 space-y-2">
-              <span className="text-xs font-mono font-bold text-orange">02</span>
-              <h3 className="text-base font-bold text-ink">{t('webTheme2')}</h3>
-            </div>
-            <div className="rounded-2xl border border-border bg-surface p-6 space-y-2">
-              <span className="text-xs font-mono font-bold text-orange">03</span>
-              <h3 className="text-base font-bold text-ink">{t('webTheme3')}</h3>
-            </div>
-            <div className="rounded-2xl border border-border bg-surface p-6 space-y-2">
-              <span className="text-xs font-mono font-bold text-orange">04</span>
-              <h3 className="text-base font-bold text-ink">{t('webTheme4')}</h3>
-            </div>
+            <p className="text-sm text-foreground-muted/80 leading-relaxed italic">
+              {t('webSupporting')}
+            </p>
           </div>
 
           <div className="pt-2">
-            <Button href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=website'} variant="secondary">
+            <Button href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=web'} variant="secondary">
               {t('primaryCta')}
             </Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* How We Work — Project Delivery Lifecycle */}
+      <Section variant="surface" className="py-16 md:py-24 border-t border-border">
+        <Container className="space-y-12">
+          <div className="max-w-3xl space-y-4">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+              {t('howWeWork.eyebrow')}
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              {t('howWeWork.heading')}
+            </h2>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage1Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage1Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage1Desc')}
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage2Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage2Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage2Desc')}
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage3Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage3Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage3Desc')}
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage4Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage4Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage4Desc')}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 sm:p-6 text-center max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base font-semibold text-ink">
+              &ldquo;{t('howWeWork.testingPrinciple')}&rdquo;
+            </p>
           </div>
         </Container>
       </Section>

@@ -5,13 +5,22 @@ import { isDemoEnabledProduct } from '@/lib/products';
 const ALLOWED_LEAD_TYPES: [LeadType, ...LeadType[]] = ['DEMO', 'CUSTOM_PROJECT', 'GENERAL_CONTACT'];
 const LOCATION_COUNTS = ['1', '2_5', '6_20', '20_plus'] as const;
 const CURRENT_SYSTEMS = ['none', 'spreadsheet', 'pos_tools', 'other'] as const;
-const INTERESTS = ['mobile', 'website', 'web_application', 'unsure'] as const;
+const INTERESTS = ['mobile', 'web', 'unsure'] as const;
 const PROJECT_STAGES = ['idea', 'planning', 'existing_product', 'needs_improvement'] as const;
 
 const normalizeString = (val: unknown): string | null => {
   if (typeof val !== 'string') return null;
   const trimmed = val.trim();
   return trimmed.length > 0 ? trimmed : null;
+};
+
+const normalizeInterest = (val: unknown): string | null => {
+  const normalized = normalizeString(val);
+  if (!normalized) return null;
+  if (normalized === 'website' || normalized === 'web_application') {
+    return 'web';
+  }
+  return normalized;
 };
 
 export const leadSubmissionSchema = z
@@ -38,7 +47,7 @@ export const leadSubmissionSchema = z
       z.enum(CURRENT_SYSTEMS, { error: 'INVALID_OPTION' }).nullable().optional()
     ),
     interest: z.preprocess(
-      normalizeString,
+      normalizeInterest,
       z.enum(INTERESTS, { error: 'INVALID_OPTION' }).nullable().optional()
     ),
     project_stage: z.preprocess(

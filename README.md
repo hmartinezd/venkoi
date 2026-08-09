@@ -52,6 +52,8 @@ If upgrading an existing database at migration 002, apply migration 003:
 psql "$DATABASE_URL" -f db/migrations/003_update_service_interests.sql
 ```
 
+> **Canonical Interest Values & Normalization**: The application emits canonical service interest values (`mobile`, `web`, `unsure`). Older incoming query or payload values (`website`, `web_application`) are automatically normalized to `web` at the server validation boundary before database persistence.
+
 ## Environment & SEO Indexing Architecture
 
 - **Vercel Production** (`VERCEL_ENV=production`): Fully indexable (`Allow: /` in `robots.txt`, `index, follow` metadata).
@@ -70,18 +72,18 @@ Follow these step-by-step instructions when launching to production:
 6. **Apply Migration 002**: Execute `db/migrations/002_harden_leads.sql`.
 7. **Apply Migration 003**: Execute `db/migrations/003_update_service_interests.sql`.
 8. **Verify Schema**: Confirm tables and constraints (`chk_leads_lead_type`, `chk_leads_interest`, `chk_leads_locale`, etc.) exist in Neon.
-8. **Resend Setup**: Create an account on [Resend](https://resend.com).
-9. **Domain Verification**: Verify your sending domain (`venkoi.com`) in Resend DNS settings.
-10. **Resend API Key**: Configure `RESEND_API_KEY` in Vercel Environment Variables.
-11. **Sender Email**: Set `RESEND_FROM_EMAIL` (e.g. `Venkoi <notifications@venkoi.com>`).
-12. **Notification Recipient**: Set `LEADS_NOTIFICATION_EMAIL` for internal team lead alerts.
-13. **Vercel Analytics**: Enable Vercel Web Analytics in the Vercel Dashboard project settings.
-14. **Speed Insights**: Enable Vercel Speed Insights in the Vercel Dashboard project settings.
-15. **Bot Protection**: Verify BotID traffic and rules in Vercel Firewall.
-16. **Redeploy**: Trigger a production deployment on Vercel.
-17. **Form Testing**: Conduct end-to-end submissions on English (`/en/demo`, `/en/contact`) and Spanish (`/es/demo`, `/es/contacto`) forms.
-18. **Verify Emails**: Confirm both internal alert emails and user acknowledgement emails arrive successfully.
-19. **Verify Sitemap**: Check `https://venkoi.com/sitemap.xml` returns valid XML.
-20. **Verify Robots**: Check `https://venkoi.com/robots.txt` specifies production indexing rules (`Allow: /` in Production, `Disallow: /` in Preview).
-21. **Verify Canonical Tags**: Inspect `<link rel="canonical">` and `hreflang` metadata on live HTML pages.
-22. **Verify Social Assets**: Test social card sharing previews (OpenGraph & Twitter images) on social platforms or debuggers.
+9. **Resend Setup**: Create an account on [Resend](https://resend.com).
+10. **Domain Verification**: Verify your sending domain (`venkoi.com`) in Resend DNS settings.
+11. **Resend API Key**: Configure `RESEND_API_KEY` in Vercel Environment Variables.
+12. **Sender Email**: Set `RESEND_FROM_EMAIL` (e.g. `Venkoi <notifications@venkoi.com>`).
+13. **Notification Recipient**: Set `LEADS_NOTIFICATION_EMAIL` for internal team lead alerts.
+14. **Vercel Analytics**: Enable Vercel Web Analytics in the Vercel Dashboard project settings.
+15. **Speed Insights**: Enable Vercel Speed Insights in the Vercel Dashboard project settings.
+16. **Bot Protection**: Verify BotID traffic and rules in Vercel Firewall.
+17. **Redeploy**: Trigger a production deployment on Vercel.
+18. **Form Testing**: Conduct end-to-end submissions on English (`/en/demo`, `/en/contact`) and Spanish (`/es/demo`, `/es/contacto`) forms.
+19. **Verify Emails**: Confirm both internal alert emails and user acknowledgement emails arrive successfully.
+20. **Verify Sitemap**: Check `https://venkoi.com/sitemap.xml` returns valid XML.
+21. **Verify Robots**: Check `https://venkoi.com/robots.txt` specifies production indexing rules (`Allow: /` in Production, `Disallow: /` in Preview).
+22. **Verify Canonical Tags**: Inspect `<link rel="canonical">` and `hreflang` metadata on live HTML pages.
+23. **Verify Social Assets**: Test social card sharing previews (OpenGraph & Twitter images) on social platforms or debuggers.

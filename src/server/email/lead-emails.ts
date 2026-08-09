@@ -11,10 +11,8 @@ export async function sendInternalNotificationEmail(
   } else if (lead.lead_type === 'CUSTOM_PROJECT') {
     if (lead.interest === 'mobile') {
       subjectTag = 'Mobile Application Inquiry';
-    } else if (lead.interest === 'website') {
-      subjectTag = 'Website Inquiry';
-    } else if (lead.interest === 'web_application') {
-      subjectTag = 'Web Application Inquiry';
+    } else if (lead.interest === 'web' || lead.interest === 'website' || lead.interest === 'web_application') {
+      subjectTag = 'Web Project Inquiry';
     } else {
       subjectTag = 'Services Inquiry';
     }
