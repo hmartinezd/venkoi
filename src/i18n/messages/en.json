@@ -307,39 +307,114 @@
       "heading": "A clearer view of your restaurant inventory.",
       "body": "Inventory shouldn't require jumping between spreadsheets, receipts, disconnected systems, and guesswork. Zaiko brings the core inventory picture together so your team can understand what is happening and make better-informed decisions."
     },
+    "problem": {
+      "eyebrow": "THE INVENTORY PROBLEM",
+      "heading": "Inventory gets harder when the information lives in different places.",
+      "body": "Purchases may be tracked one way, quantities another, cost changes somewhere else, and movement may be difficult to reconstruct later. Zaiko is designed to bring those pieces into one clearer inventory picture."
+    },
     "areas": {
       "inventory": {
         "eyebrow": "INVENTORY",
         "heading": "Know what you have and where it is.",
-        "body": "Zaiko gives your restaurant a clearer way to understand the inventory you have on hand and keep it organized around the way your operation actually works."
+        "body": "Zaiko gives your restaurant a clearer way to understand the inventory you have on hand and keep it organized around the way your operation actually works.",
+        "supporting": [
+          "what inventory you currently have",
+          "where inventory is organized within the operation",
+          "a clearer current inventory picture"
+        ]
       },
       "purchases": {
         "eyebrow": "PURCHASES",
         "heading": "Keep purchasing and receiving organized.",
-        "body": "Bring purchasing activity into the same inventory picture so incoming products and the costs connected to them are easier to follow."
+        "body": "Bring purchasing activity into the same inventory picture so incoming products and the costs connected to them are easier to follow.",
+        "supporting": [
+          "what came into the operation",
+          "purchasing activity connected to inventory",
+          "purchase-related cost information"
+        ]
       },
       "activity": {
         "eyebrow": "ACTIVITY",
         "heading": "See how inventory moves through your operation.",
-        "body": "Zaiko brings inventory activity into a clear history so it's easier to understand what changed and follow the movement of products over time."
+        "body": "Zaiko brings inventory activity into a clear history so it's easier to understand what changed and follow the movement of products over time.",
+        "supporting": [
+          "what changed",
+          "when inventory activity occurred",
+          "a clearer history of product movement"
+        ]
       },
       "costs": {
         "eyebrow": "COSTS",
         "heading": "Understand what your inventory is really costing.",
-        "body": "Keep inventory and purchasing costs easier to see so changes in product costs don't disappear inside spreadsheets and disconnected records."
+        "body": "Keep inventory and purchasing costs easier to see so changes in product costs don't disappear inside spreadsheets and disconnected records.",
+        "supporting": [
+          "purchasing costs connected to inventory",
+          "visibility into cost changes",
+          "a clearer cost history"
+        ]
       }
     },
     "workflow": {
       "eyebrow": "PRODUCT EXPERIENCE",
       "heading": "One inventory story instead of disconnected pieces.",
-      "body": "Zaiko is designed to make the different parts of inventory easier to understand together — what came in, what you have, what changed, and what it cost."
+      "body": "What came in, what is on hand, what changed, and what it cost become easier to understand when they are part of the same inventory history."
+    },
+    "audience": {
+      "heading": "Built for restaurant operations that want a clearer inventory picture.",
+      "body": "Zaiko is designed for restaurant operators, owners, managers, and teams responsible for receiving or tracking product who need a better way to manage their inventory information.",
+      "items": [
+        "Restaurant operators",
+        "Owners or managers involved in inventory",
+        "Teams responsible for receiving or tracking product"
+      ]
     },
     "earlyAccess": {
       "eyebrow": "EARLY ACCESS",
       "heading": "Try Zaiko free for 3 months.",
       "body": "Join our early access program and use Zaiko free for 3 months while we continue refining the product with restaurant operators.",
+      "details": [
+        "The product is being refined",
+        "Participating operators can try Zaiko",
+        "Feedback may help shape the product",
+        "Early Access use is free for 3 months"
+      ],
       "primaryCta": "Request a Demo",
       "secondaryCta": "Join Early Access"
+    },
+    "faq": {
+      "heading": "Questions about Zaiko",
+      "items": [
+        {
+          "q": "What is Zaiko?",
+          "a": "Zaiko is a Venkoi product designed to help restaurants manage and understand inventory, purchases, costs, and product activity from one clearer workspace."
+        },
+        {
+          "q": "Who is Zaiko for?",
+          "a": "Restaurant operators and teams looking for a clearer way to understand and manage inventory activity."
+        },
+        {
+          "q": "What does Zaiko help me track?",
+          "a": "Zaiko helps you track inventory levels, purchasing activity, product movement, and the costs connected to your inventory."
+        },
+        {
+          "q": "What is the Early Access program?",
+          "a": "Early Access lets participating restaurant operators use Zaiko free for 3 months while Venkoi continues refining the product."
+        },
+        {
+          "q": "How can I try Zaiko?",
+          "a": "Request a demo or join the Early Access program to get started."
+        }
+      ]
+    },
+    "visuals": {
+      "inventory": "Inventory",
+      "purchases": "Purchases",
+      "activity": "Activity",
+      "costs": "Costs",
+      "onHand": "On Hand",
+      "incoming": "Incoming",
+      "history": "History",
+      "trend": "Trend"
     },
     "finalCta": {
       "heading": "Ready for a clearer view of your inventory?",

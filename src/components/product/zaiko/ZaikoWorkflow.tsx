@@ -6,9 +6,19 @@ interface ZaikoWorkflowProps {
   eyebrow: string;
   heading: string;
   body: string;
+  labels: {
+    inventory: string;
+    purchases: string;
+    activity: string;
+    costs: string;
+    onHand: string;
+    incoming: string;
+    history: string;
+    trend: string;
+  };
 }
 
-export function ZaikoWorkflow({ eyebrow, heading, body }: ZaikoWorkflowProps) {
+export function ZaikoWorkflow({ eyebrow, heading, body, labels }: ZaikoWorkflowProps) {
   return (
     <Section variant="light" className="py-16 md:py-24 border-t border-border">
       <Container className="space-y-12 max-w-5xl">
@@ -24,7 +34,7 @@ export function ZaikoWorkflow({ eyebrow, heading, body }: ZaikoWorkflowProps) {
           </p>
         </div>
 
-        <ZaikoProductVisual type="workflow" />
+        <ZaikoProductVisual type="workflow" labels={labels} />
       </Container>
     </Section>
   );

@@ -33,6 +33,7 @@ export function ZaikoProductNav({
     { label: purchasesLabel, href: '#purchases' },
     { label: activityLabel, href: '#activity' },
     { label: costsLabel, href: '#costs' },
+    { label: locale === 'es' ? 'Acceso Anticipado' : 'Early Access', href: '#early-access' },
   ];
 
   return (

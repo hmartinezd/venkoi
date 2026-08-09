@@ -6,6 +6,9 @@ import { ZaikoFeatureSection } from '@/components/product/zaiko/ZaikoFeatureSect
 import { ZaikoWorkflow } from '@/components/product/zaiko/ZaikoWorkflow';
 import { ZaikoEarlyAccess } from '@/components/product/zaiko/ZaikoEarlyAccess';
 import { ZaikoFinalCta } from '@/components/product/zaiko/ZaikoFinalCta';
+import { ZaikoProblemSection } from '@/components/product/zaiko/ZaikoProblemSection';
+import { ZaikoAudience } from '@/components/product/zaiko/ZaikoAudience';
+import { ZaikoFaq } from '@/components/product/zaiko/ZaikoFaq';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { getSiteOrigin } from '@/lib/site-config';
@@ -45,13 +48,28 @@ export default async function ZaikoPage({ params }: PageProps) {
   const tNav = await getTranslations('zaikoPage.nav');
   const tHero = await getTranslations('zaikoPage.hero');
   const tIntro = await getTranslations('zaikoPage.intro');
+  const tProblem = await getTranslations('zaikoPage.problem');
   const tAreas = await getTranslations('zaikoPage.areas');
   const tWorkflow = await getTranslations('zaikoPage.workflow');
+  const tAudience = await getTranslations('zaikoPage.audience');
   const tEarlyAccess = await getTranslations('zaikoPage.earlyAccess');
+  const tFaq = await getTranslations('zaikoPage.faq');
   const tFinalCta = await getTranslations('zaikoPage.finalCta');
   const tSeo = await getTranslations('zaikoPage.seo');
+  const tVisuals = await getTranslations('zaikoPage.visuals');
 
   const origin = getSiteOrigin();
+
+  const visualLabels = {
+    inventory: tVisuals('inventory'),
+    purchases: tVisuals('purchases'),
+    activity: tVisuals('activity'),
+    costs: tVisuals('costs'),
+    onHand: tVisuals('onHand'),
+    incoming: tVisuals('incoming'),
+    history: tVisuals('history'),
+    trend: tVisuals('trend')
+  };
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -59,12 +77,18 @@ export default async function ZaikoPage({ params }: PageProps) {
     name: 'Zaiko',
     applicationCategory: 'BusinessApplication',
     description: tSeo('description'),
+    operatingSystem: 'Web',
     author: {
       '@type': 'Organization',
       name: 'Venkoi',
       url: origin
     }
   };
+
+  const faqItems = ['0', '1', '2', '3', '4'].map(idx => ({
+    q: tFaq(`items.${idx}.q`),
+    a: tFaq(`items.${idx}.a`)
+  }));
 
   return (
     <>
@@ -113,12 +137,24 @@ export default async function ZaikoPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      {/* Problem Section */}
+      <ZaikoProblemSection
+        eyebrow={tProblem('eyebrow')}
+        heading={tProblem('heading')}
+        body={tProblem('body')}
+      />
+
       {/* 4 Core Product Feature Areas */}
       <ZaikoFeatureSection
         id="inventory"
         eyebrow={tAreas('inventory.eyebrow')}
         heading={tAreas('inventory.heading')}
         body={tAreas('inventory.body')}
+        supporting={[
+          tAreas('inventory.supporting.0'),
+          tAreas('inventory.supporting.1'),
+          tAreas('inventory.supporting.2')
+        ]}
       />
 
       <ZaikoFeatureSection
@@ -126,6 +162,11 @@ export default async function ZaikoPage({ params }: PageProps) {
         eyebrow={tAreas('purchases.eyebrow')}
         heading={tAreas('purchases.heading')}
         body={tAreas('purchases.body')}
+        supporting={[
+          tAreas('purchases.supporting.0'),
+          tAreas('purchases.supporting.1'),
+          tAreas('purchases.supporting.2')
+        ]}
         reverse
       />
 
@@ -134,6 +175,11 @@ export default async function ZaikoPage({ params }: PageProps) {
         eyebrow={tAreas('activity.eyebrow')}
         heading={tAreas('activity.heading')}
         body={tAreas('activity.body')}
+        supporting={[
+          tAreas('activity.supporting.0'),
+          tAreas('activity.supporting.1'),
+          tAreas('activity.supporting.2')
+        ]}
       />
 
       <ZaikoFeatureSection
@@ -141,6 +187,11 @@ export default async function ZaikoPage({ params }: PageProps) {
         eyebrow={tAreas('costs.eyebrow')}
         heading={tAreas('costs.heading')}
         body={tAreas('costs.body')}
+        supporting={[
+          tAreas('costs.supporting.0'),
+          tAreas('costs.supporting.1'),
+          tAreas('costs.supporting.2')
+        ]}
         reverse
       />
 
@@ -149,6 +200,18 @@ export default async function ZaikoPage({ params }: PageProps) {
         eyebrow={tWorkflow('eyebrow')}
         heading={tWorkflow('heading')}
         body={tWorkflow('body')}
+        labels={visualLabels}
+      />
+
+      {/* Who Zaiko is for */}
+      <ZaikoAudience
+        heading={tAudience('heading')}
+        body={tAudience('body')}
+        items={[
+          tAudience('items.0'),
+          tAudience('items.1'),
+          tAudience('items.2')
+        ]}
       />
 
       {/* Early Access Highlight */}
@@ -157,8 +220,20 @@ export default async function ZaikoPage({ params }: PageProps) {
         eyebrow={tEarlyAccess('eyebrow')}
         heading={tEarlyAccess('heading')}
         body={tEarlyAccess('body')}
+        details={[
+          tEarlyAccess('details.0'),
+          tEarlyAccess('details.1'),
+          tEarlyAccess('details.2'),
+          tEarlyAccess('details.3')
+        ]}
         primaryCta={tEarlyAccess('primaryCta')}
         secondaryCta={tEarlyAccess('secondaryCta')}
+      />
+
+      {/* FAQ Section */}
+      <ZaikoFaq
+        heading={tFaq('heading')}
+        items={faqItems}
       />
 
       {/* Final Closing CTA */}

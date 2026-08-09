@@ -307,39 +307,114 @@
       "heading": "Una forma más clara de ver el inventario de tu restaurante.",
       "body": "Gestionar inventario no debería significar saltar entre hojas de cálculo, recibos, sistemas desconectados y suposiciones. Zaiko reúne la información esencial del inventario para que tu equipo pueda entender mejor lo que está ocurriendo y tomar decisiones con mayor claridad."
     },
+    "problem": {
+      "eyebrow": "EL PROBLEMA DEL INVENTARIO",
+      "heading": "El inventario se complica cuando la información está repartida en distintos lugares.",
+      "body": "Las compras pueden registrarse de una forma, las cantidades de otra, los cambios de costo en otro lugar y los movimientos pueden ser difíciles de reconstruir después. Zaiko está diseñado para reunir esas piezas en una visión más clara del inventario."
+    },
     "areas": {
       "inventory": {
         "eyebrow": "INVENTARIO",
         "heading": "Conoce lo que tienes y dónde está.",
-        "body": "Zaiko ofrece a tu restaurante una forma más clara de entender el inventario disponible y mantenerlo organizado alrededor de la forma en que realmente funciona tu operación."
+        "body": "Zaiko ofrece a tu restaurante una forma más clara de entender el inventario disponible y mantenerlo organizado alrededor de la forma en que realmente funciona tu operación.",
+        "supporting": [
+          "qué inventario tienes actualmente",
+          "dónde se organiza el inventario dentro de la operación",
+          "una visión actual y clara del inventario"
+        ]
       },
       "purchases": {
         "eyebrow": "COMPRAS",
         "heading": "Mantén organizadas las compras y recepciones.",
-        "body": "Integra la actividad de compras dentro de la misma visión del inventario para que sea más fácil seguir los productos que entran y los costos relacionados con ellos."
+        "body": "Integra la actividad de compras dentro de la misma visión del inventario para que sea más fácil seguir los productos que entran y los costos relacionados con ellos.",
+        "supporting": [
+          "qué entró en la operación",
+          "actividad de compras conectada al inventario",
+          "información de costos relacionados con las compras"
+        ]
       },
       "activity": {
         "eyebrow": "ACTIVIDAD",
         "heading": "Sigue cómo se mueve el inventario dentro de tu operación.",
-        "body": "Zaiko reúne la actividad del inventario en un historial claro para que sea más fácil entender qué cambió y seguir el movimiento de los productos a lo largo del tiempo."
+        "body": "Zaiko reúne la actividad del inventario en un historial claro para que sea más fácil entender qué cambió y seguir el movimiento de los productos a lo largo del tiempo.",
+        "supporting": [
+          "qué cambió",
+          "cuándo ocurrió la actividad de inventario",
+          "un historial más claro del movimiento de productos"
+        ]
       },
       "costs": {
         "eyebrow": "COSTOS",
         "heading": "Entiende cuánto te está costando realmente tu inventario.",
-        "body": "Mantén más visibles los costos de inventario y compras para que los cambios en los productos no se pierdan entre hojas de cálculo y registros desconectados."
+        "body": "Mantén más visibles los costos de inventario y compras para que los cambios en los productos no se pierdan entre hojas de cálculo y registros desconectados.",
+        "supporting": [
+          "costos de compra conectados al inventario",
+          "visibilidad de los cambios en los costos",
+          "un historial de costos más claro"
+        ]
       }
     },
     "workflow": {
       "eyebrow": "EXPERIENCIA DE PRODUCTO",
       "heading": "Una sola historia de inventario en lugar de piezas desconectadas.",
-      "body": "Zaiko está diseñado para hacer más fácil entender juntas las diferentes partes del inventario: lo que entró, lo que tienes, lo que cambió y cuánto costó."
+      "body": "Lo que entró, lo que hay disponible, lo que cambió y cuánto costó es más fácil de entender cuando forman parte de la misma historia de inventario."
+    },
+    "audience": {
+      "heading": "Creado para restaurantes que buscan una visión más clara de su inventario.",
+      "body": "Zaiko está diseñado para operadores de restaurantes, dueños, gerentes y equipos responsables de la recepción o el seguimiento de productos que necesitan una mejor forma de gestionar su información de inventario.",
+      "items": [
+        "Operadores de restaurantes",
+        "Dueños o gerentes involucrados en el inventario",
+        "Equipos responsables de la recepción o seguimiento de productos"
+      ]
     },
     "earlyAccess": {
       "eyebrow": "ACCESO ANTICIPADO",
       "heading": "Usa Zaiko gratis durante 3 meses.",
-      "body": "Únete a nuestro programa de acceso anticipado y usa Zaiko gratis durante 3 meses.",
+      "body": "Únete a nuestro programa de acceso anticipado y usa Zaiko gratis durante 3 meses mientras seguimos perfeccionando el producto con operadores de restaurantes.",
+      "details": [
+        "El producto está en fase de perfeccionamiento",
+        "Los operadores participantes pueden probar Zaiko",
+        "Los comentarios pueden ayudar a dar forma al producto",
+        "El uso durante el Acceso Anticipado es gratuito por 3 meses"
+      ],
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Únete al acceso anticipado"
+    },
+    "faq": {
+      "heading": "Preguntas sobre Zaiko",
+      "items": [
+        {
+          "q": "¿Qué es Zaiko?",
+          "a": "Zaiko es un producto de Venkoi diseñado para ayudar a los restaurantes a gestionar y entender el inventario, las compras, los costos y la actividad de los productos desde un espacio de trabajo más claro."
+        },
+        {
+          "q": "¿Para quién es Zaiko?",
+          "a": "Operadores de restaurantes y equipos que buscan una forma más clara de entender y gestionar la actividad del inventario."
+        },
+        {
+          "q": "¿Qué me ayuda a rastrear Zaiko?",
+          "a": "Zaiko te ayuda a rastrear los niveles de inventario, la actividad de compras, el movimiento de productos y los costos conectados a tu inventario."
+        },
+        {
+          "q": "¿Qué es el programa de Acceso Anticipado?",
+          "a": "El Acceso Anticipado permite a los operadores de restaurantes participantes usar Zaiko gratis durante 3 meses mientras Venkoi continúa perfeccionando el producto."
+        },
+        {
+          "q": "¿Cómo puedo probar Zaiko?",
+          "a": "Solicita una demostración o únete al programa de Acceso Anticipado para comenzar."
+        }
+      ]
+    },
+    "visuals": {
+      "inventory": "Inventario",
+      "purchases": "Compras",
+      "activity": "Actividad",
+      "costs": "Costos",
+      "onHand": "Disponible",
+      "incoming": "Entrante",
+      "history": "Historial",
+      "trend": "Tendencia"
     },
     "finalCta": {
       "heading": "¿Listo para una visión más clara de tu inventario?",
