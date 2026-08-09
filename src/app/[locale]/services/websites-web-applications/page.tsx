@@ -84,7 +84,11 @@ export default async function WebServicePage({ params }: PageProps) {
                 href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=web'}
                 variant="primary"
                 eventName="services_cta"
-                properties={{ locale: currentLocale, source: 'web_detail_hero' }}
+                properties={{
+                  locale: currentLocale,
+                  source: 'web_detail_hero',
+                  interest: 'web'
+                }}
               >
                 {t('primaryCta')}
               </TrackedButton>
@@ -161,13 +165,10 @@ export default async function WebServicePage({ params }: PageProps) {
 
       {/* Related Guide */}
       <Section variant="surface" className="py-16 md:py-24 border-t border-border/50">
-        <Container className="space-y-12">
-          <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-              {t('relatedGuideLabel')}
-            </p>
+        <Container className="space-y-8">
+          <div className="max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-bold text-ink">
-              {tArticles('websiteOrWebApp.title')}
+              {tArticles('relatedGuides')}
             </h2>
           </div>
           <div className="max-w-2xl">

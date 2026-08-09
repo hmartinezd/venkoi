@@ -12,5 +12,5 @@ export const contentType = socialCardContentType;
 
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return generateSocialCardResponse(locale);
+  return generateSocialCardResponse({ locale });
 }

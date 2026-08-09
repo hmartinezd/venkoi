@@ -127,6 +127,7 @@ export default async function ZaikoPage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Zaiko',
+    url: `${origin}${getLocalizedPath('productsZaiko', currentLocale)}`,
     applicationCategory: 'BusinessApplication',
     description: tSeo('description'),
     operatingSystem: 'Web',

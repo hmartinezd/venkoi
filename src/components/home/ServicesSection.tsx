@@ -76,7 +76,7 @@ export function ServicesSection({
                 href={getLocalizedPath('servicesMobile', locale)}
                 variant="secondary"
                 className="text-xs bg-white/10 text-white border-white/20 hover:bg-white/20"
-                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_mobile_detail' })}
+                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_mobile_detail', interest: 'mobile' })}
               >
                 {learnMore}
               </Button>
@@ -101,7 +101,7 @@ export function ServicesSection({
                 href={getLocalizedPath('servicesWeb', locale)}
                 variant="secondary"
                 className="text-xs bg-white/10 text-white border-white/20 hover:bg-white/20"
-                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_web_detail' })}
+                onClick={() => trackCustomEvent('services_cta', { locale, source: 'home_web_detail', interest: 'web' })}
               >
                 {learnMore}
               </Button>

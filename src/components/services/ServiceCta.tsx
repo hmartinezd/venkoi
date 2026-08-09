@@ -33,7 +33,7 @@ export function ServiceCta({ locale, heading, body, cta, interest }: ServiceCtaP
             href={contactHref}
             variant="primary"
             className="bg-orange hover:bg-orange-strong border-orange text-white"
-            onClick={() => trackCustomEvent('services_cta', { locale, source })}
+            onClick={() => trackCustomEvent('services_cta', { locale, source, interest })}
           >
             {cta}
           </Button>

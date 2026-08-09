@@ -50,7 +50,7 @@ export function InsightArticle({
       url: origin,
       logo: {
         '@type': 'ImageObject',
-        url: `${origin}/icon.png`
+        url: `${origin}/brand/venkoi-logo-dark.png`
       }
     },
     mainEntityOfPage: {

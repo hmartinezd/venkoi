@@ -19,7 +19,6 @@ const sitemapRoutes: RouteKey[] = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const origin = getSiteOrigin();
-  const lastModified = new Date();
 
   const items: MetadataRoute.Sitemap = [];
 
@@ -36,7 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       items.push({
         url,
-        lastModified,
         changeFrequency: routeKey === 'home' ? 'weekly' : 'monthly',
         priority: routeKey === 'home' ? 1.0 :
                  (routeKey === 'productsZaiko' || routeKey === 'servicesMobile' || routeKey === 'servicesWeb') ? 0.9 :

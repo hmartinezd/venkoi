@@ -71,17 +71,25 @@ export default async function HomePage({ params }: PageProps) {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Venkoi',
-    url: origin,
-    logo: `${origin}/brand/venkoi-logo-dark.png`,
-    description: tHome('hero.body'),
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Tampa Bay',
-      addressRegion: 'FL',
-      addressCountry: 'US'
-    }
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${origin}/#organization`,
+        name: 'Venkoi',
+        url: origin,
+        logo: `${origin}/brand/venkoi-logo-dark.png`,
+        description: tHome('hero.body')
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${origin}/#website`,
+        url: origin,
+        name: 'Venkoi',
+        publisher: {
+          '@id': `${origin}/#organization`
+        }
+      }
+    ]
   };
 
   return (

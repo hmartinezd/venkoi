@@ -9,6 +9,7 @@ interface CreateMetadataOptions {
   routeKey: RouteKey;
   locale: Locale;
   noIndex?: boolean;
+  openGraphType?: 'website' | 'article';
 }
 
 export function createMetadata({
@@ -16,7 +17,8 @@ export function createMetadata({
   description,
   routeKey,
   locale,
-  noIndex = false
+  noIndex = false,
+  openGraphType = 'website'
 }: CreateMetadataOptions): Metadata {
   const origin = getSiteOrigin();
   const pathname = getLocalizedPath(routeKey, locale);
@@ -49,7 +51,7 @@ export function createMetadata({
     openGraph: {
       title,
       description,
-      type: 'website',
+      type: openGraphType,
       url: canonical,
       siteName: 'Venkoi'
     },

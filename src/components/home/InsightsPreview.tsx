@@ -2,7 +2,6 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { InsightCard } from '@/components/insights/InsightCard';
 import { type Locale } from '@/i18n/config';
-import { getLocalizedPath } from '@/i18n/routing';
 import { LocalizedLink } from '@/i18n/navigation';
 
 interface InsightsPreviewProps {

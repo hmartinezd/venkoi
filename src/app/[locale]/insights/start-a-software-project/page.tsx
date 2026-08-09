@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: t('seoTitle'),
     description: t('seoDescription'),
     routeKey: 'insightStartSoftwareProject',
-    locale: currentLocale
+    locale: currentLocale,
+    openGraphType: 'article'
   });
 }
 

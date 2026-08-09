@@ -84,7 +84,11 @@ export default async function MobileServicePage({ params }: PageProps) {
                 href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=mobile'}
                 variant="primary"
                 eventName="services_cta"
-                properties={{ locale: currentLocale, source: 'mobile_detail_hero' }}
+                properties={{
+                  locale: currentLocale,
+                  source: 'mobile_detail_hero',
+                  interest: 'mobile'
+                }}
               >
                 {t('primaryCta')}
               </TrackedButton>
@@ -174,13 +178,10 @@ export default async function MobileServicePage({ params }: PageProps) {
 
       {/* Related Guide */}
       <Section variant="surface" className="py-16 md:py-24 border-t border-border/50">
-        <Container className="space-y-12">
-          <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
-              {t('relatedGuideLabel')}
-            </p>
+        <Container className="space-y-8">
+          <div className="max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-bold text-ink">
-              {tArticles('startSoftwareProject.title')}
+              {tArticles('relatedGuides')}
             </h2>
           </div>
           <div className="max-w-2xl">
