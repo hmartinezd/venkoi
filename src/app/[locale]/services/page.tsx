@@ -216,6 +216,30 @@ export default async function ServicesPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      {/* Project Fit Section */}
+      <Section variant="light" className="py-16 md:py-24 border-t border-border">
+        <Container className="space-y-12">
+          <div className="max-w-3xl space-y-4">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+              {t('projectFit.eyebrow')}
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              {t('projectFit.heading')}
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="rounded-2xl border border-border bg-surface p-6 flex flex-col justify-center">
+                <p className="text-sm font-semibold text-ink leading-relaxed">
+                  {t(`projectFit.item${i as 1 | 2 | 3}`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       {/* Helpful Guides Section */}
       <Section variant="light" className="py-16 md:py-24 border-t border-border">
         <Container className="space-y-12">
@@ -257,6 +281,12 @@ export default async function ServicesPage({ params }: PageProps) {
             </h2>
             <p className="text-base text-white/70 leading-relaxed max-w-xl mx-auto">
               {t('ideaBody')}
+            </p>
+          </div>
+
+          <div className="rounded-full border border-white/20 bg-white/5 px-6 py-2 inline-block mb-8">
+            <p className="text-xs sm:text-sm font-medium text-white/90">
+              {t('differentiator')}
             </p>
           </div>
 

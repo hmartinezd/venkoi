@@ -10,6 +10,9 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { ServiceProcess } from '@/components/services/ServiceProcess';
 import { ServiceCta } from '@/components/services/ServiceCta';
+import { ServiceStartingPoint } from '@/components/services/ServiceStartingPoint';
+import { ServiceFaq } from '@/components/services/ServiceFaq';
+import { InsightCard } from '@/components/insights/InsightCard';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 
 interface PageProps {
@@ -42,7 +45,17 @@ export default async function WebServicePage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const t = await getTranslations('webServicePage');
+  const tArticles = await getTranslations('insightsArticles');
+  const tInsights = await getTranslations('insightsPage');
   const tPage = await getTranslations();
+
+  const faqItems = [
+    { question: t('faq.q1'), answer: t('faq.a1') },
+    { question: t('faq.q2'), answer: t('faq.a2') },
+    { question: t('faq.q3'), answer: t('faq.a3') },
+    { question: t('faq.q4'), answer: t('faq.a4') },
+    { question: t('faq.q5'), answer: t('faq.a5') },
+  ];
 
   return (
     <>
@@ -130,6 +143,47 @@ export default async function WebServicePage({ params }: PageProps) {
           </div>
         </Container>
       </Section>
+
+      <ServiceStartingPoint
+        locale={currentLocale}
+        heading={t('startingPoint.heading')}
+        body={t('startingPoint.body')}
+        prompts={[
+          t('startingPoint.prompt1'),
+          t('startingPoint.prompt2'),
+          t('startingPoint.prompt3'),
+          t('startingPoint.prompt4'),
+        ]}
+        ctaText={t('startingPoint.cta')}
+        ctaInterest="web"
+        ctaSource="web_starting_point"
+      />
+
+      {/* Related Guide */}
+      <Section variant="surface" className="py-16 md:py-24 border-t border-border/50">
+        <Container className="space-y-12">
+          <div className="max-w-3xl space-y-4">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+              {t('relatedGuideLabel')}
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-ink">
+              {tArticles('websiteOrWebApp.title')}
+            </h2>
+          </div>
+          <div className="max-w-2xl">
+            <InsightCard
+              locale={currentLocale}
+              category={tArticles('websiteOrWebApp.category')}
+              title={tArticles('websiteOrWebApp.title')}
+              description={tArticles('websiteOrWebApp.description')}
+              routeKey="insightWebsiteOrWebApp"
+              readMoreLabel={tInsights('readMore')}
+            />
+          </div>
+        </Container>
+      </Section>
+
+      <ServiceFaq heading={t('faq.heading')} items={faqItems} />
 
       <ServiceCta
         locale={currentLocale}

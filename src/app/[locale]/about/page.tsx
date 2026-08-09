@@ -8,6 +8,8 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
+import { TrackedButton } from '@/components/analytics/TrackedButton';
+
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
@@ -23,10 +25,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
   const t = await getTranslations({ locale: currentLocale, namespace: 'aboutPage' });
-  const seo = await getTranslations({ locale: currentLocale, namespace: 'seo' });
+
   return createMetadata({
-    title: `${t('eyebrow')} | ${seo('title')}`,
-    description: t('body'),
+    title: t('seoTitle'),
+    description: t('seoDescription'),
     routeKey: 'about',
     locale: currentLocale
   });
@@ -125,6 +127,72 @@ export default async function AboutPage({ params }: PageProps) {
 
           <div className="rounded-2xl border border-border bg-surface p-8 text-base text-foreground-muted leading-relaxed">
             <p>{t('localGlobalBody')}</p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Philosophy / Principles */}
+      <Section variant="surface" className="py-16 md:py-24 border-y border-border">
+        <Container className="space-y-12">
+          <div className="max-w-3xl space-y-4">
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+              {t('philosophy.heading')}
+            </h2>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:gap-12">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-ink">{t('philosophy.p1.title')}</h3>
+              <p className="text-base text-foreground-muted leading-relaxed">
+                {t('philosophy.p1.body')}
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-ink">{t('philosophy.p2.title')}</h3>
+              <p className="text-base text-foreground-muted leading-relaxed">
+                {t('philosophy.p2.body')}
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-ink">{t('philosophy.p3.title')}</h3>
+              <p className="text-base text-foreground-muted leading-relaxed">
+                {t('philosophy.p3.body')}
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-ink">{t('philosophy.p4.title')}</h3>
+              <p className="text-base text-foreground-muted leading-relaxed">
+                {t('philosophy.p4.body')}
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Final About CTA */}
+      <Section variant="light" className="py-20 md:py-28 text-center">
+        <Container className="max-w-3xl space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+              {t('footerCta.heading')}
+            </h2>
+            <p className="text-base text-foreground-muted leading-relaxed max-w-xl mx-auto">
+              {t('footerCta.body')}
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <TrackedButton
+              href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=unsure'}
+              variant="primary"
+              eventName="services_cta"
+              properties={{ locale: currentLocale, source: 'about_footer', interest: 'unsure' }}
+            >
+              {t('footerCta.primary')}
+            </TrackedButton>
+            <Button href={getLocalizedPath('services', currentLocale)} variant="secondary">
+              {t('footerCta.secondary')}
+            </Button>
           </div>
         </Container>
       </Section>

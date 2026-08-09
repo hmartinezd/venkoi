@@ -204,7 +204,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         eyebrow={tExplorer('eyebrow')}
         heading={tExplorer('heading')}
         body={tExplorer('body')}
-        detailLinkLabel={tExplorer('detailLink')}
+        detailLinkLabel={tExplorer('detailLink', { area: '{area}' })}
         demoCtaLabel={tExplorer('demoCta')}
         areas={explorerAreas}
         visualLabels={visualLabels}

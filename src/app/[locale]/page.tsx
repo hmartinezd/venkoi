@@ -12,6 +12,7 @@ import { ServicesSection } from '@/components/home/ServicesSection';
 import { LocalSection } from '@/components/home/LocalSection';
 import { PhilosophySection } from '@/components/home/PhilosophySection';
 import { AboutPreview } from '@/components/home/AboutPreview';
+import { InsightsPreview } from '@/components/home/InsightsPreview';
 import { FinalCta } from '@/components/home/FinalCta';
 
 interface PageProps {
@@ -43,7 +44,30 @@ export default async function HomePage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const tHome = await getTranslations('home');
+  const tArticles = await getTranslations('insightsArticles');
+  const tInsights = await getTranslations('insightsPage');
   const origin = getSiteOrigin();
+
+  const articles = [
+    {
+      routeKey: 'insightRestaurantInventory' as const,
+      category: tArticles('restaurantInventory.category'),
+      title: tArticles('restaurantInventory.title'),
+      description: tArticles('restaurantInventory.description')
+    },
+    {
+      routeKey: 'insightStartSoftwareProject' as const,
+      category: tArticles('startSoftwareProject.category'),
+      title: tArticles('startSoftwareProject.title'),
+      description: tArticles('startSoftwareProject.description')
+    },
+    {
+      routeKey: 'insightWebsiteOrWebApp' as const,
+      category: tArticles('websiteOrWebApp.category'),
+      title: tArticles('websiteOrWebApp.title'),
+      description: tArticles('websiteOrWebApp.description')
+    }
+  ];
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -149,6 +173,16 @@ export default async function HomePage({ params }: PageProps) {
         p2={tHome('aboutPreview.p2')}
         p3={tHome('aboutPreview.p3')}
         cta={tHome('aboutPreview.cta')}
+      />
+
+      <InsightsPreview
+        locale={currentLocale}
+        eyebrow={tHome('insights.eyebrow')}
+        heading={tHome('insights.heading')}
+        body={tHome('insights.body')}
+        cta={tHome('insights.cta')}
+        readMoreLabel={tInsights('readMore')}
+        articles={articles}
       />
 
       <FinalCta

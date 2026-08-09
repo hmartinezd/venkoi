@@ -120,6 +120,12 @@
       "demoCta": "Request a Demo",
       "talkCta": "Start a Conversation",
       "locationLine": "Tampa Bay · South Florida · Beyond"
+    },
+    "insights": {
+      "eyebrow": "INSIGHTS",
+      "heading": "Useful ideas before you build — or before you change how you work.",
+      "body": "Practical guides about software projects, web experiences, and restaurant inventory workflows.",
+      "cta": "Explore all insights"
     }
   },
   "servicesPage": {
@@ -162,12 +168,23 @@
     "ideaTitle": "You don't need a finished specification.",
     "ideaBody": "Bring us the idea, the problem, or what you want to create. We'll help turn it into something clear, useful, and ready to build.",
     "ideaCta": "Tell us about your idea",
+    "projectFit": {
+      "heading": "You can start with more than a finished specification.",
+      "eyebrow": "PROJECT FIT",
+      "item1": "An idea you want to explore",
+      "item2": "A workflow or problem you want to improve",
+      "item3": "An existing product that needs work"
+    },
+    "differentiator": "Talk directly to the people building your software.",
     "exploreMobile": "Explore Mobile Applications",
     "exploreWeb": "Explore Websites & Web Applications",
     "seoTitle": "Services | Mobile Apps & Web Development | Venkoi",
-    "seoDescription": "Venkoi designs, builds, and tests mobile applications for iOS and Android, websites, and web applications in Tampa Bay, South Florida, and beyond."
+    "seoDescription": "Venkoi designs, builds, and tests mobile applications for iOS and Android, websites, and web applications in Tampa Bay, South Florida, and beyond.",
+    "relatedGuides": "Helpful guides"
   },
   "aboutPage": {
+    "seoTitle": "About Venkoi | Software Products & Development",
+    "seoDescription": "Learn about Venkoi's product-first philosophy and how we build mobile and web experiences focused on solving real problems.",
     "eyebrow": "ABOUT VENKOI",
     "heading": "Software should make business easier.",
     "body": "Venkoi is a software company based in Tampa Bay, Florida, focused on building useful digital products and mobile and web experiences around real problems.",
@@ -184,7 +201,32 @@
     "servicesCta": "Explore Services",
     "foundationExpansionEyebrow": "FOUNDATION & EXPANSION",
     "localGlobalHeading": "Close enough to understand. Built to go further.",
-    "localGlobalBody": "Venkoi is starting in Tampa Bay, working close to the businesses and people using the software we create. That proximity helps us understand real workflows and real problems — while the products we build are designed to grow far beyond one market."
+    "localGlobalBody": "Venkoi is starting in Tampa Bay, working close to the businesses and people using the software we create. That proximity helps us understand real workflows and real problems — while the products we build are designed to grow far beyond one market.",
+    "philosophy": {
+      "heading": "How we think about building software.",
+      "p1": {
+        "title": "Start with the problem.",
+        "body": "Technology is not the starting point. First understand the problem, the people involved, and what needs to become easier or better."
+      },
+      "p2": {
+        "title": "Build the useful version first.",
+        "body": "Focus on the most important workflow and outcome before adding unnecessary complexity."
+      },
+      "p3": {
+        "title": "Design, development, and testing belong together.",
+        "body": "The experience, implementation, and quality of the product should evolve together rather than testing being treated as a final step."
+      },
+      "p4": {
+        "title": "Work with the people doing the work.",
+        "body": "Clients should be able to communicate directly with the people shaping and building the software."
+      }
+    },
+    "footerCta": {
+      "heading": "Have something you want to build?",
+      "body": "You don't need a finished specification. Start with the idea, the problem, or what you want people to be able to do.",
+      "primary": "Tell us about your idea",
+      "secondary": "Explore our services"
+    }
   },
   "contactPage": {
     "eyebrow": "CONTACT VENKOI",
@@ -515,6 +557,29 @@
     "processHeading": "A lifecycle built for mobile products.",
     "existingHeading": "Already have an app?",
     "existingBody": "We can also help improve an existing mobile experience — whether the goal is to refine usability, add functionality, modernize the experience, or solve specific product problems.",
+    "startingPoint": {
+      "heading": "You don't need every screen figured out.",
+      "body": "A useful starting point is knowing the problem you want the app to solve, who will use it, and the most important thing they need to accomplish.",
+      "prompt1": "What should the application help someone do?",
+      "prompt2": "Who will use it?",
+      "prompt3": "What exists today, if anything?",
+      "prompt4": "What matters most in the first useful version?",
+      "cta": "Tell us about your mobile app"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "q1": "Do I need a finished app specification?",
+      "a1": "No. An idea, problem, goal, or workflow is enough to begin defining the project.",
+      "q2": "Can Venkoi help with an existing mobile application?",
+      "a2": "Yes. Venkoi can help evaluate and improve an existing mobile experience, depending on the project and its current state.",
+      "q3": "Do you build for both iOS and Android?",
+      "a3": "Yes. Mobile Applications can target iOS and Android.",
+      "q4": "How do you decide the technical approach?",
+      "a4": "The implementation approach depends on product needs, user experience, requirements, and long-term needs.",
+      "q5": "What happens after I contact Venkoi?",
+      "a5": "Venkoi reviews what was shared, follows up to understand the idea better, and defines an appropriate next step if the project appears to be a fit."
+    },
+    "relatedGuideLabel": "HELPFUL GUIDE",
     "seoTitle": "Mobile App Development for iOS & Android | Venkoi",
     "seoDescription": "Venkoi designs, builds, and tests mobile applications for iOS and Android, from early ideas through useful, production-ready digital experiences in Tampa Bay, South Florida, and beyond."
   },
@@ -535,6 +600,29 @@
     "processHeading": "A lifecycle built for web products.",
     "existingHeading": "Already have something online?",
     "existingBody": "Venkoi can also help improve an existing website or web application when it needs a clearer experience, new functionality, modernization, or focused improvements.",
+    "startingPoint": {
+      "heading": "Start with what you want people to accomplish.",
+      "body": "You do not need to decide whether the solution is technically a website or a web application before contacting Venkoi.",
+      "prompt1": "What should visitors or users be able to do?",
+      "prompt2": "Is the main goal communication, interaction, or both?",
+      "prompt3": "What exists today?",
+      "prompt4": "What would make the experience more useful?",
+      "cta": "Tell us about your web project"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "q1": "Do I need to know whether I need a website or web application?",
+      "a1": "No. The solution should fit the idea — not the other way around. We help you shape the right approach based on your goals.",
+      "q2": "Can Venkoi build a straightforward website?",
+      "a2": "Yes. We build clear web experiences focused on effective communication and usability.",
+      "q3": "Can Venkoi build a more interactive web application?",
+      "a3": "Yes. We build web applications designed to handle complex workflows and interactive data.",
+      "q4": "Can Venkoi improve something that already exists?",
+      "a4": "Yes. We can evaluate existing web products to improve performance, experience, or functionality.",
+      "q5": "How do you decide the right technical approach?",
+      "a5": "We choose the architecture and tools that best support your project's requirements and long-term goals."
+    },
+    "relatedGuideLabel": "HELPFUL GUIDE",
     "seoTitle": "Website & Web Application Development | Venkoi",
     "seoDescription": "Venkoi designs, builds, and tests websites and web applications, from straightforward web experiences to more interactive products in Tampa Bay, South Florida, and beyond."
   },
@@ -627,6 +715,7 @@
     "relatedGuide": "RELATED GUIDE"
   },
   "breadcrumbs": {
+    "home": "Home",
     "services": "Services",
     "mobileApplications": "Mobile Applications",
     "webApplications": "Websites & Web Applications",
