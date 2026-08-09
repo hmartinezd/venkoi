@@ -1,10 +1,39 @@
 'use client';
 
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath } from '@/i18n/routing';
+import { internalRoutes, getRouteKeyFromPath, type RouteKey, type InternalPathname } from '@/i18n/routing';
 import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
+import { getSafeLocalizedIntentQuery } from '@/lib/navigation-intent';
+
+function LanguageSwitcher({ locale, currentPath, routeKey }: { locale: Locale; currentPath: InternalPathname; routeKey: RouteKey }) {
+  const searchParams = useSearchParams();
+
+  return (
+    <div className="flex items-center gap-3">
+      {locales.map((localeKey, idx) => {
+        const safeParams = getSafeLocalizedIntentQuery(routeKey, searchParams);
+        const query = Object.fromEntries(safeParams.entries());
+
+        return (
+          <span key={localeKey} className="flex items-center gap-3">
+            <LocalizedLink
+              href={{ pathname: currentPath, query }}
+              locale={localeKey}
+              className={`transition hover:text-ink ${localeKey === locale ? 'font-semibold text-ink' : ''}`}
+            >
+              {localeLabels[localeKey]}
+            </LocalizedLink>
+            {idx < locales.length - 1 ? <span>|</span> : null}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
 
 export function Footer({ locale }: { locale: Locale }) {
   const pathname = usePathname();
@@ -119,20 +148,9 @@ export function Footer({ locale }: { locale: Locale }) {
 
       <div className="mx-auto mt-12 max-w-[1240px] border-t border-border px-4 pt-8 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 text-xs text-foreground-muted sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            {locales.map((localeKey, idx) => (
-              <span key={localeKey} className="flex items-center gap-3">
-                <LocalizedLink
-                  href={currentPath}
-                  locale={localeKey}
-                  className={`transition hover:text-ink ${localeKey === locale ? 'font-semibold text-ink' : ''}`}
-                >
-                  {localeLabels[localeKey]}
-                </LocalizedLink>
-                {idx < locales.length - 1 ? <span>|</span> : null}
-              </span>
-            ))}
-          </div>
+          <Suspense fallback={<div className="h-4 w-24 animate-pulse bg-border/50 rounded" />}>
+            <LanguageSwitcher locale={locale} currentPath={currentPath} routeKey={routeKey} />
+          </Suspense>
 
           <div className="flex items-center gap-4">
             <span className="cursor-default text-foreground-muted">{tCommon('privacy')}</span>

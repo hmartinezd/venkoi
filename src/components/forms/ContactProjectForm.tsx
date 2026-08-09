@@ -6,7 +6,7 @@ import { FormField } from './FormField';
 import { FormStatus } from './FormStatus';
 import { Button } from '@/components/ui/Button';
 import { trackCustomEvent } from '@/lib/analytics';
-import { normalizeServiceInterest, type ServiceInterest } from '@/lib/services';
+import { type ServiceInterest } from '@/lib/services';
 import type { Locale } from '@/i18n/config';
 
 interface ContactProjectFormProps {
@@ -90,16 +90,18 @@ export function ContactProjectForm({
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    const { name, value } = e.target;
+
     if (!hasStartedRef.current) {
       hasStartedRef.current = true;
+      const effectiveInterest = name === 'interest' ? value : formData.interest;
       trackCustomEvent('contact_form_start', {
         locale,
         leadType: lead_type,
-        interest: formData.interest
+        interest: effectiveInterest
       });
     }
 
-    const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (errors[name]) {
@@ -218,13 +220,13 @@ export function ContactProjectForm({
         <FormStatus status="error" message={statusMessage} />
       ) : null}
 
-      {initialInterest && (
+      {formData.interest && (
         <div className="rounded-xl bg-orange/5 border border-orange/10 px-4 py-3 flex flex-col gap-0.5">
           <span className="text-[10px] font-bold uppercase tracking-wider text-orange/80">
             {tp('projectTypeIndicator')}
           </span>
           <span className="text-sm font-bold text-ink">
-            {t(`interestOptions.${initialInterest}`)}
+            {t(`interestOptions.${formData.interest}`)}
           </span>
         </div>
       )}

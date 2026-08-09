@@ -66,7 +66,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const formDesc = isEarlyAccess
     ? t('earlyAccess.badge')
-    : (isZaiko ? t('zaiko.earlyAccessBadge') : t('badgeText'));
+    : (isZaiko ? t('zaiko.formDescription') : t('badgeText'));
 
   return (
     <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">

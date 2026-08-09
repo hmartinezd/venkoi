@@ -13,6 +13,7 @@ export const internalRoutes = {
 } as const;
 
 export type RouteKey = keyof typeof internalRoutes;
+export type InternalPathname = (typeof internalRoutes)[RouteKey];
 
 const pathnames = {
   '/': '/',

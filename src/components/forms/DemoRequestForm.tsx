@@ -87,14 +87,21 @@ export function DemoRequestForm({
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
+    const { name, value, type } = e.target;
+    const isCheckbox = type === 'checkbox';
+    const checked = isCheckbox ? (e.target as HTMLInputElement).checked : false;
+
     if (!hasStartedRef.current) {
       hasStartedRef.current = true;
-      trackCustomEvent('demo_form_start', { locale, product: activeProduct });
+      const effectiveEarlyAccess = name === 'early_access_interest' ? checked : formData.early_access_interest;
+      trackCustomEvent('demo_form_start', {
+        locale,
+        product: activeProduct,
+        earlyAccess: effectiveEarlyAccess
+      });
     }
 
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
+    if (isCheckbox) {
       setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
@@ -115,7 +122,11 @@ export function DemoRequestForm({
     setErrors({});
     setStatus('idle');
 
-    trackCustomEvent('demo_form_submit', { locale, product: activeProduct });
+    trackCustomEvent('demo_form_submit', {
+      locale,
+      product: activeProduct,
+      earlyAccess: formData.early_access_interest
+    });
 
     // Inline client validation
     const clientErrors: Record<string, string> = {};

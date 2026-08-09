@@ -3,7 +3,7 @@ import { Section } from '@/components/layout/Section';
 import { ContactProjectForm } from '@/components/forms/ContactProjectForm';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
-import { normalizeServiceInterest, type ServiceInterest } from '@/lib/services';
+import { normalizeServiceInterest } from '@/lib/services';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';

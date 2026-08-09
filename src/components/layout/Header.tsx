@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath, getLocalizedPath } from '@/i18n/routing';
+import { internalRoutes, getRouteKeyFromPath, getLocalizedPath, type RouteKey, type InternalPathname } from '@/i18n/routing';
 import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
@@ -11,8 +11,9 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 import { trackCustomEvent } from '@/lib/analytics';
+import { getSafeLocalizedIntentQuery } from '@/lib/navigation-intent';
 
-function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: string }) {
+function LanguageSwitcherContent({ locale, pathname }: { locale: Locale; pathname: string }) {
   const routeKey = getRouteKeyFromPath(pathname);
   const currentPath = internalRoutes[routeKey];
   const searchParams = useSearchParams();
@@ -20,19 +21,13 @@ function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: stri
   return (
     <div className="flex items-center gap-2 text-xs font-semibold tracking-wider">
       {locales.map((localeKey, index) => {
-        // Preserving safe meaningful intent params
-        const safeParams = new URLSearchParams();
-        ['type', 'interest', 'product'].forEach((key) => {
-          const val = searchParams.get(key);
-          if (val) safeParams.set(key, val);
-        });
-        const search = safeParams.toString();
-        const href = search ? `${currentPath}?${search}` : currentPath;
+        const safeParams = getSafeLocalizedIntentQuery(routeKey, searchParams);
+        const query = Object.fromEntries(safeParams.entries());
 
         return (
           <span key={localeKey} className="flex items-center gap-2">
             <LocalizedLink
-              href={href as any}
+              href={{ pathname: currentPath, query }}
               locale={localeKey}
               onClick={() => {
                 if (localeKey !== locale) {
@@ -53,6 +48,14 @@ function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: stri
         );
       })}
     </div>
+  );
+}
+
+function LanguageSwitcher({ locale, pathname }: { locale: Locale; pathname: string }) {
+  return (
+    <Suspense fallback={<div className="h-6 w-20 animate-pulse bg-surface-muted rounded" />}>
+      <LanguageSwitcherContent locale={locale} pathname={pathname} />
+    </Suspense>
   );
 }
 
