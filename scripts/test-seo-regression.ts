@@ -1,6 +1,5 @@
 import { createMetadata } from '../src/lib/seo';
 import sitemap from '../src/app/sitemap';
-import { locales } from '../src/i18n/config';
 
 export function testSeoRegression() {
   console.log('=== RUNNING SEO REGRESSION TESTS ===\n');
@@ -38,9 +37,9 @@ export function testSeoRegression() {
       locale: 'en'
     });
 
-    assert(metadata.openGraph?.type === 'website', 'Default metadata uses type: website');
+    assert((metadata.openGraph as any)?.type === 'website', 'Default metadata uses type: website');
     assert(metadata.openGraph?.siteName === 'Venkoi', 'OpenGraph siteName is Venkoi');
-    assert(metadata.twitter?.card === 'summary_large_image', 'Twitter card is summary_large_image');
+    assert((metadata.twitter as any)?.card === 'summary_large_image', 'Twitter card is summary_large_image');
 
     // 2. Metadata Generation - Article
     const articleMetadata = createMetadata({
@@ -50,7 +49,7 @@ export function testSeoRegression() {
       locale: 'en',
       openGraphType: 'article'
     });
-    assert(articleMetadata.openGraph?.type === 'article', 'Explicit openGraphType article works');
+    assert((articleMetadata.openGraph as any)?.type === 'article', 'Explicit openGraphType article works');
 
     // 3. Localization and Canonical
     const esMetadata = createMetadata({
@@ -77,7 +76,7 @@ export function testSeoRegression() {
       routeKey: 'home',
       locale: 'en'
     });
-    assert(prodMetadata.robots?.index === true, 'Production indexes by default');
+    assert((prodMetadata.robots as any)?.index === true, 'Production indexes by default');
 
     // 5. Indexing behavior - Preview (should be noindex)
     setEnv('VERCEL_ENV', 'preview');
@@ -87,7 +86,7 @@ export function testSeoRegression() {
       routeKey: 'home',
       locale: 'en'
     });
-    assert(previewMetadata.robots?.index === false, 'Preview environment is noindex');
+    assert((previewMetadata.robots as any)?.index === false, 'Preview environment is noindex');
 
     // 6. Sitemap Verification
     const sitemapItems = sitemap();
@@ -99,16 +98,18 @@ export function testSeoRegression() {
     assert(!!enHome, 'English home route present in sitemap');
     assert(!!esHome, 'Spanish home route present in sitemap');
 
-    // Verify lack of build-time lastModified
-    const allItemsHaveNoLastModified = sitemapItems.every(item => !(item as any).lastModified);
-    assert(allItemsHaveNoLastModified, 'Sitemap items do NOT contain build-time lastModified property');
+    if (enHome) {
+      // Verify lack of build-time lastModified
+      const allItemsHaveNoLastModified = sitemapItems.every(item => !(item as any).lastModified);
+      assert(allItemsHaveNoLastModified, 'Sitemap items do NOT contain build-time lastModified property');
 
-    // Verify alternate languages in sitemap
-    assert(!!enHome?.alternates?.languages?.en, 'Sitemap alternates contain English');
-    assert(!!enHome?.alternates?.languages?.es, 'Sitemap alternates contain Spanish');
-    assert(enHome?.alternates?.languages?.['x-default'].endsWith('/'), 'Sitemap alternates x-default is English root');
+      // Verify alternate languages in sitemap
+      assert(!!enHome.alternates?.languages?.en, 'Sitemap alternates contain English');
+      assert(!!enHome.alternates?.languages?.es, 'Sitemap alternates contain Spanish');
+      assert(!!enHome.alternates?.languages?.['x-default'] && enHome.alternates.languages['x-default'].endsWith('/'), 'Sitemap alternates x-default is English root');
+    }
 
-    // Verify Demo is excluded (assuming it was NOT in sitemapRoutes in sitemap.ts)
+    // Verify Demo is excluded
     const demoInSitemap = sitemapItems.find(item => item.url.includes('/demo'));
     assert(!demoInSitemap, 'Demo route is excluded from sitemap');
 

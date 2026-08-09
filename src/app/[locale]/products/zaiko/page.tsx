@@ -12,6 +12,7 @@ import { ZaikoAudience } from '@/components/product/zaiko/ZaikoAudience';
 import { ZaikoFaq } from '@/components/product/zaiko/ZaikoFaq';
 import { InsightCard } from '@/components/insights/InsightCard';
 import { locales, type Locale } from '@/i18n/config';
+import { getLocalizedPath } from '@/i18n/routing';
 import { createMetadata } from '@/lib/seo';
 import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
