@@ -12,7 +12,9 @@ type SharedProps = {
 
 type NextLinkProps = ComponentProps<typeof Link>;
 
-type LinkProps = SharedProps & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps> & NextLinkProps;
+type LinkProps = SharedProps & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps> & Omit<NextLinkProps, 'href'> & {
+  href: string | NextLinkProps['href'];
+};
 
 type ActionProps = SharedProps & ButtonHTMLAttributes<HTMLButtonElement> & {
   href?: undefined;
