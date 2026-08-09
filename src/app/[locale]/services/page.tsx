@@ -125,10 +125,7 @@ export default async function ServicesPage({ params }: PageProps) {
             <p className="text-base text-foreground-muted leading-relaxed">
               {t('webBody')}
             </p>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-surface p-8 max-w-3xl space-y-3">
-            <p className="text-base font-medium text-ink leading-relaxed">
+            <p className="text-sm text-foreground-muted/80 leading-relaxed italic">
               {t('webSupporting')}
             </p>
           </div>
@@ -141,55 +138,60 @@ export default async function ServicesPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      {/* Process / How We Work Section */}
+      {/* How We Work — Project Delivery Lifecycle */}
       <Section variant="surface" className="py-16 md:py-24 border-t border-border">
         <Container className="space-y-12">
           <div className="max-w-3xl space-y-4">
-            <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
-              {t('howWeWorkEyebrow')}
-            </span>
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+              {t('howWeWork.eyebrow')}
+            </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              {t('howWeWorkTitle')}
+              {t('howWeWork.heading')}
             </h2>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-orange">{t('stage1Num')}</span>
-              <h3 className="text-lg font-bold text-ink">{t('stage1Title')}</h3>
-              <p className="text-xs text-foreground-muted leading-relaxed">
-                {t('stage1Desc')}
-              </p>
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage1Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage1Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage1Desc')}
+                </p>
+              </div>
             </div>
-
-            <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-orange">{t('stage2Num')}</span>
-              <h3 className="text-lg font-bold text-ink">{t('stage2Title')}</h3>
-              <p className="text-xs text-foreground-muted leading-relaxed">
-                {t('stage2Desc')}
-              </p>
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage2Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage2Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage2Desc')}
+                </p>
+              </div>
             </div>
-
-            <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-orange">{t('stage3Num')}</span>
-              <h3 className="text-lg font-bold text-ink">{t('stage3Title')}</h3>
-              <p className="text-xs text-foreground-muted leading-relaxed">
-                {t('stage3Desc')}
-              </p>
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage3Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage3Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage3Desc')}
+                </p>
+              </div>
             </div>
-
-            <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-orange">{t('stage4Num')}</span>
-              <h3 className="text-lg font-bold text-ink">{t('stage4Title')}</h3>
-              <p className="text-xs text-foreground-muted leading-relaxed">
-                {t('stage4Desc')}
-              </p>
+            <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
+              <div className="space-y-3">
+                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage4Num')}</span>
+                <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage4Title')}</h3>
+                <p className="text-xs text-foreground-muted leading-relaxed">
+                  {t('howWeWork.stage4Desc')}
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-orange/30 bg-orange-subtle/50 p-6 text-center max-w-2xl mx-auto">
-            <p className="text-sm font-semibold text-ink">
-              {t('testingPrinciple')}
+          <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 sm:p-6 text-center max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base font-semibold text-ink">
+              &ldquo;{t('howWeWork.testingPrinciple')}&rdquo;
             </p>
           </div>
         </Container>

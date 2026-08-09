@@ -159,9 +159,9 @@ async function runTests() {
     assert(t11.data.first_name === 'John', 'First name trimmed');
   }
 
-  // 11. Valid CUSTOM_PROJECT payloads with active interests
-  const activeInterests = ['mobile', 'website', 'web_application', 'unsure'] as const;
-  activeInterests.forEach((interestVal) => {
+  // 11. Valid CUSTOM_PROJECT payloads with active canonical interests
+  const canonicalInterests = ['mobile', 'web', 'unsure'] as const;
+  canonicalInterests.forEach((interestVal) => {
     const res = leadSubmissionSchema.safeParse({
       lead_type: 'CUSTOM_PROJECT',
       name: 'Carlos Ruiz',
@@ -170,8 +170,45 @@ async function runTests() {
       project_stage: 'planning',
       message: 'Need a logistics app for Florida operations.'
     });
-    assert(res.success, `Valid CUSTOM_PROJECT with interest '${interestVal}' parses successfully`);
+    assert(res.success, `Valid CUSTOM_PROJECT with canonical interest '${interestVal}' parses successfully`);
+    if (res.success) {
+      assert(res.data.interest === interestVal, `Interest '${interestVal}' remains '${interestVal}'`);
+    }
   });
+
+  // 12. Compatibility interest normalization (website & web_application -> web)
+  const compatWebsite = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Compat User 1',
+    email: 'compat1@example.com',
+    interest: 'website',
+    message: 'Need a site'
+  });
+  assert(compatWebsite.success, 'Accept legacy query interest website');
+  if (compatWebsite.success) {
+    assert(compatWebsite.data.interest === 'web', 'Normalize legacy interest website -> web');
+  }
+
+  const compatWebApp = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Compat User 2',
+    email: 'compat2@example.com',
+    interest: 'web_application',
+    message: 'Need a portal'
+  });
+  assert(compatWebApp.success, 'Accept legacy query interest web_application');
+  if (compatWebApp.success) {
+    assert(compatWebApp.data.interest === 'web', 'Normalize legacy interest web_application -> web');
+  }
+
+  // 12b. Optional blank interest
+  const blankInterest = leadSubmissionSchema.safeParse({
+    lead_type: 'GENERAL_CONTACT',
+    name: 'No Interest User',
+    email: 'nointerest@example.com',
+    message: 'General inquiry message'
+  });
+  assert(blankInterest.success, 'Allow submission with omitted/blank interest');
 
   // 13. Unknown extra field (strict mode test)
   const t13 = leadSubmissionSchema.safeParse({
