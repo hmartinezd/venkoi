@@ -29,6 +29,14 @@ assert(getLocalizedPath('servicesMobile', 'en') === '/en/services/mobile-applica
 assert(getLocalizedPath('servicesMobile', 'es') === '/es/servicios/aplicaciones-moviles', 'Mobile Services ES');
 assert(getLocalizedPath('servicesWeb', 'en') === '/en/services/websites-web-applications', 'Web Services EN');
 assert(getLocalizedPath('servicesWeb', 'es') === '/es/servicios/paginas-web-aplicaciones-web', 'Web Services ES');
+assert(getLocalizedPath('insights', 'en') === '/en/insights', 'Insights EN');
+assert(getLocalizedPath('insights', 'es') === '/es/recursos', 'Insights ES');
+assert(getLocalizedPath('insightRestaurantInventory', 'en') === '/en/insights/restaurant-inventory-information', 'Restaurant Inventory EN');
+assert(getLocalizedPath('insightRestaurantInventory', 'es') === '/es/recursos/inventario-restaurante-informacion-dispersa', 'Restaurant Inventory ES');
+assert(getLocalizedPath('insightStartSoftwareProject', 'en') === '/en/insights/start-a-software-project', 'Start Project EN');
+assert(getLocalizedPath('insightStartSoftwareProject', 'es') === '/es/recursos/como-empezar-un-proyecto-de-software', 'Start Project ES');
+assert(getLocalizedPath('insightWebsiteOrWebApp', 'en') === '/en/insights/website-or-web-application', 'Website/WebApp EN');
+assert(getLocalizedPath('insightWebsiteOrWebApp', 'es') === '/es/recursos/pagina-web-o-aplicacion-web', 'Website/WebApp ES');
 
 // 2. Test getRouteKeyFromPath
 console.log('\nTesting getRouteKeyFromPath:');
@@ -40,6 +48,14 @@ assert(getRouteKeyFromPath('/en/services/mobile-applications') === 'servicesMobi
 assert(getRouteKeyFromPath('/es/servicios/aplicaciones-moviles') === 'servicesMobile', 'Path /es/servicios/aplicaciones-moviles -> servicesMobile');
 assert(getRouteKeyFromPath('/en/services/websites-web-applications') === 'servicesWeb', 'Path /en/services/websites-web-applications -> servicesWeb');
 assert(getRouteKeyFromPath('/es/servicios/paginas-web-aplicaciones-web') === 'servicesWeb', 'Path /es/servicios/paginas-web-aplicaciones-web -> servicesWeb');
+assert(getRouteKeyFromPath('/en/insights') === 'insights', 'Path /en/insights -> insights');
+assert(getRouteKeyFromPath('/es/recursos') === 'insights', 'Path /es/recursos -> insights');
+assert(getRouteKeyFromPath('/en/insights/restaurant-inventory-information') === 'insightRestaurantInventory', 'Path /en/insights/restaurant-inventory-information -> insightRestaurantInventory');
+assert(getRouteKeyFromPath('/es/recursos/inventario-restaurante-informacion-dispersa') === 'insightRestaurantInventory', 'Path /es/recursos/inventario-restaurante-informacion-dispersa -> insightRestaurantInventory');
+assert(getRouteKeyFromPath('/en/insights/start-a-software-project') === 'insightStartSoftwareProject', 'Path /en/insights/start-a-software-project -> insightStartSoftwareProject');
+assert(getRouteKeyFromPath('/es/recursos/como-empezar-un-proyecto-de-software') === 'insightStartSoftwareProject', 'Path /es/recursos/como-empezar-un-proyecto-de-software -> insightStartSoftwareProject');
+assert(getRouteKeyFromPath('/en/insights/website-or-web-application') === 'insightWebsiteOrWebApp', 'Path /en/insights/website-or-web-application -> insightWebsiteOrWebApp');
+assert(getRouteKeyFromPath('/es/recursos/pagina-web-o-aplicacion-web') === 'insightWebsiteOrWebApp', 'Path /es/recursos/pagina-web-o-aplicacion-web -> insightWebsiteOrWebApp');
 
 // 3. Test internalRoutes mapping
 console.log('\nTesting internalRoutes mapping:');

@@ -9,7 +9,11 @@ export const internalRoutes = {
   servicesWeb: '/services/websites-web-applications',
   about: '/about',
   contact: '/contact',
-  demo: '/demo'
+  demo: '/demo',
+  insights: '/insights',
+  insightRestaurantInventory: '/insights/restaurant-inventory-information',
+  insightStartSoftwareProject: '/insights/start-a-software-project',
+  insightWebsiteOrWebApp: '/insights/website-or-web-application'
 } as const;
 
 export type RouteKey = keyof typeof internalRoutes;
@@ -41,7 +45,23 @@ const pathnames = {
     en: '/contact',
     es: '/contacto'
   },
-  '/demo': '/demo'
+  '/demo': '/demo',
+  '/insights': {
+    en: '/insights',
+    es: '/recursos'
+  },
+  '/insights/restaurant-inventory-information': {
+    en: '/insights/restaurant-inventory-information',
+    es: '/recursos/inventario-restaurante-informacion-dispersa'
+  },
+  '/insights/start-a-software-project': {
+    en: '/insights/start-a-software-project',
+    es: '/recursos/como-empezar-un-proyecto-de-software'
+  },
+  '/insights/website-or-web-application': {
+    en: '/insights/website-or-web-application',
+    es: '/recursos/pagina-web-o-aplicacion-web'
+  }
 } as const;
 
 export const routing = defineRouting({

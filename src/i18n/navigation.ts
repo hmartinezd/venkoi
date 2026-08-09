@@ -75,6 +75,11 @@ export const footerNavigation: {
       id: 'contact',
       labelKey: 'contact',
       routeKey: 'contact'
+    },
+    {
+      id: 'insights',
+      labelKey: 'insights',
+      routeKey: 'insights'
     }
   ],
   workWithUs: [

@@ -65,6 +65,15 @@ export function Footer({ locale }: { locale: Locale }) {
                   {tNav('contact')}
                 </LocalizedLink>
               </li>
+              <li>
+                <LocalizedLink
+                  href={internalRoutes.insights}
+                  locale={locale}
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
+                >
+                  {tNav('insights')}
+                </LocalizedLink>
+              </li>
             </ul>
           </div>
 

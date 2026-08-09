@@ -10,7 +10,11 @@ const sitemapRoutes: RouteKey[] = [
   'servicesMobile',
   'servicesWeb',
   'about',
-  'contact'
+  'contact',
+  'insights',
+  'insightRestaurantInventory',
+  'insightStartSoftwareProject',
+  'insightWebsiteOrWebApp'
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -34,7 +38,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url,
         lastModified,
         changeFrequency: routeKey === 'home' ? 'weekly' : 'monthly',
-        priority: routeKey === 'home' ? 1.0 : (routeKey === 'productsZaiko' || routeKey === 'servicesMobile' || routeKey === 'servicesWeb') ? 0.9 : 0.8,
+        priority: routeKey === 'home' ? 1.0 :
+                 (routeKey === 'productsZaiko' || routeKey === 'servicesMobile' || routeKey === 'servicesWeb') ? 0.9 :
+                 (routeKey === 'insightRestaurantInventory') ? 0.8 : 0.7,
         alternates: {
           languages
         }

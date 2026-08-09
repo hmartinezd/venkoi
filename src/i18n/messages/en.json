@@ -20,6 +20,7 @@
     "about": "About",
     "contact": "Contact",
     "demo": "Demo",
+    "insights": "Insights",
     "mobileApplications": "Mobile Applications",
     "webApplications": "Websites & Web Applications"
   },
@@ -537,9 +538,101 @@
     "seoTitle": "Website & Web Application Development | Venkoi",
     "seoDescription": "Venkoi designs, builds, and tests websites and web applications, from straightforward web experiences to more interactive products in Tampa Bay, South Florida, and beyond."
   },
+  "insightsPage": {
+    "seoTitle": "Software & Product Insights | Venkoi",
+    "seoDescription": "Practical Venkoi guides about software products, web experiences, building digital products, and restaurant inventory workflows.",
+    "eyebrow": "INSIGHTS",
+    "heading": "Practical guides for building and using better software.",
+    "body": "Clear thinking around software products, digital experiences, and the real workflows behind them.",
+    "readMore": "Read more",
+    "categories": {
+      "restaurantOperations": "RESTAURANT OPERATIONS",
+      "buildingSoftware": "BUILDING SOFTWARE",
+      "web": "WEB"
+    }
+  },
+  "insightsArticles": {
+    "restaurantInventory": {
+      "seoTitle": "Restaurant Inventory Information in One Place | Zaiko by Venkoi",
+      "seoDescription": "Learn why restaurant inventory becomes difficult when information lives in different places and how to bring it together.",
+      "category": "RESTAURANT OPERATIONS",
+      "title": "Inventory gets harder when the information lives in different places.",
+      "description": "Why keeping inventory, purchases, and costs in separate places makes restaurant operations more difficult than they need to be.",
+      "content": {
+        "intro": "Managing a restaurant kitchen is already complicated. Keeping track of the products that make the kitchen run shouldn't add unnecessary weight to the day.",
+        "problemTitle": "The problem is not simply counting inventory.",
+        "problemBody": "Inventory is often treated as a standalone task—a weekly count of what is on the shelf. But in a real operation, that number doesn't exist in a vacuum. It is the result of everything that happened since the last count.",
+        "purchasesTitle": "Purchases tell only part of the story",
+        "purchasesBody": "Knowing what you bought is essential for paying vendors, but without connecting those purchases to what you already have, you only see what came in, not what is actually available for use.",
+        "quantitiesTitle": "Current quantities need context",
+        "quantitiesBody": "A count of '24 cases' is just a number. It becomes information when you know how many you started with, how many you received, and how many you expected to have left.",
+        "activityTitle": "Activity explains what changed",
+        "activityBody": "Between receiving a delivery and taking the next count, products move. They are used, wasted, or transferred. When this activity is tracked separately from the inventory count, it's impossible to know why your numbers don't match.",
+        "costsTitle": "Costs make the picture more useful",
+        "costsBody": "Inventory is capital. When cost information lives in an invoice folder or a separate spreadsheet, you lose sight of the actual value sitting on your shelves and how price changes are affecting your margins.",
+        "togetherTitle": "Why bringing the information together matters",
+        "togetherBody": "When purchasing, inventory counts, activity, and costs live in one place, the information becomes actionable. You stop guessing and start knowing exactly where your resources are going.",
+        "zaikoTitle": "How Zaiko approaches the problem",
+        "zaikoBody": "Zaiko is designed to bring these four areas—inventory, purchases, activity, and costs—into a single, focused experience. It focuses on providing clearer visibility into your operation without adding unnecessary complexity.",
+        "ctaExplore": "Explore Zaiko",
+        "ctaDemo": "Request a Demo"
+      }
+    },
+    "startSoftwareProject": {
+      "seoTitle": "How to Start a Software Project Without a Finished Specification | Venkoi",
+      "seoDescription": "You don't need a finished software specification to get started. Learn what information helps kick off a successful project with Venkoi.",
+      "category": "BUILDING SOFTWARE",
+      "title": "You don't need a finished software specification to get started.",
+      "description": "Why bringing a problem, goal, or workflow is more important than arriving with a technical document.",
+      "content": {
+        "intro": "One of the most common reasons software projects never get off the ground is the belief that you need a perfect technical plan before you even speak to a developer.",
+        "problemTitle": "Start with the problem or goal",
+        "problemBody": "At Venkoi, we believe the best software starts with a clear understanding of what you want to accomplish. You don't need to know the database structure; you need to know why the software needs to exist.",
+        "usersTitle": "Know who the experience is for",
+        "usersBody": "Understanding who will use the software is more valuable than knowing which programming language will be used. Knowing the users helps shape an experience that actually solves their problems.",
+        "workflowTitle": "Describe the most important workflow",
+        "workflowBody": "What is the one thing the user must be able to do successfully? If you can describe that process, you have enough to start a conversation.",
+        "existingTitle": "Share what already exists",
+        "existingBody": "Whether it's a stack of paper forms, a complicated spreadsheet, or an aging piece of software, showing how the process works today gives us the best starting point for improvement.",
+        "prioritiesTitle": "Separate what matters now from what can come later",
+        "prioritiesBody": "You don't need every feature on day one. Bringing an idea of what is essential for the first version allows us to focus on delivering value quickly.",
+        "processTitle": "From idea to design, development and testing",
+        "processBody": "Our four-stage lifecycle—Idea & Direction, Design, Development, and Testing & Quality—is designed to take your goal and turn it into a high-quality product, even if you don't have the technical details figured out yet.",
+        "cta": "Tell us about your idea"
+      }
+    },
+    "websiteOrWebApp": {
+      "seoTitle": "Website or Web Application? How to Choose | Venkoi",
+      "seoDescription": "Understand the difference between a website and a web application and how to choose the right approach for your project.",
+      "category": "WEB",
+      "title": "Website or web application? Start with what you want people to accomplish.",
+      "description": "How to decide between a content-focused website and an interactive web application based on your goals.",
+      "content": {
+        "intro": "The terms 'website' and 'web application' are often used interchangeably, but the distinction matters when deciding how to build your next project.",
+        "websiteTitle": "A website is often centered on communication",
+        "websiteBody": "A website primarily helps people understand your business, discover information, and explore your services. Its main goal is to deliver structured content to the visitor.",
+        "webappTitle": "A web application is often centered on interaction",
+        "webappBody": "A web application involves ongoing interaction, working with changing information, and performing repeat tasks. It's built to handle application state and complex workflows.",
+        "betweenTitle": "Many projects sit somewhere in between",
+        "betweenBody": "The line isn't always sharp. A project might have informational content (website) combined with interactive tools (web application). The architecture should follow what the users need to do.",
+        "questionsTitle": "Questions that help define the right approach",
+        "questionsBody": "Do users need to log in? Are they creating or managing data? Is the content the same for everyone? The answers to these questions help us determine if a website or a web application is the right fit.",
+        "outcomeTitle": "Start with the outcome, not the label",
+        "outcomeBody": "Don't worry about the technical category. Focus on what you want people to accomplish, and we'll help you choose the architecture that makes it possible.",
+        "cta": "Tell us about your web project",
+        "secondaryCta": "Explore our web services"
+      }
+    },
+    "relatedGuides": "Helpful guides",
+    "relatedGuide": "RELATED GUIDE"
+  },
   "breadcrumbs": {
     "services": "Services",
     "mobileApplications": "Mobile Applications",
-    "webApplications": "Websites & Web Applications"
+    "webApplications": "Websites & Web Applications",
+    "insights": "Insights",
+    "insightRestaurantInventory": "Restaurant Inventory",
+    "insightStartSoftwareProject": "Starting a Project",
+    "insightWebsiteOrWebApp": "Website or App"
   }
 }

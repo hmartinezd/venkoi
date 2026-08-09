@@ -8,8 +8,9 @@ import { ZaikoEarlyAccess } from '@/components/product/zaiko/ZaikoEarlyAccess';
 import { ZaikoFinalCta } from '@/components/product/zaiko/ZaikoFinalCta';
 import { ZaikoProblemSection } from '@/components/product/zaiko/ZaikoProblemSection';
 import { ZaikoExplorer } from '@/components/product/zaiko/ZaikoExplorer';
-import { ZaikoAudience } from '@/components/product/zaiko/ZaikoAudience';
-import { ZaikoFaq } from '@/components/product/zaiko/ZaikoFaq';
+import { ZaikoAudience } from '@/components/brand/zaiko/ZaikoAudience';
+import { ZaikoFaq } from '@/components/brand/zaiko/ZaikoFaq';
+import { InsightCard } from '@/components/insights/InsightCard';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { getSiteOrigin } from '@/lib/site-config';
@@ -59,6 +60,8 @@ export default async function ZaikoPage({ params }: PageProps) {
   const tFinalCta = await getTranslations('zaikoPage.finalCta');
   const tSeo = await getTranslations('zaikoPage.seo');
   const tVisuals = await getTranslations('zaikoPage.visuals');
+  const tArticles = await getTranslations('insightsArticles');
+  const tInsights = await getTranslations('insightsPage');
 
   const origin = getSiteOrigin();
 
@@ -302,6 +305,27 @@ export default async function ZaikoPage({ params }: PageProps) {
         heading={tFaq('heading')}
         items={faqItems}
       />
+
+      {/* Related Guide Section */}
+      <Section variant="light" className="py-16 md:py-24 border-t border-border">
+        <Container className="max-w-4xl">
+          <div className="space-y-8">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange text-center">
+              {tArticles('relatedGuide')}
+            </p>
+            <div className="max-w-2xl mx-auto">
+              <InsightCard
+                locale={currentLocale}
+                category={tArticles('restaurantInventory.category')}
+                title={tArticles('restaurantInventory.title')}
+                description={tArticles('restaurantInventory.description')}
+                routeKey="insightRestaurantInventory"
+                readMoreLabel={tInsights('readMore')}
+              />
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       {/* Final Closing CTA */}
       <ZaikoFinalCta

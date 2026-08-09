@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
+import { InsightCard } from '@/components/insights/InsightCard';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -39,6 +40,8 @@ export default async function ServicesPage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const t = await getTranslations('servicesPage');
+  const tArticles = await getTranslations('insightsArticles');
+  const tInsights = await getTranslations('insightsPage');
 
   return (
     <>
@@ -209,6 +212,35 @@ export default async function ServicesPage({ params }: PageProps) {
             <p className="text-sm sm:text-base font-semibold text-ink">
               &ldquo;{t('howWeWork.testingPrinciple')}&rdquo;
             </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Helpful Guides Section */}
+      <Section variant="light" className="py-16 md:py-24 border-t border-border">
+        <Container className="space-y-12">
+          <div className="max-w-3xl space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+              {t('relatedGuides')}
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <InsightCard
+              locale={currentLocale}
+              category={tArticles('startSoftwareProject.category')}
+              title={tArticles('startSoftwareProject.title')}
+              description={tArticles('startSoftwareProject.description')}
+              routeKey="insightStartSoftwareProject"
+              readMoreLabel={tInsights('readMore')}
+            />
+            <InsightCard
+              locale={currentLocale}
+              category={tArticles('websiteOrWebApp.category')}
+              title={tArticles('websiteOrWebApp.title')}
+              description={tArticles('websiteOrWebApp.description')}
+              routeKey="insightWebsiteOrWebApp"
+              readMoreLabel={tInsights('readMore')}
+            />
           </div>
         </Container>
       </Section>

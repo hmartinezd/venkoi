@@ -20,6 +20,7 @@
     "about": "Nosotros",
     "contact": "Contacto",
     "demo": "Demostración",
+    "insights": "Recursos",
     "mobileApplications": "Aplicaciones Móviles",
     "webApplications": "Páginas Web y Aplicaciones Web"
   },
@@ -537,9 +538,101 @@
     "seoTitle": "Desarrollo de Páginas y Aplicaciones Web | Venkoi",
     "seoDescription": "Venkoi diseña, desarrolla y prueba páginas web y aplicaciones web, desde experiencias sencillas hasta productos web más interactivos en Tampa Bay, South Florida y más allá."
   },
+  "insightsPage": {
+    "seoTitle": "Recursos sobre Software y Productos | Venkoi",
+    "seoDescription": "Guías prácticas de Venkoi sobre productos de software, experiencias web, creación de productos digitales y procesos de inventario para restaurantes.",
+    "eyebrow": "RECURSOS",
+    "heading": "Guías prácticas para crear y usar mejor software.",
+    "body": "Ideas claras sobre productos de software, experiencias digitales y los procesos reales que hay detrás de ellos.",
+    "readMore": "Leer más",
+    "categories": {
+      "restaurantOperations": "OPERACIONES DE RESTAURANTES",
+      "buildingSoftware": "CREACIÓN DE SOFTWARE",
+      "web": "WEB"
+    }
+  },
+  "insightsArticles": {
+    "restaurantInventory": {
+      "seoTitle": "Información del Inventario de Restaurante en un Solo Lugar | Zaiko por Venkoi",
+      "seoDescription": "Descubre por qué el inventario de un restaurante se complica cuando la información está en distintos lugares y cómo unificarla.",
+      "category": "OPERACIONES DE RESTAURANTES",
+      "title": "El inventario se complica cuando la información está repartida en distintos lugares.",
+      "description": "Por qué mantener el inventario, las compras y los costos en lugares separados hace que las operaciones de los restaurantes sean más difíciles de lo necesario.",
+      "content": {
+        "intro": "Gestionar la cocina de un restaurante ya es bastante complicado. Hacer el seguimiento de los productos que permiten que la cocina funcione no debería añadir un peso innecesario al día a día.",
+        "problemTitle": "El problema no es simplemente contar el inventario.",
+        "problemBody": "El inventario suele tratarse como una tarea aislada: un recuento semanal de lo que hay en el estante. Pero en una operación real, ese número no existe en el vacío. Es el resultado de todo lo ocurrido desde el último recuento.",
+        "purchasesTitle": "Las compras solo cuentan parte de la historia",
+        "purchasesBody": "Saber lo que has comprado es esencial para pagar a los proveedores, pero sin conectar esas compras con lo que ya tienes, solo ves lo que ha entrado, no lo que está realmente disponible para su uso.",
+        "quantitiesTitle": "Las cantidades actuales necesitan contexto",
+        "quantitiesBody": "Un recuento de '24 cajas' es solo un número. Se convierte en información cuando sabes con cuántas empezaste, cuántas recibiste y cuántas esperabas tener al final.",
+        "activityTitle": "La actividad explica qué ha cambiado",
+        "activityBody": "Entre la recepción de un pedido y el siguiente recuento, los productos se mueven. Se utilizan, se desperdician o se transfieren. Cuando esta actividad se registra por separado del recuento de inventario, es imposible saber por qué tus números no cuadran.",
+        "costsTitle": "Los costos hacen que la imagen sea más útil",
+        "costsBody": "El inventario es capital. Cuando la información de los costos vive en una carpeta de facturas o en una hoja de cálculo aparte, pierdes de vista el valor real que tienes en los estantes y cómo afectan los cambios de precios a tus márgenes.",
+        "togetherTitle": "Por qué es importante unificar la información",
+        "togetherBody": "Cuando las compras, los recuentos de inventario, la actividad y los costos conviven en un mismo lugar, la información se vuelve accionable. Dejas de adivinar y empiezas a saber exactamente a dónde van tus recursos.",
+        "zaikoTitle": "Cómo aborda Zaiko el problema",
+        "zaikoBody": "Zaiko está diseñado para reunir estas cuatro áreas —inventario, compras, actividad y costos— en una experiencia única y enfocada. Se centra en ofrecer una visibilidad más clara de tu operación sin añadir una complejidad innecesaria.",
+        "ctaExplore": "Explorar Zaiko",
+        "ctaDemo": "Solicitar una demostración"
+      }
+    },
+    "startSoftwareProject": {
+      "seoTitle": "Cómo Empezar un Proyecto de Software sin una Especificación Completa | Venkoi",
+      "seoDescription": "No necesitas una especificación de software terminada para empezar. Aprende qué información ayuda a poner en marcha un proyecto exitoso con Venkoi.",
+      "category": "CREACIÓN DE SOFTWARE",
+      "title": "No necesitas una especificación completa para empezar un proyecto de software.",
+      "description": "Por qué traer un problema, un objetivo o un proceso es más importante que llegar con un documento técnico.",
+      "content": {
+        "intro": "Una de las razones más comunes por las que los proyectos de software nunca despegan es la creencia de que necesitas un plan técnico perfecto antes de hablar con un desarrollador.",
+        "problemTitle": "Empieza por el problema o el objetivo",
+        "problemBody": "En Venkoi, creemos que el mejor software empieza con una comprensión clara de lo que quieres lograr. No necesitas conocer la estructura de la base de datos; necesitas saber por qué el software debe existir.",
+        "usersTitle": "Sabe para quién es la experiencia",
+        "usersBody": "Entender quién usará el software es más valioso que saber qué lenguaje de programación se utilizará. Conocer a los usuarios ayuda a dar forma a una experiencia que realmente resuelva sus problemas.",
+        "workflowTitle": "Describe el proceso más importante",
+        "workflowBody": "¿Cuál es la acción principal que el usuario debe poder realizar con éxito? Si puedes describir ese proceso, tienes suficiente para empezar una conversación.",
+        "existingTitle": "Comparte lo que ya existe",
+        "existingBody": "Ya sea una pila de formularios en papel, una hoja de cálculo complicada o un software antiguo, mostrar cómo funciona el proceso hoy nos da el mejor punto de partida para mejorar.",
+        "prioritiesTitle": "Separa lo que importa ahora de lo que puede venir después",
+        "prioritiesBody": "No necesitas todas las funciones desde el primer día. Traer una idea de lo que es esencial para la primera versión nos permite centrarnos en entregar valor rápidamente.",
+        "processTitle": "De la idea al diseño, desarrollo y pruebas",
+        "processBody": "Nuestro ciclo de vida de cuatro etapas —Idea y Dirección, Diseño, Desarrollo, y Pruebas y Calidad— está diseñado para tomar tu objetivo y convertirlo en un producto de alta calidad, incluso si aún no tienes los detalles técnicos definidos.",
+        "cta": "Cuéntanos tu idea"
+      }
+    },
+    "websiteOrWebApp": {
+      "seoTitle": "¿Página Web o Aplicación Web? Cómo Elegir | Venkoi",
+      "seoDescription": "Entiende la diferencia entre una página web y una aplicación web y cómo elegir el enfoque adecuado para tu proyecto.",
+      "category": "WEB",
+      "title": "¿Página web o aplicación web? Empieza por lo que quieres que las personas puedan hacer.",
+      "description": "Cómo decidir entre una página web centrada en el contenido y una aplicación web interactiva basándote en tus objetivos.",
+      "content": {
+        "intro": "Los términos 'página web' y 'aplicación web' suelen usarse indistintamente, pero la distinción importa al decidir cómo construir tu próximo proyecto.",
+        "websiteTitle": "Una página web suele centrarse en la comunicación",
+        "websiteBody": "Una página web ayuda principalmente a las personas a entender tu negocio, descubrir información y explorar tus servicios. Su objetivo principal es entregar contenido estructurado al visitante.",
+        "webappTitle": "Una aplicación web suele centrarse en la interacción",
+        "webappBody": "Una aplicación web implica una interacción continua, trabajar con información cambiante y realizar tareas repetitivas. Está diseñada para manejar el estado de la aplicación y procesos complejos.",
+        "betweenTitle": "Muchos proyectos están en un punto intermedio",
+        "betweenBody": "La línea no siempre es nítida. Un proyecto puede tener contenido informativo (página web) combinado con herramientas interactivas (aplicación web). La arquitectura debe seguir lo que los usuarios necesitan hacer.",
+        "questionsTitle": "Preguntas que ayudan a definir el enfoque correcto",
+        "questionsBody": "¿Los usuarios necesitan iniciar sesión? ¿Van a crear o gestionar datos? ¿El contenido es el mismo para todos? Las respuestas a estas preguntas nos ayudan a determinar si una página web o una aplicación web es la mejor opción.",
+        "outcomeTitle": "Empieza por el resultado, no por la etiqueta",
+        "outcomeBody": "No te preocupes por la categoría técnica. Céntrate en lo que quieres que las personas logren y te ayudaremos a elegir la arquitectura que lo haga posible.",
+        "cta": "Cuéntanos sobre tu proyecto web",
+        "secondaryCta": "Explora nuestros servicios web"
+      }
+    },
+    "relatedGuides": "Recursos útiles",
+    "relatedGuide": "GUÍA RELACIONADA"
+  },
   "breadcrumbs": {
     "services": "Servicios",
     "mobileApplications": "Aplicaciones Móviles",
-    "webApplications": "Páginas Web y Aplicaciones Web"
+    "webApplications": "Páginas Web y Aplicaciones Web",
+    "insights": "Recursos",
+    "insightRestaurantInventory": "Inventario de Restaurante",
+    "insightStartSoftwareProject": "Empezar un Proyecto",
+    "insightWebsiteOrWebApp": "Página Web o Aplicación"
   }
 }
