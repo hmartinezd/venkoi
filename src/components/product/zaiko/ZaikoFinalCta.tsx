@@ -1,6 +1,6 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { Button } from '@/components/ui/Button';
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 
@@ -30,18 +30,31 @@ export function ZaikoFinalCta({
         </p>
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button
+          <TrackedButton
             href={getLocalizedPath('demo', locale) + '?product=zaiko'}
             variant="primary"
+            eventName="zaiko_demo_cta"
+            properties={{
+              locale,
+              product: 'zaiko',
+              source: 'zaiko_final_cta'
+            }}
           >
             {primaryCta}
-          </Button>
-          <Button
+          </TrackedButton>
+          <TrackedButton
             href={getLocalizedPath('demo', locale) + '?product=zaiko&interest=early-access'}
             variant="secondary"
+            eventName="zaiko_early_access_cta"
+            properties={{
+              locale,
+              product: 'zaiko',
+              source: 'zaiko_final_cta',
+              earlyAccess: true
+            }}
           >
             {secondaryCta}
-          </Button>
+          </TrackedButton>
         </div>
       </Container>
     </Section>

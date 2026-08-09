@@ -107,6 +107,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         purchasesLabel={tNav('purchases')}
         activityLabel={tNav('activity')}
         costsLabel={tNav('costs')}
+        earlyAccessLabel={tNav('earlyAccess')}
         requestDemoLabel={tNav('requestDemo')}
       />
 
@@ -120,6 +121,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         secondaryCta={tHero('secondaryCta')}
         microcopy={tHero('microcopy')}
         noCreditCard={tHero('noCreditCard')}
+        labels={visualLabels}
       />
 
       {/* Product Introduction */}
@@ -155,6 +157,7 @@ export default async function ZaikoPage({ params }: PageProps) {
           tAreas('inventory.supporting.1'),
           tAreas('inventory.supporting.2')
         ]}
+        labels={visualLabels}
       />
 
       <ZaikoFeatureSection
@@ -168,6 +171,7 @@ export default async function ZaikoPage({ params }: PageProps) {
           tAreas('purchases.supporting.2')
         ]}
         reverse
+        labels={visualLabels}
       />
 
       <ZaikoFeatureSection
@@ -180,6 +184,7 @@ export default async function ZaikoPage({ params }: PageProps) {
           tAreas('activity.supporting.1'),
           tAreas('activity.supporting.2')
         ]}
+        labels={visualLabels}
       />
 
       <ZaikoFeatureSection
@@ -193,6 +198,7 @@ export default async function ZaikoPage({ params }: PageProps) {
           tAreas('costs.supporting.2')
         ]}
         reverse
+        labels={visualLabels}
       />
 
       {/* Unified Workflow Composition */}

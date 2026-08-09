@@ -10,6 +10,16 @@ interface ZaikoFeatureSectionProps {
   body: string;
   supporting?: string[];
   reverse?: boolean;
+  labels?: {
+    inventory: string;
+    purchases: string;
+    activity: string;
+    costs: string;
+    onHand: string;
+    incoming: string;
+    history: string;
+    trend: string;
+  };
 }
 
 export function ZaikoFeatureSection({
@@ -18,7 +28,8 @@ export function ZaikoFeatureSection({
   heading,
   body,
   supporting = [],
-  reverse = false
+  reverse = false,
+  labels
 }: ZaikoFeatureSectionProps) {
   return (
     <Section variant="surface" className="py-16 md:py-24 border-t border-border scroll-mt-24" id={id}>
@@ -58,7 +69,7 @@ export function ZaikoFeatureSection({
 
         {/* Visual Column */}
         <div className={`lg:col-span-6 ${reverse ? 'lg:order-1' : ''}`}>
-          <ZaikoProductVisual type={id} />
+          <ZaikoProductVisual type={id} labels={labels} />
         </div>
       </Container>
     </Section>

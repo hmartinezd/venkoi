@@ -1,6 +1,6 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { Button } from '@/components/ui/Button';
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 import { ZaikoProductVisual } from './ZaikoProductVisual';
@@ -14,6 +14,16 @@ interface ZaikoHeroProps {
   secondaryCta: string;
   microcopy: string;
   noCreditCard: string;
+  labels?: {
+    inventory: string;
+    purchases: string;
+    activity: string;
+    costs: string;
+    onHand: string;
+    incoming: string;
+    history: string;
+    trend: string;
+  };
 }
 
 export function ZaikoHero({
@@ -24,7 +34,8 @@ export function ZaikoHero({
   primaryCta,
   secondaryCta,
   microcopy,
-  noCreditCard
+  noCreditCard,
+  labels
 }: ZaikoHeroProps) {
   return (
     <Section variant="light" className="pt-10 pb-16 md:pt-16 md:pb-24 scroll-mt-24" id="overview">
@@ -47,18 +58,31 @@ export function ZaikoHero({
 
           {/* Action CTAs */}
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3.5">
-            <Button
+            <TrackedButton
               href={getLocalizedPath('demo', locale) + '?product=zaiko'}
               variant="primary"
+              eventName="zaiko_demo_cta"
+              properties={{
+                locale,
+                product: 'zaiko',
+                source: 'zaiko_hero'
+              }}
             >
               {primaryCta}
-            </Button>
-            <Button
+            </TrackedButton>
+            <TrackedButton
               href={getLocalizedPath('demo', locale) + '?product=zaiko&interest=early-access'}
               variant="secondary"
+              eventName="zaiko_early_access_cta"
+              properties={{
+                locale,
+                product: 'zaiko',
+                source: 'zaiko_hero',
+                earlyAccess: true
+              }}
             >
               {secondaryCta}
-            </Button>
+            </TrackedButton>
           </div>
 
           {/* Microcopy Callouts */}
@@ -74,7 +98,7 @@ export function ZaikoHero({
 
         {/* Right Product Visual */}
         <div className="lg:col-span-6">
-          <ZaikoProductVisual type="hero" />
+          <ZaikoProductVisual type="hero" labels={labels} />
         </div>
       </Container>
     </Section>

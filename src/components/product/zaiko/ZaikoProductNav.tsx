@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 
@@ -13,6 +13,7 @@ interface ZaikoProductNavProps {
   purchasesLabel: string;
   activityLabel: string;
   costsLabel: string;
+  earlyAccessLabel: string;
   requestDemoLabel: string;
 }
 
@@ -25,6 +26,7 @@ export function ZaikoProductNav({
   purchasesLabel,
   activityLabel,
   costsLabel,
+  earlyAccessLabel,
   requestDemoLabel
 }: ZaikoProductNavProps) {
   const navItems = [
@@ -33,7 +35,7 @@ export function ZaikoProductNav({
     { label: purchasesLabel, href: '#purchases' },
     { label: activityLabel, href: '#activity' },
     { label: costsLabel, href: '#costs' },
-    { label: locale === 'es' ? 'Acceso Anticipado' : 'Early Access', href: '#early-access' },
+    { label: earlyAccessLabel, href: '#early-access' },
   ];
 
   return (
@@ -63,13 +65,19 @@ export function ZaikoProductNav({
 
         {/* Action CTA */}
         <div className="shrink-0 pl-2">
-          <Button
+          <TrackedButton
             href={getLocalizedPath('demo', locale) + '?product=zaiko'}
             variant="primary"
             className="text-xs px-3.5 py-2 rounded-lg"
+            eventName="zaiko_demo_cta"
+            properties={{
+              locale,
+              product: 'zaiko',
+              source: 'zaiko_product_nav'
+            }}
           >
             {requestDemoLabel}
-          </Button>
+          </TrackedButton>
         </div>
       </div>
     </div>
