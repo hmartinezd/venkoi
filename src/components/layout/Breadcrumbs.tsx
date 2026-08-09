@@ -3,10 +3,11 @@
 import { LocalizedLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { type Locale } from '@/i18n/config';
+import { internalRoutes, type RouteKey } from '@/i18n/routing';
 
 interface BreadcrumbItem {
   labelKey: string;
-  href?: string;
+  routeKey?: RouteKey;
   isCurrent?: boolean;
 }
 
@@ -28,13 +29,13 @@ export function Breadcrumbs({ locale, items }: BreadcrumbsProps) {
                 /
               </span>
             )}
-            {item.isCurrent || !item.href ? (
+            {item.isCurrent || !item.routeKey ? (
               <span className="text-ink" aria-current="page">
                 {t(item.labelKey)}
               </span>
             ) : (
               <LocalizedLink
-                href={item.href}
+                href={internalRoutes[item.routeKey]}
                 locale={locale}
                 className="transition-colors hover:text-orange"
               >

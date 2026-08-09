@@ -10,6 +10,7 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { ServiceProcess } from '@/components/services/ServiceProcess';
 import { ServiceCta } from '@/components/services/ServiceCta';
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -49,7 +50,7 @@ export default async function WebServicePage({ params }: PageProps) {
           <Breadcrumbs
             locale={currentLocale}
             items={[
-              { labelKey: 'services', href: '/services' },
+              { labelKey: 'services', routeKey: 'services' },
               { labelKey: 'webApplications', isCurrent: true },
             ]}
           />
@@ -65,9 +66,14 @@ export default async function WebServicePage({ params }: PageProps) {
               {t('heroBody')}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
-              <Button href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=web'} variant="primary">
+              <TrackedButton
+                href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=web'}
+                variant="primary"
+                eventName="services_cta"
+                properties={{ locale: currentLocale, source: 'web_detail_hero' }}
+              >
                 {t('primaryCta')}
-              </Button>
+              </TrackedButton>
             </div>
           </div>
         </Container>
@@ -86,7 +92,7 @@ export default async function WebServicePage({ params }: PageProps) {
               <div key={i} className="bg-background border border-border p-6 rounded-2xl flex items-start gap-4">
                 <div className="h-2 w-2 rounded-full bg-orange mt-2 shrink-0" />
                 <span className="text-sm font-semibold text-ink leading-relaxed">
-                  {t(`rangeItem${i}` as any)}
+                  {t(`rangeItem${i as 1 | 2 | 3 | 4 | 5}`)}
                 </span>
               </div>
             ))}

@@ -1,9 +1,12 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
 import { type Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/routing';
+import { trackCustomEvent } from '@/lib/analytics';
 
 interface ServiceCtaProps {
   locale: Locale;
@@ -17,6 +20,7 @@ export function ServiceCta({ locale, headingKey, bodyKey, ctaKey, interest }: Se
   const t = useTranslations();
 
   const contactHref = `${getLocalizedPath('contact', locale)}?type=services&interest=${interest}`;
+  const source = `${interest}_detail_footer`;
 
   return (
     <Section className="bg-ink text-surface">
@@ -32,6 +36,7 @@ export function ServiceCta({ locale, headingKey, bodyKey, ctaKey, interest }: Se
             href={contactHref}
             variant="primary"
             className="bg-orange hover:bg-orange-strong border-orange text-white"
+            onClick={() => trackCustomEvent('services_cta', { locale, source })}
           >
             {t(ctaKey)}
           </Button>

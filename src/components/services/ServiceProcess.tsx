@@ -47,7 +47,7 @@ export function ServiceProcess({ headingKey, showPrinciple = true }: ServiceProc
         {showPrinciple && (
           <div className="mt-16 pt-8 border-t border-border/60">
             <p className="text-sm font-medium text-ink italic">
-              "{t('testingPrinciple')}"
+              &quot;{t('testingPrinciple')}&quot;
             </p>
           </div>
         )}

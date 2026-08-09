@@ -67,7 +67,7 @@ const pathToRoute = Object.entries(internalRoutes).reduce((map, [key, value]) =>
     if (typeof pathnameConfig === 'string') {
       localizedSegment = pathnameConfig;
     } else if (pathnameConfig && typeof pathnameConfig === 'object' && locale in pathnameConfig) {
-      localizedSegment = (pathnameConfig as any)[locale];
+      localizedSegment = pathnameConfig[locale as keyof typeof pathnameConfig];
     } else {
       localizedSegment = value;
     }
