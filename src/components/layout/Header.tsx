@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath, getLocalizedPath, type Locale } from '@/i18n/routing';
+import { internalRoutes, getRouteKeyFromPath, getLocalizedPath } from '@/i18n/routing';
+import { type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { Button } from '@/components/ui/Button';
@@ -33,6 +34,22 @@ export function Header({ locale }: { locale: Locale }) {
     handler();
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
+  }, []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      const firstLink = document.querySelector('#mobile-navigation a') as HTMLAnchorElement;
+      firstLink?.focus();
+    }
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const handleResize = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) setMenuOpen(false);
+    };
+    mediaQuery.addEventListener('change', handleResize);
+    return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
 
   useEffect(() => {
@@ -70,6 +87,12 @@ export function Header({ locale }: { locale: Locale }) {
           : 'bg-transparent border-b border-transparent'
       )}
     >
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-orange focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
+      >
+        {tCommon('skipToContent')}
+      </a>
       <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <LocalizedLink href={internalRoutes.home} locale={locale} className="flex items-center gap-2">
           <BrandLogo variant="dark" size="header" priority />
@@ -83,17 +106,11 @@ export function Header({ locale }: { locale: Locale }) {
               type="button"
               ref={dropdownTriggerRef}
               onClick={() => setDropdownOpen((prev) => !prev)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setDropdownOpen((prev) => !prev);
-                }
-              }}
               aria-expanded={dropdownOpen}
               aria-haspopup="true"
               aria-controls="products-navigation"
               className={cn(
-                'inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-orange focus:outline-hidden',
+                'inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-md',
                 isProductsActive ? 'text-orange' : 'text-ink'
               )}
             >
@@ -120,7 +137,7 @@ export function Header({ locale }: { locale: Locale }) {
                   onClick={() => setDropdownOpen(false)}
                   aria-current={routeKey === 'productsZaiko' ? 'page' : undefined}
                   className={cn(
-                    'group flex flex-col rounded-xl p-3 transition',
+                    'group flex flex-col rounded-xl p-3 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
                     routeKey === 'productsZaiko' ? 'bg-surface-muted' : 'hover:bg-surface-muted'
                   )}
                 >
@@ -148,7 +165,7 @@ export function Header({ locale }: { locale: Locale }) {
             locale={locale}
             aria-current={isServicesActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange',
+              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
               isServicesActive ? 'text-orange' : 'text-ink'
             )}
           >
@@ -160,7 +177,7 @@ export function Header({ locale }: { locale: Locale }) {
             locale={locale}
             aria-current={isAboutActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange',
+              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
               isAboutActive ? 'text-orange' : 'text-ink'
             )}
           >
@@ -172,7 +189,7 @@ export function Header({ locale }: { locale: Locale }) {
             locale={locale}
             aria-current={isContactActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange',
+              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
               isContactActive ? 'text-orange' : 'text-ink'
             )}
           >
@@ -226,7 +243,7 @@ export function Header({ locale }: { locale: Locale }) {
               onClick={() => setMenuOpen(false)}
               aria-current={routeKey === 'productsZaiko' ? 'page' : undefined}
               className={cn(
-                'flex items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                'flex items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
                 routeKey === 'productsZaiko' ? 'text-orange' : 'text-ink'
               )}
             >
@@ -239,7 +256,7 @@ export function Header({ locale }: { locale: Locale }) {
               onClick={() => setMenuOpen(false)}
               aria-current={isServicesActive ? 'page' : undefined}
               className={cn(
-                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
                 isServicesActive ? 'text-orange' : 'text-ink'
               )}
             >
@@ -251,7 +268,7 @@ export function Header({ locale }: { locale: Locale }) {
               onClick={() => setMenuOpen(false)}
               aria-current={isAboutActive ? 'page' : undefined}
               className={cn(
-                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
                 isAboutActive ? 'text-orange' : 'text-ink'
               )}
             >
@@ -263,7 +280,7 @@ export function Header({ locale }: { locale: Locale }) {
               onClick={() => setMenuOpen(false)}
               aria-current={isContactActive ? 'page' : undefined}
               className={cn(
-                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted',
+                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
                 isContactActive ? 'text-orange' : 'text-ink'
               )}
             >

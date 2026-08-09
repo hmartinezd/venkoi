@@ -3,7 +3,7 @@
 import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath, type RouteKey } from '@/i18n/routing';
+import { internalRoutes, getRouteKeyFromPath } from '@/i18n/routing';
 import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { trackCustomEvent } from '@/lib/analytics';
 import { getSafeLocalizedIntentQuery } from '@/lib/navigation-intent';
@@ -50,7 +50,7 @@ function LanguageSwitcherContent({ locale, variant = 'header', className }: Lang
                 }
               }}
               className={cn(
-                'transition-colors',
+                'transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm',
                 variant === 'header' && cn(
                   'py-1 px-1.5 rounded hover:text-ink',
                   isActive ? 'text-ink font-bold border-b-2 border-orange' : 'text-foreground-muted'

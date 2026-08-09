@@ -1,7 +1,8 @@
 'use client';
 
 import { LocalizedLink } from '@/i18n/navigation';
-import { internalRoutes, type Locale } from '@/i18n/routing';
+import { internalRoutes } from '@/i18n/routing';
+import { type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
@@ -16,7 +17,7 @@ export function Footer({ locale }: { locale: Locale }) {
     <footer className="border-t border-border bg-surface py-14 text-sm text-foreground-muted">
       <div className="mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:px-8 xl:grid-cols-[1.4fr_1fr]">
         <div className="space-y-4">
-          <LocalizedLink href={internalRoutes.home} locale={locale} className="inline-block">
+          <LocalizedLink href={internalRoutes.home} locale={locale} className="inline-block focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-lg outline-none">
             <BrandLogo variant="dark" size="footer" />
           </LocalizedLink>
           <p className="text-base text-ink font-medium">{tFooter('tagline')}</p>
@@ -33,7 +34,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <LocalizedLink
                   href={internalRoutes.productsZaiko}
                   locale={locale}
-                  className="transition hover:text-ink"
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tNav('zaiko')}
                 </LocalizedLink>
@@ -50,7 +51,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <LocalizedLink
                   href={internalRoutes.about}
                   locale={locale}
-                  className="transition hover:text-ink"
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tNav('about')}
                 </LocalizedLink>
@@ -59,7 +60,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <LocalizedLink
                   href={internalRoutes.contact}
                   locale={locale}
-                  className="transition hover:text-ink"
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tNav('contact')}
                 </LocalizedLink>
@@ -76,7 +77,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <LocalizedLink
                   href={internalRoutes.services}
                   locale={locale}
-                  className="transition hover:text-ink"
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tNav('services')}
                 </LocalizedLink>
@@ -85,7 +86,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <LocalizedLink
                   href={internalRoutes.servicesMobile}
                   locale={locale}
-                  className="transition hover:text-ink"
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tNav('mobileApplications')}
                 </LocalizedLink>
@@ -94,7 +95,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <LocalizedLink
                   href={internalRoutes.servicesWeb}
                   locale={locale}
-                  className="transition hover:text-ink"
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tNav('webApplications')}
                 </LocalizedLink>
@@ -103,7 +104,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 <LocalizedLink
                   href={internalRoutes.demo}
                   locale={locale}
-                  className="transition hover:text-ink"
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tCommon('demo')}
                 </LocalizedLink>

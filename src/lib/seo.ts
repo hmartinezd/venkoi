@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Locale, locales } from '@/i18n/config';
+import { type Locale, locales } from '@/i18n/config';
 import { getLocalizedPath, type RouteKey } from '@/i18n/routing';
 import { getSiteOrigin, isProductionEnv } from '@/lib/site-config';
 
