@@ -3,13 +3,12 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 
 interface ServiceProcessProps {
-  headingKey: string;
+  heading: string;
   showPrinciple?: boolean;
 }
 
-export function ServiceProcess({ headingKey, showPrinciple = true }: ServiceProcessProps) {
+export function ServiceProcess({ heading, showPrinciple = true }: ServiceProcessProps) {
   const t = useTranslations('servicesPage.howWeWork');
-  const tPage = useTranslations();
 
   const stages = [
     { num: '01', title: t('stage1Title'), desc: t('stage1Desc') },
@@ -26,7 +25,7 @@ export function ServiceProcess({ headingKey, showPrinciple = true }: ServiceProc
             {t('eyebrow')}
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-6">
-            {tPage(headingKey)}
+            {heading}
           </h2>
         </div>
 

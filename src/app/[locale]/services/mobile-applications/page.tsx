@@ -42,6 +42,7 @@ export default async function MobileServicePage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const t = await getTranslations('mobileServicePage');
+  const tPage = await getTranslations();
 
   return (
     <>
@@ -127,7 +128,7 @@ export default async function MobileServicePage({ params }: PageProps) {
         </Container>
       </Section>
 
-      <ServiceProcess headingKey="mobileServicePage.processHeading" />
+      <ServiceProcess heading={t('processHeading')} />
 
       {/* Existing App Section */}
       <Section variant="light" className="py-16 md:py-24 border-t border-border/50">
@@ -145,9 +146,9 @@ export default async function MobileServicePage({ params }: PageProps) {
 
       <ServiceCta
         locale={currentLocale}
-        headingKey="home.finalCta.heading"
-        bodyKey="home.finalCta.body"
-        ctaKey="mobileServicePage.primaryCta"
+        heading={tPage('home.finalCta.heading')}
+        body={tPage('home.finalCta.body')}
+        cta={t('primaryCta')}
         interest="mobile"
       />
     </>

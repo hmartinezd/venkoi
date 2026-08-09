@@ -51,14 +51,15 @@ export const routing = defineRouting({
 });
 
 function normalizePathname(pathname: string) {
-  return pathname.replace(/\/+$|^\/+/, '/') || '/';
+  const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  return normalized.length > 1 ? normalized.replace(/\/+$/, '') : normalized;
 }
 
 const pathToRoute = Object.entries(internalRoutes).reduce((map, [key, value]) => {
   const routeKey = key as RouteKey;
-  const normalizedPath = normalizePathname(value);
+  const normalizedInternal = normalizePathname(value);
 
-  map[normalizedPath] = routeKey;
+  map[normalizedInternal] = routeKey;
 
   const pathnameConfig = pathnames[value as keyof typeof pathnames];
 
@@ -66,8 +67,9 @@ const pathToRoute = Object.entries(internalRoutes).reduce((map, [key, value]) =>
     let localizedSegment: string;
     if (typeof pathnameConfig === 'string') {
       localizedSegment = pathnameConfig;
-    } else if (pathnameConfig && typeof pathnameConfig === 'object' && locale in pathnameConfig) {
-      localizedSegment = pathnameConfig[locale as keyof typeof pathnameConfig];
+    } else if (pathnameConfig && typeof pathnameConfig === 'object') {
+      const config = pathnameConfig as Record<string, string>;
+      localizedSegment = config[locale] || value;
     } else {
       localizedSegment = value;
     }

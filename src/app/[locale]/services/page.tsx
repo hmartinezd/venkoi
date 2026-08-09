@@ -7,6 +7,7 @@ import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -54,9 +55,14 @@ export default async function ServicesPage({ params }: PageProps) {
             {t('body')}
           </p>
           <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
-            <Button href={getLocalizedPath('contact', currentLocale) + '?type=services'} variant="primary">
+            <TrackedButton
+              href={getLocalizedPath('contact', currentLocale) + '?type=services'}
+              variant="primary"
+              eventName="services_cta"
+              properties={{ locale: currentLocale, source: 'services_overview_hero' }}
+            >
               {t('primaryCta')}
-            </Button>
+            </TrackedButton>
             <span className="text-xs font-semibold text-foreground-muted flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-orange" />
               {t('secondaryCue')}
@@ -105,9 +111,14 @@ export default async function ServicesPage({ params }: PageProps) {
           </div>
 
           <div className="pt-2">
-            <Button href={getLocalizedPath('servicesMobile', currentLocale)} variant="secondary">
+            <TrackedButton
+              href={getLocalizedPath('servicesMobile', currentLocale)}
+              variant="secondary"
+              eventName="services_cta"
+              properties={{ locale: currentLocale, source: 'services_overview_mobile' }}
+            >
               {t('exploreMobile')}
-            </Button>
+            </TrackedButton>
           </div>
         </Container>
       </Section>
@@ -131,9 +142,14 @@ export default async function ServicesPage({ params }: PageProps) {
           </div>
 
           <div className="pt-2">
-            <Button href={getLocalizedPath('servicesWeb', currentLocale)} variant="secondary">
+            <TrackedButton
+              href={getLocalizedPath('servicesWeb', currentLocale)}
+              variant="secondary"
+              eventName="services_cta"
+              properties={{ locale: currentLocale, source: 'services_overview_web' }}
+            >
               {t('exploreWeb')}
-            </Button>
+            </TrackedButton>
           </div>
         </Container>
       </Section>
@@ -213,9 +229,15 @@ export default async function ServicesPage({ params }: PageProps) {
           </div>
 
           <div className="pt-2">
-            <Button href={getLocalizedPath('contact', currentLocale) + '?type=services'} variant="primary" className="bg-orange text-white hover:bg-orange/90">
+            <TrackedButton
+              href={getLocalizedPath('contact', currentLocale) + '?type=services'}
+              variant="primary"
+              className="bg-orange text-white hover:bg-orange/90"
+              eventName="services_cta"
+              properties={{ locale: currentLocale, source: 'services_overview_footer' }}
+            >
               {t('ideaCta')}
-            </Button>
+            </TrackedButton>
           </div>
         </Container>
       </Section>

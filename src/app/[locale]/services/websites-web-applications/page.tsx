@@ -42,6 +42,7 @@ export default async function WebServicePage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const t = await getTranslations('webServicePage');
+  const tPage = await getTranslations();
 
   return (
     <>
@@ -114,7 +115,7 @@ export default async function WebServicePage({ params }: PageProps) {
         </Container>
       </Section>
 
-      <ServiceProcess headingKey="webServicePage.processHeading" />
+      <ServiceProcess heading={t('processHeading')} />
 
       {/* Existing Project Section */}
       <Section variant="light" className="py-16 md:py-24 border-t border-border/50">
@@ -132,9 +133,9 @@ export default async function WebServicePage({ params }: PageProps) {
 
       <ServiceCta
         locale={currentLocale}
-        headingKey="home.finalCta.heading"
-        bodyKey="home.finalCta.body"
-        ctaKey="webServicePage.primaryCta"
+        heading={tPage('home.finalCta.heading')}
+        body={tPage('home.finalCta.body')}
+        cta={t('primaryCta')}
         interest="web"
       />
     </>
