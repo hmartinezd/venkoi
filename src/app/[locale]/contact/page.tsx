@@ -73,7 +73,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8">
-          <div className="grid gap-6 md:grid-cols-[1fr_1.1fr] md:items-end">
+          <div className="grid gap-6 md:grid-cols-[1fr_1.1fr] md:items-center">
             <div className="space-y-3">
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange">
                 {t('direct.eyebrow')}
@@ -89,6 +89,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
               emailLabel={t('direct.emailLabel')}
               emailAriaLabel={t('direct.emailAriaLabel')}
               emailSubject={t('direct.emailSubject')}
+              showWhatsAppNumber
               showEmailAddress
             />
           </div>
