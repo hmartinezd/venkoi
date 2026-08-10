@@ -14,11 +14,13 @@ export type SocialCardVariant = 'venkoi' | 'zaiko' | 'insights';
 interface SocialCardOptions {
   locale: string;
   variant?: SocialCardVariant;
+  productName?: string;
 }
 
 export async function generateSocialCardResponse({
   locale,
-  variant = 'venkoi'
+  variant = 'venkoi',
+  productName
 }: SocialCardOptions): Promise<ImageResponse> {
   const isSpanish = locale === 'es';
 
@@ -36,7 +38,7 @@ export async function generateSocialCardResponse({
   let subheading = '';
 
   if (variant === 'zaiko') {
-    eyebrow = 'ZAIKO · A VENKOI PRODUCT';
+    eyebrow = `${productName ?? ''} · A VENKOI PRODUCT`;
     heading = isSpanish
       ? 'Inventario de restaurantes, más claro.'
       : 'Restaurant inventory, made clearer.';

@@ -11,7 +11,12 @@ export function HeroSection({
   body,
   primaryCta,
   secondaryCta,
-  location
+  location,
+  productName,
+  inventoryLabel,
+  purchasesLabel,
+  activityLabel,
+  costsLabel
 }: {
   locale: Locale;
   eyebrow: string;
@@ -20,6 +25,11 @@ export function HeroSection({
   primaryCta: string;
   secondaryCta: string;
   location: string;
+  productName: string;
+  inventoryLabel: string;
+  purchasesLabel: string;
+  activityLabel: string;
+  costsLabel: string;
 }) {
   return (
     <Section variant="light" className="pt-12 pb-20 md:pt-16 md:pb-28">
@@ -39,7 +49,7 @@ export function HeroSection({
             <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
               {primaryCta}
             </Button>
-            <Button href={getLocalizedPath('services', locale)} variant="secondary">
+            <Button href={getLocalizedPath('demo', locale) + '?product=zaiko'} variant="secondary">
               {secondaryCta}
             </Button>
           </div>
@@ -68,36 +78,22 @@ export function HeroSection({
             </div>
 
             {/* Main Visual Panels */}
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-4">
               {/* Primary Product Card */}
-              <div className="rounded-2xl border border-orange/30 bg-orange-subtle/30 p-5 space-y-3 transition hover:border-orange/60">
+              <div className="rounded-2xl border border-orange/30 bg-orange-subtle/30 p-5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-ink">Zaiko</span>
+                  <span className="text-xs font-bold text-ink">{productName}</span>
                   <span className="text-[10px] font-bold text-orange uppercase tracking-wider bg-orange-subtle px-2 py-0.5 rounded">
                     01
                   </span>
                 </div>
-                <div className="space-y-1.5">
-                  <div className="h-2 w-full rounded-full bg-orange/40" />
-                  <div className="h-2 w-3/4 rounded-full bg-orange/70" />
-                </div>
-                <div className="pt-2">
-                  <div className="h-2 w-20 rounded-full bg-foreground-muted/40" />
-                </div>
-              </div>
-
-              {/* Custom Solutions Card */}
-              <div className="rounded-2xl border border-border bg-surface-muted p-5 space-y-3 transition hover:border-border-strong">
-                <div className="flex items-center justify-between">
-                  <div className="h-2.5 w-20 rounded-full bg-ink/70" />
-                  <span className="h-2 w-2 rounded-full bg-ink/30" />
-                </div>
-                <div className="space-y-1.5">
-                  <div className="h-2 w-full rounded-full bg-ink/20" />
-                  <div className="h-2 w-1/2 rounded-full bg-border-strong" />
-                </div>
-                <div className="pt-2">
-                  <div className="h-2 w-24 rounded-full bg-foreground-muted/40" />
+                <div className="grid grid-cols-2 gap-3 text-[11px] font-semibold text-ink sm:grid-cols-4">
+                  {[inventoryLabel, purchasesLabel, activityLabel, costsLabel].map((label, index) => (
+                    <div key={label} className="rounded-lg border border-orange/20 bg-surface px-3 py-3">
+                      <span className="mb-2 block h-1.5 rounded-full bg-orange" style={{ opacity: 1 - index * 0.16 }} />
+                      {label}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -121,4 +117,3 @@ export function HeroSection({
     </Section>
   );
 }
-

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 interface ZaikoProductVisualProps {
   type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'workflow';
@@ -41,7 +42,7 @@ export function ZaikoProductVisual({ type, className = '', labels }: ZaikoProduc
               <span className="h-3 w-3 rounded-full bg-border inline-block" />
             </div>
             <div className="flex items-center px-2 py-0.5 rounded border border-border bg-surface-muted text-[10px] font-bold text-ink uppercase tracking-wider">
-              ZAIKO
+              {FEATURED_PRODUCT.name.toUpperCase()}
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -265,7 +266,9 @@ export function ZaikoProductVisual({ type, className = '', labels }: ZaikoProduc
       <div className="flex items-center justify-between pb-4 border-b border-white/10">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-orange" />
-          <div className="text-[11px] font-bold text-white/70 uppercase tracking-widest">ZAIKO WORKFLOW</div>
+          <div className="text-[11px] font-bold text-white/70 uppercase tracking-widest">
+            {FEATURED_PRODUCT.name.toUpperCase()} WORKFLOW
+          </div>
         </div>
         <div className="text-[10px] font-bold text-orange uppercase tracking-wider">CONNECTED</div>
       </div>

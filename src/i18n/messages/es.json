@@ -14,7 +14,6 @@
   },
   "navigation": {
     "products": "Productos",
-    "zaiko": "Zaiko",
     "zaikoSubtitle": "Gestión de Inventario para Restaurantes",
     "services": "Servicios",
     "about": "Nosotros",
@@ -27,8 +26,6 @@
   "header": {
     "logoTitle": "Inicio Venkoi",
     "language": "Idioma",
-    "productsDropdown": "Productos",
-    "productBadge": "Producto",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú"
   },
@@ -44,8 +41,8 @@
       "eyebrow": "COMPAÑÍA DE SOFTWARE DE TAMPA BAY",
       "heading": "Software creado para la forma en que realmente funciona tu negocio.",
       "body": "En Venkoi creamos productos de software modernos y desarrollamos experiencias móviles y web que ayudan a los negocios a trabajar de forma más simple, rápida e inteligente.",
-      "primaryCta": "Conoce nuestros productos",
-      "secondaryCta": "Crea con Venkoi",
+      "primaryCta": "Conoce {productName}",
+      "secondaryCta": "Solicitar una demo",
       "location": "Con sede en Tampa Bay · Trabajando con clientes en South Florida y más allá"
     },
     "productsIntro": {

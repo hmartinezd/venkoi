@@ -11,6 +11,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteOrigin())
@@ -50,11 +51,11 @@ export default async function LocaleLayout({ params, children }: PageProps) {
     <html lang={currentLocale} className={geist.variable} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         <NextIntlClientProvider messages={messages} locale={currentLocale}>
-          <Header locale={currentLocale} />
+          <Header locale={currentLocale} productName={FEATURED_PRODUCT.name} />
           <main id="content" tabIndex={-1} className="outline-hidden">
             {children}
           </main>
-          <Footer locale={currentLocale} />
+          <Footer locale={currentLocale} productName={FEATURED_PRODUCT.name} />
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
@@ -62,6 +63,5 @@ export default async function LocaleLayout({ params, children }: PageProps) {
     </html>
   );
 }
-
 
 

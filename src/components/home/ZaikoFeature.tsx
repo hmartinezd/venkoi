@@ -20,7 +20,8 @@ export function ZaikoFeature({
   theme3Title,
   theme3Desc,
   theme4Title,
-  theme4Desc
+  theme4Desc,
+  productName
 }: {
   locale: Locale;
   eyebrow: string;
@@ -38,6 +39,7 @@ export function ZaikoFeature({
   theme3Desc: string;
   theme4Title: string;
   theme4Desc: string;
+  productName: string;
 }) {
   const themes = [
     { title: theme1Title, desc: theme1Desc },
@@ -85,7 +87,7 @@ export function ZaikoFeature({
           <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 flex items-center justify-between gap-4">
             <p className="text-xs font-semibold text-ink">{badgeText}</p>
             <span className="text-[11px] font-bold text-orange uppercase tracking-widest whitespace-nowrap">
-              01 / ZAIKO
+              01 / {productName.toUpperCase()}
             </span>
           </div>
 
@@ -107,7 +109,7 @@ export function ZaikoFeature({
             <div className="flex items-center justify-between pb-3 border-b border-border">
               <div className="flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-orange" />
-                <span className="text-xs font-bold tracking-wider text-ink uppercase">Zaiko</span>
+                <span className="text-xs font-bold tracking-wider text-ink uppercase">{productName}</span>
               </div>
               <span className="text-[11px] text-orange font-bold uppercase tracking-wider bg-orange-subtle px-2.5 py-0.5 rounded">
                 01
@@ -166,4 +168,3 @@ export function ZaikoFeature({
     </Section>
   );
 }
-

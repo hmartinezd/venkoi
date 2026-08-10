@@ -4,6 +4,8 @@ export type Product = {
   id: string;
   slug: string;
   name: string;
+  routeKey: 'productsZaiko';
+  analyticsProduct: 'zaiko';
   status: ProductStatus;
   shortDescription: string;
   demoEnabled: boolean;
@@ -15,12 +17,16 @@ export const PRODUCTS: Product[] = [
     id: 'zaiko',
     slug: 'zaiko',
     name: 'Zaiko',
+    routeKey: 'productsZaiko',
+    analyticsProduct: 'zaiko',
     status: 'earlyAccess',
-    shortDescription: 'Restaurant inventory and operations software built for teams that move fast.',
+    shortDescription: 'Restaurant inventory software for understanding inventory, purchases, activity, and costs.',
     demoEnabled: true,
     pricingEnabled: false
   }
 ];
+
+export const FEATURED_PRODUCT = PRODUCTS[0];
 
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((product) => product.slug === slug);
@@ -41,5 +47,4 @@ export function getDefaultDemoProduct(): Product {
   }
   return demoProducts[0];
 }
-
 

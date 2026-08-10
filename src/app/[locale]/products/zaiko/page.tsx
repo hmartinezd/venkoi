@@ -18,6 +18,7 @@ import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -127,7 +128,7 @@ export default async function ZaikoPage({ params }: PageProps) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Zaiko',
+    name: FEATURED_PRODUCT.name,
     url: `${origin}${getLocalizedPath('productsZaiko', currentLocale)}`,
     applicationCategory: 'BusinessApplication',
     description: tSeo('description'),
@@ -154,7 +155,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       {/* Sub-navigation Bar */}
       <ZaikoProductNav
         locale={currentLocale}
-        productName={tNav('productName')}
+        productName={FEATURED_PRODUCT.name}
         subtitle={tNav('subtitle')}
         overviewLabel={tNav('overview')}
         inventoryLabel={tNav('inventory')}

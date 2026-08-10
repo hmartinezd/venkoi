@@ -4,6 +4,7 @@ import { createMetadata } from '@/lib/seo';
 import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 import { HeroSection } from '@/components/home/HeroSection';
 import { ProductsIntro } from '@/components/home/ProductsIntro';
@@ -103,9 +104,14 @@ export default async function HomePage({ params }: PageProps) {
         eyebrow={tHome('hero.eyebrow')}
         heading={tHome('hero.heading')}
         body={tHome('hero.body')}
-        primaryCta={tHome('hero.primaryCta')}
+        primaryCta={tHome('hero.primaryCta', { productName: FEATURED_PRODUCT.name })}
         secondaryCta={tHome('hero.secondaryCta')}
         location={tHome('hero.location')}
+        productName={FEATURED_PRODUCT.name}
+        inventoryLabel={tHome('zaiko.theme1Title')}
+        purchasesLabel={tHome('zaiko.theme2Title')}
+        costsLabel={tHome('zaiko.theme3Title')}
+        activityLabel={tHome('zaiko.theme4Title')}
       />
 
       <ProductsIntro
@@ -131,32 +137,7 @@ export default async function HomePage({ params }: PageProps) {
         theme3Desc={tHome('zaiko.theme3Desc')}
         theme4Title={tHome('zaiko.theme4Title')}
         theme4Desc={tHome('zaiko.theme4Desc')}
-      />
-
-      <ServicesSection
-        locale={currentLocale}
-        eyebrow={tHome('services.eyebrow')}
-        heading={tHome('services.heading')}
-        body={tHome('services.body')}
-        cta={tHome('services.cta')}
-        learnMore={tHome('services.learnMore')}
-        mobileTitle={tHome('services.mobileTitle')}
-        mobileDesc={tHome('services.mobileDesc')}
-        webTitle={tHome('services.webTitle')}
-        webDesc={tHome('services.webDesc')}
-      />
-
-      <LocalSection
-        eyebrow={tHome('local.eyebrow')}
-        heading={tHome('local.heading')}
-        body={tHome('local.body')}
-        tampaTitle={tHome('local.tampaTitle')}
-        tampaDesc={tHome('local.tampaDesc')}
-        southFloridaTitle={tHome('local.southFloridaTitle')}
-        southFloridaDesc={tHome('local.southFloridaDesc')}
-        beyondTitle={tHome('local.beyondTitle')}
-        beyondDesc={tHome('local.beyondDesc')}
-        prominentStatement={tHome('local.prominentStatement')}
+        productName={FEATURED_PRODUCT.name}
       />
 
       <PhilosophySection
@@ -191,6 +172,32 @@ export default async function HomePage({ params }: PageProps) {
         cta={tHome('insights.cta')}
         readMoreLabel={tInsights('readMore')}
         articles={articles}
+      />
+
+      <LocalSection
+        eyebrow={tHome('local.eyebrow')}
+        heading={tHome('local.heading')}
+        body={tHome('local.body')}
+        tampaTitle={tHome('local.tampaTitle')}
+        tampaDesc={tHome('local.tampaDesc')}
+        southFloridaTitle={tHome('local.southFloridaTitle')}
+        southFloridaDesc={tHome('local.southFloridaDesc')}
+        beyondTitle={tHome('local.beyondTitle')}
+        beyondDesc={tHome('local.beyondDesc')}
+        prominentStatement={tHome('local.prominentStatement')}
+      />
+
+      <ServicesSection
+        locale={currentLocale}
+        eyebrow={tHome('services.eyebrow')}
+        heading={tHome('services.heading')}
+        body={tHome('services.body')}
+        cta={tHome('services.cta')}
+        learnMore={tHome('services.learnMore')}
+        mobileTitle={tHome('services.mobileTitle')}
+        mobileDesc={tHome('services.mobileDesc')}
+        webTitle={tHome('services.webTitle')}
+        webDesc={tHome('services.webDesc')}
       />
 
       <FinalCta

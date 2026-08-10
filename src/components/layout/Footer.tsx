@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 
-export function Footer({ locale }: { locale: Locale }) {
+export function Footer({ locale, productName }: { locale: Locale; productName: string }) {
   const tFooter = useTranslations('footer');
   const tNav = useTranslations('navigation');
   const tCommon = useTranslations('common');
@@ -36,7 +36,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   locale={locale}
                   className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
-                  {tNav('zaiko')}
+                  {productName}
                 </LocalizedLink>
               </li>
             </ul>
@@ -139,4 +139,3 @@ export function Footer({ locale }: { locale: Locale }) {
     </footer>
   );
 }
-
