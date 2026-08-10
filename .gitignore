@@ -8,3 +8,5 @@ out
 .idea/
 .vercel
 .artifacts/
+playwright-report/
+test-results/

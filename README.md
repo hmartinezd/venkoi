@@ -37,6 +37,7 @@ See the [launch runbook](docs/LAUNCH.md) for the environment contract, migration
 - `npm run typecheck` — run TypeScript checking
 - `npm run test:regression` — run the combined regression suite
 - `npm run quality` — run lint, typecheck, the regression suite, and a Next production build
+- `npm run test:e2e` — run the Chromium browser smoke and interaction suite
 - `npm run build:next` — run the Next.js production build
 
 `package.json` is the source of truth for focused test commands.
@@ -55,3 +56,7 @@ The regression suite covers these stable areas without duplicating every individ
 - Insights & Content Consistency, including English/Spanish parity
 
 The GitHub Actions `Quality` workflow runs `npm ci` and `npm run quality` with Node.js 24 on pushes to `main` and pull requests targeting `main`. Run `npm run quality` locally before merging.
+
+### Browser E2E
+
+Install Chromium once with `npx playwright install chromium`, then run the local browser suite with `npm run test:e2e`. Playwright starts the local Next development server automatically; lead submissions are mocked and do not use production infrastructure.
