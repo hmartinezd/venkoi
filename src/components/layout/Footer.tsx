@@ -1,19 +1,17 @@
-'use client';
-
 import { LocalizedLink } from '@/i18n/navigation';
 import { internalRoutes } from '@/i18n/routing';
 import { type Locale } from '@/i18n/config';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
-export function Footer({ locale, productName }: { locale: Locale; productName: string }) {
-  const tFooter = useTranslations('footer');
-  const tNav = useTranslations('navigation');
-  const tCommon = useTranslations('common');
+export async function Footer({ locale, productName }: { locale: Locale; productName: string }) {
+  const tFooter = await getTranslations('footer');
+  const tNav = await getTranslations('navigation');
+  const tCommon = await getTranslations('common');
   const currentYear = new Date().getFullYear();
 
   return (

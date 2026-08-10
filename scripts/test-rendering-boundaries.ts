@@ -5,7 +5,8 @@ import { resolve } from 'node:path';
 const serverComponents = [
   'src/components/home/ServicesSection.tsx',
   'src/components/services/ServiceCta.tsx',
-  'src/components/product/zaiko/ZaikoProductNav.tsx'
+  'src/components/product/zaiko/ZaikoProductNav.tsx',
+  'src/components/layout/Footer.tsx'
 ];
 
 const clientComponents = [

@@ -17,7 +17,6 @@ const globalClientMessageNamespaces = [
   'common',
   'navigation',
   'header',
-  'footer',
   'breadcrumbs',
   'errorBoundary'
 ] as const;
@@ -75,4 +74,3 @@ export default async function LocaleLayout({ params, children }: PageProps) {
     </html>
   );
 }
-
