@@ -199,12 +199,12 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               onClick={() => setMenuOpen(false)}
               aria-current={routeKey === 'productsZaiko' ? 'page' : undefined}
               className={cn(
-                'flex items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
+                'flex items-start justify-between gap-4 rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
                 routeKey === 'productsZaiko' ? 'text-orange' : 'text-ink'
               )}
             >
-              <span className="break-words">{productName}</span>
-              <span className="text-xs text-foreground-muted">{tNav('zaikoSubtitle')}</span>
+              <span className="min-w-0 break-words">{productName}</span>
+              <span className="shrink-0 pt-0.5 text-right text-xs text-foreground-muted">{tNav('zaikoSubtitle')}</span>
             </LocalizedLink>
             <LocalizedLink
               href={internalRoutes.insights}
