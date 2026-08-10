@@ -17,6 +17,7 @@
     "test:navigation": "tsx scripts/test-navigation-intent.ts",
     "test:site-config": "tsx scripts/test-site-config.ts",
     "test:contact": "tsx scripts/test-contact-config.ts",
+    "test:contact-experience": "tsx scripts/test-contact-experience.ts",
     "test:products": "tsx scripts/test-products.ts",
     "test:product-display-name": "tsx scripts/test-product-display-name.ts",
     "test:product-program": "tsx scripts/test-product-program.ts",
@@ -29,7 +30,7 @@
     "test:services": "tsx scripts/test-services-structure.ts",
     "test:about": "tsx scripts/test-about-structure.ts",
     "test:buttons": "tsx scripts/test-button-variants.ts",
-    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about && npm run test:buttons",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:contact-experience && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about && npm run test:buttons",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {

@@ -278,13 +278,12 @@
       "differentiator": "Habla directamente con las personas que están creando tu software."
     },
     "locationEyebrow": "UBICACIÓN",
-    "inquiriesEyebrow": "CONSULTAS",
     "locationBoxTitle": "Con sede en Tampa Bay",
     "locationBoxDesc": "Con sede en Tampa Bay, Florida · Trabajando con clientes en South Florida y más allá.",
-    "emailBoxTitle": "Contacto Directo",
-    "emailBoxDesc": "Escríbenos directamente para consultas sobre nuestros servicios o demos de producto.",
     "demoCta": "Solicitar una demo",
     "form": {
+      "optionalDetailsSummary": "Agregar detalles del proyecto (opcional)",
+      "optionalDetailsCue": "Teléfono, empresa, tipo de proyecto y etapa",
       "name": "Nombre",
       "email": "Email",
       "phone": "Teléfono",
@@ -648,8 +647,8 @@
     },
     "relatedGuideLabel": "GUÍA ÚTIL",
     "seoTitle": "Desarrollo de Apps Móviles para iOS y Android | Venkoi",
-    "seoDescription": "Venkoi diseña, desarrolla y prueba aplicaciones móviles para iOS y Android, desde la idea inicial hasta experiencias digitales útiles en Tampa Bay, South Florida y más allá."
-    ,"finalCta": {
+    "seoDescription": "Venkoi diseña, desarrolla y prueba aplicaciones móviles para iOS y Android, desde la idea inicial hasta experiencias digitales útiles en Tampa Bay, South Florida y más allá.",
+    "finalCta": {
       "heading": "¿Tienes una idea móvil que quieres crear?",
       "body": "Empieza con la idea, el flujo de trabajo o el problema. Te ayudaremos a definir la experiencia móvil adecuada."
     }
@@ -695,8 +694,8 @@
     },
     "relatedGuideLabel": "GUÍA ÚTIL",
     "seoTitle": "Desarrollo de Páginas y Aplicaciones Web | Venkoi",
-    "seoDescription": "Venkoi diseña, desarrolla y prueba páginas web y aplicaciones web, desde experiencias sencillas hasta productos web más interactivos en Tampa Bay, South Florida y más allá."
-    ,"finalCta": {
+    "seoDescription": "Venkoi diseña, desarrolla y prueba páginas web y aplicaciones web, desde experiencias sencillas hasta productos web más interactivos en Tampa Bay, South Florida y más allá.",
+    "finalCta": {
       "heading": "¿Tienes algo que quieres crear en la web?",
       "body": "Empieza con lo que quieres que las personas logren. Te ayudaremos a definir la experiencia web adecuada."
     }
