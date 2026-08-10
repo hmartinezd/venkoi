@@ -19,6 +19,9 @@ const serverComponents = [
   "src/components/product/zaiko/ZaikoCapabilities.tsx",
   "src/components/product/zaiko/ZaikoProductFit.tsx",
   "src/components/layout/Footer.tsx",
+  "src/components/insights/InsightArticle.tsx",
+  "src/components/insights/RelatedInsights.tsx",
+  "src/components/insights/InsightCard.tsx",
 ];
 
 const clientComponents = [

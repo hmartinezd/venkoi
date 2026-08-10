@@ -88,18 +88,33 @@ export default async function InsightsPage({ params }: PageProps) {
 
       <Section variant="surface" spacing="compact" className="border-t border-border">
         <Container>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
+          <div className="grid gap-6 lg:grid-cols-12">
+            {articles[0] ? (
               <InsightCard
-                key={article.routeKey}
                 locale={currentLocale}
-                category={article.category}
-                title={article.title}
-                description={article.description}
-                routeKey={article.routeKey}
+                category={articles[0].category}
+                title={articles[0].title}
+                description={articles[0].description}
+                routeKey={articles[0].routeKey}
                 readMoreLabel={t('readMore')}
+                featured
+                headingLevel="h2"
               />
-            ))}
+            ) : null}
+            <div className="grid gap-6 lg:col-span-5">
+              {articles.slice(1).map((article) => (
+                <InsightCard
+                  key={article.routeKey}
+                  locale={currentLocale}
+                  category={article.category}
+                  title={article.title}
+                  description={article.description}
+                  routeKey={article.routeKey}
+                  readMoreLabel={t('readMore')}
+                  headingLevel="h2"
+                />
+              ))}
+            </div>
           </div>
         </Container>
       </Section>

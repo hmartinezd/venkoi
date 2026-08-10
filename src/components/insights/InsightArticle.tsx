@@ -6,6 +6,12 @@ import { type Locale } from '@/i18n/config';
 import { type RouteKey } from '@/i18n/routing';
 import { getSiteOrigin } from '@/lib/site-config';
 import { getLocalizedPath } from '@/i18n/routing';
+import { LocalizedLink } from '@/i18n/navigation';
+
+export interface InsightArticleSection {
+  id: string;
+  label: string;
+}
 
 interface InsightArticleProps {
   locale: Locale;
@@ -15,8 +21,11 @@ interface InsightArticleProps {
   category: string;
   breadcrumbLabelKey: string;
   children: ReactNode;
+  sections: InsightArticleSection[];
+  guideNavigationLabel: string;
+  backToInsightsLabel: string;
   ctaArea?: ReactNode;
-  relatedGuides?: ReactNode;
+  relatedInsights?: ReactNode;
 }
 
 export function InsightArticle({
@@ -27,8 +36,11 @@ export function InsightArticle({
   category,
   breadcrumbLabelKey,
   children,
+  sections,
+  guideNavigationLabel,
+  backToInsightsLabel,
   ctaArea,
-  relatedGuides
+  relatedInsights
 }: InsightArticleProps) {
   const origin = getSiteOrigin();
   const canonical = `${origin}${getLocalizedPath(routeKey, locale)}`;
@@ -67,7 +79,7 @@ export function InsightArticle({
       />
 
       <Section variant="light" spacing="hero">
-        <Container className="max-w-4xl">
+        <Container>
           <Breadcrumbs
             locale={locale}
             items={[
@@ -77,8 +89,8 @@ export function InsightArticle({
             ]}
           />
 
-          <article className="space-y-12">
-            <header className="space-y-6">
+          <article className="space-y-12 lg:space-y-16">
+            <header className="max-w-4xl space-y-6">
               <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
                 {category}
               </span>
@@ -90,21 +102,53 @@ export function InsightArticle({
               </p>
             </header>
 
-            <div className="max-w-3xl">
-              {children}
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+              <nav
+                aria-label={guideNavigationLabel}
+                className="rounded-2xl border border-border bg-surface p-5 lg:col-span-3 lg:self-start lg:sticky lg:top-24"
+              >
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-ink">
+                  {guideNavigationLabel}
+                </p>
+                <ol className="mt-4 grid gap-1 sm:grid-cols-2 lg:grid-cols-1">
+                  {sections.map((section) => (
+                    <li key={section.id}>
+                      <a
+                        href={`#${section.id}`}
+                        className="block rounded-md px-2 py-2 text-sm leading-snug text-foreground-muted outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+                      >
+                        {section.label}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+
+              <div className="max-w-3xl lg:col-span-8 lg:col-start-5">
+                {children}
+              </div>
             </div>
 
             {ctaArea && (
-              <footer className="pt-12 border-t border-border">
+              <footer className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
                 {ctaArea}
               </footer>
             )}
 
-            {relatedGuides && (
+            {relatedInsights && (
               <div className="pt-16 border-t border-border">
-                {relatedGuides}
+                {relatedInsights}
               </div>
             )}
+
+            <LocalizedLink
+              href="/insights"
+              locale={locale}
+              className="inline-flex rounded-sm text-sm font-bold text-ink outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
+            >
+              <span aria-hidden="true" className="mr-2">←</span>
+              {backToInsightsLabel}
+            </LocalizedLink>
           </article>
         </Container>
       </Section>
@@ -112,9 +156,9 @@ export function InsightArticle({
   );
 }
 
-export function ArticleSection({ title, children }: { title: string; children: ReactNode }) {
+export function ArticleSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
-    <section className="space-y-4 mb-10 last:mb-0">
+    <section id={id} className="scroll-mt-24 space-y-4 mb-10 last:mb-0">
       <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
         {title}
       </h2>

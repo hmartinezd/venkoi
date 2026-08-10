@@ -1,5 +1,5 @@
 import { InsightArticle, ArticleSection } from '@/components/insights/InsightArticle';
-import { InsightCard } from '@/components/insights/InsightCard';
+import { RelatedInsights } from '@/components/insights/RelatedInsights';
 import { locales, type Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/routing';
 import { createMetadata } from '@/lib/seo';
@@ -41,6 +41,14 @@ export default async function StartSoftwareProjectArticle({ params }: PageProps)
   const tRelated = await getTranslations('insightsArticles');
   const tInsights = await getTranslations('insightsPage');
   const content = t.raw('content');
+  const sections = [
+    { id: 'problem', label: content.problemTitle },
+    { id: 'users', label: content.usersTitle },
+    { id: 'workflow', label: content.workflowTitle },
+    { id: 'existing-context', label: content.existingTitle },
+    { id: 'priorities', label: content.prioritiesTitle },
+    { id: 'process', label: content.processTitle }
+  ];
 
   const ctaArea = (
     <div>
@@ -59,24 +67,6 @@ export default async function StartSoftwareProjectArticle({ params }: PageProps)
     </div>
   );
 
-  const relatedGuides = (
-    <div className="space-y-8">
-      <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
-        {tRelated('relatedGuides')}
-      </h2>
-      <div className="max-w-md">
-        <InsightCard
-          locale={currentLocale}
-          category={tRelated('websiteOrWebApp.category')}
-          title={tRelated('websiteOrWebApp.title')}
-          description={tRelated('websiteOrWebApp.description')}
-          routeKey="insightWebsiteOrWebApp"
-          readMoreLabel={tInsights('readMore')}
-        />
-      </div>
-    </div>
-  );
-
   return (
     <InsightArticle
       locale={currentLocale}
@@ -85,34 +75,42 @@ export default async function StartSoftwareProjectArticle({ params }: PageProps)
       description={t('description')}
       category={t('category')}
       breadcrumbLabelKey="insightStartSoftwareProject"
+      sections={sections}
+      guideNavigationLabel={tRelated('inThisGuide')}
+      backToInsightsLabel={tRelated('backToInsights')}
       ctaArea={ctaArea}
-      relatedGuides={relatedGuides}
+      relatedInsights={(
+        <RelatedInsights locale={currentLocale} heading={tRelated('relatedGuides')} readMoreLabel={tInsights('readMore')} articles={[
+          { routeKey: 'insightRestaurantInventory', category: tRelated('restaurantInventory.category'), title: tRelated('restaurantInventory.title'), description: tRelated('restaurantInventory.description') },
+          { routeKey: 'insightWebsiteOrWebApp', category: tRelated('websiteOrWebApp.category'), title: tRelated('websiteOrWebApp.title'), description: tRelated('websiteOrWebApp.description') }
+        ]} />
+      )}
     >
       <p className="text-lg leading-relaxed text-foreground-muted mb-12">
         {content.intro}
       </p>
 
-      <ArticleSection title={content.problemTitle}>
+      <ArticleSection id="problem" title={content.problemTitle}>
         <p>{content.problemBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.usersTitle}>
+      <ArticleSection id="users" title={content.usersTitle}>
         <p>{content.usersBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.workflowTitle}>
+      <ArticleSection id="workflow" title={content.workflowTitle}>
         <p>{content.workflowBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.existingTitle}>
+      <ArticleSection id="existing-context" title={content.existingTitle}>
         <p>{content.existingBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.prioritiesTitle}>
+      <ArticleSection id="priorities" title={content.prioritiesTitle}>
         <p>{content.prioritiesBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.processTitle}>
+      <ArticleSection id="process" title={content.processTitle}>
         <p>{content.processBody}</p>
       </ArticleSection>
     </InsightArticle>

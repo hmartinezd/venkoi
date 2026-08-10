@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
+import { RelatedInsights } from '@/components/insights/RelatedInsights';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -40,17 +41,22 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
   const currentLocale = parseLocale(locale);
 
   const t = await getTranslations('insightsArticles.restaurantInventory');
+  const tArticles = await getTranslations('insightsArticles');
+  const tInsights = await getTranslations('insightsPage');
   const content = t.raw('content');
   const productValues = { productName: FEATURED_PRODUCT.name };
+  const sections = [
+    { id: 'problem', label: content.problemTitle },
+    { id: 'purchases', label: content.purchasesTitle },
+    { id: 'quantities', label: content.quantitiesTitle },
+    { id: 'activity', label: content.activityTitle },
+    { id: 'costs', label: content.costsTitle },
+    { id: 'together', label: content.togetherTitle },
+    { id: 'product-approach', label: t('content.zaikoTitle', productValues) }
+  ];
 
   const ctaArea = (
     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-      <Button
-        href={getLocalizedPath('productsZaiko', currentLocale)}
-        variant="secondary"
-      >
-        {t('content.ctaExplore', productValues)}
-      </Button>
       <TrackedButton
         href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
         variant="primary"
@@ -63,6 +69,12 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
       >
         {content.ctaDemo}
       </TrackedButton>
+      <Button
+        href={getLocalizedPath('productsZaiko', currentLocale)}
+        variant="secondary"
+      >
+        {t('content.ctaExplore', productValues)}
+      </Button>
     </div>
   );
 
@@ -74,37 +86,61 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
       description={t('description')}
       category={t('category')}
       breadcrumbLabelKey="insightRestaurantInventory"
+      sections={sections}
+      guideNavigationLabel={tArticles('inThisGuide')}
+      backToInsightsLabel={tArticles('backToInsights')}
       ctaArea={ctaArea}
+      relatedInsights={(
+        <RelatedInsights
+          locale={currentLocale}
+          heading={tArticles('relatedGuides')}
+          readMoreLabel={tInsights('readMore')}
+          articles={[
+            {
+              routeKey: 'insightStartSoftwareProject',
+              category: tArticles('startSoftwareProject.category'),
+              title: tArticles('startSoftwareProject.title'),
+              description: tArticles('startSoftwareProject.description')
+            },
+            {
+              routeKey: 'insightWebsiteOrWebApp',
+              category: tArticles('websiteOrWebApp.category'),
+              title: tArticles('websiteOrWebApp.title'),
+              description: tArticles('websiteOrWebApp.description')
+            }
+          ]}
+        />
+      )}
     >
       <p className="text-lg leading-relaxed text-foreground-muted mb-12">
         {content.intro}
       </p>
 
-      <ArticleSection title={content.problemTitle}>
+      <ArticleSection id="problem" title={content.problemTitle}>
         <p>{content.problemBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.purchasesTitle}>
+      <ArticleSection id="purchases" title={content.purchasesTitle}>
         <p>{content.purchasesBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.quantitiesTitle}>
+      <ArticleSection id="quantities" title={content.quantitiesTitle}>
         <p>{content.quantitiesBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.activityTitle}>
+      <ArticleSection id="activity" title={content.activityTitle}>
         <p>{content.activityBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.costsTitle}>
+      <ArticleSection id="costs" title={content.costsTitle}>
         <p>{content.costsBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.togetherTitle}>
+      <ArticleSection id="together" title={content.togetherTitle}>
         <p>{content.togetherBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={t('content.zaikoTitle', productValues)}>
+      <ArticleSection id="product-approach" title={t('content.zaikoTitle', productValues)}>
         <p>{t('content.zaikoBody', productValues)}</p>
       </ArticleSection>
     </InsightArticle>

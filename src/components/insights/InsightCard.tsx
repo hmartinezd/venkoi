@@ -11,6 +11,7 @@ interface InsightCardProps {
   routeKey: RouteKey;
   readMoreLabel: string;
   featured?: boolean;
+  headingLevel?: 'h2' | 'h3';
 }
 
 export function InsightCard({
@@ -20,7 +21,8 @@ export function InsightCard({
   description,
   routeKey,
   readMoreLabel,
-  featured = false
+  featured = false,
+  headingLevel: Heading = 'h3'
 }: InsightCardProps) {
   return (
     <div className={cn(
@@ -31,12 +33,12 @@ export function InsightCard({
         <span className="text-[10px] font-bold uppercase tracking-widest text-orange-text">
           {category}
         </span>
-        <h3 className={cn(
+        <Heading className={cn(
           'text-xl font-bold leading-tight text-ink transition-colors group-hover:text-orange-text',
           featured && 'sm:text-2xl lg:text-3xl'
         )}>
           {title}
-        </h3>
+        </Heading>
         <p className={cn(
           'text-sm leading-relaxed text-foreground-muted',
           featured && 'sm:text-base'

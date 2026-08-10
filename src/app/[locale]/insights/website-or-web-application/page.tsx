@@ -1,5 +1,5 @@
 import { InsightArticle, ArticleSection } from '@/components/insights/InsightArticle';
-import { InsightCard } from '@/components/insights/InsightCard';
+import { RelatedInsights } from '@/components/insights/RelatedInsights';
 import { Button } from '@/components/ui/Button';
 import { locales, type Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/routing';
@@ -42,6 +42,13 @@ export default async function WebsiteOrWebAppArticle({ params }: PageProps) {
   const tRelated = await getTranslations('insightsArticles');
   const tInsights = await getTranslations('insightsPage');
   const content = t.raw('content');
+  const sections = [
+    { id: 'website', label: content.websiteTitle },
+    { id: 'web-application', label: content.webappTitle },
+    { id: 'between', label: content.betweenTitle },
+    { id: 'questions', label: content.questionsTitle },
+    { id: 'outcome', label: content.outcomeTitle }
+  ];
 
   const ctaArea = (
     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -66,24 +73,6 @@ export default async function WebsiteOrWebAppArticle({ params }: PageProps) {
     </div>
   );
 
-  const relatedGuides = (
-    <div className="space-y-8">
-      <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
-        {tRelated('relatedGuides')}
-      </h2>
-      <div className="max-w-md">
-        <InsightCard
-          locale={currentLocale}
-          category={tRelated('startSoftwareProject.category')}
-          title={tRelated('startSoftwareProject.title')}
-          description={tRelated('startSoftwareProject.description')}
-          routeKey="insightStartSoftwareProject"
-          readMoreLabel={tInsights('readMore')}
-        />
-      </div>
-    </div>
-  );
-
   return (
     <InsightArticle
       locale={currentLocale}
@@ -92,30 +81,38 @@ export default async function WebsiteOrWebAppArticle({ params }: PageProps) {
       description={t('description')}
       category={t('category')}
       breadcrumbLabelKey="insightWebsiteOrWebApp"
+      sections={sections}
+      guideNavigationLabel={tRelated('inThisGuide')}
+      backToInsightsLabel={tRelated('backToInsights')}
       ctaArea={ctaArea}
-      relatedGuides={relatedGuides}
+      relatedInsights={(
+        <RelatedInsights locale={currentLocale} heading={tRelated('relatedGuides')} readMoreLabel={tInsights('readMore')} articles={[
+          { routeKey: 'insightRestaurantInventory', category: tRelated('restaurantInventory.category'), title: tRelated('restaurantInventory.title'), description: tRelated('restaurantInventory.description') },
+          { routeKey: 'insightStartSoftwareProject', category: tRelated('startSoftwareProject.category'), title: tRelated('startSoftwareProject.title'), description: tRelated('startSoftwareProject.description') }
+        ]} />
+      )}
     >
       <p className="text-lg leading-relaxed text-foreground-muted mb-12">
         {content.intro}
       </p>
 
-      <ArticleSection title={content.websiteTitle}>
+      <ArticleSection id="website" title={content.websiteTitle}>
         <p>{content.websiteBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.webappTitle}>
+      <ArticleSection id="web-application" title={content.webappTitle}>
         <p>{content.webappBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.betweenTitle}>
+      <ArticleSection id="between" title={content.betweenTitle}>
         <p>{content.betweenBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.questionsTitle}>
+      <ArticleSection id="questions" title={content.questionsTitle}>
         <p>{content.questionsBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.outcomeTitle}>
+      <ArticleSection id="outcome" title={content.outcomeTitle}>
         <p>{content.outcomeBody}</p>
       </ArticleSection>
     </InsightArticle>
