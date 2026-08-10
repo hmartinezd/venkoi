@@ -6,7 +6,7 @@ import {
 
 export const runtime = 'nodejs';
 
-export const alt = 'Zaiko by Venkoi — Restaurant inventory management';
+export const alt = 'Zaiko by Venkoi';
 export const size = socialCardSize;
 export const contentType = socialCardContentType;
 

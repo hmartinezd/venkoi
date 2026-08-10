@@ -1,5 +1,45 @@
+import type { Metadata } from 'next';
+import { locales, type Locale } from '../src/i18n/config';
+import { getLocalizedPath, type RouteKey } from '../src/i18n/routing';
 import { createMetadata } from '../src/lib/seo';
+import { getSiteOrigin } from '../src/lib/site-config';
 import sitemap from '../src/app/sitemap';
+
+const sitemapRouteKeys: RouteKey[] = [
+  'home',
+  'productsZaiko',
+  'services',
+  'servicesMobile',
+  'servicesWeb',
+  'about',
+  'contact',
+  'insights',
+  'insightRestaurantInventory',
+  'insightStartSoftwareProject',
+  'insightWebsiteOrWebApp'
+];
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object';
+}
+
+function getProperty(value: unknown, property: string): unknown {
+  return isRecord(value) ? value[property] : undefined;
+}
+
+function normalizeUrl(value: string): string {
+  return value.replace(/\/+$/, '');
+}
+
+function getCanonical(metadata: Metadata): string | undefined {
+  const canonical = metadata.alternates?.canonical;
+  return typeof canonical === 'string' ? canonical : undefined;
+}
+
+function getLanguageAlternate(metadata: Metadata, language: Locale | 'x-default'): string | undefined {
+  const alternate = metadata.alternates?.languages?.[language];
+  return typeof alternate === 'string' ? alternate : undefined;
+}
 
 export function testSeoRegression() {
   console.log('=== RUNNING SEO REGRESSION TESTS ===\n');
@@ -28,8 +68,37 @@ export function testSeoRegression() {
     }
   };
 
+  const origin = getSiteOrigin();
+  const expectedUrl = (routeKey: RouteKey, locale: Locale) =>
+    `${origin}${getLocalizedPath(routeKey, locale)}`;
+
+  function assertRouteMetadata(routeKey: RouteKey, locale: Locale, label: string) {
+    const metadata = createMetadata({
+      title: label,
+      description: 'Desc',
+      routeKey,
+      locale
+    });
+
+    assert(
+      normalizeUrl(getCanonical(metadata) ?? '') === normalizeUrl(expectedUrl(routeKey, locale)),
+      `${label} canonical matches localized route`
+    );
+    for (const alternateLocale of locales) {
+      assert(
+        normalizeUrl(getLanguageAlternate(metadata, alternateLocale) ?? '') ===
+          normalizeUrl(expectedUrl(routeKey, alternateLocale)),
+        `${label} ${alternateLocale.toUpperCase()} alternate matches localized route`
+      );
+    }
+    assert(
+      normalizeUrl(getLanguageAlternate(metadata, 'x-default') ?? '') ===
+        normalizeUrl(expectedUrl(routeKey, 'en')),
+      `${label} x-default matches English localized route`
+    );
+  }
+
   try {
-    // 1. Metadata Generation - Default (Website)
     const metadata = createMetadata({
       title: 'Home',
       description: 'Desc',
@@ -37,11 +106,10 @@ export function testSeoRegression() {
       locale: 'en'
     });
 
-    assert((metadata.openGraph as any)?.type === 'website', 'Default metadata uses type: website');
-    assert(metadata.openGraph?.siteName === 'Venkoi', 'OpenGraph siteName is Venkoi');
-    assert((metadata.twitter as any)?.card === 'summary_large_image', 'Twitter card is summary_large_image');
+    assert(getProperty(metadata.openGraph, 'type') === 'website', 'Default metadata uses type: website');
+    assert(getProperty(metadata.openGraph, 'siteName') === 'Venkoi', 'OpenGraph siteName is Venkoi');
+    assert(getProperty(metadata.twitter, 'card') === 'summary_large_image', 'Twitter card is summary_large_image');
 
-    // 2. Metadata Generation - Article
     const articleMetadata = createMetadata({
       title: 'Article',
       description: 'Desc',
@@ -49,25 +117,15 @@ export function testSeoRegression() {
       locale: 'en',
       openGraphType: 'article'
     });
-    assert((articleMetadata.openGraph as any)?.type === 'article', 'Explicit openGraphType article works');
+    assert(getProperty(articleMetadata.openGraph, 'type') === 'article', 'Explicit openGraphType article works');
 
-    // 3. Localization and Canonical
-    const esMetadata = createMetadata({
-      title: 'Inicio',
-      description: 'Desc',
-      routeKey: 'home',
-      locale: 'es'
-    });
+    assertRouteMetadata('home', 'en', 'Home EN');
+    assertRouteMetadata('home', 'es', 'Home ES');
+    assertRouteMetadata('productsZaiko', 'en', 'Zaiko EN');
+    assertRouteMetadata('productsZaiko', 'es', 'Zaiko ES');
+    assertRouteMetadata('insightRestaurantInventory', 'en', 'Insight article EN');
+    assertRouteMetadata('insightRestaurantInventory', 'es', 'Insight article ES');
 
-    const canonical = (esMetadata.alternates as any)?.canonical;
-    assert(canonical.endsWith('/es'), 'Spanish canonical URL ends with /es');
-
-    const languages = (esMetadata.alternates as any)?.languages;
-    assert(languages['en'].endsWith('/'), 'English alternate URL is present');
-    assert(languages['es'].endsWith('/es'), 'Spanish alternate URL is present');
-    assert(languages['x-default'].endsWith('/'), 'x-default points to English root');
-
-    // 4. Indexing behavior - Production
     setEnv('VERCEL_ENV', 'production');
     setEnv('NODE_ENV', 'production');
     const prodMetadata = createMetadata({
@@ -76,9 +134,8 @@ export function testSeoRegression() {
       routeKey: 'home',
       locale: 'en'
     });
-    assert((prodMetadata.robots as any)?.index === true, 'Production indexes by default');
+    assert(getProperty(prodMetadata.robots, 'index') === true, 'Production indexes by default');
 
-    // 5. Indexing behavior - Preview (should be noindex)
     setEnv('VERCEL_ENV', 'preview');
     const previewMetadata = createMetadata({
       title: 'Home',
@@ -86,33 +143,35 @@ export function testSeoRegression() {
       routeKey: 'home',
       locale: 'en'
     });
-    assert((previewMetadata.robots as any)?.index === false, 'Preview environment is noindex');
+    assert(getProperty(previewMetadata.robots, 'index') === false, 'Preview environment is noindex');
 
-    // 6. Sitemap Verification
     const sitemapItems = sitemap();
     assert(Array.isArray(sitemapItems), 'Sitemap returns an array');
+    assert(sitemapItems.length === sitemapRouteKeys.length * locales.length, 'Sitemap contains every indexable route and locale');
+    assert(sitemapItems.every(item => item.lastModified == null), 'Sitemap items do NOT contain build-time lastModified');
 
-    const enHome = sitemapItems.find(item => item.url.endsWith('venkoi.com/'));
-    const esHome = sitemapItems.find(item => item.url.endsWith('venkoi.com/es'));
-
-    assert(!!enHome, 'English home route present in sitemap');
-    assert(!!esHome, 'Spanish home route present in sitemap');
-
-    if (enHome) {
-      // Verify lack of build-time lastModified
-      const allItemsHaveNoLastModified = sitemapItems.every(item => !(item as any).lastModified);
-      assert(allItemsHaveNoLastModified, 'Sitemap items do NOT contain build-time lastModified property');
-
-      // Verify alternate languages in sitemap
-      assert(!!enHome.alternates?.languages?.en, 'Sitemap alternates contain English');
-      assert(!!enHome.alternates?.languages?.es, 'Sitemap alternates contain Spanish');
-      assert(!!enHome.alternates?.languages?.['x-default'] && enHome.alternates.languages['x-default'].endsWith('/'), 'Sitemap alternates x-default is English root');
+    for (const routeKey of sitemapRouteKeys) {
+      for (const locale of locales) {
+        const url = expectedUrl(routeKey, locale);
+        const item = sitemapItems.find(candidate => normalizeUrl(candidate.url) === normalizeUrl(url));
+        assert(!!item, `Sitemap contains ${routeKey} ${locale.toUpperCase()}`);
+        assert(
+          normalizeUrl(item?.alternates?.languages?.en ?? '') === normalizeUrl(expectedUrl(routeKey, 'en')),
+          `Sitemap ${routeKey} ${locale.toUpperCase()} English alternate is exact`
+        );
+        assert(
+          normalizeUrl(item?.alternates?.languages?.es ?? '') === normalizeUrl(expectedUrl(routeKey, 'es')),
+          `Sitemap ${routeKey} ${locale.toUpperCase()} Spanish alternate is exact`
+        );
+        assert(
+          normalizeUrl(item?.alternates?.languages?.['x-default'] ?? '') === normalizeUrl(expectedUrl(routeKey, 'en')),
+          `Sitemap ${routeKey} ${locale.toUpperCase()} x-default is English localized route`
+        );
+      }
     }
 
-    // Verify Demo is excluded
-    const demoInSitemap = sitemapItems.find(item => item.url.includes('/demo'));
-    assert(!demoInSitemap, 'Demo route is excluded from sitemap');
-
+    const demoUrls = locales.map(locale => normalizeUrl(expectedUrl('demo', locale)));
+    assert(!sitemapItems.some(item => demoUrls.includes(normalizeUrl(item.url))), 'Demo route is excluded from sitemap');
   } finally {
     setEnv('VERCEL_ENV', origVercelEnv);
     setEnv('NODE_ENV', origNodeEnv);

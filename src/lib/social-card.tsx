@@ -36,29 +36,29 @@ export async function generateSocialCardResponse({
   let subheading = '';
 
   if (variant === 'zaiko') {
-    eyebrow = 'ZAIKO BY VENKOI';
+    eyebrow = 'ZAIKO · A VENKOI PRODUCT';
     heading = isSpanish
-      ? 'Gestión de inventario para restaurantes.'
-      : 'Restaurant inventory management.';
+      ? 'Inventario de restaurantes, más claro.'
+      : 'Restaurant inventory, made clearer.';
     subheading = isSpanish
-      ? 'Inventario, compras, actividad y costos — en una sola imagen clara.'
-      : 'Inventory, purchases, activity, and costs — in one clearer picture.';
+      ? 'Inventario, compras, actividad y costos en una visión más clara.'
+      : 'Inventory, purchases, activity, and costs in one clearer picture.';
   } else if (variant === 'insights') {
     eyebrow = isSpanish ? 'RECURSOS DE VENKOI' : 'VENKOI INSIGHTS';
     heading = isSpanish
-      ? 'Guías prácticas para mejor software.'
-      : 'Practical guides for better software.';
+      ? 'Guías prácticas para crear y usar mejor software.'
+      : 'Practical guides for building and using better software.';
     subheading = isSpanish
-      ? 'Aprendizaje sobre desarrollo de software, gestión de proyectos y tecnología empresarial.'
-      : 'Insights on software development, project management, and business technology.';
+      ? 'Proyectos de software, experiencias web y procesos de inventario en restaurantes.'
+      : 'Software projects, web experiences, and restaurant inventory workflows.';
   } else {
-    eyebrow = isSpanish ? 'SOFTWARE DE VENKOI' : 'VENKOI SOFTWARE';
+    eyebrow = 'VENKOI';
     heading = isSpanish
-      ? 'Software que impulsa tu empresa hacia adelante.'
+      ? 'Software que impulsa tu negocio.'
       : 'Software that moves business forward.';
     subheading = isSpanish
-      ? 'Productos de software y servicios de desarrollo a medida diseñados para el mundo real.'
-      : 'Software products and custom development services built for the real world.';
+      ? 'Productos de software, aplicaciones móviles, páginas web y aplicaciones web creados alrededor de problemas reales.'
+      : 'Software products, mobile applications, websites, and web applications built around real problems.';
   }
 
   return new ImageResponse(
@@ -71,7 +71,6 @@ export async function generateSocialCardResponse({
           flexDirection: 'column',
           justifyContent: 'space-between',
           backgroundColor: '#14161C', // Branded Ink
-          backgroundImage: 'radial-gradient(circle at 85% 15%, rgba(248, 77, 37, 0.08) 0%, transparent 45%)',
           padding: '80px 100px',
           boxSizing: 'border-box',
           fontFamily: 'sans-serif'
@@ -101,11 +100,11 @@ export async function generateSocialCardResponse({
         </div>
 
         {/* Main Content */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '900px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '900px' }}>
           <div
             style={{
               color: '#F7F8FA', // Branded Off White
-              fontSize: '64px',
+              fontSize: isSpanish && variant !== 'zaiko' ? '56px' : '64px',
               fontWeight: 800,
               lineHeight: 1.1,
               letterSpacing: '-0.02em'
@@ -116,7 +115,7 @@ export async function generateSocialCardResponse({
           <div
             style={{
               color: 'rgba(247, 248, 250, 0.6)',
-              fontSize: '28px',
+              fontSize: isSpanish ? '26px' : '28px',
               fontWeight: 400,
               lineHeight: 1.4,
               maxWidth: '800px'
@@ -143,12 +142,10 @@ export async function generateSocialCardResponse({
               alt="Venkoi"
               style={{
                 height: '42px',
-                width: 'auto'
+                width: '182px'
               }}
             />
-          ) : (
-            <div style={{ color: '#F7F8FA', fontSize: '24px', fontWeight: 800 }}>VENKOI</div>
-          )}
+          ) : null}
 
           <div
             style={{

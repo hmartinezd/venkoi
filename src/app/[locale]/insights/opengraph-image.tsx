@@ -6,7 +6,7 @@ import {
 
 export const runtime = 'nodejs';
 
-export const alt = 'Venkoi Insights — Practical guides for better software';
+export const alt = 'Venkoi Insights';
 export const size = socialCardSize;
 export const contentType = socialCardContentType;
 
