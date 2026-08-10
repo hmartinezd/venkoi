@@ -1,30 +1,23 @@
 {
   "common": {
-    "location": "Con sede en Tampa Bay · Trabajando con clientes en South Florida y más allá",
-    "locationShort": "Tampa Bay · South Florida · Más allá",
     "locationLine": "Con sede en Tampa Bay · Trabajando con clientes en South Florida y más allá",
     "privacy": "Privacidad",
     "terms": "Términos",
     "copyright": "© {year} Venkoi. Todos los derechos reservados.",
     "demo": "Solicitar una demo",
     "startConversation": "Hablemos",
-    "contactUs": "Cuéntanos sobre tu proyecto",
-    "learnMore": "Conoce más sobre Venkoi",
     "skipToContent": "Saltar al contenido"
   },
   "navigation": {
-    "products": "Productos",
     "zaikoSubtitle": "Gestión de Inventario para Restaurantes",
     "services": "Servicios",
     "about": "Nosotros",
     "contact": "Contacto",
-    "demo": "Demostración",
     "insights": "Recursos",
     "mobileApplications": "Aplicaciones Móviles",
     "webApplications": "Páginas Web y Aplicaciones Web"
   },
   "header": {
-    "logoTitle": "Inicio Venkoi",
     "language": "Idioma",
     "mainNavigation": "Navegación principal",
     "productNavigation": "Navegación de {productName}",
@@ -37,7 +30,7 @@
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
     "earlyAccess": "Acceso anticipado",
-    "locationText": "Tampa Bay, Florida · Con sede en Tampa Bay, trabajando con clientes en South Florida y más allá",
+    "locationText": "Con sede en Tampa Bay, Florida · Trabajando con clientes en South Florida y más allá",
     "contact": {
       "whatsappLabel": "WhatsApp",
       "whatsappAriaLabel": "Hablar con Venkoi por WhatsApp",
@@ -141,12 +134,6 @@
     "mobileTitle": "Aplicaciones Móviles",
     "mobileBody": "Diseñamos y desarrollamos aplicaciones móviles para iOS y Android, desde experiencias para clientes hasta herramientas internas — intuitivas, útiles y preparadas para crecer.",
     "mobileSupporting": "iOS + Android",
-    "mobileTheme1": "Experiencias para clientes",
-    "mobileTheme1Desc": "Diseñadas para la experiencia de tus clientes finales en plataformas móviles.",
-    "mobileTheme2": "Herramientas internas",
-    "mobileTheme2Desc": "Herramientas operativas creadas para los equipos y flujos de trabajo de la empresa.",
-    "mobileTheme3": "Procesos del mundo real",
-    "mobileTheme3Desc": "Soluciones preparadas para operar en entornos y procesos reales.",
     "webEyebrow": "02 · PÁGINAS WEB Y APLICACIONES WEB",
     "webTitle": "Páginas Web y Aplicaciones Web",
     "webBody": "No necesitas saber si lo que necesitas es una página web o una aplicación web. Cuéntanos qué quieres lograr y te ayudaremos a definir y crear la experiencia web adecuada.",
@@ -207,7 +194,7 @@
     "localGlobalHeading": "Lo suficientemente cerca para entender. Creado para llegar más lejos.",
     "localGlobalBody": "Venkoi está comenzando en Tampa Bay, trabajando cerca de los negocios y las personas que usan el software que creamos. Esa cercanía nos ayuda a entender procesos y problemas reales, mientras los productos que construimos están diseñados para crecer mucho más allá de un solo mercado.",
     "locationEyebrow": "DÓNDE TRABAJAMOS",
-    "directBuilderStatement": "Habla directamente con quienes crean tu software.",
+    "directBuilderStatement": "Habla directamente con las personas que están creando tu software.",
     "directBuilderBody": "Una relación de trabajo directa mantiene las decisiones cerca del problema, de quienes usan el software y de quienes lo construyen.",
     "philosophy": {
       "eyebrow": "CÓMO CREAMOS",
@@ -232,9 +219,7 @@
     },
     "footerCta": {
       "heading": "¿Quieres ver lo que estamos creando?",
-      "body": "Solicita una demo del producto o conversemos sobre Venkoi y el software que necesitas.",
-      "primary": "Cuéntanos tu idea",
-      "secondary": "Conoce nuestros servicios"
+      "body": "Solicita una demo del producto o conversemos sobre Venkoi y el software que necesitas."
     }
   },
   "contactPage": {
