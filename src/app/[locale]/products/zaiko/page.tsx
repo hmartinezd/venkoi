@@ -15,7 +15,7 @@ import { getLocalizedPath } from '@/i18n/routing';
 import { createMetadata } from '@/lib/seo';
 import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
@@ -46,7 +46,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ZaikoPage({ params }: PageProps) {
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
-  setRequestLocale(currentLocale);
 
   const tNav = await getTranslations('zaikoPage.nav');
   const tHeader = await getTranslations('header');

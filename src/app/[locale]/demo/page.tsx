@@ -7,7 +7,7 @@ import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
 import type { Metadata } from 'next';
-import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 
@@ -41,7 +41,6 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
   const { product, interest } = await searchParams;
   const currentLocale = parseLocale(locale);
-  setRequestLocale(currentLocale);
 
   const t = await getTranslations('demoPage');
   const messages = await getMessages();

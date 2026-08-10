@@ -9,7 +9,6 @@ import type { Metadata } from "next";
 import {
   getMessages,
   getTranslations,
-  setRequestLocale,
 } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
@@ -52,7 +51,6 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
   const { type, interest } = await searchParams;
   const currentLocale = parseLocale(locale);
-  setRequestLocale(currentLocale);
 
   const t = await getTranslations("contactPage");
   const messages = await getMessages();

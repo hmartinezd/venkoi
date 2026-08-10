@@ -1,6 +1,6 @@
 import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/i18n/config';
 import { Header } from '@/components/layout/Header';
@@ -51,7 +51,6 @@ export default async function LocaleLayout({ params, children }: PageProps) {
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
 
-  setRequestLocale(currentLocale);
 
   const messages = await getMessages();
   const clientMessages = Object.fromEntries(

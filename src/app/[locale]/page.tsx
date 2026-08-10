@@ -1,4 +1,4 @@
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { getSiteOrigin } from '@/lib/site-config';
@@ -40,7 +40,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
-  setRequestLocale(currentLocale);
 
   const tHome = await getTranslations('home');
   const tArticles = await getTranslations('insightsArticles');

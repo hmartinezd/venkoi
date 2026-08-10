@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { InsightCard } from '@/components/insights/InsightCard';
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ServicesPage({ params }: PageProps) {
-  const currentLocale = parseLocale((await params).locale); setRequestLocale(currentLocale);
+  const currentLocale = parseLocale((await params).locale);
   const t = await getTranslations('servicesPage');
   const articles = await getTranslations('insightsArticles');
   const insights = await getTranslations('insightsPage');

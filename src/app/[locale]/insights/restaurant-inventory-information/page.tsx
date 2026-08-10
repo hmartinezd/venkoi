@@ -6,7 +6,7 @@ import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 
@@ -38,7 +38,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function RestaurantInventoryArticle({ params }: PageProps) {
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
-  setRequestLocale(currentLocale);
 
   const t = await getTranslations('insightsArticles.restaurantInventory');
   const content = t.raw('content');

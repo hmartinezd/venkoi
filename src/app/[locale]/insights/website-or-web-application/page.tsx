@@ -5,7 +5,7 @@ import { locales, type Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/routing';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 
@@ -37,7 +37,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function WebsiteOrWebAppArticle({ params }: PageProps) {
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
-  setRequestLocale(currentLocale);
 
   const t = await getTranslations('insightsArticles.websiteOrWebApp');
   const tRelated = await getTranslations('insightsArticles');

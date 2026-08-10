@@ -1,4 +1,4 @@
-import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
+import { createNavigation } from 'next-intl/navigation';
 import { routing, type RouteKey } from './routing';
 
 export const {
@@ -8,7 +8,7 @@ export const {
   getPathname,
   redirect,
   permanentRedirect
-} = createLocalizedPathnamesNavigation(routing);
+} = createNavigation(routing);
 
 export type NavigationChild = {
   id: string;

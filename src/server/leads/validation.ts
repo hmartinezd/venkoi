@@ -24,18 +24,16 @@ const normalizeInterest = (val: unknown): string | null => {
 };
 
 export const leadSubmissionSchema = z
-  .object({
+  .strictObject({
     lead_type: z.enum(ALLOWED_LEAD_TYPES, { error: 'INVALID_OPTION' }),
     product: z.preprocess(normalizeString, z.string().max(50).nullable().optional()),
     first_name: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
     last_name: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
     name: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
-    email: z
-      .string({ error: 'REQUIRED' })
-      .trim()
-      .toLowerCase()
-      .email('INVALID_EMAIL')
-      .max(255, 'TOO_LONG'),
+    email: z.preprocess(
+      (value) => (typeof value === 'string' ? value.trim().toLowerCase() : value),
+      z.email({ error: 'INVALID_EMAIL' }).max(255, { error: 'TOO_LONG' })
+    ),
     phone: z.preprocess(normalizeString, z.string().max(50).nullable().optional()),
     company: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
     location_count: z.preprocess(
@@ -65,12 +63,13 @@ export const leadSubmissionSchema = z
     referrer: z.preprocess(normalizeString, z.string().max(500).nullable().optional()),
     website: z.preprocess(normalizeString, z.string().nullable().optional()) // Honeypot
   })
-  .strict()
-  .superRefine((data, ctx) => {
+  .check((ctx) => {
+    const data = ctx.value;
     // Honeypot check
     if (data.website) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+      ctx.issues.push({
+        code: 'custom',
+        input: data.website,
         message: 'SPAM_DETECTED',
         path: ['website']
       });
@@ -79,29 +78,33 @@ export const leadSubmissionSchema = z
 
     if (data.lead_type === 'DEMO') {
       if (!data.product || !isDemoEnabledProduct(data.product)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+        ctx.issues.push({
+          code: 'custom',
+          input: data.product,
           message: 'INVALID_PRODUCT',
           path: ['product']
         });
       }
       if (!data.first_name) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+        ctx.issues.push({
+          code: 'custom',
+          input: data.first_name,
           message: 'REQUIRED',
           path: ['first_name']
         });
       }
       if (!data.last_name) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+        ctx.issues.push({
+          code: 'custom',
+          input: data.last_name,
           message: 'REQUIRED',
           path: ['last_name']
         });
       }
       if (!data.company) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+        ctx.issues.push({
+          code: 'custom',
+          input: data.company,
           message: 'REQUIRED',
           path: ['company']
         });
@@ -109,15 +112,17 @@ export const leadSubmissionSchema = z
     } else {
       // CUSTOM_PROJECT or GENERAL_CONTACT
       if (!data.name && (!data.first_name || !data.last_name)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+        ctx.issues.push({
+          code: 'custom',
+          input: data.name,
           message: 'REQUIRED',
           path: ['name']
         });
       }
       if (!data.message) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+        ctx.issues.push({
+          code: 'custom',
+          input: data.message,
           message: 'REQUIRED',
           path: ['message']
         });
@@ -126,4 +131,3 @@ export const leadSubmissionSchema = z
   });
 
 export type ValidatedLeadPayload = z.infer<typeof leadSubmissionSchema>;
-

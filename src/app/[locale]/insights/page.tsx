@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
@@ -35,7 +35,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function InsightsPage({ params }: PageProps) {
   const { locale } = await params;
   const currentLocale = parseLocale(locale);
-  setRequestLocale(currentLocale);
 
   const t = await getTranslations('insightsPage');
   const tArticles = await getTranslations('insightsArticles');

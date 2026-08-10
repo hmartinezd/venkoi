@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": ">=20.9.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next dev",
-    "build:next": "next build --no-lint",
+    "build:next": "next build",
     "build": "npm run lint && npm run typecheck && npm run build:next",
     "start": "next start",
     "lint": "eslint .",
@@ -30,7 +30,8 @@
     "test:services": "tsx scripts/test-services-structure.ts",
     "test:about": "tsx scripts/test-about-structure.ts",
     "test:buttons": "tsx scripts/test-button-variants.ts",
-    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:contact-experience && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about && npm run test:buttons",
+    "test:platform": "tsx scripts/test-platform-modernization.ts",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:contact-experience && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about && npm run test:buttons && npm run test:platform",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {
@@ -38,28 +39,23 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "botid": "^1.5.11",
-    "next": "^15.5.23",
-    "next-intl": "^3.26.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "next": "^16.3.0",
+    "next-intl": "^4.13.6",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "resend": "^6.18.1",
     "tailwindcss": "^4.0.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
-    "@next/eslint-plugin-next": "^15.5.23",
+    "@next/eslint-plugin-next": "^16.3.0",
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "autoprefixer": "^10.5.4",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^15.5.23",
-    "prettier": "^2.8.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.4.0"
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "eslint": "^10.8.1",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.66.0"
   }
 }
