@@ -4,7 +4,7 @@ import { DemoRequestForm } from '@/components/forms/DemoRequestForm';
 import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
-import { isDemoEnabledProduct, getDefaultDemoProduct, FEATURED_PRODUCT } from '@/lib/products';
+import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -43,16 +43,15 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const t = await getTranslations('demoPage');
 
-  const defaultProduct = getDefaultDemoProduct().slug;
-  const hasValidProductContext = typeof product === 'string' && isDemoEnabledProduct(product);
-  const selectedProduct = hasValidProductContext ? product : defaultProduct;
-  const selectedInterest = typeof interest === 'string' ? interest : '';
+  const resolvedProduct = resolveDemoProduct(product);
+  const selectedProduct = resolvedProduct.slug;
+  const isEarlyAccess = isEarlyAccessInterest(resolvedProduct, interest);
+  const selectedInterest = isEarlyAccess ? 'early-access' : '';
 
-  const isZaiko = selectedProduct === 'zaiko';
-  const isEarlyAccess = selectedInterest === 'early-access';
+  const isZaiko = resolvedProduct.slug === 'zaiko';
   const productProgramValues = {
-    productName: FEATURED_PRODUCT.name,
-    freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
+    productName: resolvedProduct.name,
+    freeMonths: resolvedProduct.earlyAccess.freeMonths
   };
 
   let eyebrowText = isZaiko ? t('zaiko.eyebrow') : t('eyebrow');
@@ -102,9 +101,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             <p className="text-sm text-foreground-muted">{t('direct.body')}</p>
           </div>
           <DirectContactChannels
-            whatsappMessage={hasValidProductContext
-              ? t('direct.productMessage', { productName: FEATURED_PRODUCT.name })
-              : t('direct.genericMessage')}
+            whatsappMessage={t('direct.productMessage', { productName: resolvedProduct.name })}
             whatsappLabel={t('direct.whatsappLabel')}
             whatsappAriaLabel={t('direct.whatsappAriaLabel')}
             showEmail={false}

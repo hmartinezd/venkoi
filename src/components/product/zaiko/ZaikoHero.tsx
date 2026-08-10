@@ -1,8 +1,9 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
-import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 import { ZaikoProductVisual } from './ZaikoProductVisual';
 
 interface ZaikoHeroProps {
@@ -59,24 +60,24 @@ export function ZaikoHero({
           {/* Action CTAs */}
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3.5">
             <TrackedButton
-              href={getLocalizedPath('demo', locale) + '?product=zaiko'}
+              href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
               variant="primary"
               eventName="zaiko_demo_cta"
               properties={{
                 locale,
-                product: 'zaiko',
+                product: FEATURED_PRODUCT.analyticsProduct,
                 source: 'zaiko_hero'
               }}
             >
               {primaryCta}
             </TrackedButton>
             <TrackedButton
-              href={getLocalizedPath('demo', locale) + '?product=zaiko&interest=early-access'}
+              href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
               variant="secondary"
               eventName="zaiko_early_access_cta"
               properties={{
                 locale,
-                product: 'zaiko',
+                product: FEATURED_PRODUCT.analyticsProduct,
                 source: 'zaiko_hero',
                 earlyAccess: true
               }}

@@ -3,6 +3,8 @@ import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 export function FinalCta({
   locale,
@@ -32,7 +34,7 @@ export function FinalCta({
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <Button href={getLocalizedPath('demo', locale)} variant="primary" className="bg-orange text-white hover:bg-orange/90">
+          <Button href={buildProductDemoHref(locale, FEATURED_PRODUCT)} variant="primary" className="bg-orange text-white hover:bg-orange/90">
             {demoCta}
           </Button>
           <Button href={getLocalizedPath('contact', locale)} variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white">

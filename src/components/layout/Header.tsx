@@ -2,13 +2,15 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath, getLocalizedPath } from '@/i18n/routing';
+import { internalRoutes, getRouteKeyFromPath } from '@/i18n/routing';
 import { type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 export function Header({ locale, productName }: { locale: Locale; productName: string }) {
   const pathname = usePathname();
@@ -156,7 +158,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
         {/* Desktop CTA & Language Switcher */}
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <LanguageSwitcher locale={locale} variant="header" />
-          <Button href={getLocalizedPath('demo', locale)} variant="primary" className="text-xs">
+          <Button href={buildProductDemoHref(locale, FEATURED_PRODUCT)} variant="primary" className="text-xs">
             {tCommon('demo')}
           </Button>
         </div>
@@ -258,7 +260,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
 
           <div className="mt-6 pt-4 border-t border-border">
             <Button
-              href={getLocalizedPath('demo', locale)}
+              href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
               variant="primary"
               className="w-full justify-center"
               onClick={() => setMenuOpen(false)}

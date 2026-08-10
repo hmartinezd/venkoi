@@ -2,6 +2,8 @@ import { InsightArticle, ArticleSection } from '@/components/insights/InsightArt
 import { Button } from '@/components/ui/Button';
 import { locales, type Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/routing';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 import { createMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -50,12 +52,12 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
         {content.ctaExplore}
       </Button>
       <TrackedButton
-        href={getLocalizedPath('demo', currentLocale) + '?product=zaiko'}
+        href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
         variant="primary"
         eventName="zaiko_demo_cta"
         properties={{
           locale: currentLocale,
-          product: 'zaiko',
+          product: FEATURED_PRODUCT.analyticsProduct,
           source: 'insight_restaurant_inventory'
         }}
       >

@@ -53,3 +53,15 @@ export function getDefaultDemoProduct(): Product {
   }
   return demoProducts[0];
 }
+
+export function resolveDemoProduct(product: string | string[] | undefined): Product {
+  const requestedProduct = typeof product === 'string' ? getProductBySlug(product) : undefined;
+  return requestedProduct?.demoEnabled ? requestedProduct : getDefaultDemoProduct();
+}
+
+export function isEarlyAccessInterest(
+  product: Pick<Product, 'earlyAccess'>,
+  interest: string | string[] | undefined
+): boolean {
+  return interest === 'early-access' && product.earlyAccess.enabled;
+}

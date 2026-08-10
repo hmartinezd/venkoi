@@ -3,6 +3,8 @@ import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 export function ZaikoFeature({
   locale,
@@ -96,7 +98,7 @@ export function ZaikoFeature({
             <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
               {discoverCta}
             </Button>
-            <Button href={getLocalizedPath('demo', locale) + '?product=zaiko'} variant="secondary">
+            <Button href={buildProductDemoHref(locale, FEATURED_PRODUCT)} variant="secondary">
               {demoCta}
             </Button>
           </div>

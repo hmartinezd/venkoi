@@ -12,7 +12,6 @@ type DirectContactChannelsProps = {
   emailAriaLabel?: string;
   emailSubject?: string;
   showEmail?: boolean;
-  showEmailAddress?: boolean;
   showWhatsAppNumber?: boolean;
   variant?: 'panel' | 'compact' | 'inline';
   className?: string;
@@ -26,7 +25,6 @@ export function DirectContactChannels({
   emailAriaLabel,
   emailSubject,
   showEmail = true,
-  showEmailAddress = false,
   showWhatsAppNumber = false,
   variant = 'inline',
   className
@@ -108,11 +106,6 @@ export function DirectContactChannels({
             </span>
             <span className={cn('min-w-0', variant === 'panel' && 'text-left')}>
               <span className="block">{emailLabel}</span>
-              {showEmailAddress ? (
-                <span className="block max-w-full break-all text-xs font-normal text-foreground-muted">
-                  {PUBLIC_CONTACT.email}
-                </span>
-              ) : null}
             </span>
           </Button>
         )

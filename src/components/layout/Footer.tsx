@@ -7,6 +7,8 @@ import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 export function Footer({ locale, productName }: { locale: Locale; productName: string }) {
   const tFooter = useTranslations('footer');
@@ -49,6 +51,24 @@ export function Footer({ locale, productName }: { locale: Locale; productName: s
                   {productName}
                 </LocalizedLink>
               </li>
+              <li>
+                <a
+                  href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
+                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
+                >
+                  {tCommon('demo')}
+                </a>
+              </li>
+              {FEATURED_PRODUCT.earlyAccess.enabled ? (
+                <li>
+                  <a
+                    href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
+                    className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
+                  >
+                    {tFooter('earlyAccess')}
+                  </a>
+                </li>
+              ) : null}
             </ul>
           </div>
 
@@ -117,15 +137,6 @@ export function Footer({ locale, productName }: { locale: Locale; productName: s
                   className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tNav('webApplications')}
-                </LocalizedLink>
-              </li>
-              <li>
-                <LocalizedLink
-                  href={internalRoutes.demo}
-                  locale={locale}
-                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
-                >
-                  {tCommon('demo')}
                 </LocalizedLink>
               </li>
             </ul>

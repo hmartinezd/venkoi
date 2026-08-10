@@ -1,8 +1,9 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
-import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 interface ZaikoEarlyAccessProps {
   locale: Locale;
@@ -56,26 +57,26 @@ export function ZaikoEarlyAccess({
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <TrackedButton
-            href={getLocalizedPath('demo', locale) + '?product=zaiko'}
+            href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
             variant="primary"
             className="bg-orange text-ink hover:bg-orange/90 w-full sm:w-auto"
             eventName="zaiko_demo_cta"
             properties={{
               locale,
-              product: 'zaiko',
+              product: FEATURED_PRODUCT.analyticsProduct,
               source: 'zaiko_early_access'
             }}
           >
             {primaryCta}
           </TrackedButton>
           <TrackedButton
-            href={getLocalizedPath('demo', locale) + '?product=zaiko&interest=early-access'}
+            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
             variant="secondary"
             className="border-white/20 text-white bg-white/5 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto"
             eventName="zaiko_early_access_cta"
             properties={{
               locale,
-              product: 'zaiko',
+              product: FEATURED_PRODUCT.analyticsProduct,
               source: 'zaiko_early_access',
               earlyAccess: true
             }}

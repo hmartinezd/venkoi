@@ -1,8 +1,9 @@
 'use client';
 
 import { TrackedButton } from '@/components/analytics/TrackedButton';
-import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 interface ZaikoProductNavProps {
   locale: Locale;
@@ -66,13 +67,13 @@ export function ZaikoProductNav({
         {/* Action CTA */}
         <div className="shrink-0 pl-2">
           <TrackedButton
-            href={getLocalizedPath('demo', locale) + '?product=zaiko'}
+            href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
             variant="primary"
             className="text-xs px-3.5 py-2 rounded-lg"
             eventName="zaiko_demo_cta"
             properties={{
               locale,
-              product: 'zaiko',
+              product: FEATURED_PRODUCT.analyticsProduct,
               source: 'zaiko_product_nav'
             }}
           >

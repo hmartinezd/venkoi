@@ -90,7 +90,6 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
               emailAriaLabel={t('direct.emailAriaLabel')}
               emailSubject={t('direct.emailSubject')}
               showWhatsAppNumber
-              showEmailAddress
             />
           </div>
         </div>

@@ -3,6 +3,8 @@ import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { buildProductDemoHref } from '@/lib/product-links';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 export function HeroSection({
   locale,
@@ -49,7 +51,7 @@ export function HeroSection({
             <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
               {primaryCta}
             </Button>
-            <Button href={getLocalizedPath('demo', locale) + '?product=zaiko'} variant="secondary">
+            <Button href={buildProductDemoHref(locale, FEATURED_PRODUCT)} variant="secondary">
               {secondaryCta}
             </Button>
           </div>
