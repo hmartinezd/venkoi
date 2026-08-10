@@ -1,11 +1,8 @@
-'use client';
-
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { Button } from '@/components/ui/Button';
 import { type Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/routing';
-import { trackCustomEvent } from '@/lib/analytics';
 
 interface ServiceCtaProps {
   locale: Locale;
@@ -29,14 +26,15 @@ export function ServiceCta({ locale, heading, body, cta, interest }: ServiceCtaP
           <p className="text-lg text-surface/80 mb-10 leading-relaxed">
             {body}
           </p>
-          <Button
+          <TrackedButton
             href={contactHref}
             variant="primary"
             className="bg-orange hover:bg-orange hover:shadow-md border-orange text-ink"
-            onClick={() => trackCustomEvent('services_cta', { locale, source, interest })}
+            eventName="services_cta"
+            properties={{ locale, source, interest }}
           >
             {cta}
-          </Button>
+          </TrackedButton>
         </div>
       </Container>
     </Section>

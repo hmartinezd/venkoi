@@ -1,5 +1,3 @@
-'use client';
-
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';

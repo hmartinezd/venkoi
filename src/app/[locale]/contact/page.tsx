@@ -6,8 +6,9 @@ import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { normalizeServiceInterest } from '@/lib/services';
 import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -41,6 +42,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
   setRequestLocale(currentLocale);
 
   const t = await getTranslations('contactPage');
+  const messages = await getMessages();
 
   const selectedType = typeof type === 'string' ? type : '';
   const initialInterest = normalizeServiceInterest(interest);
@@ -96,11 +98,13 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
 
         {/* Contact Form Card */}
         <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 space-y-6 shadow-card">
-          <ContactProjectForm
-            locale={currentLocale}
-            initialType={selectedType}
-            initialInterest={initialInterest}
-          />
+          <NextIntlClientProvider messages={{ contactPage: messages.contactPage }}>
+            <ContactProjectForm
+              locale={currentLocale}
+              initialType={selectedType}
+              initialInterest={initialInterest}
+            />
+          </NextIntlClientProvider>
         </div>
 
         {/* What Happens Next & Contextual Details */}

@@ -13,6 +13,15 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
+const globalClientMessageNamespaces = [
+  'common',
+  'navigation',
+  'header',
+  'footer',
+  'breadcrumbs',
+  'errorBoundary'
+] as const;
+
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteOrigin())
 };
@@ -46,11 +55,14 @@ export default async function LocaleLayout({ params, children }: PageProps) {
   setRequestLocale(currentLocale);
 
   const messages = await getMessages();
+  const clientMessages = Object.fromEntries(
+    globalClientMessageNamespaces.map((namespace) => [namespace, messages[namespace]])
+  );
 
   return (
     <html lang={currentLocale} className={geist.variable} suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
-        <NextIntlClientProvider messages={messages} locale={currentLocale}>
+        <NextIntlClientProvider messages={clientMessages} locale={currentLocale}>
           <Header locale={currentLocale} productName={FEATURED_PRODUCT.name} />
           <main id="content" tabIndex={-1} className="outline-hidden">
             {children}
@@ -63,5 +75,4 @@ export default async function LocaleLayout({ params, children }: PageProps) {
     </html>
   );
 }
-
 

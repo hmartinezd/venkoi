@@ -7,8 +7,9 @@ import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
 import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -43,6 +44,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   setRequestLocale(currentLocale);
 
   const t = await getTranslations('demoPage');
+  const messages = await getMessages();
 
   const resolvedProduct = resolveDemoProduct(product);
   const selectedProduct = resolvedProduct.slug;
@@ -127,13 +129,15 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
                 <p className="text-sm text-foreground-muted leading-relaxed">{formDesc}</p>
               </div>
 
-              <DemoRequestForm
-                locale={currentLocale}
-                initialProduct={selectedProduct}
-                initialInterest={selectedInterest}
-                productName={resolvedProduct.name}
-                freeMonths={resolvedProduct.earlyAccess.freeMonths}
-              />
+              <NextIntlClientProvider messages={{ demoPage: messages.demoPage }}>
+                <DemoRequestForm
+                  locale={currentLocale}
+                  initialProduct={selectedProduct}
+                  initialInterest={selectedInterest}
+                  productName={resolvedProduct.name}
+                  freeMonths={resolvedProduct.earlyAccess.freeMonths}
+                />
+              </NextIntlClientProvider>
             </div>
           </div>
 

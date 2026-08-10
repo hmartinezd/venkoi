@@ -1,11 +1,9 @@
-'use client';
-
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
-import { trackCustomEvent } from '@/lib/analytics';
 
 export function ServicesSection({
   locale,
@@ -48,14 +46,15 @@ export function ServicesSection({
             <Button href={getLocalizedPath('services', locale)} variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
               {learnMore}
             </Button>
-            <Button
+            <TrackedButton
               href={getLocalizedPath('contact', locale) + '?type=services'}
               variant="secondary"
               className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white"
-              onClick={() => trackCustomEvent('services_cta', { locale, source: 'home' })}
+              eventName="services_cta"
+              properties={{ locale, source: 'home' }}
             >
               {cta}
-            </Button>
+            </TrackedButton>
           </div>
         </div>
 
