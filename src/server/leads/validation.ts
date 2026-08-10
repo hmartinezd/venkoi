@@ -32,7 +32,11 @@ export const leadSubmissionSchema = z
     name: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
     email: z.preprocess(
       (value) => (typeof value === 'string' ? value.trim().toLowerCase() : value),
-      z.email({ error: 'INVALID_EMAIL' }).max(255, { error: 'TOO_LONG' })
+      z
+        .email({
+          error: (issue) => (issue.code === 'invalid_type' ? 'REQUIRED' : 'INVALID_EMAIL')
+        })
+        .max(255, { error: 'TOO_LONG' })
     ),
     phone: z.preprocess(normalizeString, z.string().max(50).nullable().optional()),
     company: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),

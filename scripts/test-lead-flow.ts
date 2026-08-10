@@ -29,6 +29,42 @@ async function runTests() {
     company: 'Test Resto'
   });
   assert(!t1.success, 'Reject missing email');
+  if (!t1.success) {
+    const emailIssue = t1.error.issues.find((issue) => issue.path[0] === 'email');
+    assert(emailIssue?.path[0] === 'email', 'Missing email issue targets email field');
+    assert(emailIssue?.message === 'REQUIRED', 'Missing email returns REQUIRED');
+  }
+
+  for (const [label, email] of [
+    ['null', null],
+    ['non-string', 123]
+  ] as const) {
+    const result = leadSubmissionSchema.safeParse({
+      lead_type: 'DEMO',
+      product: 'zaiko',
+      first_name: 'John',
+      last_name: 'Doe',
+      company: 'Test Resto',
+      email
+    });
+    const emailIssue = result.success
+      ? undefined
+      : result.error.issues.find((issue) => issue.path[0] === 'email');
+    assert(emailIssue?.message === 'REQUIRED', `Reject ${label} email with REQUIRED`);
+  }
+
+  const emptyEmail = leadSubmissionSchema.safeParse({
+    lead_type: 'DEMO',
+    product: 'zaiko',
+    first_name: 'John',
+    last_name: 'Doe',
+    company: 'Test Resto',
+    email: '   '
+  });
+  const emptyEmailIssue = emptyEmail.success
+    ? undefined
+    : emptyEmail.error.issues.find((issue) => issue.path[0] === 'email');
+  assert(emptyEmailIssue?.message === 'INVALID_EMAIL', 'Reject empty email with INVALID_EMAIL');
 
   // 2. Invalid email
   const t2 = leadSubmissionSchema.safeParse({
@@ -40,6 +76,49 @@ async function runTests() {
     email: 'not-an-email'
   });
   assert(!t2.success, 'Reject invalid email format');
+  if (!t2.success) {
+    const emailIssue = t2.error.issues.find((issue) => issue.path[0] === 'email');
+    assert(emailIssue?.message === 'INVALID_EMAIL', 'Invalid email returns INVALID_EMAIL');
+  }
+
+  const tooLongEmail = `${'a'.repeat(250)}@a.com`;
+  const longEmailResult = leadSubmissionSchema.safeParse({
+    lead_type: 'DEMO',
+    product: 'zaiko',
+    first_name: 'John',
+    last_name: 'Doe',
+    company: 'Test Resto',
+    email: tooLongEmail
+  });
+  const longEmailIssue = longEmailResult.success
+    ? undefined
+    : longEmailResult.error.issues.find((issue) => issue.path[0] === 'email');
+  assert(longEmailIssue?.message === 'TOO_LONG', 'Reject structurally valid oversized email with TOO_LONG');
+
+  const missingEmailServiceResult = await processLeadSubmission({
+    lead_type: 'GENERAL_CONTACT',
+    name: 'Missing Email',
+    message: 'Please contact me'
+  });
+  assert(
+    !missingEmailServiceResult.ok &&
+      missingEmailServiceResult.code === 'VALIDATION_ERROR' &&
+      missingEmailServiceResult.fieldErrors?.email === 'REQUIRED',
+    'Service maps missing email to fieldErrors.email REQUIRED'
+  );
+
+  const invalidEmailServiceResult = await processLeadSubmission({
+    lead_type: 'GENERAL_CONTACT',
+    name: 'Invalid Email',
+    email: 'not-an-email',
+    message: 'Please contact me'
+  });
+  assert(
+    !invalidEmailServiceResult.ok &&
+      invalidEmailServiceResult.code === 'VALIDATION_ERROR' &&
+      invalidEmailServiceResult.fieldErrors?.email === 'INVALID_EMAIL',
+    'Service maps invalid email to fieldErrors.email INVALID_EMAIL'
+  );
 
   // 3. Missing required fields for DEMO
   const t3 = leadSubmissionSchema.safeParse({

@@ -1,12 +1,13 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
-import nextPlugin from '@next/eslint-plugin-next';
-import tseslint from 'typescript-eslint';
+import { fixupConfigRules } from '@eslint/compat';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
 
 export default defineConfig([
-  nextPlugin.configs['core-web-vitals'],
+  ...fixupConfigRules(nextVitals),
+  ...fixupConfigRules(nextTs),
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [tseslint.configs.base],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -17,5 +18,5 @@ export default defineConfig([
       '@typescript-eslint/no-deprecated': 'error'
     }
   },
-  globalIgnores(['.next/**', 'node_modules/**'])
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts', 'node_modules/**'])
 ]);

@@ -1,10 +1,7 @@
 import {
   getLocalizedPath,
-  getRouteKeyFromPath,
-  internalRoutes,
-  type RouteKey
+  getRouteKeyFromPath
 } from '../src/i18n/routing';
-import { locales, type Locale } from '../src/i18n/config';
 
 console.log('=== RUNNING ROUTING REGRESSION TESTS ===\n');
 

@@ -46,7 +46,7 @@ export function DemoRequestForm({
     website: '' // Honeypot
   });
 
-  const [acquisition, setAcquisition] = useState({
+  const acquisitionRef = useRef({
     source_path: '',
     referrer: '',
     utm_source: '',
@@ -70,14 +70,14 @@ export function DemoRequestForm({
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const searchParams = new URLSearchParams(window.location.search);
-      setAcquisition({
+      acquisitionRef.current = {
         source_path: window.location.pathname,
         referrer: document.referrer || '',
         utm_source: searchParams.get('utm_source') || '',
         utm_medium: searchParams.get('utm_medium') || '',
         utm_campaign: searchParams.get('utm_campaign') || '',
         utm_content: searchParams.get('utm_content') || ''
-      });
+      };
     }
   }, []);
 
@@ -170,7 +170,7 @@ export function DemoRequestForm({
       early_access_interest: formData.early_access_interest,
       locale,
       website: formData.website,
-      ...acquisition
+      ...acquisitionRef.current
     };
 
     try {
