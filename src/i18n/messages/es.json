@@ -140,6 +140,7 @@
     "mobileEyebrow": "01 · APLICACIONES MÓVILES",
     "mobileTitle": "Aplicaciones Móviles",
     "mobileBody": "Diseñamos y desarrollamos aplicaciones móviles para iOS y Android, desde experiencias para clientes hasta herramientas internas — intuitivas, útiles y preparadas para crecer.",
+    "mobileSupporting": "iOS + Android",
     "mobileTheme1": "Experiencias para clientes",
     "mobileTheme1Desc": "Diseñadas para la experiencia de tus clientes finales en plataformas móviles.",
     "mobileTheme2": "Herramientas internas",
@@ -643,6 +644,10 @@
     "relatedGuideLabel": "GUÍA ÚTIL",
     "seoTitle": "Desarrollo de Apps Móviles para iOS y Android | Venkoi",
     "seoDescription": "Venkoi diseña, desarrolla y prueba aplicaciones móviles para iOS y Android, desde la idea inicial hasta experiencias digitales útiles en Tampa Bay, South Florida y más allá."
+    ,"finalCta": {
+      "heading": "¿Tienes una idea móvil que quieres crear?",
+      "body": "Empieza con la idea, el flujo de trabajo o el problema. Te ayudaremos a definir la experiencia móvil adecuada."
+    }
   },
   "webServicePage": {
     "eyebrow": "PÁGINAS WEB Y APLICACIONES WEB",
@@ -686,6 +691,10 @@
     "relatedGuideLabel": "GUÍA ÚTIL",
     "seoTitle": "Desarrollo de Páginas y Aplicaciones Web | Venkoi",
     "seoDescription": "Venkoi diseña, desarrolla y prueba páginas web y aplicaciones web, desde experiencias sencillas hasta productos web más interactivos en Tampa Bay, South Florida y más allá."
+    ,"finalCta": {
+      "heading": "¿Tienes algo que quieres crear en la web?",
+      "body": "Empieza con lo que quieres que las personas logren. Te ayudaremos a definir la experiencia web adecuada."
+    }
   },
   "insightsPage": {
     "seoTitle": "Recursos sobre Software y Productos | Venkoi",

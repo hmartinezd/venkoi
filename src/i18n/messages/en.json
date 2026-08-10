@@ -140,6 +140,7 @@
     "mobileEyebrow": "01 · MOBILE APPLICATIONS",
     "mobileTitle": "Mobile Applications",
     "mobileBody": "We design and build mobile applications for iOS and Android, from customer-facing experiences to internal tools — intuitive, useful, and ready to grow.",
+    "mobileSupporting": "iOS + Android",
     "mobileTheme1": "Customer experiences",
     "mobileTheme1Desc": "Designed specifically for your customers on mobile platforms.",
     "mobileTheme2": "Internal business tools",
@@ -643,6 +644,10 @@
     "relatedGuideLabel": "HELPFUL GUIDE",
     "seoTitle": "Mobile App Development for iOS & Android | Venkoi",
     "seoDescription": "Venkoi designs, builds, and tests mobile applications for iOS and Android, from early ideas through useful, production-ready digital experiences in Tampa Bay, South Florida, and beyond."
+    ,"finalCta": {
+      "heading": "Have a mobile idea you want to build?",
+      "body": "Start with the idea, the workflow, or the problem. We'll help shape the right mobile experience."
+    }
   },
   "webServicePage": {
     "eyebrow": "WEBSITES & WEB APPLICATIONS",
@@ -686,6 +691,10 @@
     "relatedGuideLabel": "HELPFUL GUIDE",
     "seoTitle": "Website & Web Application Development | Venkoi",
     "seoDescription": "Venkoi designs, builds, and tests websites and web applications, from straightforward web experiences to more interactive products in Tampa Bay, South Florida, and beyond."
+    ,"finalCta": {
+      "heading": "Have something you want to build on the web?",
+      "body": "Start with what you want people to accomplish. We'll help shape the right web experience."
+    }
   },
   "insightsPage": {
     "seoTitle": "Software & Product Insights | Venkoi",

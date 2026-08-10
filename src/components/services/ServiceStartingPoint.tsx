@@ -8,6 +8,7 @@ interface ServiceStartingPointProps {
   locale: Locale;
   heading: string;
   body: string;
+  existingProject?: { heading: string; body: string };
   prompts: string[];
   ctaText?: string;
   ctaInterest: 'mobile' | 'web';
@@ -18,6 +19,7 @@ export function ServiceStartingPoint({
   locale,
   heading,
   body,
+  existingProject,
   prompts,
   ctaText,
   ctaInterest,
@@ -34,6 +36,8 @@ export function ServiceStartingPoint({
             {body}
           </p>
         </div>
+
+        {existingProject && <div className="rounded-2xl border border-border bg-surface-muted p-6 sm:p-8"><h3 className="text-xl font-bold text-ink">{existingProject.heading}</h3><p className="mt-3 text-sm leading-relaxed text-foreground-muted">{existingProject.body}</p></div>}
 
         <div className="grid gap-4 sm:grid-cols-2">
           {prompts.map((prompt, index) => (
