@@ -14,7 +14,7 @@ export function ZaikoProblemSection({ eyebrow, heading, body }: ZaikoProblemSect
       <Container className="max-w-4xl text-center space-y-6">
         <div className="flex items-center justify-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-          <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {eyebrow}
           </span>
           <span className="h-1.5 w-1.5 rounded-full bg-orange" />

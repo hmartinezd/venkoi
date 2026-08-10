@@ -6,7 +6,13 @@ interface FormFieldProps {
   required?: boolean;
   error?: string;
   className?: string;
-  children: (props: { id: string; errorId?: string; 'aria-invalid'?: boolean; 'aria-describedby'?: string }) => React.ReactNode;
+  children: (props: {
+    id: string;
+    required?: boolean;
+    'aria-required'?: boolean;
+    'aria-invalid'?: boolean;
+    'aria-describedby'?: string;
+  }) => React.ReactNode;
 }
 
 export function FormField({ label, required = false, error, className, children }: FormFieldProps) {
@@ -16,12 +22,13 @@ export function FormField({ label, required = false, error, className, children 
   return (
     <div className={cn('space-y-1.5', className)}>
       <label htmlFor={fieldId} className="block text-xs font-semibold uppercase tracking-wider text-ink">
-        {label} {required ? <span className="text-orange">*</span> : null}
+        {label} {required ? <span aria-hidden="true" className="text-orange">*</span> : null}
       </label>
 
       {children({
         id: fieldId,
-        errorId,
+        required: required || undefined,
+        'aria-required': required || undefined,
         'aria-invalid': error ? true : undefined,
         'aria-describedby': errorId
       })}

@@ -23,7 +23,7 @@ type ActionProps = SharedProps & ButtonHTMLAttributes<HTMLButtonElement> & {
 const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-ink text-white border border-transparent hover:bg-ink/90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange shadow-sm',
   secondary: 'bg-surface text-ink border border-border hover:border-ink hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange',
-  text: 'bg-transparent text-ink border border-transparent p-0 hover:text-orange focus-visible:ring-2 focus-visible:ring-orange'
+  text: 'bg-transparent text-ink border border-transparent p-0 hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange'
 };
 
 const baseClasses: Record<ButtonVariant, string> = {
@@ -71,6 +71,5 @@ export function Button(props: LinkProps | ActionProps) {
     </button>
   );
 }
-
 
 

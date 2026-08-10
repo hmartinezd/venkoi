@@ -15,14 +15,14 @@ export function ProductDemoAgenda({
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">{eyebrow}</p>
+        <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">{eyebrow}</p>
         <h2 className="text-xl font-bold leading-tight text-ink">{heading}</h2>
       </div>
 
       <ol className="divide-y divide-border border-y border-border">
         {items.map((item, index) => (
           <li key={item.title} className="grid grid-cols-[2rem_1fr] gap-3 py-4">
-            <span className="font-mono text-xs font-bold text-orange">
+            <span className="font-mono text-xs font-bold text-orange-text">
               {String(index + 1).padStart(2, '0')}
             </span>
             <div className="space-y-1">

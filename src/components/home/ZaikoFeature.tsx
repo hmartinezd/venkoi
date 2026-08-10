@@ -57,10 +57,10 @@ export function ZaikoFeature({
         <div className="lg:col-span-6 space-y-8">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+              <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
                 {eyebrow}
               </span>
-              <span className="inline-flex items-center rounded-md bg-orange-subtle px-2.5 py-0.5 text-[11px] font-bold text-orange uppercase tracking-wider">
+              <span className="inline-flex items-center rounded-md bg-orange-subtle px-2.5 py-0.5 text-[11px] font-bold text-orange-text uppercase tracking-wider">
                 {badge}
               </span>
             </div>
@@ -88,7 +88,7 @@ export function ZaikoFeature({
           {/* Early Access Callout */}
           <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 flex items-center justify-between gap-4">
             <p className="text-xs font-semibold text-ink">{badgeText}</p>
-            <span className="text-[11px] font-bold text-orange uppercase tracking-widest whitespace-nowrap">
+            <span className="text-[11px] font-bold text-orange-text uppercase tracking-widest whitespace-nowrap">
               01 / {productName.toUpperCase()}
             </span>
           </div>
@@ -113,7 +113,7 @@ export function ZaikoFeature({
                 <div className="h-2.5 w-2.5 rounded-full bg-orange" />
                 <span className="text-xs font-bold tracking-wider text-ink uppercase">{productName}</span>
               </div>
-              <span className="text-[11px] text-orange font-bold uppercase tracking-wider bg-orange-subtle px-2.5 py-0.5 rounded">
+              <span className="text-[11px] text-orange-text font-bold uppercase tracking-wider bg-orange-subtle px-2.5 py-0.5 rounded">
                 01
               </span>
             </div>

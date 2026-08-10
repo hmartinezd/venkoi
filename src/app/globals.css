@@ -3,6 +3,7 @@
 @theme {
   --color-ink: #14161c;
   --color-orange: #f84d25;
+  --color-orange-text: #c43a1c;
   --color-background: #f7f8fa;
   --color-surface: #ffffff;
   --color-surface-muted: #f2f3f6;
@@ -26,6 +27,7 @@
   color-scheme: light;
   --venkoi-ink: #14161c;
   --venkoi-orange: #f84d25;
+  --venkoi-orange-text: #c43a1c;
   --venkoi-background: #f7f8fa;
   --venkoi-surface: #ffffff;
   --venkoi-surface-muted: #f2f3f6;
@@ -58,27 +60,6 @@ body {
   scroll-margin-top: 72px;
 }
 
-#skip-to-content {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-#skip-to-content:focus-visible {
-  left: 1rem;
-  top: 1rem;
-  width: auto;
-  height: auto;
-  padding: 0.75rem 1rem;
-  background: var(--venkoi-ink);
-  color: white;
-  border-radius: 12px;
-  z-index: 999;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -87,4 +68,3 @@ body {
     scroll-behavior: auto !important;
   }
 }
-

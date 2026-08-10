@@ -48,7 +48,7 @@ export default async function ServicesPage({ params }: PageProps) {
       {/* Hero Section */}
       <Section variant="light" spacing="hero">
         <Container className="max-w-4xl space-y-6">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {t('eyebrow')}
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-tight">
@@ -78,7 +78,7 @@ export default async function ServicesPage({ params }: PageProps) {
       <Section variant="surface" className="border-y border-border">
         <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
-            <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
+            <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange-text uppercase tracking-wider">
               {t('mobileEyebrow')}
             </span>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -91,21 +91,21 @@ export default async function ServicesPage({ params }: PageProps) {
 
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-orange">01</span>
+              <span className="text-xs font-mono font-bold text-orange-text">01</span>
               <h3 className="text-lg font-bold text-ink">{t('mobileTheme1')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
                 {t('mobileTheme1Desc')}
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-orange">02</span>
+              <span className="text-xs font-mono font-bold text-orange-text">02</span>
               <h3 className="text-lg font-bold text-ink">{t('mobileTheme2')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
                 {t('mobileTheme2Desc')}
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3">
-              <span className="text-xs font-mono font-bold text-orange">03</span>
+              <span className="text-xs font-mono font-bold text-orange-text">03</span>
               <h3 className="text-lg font-bold text-ink">{t('mobileTheme3')}</h3>
               <p className="text-xs text-foreground-muted leading-relaxed">
                 {t('mobileTheme3Desc')}
@@ -130,7 +130,7 @@ export default async function ServicesPage({ params }: PageProps) {
       <Section variant="light">
         <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
-            <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
+            <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange-text uppercase tracking-wider">
               {t('webEyebrow')}
             </span>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -161,7 +161,7 @@ export default async function ServicesPage({ params }: PageProps) {
       <Section variant="surface" className="border-t border-border">
         <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
               {t('howWeWork.eyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -172,7 +172,7 @@ export default async function ServicesPage({ params }: PageProps) {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
               <div className="space-y-3">
-                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage1Num')}</span>
+                <span className="text-xs font-mono font-bold text-orange-text">{t('howWeWork.stage1Num')}</span>
                 <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage1Title')}</h3>
                 <p className="text-xs text-foreground-muted leading-relaxed">
                   {t('howWeWork.stage1Desc')}
@@ -181,7 +181,7 @@ export default async function ServicesPage({ params }: PageProps) {
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
               <div className="space-y-3">
-                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage2Num')}</span>
+                <span className="text-xs font-mono font-bold text-orange-text">{t('howWeWork.stage2Num')}</span>
                 <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage2Title')}</h3>
                 <p className="text-xs text-foreground-muted leading-relaxed">
                   {t('howWeWork.stage2Desc')}
@@ -190,7 +190,7 @@ export default async function ServicesPage({ params }: PageProps) {
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
               <div className="space-y-3">
-                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage3Num')}</span>
+                <span className="text-xs font-mono font-bold text-orange-text">{t('howWeWork.stage3Num')}</span>
                 <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage3Title')}</h3>
                 <p className="text-xs text-foreground-muted leading-relaxed">
                   {t('howWeWork.stage3Desc')}
@@ -199,7 +199,7 @@ export default async function ServicesPage({ params }: PageProps) {
             </div>
             <div className="rounded-2xl border border-border bg-background p-6 space-y-3 flex flex-col justify-between">
               <div className="space-y-3">
-                <span className="text-xs font-mono font-bold text-orange">{t('howWeWork.stage4Num')}</span>
+                <span className="text-xs font-mono font-bold text-orange-text">{t('howWeWork.stage4Num')}</span>
                 <h3 className="text-lg font-bold text-ink">{t('howWeWork.stage4Title')}</h3>
                 <p className="text-xs text-foreground-muted leading-relaxed">
                   {t('howWeWork.stage4Desc')}
@@ -220,7 +220,7 @@ export default async function ServicesPage({ params }: PageProps) {
       <Section variant="light" className="border-t border-border">
         <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
               {t('projectFit.eyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">

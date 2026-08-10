@@ -16,6 +16,7 @@ interface ZaikoProductNavProps {
   costsLabel: string;
   earlyAccessLabel: string;
   requestDemoLabel: string;
+  navigationLabel: string;
 }
 
 export function ZaikoProductNav({
@@ -28,7 +29,8 @@ export function ZaikoProductNav({
   activityLabel,
   costsLabel,
   earlyAccessLabel,
-  requestDemoLabel
+  requestDemoLabel,
+  navigationLabel
 }: ZaikoProductNavProps) {
   const navItems = [
     { label: overviewLabel, href: '#overview' },
@@ -46,18 +48,18 @@ export function ZaikoProductNav({
         <div className="flex items-center gap-2.5 shrink-0">
           <span className="text-sm font-bold tracking-tight text-ink uppercase">{productName}</span>
           <span className="hidden sm:inline-block text-border-strong">|</span>
-          <span className="hidden sm:inline-block text-xs font-semibold tracking-wider text-orange uppercase">
+          <span className="hidden sm:inline-block text-xs font-semibold tracking-wider text-orange-text uppercase">
             {subtitle}
           </span>
         </div>
 
         {/* Anchor Links */}
-        <nav className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2 no-scrollbar text-xs font-medium text-foreground-muted">
+        <nav aria-label={navigationLabel} className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-2 no-scrollbar text-xs font-medium text-foreground-muted">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="px-2.5 py-1.5 rounded-lg whitespace-nowrap transition hover:text-ink hover:bg-surface-muted"
+              className="px-2.5 py-1.5 rounded-lg whitespace-nowrap outline-none transition hover:text-ink hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
             >
               {item.label}
             </a>

@@ -26,6 +26,8 @@
   "header": {
     "logoTitle": "Inicio Venkoi",
     "language": "Idioma",
+    "mainNavigation": "Navegación principal",
+    "productNavigation": "Navegación de {productName}",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú"
   },

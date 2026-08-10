@@ -23,7 +23,7 @@ export function ZaikoWorkflow({ eyebrow, heading, body, labels }: ZaikoWorkflowP
     <Section variant="light" className="border-t border-border">
       <Container className="space-y-10 max-w-5xl">
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {eyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl leading-tight">

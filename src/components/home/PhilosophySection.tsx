@@ -36,7 +36,7 @@ export function PhilosophySection({
     <Section variant="muted" className="border-y border-border">
       <Container className="space-y-10">
         <div className="max-w-3xl space-y-3">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {eyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -48,7 +48,7 @@ export function PhilosophySection({
         <div className="grid gap-8 md:grid-cols-3 md:gap-6">
           {items.map((it, idx) => (
             <div key={idx} className="space-y-4 border-t border-border pt-6">
-              <span className="text-xs font-mono font-bold text-orange tracking-widest block">
+              <span className="text-xs font-mono font-bold text-orange-text tracking-widest block">
                 {it.num}
               </span>
               <h3 className="text-xl font-bold text-ink">{it.title}</h3>

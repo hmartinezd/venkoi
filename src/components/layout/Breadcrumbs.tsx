@@ -37,7 +37,7 @@ export function Breadcrumbs({ locale, items }: BreadcrumbsProps) {
               <LocalizedLink
                 href={internalRoutes[item.routeKey]}
                 locale={locale}
-                className="transition-colors hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm"
+                className="transition-colors hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm"
               >
                 {t(item.labelKey)}
               </LocalizedLink>

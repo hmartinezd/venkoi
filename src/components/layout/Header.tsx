@@ -88,19 +88,19 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
         {tCommon('skipToContent')}
       </a>
       <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <LocalizedLink href={internalRoutes.home} locale={locale} className="flex items-center gap-2">
+        <LocalizedLink href={internalRoutes.home} locale={locale} className="flex items-center gap-2 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4">
           <BrandLogo variant="dark" size="header" priority />
         </LocalizedLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
+        <nav aria-label={tHeader('mainNavigation')} className="hidden items-center gap-5 lg:flex xl:gap-7">
           <LocalizedLink
             href={internalRoutes.productsZaiko}
             locale={locale}
             aria-current={isProductsActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
-              isProductsActive ? 'text-orange' : 'text-ink'
+              'text-sm font-medium transition hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
+              isProductsActive ? 'text-orange-text' : 'text-ink'
             )}
           >
             {productName}
@@ -111,8 +111,8 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             locale={locale}
             aria-current={isInsightsActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
-              isInsightsActive ? 'text-orange' : 'text-ink'
+              'text-sm font-medium transition hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
+              isInsightsActive ? 'text-orange-text' : 'text-ink'
             )}
           >
             {tNav('insights')}
@@ -123,8 +123,8 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             locale={locale}
             aria-current={isAboutActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
-              isAboutActive ? 'text-orange' : 'text-ink'
+              'text-sm font-medium transition hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
+              isAboutActive ? 'text-orange-text' : 'text-ink'
             )}
           >
             {tNav('about')}
@@ -135,8 +135,8 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             locale={locale}
             aria-current={isServicesActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
-              isServicesActive ? 'text-orange' : 'text-ink'
+              'text-sm font-medium transition hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
+              isServicesActive ? 'text-orange-text' : 'text-ink'
             )}
           >
             {tNav('services')}
@@ -147,8 +147,8 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             locale={locale}
             aria-current={isContactActive ? 'page' : undefined}
             className={cn(
-              'text-sm font-medium transition hover:text-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
-              isContactActive ? 'text-orange' : 'text-ink'
+              'text-sm font-medium transition hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
+              isContactActive ? 'text-orange-text' : 'text-ink'
             )}
           >
             {tNav('contact')}
@@ -173,7 +173,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((current) => !current)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-ink transition hover:bg-surface-muted"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-ink outline-none transition hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
           >
             {menuOpen ? (
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -194,7 +194,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
           id="mobile-navigation"
           className="absolute top-[72px] inset-x-0 border-b border-border bg-surface/98 p-6 backdrop-blur-lg lg:hidden shadow-lg animate-in slide-in-from-top-2"
         >
-          <nav className="grid gap-3 text-base font-medium">
+          <nav aria-label={tHeader('mainNavigation')} className="grid gap-3 text-base font-medium">
             <LocalizedLink
               href={internalRoutes.productsZaiko}
               locale={locale}
@@ -202,7 +202,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               aria-current={routeKey === 'productsZaiko' ? 'page' : undefined}
               className={cn(
                 'flex items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
-                routeKey === 'productsZaiko' ? 'text-orange' : 'text-ink'
+                routeKey === 'productsZaiko' ? 'text-orange-text' : 'text-ink'
               )}
             >
               <span className="break-words">{productName}</span>
@@ -215,7 +215,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               aria-current={isInsightsActive ? 'page' : undefined}
               className={cn(
                 'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
-                isInsightsActive ? 'text-orange' : 'text-ink'
+                isInsightsActive ? 'text-orange-text' : 'text-ink'
               )}
             >
               {tNav('insights')}
@@ -227,7 +227,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               aria-current={isAboutActive ? 'page' : undefined}
               className={cn(
                 'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
-                isAboutActive ? 'text-orange' : 'text-ink'
+                isAboutActive ? 'text-orange-text' : 'text-ink'
               )}
             >
               {tNav('about')}
@@ -239,7 +239,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               aria-current={isServicesActive ? 'page' : undefined}
               className={cn(
                 'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
-                isServicesActive ? 'text-orange' : 'text-ink'
+                isServicesActive ? 'text-orange-text' : 'text-ink'
               )}
             >
               {tNav('services')}
@@ -251,7 +251,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               aria-current={isContactActive ? 'page' : undefined}
               className={cn(
                 'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
-                isContactActive ? 'text-orange' : 'text-ink'
+                isContactActive ? 'text-orange-text' : 'text-ink'
               )}
             >
               {tNav('contact')}

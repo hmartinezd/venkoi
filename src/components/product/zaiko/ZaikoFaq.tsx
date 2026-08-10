@@ -28,7 +28,7 @@ export function ZaikoFaq({ heading, items }: ZaikoFaqProps) {
             >
               <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-ink list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-2xl">
                 <span>{item.q}</span>
-                <span className="ml-4 flex-none text-foreground-muted transition-transform group-open:rotate-180">
+                <span aria-hidden="true" className="ml-4 flex-none text-foreground-muted transition-transform group-open:rotate-180">
                   <svg
                     width="20"
                     height="20"

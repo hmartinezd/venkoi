@@ -222,7 +222,7 @@ export function ContactProjectForm({
 
       {formData.interest && (
         <div className="rounded-xl bg-orange/5 border border-orange/10 px-4 py-3 flex flex-col gap-0.5">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-orange/80">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-orange-text">
             {tp('projectTypeIndicator')}
           </span>
           <span className="text-sm font-bold text-ink">
@@ -380,4 +380,3 @@ export function ContactProjectForm({
     </form>
   );
 }
-

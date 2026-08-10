@@ -61,7 +61,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
     <Section variant="light" spacing="hero">
       <Container className="max-w-4xl space-y-10">
         <div className="space-y-4">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {eyebrowText}
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-tight">
@@ -75,7 +75,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
         <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8">
           <div className="grid gap-6 md:grid-cols-[1fr_1.1fr] md:items-center">
             <div className="space-y-3">
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-text">
                 {t('direct.eyebrow')}
               </p>
               <h2 className="text-2xl font-bold text-ink sm:text-3xl">{t('direct.heading')}</h2>
@@ -111,7 +111,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
               <ol className="space-y-4">
                 {[1, 2, 3].map((step) => (
                   <li key={step} className="flex gap-4">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange-text">
                       {step}
                     </span>
                     <p className="text-sm text-foreground-muted leading-relaxed">
@@ -129,13 +129,13 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
 
           <div className="space-y-6">
             <div className="rounded-2xl border border-border bg-surface p-6 space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-orange">{t('locationEyebrow')}</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-orange-text">{t('locationEyebrow')}</span>
               <h3 className="text-lg font-bold text-ink">{t('locationBoxTitle')}</h3>
               <p className="text-sm text-foreground-muted leading-relaxed">{t('locationBoxDesc')}</p>
             </div>
 
             <div className="rounded-2xl border border-border bg-surface p-6 space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-orange">{t('inquiriesEyebrow')}</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-orange-text">{t('inquiriesEyebrow')}</span>
               <h3 className="text-lg font-bold text-ink">{t('emailBoxTitle')}</h3>
               <p className="text-sm text-foreground-muted leading-relaxed">{t('emailBoxDesc')}</p>
             </div>

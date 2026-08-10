@@ -46,7 +46,7 @@ export default async function AboutPage({ params }: PageProps) {
       {/* Hero */}
       <Section variant="light" spacing="hero">
         <Container className="max-w-4xl space-y-6">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {t('eyebrow')}
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-tight">
@@ -62,7 +62,7 @@ export default async function AboutPage({ params }: PageProps) {
       <Section variant="surface" className="border-y border-border">
         <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
               {t('strategicDirectionEyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -77,7 +77,7 @@ export default async function AboutPage({ params }: PageProps) {
             {/* Primary Pillar: Venkoi Products */}
             <div className="md:col-span-7 rounded-2xl border-2 border-orange/40 bg-background p-8 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
-                <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
+                <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange-text uppercase tracking-wider">
                   {t('primaryPillarBadge')}
                 </span>
                 <h3 className="text-2xl font-bold text-ink">{t('venkoiProductsTitle')}</h3>
@@ -117,7 +117,7 @@ export default async function AboutPage({ params }: PageProps) {
       <Section variant="light" spacing="compact">
         <Container className="max-w-4xl space-y-8">
           <div className="space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
               {t('foundationExpansionEyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">

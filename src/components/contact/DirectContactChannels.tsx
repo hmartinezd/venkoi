@@ -46,7 +46,7 @@ export function DirectContactChannels({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={whatsappAriaLabel}
-          className="inline-flex items-center gap-2 rounded-sm font-medium text-ink outline-none transition hover:text-orange focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
+          className="inline-flex items-center gap-2 rounded-sm font-medium text-ink outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
         >
           <WhatsAppBrandIcon className="h-[18px] w-[18px] shrink-0" />
           {whatsappLabel}
@@ -84,7 +84,7 @@ export function DirectContactChannels({
           <a
             href={buildEmailUrl(emailSubject)}
             aria-label={emailAriaLabel}
-            className="inline-flex items-center gap-2 rounded-sm font-medium text-ink outline-none transition hover:text-orange focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
+            className="inline-flex items-center gap-2 rounded-sm font-medium text-ink outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
           >
             <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
               <EmailIcon className="h-[18px] w-[18px]" />

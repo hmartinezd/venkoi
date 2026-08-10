@@ -78,11 +78,11 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
       <Container className="space-y-10">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+            <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
               {eyebrowText}
             </span>
             {isEarlyAccess && (
-              <span className="inline-flex items-center rounded-md bg-orange/10 px-2 py-0.5 text-[10px] font-bold text-orange uppercase tracking-wider border border-orange/20">
+              <span className="inline-flex items-center rounded-md bg-orange/10 px-2 py-0.5 text-[10px] font-bold text-orange-text uppercase tracking-wider border border-orange/20">
                 {t('badge')}
               </span>
             )}
@@ -118,7 +118,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h2 className="text-xl font-bold text-ink">{formTitle}</h2>
                   {isEarlyAccess && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange-text">
                       <span className="h-1.5 w-1.5 rounded-full bg-orange" />
                       {t('badge')}
                     </span>
@@ -153,7 +153,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
                 <ol className="space-y-4">
                   {[1, 2, 3].map((step) => (
                     <li key={step} className="grid grid-cols-[2rem_1fr] gap-3">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange">{step}</span>
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange-text">{step}</span>
                       <p className="pt-0.5 text-sm leading-relaxed text-foreground-muted">
                         {step === 3 && isEarlyAccess ? t('nextSteps.step3EarlyAccess') : t(`nextSteps.step${step}`)}
                       </p>

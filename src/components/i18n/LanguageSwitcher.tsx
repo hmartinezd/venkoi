@@ -8,6 +8,7 @@ import { localeLabels, locales, type Locale } from '@/i18n/config';
 import { trackCustomEvent } from '@/lib/analytics';
 import { getSafeLocalizedIntentQuery } from '@/lib/navigation-intent';
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 interface LanguageSwitcherProps {
   locale: Locale;
@@ -16,6 +17,7 @@ interface LanguageSwitcherProps {
 }
 
 function LanguageSwitcherContent({ locale, variant = 'header', className }: LanguageSwitcherProps) {
+  const tHeader = useTranslations('header');
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const routeKey = getRouteKeyFromPath(pathname);
@@ -30,7 +32,7 @@ function LanguageSwitcherContent({ locale, variant = 'header', className }: Lang
   );
 
   return (
-    <div className={containerClasses}>
+    <div className={containerClasses} role="group" aria-label={tHeader('language')}>
       {locales.map((localeKey, index) => {
         const safeParams = getSafeLocalizedIntentQuery(routeKey, searchParams);
         const query = Object.fromEntries(safeParams.entries());
@@ -69,7 +71,7 @@ function LanguageSwitcherContent({ locale, variant = 'header', className }: Lang
               {localeLabels[localeKey]}
             </LocalizedLink>
             {index < locales.length - 1 ? (
-              <span className={cn(
+              <span aria-hidden="true" className={cn(
                 'text-border-strong',
                 variant === 'footer' && 'text-foreground-muted/30'
               )}>|</span>

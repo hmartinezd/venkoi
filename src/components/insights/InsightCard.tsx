@@ -22,10 +22,10 @@ export function InsightCard({
   return (
     <div className="group flex flex-col h-full rounded-2xl border border-border bg-background p-6 transition hover:border-orange/30 hover:shadow-sm">
       <div className="flex-1 space-y-4">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-orange">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-orange-text">
           {category}
         </span>
-        <h3 className="text-xl font-bold leading-tight text-ink group-hover:text-orange transition-colors">
+        <h3 className="text-xl font-bold leading-tight text-ink group-hover:text-orange-text transition-colors">
           {title}
         </h3>
         <p className="text-sm leading-relaxed text-foreground-muted">
@@ -36,7 +36,7 @@ export function InsightCard({
         <LocalizedLink
           href={internalRoutes[routeKey]}
           locale={locale}
-          className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-ink transition hover:text-orange outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm"
+          className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-ink transition hover:text-orange-text outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm"
         >
           {readMoreLabel}
           <svg

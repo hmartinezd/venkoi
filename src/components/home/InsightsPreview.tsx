@@ -33,7 +33,7 @@ export function InsightsPreview({
       <Container className="space-y-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
               {eyebrow}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -47,7 +47,7 @@ export function InsightsPreview({
             <LocalizedLink
               href="/insights"
               locale={locale}
-              className="inline-flex items-center text-sm font-bold uppercase tracking-wider text-ink transition hover:text-orange outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm"
+              className="inline-flex items-center text-sm font-bold uppercase tracking-wider text-ink transition hover:text-orange-text outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm"
             >
               {cta}
               <svg

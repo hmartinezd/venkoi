@@ -25,7 +25,7 @@ export function ServiceFaq({ heading, items }: ServiceFaqProps) {
               key={index}
               className="group rounded-2xl border border-border bg-background overflow-hidden"
             >
-              <summary className="flex cursor-pointer items-center justify-between p-6 text-base font-bold text-ink hover:text-orange transition-colors list-none outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset">
+              <summary className="flex cursor-pointer items-center justify-between p-6 text-base font-bold text-ink hover:text-orange-text transition-colors list-none outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset">
                 <span className="pr-4">{item.question}</span>
                 <svg
                   className="h-5 w-5 shrink-0 text-foreground-muted transition-transform group-open:rotate-180"

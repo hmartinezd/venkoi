@@ -59,7 +59,7 @@ export function ZaikoExplorer({
       <Container className="space-y-10">
         {/* Header */}
         <div className="max-w-3xl space-y-4">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {eyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl leading-tight">
@@ -96,7 +96,7 @@ export function ZaikoExplorer({
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-orange" />
-                <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+                <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
                   {activeContent.eyebrow}
                 </span>
               </div>
@@ -133,7 +133,7 @@ export function ZaikoExplorer({
               </TrackedButton>
               <a
                 href={`#${activeArea}`}
-                className="text-sm font-bold text-ink hover:text-orange transition-colors flex items-center gap-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm"
+                className="text-sm font-bold text-ink hover:text-orange-text transition-colors flex items-center gap-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm"
               >
                 {detailLinkLabel.replace('{area}', activeContent.label)}
                 <span className="group-hover:translate-x-0.5 transition-transform">→</span>

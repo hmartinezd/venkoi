@@ -50,6 +50,7 @@ export default async function ZaikoPage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const tNav = await getTranslations('zaikoPage.nav');
+  const tHeader = await getTranslations('header');
   const tHero = await getTranslations('zaikoPage.hero');
   const tIntro = await getTranslations('zaikoPage.intro');
   const tProblem = await getTranslations('zaikoPage.problem');
@@ -169,6 +170,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         costsLabel={tNav('costs')}
         earlyAccessLabel={tNav('earlyAccess')}
         requestDemoLabel={tNav('requestDemo')}
+        navigationLabel={tHeader('productNavigation', { productName: FEATURED_PRODUCT.name })}
       />
 
       {/* Hero Section */}
@@ -187,7 +189,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       {/* Product Introduction */}
       <Section variant="surface" spacing="compact" className="border-t border-border">
         <Container className="max-w-3xl text-center space-y-4">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {tIntro('eyebrow')}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl leading-tight">
@@ -318,7 +320,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       <Section variant="light" spacing="compact" className="border-t border-border">
         <Container className="max-w-4xl">
           <div className="space-y-8">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text text-center">
               {tArticles('relatedGuide')}
             </p>
             <div className="max-w-2xl mx-auto">

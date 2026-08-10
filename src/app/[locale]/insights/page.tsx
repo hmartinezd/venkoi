@@ -74,7 +74,7 @@ export default async function InsightsPage({ params }: PageProps) {
           />
 
           <div className="space-y-6">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
               {t('eyebrow')}
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-tight">

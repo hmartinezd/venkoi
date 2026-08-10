@@ -79,7 +79,7 @@ export function InsightArticle({
 
           <article className="space-y-12">
             <header className="space-y-6">
-              <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+              <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
                 {category}
               </span>
               <h1 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl leading-tight max-w-4xl">

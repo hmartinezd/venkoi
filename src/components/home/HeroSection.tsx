@@ -37,7 +37,7 @@ export function HeroSection({
     <Section variant="light" spacing="hero">
       <Container className="grid gap-12 lg:grid-cols-[55%_45%] lg:items-center">
         <div className="max-w-2xl space-y-6">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {eyebrow}
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-[1.1]">
@@ -85,7 +85,7 @@ export function HeroSection({
               <div className="rounded-2xl border border-orange/30 bg-orange-subtle/30 p-5 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-ink">{productName}</span>
-                  <span className="text-[10px] font-bold text-orange uppercase tracking-wider bg-orange-subtle px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-bold text-orange-text uppercase tracking-wider bg-orange-subtle px-2 py-0.5 rounded">
                     01
                   </span>
                 </div>

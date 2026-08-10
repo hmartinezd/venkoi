@@ -21,7 +21,7 @@ export function ServiceProcess({ heading, showPrinciple = true }: ServiceProcess
     <Section className="bg-surface-muted/50 border-y border-border/50">
       <Container>
         <div className="max-w-3xl mb-16">
-          <span className="text-xs font-bold tracking-widest text-orange uppercase block mb-4">
+          <span className="text-xs font-bold tracking-widest text-orange-text uppercase block mb-4">
             {t('eyebrow')}
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-6">

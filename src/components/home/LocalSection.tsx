@@ -35,7 +35,7 @@ export function LocalSection({
       <Container className="space-y-10">
         {/* Intro */}
         <div className="max-w-3xl space-y-4">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
             {eyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -50,7 +50,7 @@ export function LocalSection({
         <div className="grid gap-6 md:grid-cols-3">
           {regions.map((reg, i) => (
             <div key={i} className="rounded-xl border border-border bg-surface p-6 space-y-2">
-              <span className="text-xs font-bold text-orange tracking-widest uppercase">
+              <span className="text-xs font-bold text-orange-text tracking-widest uppercase">
                 0{i + 1}
               </span>
               <h3 className="text-lg font-bold text-ink">{reg.title}</h3>

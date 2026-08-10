@@ -25,7 +25,7 @@ export function ZaikoAudience({ heading, body, items }: ZaikoAudienceProps) {
           <ul className="space-y-4" role="list">
             {items.map((item, index) => (
               <li key={index} className="flex items-start gap-4 p-4 rounded-2xl border border-border bg-background shadow-sm">
-                <span className="flex-none h-6 w-6 rounded-full bg-orange/10 flex items-center justify-center text-orange text-xs font-bold">
+                <span className="flex-none h-6 w-6 rounded-full bg-orange/10 flex items-center justify-center text-orange-text text-xs font-bold">
                   {index + 1}
                 </span>
                 <span className="text-base font-medium text-ink leading-snug">

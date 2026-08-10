@@ -28,6 +28,7 @@ export function DemoRequestForm({
   const t = useTranslations('demoPage.form');
   const tp = useTranslations('demoPage');
   const formRef = useRef<HTMLFormElement>(null);
+  const optionalDetailsRef = useRef<HTMLDetailsElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
@@ -81,6 +82,9 @@ export function DemoRequestForm({
   const focusFirstError = (errObj: Record<string, string>) => {
     const firstFieldKey = Object.keys(errObj)[0];
     if (firstFieldKey && formRef.current) {
+      if (['phone', 'location_count', 'current_system', 'message'].includes(firstFieldKey)) {
+        if (optionalDetailsRef.current) optionalDetailsRef.current.open = true;
+      }
       const inputElement = formRef.current.querySelector<HTMLElement>(`[name="${firstFieldKey}"]`);
       if (inputElement) {
         inputElement.focus();
@@ -318,7 +322,7 @@ export function DemoRequestForm({
         </FormField>
       </div>
 
-      <details className="group rounded-xl border border-border bg-surface-muted/50">
+      <details ref={optionalDetailsRef} className="group rounded-xl border border-border bg-surface-muted/50">
         <summary className="cursor-pointer list-none rounded-xl px-4 py-3 text-sm font-semibold text-ink outline-none transition hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
           <span className="flex items-center justify-between gap-4">
             {t('optionalSummary')}
@@ -397,7 +401,7 @@ export function DemoRequestForm({
           </label>
         </div>
         {formData.early_access_interest && (
-          <p className="text-[11px] text-orange font-bold pl-7 animate-in fade-in slide-in-from-left-1">
+          <p className="text-[11px] text-orange-text font-bold pl-7 animate-in fade-in slide-in-from-left-1">
             {tp('earlyAccess.badge')}
           </p>
         )}
