@@ -33,8 +33,8 @@ export function PhilosophySection({
   ];
 
   return (
-    <Section variant="muted" className="py-16 md:py-24 border-y border-border">
-      <Container className="space-y-12">
+    <Section variant="muted" className="border-y border-border">
+      <Container className="space-y-10">
         <div className="max-w-3xl space-y-3">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
             {eyebrow}
@@ -60,4 +60,3 @@ export function PhilosophySection({
     </Section>
   );
 }
-

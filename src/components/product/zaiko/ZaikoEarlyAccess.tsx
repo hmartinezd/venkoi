@@ -25,7 +25,7 @@ export function ZaikoEarlyAccess({
   secondaryCta
 }: ZaikoEarlyAccessProps) {
   return (
-    <Section variant="dark" className="py-20 md:py-28 scroll-mt-24" id="early-access">
+    <Section variant="dark" spacing="spacious" className="scroll-mt-24" id="early-access">
       <Container className="max-w-4xl text-center space-y-10">
         <div className="space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-orange">

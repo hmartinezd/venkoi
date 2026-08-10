@@ -185,7 +185,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       />
 
       {/* Product Introduction */}
-      <Section variant="surface" className="py-14 md:py-20 border-t border-border">
+      <Section variant="surface" spacing="compact" className="border-t border-border">
         <Container className="max-w-3xl text-center space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
             {tIntro('eyebrow')}
@@ -315,7 +315,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       />
 
       {/* Related Guide Section */}
-      <Section variant="light" className="py-16 md:py-24 border-t border-border">
+      <Section variant="light" spacing="compact" className="border-t border-border">
         <Container className="max-w-4xl">
           <div className="space-y-8">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange text-center">

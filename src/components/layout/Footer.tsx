@@ -17,8 +17,8 @@ export function Footer({ locale, productName }: { locale: Locale; productName: s
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-surface py-14 text-sm text-foreground-muted">
-      <div className="mx-auto grid max-w-[1240px] gap-12 px-4 sm:px-6 lg:px-8 xl:grid-cols-[1.4fr_1fr]">
+    <footer className="border-t border-border bg-surface py-12 text-sm text-foreground-muted">
+      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 sm:px-6 lg:px-8 xl:grid-cols-[1.4fr_1fr]">
         <div className="space-y-4">
           <LocalizedLink href={internalRoutes.home} locale={locale} className="inline-block focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-lg outline-none">
             <BrandLogo variant="dark" size="footer" />
@@ -144,7 +144,7 @@ export function Footer({ locale, productName }: { locale: Locale; productName: s
         </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-[1240px] border-t border-border px-4 pt-8 sm:px-6 lg:px-8">
+      <div className="mx-auto mt-10 max-w-[1240px] border-t border-border px-4 pt-7 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 text-xs text-foreground-muted sm:flex-row sm:items-center sm:justify-between">
           <LanguageSwitcher locale={locale} variant="footer" />
 

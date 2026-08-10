@@ -20,8 +20,8 @@ interface ZaikoWorkflowProps {
 
 export function ZaikoWorkflow({ eyebrow, heading, body, labels }: ZaikoWorkflowProps) {
   return (
-    <Section variant="light" className="py-16 md:py-24 border-t border-border">
-      <Container className="space-y-12 max-w-5xl">
+    <Section variant="light" className="border-t border-border">
+      <Container className="space-y-10 max-w-5xl">
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
             {eyebrow}

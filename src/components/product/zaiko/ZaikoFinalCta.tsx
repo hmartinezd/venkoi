@@ -32,7 +32,7 @@ export function ZaikoFinalCta({
   whatsappMessage
 }: ZaikoFinalCtaProps) {
   return (
-    <Section variant="light" className="py-16 md:py-24 border-t border-border">
+    <Section variant="light" spacing="spacious" className="border-t border-border">
       <Container className="max-w-4xl text-center space-y-6">
         <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
           {heading}

@@ -63,7 +63,7 @@ export default async function InsightsPage({ params }: PageProps) {
 
   return (
     <>
-      <Section variant="light" className="pt-10 pb-16 md:pt-14 md:pb-24">
+      <Section variant="light" spacing="hero">
         <Container className="max-w-4xl space-y-8">
           <Breadcrumbs
             locale={currentLocale}
@@ -87,7 +87,7 @@ export default async function InsightsPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      <Section variant="surface" className="py-16 md:py-24 border-t border-border">
+      <Section variant="surface" spacing="compact" className="border-t border-border">
         <Container>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((article) => (

@@ -66,7 +66,7 @@ export function InsightArticle({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Section variant="light" className="pt-10 pb-20 md:pt-14 md:pb-28">
+      <Section variant="light" spacing="hero">
         <Container className="max-w-4xl">
           <Breadcrumbs
             locale={locale}

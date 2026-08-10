@@ -22,8 +22,8 @@ export function AboutPreview({
   cta: string;
 }) {
   return (
-    <Section variant="light" className="py-16 md:py-24">
-      <Container className="max-w-4xl space-y-8">
+    <Section variant="light">
+      <Container className="max-w-4xl space-y-6 md:space-y-8">
         <div className="space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
             {eyebrow}
@@ -33,7 +33,7 @@ export function AboutPreview({
           </h2>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-8 space-y-5 text-base text-foreground-muted leading-relaxed">
+        <div className="rounded-2xl border border-border bg-surface p-6 md:p-8 space-y-5 text-base text-foreground-muted leading-relaxed">
           <p>{p1}</p>
           <p>{p2}</p>
           <p>{p3}</p>

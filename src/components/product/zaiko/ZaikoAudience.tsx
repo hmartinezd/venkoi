@@ -10,7 +10,7 @@ interface ZaikoAudienceProps {
 
 export function ZaikoAudience({ heading, body, items }: ZaikoAudienceProps) {
   return (
-    <Section variant="surface" className="py-16 md:py-24 border-t border-border">
+    <Section variant="surface" spacing="compact" className="border-t border-border">
       <Container className="grid gap-12 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7 space-y-6">
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl leading-tight">

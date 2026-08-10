@@ -31,7 +31,7 @@ export function ServicesSection({
   webDesc: string;
 }) {
   return (
-    <Section variant="dark" className="py-14 md:py-16">
+    <Section variant="dark" spacing="compact">
       <Container className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
         {/* Section Header */}
         <div className="max-w-3xl space-y-5">

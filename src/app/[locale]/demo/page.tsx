@@ -73,7 +73,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
     : (isZaiko ? t('zaiko.formDescription') : t('badgeText', productProgramValues));
 
   return (
-    <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">
+    <Section variant="light" spacing="hero">
       <Container className="max-w-4xl space-y-10">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-3">

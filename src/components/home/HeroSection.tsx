@@ -34,7 +34,7 @@ export function HeroSection({
   costsLabel: string;
 }) {
   return (
-    <Section variant="light" className="pt-12 pb-20 md:pt-16 md:pb-28">
+    <Section variant="light" spacing="hero">
       <Container className="grid gap-12 lg:grid-cols-[55%_45%] lg:items-center">
         <div className="max-w-2xl space-y-6">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">

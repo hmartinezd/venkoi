@@ -44,7 +44,7 @@ export default async function AboutPage({ params }: PageProps) {
   return (
     <>
       {/* Hero */}
-      <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">
+      <Section variant="light" spacing="hero">
         <Container className="max-w-4xl space-y-6">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
             {t('eyebrow')}
@@ -59,8 +59,8 @@ export default async function AboutPage({ params }: PageProps) {
       </Section>
 
       {/* Product Direction */}
-      <Section variant="surface" className="py-16 md:py-24 border-y border-border">
-        <Container className="space-y-12">
+      <Section variant="surface" className="border-y border-border">
+        <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
               {t('strategicDirectionEyebrow')}
@@ -114,7 +114,7 @@ export default async function AboutPage({ params }: PageProps) {
       </Section>
 
       {/* Local / Global Idea */}
-      <Section variant="light" className="py-16 md:py-24">
+      <Section variant="light" spacing="compact">
         <Container className="max-w-4xl space-y-8">
           <div className="space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
@@ -132,8 +132,8 @@ export default async function AboutPage({ params }: PageProps) {
       </Section>
 
       {/* Philosophy / Principles */}
-      <Section variant="surface" className="py-16 md:py-24 border-y border-border">
-        <Container className="space-y-12">
+      <Section variant="surface" className="border-y border-border">
+        <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
               {t('philosophy.heading')}
@@ -170,7 +170,7 @@ export default async function AboutPage({ params }: PageProps) {
       </Section>
 
       {/* Final About CTA */}
-      <Section variant="light" className="py-20 md:py-28 text-center">
+      <Section variant="light" spacing="spacious" className="text-center">
         <Container className="max-w-3xl space-y-8">
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
@@ -199,4 +199,3 @@ export default async function AboutPage({ params }: PageProps) {
     </>
   );
 }
-

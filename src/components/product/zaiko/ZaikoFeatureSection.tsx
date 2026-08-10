@@ -32,7 +32,7 @@ export function ZaikoFeatureSection({
   labels
 }: ZaikoFeatureSectionProps) {
   return (
-    <Section variant="surface" className="py-16 md:py-24 border-t border-border scroll-mt-24" id={id}>
+    <Section variant="surface" className="border-t border-border scroll-mt-24" id={id}>
       <Container className="grid gap-12 lg:grid-cols-12 lg:items-center">
         {/* Text Column */}
         <div className={`lg:col-span-6 space-y-6 ${reverse ? 'lg:order-2' : ''}`}>

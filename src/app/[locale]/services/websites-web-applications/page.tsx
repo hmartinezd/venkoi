@@ -59,7 +59,7 @@ export default async function WebServicePage({ params }: PageProps) {
 
   return (
     <>
-      <Section variant="light" className="pt-10 pb-20 md:pt-14 md:pb-28">
+      <Section variant="light" spacing="hero">
         <Container>
           <Breadcrumbs
             locale={currentLocale}
@@ -98,7 +98,7 @@ export default async function WebServicePage({ params }: PageProps) {
       </Section>
 
       {/* Range Section */}
-      <Section variant="surface" className="py-16 md:py-24 border-y border-border">
+      <Section variant="surface" className="border-y border-border">
         <Container>
           <div className="max-w-3xl mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-ink mb-6">
@@ -119,7 +119,7 @@ export default async function WebServicePage({ params }: PageProps) {
       </Section>
 
       {/* No Tech Section */}
-      <Section variant="light" className="py-16 md:py-24">
+      <Section variant="light">
         <Container>
           <div className="max-w-3xl space-y-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-ink">
@@ -135,7 +135,7 @@ export default async function WebServicePage({ params }: PageProps) {
       <ServiceProcess heading={t('processHeading')} />
 
       {/* Existing Project Section */}
-      <Section variant="light" className="py-16 md:py-24 border-t border-border/50">
+      <Section variant="light" className="border-t border-border/50">
         <Container>
           <div className="max-w-3xl space-y-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-ink">
@@ -164,7 +164,7 @@ export default async function WebServicePage({ params }: PageProps) {
       />
 
       {/* Related Guide */}
-      <Section variant="surface" className="py-16 md:py-24 border-t border-border/50">
+      <Section variant="surface" spacing="compact" className="border-t border-border/50">
         <Container className="space-y-8">
           <div className="max-w-3xl">
             <h2 className="text-2xl sm:text-3xl font-bold text-ink">

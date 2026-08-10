@@ -58,7 +58,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
   }
 
   return (
-    <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">
+    <Section variant="light" spacing="hero">
       <Container className="max-w-4xl space-y-10">
         <div className="space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">

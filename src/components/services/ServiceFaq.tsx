@@ -13,8 +13,8 @@ interface ServiceFaqProps {
 
 export function ServiceFaq({ heading, items }: ServiceFaqProps) {
   return (
-    <Section variant="surface" className="py-16 md:py-24 border-t border-border">
-      <Container className="max-w-4xl space-y-12">
+    <Section variant="surface" className="border-t border-border">
+      <Container className="max-w-4xl space-y-10">
         <h2 className="text-2xl sm:text-3xl font-bold text-ink">
           {heading}
         </h2>

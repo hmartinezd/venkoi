@@ -31,8 +31,8 @@ export function LocalSection({
   ];
 
   return (
-    <Section variant="light" className="py-16 md:py-24">
-      <Container className="space-y-12">
+    <Section variant="light">
+      <Container className="space-y-10">
         {/* Intro */}
         <div className="max-w-3xl space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
@@ -60,7 +60,7 @@ export function LocalSection({
         </div>
 
         {/* Large Prominent Statement Banner */}
-        <div className="rounded-2xl border border-border bg-surface-muted p-8 text-center sm:p-12">
+        <div className="rounded-2xl border border-border bg-surface-muted p-6 text-center sm:p-8 lg:p-10">
           <p className="text-2xl font-bold text-ink sm:text-3xl lg:text-4xl max-w-3xl mx-auto leading-tight">
             &ldquo;{prominentStatement}&rdquo;
           </p>

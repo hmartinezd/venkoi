@@ -46,7 +46,7 @@ export default async function ServicesPage({ params }: PageProps) {
   return (
     <>
       {/* Hero Section */}
-      <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">
+      <Section variant="light" spacing="hero">
         <Container className="max-w-4xl space-y-6">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
             {t('eyebrow')}
@@ -75,8 +75,8 @@ export default async function ServicesPage({ params }: PageProps) {
       </Section>
 
       {/* Service 01 — Mobile Applications */}
-      <Section variant="surface" className="py-16 md:py-24 border-y border-border">
-        <Container className="space-y-12">
+      <Section variant="surface" className="border-y border-border">
+        <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
               {t('mobileEyebrow')}
@@ -127,8 +127,8 @@ export default async function ServicesPage({ params }: PageProps) {
       </Section>
 
       {/* Service 02 — Websites & Web Applications */}
-      <Section variant="light" className="py-16 md:py-24">
-        <Container className="space-y-12">
+      <Section variant="light">
+        <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center rounded-md bg-orange-subtle px-3 py-1 text-xs font-bold text-orange uppercase tracking-wider">
               {t('webEyebrow')}
@@ -158,8 +158,8 @@ export default async function ServicesPage({ params }: PageProps) {
       </Section>
 
       {/* How We Work — Project Delivery Lifecycle */}
-      <Section variant="surface" className="py-16 md:py-24 border-t border-border">
-        <Container className="space-y-12">
+      <Section variant="surface" className="border-t border-border">
+        <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
               {t('howWeWork.eyebrow')}
@@ -217,8 +217,8 @@ export default async function ServicesPage({ params }: PageProps) {
       </Section>
 
       {/* Project Fit Section */}
-      <Section variant="light" className="py-16 md:py-24 border-t border-border">
-        <Container className="space-y-12">
+      <Section variant="light" className="border-t border-border">
+        <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
               {t('projectFit.eyebrow')}
@@ -241,8 +241,8 @@ export default async function ServicesPage({ params }: PageProps) {
       </Section>
 
       {/* Helpful Guides Section */}
-      <Section variant="light" className="py-16 md:py-24 border-t border-border">
-        <Container className="space-y-12">
+      <Section variant="light" spacing="compact" className="border-t border-border">
+        <Container className="space-y-8">
           <div className="max-w-3xl space-y-4">
             <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
               {t('relatedGuides')}
@@ -270,7 +270,7 @@ export default async function ServicesPage({ params }: PageProps) {
       </Section>
 
       {/* Idea / Approach Section */}
-      <Section variant="dark" className="py-20 md:py-28 text-center">
+      <Section variant="dark" spacing="spacious" className="text-center">
         <Container className="max-w-3xl space-y-8">
           <div className="space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">

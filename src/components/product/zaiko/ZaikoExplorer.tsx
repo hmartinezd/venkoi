@@ -55,8 +55,8 @@ export function ZaikoExplorer({
   const activeContent = areas[activeArea];
 
   return (
-    <Section className="py-16 md:py-24 border-t border-border bg-background">
-      <Container className="space-y-12">
+    <Section spacing="spacious" className="border-t border-border bg-background">
+      <Container className="space-y-10">
         {/* Header */}
         <div className="max-w-3xl space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">

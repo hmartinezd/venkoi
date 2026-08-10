@@ -11,7 +11,7 @@ export function ProductsIntro({
   body: string;
 }) {
   return (
-    <Section variant="light" className="py-10 md:py-14 border-t border-border/60">
+    <Section variant="light" spacing="compact" className="border-t border-border/60">
       <Container>
         <div className="max-w-3xl space-y-4">
           <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">

@@ -7,7 +7,7 @@ export default async function NotFound() {
   const t = await getTranslations('notFound');
 
   return (
-    <Section variant="dark" className="min-h-[70vh] flex items-center justify-center py-20">
+    <Section variant="dark" spacing="none" className="min-h-[70vh] flex items-center justify-center">
       <Container className="max-w-2xl text-center space-y-8">
         <div className="space-y-4">
           <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">

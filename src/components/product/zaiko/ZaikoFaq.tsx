@@ -14,8 +14,8 @@ interface ZaikoFaqProps {
 
 export function ZaikoFaq({ heading, items }: ZaikoFaqProps) {
   return (
-    <Section variant="light" className="py-16 md:py-24 border-t border-border" id="faq">
-      <Container className="max-w-3xl space-y-12">
+    <Section variant="light" className="border-t border-border" id="faq">
+      <Container className="max-w-3xl space-y-10">
         <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl text-center">
           {heading}
         </h2>

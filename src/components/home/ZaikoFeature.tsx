@@ -51,7 +51,7 @@ export function ZaikoFeature({
   ];
 
   return (
-    <Section variant="surface" className="py-16 md:py-24 border-y border-border">
+    <Section variant="surface" spacing="spacious" className="border-y border-border">
       <Container className="grid gap-12 lg:grid-cols-12 lg:items-center">
         {/* Left Info Column */}
         <div className="lg:col-span-6 space-y-8">

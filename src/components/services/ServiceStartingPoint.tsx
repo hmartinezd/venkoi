@@ -24,7 +24,7 @@ export function ServiceStartingPoint({
   ctaSource
 }: ServiceStartingPointProps) {
   return (
-    <Section variant="light" className="py-16 md:py-24 border-t border-border/50">
+    <Section variant="light" className="border-t border-border/50">
       <Container className="max-w-4xl space-y-10">
         <div className="max-w-3xl space-y-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-ink">

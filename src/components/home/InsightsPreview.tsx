@@ -29,8 +29,8 @@ export function InsightsPreview({
   articles
 }: InsightsPreviewProps) {
   return (
-    <Section variant="surface" className="py-16 md:py-24 border-t border-border">
-      <Container className="space-y-12">
+    <Section variant="surface" className="border-t border-border">
+      <Container className="space-y-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div className="max-w-3xl space-y-4">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
