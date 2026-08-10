@@ -1,6 +1,7 @@
 import { LocalizedLink } from '@/i18n/navigation';
 import { type RouteKey, internalRoutes } from '@/i18n/routing';
 import { type Locale } from '@/i18n/config';
+import { cn } from '@/lib/utils';
 
 interface InsightCardProps {
   locale: Locale;
@@ -9,6 +10,7 @@ interface InsightCardProps {
   description: string;
   routeKey: RouteKey;
   readMoreLabel: string;
+  featured?: boolean;
 }
 
 export function InsightCard({
@@ -17,18 +19,28 @@ export function InsightCard({
   title,
   description,
   routeKey,
-  readMoreLabel
+  readMoreLabel,
+  featured = false
 }: InsightCardProps) {
   return (
-    <div className="group flex flex-col h-full rounded-2xl border border-border bg-background p-6 transition hover:border-orange/30 hover:shadow-sm">
+    <div className={cn(
+      'group flex h-full flex-col rounded-2xl border border-border bg-background p-6 transition hover:border-orange/30 hover:shadow-sm',
+      featured && 'lg:col-span-7 lg:p-8'
+    )}>
       <div className="flex-1 space-y-4">
         <span className="text-[10px] font-bold uppercase tracking-widest text-orange-text">
           {category}
         </span>
-        <h3 className="text-xl font-bold leading-tight text-ink group-hover:text-orange-text transition-colors">
+        <h3 className={cn(
+          'text-xl font-bold leading-tight text-ink transition-colors group-hover:text-orange-text',
+          featured && 'sm:text-2xl lg:text-3xl'
+        )}>
           {title}
         </h3>
-        <p className="text-sm leading-relaxed text-foreground-muted">
+        <p className={cn(
+          'text-sm leading-relaxed text-foreground-muted',
+          featured && 'sm:text-base'
+        )}>
           {description}
         </p>
       </div>

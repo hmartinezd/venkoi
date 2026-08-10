@@ -7,12 +7,10 @@ import { notFound } from 'next/navigation';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
 import { HeroSection } from '@/components/home/HeroSection';
-import { ProductsIntro } from '@/components/home/ProductsIntro';
 import { ZaikoFeature } from '@/components/home/ZaikoFeature';
 import { ServicesSection } from '@/components/home/ServicesSection';
-import { LocalSection } from '@/components/home/LocalSection';
 import { PhilosophySection } from '@/components/home/PhilosophySection';
-import { AboutPreview } from '@/components/home/AboutPreview';
+import { CompanyContext } from '@/components/home/CompanyContext';
 import { InsightsPreview } from '@/components/home/InsightsPreview';
 import { FinalCta } from '@/components/home/FinalCta';
 
@@ -114,12 +112,6 @@ export default async function HomePage({ params }: PageProps) {
         activityLabel={tHome('zaiko.theme4Title')}
       />
 
-      <ProductsIntro
-        eyebrow={tHome('productsIntro.eyebrow')}
-        heading={tHome('productsIntro.heading')}
-        body={tHome('productsIntro.body')}
-      />
-
       <ZaikoFeature
         locale={currentLocale}
         eyebrow={tHome('zaiko.eyebrow')}
@@ -157,16 +149,6 @@ export default async function HomePage({ params }: PageProps) {
         item3Desc={tHome('philosophy.item3Desc')}
       />
 
-      <AboutPreview
-        locale={currentLocale}
-        eyebrow={tHome('aboutPreview.eyebrow')}
-        heading={tHome('aboutPreview.heading')}
-        p1={tHome('aboutPreview.p1')}
-        p2={tHome('aboutPreview.p2')}
-        p3={tHome('aboutPreview.p3')}
-        cta={tHome('aboutPreview.cta')}
-      />
-
       <InsightsPreview
         locale={currentLocale}
         eyebrow={tHome('insights.eyebrow')}
@@ -177,10 +159,17 @@ export default async function HomePage({ params }: PageProps) {
         articles={articles}
       />
 
-      <LocalSection
-        eyebrow={tHome('local.eyebrow')}
-        heading={tHome('local.heading')}
-        body={tHome('local.body')}
+      <CompanyContext
+        locale={currentLocale}
+        eyebrow={tHome('aboutPreview.eyebrow')}
+        heading={tHome('aboutPreview.heading')}
+        p1={tHome('aboutPreview.p1')}
+        p2={tHome('aboutPreview.p2')}
+        p3={tHome('aboutPreview.p3')}
+        cta={tHome('aboutPreview.cta')}
+        localEyebrow={tHome('local.eyebrow')}
+        localHeading={tHome('local.heading')}
+        localBody={tHome('local.body')}
         tampaTitle={tHome('local.tampaTitle')}
         tampaDesc={tHome('local.tampaDesc')}
         southFloridaTitle={tHome('local.southFloridaTitle')}

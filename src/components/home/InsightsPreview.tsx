@@ -28,6 +28,8 @@ export function InsightsPreview({
   readMoreLabel,
   articles
 }: InsightsPreviewProps) {
+  const [featuredArticle, ...secondaryArticles] = articles;
+
   return (
     <Section variant="surface" className="border-t border-border">
       <Container className="space-y-10">
@@ -67,18 +69,32 @@ export function InsightsPreview({
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {articles.map((article) => (
+        <div className="grid gap-6 lg:grid-cols-12">
+          {featuredArticle ? (
             <InsightCard
-              key={article.routeKey}
               locale={locale}
-              category={article.category}
-              title={article.title}
-              description={article.description}
-              routeKey={article.routeKey}
+              category={featuredArticle.category}
+              title={featuredArticle.title}
+              description={featuredArticle.description}
+              routeKey={featuredArticle.routeKey}
               readMoreLabel={readMoreLabel}
+              featured
             />
-          ))}
+          ) : null}
+
+          <div className="grid gap-6 lg:col-span-5">
+            {secondaryArticles.map((article) => (
+              <InsightCard
+                key={article.routeKey}
+                locale={locale}
+                category={article.category}
+                title={article.title}
+                description={article.description}
+                routeKey={article.routeKey}
+                readMoreLabel={readMoreLabel}
+              />
+            ))}
+          </div>
         </div>
       </Container>
     </Section>
