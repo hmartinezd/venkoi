@@ -1,9 +1,10 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { DemoRequestForm } from '@/components/forms/DemoRequestForm';
+import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
-import { isDemoEnabledProduct, getDefaultDemoProduct } from '@/lib/products';
+import { isDemoEnabledProduct, getDefaultDemoProduct, FEATURED_PRODUCT } from '@/lib/products';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -43,8 +44,8 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   const t = await getTranslations('demoPage');
 
   const defaultProduct = getDefaultDemoProduct().slug;
-  const selectedProduct =
-    typeof product === 'string' && isDemoEnabledProduct(product) ? product : defaultProduct;
+  const hasValidProductContext = typeof product === 'string' && isDemoEnabledProduct(product);
+  const selectedProduct = hasValidProductContext ? product : defaultProduct;
   const selectedInterest = typeof interest === 'string' ? interest : '';
 
   const isZaiko = selectedProduct === 'zaiko';
@@ -89,6 +90,22 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
           <p className="text-lg text-foreground-muted leading-relaxed max-w-2xl">
             {bodyText}
           </p>
+        </div>
+
+        <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface-muted p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-1">
+            <h2 className="font-bold text-ink">{t('direct.heading')}</h2>
+            <p className="text-sm text-foreground-muted">{t('direct.body')}</p>
+          </div>
+          <DirectContactChannels
+            whatsappMessage={hasValidProductContext
+              ? t('direct.productMessage', { productName: FEATURED_PRODUCT.name })
+              : t('direct.genericMessage')}
+            whatsappLabel={t('direct.whatsappLabel')}
+            whatsappAriaLabel={t('direct.whatsappAriaLabel')}
+            showEmail={false}
+            className="shrink-0"
+          />
         </div>
 
         {/* Demo Request / Early Access Form Shell */}

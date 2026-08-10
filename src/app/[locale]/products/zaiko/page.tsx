@@ -337,6 +337,11 @@ export default async function ZaikoPage({ params }: PageProps) {
         body={tFinalCta('body')}
         primaryCta={tFinalCta('primaryCta')}
         secondaryCta={tFinalCta('secondaryCta')}
+        directHeading={tFinalCta('directHeading', { productName: FEATURED_PRODUCT.name })}
+        directBody={tFinalCta('directBody')}
+        whatsappLabel={tFinalCta('whatsappLabel')}
+        whatsappAriaLabel={tFinalCta('whatsappAriaLabel', { productName: FEATURED_PRODUCT.name })}
+        whatsappMessage={tFinalCta('whatsappMessage', { productName: FEATURED_PRODUCT.name })}
       />
     </>
   );

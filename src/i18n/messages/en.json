@@ -34,7 +34,15 @@
     "sectionProducts": "Products",
     "sectionCompany": "Company",
     "sectionWorkWithUs": "Work With Us",
-    "locationText": "Tampa Bay, Florida · Serving Tampa Bay, South Florida & beyond"
+    "locationText": "Tampa Bay, Florida · Serving Tampa Bay, South Florida & beyond",
+    "contact": {
+      "whatsappLabel": "WhatsApp",
+      "whatsappAriaLabel": "Chat with Venkoi on WhatsApp",
+      "whatsappMessage": "Hi, I found Venkoi online and would like to talk about a software project.",
+      "emailLabel": "Email",
+      "emailAriaLabel": "Email Venkoi",
+      "emailSubject": "Venkoi inquiry"
+    }
   },
   "home": {
     "hero": {
@@ -229,6 +237,17 @@
     "eyebrow": "CONTACT VENKOI",
     "heading": "Let's start a conversation.",
     "body": "Reach out about a Venkoi product, a mobile application, a website, or a web application.",
+    "direct": {
+      "eyebrow": "DIRECT CONTACT",
+      "heading": "Prefer to talk directly?",
+      "body": "You can reach Venkoi through WhatsApp or email.",
+      "whatsappLabel": "Chat on WhatsApp",
+      "whatsappAriaLabel": "Chat with Venkoi on WhatsApp",
+      "whatsappMessage": "Hi, I found Venkoi online and would like to talk about a software project.",
+      "emailLabel": "Email Venkoi",
+      "emailAriaLabel": "Email Venkoi",
+      "emailSubject": "Venkoi inquiry"
+    },
     "intent": {
       "mobile": {
         "eyebrow": "MOBILE APPLICATION PROJECT",
@@ -331,6 +350,14 @@
     "earlyAccessTitle": "Early Access Program",
     "badge": "EARLY ACCESS",
     "badgeText": "Try Zaiko free for 3 months during early access.",
+    "direct": {
+      "heading": "Prefer to message us directly?",
+      "body": "WhatsApp is available as an alternative to the demo form.",
+      "whatsappLabel": "Chat on WhatsApp",
+      "whatsappAriaLabel": "Chat with Venkoi on WhatsApp",
+      "genericMessage": "Hi, I found Venkoi online and would like to talk about a software project.",
+      "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
+    },
     "contactCta": "Contact Team Directly",
     "zaikoCta": "Explore Zaiko Product",
     "form": {
@@ -515,7 +542,12 @@
       "heading": "Ready for a clearer view of your inventory?",
       "body": "Start with Early Access or request a demo tailored to your restaurant's operation.",
       "primaryCta": "Request a Demo",
-      "secondaryCta": "Join Early Access"
+      "secondaryCta": "Join Early Access",
+      "directHeading": "Questions about {productName}?",
+      "directBody": "Talk to us directly on WhatsApp.",
+      "whatsappLabel": "Chat on WhatsApp",
+      "whatsappAriaLabel": "Ask Venkoi about {productName} on WhatsApp",
+      "whatsappMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
     },
     "seo": {
       "title": "Zaiko | Restaurant Inventory Software by Venkoi",

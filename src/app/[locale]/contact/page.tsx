@@ -1,6 +1,7 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { ContactProjectForm } from '@/components/forms/ContactProjectForm';
+import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { normalizeServiceInterest } from '@/lib/services';
@@ -69,6 +70,28 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
           <p className="text-lg text-foreground-muted leading-relaxed max-w-2xl">
             {bodyText}
           </p>
+        </div>
+
+        <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8">
+          <div className="grid gap-6 md:grid-cols-[1fr_1.1fr] md:items-end">
+            <div className="space-y-3">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange">
+                {t('direct.eyebrow')}
+              </p>
+              <h2 className="text-2xl font-bold text-ink sm:text-3xl">{t('direct.heading')}</h2>
+              <p className="text-sm leading-relaxed text-foreground-muted">{t('direct.body')}</p>
+            </div>
+            <DirectContactChannels
+              variant="panel"
+              whatsappMessage={t('direct.whatsappMessage')}
+              whatsappLabel={t('direct.whatsappLabel')}
+              whatsappAriaLabel={t('direct.whatsappAriaLabel')}
+              emailLabel={t('direct.emailLabel')}
+              emailAriaLabel={t('direct.emailAriaLabel')}
+              emailSubject={t('direct.emailSubject')}
+              showEmailAddress
+            />
+          </div>
         </div>
 
         {/* Contact Form Card */}

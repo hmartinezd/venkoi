@@ -3,6 +3,7 @@ import { Section } from '@/components/layout/Section';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
+import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 
 interface ZaikoFinalCtaProps {
   locale: Locale;
@@ -10,6 +11,11 @@ interface ZaikoFinalCtaProps {
   body: string;
   primaryCta: string;
   secondaryCta: string;
+  directHeading: string;
+  directBody: string;
+  whatsappLabel: string;
+  whatsappAriaLabel: string;
+  whatsappMessage: string;
 }
 
 export function ZaikoFinalCta({
@@ -17,7 +23,12 @@ export function ZaikoFinalCta({
   heading,
   body,
   primaryCta,
-  secondaryCta
+  secondaryCta,
+  directHeading,
+  directBody,
+  whatsappLabel,
+  whatsappAriaLabel,
+  whatsappMessage
 }: ZaikoFinalCtaProps) {
   return (
     <Section variant="light" className="py-16 md:py-24 border-t border-border">
@@ -55,6 +66,19 @@ export function ZaikoFinalCta({
           >
             {secondaryCta}
           </TrackedButton>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-xl border-t border-border pt-6">
+          <p className="font-bold text-ink">{directHeading}</p>
+          <p className="mt-1 text-sm text-foreground-muted">{directBody}</p>
+          <DirectContactChannels
+            whatsappMessage={whatsappMessage}
+            whatsappLabel={whatsappLabel}
+            whatsappAriaLabel={whatsappAriaLabel}
+            showEmail={false}
+            variant="compact"
+            className="mt-3 justify-center"
+          />
         </div>
       </Container>
     </Section>

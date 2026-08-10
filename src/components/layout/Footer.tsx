@@ -6,6 +6,7 @@ import { type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
+import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 
 export function Footer({ locale, productName }: { locale: Locale; productName: string }) {
   const tFooter = useTranslations('footer');
@@ -22,6 +23,15 @@ export function Footer({ locale, productName }: { locale: Locale; productName: s
           </LocalizedLink>
           <p className="text-base text-ink font-medium">{tFooter('tagline')}</p>
           <p className="text-xs text-foreground-muted">{tFooter('locationText')}</p>
+          <DirectContactChannels
+            variant="compact"
+            whatsappMessage={tFooter('contact.whatsappMessage')}
+            whatsappLabel={tFooter('contact.whatsappLabel')}
+            whatsappAriaLabel={tFooter('contact.whatsappAriaLabel')}
+            emailLabel={tFooter('contact.emailLabel')}
+            emailAriaLabel={tFooter('contact.emailAriaLabel')}
+            emailSubject={tFooter('contact.emailSubject')}
+          />
         </div>
 
         <div className="grid gap-8 sm:grid-cols-3">
