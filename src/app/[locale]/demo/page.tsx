@@ -2,6 +2,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { DemoRequestForm } from '@/components/forms/DemoRequestForm';
 import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
+import { ProductDemoAgenda } from '@/components/demo/ProductDemoAgenda';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
@@ -74,7 +75,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   return (
     <Section variant="light" spacing="hero">
-      <Container className="max-w-4xl space-y-10">
+      <Container className="space-y-10">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-3">
             <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
@@ -109,47 +110,59 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
           />
         </div>
 
-        {/* Demo Request / Early Access Form Shell */}
-        <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 space-y-6 shadow-card">
-          <div className="space-y-2 border-b border-border pb-6">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-xl font-bold text-ink">
-                {formTitle}
-              </h2>
-              {isEarlyAccess && (
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange">
-                  <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-                  {t('badge')}
-                </span>
-              )}
-            </div>
-            <p className="text-sm text-foreground-muted leading-relaxed">
-              {formDesc}
-            </p>
-          </div>
-
-          <DemoRequestForm
-            locale={currentLocale}
-            initialProduct={selectedProduct}
-            initialInterest={selectedInterest}
-          />
-        </div>
-
-        {/* What Happens Next Section */}
-        <div className="rounded-2xl border border-border bg-surface p-8 space-y-8">
-          <h2 className="text-2xl font-bold text-ink">{t('nextSteps.heading')}</h2>
-          <div className="grid gap-8 sm:grid-cols-3">
-            {[1, 2, 3].map((step) => (
-              <div key={step} className="space-y-4">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange text-sm font-bold">
-                  {step}
-                </span>
-                <p className="text-sm text-foreground-muted leading-relaxed">
-                  {step === 3 && isEarlyAccess ? t('nextSteps.step3EarlyAccess') : t(`nextSteps.step${step}`)}
-                </p>
+        <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
+          {/* Demo Request / Early Access Form Shell */}
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:col-span-7">
+            <div className="space-y-6">
+              <div className="space-y-2 border-b border-border pb-6">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <h2 className="text-xl font-bold text-ink">{formTitle}</h2>
+                  {isEarlyAccess && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange">
+                      <span className="h-1.5 w-1.5 rounded-full bg-orange" />
+                      {t('badge')}
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm text-foreground-muted leading-relaxed">{formDesc}</p>
               </div>
-            ))}
+
+              <DemoRequestForm
+                locale={currentLocale}
+                initialProduct={selectedProduct}
+                initialInterest={selectedInterest}
+                productName={resolvedProduct.name}
+                freeMonths={resolvedProduct.earlyAccess.freeMonths}
+              />
+            </div>
           </div>
+
+          <aside className="rounded-2xl border border-border bg-surface-muted/50 p-6 sm:p-8 lg:col-span-5">
+            <div className="space-y-8">
+              <ProductDemoAgenda
+                eyebrow={t('agenda.eyebrow')}
+                heading={t('agenda.heading', { productName: resolvedProduct.name })}
+                items={['inventory', 'purchases', 'activity', 'costs'].map((area) => ({
+                  title: t(`agenda.items.${area}.title`),
+                  description: t(`agenda.items.${area}.description`)
+                }))}
+              />
+
+              <div className="space-y-5 border-t border-border pt-8">
+                <h2 className="text-xl font-bold text-ink">{t('nextSteps.heading')}</h2>
+                <ol className="space-y-4">
+                  {[1, 2, 3].map((step) => (
+                    <li key={step} className="grid grid-cols-[2rem_1fr] gap-3">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange">{step}</span>
+                      <p className="pt-0.5 text-sm leading-relaxed text-foreground-muted">
+                        {step === 3 && isEarlyAccess ? t('nextSteps.step3EarlyAccess') : t(`nextSteps.step${step}`)}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </aside>
         </div>
       </Container>
     </Section>

@@ -348,6 +348,28 @@
       "step3": "We coordinate the appropriate next step for seeing Zaiko.",
       "step3EarlyAccess": "We follow up about whether Early Access is the appropriate next step."
     },
+    "agenda": {
+      "eyebrow": "WHAT WE'LL COVER",
+      "heading": "See how {productName} brings together the core parts of restaurant inventory work.",
+      "items": {
+        "inventory": {
+          "title": "Inventory",
+          "description": "See what you have and where it is."
+        },
+        "purchases": {
+          "title": "Purchases",
+          "description": "See how purchasing and receiving stay organized."
+        },
+        "activity": {
+          "title": "Activity",
+          "description": "Follow how inventory moves through the operation."
+        },
+        "costs": {
+          "title": "Costs",
+          "description": "Understand what inventory is costing."
+        }
+      }
+    },
     "earlyAccessTitle": "Early Access Program",
     "badge": "EARLY ACCESS",
     "badgeText": "Use {productName} free for {freeMonths} months during Early Access.",
@@ -366,7 +388,9 @@
       "lastName": "Last name",
       "email": "Work email",
       "phone": "Phone",
-      "company": "Restaurant / Company name",
+      "company": "Restaurant / Business name",
+      "optionalSummary": "Tell us a little more (optional)",
+      "selectPlaceholder": "Select if you'd like",
       "locationCount": "Number of locations",
       "locationOptions": {
         "1": "1",
@@ -381,9 +405,9 @@
         "pos": "POS tools",
         "other": "Other software"
       },
-      "message": "What would you like Zaiko to help with?",
-      "earlyAccess": "I'm interested in the 3-month Early Access program.",
-      "submit": "Request My Demo",
+      "message": "Anything you'd like us to know",
+      "earlyAccess": "I'm interested in using {productName} free for {freeMonths} months through Early Access.",
+      "submit": "Request a Demo",
       "submitting": "Submitting...",
       "successTitle": "Thanks — we received your request.",
       "successMessage": "We'll be in touch to learn more about your restaurant and coordinate your demo.",

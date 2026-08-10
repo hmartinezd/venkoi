@@ -348,6 +348,28 @@
       "step3": "Coordinamos el siguiente paso adecuado para ver Zaiko.",
       "step3EarlyAccess": "Nos ponemos en contacto para ver si el acceso anticipado es el siguiente paso adecuado."
     },
+    "agenda": {
+      "eyebrow": "LO QUE VEREMOS",
+      "heading": "Descubre cómo {productName} reúne las áreas esenciales del inventario de un restaurante.",
+      "items": {
+        "inventory": {
+          "title": "Inventario",
+          "description": "Consulta qué tienes y dónde se encuentra."
+        },
+        "purchases": {
+          "title": "Compras",
+          "description": "Ve cómo se mantienen organizadas las compras y recepciones."
+        },
+        "activity": {
+          "title": "Actividad",
+          "description": "Sigue cómo se mueve el inventario dentro de la operación."
+        },
+        "costs": {
+          "title": "Costos",
+          "description": "Entiende cuánto está costando el inventario."
+        }
+      }
+    },
     "earlyAccessTitle": "Programa de Acceso Anticipado",
     "badge": "ACCESO ANTICIPADO",
     "badgeText": "Usa {productName} gratis durante {freeMonths} meses en acceso anticipado.",
@@ -366,7 +388,9 @@
       "lastName": "Apellido",
       "email": "Email de trabajo",
       "phone": "Teléfono",
-      "company": "Restaurante / Empresa",
+      "company": "Restaurante / Nombre del negocio",
+      "optionalSummary": "Cuéntanos un poco más (opcional)",
+      "selectPlaceholder": "Selecciona si lo deseas",
       "locationCount": "Número de locales",
       "locationOptions": {
         "1": "1",
@@ -381,9 +405,9 @@
         "pos": "Herramientas del POS",
         "other": "Otro software"
       },
-      "message": "¿En qué te gustaría que Zaiko ayudara a tu operación?",
-      "earlyAccess": "Me interesa el programa de acceso anticipado gratuito durante 3 meses.",
-      "submit": "Solicitar mi demo",
+      "message": "Cualquier detalle que quieras compartir",
+      "earlyAccess": "Me interesa usar {productName} gratis durante {freeMonths} meses a través del acceso anticipado.",
+      "submit": "Solicitar una demo",
       "submitting": "Enviando...",
       "successTitle": "Gracias — recibimos tu solicitud.",
       "successMessage": "Nos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.",

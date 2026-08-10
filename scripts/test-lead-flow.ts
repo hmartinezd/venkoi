@@ -73,6 +73,39 @@ async function runTests() {
   });
   assert(t5.success, 'Accept DEMO with valid demo product & stable enums');
 
+  const optionalDemoBase = {
+    lead_type: 'DEMO' as const,
+    product: 'zaiko',
+    first_name: 'Jamie',
+    last_name: 'Rivera',
+    company: 'Harbor Kitchen',
+    email: 'jamie@example.com'
+  };
+  const optionalValues = [
+    { label: 'omitted', payload: optionalDemoBase },
+    {
+      label: 'undefined',
+      payload: { ...optionalDemoBase, phone: undefined, location_count: undefined, current_system: undefined, message: undefined }
+    },
+    {
+      label: 'empty strings',
+      payload: { ...optionalDemoBase, phone: '', location_count: '', current_system: '', message: '' }
+    },
+    {
+      label: 'null',
+      payload: { ...optionalDemoBase, phone: null, location_count: null, current_system: null, message: null }
+    }
+  ];
+
+  optionalValues.forEach(({ label, payload }) => {
+    const result = leadSubmissionSchema.safeParse(payload);
+    assert(result.success, `Accept DEMO optional fields when ${label}`);
+    if (result.success) {
+      assert(result.data.location_count == null, `Normalize ${label} location_count without INVALID_OPTION`);
+      assert(result.data.current_system == null, `Normalize ${label} current_system without INVALID_OPTION`);
+    }
+  });
+
   // 6. Oversized message (>5000 chars)
   const longMsg = 'a'.repeat(5001);
   const t6 = leadSubmissionSchema.safeParse({
@@ -252,4 +285,3 @@ runTests().catch((err) => {
   console.error('Test execution error:', err);
   process.exit(1);
 });
-

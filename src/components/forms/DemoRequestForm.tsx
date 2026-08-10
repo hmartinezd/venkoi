@@ -6,19 +6,23 @@ import { FormField } from './FormField';
 import { FormStatus } from './FormStatus';
 import { Button } from '@/components/ui/Button';
 import { trackCustomEvent } from '@/lib/analytics';
-import { FEATURED_PRODUCT, getDefaultDemoProduct } from '@/lib/products';
+import { getDefaultDemoProduct } from '@/lib/products';
 import type { Locale } from '@/i18n/config';
 
 interface DemoRequestFormProps {
   locale: Locale;
   initialProduct?: string;
   initialInterest?: string;
+  productName: string;
+  freeMonths: number;
 }
 
 export function DemoRequestForm({
   locale,
   initialProduct,
-  initialInterest = ''
+  initialInterest = '',
+  productName,
+  freeMonths
 }: DemoRequestFormProps) {
   const activeProduct = initialProduct || getDefaultDemoProduct().slug;
   const t = useTranslations('demoPage.form');
@@ -32,8 +36,8 @@ export function DemoRequestForm({
     email: '',
     phone: '',
     company: '',
-    location_count: '1',
-    current_system: 'none',
+    location_count: '',
+    current_system: '',
     message: '',
     early_access_interest: initialInterest === 'early-access',
     website: '' // Honeypot
@@ -215,7 +219,7 @@ export function DemoRequestForm({
       : tp('standard.successTitle');
 
     const successMessage = formData.early_access_interest
-      ? tp('earlyAccess.successMessage', { productName: FEATURED_PRODUCT.name })
+      ? tp('earlyAccess.successMessage', { productName })
       : tp('standard.successMessage');
 
     return (
@@ -298,16 +302,15 @@ export function DemoRequestForm({
           )}
         </FormField>
 
-        <FormField label={t('phone')} error={errors.phone}>
+        <FormField label={t('company')} required error={errors.company}>
           {(fieldProps) => (
             <input
               {...fieldProps}
-              type="tel"
-              name="phone"
-              maxLength={50}
-              autoComplete="tel"
-              inputMode="tel"
-              value={formData.phone}
+              type="text"
+              name="company"
+              maxLength={200}
+              autoComplete="organization"
+              value={formData.company}
               onChange={handleChange}
               className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             />
@@ -315,40 +318,44 @@ export function DemoRequestForm({
         </FormField>
       </div>
 
-      <FormField label={t('company')} required error={errors.company}>
-        {(fieldProps) => (
-          <input
-            {...fieldProps}
-            type="text"
-            name="company"
-            maxLength={200}
-            autoComplete="organization"
-            value={formData.company}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
-          />
-        )}
-      </FormField>
+      <details className="group rounded-xl border border-border bg-surface-muted/50">
+        <summary className="cursor-pointer list-none rounded-xl px-4 py-3 text-sm font-semibold text-ink outline-none transition hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+          <span className="flex items-center justify-between gap-4">
+            {t('optionalSummary')}
+            <span aria-hidden="true" className="text-orange transition-transform group-open:rotate-45">+</span>
+          </span>
+        </summary>
+        <div className="space-y-6 border-t border-border p-4 sm:p-6">
+          <FormField label={t('phone')} error={errors.phone}>
+            {(fieldProps) => (
+              <input
+                {...fieldProps}
+                type="tel"
+                name="phone"
+                maxLength={50}
+                autoComplete="tel"
+                inputMode="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              />
+            )}
+          </FormField>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <FormField label={t('locationCount')} error={errors.location_count}>
-          {(fieldProps) => (
-            <select
-              {...fieldProps}
-              name="location_count"
-              value={formData.location_count}
-              onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
-            >
-              <option value="1">{t('locationOptions.1')}</option>
-              <option value="2_5">{t('locationOptions.2-5')}</option>
-              <option value="6_20">{t('locationOptions.6-20')}</option>
-              <option value="20_plus">{t('locationOptions.20+')}</option>
-            </select>
-          )}
-        </FormField>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <FormField label={t('locationCount')} error={errors.location_count}>
+              {(fieldProps) => (
+                <select {...fieldProps} name="location_count" value={formData.location_count} onChange={handleChange} className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden">
+                  <option value="">{t('selectPlaceholder')}</option>
+                  <option value="1">{t('locationOptions.1')}</option>
+                  <option value="2_5">{t('locationOptions.2-5')}</option>
+                  <option value="6_20">{t('locationOptions.6-20')}</option>
+                  <option value="20_plus">{t('locationOptions.20+')}</option>
+                </select>
+              )}
+            </FormField>
 
-        <FormField label={t('currentSystem')} error={errors.current_system}>
+            <FormField label={t('currentSystem')} error={errors.current_system}>
           {(fieldProps) => (
             <select
               {...fieldProps}
@@ -357,28 +364,23 @@ export function DemoRequestForm({
               onChange={handleChange}
               className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             >
+              <option value="">{t('selectPlaceholder')}</option>
               <option value="none">{t('systemOptions.none')}</option>
               <option value="spreadsheet">{t('systemOptions.spreadsheet')}</option>
               <option value="pos_tools">{t('systemOptions.pos')}</option>
               <option value="other">{t('systemOptions.other')}</option>
             </select>
           )}
-        </FormField>
-      </div>
+            </FormField>
+          </div>
 
-      <FormField label={t('message')} error={errors.message}>
-        {(fieldProps) => (
-          <textarea
-            {...fieldProps}
-            name="message"
-            rows={4}
-            maxLength={5000}
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y"
-          />
-        )}
-      </FormField>
+          <FormField label={t('message')} error={errors.message}>
+            {(fieldProps) => (
+              <textarea {...fieldProps} name="message" rows={4} maxLength={5000} value={formData.message} onChange={handleChange} className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y" />
+            )}
+          </FormField>
+        </div>
+      </details>
 
       <div className="flex flex-col gap-2 pt-2">
         <div className="flex items-start gap-3">
@@ -391,7 +393,7 @@ export function DemoRequestForm({
             className="mt-1 h-4 w-4 rounded border-border text-orange focus:ring-orange"
           />
           <label htmlFor="demo-early-access" className="text-sm font-medium text-ink cursor-pointer">
-            {t('earlyAccess')}
+            {t('earlyAccess', { productName, freeMonths })}
           </label>
         </div>
         {formData.early_access_interest && (
