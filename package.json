@@ -19,13 +19,14 @@
     "test:contact": "tsx scripts/test-contact-config.ts",
     "test:products": "tsx scripts/test-products.ts",
     "test:product-display-name": "tsx scripts/test-product-display-name.ts",
+    "test:product-program": "tsx scripts/test-product-program.ts",
     "test:leads": "tsx scripts/test-lead-flow.ts",
     "test:seo": "tsx scripts/test-seo-regression.ts",
     "test:accessibility": "tsx scripts/test-accessibility.ts",
     "test:rendering": "tsx scripts/test-rendering-boundaries.ts",
     "test:homepage": "tsx scripts/test-homepage-structure.ts",
     "test:product-page": "tsx scripts/test-product-page-structure.ts",
-    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:contact && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {

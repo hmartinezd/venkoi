@@ -42,6 +42,7 @@ for (const area of ['inventory', 'purchases', 'activity', 'costs']) {
 }
 
 assert.ok(capabilities.includes('scroll-mt-36'), 'Capability anchors should preserve the sticky-nav scroll offset');
+assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/, 'Early Access should retain its position while being conditional');
 assert.ok(!explorer.includes('supporting:'), 'Explorer content model should not receive supporting bullets');
 assert.ok(!explorer.includes('activeContent.supporting'), 'Explorer should not render detailed supporting bullets');
 assert.ok(explorer.includes('activeContent.summary'), 'Explorer should render concise area summaries');

@@ -119,11 +119,13 @@ export default async function HomePage({ params }: PageProps) {
         body={tHome('zaiko.body', { productName: FEATURED_PRODUCT.name })}
         discoverCta={tHome('zaiko.discoverCta', { productName: FEATURED_PRODUCT.name })}
         demoCta={tHome('zaiko.demoCta')}
-        badge={tHome('zaiko.badge')}
-        badgeText={tHome('zaiko.badgeText', {
-          productName: FEATURED_PRODUCT.name,
-          freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
-        })}
+        earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? {
+          badge: tHome('zaiko.badge'),
+          badgeText: tHome('zaiko.badgeText', {
+            productName: FEATURED_PRODUCT.name,
+            freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
+          })
+        } : undefined}
         theme1Title={tHome('zaiko.theme1Title')}
         theme1Desc={tHome('zaiko.theme1Desc')}
         theme2Title={tHome('zaiko.theme2Title')}

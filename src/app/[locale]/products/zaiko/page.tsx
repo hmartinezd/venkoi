@@ -126,10 +126,21 @@ export default async function ZaikoPage({ params }: PageProps) {
     }
   };
 
-  const faqItems = ['0', '1', '2', '3', '4'].map(idx => ({
+  const baseFaqItems = ['0', '1', '2'].map(idx => ({
     q: tFaq(`items.${idx}.q`, productProgramValues),
     a: tFaq(`items.${idx}.a`, productProgramValues)
   }));
+  const faqItems = [
+    ...baseFaqItems,
+    ...(FEATURED_PRODUCT.earlyAccess.enabled ? [{
+      q: tFaq('items.3.q', productProgramValues),
+      a: tFaq('items.3.a', productProgramValues)
+    }] : []),
+    {
+      q: tFaq('items.4.q', productProgramValues),
+      a: tFaq(FEATURED_PRODUCT.earlyAccess.enabled ? 'items.4.a' : 'gettingStartedDemoOnly', productProgramValues)
+    }
+  ];
 
   return (
     <>
@@ -148,7 +159,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         purchasesLabel={tNav('purchases')}
         activityLabel={tNav('activity')}
         costsLabel={tNav('costs')}
-        earlyAccessLabel={tNav('earlyAccess')}
+        earlyAccessLabel={FEATURED_PRODUCT.earlyAccess.enabled ? tNav('earlyAccess') : undefined}
         requestDemoLabel={tNav('requestDemo')}
         navigationLabel={tHeader('productNavigation', { productName: FEATURED_PRODUCT.name })}
       />
@@ -160,9 +171,11 @@ export default async function ZaikoPage({ params }: PageProps) {
         heading={tHero('heading')}
         body={tHero('body', productProgramValues)}
         primaryCta={tHero('primaryCta')}
-        secondaryCta={tHero('secondaryCta')}
-        microcopy={tHero('microcopy')}
-        noCreditCard={tHero('noCreditCard')}
+        earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? {
+          cta: tHero('secondaryCta'),
+          microcopy: tHero('microcopy', productProgramValues),
+          noCreditCard: tHero('noCreditCard')
+        } : undefined}
         labels={visualLabels}
       />
 
@@ -226,7 +239,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       />
 
       {/* Early Access Highlight */}
-      <ZaikoEarlyAccess
+      {FEATURED_PRODUCT.earlyAccess.enabled ? <ZaikoEarlyAccess
         locale={currentLocale}
         eyebrow={tEarlyAccess('eyebrow')}
         heading={tEarlyAccess('heading', productProgramValues)}
@@ -239,7 +252,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         ]}
         primaryCta={tEarlyAccess('primaryCta')}
         secondaryCta={tEarlyAccess('secondaryCta')}
-      />
+      /> : null}
 
       {/* FAQ Section */}
       <ZaikoFaq
@@ -272,9 +285,9 @@ export default async function ZaikoPage({ params }: PageProps) {
       <ZaikoFinalCta
         locale={currentLocale}
         heading={tFinalCta('heading')}
-        body={tFinalCta('body')}
+        body={tFinalCta(FEATURED_PRODUCT.earlyAccess.enabled ? 'body' : 'bodyDemoOnly')}
         primaryCta={tFinalCta('primaryCta')}
-        secondaryCta={tFinalCta('secondaryCta')}
+        earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? { cta: tFinalCta('secondaryCta') } : undefined}
         directHeading={tFinalCta('directHeading', { productName: FEATURED_PRODUCT.name })}
         directBody={tFinalCta('directBody')}
         whatsappLabel={tFinalCta('whatsappLabel')}

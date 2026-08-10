@@ -28,7 +28,6 @@ for (const [locale, messages] of Object.entries({ en, es })) {
 }
 
 const alternateName = 'Rename Test Product';
-const t = createTranslator({ locale: 'en', messages: en });
 const representativeKeys = [
   'home.zaiko.discoverCta',
   'zaikoPage.hero.body',
@@ -38,10 +37,13 @@ const representativeKeys = [
   'zaikoPage.seo.title'
 ] as const;
 
-for (const key of representativeKeys) {
-  const rendered = t(key, { productName: alternateName });
-  assert.ok(rendered.includes(alternateName), `${key} should render an alternate display name`);
-  assert.ok(!/zaiko/i.test(rendered), `${key} should not retain the current display name`);
+for (const [locale, messages] of Object.entries({ en, es })) {
+  const t = createTranslator({ locale, messages });
+  for (const key of representativeKeys) {
+    const rendered = t(key, { productName: alternateName });
+    assert.ok(rendered.includes(alternateName), `${locale.toUpperCase()} ${key} should render an alternate display name`);
+    assert.ok(!/zaiko/i.test(rendered), `${locale.toUpperCase()} ${key} should not retain the current display name`);
+  }
 }
 
 const callSites: Array<[string, RegExp]> = [

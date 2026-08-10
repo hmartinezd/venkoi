@@ -11,7 +11,7 @@ interface ZaikoFinalCtaProps {
   heading: string;
   body: string;
   primaryCta: string;
-  secondaryCta: string;
+  earlyAccess?: { cta: string };
   directHeading: string;
   directBody: string;
   whatsappLabel: string;
@@ -24,7 +24,7 @@ export function ZaikoFinalCta({
   heading,
   body,
   primaryCta,
-  secondaryCta,
+  earlyAccess,
   directHeading,
   directBody,
   whatsappLabel,
@@ -54,7 +54,7 @@ export function ZaikoFinalCta({
           >
             {primaryCta}
           </TrackedButton>
-          <TrackedButton
+          {earlyAccess ? <TrackedButton
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
             variant="secondary"
             eventName="zaiko_early_access_cta"
@@ -65,8 +65,8 @@ export function ZaikoFinalCta({
               earlyAccess: true
             }}
           >
-            {secondaryCta}
-          </TrackedButton>
+            {earlyAccess.cta}
+          </TrackedButton> : null}
         </div>
 
         <div className="mx-auto mt-8 max-w-xl border-t border-border pt-6">

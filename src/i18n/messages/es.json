@@ -321,7 +321,6 @@
       "eyebrow": "DEMO DE {productName}",
       "heading": "Ve {productName} en acción.",
       "body": "Cuéntanos un poco sobre tu restaurante y te ayudaremos a dar el siguiente paso para ver cómo {productName} puede adaptarse a tu operación.",
-      "earlyAccessBadge": "Acceso anticipado · 3 meses gratis",
       "title": "Demo de {productName} para Restaurantes",
       "formDescription": "Cuéntanos un poco sobre tu restaurante y cómo gestionas el inventario actualmente para que podamos entender el siguiente paso adecuado para una demo de {productName}."
     },
@@ -334,7 +333,7 @@
       "heading": "Comienza a usar {productName} a través de nuestro acceso anticipado.",
       "body": "Únete al programa de acceso anticipado y usa {productName} gratis durante {freeMonths} meses. Los operadores de restaurantes participantes pueden comenzar a usar el producto y compartir sus comentarios directamente con Venkoi.",
       "formTitle": "Solicitud de acceso anticipado",
-      "badge": "3 meses gratis durante el acceso anticipado.",
+      "badge": "{freeMonths} meses gratis durante el acceso anticipado.",
       "successTitle": "Gracias — recibimos tu solicitud de acceso anticipado.",
       "successMessage": "Revisaremos tu información y nos pondremos en contacto sobre el siguiente paso para usar {productName} a través del acceso anticipado."
     },
@@ -434,7 +433,7 @@
       "body": "{productName} ayuda a los restaurantes a entender y gestionar su inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado.",
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Únete al acceso anticipado",
-      "microcopy": "3 meses gratis durante el acceso anticipado.",
+      "microcopy": "{freeMonths} meses gratis durante el acceso anticipado.",
       "noCreditCard": "Sin necesidad de tarjeta de crédito."
     },
     "intro": {
@@ -557,7 +556,8 @@
           "q": "¿Cómo puedo comenzar a usar {productName}?",
           "a": "Solicita una demostración o únete al programa de Acceso Anticipado para comenzar."
         }
-      ]
+      ],
+      "gettingStartedDemoOnly": "Solicita una demo para comenzar."
     },
     "visuals": {
       "inventory": "Inventario",
@@ -572,6 +572,7 @@
     "finalCta": {
       "heading": "¿Listo para una visión más clara de tu inventario?",
       "body": "Comienza con el acceso anticipado o solicita una demostración adaptada a la operación de tu restaurante.",
+      "bodyDemoOnly": "Solicita una demostración adaptada a la operación de tu restaurante.",
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Únete al acceso anticipado",
       "directHeading": "¿Tienes preguntas sobre {productName}?",

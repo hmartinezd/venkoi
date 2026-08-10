@@ -321,7 +321,6 @@
       "eyebrow": "{productName} DEMO",
       "heading": "See {productName} in action.",
       "body": "Tell us a little about your restaurant and we'll help you take the next step toward seeing how {productName} could fit your operation.",
-      "earlyAccessBadge": "Early Access · 3 months free",
       "title": "{productName} Restaurant Demo",
       "formDescription": "Tell us a little about your restaurant and how you currently handle inventory so we can understand the right next step for a {productName} demo."
     },
@@ -334,7 +333,7 @@
       "heading": "Start using {productName} through Early Access.",
       "body": "Join the Early Access program and use {productName} free for {freeMonths} months. Participating restaurant operators can start using the product and share feedback directly with Venkoi.",
       "formTitle": "Early Access Request",
-      "badge": "3 months free during Early Access.",
+      "badge": "{freeMonths} months free during Early Access.",
       "successTitle": "Thanks — we received your Early Access request.",
       "successMessage": "We'll review your information and follow up about the next step for using {productName} through Early Access."
     },
@@ -434,7 +433,7 @@
       "body": "{productName} helps restaurants understand and manage their inventory, purchases, costs, and product activity from one clear workspace.",
       "primaryCta": "Request a Demo",
       "secondaryCta": "Join Early Access",
-      "microcopy": "3 months free during Early Access.",
+      "microcopy": "{freeMonths} months free during Early Access.",
       "noCreditCard": "No credit card required."
     },
     "intro": {
@@ -557,7 +556,8 @@
           "q": "How can I start using {productName}?",
           "a": "Request a demo or join the Early Access program to get started."
         }
-      ]
+      ],
+      "gettingStartedDemoOnly": "Request a demo to get started."
     },
     "visuals": {
       "inventory": "Inventory",
@@ -572,6 +572,7 @@
     "finalCta": {
       "heading": "Ready for a clearer view of your inventory?",
       "body": "Start with Early Access or request a demo tailored to your restaurant's operation.",
+      "bodyDemoOnly": "Request a demo tailored to your restaurant's operation.",
       "primaryCta": "Request a Demo",
       "secondaryCta": "Join Early Access",
       "directHeading": "Questions about {productName}?",

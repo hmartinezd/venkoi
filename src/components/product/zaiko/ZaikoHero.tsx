@@ -12,9 +12,7 @@ interface ZaikoHeroProps {
   heading: string;
   body: string;
   primaryCta: string;
-  secondaryCta: string;
-  microcopy: string;
-  noCreditCard: string;
+  earlyAccess?: { cta: string; microcopy: string; noCreditCard: string };
   labels?: {
     inventory: string;
     purchases: string;
@@ -33,9 +31,7 @@ export function ZaikoHero({
   heading,
   body,
   primaryCta,
-  secondaryCta,
-  microcopy,
-  noCreditCard,
+  earlyAccess,
   labels
 }: ZaikoHeroProps) {
   return (
@@ -71,30 +67,27 @@ export function ZaikoHero({
             >
               {primaryCta}
             </TrackedButton>
-            <TrackedButton
-              href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
-              variant="secondary"
-              eventName="zaiko_early_access_cta"
-              properties={{
-                locale,
-                product: FEATURED_PRODUCT.analyticsProduct,
-                source: 'zaiko_hero',
-                earlyAccess: true
-              }}
-            >
-              {secondaryCta}
-            </TrackedButton>
+            {earlyAccess ? (
+              <TrackedButton
+                href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
+                variant="secondary"
+                eventName="zaiko_early_access_cta"
+                properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'zaiko_hero', earlyAccess: true }}
+              >
+                {earlyAccess.cta}
+              </TrackedButton>
+            ) : null}
           </div>
 
           {/* Microcopy Callouts */}
-          <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs font-medium text-foreground-muted">
+          {earlyAccess ? <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs font-medium text-foreground-muted">
             <span className="flex items-center gap-1.5 text-ink font-semibold">
               <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-              {microcopy}
+              {earlyAccess.microcopy}
             </span>
             <span className="hidden sm:inline-block text-border-strong">•</span>
-            <span>{noCreditCard}</span>
-          </div>
+            <span>{earlyAccess.noCreditCard}</span>
+          </div> : null}
         </div>
 
         {/* Right Product Visual */}

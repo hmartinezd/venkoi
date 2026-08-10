@@ -12,7 +12,7 @@ interface ZaikoProductNavProps {
   purchasesLabel: string;
   activityLabel: string;
   costsLabel: string;
-  earlyAccessLabel: string;
+  earlyAccessLabel?: string;
   requestDemoLabel: string;
   navigationLabel: string;
 }
@@ -36,7 +36,7 @@ export function ZaikoProductNav({
     { label: purchasesLabel, href: '#purchases' },
     { label: activityLabel, href: '#activity' },
     { label: costsLabel, href: '#costs' },
-    { label: earlyAccessLabel, href: '#early-access' },
+    ...(earlyAccessLabel ? [{ label: earlyAccessLabel, href: '#early-access' }] : [])
   ];
 
   return (

@@ -13,8 +13,7 @@ export function ZaikoFeature({
   body,
   discoverCta,
   demoCta,
-  badge,
-  badgeText,
+  earlyAccess,
   theme1Title,
   theme1Desc,
   theme2Title,
@@ -31,8 +30,7 @@ export function ZaikoFeature({
   body: string;
   discoverCta: string;
   demoCta: string;
-  badge: string;
-  badgeText: string;
+  earlyAccess?: { badge: string; badgeText: string };
   theme1Title: string;
   theme1Desc: string;
   theme2Title: string;
@@ -60,9 +58,11 @@ export function ZaikoFeature({
               <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
                 {eyebrow}
               </span>
-              <span className="inline-flex items-center rounded-md bg-orange-subtle px-2.5 py-0.5 text-[11px] font-bold text-orange-text uppercase tracking-wider">
-                {badge}
-              </span>
+              {earlyAccess ? (
+                <span className="inline-flex items-center rounded-md bg-orange-subtle px-2.5 py-0.5 text-[11px] font-bold text-orange-text uppercase tracking-wider">
+                  {earlyAccess.badge}
+                </span>
+              ) : null}
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl leading-tight whitespace-pre-line">
               {heading}
@@ -86,12 +86,14 @@ export function ZaikoFeature({
           </div>
 
           {/* Early Access Callout */}
-          <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 flex items-center justify-between gap-4">
-            <p className="text-xs font-semibold text-ink">{badgeText}</p>
-            <span className="text-[11px] font-bold text-orange-text uppercase tracking-widest whitespace-nowrap">
-              01 / {productName.toUpperCase()}
-            </span>
-          </div>
+          {earlyAccess ? (
+            <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 flex items-center justify-between gap-4">
+              <p className="text-xs font-semibold text-ink">{earlyAccess.badgeText}</p>
+              <span className="text-[11px] font-bold text-orange-text uppercase tracking-widest whitespace-nowrap">
+                01 / {productName.toUpperCase()}
+              </span>
+            </div>
+          ) : null}
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 pt-2">

@@ -15,6 +15,7 @@ interface DemoRequestFormProps {
   initialInterest?: string;
   productName: string;
   freeMonths: number;
+  earlyAccessEnabled: boolean;
 }
 
 export function DemoRequestForm({
@@ -22,7 +23,8 @@ export function DemoRequestForm({
   initialProduct,
   initialInterest = '',
   productName,
-  freeMonths
+  freeMonths,
+  earlyAccessEnabled
 }: DemoRequestFormProps) {
   const activeProduct = initialProduct || getDefaultDemoProduct().slug;
   const t = useTranslations('demoPage.form');
@@ -40,7 +42,7 @@ export function DemoRequestForm({
     location_count: '',
     current_system: '',
     message: '',
-    early_access_interest: initialInterest === 'early-access',
+    early_access_interest: earlyAccessEnabled && initialInterest === 'early-access',
     website: '' // Honeypot
   });
 
@@ -386,7 +388,7 @@ export function DemoRequestForm({
         </div>
       </details>
 
-      <div className="flex flex-col gap-2 pt-2">
+      {earlyAccessEnabled ? <div className="flex flex-col gap-2 pt-2">
         <div className="flex items-start gap-3">
           <input
             id="demo-early-access"
@@ -402,10 +404,10 @@ export function DemoRequestForm({
         </div>
         {formData.early_access_interest && (
           <p className="text-[11px] text-orange-text font-bold pl-7 animate-in fade-in slide-in-from-left-1">
-            {tp('earlyAccess.badge')}
+            {tp('earlyAccess.badge', { freeMonths })}
           </p>
         )}
-      </div>
+      </div> : null}
 
       <div className="pt-2">
         <Button

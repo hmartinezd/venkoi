@@ -72,7 +72,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
     : (isZaiko ? t('zaiko.title', productProgramValues) : t('earlyAccessTitle'));
 
   const formDesc = isEarlyAccess
-    ? t('earlyAccess.badge')
+    ? t('earlyAccess.badge', productProgramValues)
     : (isZaiko ? t('zaiko.formDescription', productProgramValues) : t('badgeText', productProgramValues));
 
   return (
@@ -136,6 +136,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
                   initialInterest={selectedInterest}
                   productName={resolvedProduct.name}
                   freeMonths={resolvedProduct.earlyAccess.freeMonths}
+                  earlyAccessEnabled={resolvedProduct.earlyAccess.enabled}
                 />
               </NextIntlClientProvider>
             </div>
