@@ -197,7 +197,7 @@
     "productDirectionBody": "Our long-term focus is creating useful software products that solve real problems. We also help clients turn mobile and web ideas into working experiences, from early definition and design through development and testing.",
     "primaryPillarBadge": "PRIMARY DIRECTION",
     "venkoiProductsTitle": "Venkoi Products",
-    "venkoiProductsDesc": "Scalable products such as {productName} designed for widespread operational needs.",
+    "venkoiProductsDesc": "Our current product, {productName}, helps restaurants understand and manage inventory, purchases, activity, and costs.",
     "exploreZaikoCta": "Explore {productName}",
     "clientSolutionsBadge": "SERVICES",
     "servicesTitle": "Mobile & Web",
@@ -206,8 +206,13 @@
     "foundationExpansionEyebrow": "FOUNDATION & EXPANSION",
     "localGlobalHeading": "Close enough to understand. Built to go further.",
     "localGlobalBody": "Venkoi is starting in Tampa Bay, working close to the businesses and people using the software we create. That proximity helps us understand real workflows and real problems — while the products we build are designed to grow far beyond one market.",
+    "locationEyebrow": "WHERE WE WORK",
+    "directBuilderStatement": "Talk directly to the people building your software.",
+    "directBuilderBody": "A direct working relationship keeps decisions close to the problem, the people using the software, and the people responsible for building it.",
     "philosophy": {
-      "heading": "How we think about building software.",
+      "eyebrow": "HOW WE BUILD",
+      "heading": "Practical principles for building useful software.",
+      "body": "These principles guide how Venkoi defines, designs, develops, and tests software.",
       "p1": {
         "title": "Start with the problem.",
         "body": "Technology is not the starting point. First understand the problem, the people involved, and what needs to become easier or better."
@@ -226,8 +231,8 @@
       }
     },
     "footerCta": {
-      "heading": "Have something you want to build?",
-      "body": "You don't need a finished specification. Start with the idea, the problem, or what you want people to be able to do.",
+      "heading": "Want to see what we're building?",
+      "body": "Request a product demo, or start a conversation about Venkoi and the software you need.",
       "primary": "Tell us about your idea",
       "secondary": "Explore our services"
     }

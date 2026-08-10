@@ -27,7 +27,8 @@
     "test:homepage": "tsx scripts/test-homepage-structure.ts",
     "test:product-page": "tsx scripts/test-product-page-structure.ts",
     "test:services": "tsx scripts/test-services-structure.ts",
-    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services",
+    "test:about": "tsx scripts/test-about-structure.ts",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {

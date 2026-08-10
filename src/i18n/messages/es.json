@@ -197,7 +197,7 @@
     "productDirectionBody": "Nuestro enfoque a largo plazo es crear productos de software útiles que resuelvan problemas reales. También ayudamos a convertir ideas móviles y web en experiencias funcionales, desde la definición y el diseño hasta el desarrollo y las pruebas.",
     "primaryPillarBadge": "DIRECCIÓN PRINCIPAL",
     "venkoiProductsTitle": "Productos Venkoi",
-    "venkoiProductsDesc": "Productos escalables como {productName} diseñados para necesidades operativas generales.",
+    "venkoiProductsDesc": "Nuestro producto actual, {productName}, ayuda a restaurantes a entender y gestionar inventario, compras, actividad y costos.",
     "exploreZaikoCta": "Conoce {productName}",
     "clientSolutionsBadge": "SERVICIOS",
     "servicesTitle": "Móvil y Web",
@@ -206,8 +206,13 @@
     "foundationExpansionEyebrow": "BASE Y EXPANSIÓN",
     "localGlobalHeading": "Lo suficientemente cerca para entender. Creado para llegar más lejos.",
     "localGlobalBody": "Venkoi está comenzando en Tampa Bay, trabajando cerca de los negocios y las personas que usan el software que creamos. Esa cercanía nos ayuda a entender procesos y problemas reales, mientras los productos que construimos están diseñados para crecer mucho más allá de un solo mercado.",
+    "locationEyebrow": "DÓNDE TRABAJAMOS",
+    "directBuilderStatement": "Habla directamente con quienes crean tu software.",
+    "directBuilderBody": "Una relación de trabajo directa mantiene las decisiones cerca del problema, de quienes usan el software y de quienes lo construyen.",
     "philosophy": {
-      "heading": "Cómo pensamos al crear software.",
+      "eyebrow": "CÓMO CREAMOS",
+      "heading": "Principios prácticos para crear software útil.",
+      "body": "Estos principios guían cómo Venkoi define, diseña, desarrolla y prueba software.",
       "p1": {
         "title": "Empieza con el problema.",
         "body": "La tecnología no es el punto de partida. Primero entendemos el problema, las personas involucradas y qué debe mejorar o ser más sencillo."
@@ -226,8 +231,8 @@
       }
     },
     "footerCta": {
-      "heading": "¿Quieres crear algo?",
-      "body": "No necesitas una especificación terminada. Empieza con la idea, el problema o lo que quieres que las personas logren.",
+      "heading": "¿Quieres ver lo que estamos creando?",
+      "body": "Solicita una demo del producto o conversemos sobre Venkoi y el software que necesitas.",
       "primary": "Cuéntanos tu idea",
       "secondary": "Conoce nuestros servicios"
     }

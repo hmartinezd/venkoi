@@ -9,6 +9,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { TrackedButton } from '@/components/analytics/TrackedButton';
+import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
 interface PageProps {
@@ -41,6 +42,7 @@ export default async function AboutPage({ params }: PageProps) {
   setRequestLocale(currentLocale);
 
   const t = await getTranslations('aboutPage');
+  const tCommon = await getTranslations('common');
 
   return (
     <>
@@ -114,53 +116,45 @@ export default async function AboutPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      {/* Local / Global Idea */}
-      <Section variant="light" spacing="compact">
-        <Container className="max-w-4xl space-y-8">
-          <div className="space-y-4">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
-              {t('foundationExpansionEyebrow')}
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
-              {t('localGlobalHeading')}
-            </h2>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-surface p-8 text-base text-foreground-muted leading-relaxed">
-            <p>{t('localGlobalBody')}</p>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Philosophy / Principles */}
+      {/* How We Build */}
       <Section variant="surface" className="border-y border-border">
         <Container className="space-y-10">
           <div className="max-w-3xl space-y-4">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
+              {t('philosophy.eyebrow')}
+            </p>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
               {t('philosophy.heading')}
             </h2>
+            <p className="text-base text-foreground-muted leading-relaxed">
+              {t('philosophy.body')}
+            </p>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
+              <span className="block font-mono text-xs font-bold tracking-widest text-orange-text">01</span>
               <h3 className="text-xl font-bold text-ink">{t('philosophy.p1.title')}</h3>
               <p className="text-base text-foreground-muted leading-relaxed">
                 {t('philosophy.p1.body')}
               </p>
             </div>
             <div className="space-y-4">
+              <span className="block font-mono text-xs font-bold tracking-widest text-orange-text">02</span>
               <h3 className="text-xl font-bold text-ink">{t('philosophy.p2.title')}</h3>
               <p className="text-base text-foreground-muted leading-relaxed">
                 {t('philosophy.p2.body')}
               </p>
             </div>
             <div className="space-y-4">
+              <span className="block font-mono text-xs font-bold tracking-widest text-orange-text">03</span>
               <h3 className="text-xl font-bold text-ink">{t('philosophy.p3.title')}</h3>
               <p className="text-base text-foreground-muted leading-relaxed">
                 {t('philosophy.p3.body')}
               </p>
             </div>
             <div className="space-y-4">
+              <span className="block font-mono text-xs font-bold tracking-widest text-orange-text">04</span>
               <h3 className="text-xl font-bold text-ink">{t('philosophy.p4.title')}</h3>
               <p className="text-base text-foreground-muted leading-relaxed">
                 {t('philosophy.p4.body')}
@@ -170,29 +164,71 @@ export default async function AboutPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      {/* Local Context / Direct Relationship */}
+      <Section variant="light" spacing="compact">
+        <Container className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="space-y-5 lg:col-span-7">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
+              {t('foundationExpansionEyebrow')}
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+              {t('localGlobalHeading')}
+            </h2>
+            <p className="max-w-2xl text-base leading-relaxed text-foreground-muted">
+              {t('localGlobalBody')}
+            </p>
+          </div>
+          <div className="space-y-7 border-t border-border pt-8 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+            <div className="space-y-3">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
+                {t('locationEyebrow')}
+              </p>
+              <p className="text-sm font-semibold leading-relaxed text-ink">
+                {tCommon('locationLine')}
+              </p>
+            </div>
+            <p className="border-l-2 border-orange pl-4 text-xl font-bold leading-snug text-ink sm:text-2xl">
+              {t('directBuilderStatement')}
+            </p>
+            <p className="text-sm leading-relaxed text-foreground-muted">
+              {t('directBuilderBody')}
+            </p>
+          </div>
+        </Container>
+      </Section>
+
       {/* Final About CTA */}
-      <Section variant="light" spacing="spacious" className="text-center">
+      <Section variant="dark" spacing="spacious" className="text-center">
         <Container className="max-w-3xl space-y-8">
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               {t('footerCta.heading')}
             </h2>
-            <p className="text-base text-foreground-muted leading-relaxed max-w-xl mx-auto">
+            <p className="mx-auto max-w-xl text-base leading-relaxed text-white/75">
               {t('footerCta.body')}
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <TrackedButton
-              href={getLocalizedPath('contact', currentLocale) + '?type=services&interest=unsure'}
+              href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
               variant="primary"
-              eventName="services_cta"
-              properties={{ locale: currentLocale, source: 'about_footer', interest: 'unsure' }}
+              className="border-orange bg-orange text-ink hover:bg-orange/90"
+              eventName="zaiko_demo_cta"
+              properties={{
+                locale: currentLocale,
+                product: FEATURED_PRODUCT.analyticsProduct,
+                source: 'about_footer'
+              }}
             >
-              {t('footerCta.primary')}
+              {tCommon('demo')}
             </TrackedButton>
-            <Button href={getLocalizedPath('services', currentLocale)} variant="secondary">
-              {t('footerCta.secondary')}
+            <Button
+              href={getLocalizedPath('contact', currentLocale)}
+              variant="secondary"
+              className="border-white/40 bg-transparent text-white hover:border-white hover:bg-white/10"
+            >
+              {tCommon('startConversation')}
             </Button>
           </div>
         </Container>
