@@ -43,13 +43,12 @@ export function ServicesSection({
             {body}
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <Button href={getLocalizedPath('services', locale)} variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+            <Button href={getLocalizedPath('services', locale)} variant="inverse">
               {learnMore}
             </Button>
             <TrackedButton
               href={getLocalizedPath('contact', locale) + '?type=services'}
-              variant="secondary"
-              className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white"
+              variant="inverse"
               eventName="services_cta"
               properties={{ locale, source: 'home' }}
             >

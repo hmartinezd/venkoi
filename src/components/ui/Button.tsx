@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode, ReactElement, ComponentProps } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'text';
+export type ButtonVariant = 'primary' | 'secondary' | 'brand' | 'inverse' | 'text';
 
 type SharedProps = {
   variant?: ButtonVariant;
@@ -23,12 +23,16 @@ type ActionProps = SharedProps & ButtonHTMLAttributes<HTMLButtonElement> & {
 const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-ink text-white border border-transparent hover:bg-ink/90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange shadow-sm',
   secondary: 'bg-surface text-ink border border-border hover:border-ink hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange',
+  brand: 'bg-orange text-ink border border-orange hover:bg-orange hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white focus-visible:ring-offset-ink shadow-sm',
+  inverse: 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange focus-visible:ring-offset-ink',
   text: 'bg-transparent text-ink border border-transparent p-0 hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange'
 };
 
 const baseClasses: Record<ButtonVariant, string> = {
   primary: 'inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
   secondary: 'inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
+  brand: 'inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
+  inverse: 'inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60',
   text: 'inline-flex items-center justify-center text-sm font-semibold transition duration-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60'
 };
 
@@ -71,5 +75,4 @@ export function Button(props: LinkProps | ActionProps) {
     </button>
   );
 }
-
 

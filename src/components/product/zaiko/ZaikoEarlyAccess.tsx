@@ -58,8 +58,8 @@ export function ZaikoEarlyAccess({
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <TrackedButton
             href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
-            variant="primary"
-            className="bg-orange text-ink hover:bg-orange hover:shadow-md w-full sm:w-auto"
+            variant="brand"
+            className="w-full sm:w-auto"
             eventName="zaiko_demo_cta"
             properties={{
               locale,
@@ -71,8 +71,8 @@ export function ZaikoEarlyAccess({
           </TrackedButton>
           <TrackedButton
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
-            variant="secondary"
-            className="border-white/20 text-white bg-white/5 hover:bg-white/10 hover:border-white/40 w-full sm:w-auto"
+            variant="inverse"
+            className="w-full sm:w-auto"
             eventName="zaiko_early_access_cta"
             properties={{
               locale,

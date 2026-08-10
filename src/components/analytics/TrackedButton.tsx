@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
+import { Button, type ButtonVariant } from '@/components/ui/Button';
 import { trackCustomEvent, type AnalyticsEventName, type SafeAnalyticsProperties } from '@/lib/analytics';
 import { type ReactNode } from 'react';
 
@@ -8,7 +8,7 @@ interface TrackedButtonProps {
   eventName: AnalyticsEventName;
   properties?: SafeAnalyticsProperties;
   href: string;
-  variant?: 'primary' | 'secondary' | 'text';
+  variant?: ButtonVariant;
   className?: string;
   children: ReactNode;
 }

@@ -28,8 +28,7 @@ export function ServiceCta({ locale, heading, body, cta, interest }: ServiceCtaP
           </p>
           <TrackedButton
             href={contactHref}
-            variant="primary"
-            className="bg-orange hover:bg-orange hover:shadow-md border-orange text-ink"
+            variant="brand"
             eventName="services_cta"
             properties={{ locale, source, interest }}
           >

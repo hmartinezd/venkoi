@@ -212,8 +212,7 @@ export default async function AboutPage({ params }: PageProps) {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <TrackedButton
               href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
-              variant="primary"
-              className="border-orange bg-orange text-ink hover:bg-orange/90"
+              variant="brand"
               eventName="zaiko_demo_cta"
               properties={{
                 locale: currentLocale,
@@ -225,8 +224,7 @@ export default async function AboutPage({ params }: PageProps) {
             </TrackedButton>
             <Button
               href={getLocalizedPath('contact', currentLocale)}
-              variant="secondary"
-              className="border-white/40 bg-transparent text-white hover:border-white hover:bg-white/10"
+              variant="inverse"
             >
               {tCommon('startConversation')}
             </Button>
