@@ -50,15 +50,19 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const isZaiko = selectedProduct === 'zaiko';
   const isEarlyAccess = selectedInterest === 'early-access';
+  const productProgramValues = {
+    productName: FEATURED_PRODUCT.name,
+    freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
+  };
 
   let eyebrowText = isZaiko ? t('zaiko.eyebrow') : t('eyebrow');
   let headingText = isZaiko ? t('zaiko.heading') : t('heading');
   let bodyText = isZaiko ? t('zaiko.body') : t('body');
 
   if (isZaiko && isEarlyAccess) {
-    eyebrowText = t('earlyAccess.eyebrow');
-    headingText = t('earlyAccess.heading');
-    bodyText = t('earlyAccess.body');
+    eyebrowText = t('earlyAccess.eyebrow', productProgramValues);
+    headingText = t('earlyAccess.heading', productProgramValues);
+    bodyText = t('earlyAccess.body', productProgramValues);
   }
 
   const formTitle = isEarlyAccess
@@ -67,7 +71,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const formDesc = isEarlyAccess
     ? t('earlyAccess.badge')
-    : (isZaiko ? t('zaiko.formDescription') : t('badgeText'));
+    : (isZaiko ? t('zaiko.formDescription') : t('badgeText', productProgramValues));
 
   return (
     <Section variant="light" className="pt-14 pb-20 md:pt-20 md:pb-28">

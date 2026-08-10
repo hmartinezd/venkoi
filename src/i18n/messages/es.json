@@ -61,7 +61,7 @@
     "zaiko": {
       "eyebrow": "ZAIKO · UN PRODUCTO VENKOI",
       "badge": "ACCESO ANTICIPADO",
-      "badgeText": "Usa Zaiko gratis durante 3 meses.",
+      "badgeText": "Usa {productName} gratis durante {freeMonths} meses.",
       "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
       "body": "Zaiko ofrece a los restaurantes una forma más clara de gestionar inventario, compras, costos y movimientos de productos desde un solo lugar.",
       "discoverCta": "Conoce Zaiko",
@@ -332,13 +332,13 @@
       "successMessage": "Revisaremos la información que compartiste y nos pondremos en contacto para ver cómo Zaiko podría adaptarse a la operación de tu restaurante."
     },
     "earlyAccess": {
-      "eyebrow": "ACCESO ANTICIPADO DE ZAIKO",
-      "heading": "Prueba Zaiko a través de nuestro acceso anticipado.",
-      "body": "Únete a nuestro programa de acceso anticipado y usa Zaiko gratis durante 3 meses mientras continuamos mejorando el producto junto a operadores de restaurantes.",
+      "eyebrow": "ACCESO ANTICIPADO DE {productName}",
+      "heading": "Comienza a usar {productName} a través de nuestro acceso anticipado.",
+      "body": "Únete al programa de acceso anticipado y usa {productName} gratis durante {freeMonths} meses. Los operadores de restaurantes participantes pueden comenzar a usar el producto y compartir sus comentarios directamente con Venkoi.",
       "formTitle": "Solicitud de acceso anticipado",
       "badge": "3 meses gratis durante el acceso anticipado.",
       "successTitle": "Gracias — recibimos tu solicitud de acceso anticipado.",
-      "successMessage": "Revisaremos tu información y nos pondremos en contacto sobre el siguiente paso para probar Zaiko a través del acceso anticipado."
+      "successMessage": "Revisaremos tu información y nos pondremos en contacto sobre el siguiente paso para usar {productName} a través del acceso anticipado."
     },
     "nextSteps": {
       "heading": "¿Qué pasa después?",
@@ -349,7 +349,7 @@
     },
     "earlyAccessTitle": "Programa de Acceso Anticipado",
     "badge": "ACCESO ANTICIPADO",
-    "badgeText": "Prueba Zaiko gratis durante 3 meses en acceso anticipado.",
+    "badgeText": "Usa {productName} gratis durante {freeMonths} meses en acceso anticipado.",
     "direct": {
       "heading": "¿Prefieres escribirnos directamente?",
       "body": "WhatsApp está disponible como alternativa al formulario de demo.",
@@ -492,13 +492,13 @@
     },
     "earlyAccess": {
       "eyebrow": "ACCESO ANTICIPADO",
-      "heading": "Usa Zaiko gratis durante 3 meses.",
-      "body": "Únete a nuestro programa de acceso anticipado y usa Zaiko gratis durante 3 meses mientras seguimos perfeccionando el producto con operadores de restaurantes.",
+      "heading": "Usa {productName} gratis durante {freeMonths} meses.",
+      "body": "Únete a nuestro programa de acceso anticipado y usa {productName} gratis durante {freeMonths} meses. Los operadores de restaurantes participantes pueden comenzar a usar el producto y compartir sus comentarios directamente con Venkoi mientras el producto continúa evolucionando.",
       "details": [
-        "El producto está en fase de perfeccionamiento",
-        "Los operadores participantes pueden probar Zaiko",
-        "Los comentarios pueden ayudar a dar forma al producto",
-        "El uso durante el Acceso Anticipado es gratuito por 3 meses"
+        "Usa {productName} gratis durante {freeMonths} meses",
+        "Comienza a usar el producto en tu restaurante",
+        "Comparte tus comentarios directamente con Venkoi",
+        "Accede a la oferta de lanzamiento sin costo durante {freeMonths} meses"
       ],
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Únete al acceso anticipado"
@@ -508,7 +508,7 @@
       "items": [
         {
           "q": "¿Qué es Zaiko?",
-          "a": "Zaiko es un producto de Venkoi diseñado para ayudar a los restaurantes a gestionar y entender el inventario, las compras, los costos y la actividad de los productos desde un espacio de trabajo más claro."
+          "a": "{productName} es un producto de Venkoi que ayuda a los restaurantes a gestionar y entender el inventario, las compras, los costos y la actividad de los productos desde un espacio de trabajo más claro."
         },
         {
           "q": "¿Para quién es Zaiko?",
@@ -520,10 +520,10 @@
         },
         {
           "q": "¿Qué es el programa de Acceso Anticipado?",
-          "a": "El Acceso Anticipado permite a los operadores de restaurantes participantes usar Zaiko gratis durante 3 meses mientras Venkoi continúa perfeccionando el producto."
+          "a": "El programa de Acceso Anticipado permite a operadores de restaurantes participantes usar {productName} gratis durante {freeMonths} meses y compartir sus comentarios directamente con Venkoi durante la etapa inicial de lanzamiento del producto."
         },
         {
-          "q": "¿Cómo puedo probar Zaiko?",
+          "q": "¿Cómo puedo comenzar a usar {productName}?",
           "a": "Solicita una demostración o únete al programa de Acceso Anticipado para comenzar."
         }
       ]

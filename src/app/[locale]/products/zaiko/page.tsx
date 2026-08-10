@@ -140,9 +140,14 @@ export default async function ZaikoPage({ params }: PageProps) {
     }
   };
 
+  const productProgramValues = {
+    productName: FEATURED_PRODUCT.name,
+    freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
+  };
+
   const faqItems = ['0', '1', '2', '3', '4'].map(idx => ({
-    q: tFaq(`items.${idx}.q`),
-    a: tFaq(`items.${idx}.a`)
+    q: tFaq(`items.${idx}.q`, productProgramValues),
+    a: tFaq(`items.${idx}.a`, productProgramValues)
   }));
 
   return (
@@ -291,13 +296,13 @@ export default async function ZaikoPage({ params }: PageProps) {
       <ZaikoEarlyAccess
         locale={currentLocale}
         eyebrow={tEarlyAccess('eyebrow')}
-        heading={tEarlyAccess('heading')}
-        body={tEarlyAccess('body')}
+        heading={tEarlyAccess('heading', productProgramValues)}
+        body={tEarlyAccess('body', productProgramValues)}
         details={[
-          tEarlyAccess('details.0'),
-          tEarlyAccess('details.1'),
-          tEarlyAccess('details.2'),
-          tEarlyAccess('details.3')
+          tEarlyAccess('details.0', productProgramValues),
+          tEarlyAccess('details.1', productProgramValues),
+          tEarlyAccess('details.2', productProgramValues),
+          tEarlyAccess('details.3', productProgramValues)
         ]}
         primaryCta={tEarlyAccess('primaryCta')}
         secondaryCta={tEarlyAccess('secondaryCta')}

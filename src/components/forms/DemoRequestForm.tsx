@@ -6,7 +6,7 @@ import { FormField } from './FormField';
 import { FormStatus } from './FormStatus';
 import { Button } from '@/components/ui/Button';
 import { trackCustomEvent } from '@/lib/analytics';
-import { getDefaultDemoProduct } from '@/lib/products';
+import { FEATURED_PRODUCT, getDefaultDemoProduct } from '@/lib/products';
 import type { Locale } from '@/i18n/config';
 
 interface DemoRequestFormProps {
@@ -215,7 +215,7 @@ export function DemoRequestForm({
       : tp('standard.successTitle');
 
     const successMessage = formData.early_access_interest
-      ? tp('earlyAccess.successMessage')
+      ? tp('earlyAccess.successMessage', { productName: FEATURED_PRODUCT.name })
       : tp('standard.successMessage');
 
     return (
@@ -414,4 +414,3 @@ export function DemoRequestForm({
     </form>
   );
 }
-

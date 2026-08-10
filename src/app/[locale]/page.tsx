@@ -128,7 +128,10 @@ export default async function HomePage({ params }: PageProps) {
         discoverCta={tHome('zaiko.discoverCta')}
         demoCta={tHome('zaiko.demoCta')}
         badge={tHome('zaiko.badge')}
-        badgeText={tHome('zaiko.badgeText')}
+        badgeText={tHome('zaiko.badgeText', {
+          productName: FEATURED_PRODUCT.name,
+          freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
+        })}
         theme1Title={tHome('zaiko.theme1Title')}
         theme1Desc={tHome('zaiko.theme1Desc')}
         theme2Title={tHome('zaiko.theme2Title')}

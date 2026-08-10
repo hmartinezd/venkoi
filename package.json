@@ -17,9 +17,10 @@
     "test:navigation": "tsx scripts/test-navigation-intent.ts",
     "test:site-config": "tsx scripts/test-site-config.ts",
     "test:contact": "tsx scripts/test-contact-config.ts",
+    "test:products": "tsx scripts/test-products.ts",
     "test:leads": "tsx scripts/test-lead-flow.ts",
     "test:seo": "tsx scripts/test-seo-regression.ts",
-    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:contact && npm run test:leads && npm run test:seo",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:contact && npm run test:leads && npm run test:seo",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {

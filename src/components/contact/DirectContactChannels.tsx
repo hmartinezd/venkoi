@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/Button';
 import { PUBLIC_CONTACT, buildEmailUrl, buildWhatsAppUrl } from '@/lib/contact';
 import { cn } from '@/lib/utils';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
+import { EmailIcon } from '@/components/icons/EmailIcon';
 
 type DirectContactChannelsProps = {
   whatsappMessage: string;
@@ -44,8 +46,9 @@ export function DirectContactChannels({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={whatsappAriaLabel}
-          className="rounded-sm font-medium text-ink outline-none transition hover:text-orange focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
+          className="inline-flex items-center gap-2 rounded-sm font-medium text-ink outline-none transition hover:text-orange focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
         >
+          <WhatsAppIcon className="h-[18px] w-[18px] shrink-0" />
           {whatsappLabel}
         </a>
       ) : (
@@ -55,8 +58,9 @@ export function DirectContactChannels({
           rel="noopener noreferrer"
           aria-label={whatsappAriaLabel}
           variant="primary"
-          className="min-h-11"
+          className="min-h-11 gap-2"
         >
+          <WhatsAppIcon className="h-5 w-5 shrink-0" />
           {whatsappLabel}
         </Button>
       )}
@@ -66,8 +70,9 @@ export function DirectContactChannels({
           <a
             href={buildEmailUrl(emailSubject)}
             aria-label={emailAriaLabel}
-            className="rounded-sm font-medium text-ink outline-none transition hover:text-orange focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
+            className="inline-flex items-center gap-2 rounded-sm font-medium text-ink outline-none transition hover:text-orange focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
           >
+            <EmailIcon className="h-[18px] w-[18px] shrink-0" />
             {emailLabel}
           </a>
         ) : (
@@ -75,8 +80,9 @@ export function DirectContactChannels({
             href={buildEmailUrl(emailSubject)}
             aria-label={emailAriaLabel}
             variant="secondary"
-            className="min-h-11"
+            className="min-h-11 gap-2"
           >
+            <EmailIcon className="h-5 w-5 shrink-0" />
             <span className="flex min-w-0 flex-col items-center">
               <span>{emailLabel}</span>
               {showEmailAddress ? (

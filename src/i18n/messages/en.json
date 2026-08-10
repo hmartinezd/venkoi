@@ -61,7 +61,7 @@
     "zaiko": {
       "eyebrow": "ZAIKO · A VENKOI PRODUCT",
       "badge": "EARLY ACCESS",
-      "badgeText": "Try Zaiko free for 3 months.",
+      "badgeText": "Use {productName} free for {freeMonths} months.",
       "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
       "body": "Zaiko gives restaurants a clearer way to manage inventory, purchases, costs, and product activity — all from one place.",
       "discoverCta": "Discover Zaiko",
@@ -332,13 +332,13 @@
       "successMessage": "We'll review the information you shared and follow up about seeing how Zaiko could fit your restaurant operation."
     },
     "earlyAccess": {
-      "eyebrow": "ZAIKO EARLY ACCESS",
-      "heading": "Try Zaiko through Early Access.",
-      "body": "Join our Early Access program and use Zaiko free for 3 months while we continue refining the product with restaurant operators.",
+      "eyebrow": "{productName} EARLY ACCESS",
+      "heading": "Start using {productName} through Early Access.",
+      "body": "Join the Early Access program and use {productName} free for {freeMonths} months. Participating restaurant operators can start using the product and share feedback directly with Venkoi.",
       "formTitle": "Early Access Request",
       "badge": "3 months free during Early Access.",
       "successTitle": "Thanks — we received your Early Access request.",
-      "successMessage": "We'll review your information and follow up about the next step for trying Zaiko through Early Access."
+      "successMessage": "We'll review your information and follow up about the next step for using {productName} through Early Access."
     },
     "nextSteps": {
       "heading": "What happens next?",
@@ -349,7 +349,7 @@
     },
     "earlyAccessTitle": "Early Access Program",
     "badge": "EARLY ACCESS",
-    "badgeText": "Try Zaiko free for 3 months during early access.",
+    "badgeText": "Use {productName} free for {freeMonths} months during Early Access.",
     "direct": {
       "heading": "Prefer to message us directly?",
       "body": "WhatsApp is available as an alternative to the demo form.",
@@ -492,13 +492,13 @@
     },
     "earlyAccess": {
       "eyebrow": "EARLY ACCESS",
-      "heading": "Try Zaiko free for 3 months.",
-      "body": "Join our early access program and use Zaiko free for 3 months while we continue refining the product with restaurant operators.",
+      "heading": "Use {productName} free for {freeMonths} months.",
+      "body": "Join our Early Access program and use {productName} free for {freeMonths} months. Participating restaurant operators can start using the product and share feedback directly with Venkoi as it continues to evolve.",
       "details": [
-        "The product is being refined",
-        "Participating operators can try Zaiko",
-        "Feedback may help shape the product",
-        "Early Access use is free for 3 months"
+        "Use {productName} free for {freeMonths} months",
+        "Start using the product in your restaurant",
+        "Share feedback directly with Venkoi",
+        "Access the launch offer at no cost for {freeMonths} months"
       ],
       "primaryCta": "Request a Demo",
       "secondaryCta": "Join Early Access"
@@ -508,7 +508,7 @@
       "items": [
         {
           "q": "What is Zaiko?",
-          "a": "Zaiko is a Venkoi product designed to help restaurants manage and understand inventory, purchases, costs, and product activity from one clearer workspace."
+          "a": "{productName} is a Venkoi product that helps restaurants manage and understand inventory, purchases, costs, and product activity from one clearer workspace."
         },
         {
           "q": "Who is Zaiko for?",
@@ -520,10 +520,10 @@
         },
         {
           "q": "What is the Early Access program?",
-          "a": "Early Access lets participating restaurant operators use Zaiko free for 3 months while Venkoi continues refining the product."
+          "a": "Early Access lets participating restaurant operators use {productName} free for {freeMonths} months and share feedback directly with Venkoi during the product's early launch period."
         },
         {
-          "q": "How can I try Zaiko?",
+          "q": "How can I start using {productName}?",
           "a": "Request a demo or join the Early Access program to get started."
         }
       ]
