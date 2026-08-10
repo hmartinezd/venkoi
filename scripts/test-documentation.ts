@@ -1,0 +1,64 @@
+import assert from 'node:assert/strict';
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+const root = resolve(import.meta.dirname, '..');
+const read = (path: string) => readFileSync(resolve(root, path), 'utf8');
+
+const readme = read('README.md');
+const launchPath = resolve(root, 'docs/LAUNCH.md');
+assert.ok(existsSync(launchPath), 'docs/LAUNCH.md must exist');
+const launch = read('docs/LAUNCH.md');
+
+for (const term of ['Node.js 24', 'Next.js 16', 'React 19']) {
+  assert.ok(readme.includes(term), `README must document ${term}`);
+}
+for (const stale of ['Node.js 20+', 'Next.js 15.5', 'React 18']) {
+  assert.ok(!readme.includes(stale), `README must not document stale platform term ${stale}`);
+}
+
+assert.match(readme, /npm ci/, 'README clean setup must use npm ci');
+assert.match(readme, /\.nvmrc/, 'README must document .nvmrc');
+assert.match(readme, /\[launch runbook\]\(docs\/LAUNCH\.md\)/, 'README must link to launch runbook');
+assert.match(readme, /npm run quality/, 'README must document npm run quality');
+assert.match(readme, /npm run test:regression/, 'README must document npm run test:regression');
+assert.match(readme, /Deferred Production Infrastructure/, 'README must qualify external production readiness');
+assert.doesNotMatch(readme, /production forms are fully operational/i, 'README must not claim forms are fully operational');
+
+const envLines = read('.env.example').split(/\r?\n/);
+const env = new Map<string, string>();
+for (const line of envLines) {
+  const match = line.match(/^([A-Z][A-Z0-9_]*)=(.*)$/);
+  if (match) env.set(match[1], match[2]);
+}
+for (const variable of [
+  'DATABASE_URL',
+  'RESEND_API_KEY',
+  'RESEND_FROM_EMAIL',
+  'LEADS_NOTIFICATION_EMAIL',
+  'SITE_URL'
+]) {
+  assert.ok(env.has(variable), `.env.example must include ${variable}`);
+}
+for (const secret of ['DATABASE_URL', 'RESEND_API_KEY', 'RESEND_FROM_EMAIL', 'LEADS_NOTIFICATION_EMAIL']) {
+  assert.equal(env.get(secret), '', `${secret} must not contain a committed credential or operational value`);
+}
+assert.equal(env.get('SITE_URL'), 'https://venkoi.com', 'SITE_URL must show the canonical public origin');
+
+const migrations = [
+  'db/migrations/001_create_leads.sql',
+  'db/migrations/002_harden_leads.sql',
+  'db/migrations/003_update_service_interests.sql'
+];
+for (const migration of migrations) assert.ok(existsSync(resolve(root, migration)), `${migration} must exist`);
+const migrationPositions = migrations.map((migration) => {
+  const segments = migration.split('/');
+  return launch.indexOf(segments[segments.length - 1]);
+});
+assert.ok(migrationPositions.every((position) => position >= 0), 'Runbook must name all migrations');
+assert.ok(migrationPositions[0] < migrationPositions[1] && migrationPositions[1] < migrationPositions[2], 'Runbook must present migrations in numeric order');
+
+assert.match(launch, /Deferred Production Infrastructure/, 'Runbook must identify deferred infrastructure');
+assert.match(launch, /Privacy Policy \/ Terms pages are required for launch/, 'Runbook must preserve the owner/legal launch decision');
+
+console.log('Documentation regression checks passed.');

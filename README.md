@@ -1,105 +1,57 @@
 # Venkoi
 
-A Next.js marketing site and digital product platform for Venkoi prepared for production deployment.
+The Venkoi marketing and product website. Its application architecture is production-oriented; external lead infrastructure is configured separately and must be verified before launch.
 
 ## Stack
 
-- Next.js 15.5 App Router
-- TypeScript
-- React 18
+- Node.js 24 (see `.nvmrc`)
+- Next.js 16 App Router, with Server Components by default
+- React 19 and TypeScript 5
 - Tailwind CSS 4
-- next-intl (English & Spanish localization)
-- Neon Serverless PostgreSQL
-- Resend (Transactional emails)
-- Vercel BotID (Bot protection)
-- Vercel Web Analytics & Speed Insights
+- next-intl 4 for English and Spanish localization through `src/proxy.ts`
+- Zod 4 and ESLint 10
+- Neon Serverless PostgreSQL and Resend for the lead pipeline
+- Vercel deployment, BotID, Analytics, and Speed Insights
 
-## Local Setup
+## Local setup
 
-1. Install Node.js 20+ and npm.
-2. Run `npm install`.
-3. Run `npm run dev`.
+The marketing site renders locally without production lead-service secrets.
 
-## Available Commands
+1. Use Node.js 24; `.nvmrc` is the preferred local runtime indicator.
+2. Install the committed dependency graph with `npm ci`.
+3. Only when testing local lead infrastructure, copy `.env.example` to `.env.local` and supply appropriate local/test configuration.
+4. Run `npm run dev`.
 
-- `npm run dev` - start local development server
-- `npm run quality` - run full quality gate: lint, typecheck, regression tests, and production build
-- `npm run test:regression` - run all local-safe regression scripts
-- `npm run build` - run lint, typecheck, and Next.js production build
-- `npm run lint` - run ESLint checks
-- `npm run typecheck` - run TypeScript type checking
+## Lead infrastructure status
 
-## Quality Gate & Regression Harness
+**Deferred Production Infrastructure:** the Contact and Demo UI, validation, persistence, and email integrations are code-ready, but repository code does not prove that Neon, Resend, Vercel environment variables, or production BotID behavior are operationally configured. Forms must not be treated as production-operational until the external launch checklist is complete.
 
-The repository includes a technical quality gate that runs on every Pull Request and push to `main` via GitHub Actions.
+Database persistence is required for a successful submission. A database failure produces `SUBMISSION_ERROR`. If persistence succeeds but email delivery is unavailable or fails, the submission remains successful because the lead has already been stored; the email issue is logged.
 
-### Regression Suite
-- **Routing**: Validates localized path generation and route key detection.
-- **Navigation Intent**: Ensures search parameter normalization for contact and demo intents.
-- **Site Config**: Verifies environment-specific behavior (Production vs Preview vs Development).
-- **Lead Flow**: Validates lead validation logic and ensures safe failure semantics when the database is unavailable.
+See the [launch runbook](docs/LAUNCH.md) for the environment contract, migration sequence, service configuration, and manual production verification.
 
-Before merging to `main`, ensure `npm run quality` passes locally. This command performs a complete verification including the production build.
+## Important commands
 
-> **CI Status**: Once the Quality workflow has proven stable, the repository owner may optionally require its status check as a branch protection rule before merging.
+- `npm run dev` — start the local development server
+- `npm run lint` — run ESLint, including deprecated API detection
+- `npm run typecheck` — run TypeScript checking
+- `npm run test:regression` — run the combined regression suite
+- `npm run quality` — run lint, typecheck, the regression suite, and a Next production build
+- `npm run build:next` — run the Next.js production build
 
-## Lead Infrastructure & Database Migrations Setup
+`package.json` is the source of truth for focused test commands.
 
-To enable lead persistence and email notifications:
+## Quality architecture
 
-### New Database Setup
+The regression suite covers these stable areas without duplicating every individual script here:
 
-If setting up a fresh Neon PostgreSQL instance:
+- Routing & Navigation
+- Product Configuration
+- Lead & Contact Flow
+- SEO & Accessibility
+- Rendering Boundaries
+- Page Structure
+- Platform Modernization
+- Insights & Content Consistency, including English/Spanish parity
 
-1. Create a PostgreSQL database on [Neon](https://neon.tech).
-2. Copy the serverless database connection URL (`postgresql://...`).
-3. Configure `DATABASE_URL` in your environment variables.
-4. Execute migration scripts in sequence using `psql` or the Neon SQL Console:
-   ```bash
-   psql "$DATABASE_URL" -f db/migrations/001_create_leads.sql
-   psql "$DATABASE_URL" -f db/migrations/002_harden_leads.sql
-   psql "$DATABASE_URL" -f db/migrations/003_update_service_interests.sql
-   ```
-
-### Existing Database Upgrade
-
-If upgrading an existing database at migration 002, apply migration 003:
-```bash
-psql "$DATABASE_URL" -f db/migrations/003_update_service_interests.sql
-```
-
-> **Canonical Interest Values & Normalization**: The application emits canonical service interest values (`mobile`, `web`, `unsure`). Older incoming query or payload values (`website`, `web_application`) are automatically normalized to `web` at the server validation boundary before database persistence.
-
-## Environment & SEO Indexing Architecture
-
-- **Vercel Production** (`VERCEL_ENV=production`): Fully indexable (`Allow: /` in `robots.txt`, `index, follow` metadata).
-- **Vercel Preview** (`VERCEL_ENV=preview`): Non-indexable (`Disallow: /` in `robots.txt`, `noindex, nofollow` metadata), even when running Next.js in production mode (`NODE_ENV=production`).
-- **Canonical Origin**: `SITE_URL` (defaults to `https://venkoi.com`) remains the production canonical domain across all environments, ensuring preview deployments point canonical tags to the production domain without creating duplicate content issues on `*.vercel.app`.
-
-## Production Launch Setup Checklist
-
-Follow these step-by-step instructions when launching to production:
-
-1. **Custom Domain**: Configure your production custom domain (`venkoi.com`) in Vercel Project Settings.
-2. **Site Origin**: Configure `SITE_URL=https://venkoi.com` in Vercel Environment Variables.
-3. **Database Connection**: Create a Neon PostgreSQL instance and retrieve the serverless connection string.
-4. **Database URL**: Set `DATABASE_URL` in Vercel Environment Variables.
-5. **Apply Migration 001**: Execute `db/migrations/001_create_leads.sql`.
-6. **Apply Migration 002**: Execute `db/migrations/002_harden_leads.sql`.
-7. **Apply Migration 003**: Execute `db/migrations/003_update_service_interests.sql`.
-8. **Verify Schema**: Confirm tables and constraints (`chk_leads_lead_type`, `chk_leads_interest`, `chk_leads_locale`, etc.) exist in Neon.
-9. **Resend Setup**: Create an account on [Resend](https://resend.com).
-10. **Domain Verification**: Verify your sending domain (`venkoi.com`) in Resend DNS settings.
-11. **Resend API Key**: Configure `RESEND_API_KEY` in Vercel Environment Variables.
-12. **Sender Email**: Set `RESEND_FROM_EMAIL` (e.g. `Venkoi <notifications@venkoi.com>`).
-13. **Notification Recipient**: Set `LEADS_NOTIFICATION_EMAIL` for internal team lead alerts.
-14. **Vercel Analytics**: Enable Vercel Web Analytics in the Vercel Dashboard project settings.
-15. **Speed Insights**: Enable Vercel Speed Insights in the Vercel Dashboard project settings.
-16. **Bot Protection**: Verify BotID traffic and rules in Vercel Firewall.
-17. **Redeploy**: Trigger a production deployment on Vercel.
-18. **Form Testing**: Conduct end-to-end submissions on English (`/en/demo`, `/en/contact`) and Spanish (`/es/demo`, `/es/contacto`) forms.
-19. **Verify Emails**: Confirm both internal alert emails and user acknowledgement emails arrive successfully.
-20. **Verify Sitemap**: Check `https://venkoi.com/sitemap.xml` returns valid XML.
-21. **Verify Robots**: Check `https://venkoi.com/robots.txt` specifies production indexing rules (`Allow: /` in Production, `Disallow: /` in Preview).
-22. **Verify Canonical Tags**: Inspect `<link rel="canonical">` and `hreflang` metadata on live HTML pages.
-23. **Verify Social Assets**: Test social card sharing previews (OpenGraph & Twitter images) on social platforms or debuggers.
+The GitHub Actions `Quality` workflow runs `npm ci` and `npm run quality` with Node.js 24 on pushes to `main` and pull requests targeting `main`. Run `npm run quality` locally before merging.
