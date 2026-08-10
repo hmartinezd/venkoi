@@ -33,9 +33,11 @@ for (const component of expectedOrder) {
 assert.ok(!page.includes('ZaikoFeatureSection'), 'Product page should not render ZaikoFeatureSection');
 assert.ok(page.trimEnd().endsWith('</>\n  );\n}'), 'Final CTA should remain the final rendered page section');
 
+assert.ok(capabilities.includes('id={capability.id}'), 'Capabilities should render dynamic capability anchor ids');
+
 for (const area of ['inventory', 'purchases', 'activity', 'costs']) {
   assert.ok(explorer.includes(`'${area}'`), `Explorer should include the ${area} area key`);
-  assert.ok(capabilities.includes("id={capability.id}"), 'Capabilities should render each capability anchor id');
+  assert.ok(page.includes(`'${area}'`), `Product page capability source should include the ${area} id`);
   assert.ok(productNav.includes(`href: '#${area}'`), `Product navigation should preserve #${area}`);
 }
 

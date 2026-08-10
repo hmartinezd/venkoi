@@ -114,10 +114,10 @@ export default async function HomePage({ params }: PageProps) {
 
       <ZaikoFeature
         locale={currentLocale}
-        eyebrow={tHome('zaiko.eyebrow')}
+        eyebrow={tHome('zaiko.eyebrow', { productName: FEATURED_PRODUCT.name })}
         heading={tHome('zaiko.heading')}
-        body={tHome('zaiko.body')}
-        discoverCta={tHome('zaiko.discoverCta')}
+        body={tHome('zaiko.body', { productName: FEATURED_PRODUCT.name })}
+        discoverCta={tHome('zaiko.discoverCta', { productName: FEATURED_PRODUCT.name })}
         demoCta={tHome('zaiko.demoCta')}
         badge={tHome('zaiko.badge')}
         badgeText={tHome('zaiko.badgeText', {

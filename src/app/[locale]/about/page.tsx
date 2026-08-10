@@ -9,6 +9,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { TrackedButton } from '@/components/analytics/TrackedButton';
+import { FEATURED_PRODUCT } from '@/lib/products';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -82,12 +83,12 @@ export default async function AboutPage({ params }: PageProps) {
                 </span>
                 <h3 className="text-2xl font-bold text-ink">{t('venkoiProductsTitle')}</h3>
                 <p className="text-sm text-foreground-muted leading-relaxed">
-                  {t('venkoiProductsDesc')}
+                  {t('venkoiProductsDesc', { productName: FEATURED_PRODUCT.name })}
                 </p>
               </div>
               <div className="pt-4 border-t border-border">
                 <Button href={getLocalizedPath('productsZaiko', currentLocale)} variant="secondary">
-                  {t('exploreZaikoCta')}
+                  {t('exploreZaikoCta', { productName: FEATURED_PRODUCT.name })}
                 </Button>
               </div>
             </div>

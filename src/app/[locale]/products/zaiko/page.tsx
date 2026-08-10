@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = await getTranslations({ locale: currentLocale, namespace: 'zaikoPage.seo' });
 
   return createMetadata({
-    title: t('title'),
-    description: t('description'),
+    title: t('title', { productName: FEATURED_PRODUCT.name }),
+    description: t('description', { productName: FEATURED_PRODUCT.name }),
     routeKey: 'productsZaiko',
     locale: currentLocale
   });
@@ -106,24 +106,24 @@ export default async function ZaikoPage({ params }: PageProps) {
     }
   };
 
+  const productProgramValues = {
+    productName: FEATURED_PRODUCT.name,
+    freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
+  };
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: FEATURED_PRODUCT.name,
     url: `${origin}${getLocalizedPath('productsZaiko', currentLocale)}`,
     applicationCategory: 'BusinessApplication',
-    description: tSeo('description'),
+    description: tSeo('description', productProgramValues),
     operatingSystem: 'Web',
     author: {
       '@type': 'Organization',
       name: 'Venkoi',
       url: origin
     }
-  };
-
-  const productProgramValues = {
-    productName: FEATURED_PRODUCT.name,
-    freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
   };
 
   const faqItems = ['0', '1', '2', '3', '4'].map(idx => ({
@@ -156,9 +156,9 @@ export default async function ZaikoPage({ params }: PageProps) {
       {/* Hero Section */}
       <ZaikoHero
         locale={currentLocale}
-        eyebrow={tHero('eyebrow')}
+        eyebrow={tHero('eyebrow', productProgramValues)}
         heading={tHero('heading')}
-        body={tHero('body')}
+        body={tHero('body', productProgramValues)}
         primaryCta={tHero('primaryCta')}
         secondaryCta={tHero('secondaryCta')}
         microcopy={tHero('microcopy')}
@@ -171,21 +171,21 @@ export default async function ZaikoPage({ params }: PageProps) {
         intro={{
           eyebrow: tIntro('eyebrow'),
           heading: tIntro('heading'),
-          body: tIntro('body')
+          body: tIntro('body', productProgramValues)
         }}
         problem={{
           eyebrow: tProblem('eyebrow'),
           heading: tProblem('heading'),
-          body: tProblem('body')
+          body: tProblem('body', productProgramValues)
         }}
       />
 
       {/* Product Explorer */}
       <ZaikoExplorer
         locale={currentLocale}
-        eyebrow={tExplorer('eyebrow')}
+        eyebrow={tExplorer('eyebrow', productProgramValues)}
         heading={tExplorer('heading')}
-        body={tExplorer('body')}
+        body={tExplorer('body', productProgramValues)}
         detailLinkLabel={tExplorer('detailLink', { area: '{area}' })}
         demoCtaLabel={tExplorer('demoCta')}
         areas={explorerAreas}
@@ -201,7 +201,7 @@ export default async function ZaikoPage({ params }: PageProps) {
           id,
           eyebrow: tAreas(`${id}.eyebrow`),
           heading: tAreas(`${id}.heading`),
-          body: tAreas(`${id}.body`),
+          body: tAreas(`${id}.body`, productProgramValues),
           supporting: [
             tAreas(`${id}.supporting.0`),
             tAreas(`${id}.supporting.1`),
@@ -219,7 +219,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         }}
         audience={{
           heading: tAudience('heading'),
-          body: tAudience('body'),
+          body: tAudience('body', productProgramValues),
           items: [tAudience('items.0'), tAudience('items.1'), tAudience('items.2')]
         }}
         labels={visualLabels}
@@ -243,7 +243,7 @@ export default async function ZaikoPage({ params }: PageProps) {
 
       {/* FAQ Section */}
       <ZaikoFaq
-        heading={tFaq('heading')}
+        heading={tFaq('heading', productProgramValues)}
         items={faqItems}
       />
 

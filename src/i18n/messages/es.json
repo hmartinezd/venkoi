@@ -57,12 +57,12 @@
       "location": "Con sede en Tampa Bay · Trabajando con clientes en South Florida y más allá"
     },
     "zaiko": {
-      "eyebrow": "ZAIKO · UN PRODUCTO VENKOI",
+      "eyebrow": "{productName} · UN PRODUCTO VENKOI",
       "badge": "ACCESO ANTICIPADO",
       "badgeText": "Usa {productName} gratis durante {freeMonths} meses.",
       "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
-      "body": "Zaiko ofrece a los restaurantes una forma más clara de gestionar inventario, compras, costos y movimientos de productos desde un solo lugar.",
-      "discoverCta": "Conoce Zaiko",
+      "body": "{productName} ofrece a los restaurantes una forma más clara de gestionar inventario, compras, costos y movimientos de productos desde un solo lugar.",
+      "discoverCta": "Conoce {productName}",
       "demoCta": "Solicita una demo",
       "theme1Title": "Inventario",
       "theme1Desc": "Conoce lo que tienes y dónde está.",
@@ -196,8 +196,8 @@
     "productDirectionBody": "Nuestro enfoque a largo plazo es crear productos de software útiles que resuelvan problemas reales. También ayudamos a convertir ideas móviles y web en experiencias funcionales, desde la definición y el diseño hasta el desarrollo y las pruebas.",
     "primaryPillarBadge": "DIRECCIÓN PRINCIPAL",
     "venkoiProductsTitle": "Productos Venkoi",
-    "venkoiProductsDesc": "Productos escalables como Zaiko diseñados para necesidades operativas generales.",
-    "exploreZaikoCta": "Conoce Zaiko",
+    "venkoiProductsDesc": "Productos escalables como {productName} diseñados para necesidades operativas generales.",
+    "exploreZaikoCta": "Conoce {productName}",
     "clientSolutionsBadge": "SERVICIOS",
     "servicesTitle": "Móvil y Web",
     "servicesDesc": "Aplicaciones móviles, páginas web y aplicaciones web creadas alrededor de ideas y requerimientos específicos, desde el diseño y el desarrollo hasta las pruebas.",
@@ -316,18 +316,18 @@
   "demoPage": {
     "eyebrow": "SOLICITA UNA DEMO",
     "heading": "Ve el software de Venkoi en acción.",
-    "body": "Experimenta cómo Zaiko y los productos de Venkoi pueden optimizar tu operación.",
+    "body": "Descubre cómo el software de Venkoi puede apoyar tu operación.",
     "zaiko": {
-      "eyebrow": "ZAIKO DEMO",
-      "heading": "Ve Zaiko en acción.",
-      "body": "Cuéntanos un poco sobre tu restaurante y te ayudaremos a dar el siguiente paso para ver cómo Zaiko puede adaptarse a tu operación.",
+      "eyebrow": "DEMO DE {productName}",
+      "heading": "Ve {productName} en acción.",
+      "body": "Cuéntanos un poco sobre tu restaurante y te ayudaremos a dar el siguiente paso para ver cómo {productName} puede adaptarse a tu operación.",
       "earlyAccessBadge": "Acceso anticipado · 3 meses gratis",
-      "title": "Demo de Restaurante Zaiko",
-      "formDescription": "Cuéntanos un poco sobre tu restaurante y cómo gestionas el inventario actualmente para que podamos entender el siguiente paso adecuado para una demo de Zaiko."
+      "title": "Demo de {productName} para Restaurantes",
+      "formDescription": "Cuéntanos un poco sobre tu restaurante y cómo gestionas el inventario actualmente para que podamos entender el siguiente paso adecuado para una demo de {productName}."
     },
     "standard": {
       "successTitle": "Gracias — recibimos tu solicitud de demo.",
-      "successMessage": "Revisaremos la información que compartiste y nos pondremos en contacto para ver cómo Zaiko podría adaptarse a la operación de tu restaurante."
+      "successMessage": "Revisaremos la información que compartiste y nos pondremos en contacto para ver cómo {productName} podría adaptarse a la operación de tu restaurante."
     },
     "earlyAccess": {
       "eyebrow": "ACCESO ANTICIPADO DE {productName}",
@@ -342,7 +342,7 @@
       "heading": "¿Qué pasa después?",
       "step1": "Cuéntanos sobre tu restaurante.",
       "step2": "Aprendemos un poco sobre cómo gestionas el inventario actualmente.",
-      "step3": "Coordinamos el siguiente paso adecuado para ver Zaiko.",
+      "step3": "Coordinamos el siguiente paso adecuado para ver {productName}.",
       "step3EarlyAccess": "Nos ponemos en contacto para ver si el acceso anticipado es el siguiente paso adecuado."
     },
     "agenda": {
@@ -379,7 +379,6 @@
       "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}."
     },
     "contactCta": "Contactar al Equipo",
-    "zaikoCta": "Conocer Zaiko",
     "form": {
       "firstName": "Nombre",
       "lastName": "Apellido",
@@ -420,7 +419,6 @@
 
   "zaikoPage": {
     "nav": {
-      "productName": "Zaiko",
       "subtitle": "Un Producto Venkoi",
       "overview": "Visión General",
       "inventory": "Inventario",
@@ -431,9 +429,9 @@
       "requestDemo": "Solicita una demo"
     },
     "hero": {
-      "eyebrow": "ZAIKO · UN PRODUCTO VENKOI",
+      "eyebrow": "{productName} · UN PRODUCTO VENKOI",
       "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
-      "body": "Zaiko ayuda a los restaurantes a entender y gestionar su inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado.",
+      "body": "{productName} ayuda a los restaurantes a entender y gestionar su inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado.",
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Únete al acceso anticipado",
       "microcopy": "3 meses gratis durante el acceso anticipado.",
@@ -442,17 +440,17 @@
     "intro": {
       "eyebrow": "UNA VISIÓN MÁS CLARA",
       "heading": "Una forma más clara de ver el inventario de tu restaurante.",
-      "body": "Gestionar inventario no debería significar saltar entre hojas de cálculo, recibos, sistemas desconectados y suposiciones. Zaiko reúne la información esencial del inventario para que tu equipo pueda entender mejor lo que está ocurriendo y tomar decisiones con mayor claridad."
+      "body": "Gestionar inventario no debería significar saltar entre hojas de cálculo, recibos, sistemas desconectados y suposiciones. {productName} reúne la información esencial del inventario para que tu equipo pueda entender mejor lo que está ocurriendo y tomar decisiones con mayor claridad."
     },
     "problem": {
       "eyebrow": "EL PROBLEMA DEL INVENTARIO",
       "heading": "El inventario se complica cuando la información está repartida en distintos lugares.",
-      "body": "Las compras pueden registrarse de una forma, las cantidades de otra, los cambios de costo en otro lugar y los movimientos pueden ser difíciles de reconstruir después. Zaiko está diseñado para reunir esas piezas en una visión más clara del inventario."
+      "body": "Las compras pueden registrarse de una forma, las cantidades de otra, los cambios de costo en otro lugar y los movimientos pueden ser difíciles de reconstruir después. {productName} está diseñado para reunir esas piezas en una visión más clara del inventario."
     },
     "explorer": {
-      "eyebrow": "EXPLORA ZAIKO",
+      "eyebrow": "EXPLORA {productName}",
       "heading": "Ve con más claridad cada parte de la historia de tu inventario.",
-      "body": "Explora las cuatro áreas que Zaiko reúne. Selecciona una para ver qué está diseñada para ayudarte a entender.",
+      "body": "Explora las cuatro áreas que {productName} reúne. Selecciona una para ver qué está diseñada para ayudarte a entender.",
       "detailLink": "Ver más sobre {area}",
       "demoCta": "Solicitar una demo",
       "summaries": {
@@ -471,7 +469,7 @@
       "inventory": {
         "eyebrow": "INVENTARIO",
         "heading": "Conoce lo que tienes y dónde está.",
-        "body": "Zaiko ofrece a tu restaurante una forma más clara de entender el inventario disponible y mantenerlo organizado alrededor de la forma en que realmente funciona tu operación.",
+        "body": "{productName} ofrece a tu restaurante una forma más clara de entender el inventario disponible y mantenerlo organizado alrededor de la forma en que realmente funciona tu operación.",
         "supporting": [
           "qué inventario tienes actualmente",
           "dónde se organiza el inventario dentro de la operación",
@@ -491,7 +489,7 @@
       "activity": {
         "eyebrow": "ACTIVIDAD",
         "heading": "Sigue cómo se mueve el inventario dentro de tu operación.",
-        "body": "Zaiko reúne la actividad del inventario en un historial claro para que sea más fácil entender qué cambió y seguir el movimiento de los productos a lo largo del tiempo.",
+        "body": "{productName} reúne la actividad del inventario en un historial claro para que sea más fácil entender qué cambió y seguir el movimiento de los productos a lo largo del tiempo.",
         "supporting": [
           "qué cambió",
           "cuándo ocurrió la actividad de inventario",
@@ -516,7 +514,7 @@
     },
     "audience": {
       "heading": "Creado para restaurantes que buscan una visión más clara de su inventario.",
-      "body": "Zaiko está diseñado para operadores de restaurantes, dueños, gerentes y equipos responsables de la recepción o el seguimiento de productos que necesitan una mejor forma de gestionar su información de inventario.",
+      "body": "{productName} está diseñado para operadores de restaurantes, dueños, gerentes y equipos responsables de la recepción o el seguimiento de productos que necesitan una mejor forma de gestionar su información de inventario.",
       "items": [
         "Operadores de restaurantes",
         "Dueños o gerentes involucrados en el inventario",
@@ -537,19 +535,19 @@
       "secondaryCta": "Únete al acceso anticipado"
     },
     "faq": {
-      "heading": "Preguntas sobre Zaiko",
+      "heading": "Preguntas sobre {productName}",
       "items": [
         {
-          "q": "¿Qué es Zaiko?",
+          "q": "¿Qué es {productName}?",
           "a": "{productName} es un producto de Venkoi que ayuda a los restaurantes a gestionar y entender el inventario, las compras, los costos y la actividad de los productos desde un espacio de trabajo más claro."
         },
         {
-          "q": "¿Para quién es Zaiko?",
+          "q": "¿Para quién es {productName}?",
           "a": "Operadores de restaurantes y equipos que buscan una forma más clara de entender y gestionar la actividad del inventario."
         },
         {
-          "q": "¿Qué me ayuda a rastrear Zaiko?",
-          "a": "Zaiko te ayuda a rastrear los niveles de inventario, la actividad de compras, el movimiento de productos y los costos conectados a tu inventario."
+          "q": "¿Qué me ayuda a rastrear {productName}?",
+          "a": "{productName} te ayuda a rastrear los niveles de inventario, la actividad de compras, el movimiento de productos y los costos conectados a tu inventario."
         },
         {
           "q": "¿Qué es el programa de Acceso Anticipado?",
@@ -583,8 +581,8 @@
       "whatsappMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}."
     },
     "seo": {
-      "title": "Zaiko | Software de Inventario para Restaurantes de Venkoi",
-      "description": "Zaiko ayuda a restaurantes a gestionar inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado."
+      "title": "{productName} | Software de Inventario para Restaurantes de Venkoi",
+      "description": "{productName} ayuda a restaurantes a gestionar inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado."
     }
   },
   "seo": {
@@ -703,7 +701,7 @@
   },
   "insightsArticles": {
     "restaurantInventory": {
-      "seoTitle": "Información del Inventario de Restaurante en un Solo Lugar | Zaiko por Venkoi",
+      "seoTitle": "Información del Inventario de Restaurante en un Solo Lugar | {productName} por Venkoi",
       "seoDescription": "Descubre por qué el inventario de un restaurante se complica cuando la información está en distintos lugares y cómo unificarla.",
       "category": "OPERACIONES DE RESTAURANTES",
       "title": "El inventario se complica cuando la información está repartida en distintos lugares.",
@@ -722,9 +720,9 @@
         "costsBody": "El inventario representa una inversión significativa. Cuando la información de los costos vive en una carpeta de facturas o en una hoja de cálculo aparte, es más difícil ver el historial de costos de lo que tienes en los estantes y cómo los cambios de precios pueden estar afectando la operación.",
         "togetherTitle": "Por qué es importante unificar la información",
         "togetherBody": "Cuando las compras, los recuentos de inventario, la actividad y los costos forman parte de la misma visión, la información se vuelve más útil. Ayuda a eliminar suposiciones y ofrece una visión más clara de a dónde van los recursos.",
-        "zaikoTitle": "Cómo aborda Zaiko el problema",
-        "zaikoBody": "Zaiko está diseñado para reunir estas cuatro áreas —inventario, compras, actividad y costos— en una experiencia única y enfocada. Se centra en ofrecer una visibilidad más clara de tu operación sin añadir una complejidad innecesaria.",
-        "ctaExplore": "Explorar Zaiko",
+        "zaikoTitle": "Cómo aborda {productName} el problema",
+        "zaikoBody": "{productName} está diseñado para reunir estas cuatro áreas —inventario, compras, actividad y costos— en una experiencia única y enfocada. Se centra en ofrecer una visibilidad más clara de tu operación sin añadir una complejidad innecesaria.",
+        "ctaExplore": "Explorar {productName}",
         "ctaDemo": "Solicitar una demostración"
       }
     },

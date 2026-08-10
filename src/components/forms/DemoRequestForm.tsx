@@ -224,7 +224,7 @@ export function DemoRequestForm({
 
     const successMessage = formData.early_access_interest
       ? tp('earlyAccess.successMessage', { productName })
-      : tp('standard.successMessage');
+      : tp('standard.successMessage', { productName });
 
     return (
       <div ref={successRef} tabIndex={-1} className="focus:outline-hidden">

@@ -57,9 +57,9 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
     freeMonths: resolvedProduct.earlyAccess.freeMonths
   };
 
-  let eyebrowText = isZaiko ? t('zaiko.eyebrow') : t('eyebrow');
-  let headingText = isZaiko ? t('zaiko.heading') : t('heading');
-  let bodyText = isZaiko ? t('zaiko.body') : t('body');
+  let eyebrowText = isZaiko ? t('zaiko.eyebrow', productProgramValues) : t('eyebrow');
+  let headingText = isZaiko ? t('zaiko.heading', productProgramValues) : t('heading');
+  let bodyText = isZaiko ? t('zaiko.body', productProgramValues) : t('body');
 
   if (isZaiko && isEarlyAccess) {
     eyebrowText = t('earlyAccess.eyebrow', productProgramValues);
@@ -69,11 +69,11 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const formTitle = isEarlyAccess
     ? t('earlyAccess.formTitle')
-    : (isZaiko ? t('zaiko.title') : t('earlyAccessTitle'));
+    : (isZaiko ? t('zaiko.title', productProgramValues) : t('earlyAccessTitle'));
 
   const formDesc = isEarlyAccess
     ? t('earlyAccess.badge')
-    : (isZaiko ? t('zaiko.formDescription') : t('badgeText', productProgramValues));
+    : (isZaiko ? t('zaiko.formDescription', productProgramValues) : t('badgeText', productProgramValues));
 
   return (
     <Section variant="light" spacing="hero">
@@ -159,7 +159,9 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
                     <li key={step} className="grid grid-cols-[2rem_1fr] gap-3">
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange-text">{step}</span>
                       <p className="pt-0.5 text-sm leading-relaxed text-foreground-muted">
-                        {step === 3 && isEarlyAccess ? t('nextSteps.step3EarlyAccess') : t(`nextSteps.step${step}`)}
+                        {step === 3 && isEarlyAccess
+                          ? t('nextSteps.step3EarlyAccess')
+                          : t(`nextSteps.step${step}`, productProgramValues)}
                       </p>
                     </li>
                   ))}

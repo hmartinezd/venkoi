@@ -57,12 +57,12 @@
       "location": "Based in Tampa Bay · Serving South Florida and beyond"
     },
     "zaiko": {
-      "eyebrow": "ZAIKO · A VENKOI PRODUCT",
+      "eyebrow": "{productName} · A VENKOI PRODUCT",
       "badge": "EARLY ACCESS",
       "badgeText": "Use {productName} free for {freeMonths} months.",
       "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
-      "body": "Zaiko gives restaurants a clearer way to manage inventory, purchases, costs, and product activity — all from one place.",
-      "discoverCta": "Discover Zaiko",
+      "body": "{productName} gives restaurants a clearer way to manage inventory, purchases, costs, and product activity — all from one place.",
+      "discoverCta": "Discover {productName}",
       "demoCta": "Request a Demo",
       "theme1Title": "Inventory",
       "theme1Desc": "Know what you have and where it is.",
@@ -196,8 +196,8 @@
     "productDirectionBody": "Our long-term focus is creating useful software products that solve real problems. We also help clients turn mobile and web ideas into working experiences, from early definition and design through development and testing.",
     "primaryPillarBadge": "PRIMARY DIRECTION",
     "venkoiProductsTitle": "Venkoi Products",
-    "venkoiProductsDesc": "Scalable products such as Zaiko designed for widespread operational needs.",
-    "exploreZaikoCta": "Explore Zaiko",
+    "venkoiProductsDesc": "Scalable products such as {productName} designed for widespread operational needs.",
+    "exploreZaikoCta": "Explore {productName}",
     "clientSolutionsBadge": "SERVICES",
     "servicesTitle": "Mobile & Web",
     "servicesDesc": "Mobile applications, websites, and web applications built around specific ideas and project requirements, from design and development through testing.",
@@ -316,18 +316,18 @@
   "demoPage": {
     "eyebrow": "REQUEST A DEMO",
     "heading": "See Venkoi software in action.",
-    "body": "Experience how Zaiko and Venkoi products can streamline your operation.",
+    "body": "Experience how Venkoi software can support your operation.",
     "zaiko": {
-      "eyebrow": "ZAIKO DEMO",
-      "heading": "See Zaiko in action.",
-      "body": "Tell us a little about your restaurant and we'll help you take the next step toward seeing how Zaiko could fit your operation.",
+      "eyebrow": "{productName} DEMO",
+      "heading": "See {productName} in action.",
+      "body": "Tell us a little about your restaurant and we'll help you take the next step toward seeing how {productName} could fit your operation.",
       "earlyAccessBadge": "Early Access · 3 months free",
-      "title": "Zaiko Restaurant Demo",
-      "formDescription": "Tell us a little about your restaurant and how you currently handle inventory so we can understand the right next step for a Zaiko demo."
+      "title": "{productName} Restaurant Demo",
+      "formDescription": "Tell us a little about your restaurant and how you currently handle inventory so we can understand the right next step for a {productName} demo."
     },
     "standard": {
       "successTitle": "Thanks — we received your demo request.",
-      "successMessage": "We'll review the information you shared and follow up about seeing how Zaiko could fit your restaurant operation."
+      "successMessage": "We'll review the information you shared and follow up about seeing how {productName} could fit your restaurant operation."
     },
     "earlyAccess": {
       "eyebrow": "{productName} EARLY ACCESS",
@@ -342,7 +342,7 @@
       "heading": "What happens next?",
       "step1": "Tell us about your restaurant.",
       "step2": "We learn a little about how you currently handle inventory.",
-      "step3": "We coordinate the appropriate next step for seeing Zaiko.",
+      "step3": "We coordinate the appropriate next step for seeing {productName}.",
       "step3EarlyAccess": "We follow up about whether Early Access is the appropriate next step."
     },
     "agenda": {
@@ -379,7 +379,6 @@
       "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
     },
     "contactCta": "Contact Team Directly",
-    "zaikoCta": "Explore Zaiko Product",
     "form": {
       "firstName": "First name",
       "lastName": "Last name",
@@ -420,7 +419,6 @@
 
   "zaikoPage": {
     "nav": {
-      "productName": "Zaiko",
       "subtitle": "A Venkoi Product",
       "overview": "Overview",
       "inventory": "Inventory",
@@ -431,9 +429,9 @@
       "requestDemo": "Request a Demo"
     },
     "hero": {
-      "eyebrow": "ZAIKO · A VENKOI PRODUCT",
+      "eyebrow": "{productName} · A VENKOI PRODUCT",
       "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
-      "body": "Zaiko helps restaurants understand and manage their inventory, purchases, costs, and product activity from one clear workspace.",
+      "body": "{productName} helps restaurants understand and manage their inventory, purchases, costs, and product activity from one clear workspace.",
       "primaryCta": "Request a Demo",
       "secondaryCta": "Join Early Access",
       "microcopy": "3 months free during Early Access.",
@@ -442,17 +440,17 @@
     "intro": {
       "eyebrow": "A CLEARER VIEW",
       "heading": "A clearer view of your restaurant inventory.",
-      "body": "Inventory shouldn't require jumping between spreadsheets, receipts, disconnected systems, and guesswork. Zaiko brings the core inventory picture together so your team can understand what is happening and make better-informed decisions."
+      "body": "Inventory shouldn't require jumping between spreadsheets, receipts, disconnected systems, and guesswork. {productName} brings the core inventory picture together so your team can understand what is happening and make better-informed decisions."
     },
     "problem": {
       "eyebrow": "THE INVENTORY PROBLEM",
       "heading": "Inventory gets harder when the information lives in different places.",
-      "body": "Purchases may be tracked one way, quantities another, cost changes somewhere else, and movement may be difficult to reconstruct later. Zaiko is designed to bring those pieces into one clearer inventory picture."
+      "body": "Purchases may be tracked one way, quantities another, cost changes somewhere else, and movement may be difficult to reconstruct later. {productName} is designed to bring those pieces into one clearer inventory picture."
     },
     "explorer": {
-      "eyebrow": "EXPLORE ZAIKO",
+      "eyebrow": "EXPLORE {productName}",
       "heading": "See each part of your inventory story more clearly.",
-      "body": "Explore the four areas Zaiko brings together. Select an area to see what it is designed to help you understand.",
+      "body": "Explore the four areas {productName} brings together. Select an area to see what it is designed to help you understand.",
       "detailLink": "See more about {area}",
       "demoCta": "Request a Demo",
       "summaries": {
@@ -471,7 +469,7 @@
       "inventory": {
         "eyebrow": "INVENTORY",
         "heading": "Know what you have and where it is.",
-        "body": "Zaiko gives your restaurant a clearer way to understand the inventory you have on hand and keep it organized around the way your operation actually works.",
+        "body": "{productName} gives your restaurant a clearer way to understand the inventory you have on hand and keep it organized around the way your operation actually works.",
         "supporting": [
           "what inventory you currently have",
           "where inventory is organized within the operation",
@@ -491,7 +489,7 @@
       "activity": {
         "eyebrow": "ACTIVITY",
         "heading": "See how inventory moves through your operation.",
-        "body": "Zaiko brings inventory activity into a clear history so it's easier to understand what changed and follow the movement of products over time.",
+        "body": "{productName} brings inventory activity into a clear history so it's easier to understand what changed and follow the movement of products over time.",
         "supporting": [
           "what changed",
           "when inventory activity occurred",
@@ -516,7 +514,7 @@
     },
     "audience": {
       "heading": "Built for restaurant operations that want a clearer inventory picture.",
-      "body": "Zaiko is designed for restaurant operators, owners, managers, and teams responsible for receiving or tracking product who need a better way to manage their inventory information.",
+      "body": "{productName} is designed for restaurant operators, owners, managers, and teams responsible for receiving or tracking product who need a better way to manage their inventory information.",
       "items": [
         "Restaurant operators",
         "Owners or managers involved in inventory",
@@ -537,19 +535,19 @@
       "secondaryCta": "Join Early Access"
     },
     "faq": {
-      "heading": "Questions about Zaiko",
+      "heading": "Questions about {productName}",
       "items": [
         {
-          "q": "What is Zaiko?",
+          "q": "What is {productName}?",
           "a": "{productName} is a Venkoi product that helps restaurants manage and understand inventory, purchases, costs, and product activity from one clearer workspace."
         },
         {
-          "q": "Who is Zaiko for?",
+          "q": "Who is {productName} for?",
           "a": "Restaurant operators and teams looking for a clearer way to understand and manage inventory activity."
         },
         {
-          "q": "What does Zaiko help me track?",
-          "a": "Zaiko helps you track inventory levels, purchasing activity, product movement, and the costs connected to your inventory."
+          "q": "What does {productName} help me track?",
+          "a": "{productName} helps you track inventory levels, purchasing activity, product movement, and the costs connected to your inventory."
         },
         {
           "q": "What is the Early Access program?",
@@ -583,8 +581,8 @@
       "whatsappMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
     },
     "seo": {
-      "title": "Zaiko | Restaurant Inventory Software by Venkoi",
-      "description": "Zaiko helps restaurants manage inventory, purchases, costs, and product activity from one clear workspace."
+      "title": "{productName} | Restaurant Inventory Software by Venkoi",
+      "description": "{productName} helps restaurants manage inventory, purchases, costs, and product activity from one clear workspace."
     }
   },
   "seo": {
@@ -703,7 +701,7 @@
   },
   "insightsArticles": {
     "restaurantInventory": {
-      "seoTitle": "Restaurant Inventory Information in One Place | Zaiko by Venkoi",
+      "seoTitle": "Restaurant Inventory Information in One Place | {productName} by Venkoi",
       "seoDescription": "Learn why restaurant inventory becomes difficult when information lives in different places and how to bring it together.",
       "category": "RESTAURANT OPERATIONS",
       "title": "Inventory gets harder when the information lives in different places.",
@@ -722,9 +720,9 @@
         "costsBody": "Inventory represents a significant investment. When cost information lives in an invoice folder or a separate spreadsheet, it's harder to see the cost history of what is on your shelves and how price changes may be affecting the operation.",
         "togetherTitle": "Why bringing the information together matters",
         "togetherBody": "When purchasing, inventory counts, activity, and costs are part of the same picture, the information becomes more useful. It helps remove guesswork and provides a clearer view of where resources are going.",
-        "zaikoTitle": "How Zaiko approaches the problem",
-        "zaikoBody": "Zaiko is designed to bring these four areas—inventory, purchases, activity, and costs—into a single, focused experience. It focuses on providing clearer visibility into your operation without adding unnecessary complexity.",
-        "ctaExplore": "Explore Zaiko",
+        "zaikoTitle": "How {productName} approaches the problem",
+        "zaikoBody": "{productName} is designed to bring these four areas—inventory, purchases, activity, and costs—into a single, focused experience. It focuses on providing clearer visibility into your operation without adding unnecessary complexity.",
+        "ctaExplore": "Explore {productName}",
         "ctaDemo": "Request a Demo"
       }
     },

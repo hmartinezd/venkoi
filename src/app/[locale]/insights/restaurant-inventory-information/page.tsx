@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = await getTranslations({ locale: currentLocale, namespace: 'insightsArticles.restaurantInventory' });
 
   return createMetadata({
-    title: t('seoTitle'),
+    title: t('seoTitle', { productName: FEATURED_PRODUCT.name }),
     description: t('seoDescription'),
     routeKey: 'insightRestaurantInventory',
     locale: currentLocale,
@@ -42,6 +42,7 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
 
   const t = await getTranslations('insightsArticles.restaurantInventory');
   const content = t.raw('content');
+  const productValues = { productName: FEATURED_PRODUCT.name };
 
   const ctaArea = (
     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -49,7 +50,7 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
         href={getLocalizedPath('productsZaiko', currentLocale)}
         variant="secondary"
       >
-        {content.ctaExplore}
+        {t('content.ctaExplore', productValues)}
       </Button>
       <TrackedButton
         href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
@@ -104,8 +105,8 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
         <p>{content.togetherBody}</p>
       </ArticleSection>
 
-      <ArticleSection title={content.zaikoTitle}>
-        <p>{content.zaikoBody}</p>
+      <ArticleSection title={t('content.zaikoTitle', productValues)}>
+        <p>{t('content.zaikoBody', productValues)}</p>
       </ArticleSection>
     </InsightArticle>
   );
