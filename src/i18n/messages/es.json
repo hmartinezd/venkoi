@@ -45,9 +45,7 @@
       "eyebrow": "COMPAÑÍA DE SOFTWARE DE TAMPA BAY",
       "heading": "Software creado para la forma en que realmente funciona tu negocio.",
       "body": "En Venkoi creamos productos de software modernos y desarrollamos experiencias móviles y web que ayudan a los negocios a trabajar de forma más simple, rápida e inteligente.",
-      "primaryCta": "Conoce {productName}",
-      "secondaryCta": "Solicitar una demo",
-      "location": "Con sede en Tampa Bay · Trabajando con clientes en South Florida y más allá"
+      "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
@@ -56,7 +54,6 @@
       "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
       "body": "{productName} ofrece a los restaurantes una forma más clara de gestionar inventario, compras, costos y movimientos de productos desde un solo lugar.",
       "discoverCta": "Conoce {productName}",
-      "demoCta": "Solicita una demo",
       "theme1Title": "Inventario",
       "theme1Desc": "Conoce lo que tienes y dónde está.",
       "theme2Title": "Compras",
@@ -113,8 +110,6 @@
     "finalCta": {
       "heading": "Creemos algo útil.",
       "body": "Ya sea que quieras conocer uno de nuestros productos o tengas una idea para una experiencia móvil o web, nos gustaría escucharla.",
-      "demoCta": "Solicita una demo",
-      "talkCta": "Hablemos",
       "locationLine": "Tampa Bay · South Florida · Más allá"
     },
     "insights": {
@@ -265,7 +260,6 @@
     "locationEyebrow": "UBICACIÓN",
     "locationBoxTitle": "Con sede en Tampa Bay",
     "locationBoxDesc": "Con sede en Tampa Bay, Florida · Trabajando con clientes en South Florida y más allá.",
-    "demoCta": "Solicitar una demo",
     "form": {
       "optionalDetailsSummary": "Agregar detalles del proyecto (opcional)",
       "optionalDetailsCue": "Teléfono, empresa, tipo de proyecto y etapa",
@@ -596,7 +590,6 @@
     "heroHeading": "Experiencias móviles creadas alrededor de personas y objetivos reales.",
     "heroBody": "En Venkoi diseñamos, desarrollamos y probamos aplicaciones móviles para iOS y Android, ayudando a convertir ideas en experiencias útiles desde la definición inicial hasta un producto listo para avanzar.",
     "primaryCta": "Cuéntanos sobre tu aplicación",
-    "secondaryCta": "Cómo trabajamos",
     "rangeHeading": "Aplicaciones móviles para diferentes tipos de ideas.",
     "rangeItem1": "Experiencias para clientes",
     "rangeItem2": "Herramientas internas",
@@ -643,7 +636,6 @@
     "heroHeading": "La experiencia web debe adaptarse a la idea, no al revés.",
     "heroBody": "Desde páginas web sencillas hasta aplicaciones web más interactivas, en Venkoi te ayudamos a definir, diseñar, desarrollar y probar la experiencia web adecuada para lo que quieres lograr.",
     "primaryCta": "Cuéntanos sobre tu proyecto web",
-    "secondaryCta": "Cómo trabajamos",
     "rangeHeading": "Desde una presencia web clara hasta experiencias más interactivas.",
     "rangeItem1": "Páginas web sencillas",
     "rangeItem2": "Sitios web con gran cantidad de contenido",

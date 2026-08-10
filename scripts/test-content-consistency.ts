@@ -45,6 +45,11 @@ assert.match(homeFinal, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT\)
 assert.match(homeFinal, /href=\{getLocalizedPath\('contact', locale\)\}/);
 assert.doesNotMatch(homeFinal, /type=services|interest=/);
 
+const homePage = read('src/app/[locale]/page.tsx');
+assert.match(homePage, /secondaryCta=\{tCommon\('demo'\)\}/);
+assert.match(homePage, /location=\{tCommon\('locationLine'\)\}/);
+assert.match(homePage, /talkCta=\{tCommon\('startConversation'\)\}/);
+
 const about = read('src/app/[locale]/about/page.tsx');
 assert.match(about, /href=\{buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)\}/);
 assert.match(about, /eventName="zaiko_demo_cta"/);
@@ -84,6 +89,12 @@ for (const messages of [en, es]) {
   const headerMessages = messages.header as Record<string, unknown>;
   const services = messages.servicesPage as Record<string, unknown>;
   const aboutFooter = messages.aboutPage.footerCta as Record<string, unknown>;
+  const homeHero = messages.home.hero as Record<string, unknown>;
+  const homeProduct = messages.home.zaiko as Record<string, unknown>;
+  const homeFinalCta = messages.home.finalCta as Record<string, unknown>;
+  const contact = messages.contactPage as Record<string, unknown>;
+  const mobileService = messages.mobileServicePage as Record<string, unknown>;
+  const webService = messages.webServicePage as Record<string, unknown>;
 
   for (const key of ['location', 'locationShort', 'contactUs', 'learnMore']) assert.ok(!(key in common));
   for (const key of ['products', 'demo']) assert.ok(!(key in navigationMessages));
@@ -93,6 +104,12 @@ for (const messages of [en, es]) {
   }
   assert.ok(!('primary' in aboutFooter));
   assert.ok(!('secondary' in aboutFooter));
+  for (const key of ['secondaryCta', 'location']) assert.ok(!(key in homeHero));
+  assert.ok(!('demoCta' in homeProduct));
+  for (const key of ['demoCta', 'talkCta']) assert.ok(!(key in homeFinalCta));
+  assert.ok(!('demoCta' in contact));
+  assert.ok(!('secondaryCta' in mobileService));
+  assert.ok(!('secondaryCta' in webService));
 }
 
 console.log('Content consistency regression checks passed.');

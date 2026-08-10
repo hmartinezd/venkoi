@@ -42,6 +42,7 @@ export default async function HomePage({ params }: PageProps) {
   const currentLocale = parseLocale(locale);
 
   const tHome = await getTranslations('home');
+  const tCommon = await getTranslations('common');
   const tArticles = await getTranslations('insightsArticles');
   const tInsights = await getTranslations('insightsPage');
   const origin = getSiteOrigin();
@@ -102,8 +103,8 @@ export default async function HomePage({ params }: PageProps) {
         heading={tHome('hero.heading')}
         body={tHome('hero.body')}
         primaryCta={tHome('hero.primaryCta', { productName: FEATURED_PRODUCT.name })}
-        secondaryCta={tHome('hero.secondaryCta')}
-        location={tHome('hero.location')}
+        secondaryCta={tCommon('demo')}
+        location={tCommon('locationLine')}
         productName={FEATURED_PRODUCT.name}
         inventoryLabel={tHome('zaiko.theme1Title')}
         purchasesLabel={tHome('zaiko.theme2Title')}
@@ -117,7 +118,7 @@ export default async function HomePage({ params }: PageProps) {
         heading={tHome('zaiko.heading')}
         body={tHome('zaiko.body', { productName: FEATURED_PRODUCT.name })}
         discoverCta={tHome('zaiko.discoverCta', { productName: FEATURED_PRODUCT.name })}
-        demoCta={tHome('zaiko.demoCta')}
+        demoCta={tCommon('demo')}
         earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? {
           badge: tHome('zaiko.badge'),
           badgeText: tHome('zaiko.badgeText', {
@@ -197,8 +198,8 @@ export default async function HomePage({ params }: PageProps) {
         locale={currentLocale}
         heading={tHome('finalCta.heading')}
         body={tHome('finalCta.body')}
-        demoCta={tHome('finalCta.demoCta')}
-        talkCta={tHome('finalCta.talkCta')}
+        demoCta={tCommon('demo')}
+        talkCta={tCommon('startConversation')}
         locationLine={tHome('finalCta.locationLine')}
       />
     </>

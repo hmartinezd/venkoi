@@ -45,9 +45,7 @@
       "eyebrow": "TAMPA BAY SOFTWARE COMPANY",
       "heading": "Software built for the way business actually works.",
       "body": "Venkoi creates modern software products and builds mobile and web experiences that help businesses work simpler, faster, and smarter.",
-      "primaryCta": "Explore {productName}",
-      "secondaryCta": "Request a Demo",
-      "location": "Based in Tampa Bay · Serving South Florida and beyond"
+      "primaryCta": "Explore {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
@@ -56,7 +54,6 @@
       "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
       "body": "{productName} gives restaurants a clearer way to manage inventory, purchases, costs, and product activity — all from one place.",
       "discoverCta": "Discover {productName}",
-      "demoCta": "Request a Demo",
       "theme1Title": "Inventory",
       "theme1Desc": "Know what you have and where it is.",
       "theme2Title": "Purchases",
@@ -113,8 +110,6 @@
     "finalCta": {
       "heading": "Let's build something useful.",
       "body": "Whether you're interested in a Venkoi product or have an idea for a mobile or web experience, we'd like to hear about it.",
-      "demoCta": "Request a Demo",
-      "talkCta": "Start a Conversation",
       "locationLine": "Tampa Bay · South Florida · Beyond"
     },
     "insights": {
@@ -265,7 +260,6 @@
     "locationEyebrow": "LOCATION",
     "locationBoxTitle": "Based in Tampa Bay",
     "locationBoxDesc": "Based in Tampa Bay, Florida · Serving clients across South Florida & beyond.",
-    "demoCta": "Request a Demo",
     "form": {
       "optionalDetailsSummary": "Add project details (optional)",
       "optionalDetailsCue": "Phone, company, project type, and stage",
@@ -596,7 +590,6 @@
     "heroHeading": "Mobile experiences built around real people and real goals.",
     "heroBody": "Venkoi designs, builds, and tests mobile applications for iOS and Android, helping turn ideas into useful experiences from early definition through launch-ready development.",
     "primaryCta": "Tell us about your mobile app",
-    "secondaryCta": "How we work",
     "rangeHeading": "Mobile applications for different kinds of ideas.",
     "rangeItem1": "Customer-facing experiences",
     "rangeItem2": "Internal tools",
@@ -643,7 +636,6 @@
     "heroHeading": "The web experience should fit the idea — not the other way around.",
     "heroBody": "From straightforward websites to more interactive web applications, Venkoi helps define, design, build, and test the web experience that fits what you want to accomplish.",
     "primaryCta": "Tell us about your web project",
-    "secondaryCta": "How we work",
     "rangeHeading": "From a clear web presence to more interactive experiences.",
     "rangeItem1": "Simple websites",
     "rangeItem2": "Content-rich websites",
