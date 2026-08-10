@@ -35,7 +35,7 @@ export function ServicesSection({
       <Container className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
         {/* Section Header */}
         <div className="max-w-3xl space-y-5">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">
             {eyebrow}
           </p>
           <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl leading-tight">
@@ -64,7 +64,7 @@ export function ServicesSection({
           {/* Card 01 — Mobile Applications */}
           <div className="rounded-xl border border-white/15 bg-white/5 p-5 space-y-2">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-lg bg-orange-subtle px-3 py-1 text-xs font-bold text-orange-text">
+              <span className="inline-flex items-center gap-2 rounded-lg px-3 py-1 text-xs font-bold text-orange">
                 01
               </span>
               <h3 className="text-base font-bold text-white">
@@ -79,7 +79,7 @@ export function ServicesSection({
           {/* Card 02 — Websites & Web Applications */}
           <div className="rounded-xl border border-white/15 bg-white/5 p-5 space-y-2">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-lg bg-orange-subtle px-3 py-1 text-xs font-bold text-orange-text">
+              <span className="inline-flex items-center gap-2 rounded-lg px-3 py-1 text-xs font-bold text-orange">
                 02
               </span>
               <h3 className="text-base font-bold text-white">

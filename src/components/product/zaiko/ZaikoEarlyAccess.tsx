@@ -59,7 +59,7 @@ export function ZaikoEarlyAccess({
           <TrackedButton
             href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
             variant="primary"
-            className="bg-orange text-ink hover:bg-orange/90 w-full sm:w-auto"
+            className="bg-orange text-ink hover:bg-orange hover:shadow-md w-full sm:w-auto"
             eventName="zaiko_demo_cta"
             properties={{
               locale,

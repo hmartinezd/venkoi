@@ -294,7 +294,7 @@ export default async function ServicesPage({ params }: PageProps) {
             <TrackedButton
               href={getLocalizedPath('contact', currentLocale) + '?type=services'}
               variant="primary"
-              className="bg-orange text-white hover:bg-orange/90"
+              className="bg-orange text-ink hover:bg-orange hover:shadow-md"
               eventName="services_cta"
               properties={{ locale: currentLocale, source: 'services_overview_footer' }}
             >

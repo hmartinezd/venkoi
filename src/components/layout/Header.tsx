@@ -83,7 +83,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
     >
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-orange focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-orange focus:px-4 focus:py-2 focus:text-ink focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
       >
         {tCommon('skipToContent')}
       </a>

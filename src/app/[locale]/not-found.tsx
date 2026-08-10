@@ -24,7 +24,7 @@ export default async function NotFound() {
         <div>
           <LocalizedLink
             href="/"
-            className="inline-flex items-center justify-center rounded-xl bg-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-orange/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange"
+            className="inline-flex items-center justify-center rounded-xl bg-orange px-6 py-3 text-sm font-semibold text-ink shadow-sm hover:bg-orange hover:shadow-md transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange"
           >
             {t('cta')}
           </LocalizedLink>

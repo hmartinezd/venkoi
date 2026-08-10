@@ -30,6 +30,8 @@ function contrastRatio(first: string, second: string): number {
 
 const brandOrange = colorVariable('orange');
 const orangeText = colorVariable('orange-text');
+const ink = colorVariable('ink');
+const surfaceDark = colorVariable('surface-dark');
 const lightSurfaces = ['surface', 'background', 'surface-muted'] as const;
 
 assert.equal(brandOrange, '#f84d25', 'Primary Venkoi orange must remain #F84D25');
@@ -43,5 +45,29 @@ for (const surface of lightSurfaces) {
   );
   console.log(`orange-text on ${surface}: ${ratio.toFixed(2)}:1`);
 }
+
+const brandOrangeOnInk = contrastRatio(brandOrange, ink);
+assert.ok(
+  brandOrangeOnInk >= 4.5,
+  `Brand orange ${brandOrange} has insufficient contrast (${brandOrangeOnInk.toFixed(2)}:1) on Ink ${ink}`
+);
+console.log(`brand-orange on ink: ${brandOrangeOnInk.toFixed(2)}:1`);
+
+const inkOnBrandOrange = contrastRatio(ink, brandOrange);
+assert.ok(
+  inkOnBrandOrange >= 4.5,
+  `Ink ${ink} has insufficient contrast (${inkOnBrandOrange.toFixed(2)}:1) on brand orange ${brandOrange}`
+);
+console.log(`ink on brand-orange: ${inkOnBrandOrange.toFixed(2)}:1`);
+
+const brandOrangeOnSurfaceDark = contrastRatio(brandOrange, surfaceDark);
+assert.ok(
+  brandOrangeOnSurfaceDark >= 4.5,
+  `Brand orange ${brandOrange} has insufficient contrast (${brandOrangeOnSurfaceDark.toFixed(2)}:1) on surface-dark ${surfaceDark}`
+);
+console.log(`brand-orange on surface-dark: ${brandOrangeOnSurfaceDark.toFixed(2)}:1`);
+
+const whiteOnBrandOrange = contrastRatio(colorVariable('surface'), brandOrange);
+console.log(`white on brand-orange (not for normal text): ${whiteOnBrandOrange.toFixed(2)}:1`);
 
 console.log('Accessibility color regression checks passed.');

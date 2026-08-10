@@ -34,7 +34,7 @@ export function FinalCta({
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <Button href={buildProductDemoHref(locale, FEATURED_PRODUCT)} variant="primary" className="bg-orange text-white hover:bg-orange/90">
+          <Button href={buildProductDemoHref(locale, FEATURED_PRODUCT)} variant="primary" className="bg-orange text-ink hover:bg-orange hover:shadow-md">
             {demoCta}
           </Button>
           <Button href={getLocalizedPath('contact', locale)} variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white">

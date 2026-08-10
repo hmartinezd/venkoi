@@ -80,7 +80,7 @@ export function ZaikoExplorer({
               aria-pressed={activeArea === area}
               className={`px-4 py-2 rounded-full text-sm transition-all border focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 ${
                 activeArea === area
-                  ? 'bg-orange text-white border-orange shadow-sm font-bold'
+                  ? 'bg-orange text-ink border-orange shadow-sm font-bold'
                   : 'bg-surface text-foreground-muted border-border hover:border-orange/50 hover:text-ink font-medium'
               }`}
             >

@@ -30,7 +30,7 @@ export function FormStatus({ status, title, message, className }: FormStatusProp
       {title ? (
         <div className="flex items-center gap-2">
           {isSuccess ? (
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-orange text-white text-xs font-bold">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-orange text-ink text-xs font-bold">
               ✓
             </span>
           ) : (
