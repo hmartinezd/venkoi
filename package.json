@@ -23,7 +23,8 @@
     "test:accessibility": "tsx scripts/test-accessibility.ts",
     "test:rendering": "tsx scripts/test-rendering-boundaries.ts",
     "test:homepage": "tsx scripts/test-homepage-structure.ts",
-    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:contact && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage",
+    "test:product-page": "tsx scripts/test-product-page-structure.ts",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:contact && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {

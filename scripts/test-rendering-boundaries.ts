@@ -6,6 +6,9 @@ const serverComponents = [
   'src/components/home/ServicesSection.tsx',
   'src/components/services/ServiceCta.tsx',
   'src/components/product/zaiko/ZaikoProductNav.tsx',
+  'src/components/product/zaiko/ZaikoContext.tsx',
+  'src/components/product/zaiko/ZaikoCapabilities.tsx',
+  'src/components/product/zaiko/ZaikoProductFit.tsx',
   'src/components/layout/Footer.tsx'
 ];
 

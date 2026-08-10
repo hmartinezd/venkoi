@@ -454,7 +454,18 @@
       "heading": "See each part of your inventory story more clearly.",
       "body": "Explore the four areas Zaiko brings together. Select an area to see what it is designed to help you understand.",
       "detailLink": "See more about {area}",
-      "demoCta": "Request a Demo"
+      "demoCta": "Request a Demo",
+      "summaries": {
+        "inventory": "Know what you have and where it is.",
+        "purchases": "Keep purchasing and receiving organized.",
+        "activity": "Follow how inventory moves through the operation.",
+        "costs": "Understand what inventory is costing."
+      }
+    },
+    "capabilities": {
+      "eyebrow": "THE CORE AREAS",
+      "heading": "Four parts of one inventory picture.",
+      "body": "Inventory, purchases, activity, and costs each contribute to the same inventory history. Together, they make the full picture easier to understand."
     },
     "areas": {
       "inventory": {

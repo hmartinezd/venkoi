@@ -454,7 +454,18 @@
       "heading": "Ve con más claridad cada parte de la historia de tu inventario.",
       "body": "Explora las cuatro áreas que Zaiko reúne. Selecciona una para ver qué está diseñada para ayudarte a entender.",
       "detailLink": "Ver más sobre {area}",
-      "demoCta": "Solicitar una demo"
+      "demoCta": "Solicitar una demo",
+      "summaries": {
+        "inventory": "Conoce lo que tienes y dónde está.",
+        "purchases": "Mantén organizadas las compras y recepciones.",
+        "activity": "Sigue cómo se mueve el inventario dentro de tu operación.",
+        "costs": "Entiende cuánto te está costando el inventario."
+      }
+    },
+    "capabilities": {
+      "eyebrow": "LAS ÁREAS PRINCIPALES",
+      "heading": "Cuatro partes de una misma visión del inventario.",
+      "body": "El inventario, las compras, la actividad y los costos forman parte del mismo historial. Juntos, hacen que la visión completa sea más fácil de entender."
     },
     "areas": {
       "inventory": {

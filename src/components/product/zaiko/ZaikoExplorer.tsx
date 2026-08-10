@@ -15,8 +15,7 @@ interface AreaContent {
   label: string;
   eyebrow: string;
   heading: string;
-  body: string;
-  supporting: string[];
+  summary: string;
 }
 
 interface ZaikoExplorerProps {
@@ -103,19 +102,10 @@ export function ZaikoExplorer({
               <h3 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
                 {activeContent.heading}
               </h3>
-              <p className="text-base text-foreground-muted leading-relaxed">
-                {activeContent.body}
+              <p className="text-base text-foreground-muted leading-relaxed sm:text-lg">
+                {activeContent.summary}
               </p>
             </div>
-
-            <ul className="space-y-3" role="list">
-              {activeContent.supporting.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-sm font-medium text-ink">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-orange/40" />
-                  {point}
-                </li>
-              ))}
-            </ul>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
               <TrackedButton
