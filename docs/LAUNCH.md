@@ -79,28 +79,71 @@ The code treats missing or invalid email configuration as a logged skip after pe
 
 ## Production status and remaining launch work
 
-- [ ] Configure `venkoi.com`, DNS, and TLS/HTTPS in the production host.
+- [ ] Configure `venkoi.com`, DNS, and TLS/HTTPS in the production host. Both hostnames serve valid HTTPS, but the primary-domain redirect is reversed; see the 2026-08-11 verification below.
 - [ ] Set production `SITE_URL=https://venkoi.com`.
 - [x] Create/configure the production Neon database with Neon Auth off.
 - [x] Apply migrations `001` → `002` → `003` manually in numeric order.
 - [x] Connect server-only `DATABASE_URL` to Vercel Production through Neon and redeploy.
 - [x] Verify controlled production Contact and Demo submissions persisted the expected rows.
 - [x] Verify Demo persistence stores the stable product slug `zaiko`.
-- [ ] Decide the lead retention period and confirm Neon backup/retention operations are appropriate for that approved decision. The retention period remains an unresolved operational/legal decision.
+- [x] Adopt the V1 lead-retention baseline: ordinarily up to 24 months from the last meaningful interaction for unconverted Contact, Demo, and Early Access leads.
+- [ ] Establish the operational review and deletion/anonymization process for records eligible under the 24-month rule. No automated destructive cleanup exists.
 - [x] Configure Resend and verify the approved sending domain.
 - [x] Configure `RESEND_API_KEY`, `RESEND_EMAIL_DOMAIN`, and `LEADS_NOTIFICATION_EMAIL` in Vercel Production.
 - [ ] Configure production `SITE_URL` as intended. (`DATABASE_URL` is done.)
-- [ ] Deploy to Vercel Production after the remaining environment configuration is complete.
+- [x] Deploy the current `main` commit to Vercel Production. GitHub/Vercel deployment status and the live responses identify commit `838599c` as deployed.
 - [ ] Verify BotID is active for `POST /api/leads` production traffic.
 - [x] Confirm Contact and Demo internal notifications and user acknowledgements in English.
 - [ ] Inspect production logs for database, email, and BotID errors after the controlled submissions.
-- [ ] Verify sitemap, robots, canonical, hreflang, and social metadata behavior.
+- [ ] Verify sitemap, robots, canonical, hreflang, and social metadata behavior. The HTML/XML output passed, but the hosting redirect and response `Link` headers still expose `www`; see the 2026-08-11 verification below.
 - [ ] Verify Vercel Analytics receives production traffic.
 - [ ] Verify Vercel Speed Insights receives production traffic.
-- [ ] Complete the pending owner/legal Privacy Policy and Terms decisions and provide approved legal content/routes if needed.
+- [x] Publish localized Privacy Policy and Website Terms routes and localized footer links.
+- [ ] Configure and verify `privacy@venkoi.com` mailbox or forwarding outside the repository.
 - [ ] Perform the final go/no-go review.
 
-Privacy and Terms currently render as non-link footer text; no corresponding routes are established by this milestone. The owner and appropriate legal reviewer must decide whether approved pages are required. That review should consider the actual production use of lead data, Vercel Analytics, and Speed Insights. This runbook does not establish legal or retention policy.
+Privacy is published at `/en/privacy` and `/es/privacidad`; Website Terms are published at `/en/terms` and `/es/terminos`. They are crawlable, included in the sitemap at low priority, and linked from the localized footer. They cover the current marketing website and lead flows only. The approved V1 retention baseline is up to 24 months from the last meaningful interaction for unconverted leads, followed by deletion or anonymization unless a documented exception applies. Enforcement is operational and is not automated.
+
+Before authenticated or paid Zaiko functionality launches, perform a separate product legal review covering Product Terms, subscriptions/payments, accounts and customer data, product privacy and retention/deletion, DPAs where appropriate, and product security/legal requirements.
+
+## Production-domain verification — 2026-08-11
+
+Verification was performed against clean local `main` at commit `838599c`, which matched `origin/main`, using safe HTTPS `GET`/`HEAD` requests. No production lead was submitted.
+
+### Verified live
+
+- [x] TLS validation succeeds for both `venkoi.com` and `www.venkoi.com`. Both present valid Let's Encrypt certificates and HTTPS responses include HSTS.
+- [x] `/en` and `/es` render successfully with HTTP 200 responses after the current domain redirect.
+- [x] `/robots.txt` allows `/`, disallows `/api/`, and advertises `https://venkoi.com/sitemap.xml`.
+- [x] `/sitemap.xml` contains 22 intended EN/ES canonical entries, including correct EN, ES, and English `x-default` alternates. Demo is excluded, while the intended public Contact routes remain included. No `www.venkoi.com` or `*.vercel.app` URL appears in its XML.
+- [x] Representative EN/ES home, Zaiko, Services, Insights, and insight-article HTML uses `https://venkoi.com` for canonical URLs, EN/ES alternates, English `x-default`, and Open Graph URLs. Pages with generated Open Graph/Twitter images use `https://venkoi.com` image URLs, and sampled image endpoints return HTTP 200 PNG responses.
+- [x] Representative production pages emit `index, follow` robots metadata.
+
+### Launch blocker found
+
+- [ ] Correct the Vercel primary-domain configuration. `https://venkoi.com` currently returns HTTP 308 to the equivalent `https://www.venkoi.com` URL; path and query are preserved, but this is the reverse of the required `www` → apex behavior. `www` serves HTTP 200 instead of redirecting to the apex.
+- [ ] Recheck response-level alternate links after correcting the primary domain. HTML canonical/hreflang tags use the apex as required, but responses served from `www` currently include HTTP `Link` alternate headers on the `www` origin. This allows `www` to leak as an alternate identity even though the HTML and sitemap are apex-canonical.
+- [ ] Repeat the apex, `www`, metadata-header, social-image, robots, and sitemap checks after the Vercel redirect is corrected. Do not add application middleware for this hosting-level redirect.
+
+### Verified by repository/code
+
+- [x] `.env.example`, `src/lib/site-config.ts`, and SEO regressions define the canonical contract as `SITE_URL=https://venkoi.com`, with the same safe apex fallback.
+- [x] Vercel Analytics and Speed Insights components are mounted in the locale layout, so production instrumentation is capable of receiving traffic. Dashboard receipt is not established by source or page markup.
+- [x] BotID client instrumentation protects `POST /api/leads`; the API calls `checkBotId()` before reading or validating the request body, blocks identified bots, and fails closed on verification errors in deployed environments.
+- [x] Preview behavior remains covered by regression tests: `noindex`, `nofollow`, robots disallow `/`, and canonical/alternate/Open Graph URLs remain on `https://venkoi.com`.
+
+### Owner-side verification still required
+
+- [ ] In Vercel Domains, make `venkoi.com` the primary production domain and configure `www.venkoi.com` to redirect to it, then rerun the blocker checks above.
+- [ ] Confirm the Vercel Production environment explicitly sets `SITE_URL=https://venkoi.com`. Live HTML is apex-canonical, but environment configuration itself was not accessible here.
+- [ ] Inspect the Vercel Analytics dashboard for real production traffic.
+- [ ] Inspect the Vercel Speed Insights dashboard for production observations.
+- [ ] Inspect recent production logs for database, Resend, BotID, and unexpected runtime errors without exposing submitted personal information or secrets.
+- [ ] Verify BotID operational status in Vercel without abusive or artificial submissions. The live site and repository establish instrumentation, not dashboard/runtime verification.
+- [ ] Authenticate to the protected Vercel Preview deployment and verify its live page and `/robots.txt`. The latest recorded Preview redirected unauthenticated requests to Vercel login, so live preview metadata could not be inspected; code regressions passed this contract.
+- [ ] Verify Spanish production email delivery when a genuine Spanish flow is available. English Contact and Demo persistence/email remain previously verified and were not repeated for this domain check.
+- [ ] Verify the public legal routes after deployment, configure `privacy@venkoi.com`, and establish the manual retention review/deletion or anonymization process.
+- [ ] Perform the final go/no-go review only after the reversed domain redirect and response-header leak are corrected and reverified.
 
 ## Manual lead verification matrix
 
@@ -118,17 +161,17 @@ Use a non-production environment for controlled failure-path testing. Confirm da
 
 ## Domain cutover — owner checklist
 
-These are external hosting actions and remain pending until the owner performs and verifies them:
+These are external hosting actions. Items are checked only where live behavior or deployment records established completion:
 
-1. [ ] Attach `venkoi.com` to the Vercel Production project.
+1. [x] Attach `venkoi.com` to the Vercel Production project.
 2. [ ] Configure the exact DNS records Vercel currently requests for this project and domain; do not rely on copied generic A/CNAME values.
-3. [ ] Wait for Vercel to verify the domain.
-4. [ ] Confirm TLS is active and the HTTPS certificate is valid.
+3. [x] Wait for Vercel to verify the domain.
+4. [x] Confirm TLS is active and the HTTPS certificate is valid.
 5. [ ] Set or confirm Production `SITE_URL=https://venkoi.com`.
-6. [ ] Redeploy after the environment change if Vercel indicates that it is required.
+6. [x] Redeploy after the environment change if Vercel indicates that it is required.
 7. [ ] Make `venkoi.com` the primary production domain.
 8. [ ] If `www.venkoi.com` is attached, configure it to redirect to `venkoi.com`; keep the apex domain as the sole canonical origin.
-9. [ ] Confirm old `*.vercel.app` deployment URLs do not appear as canonical, alternate, sitemap, or social metadata URLs.
+9. [x] Confirm old `*.vercel.app` deployment URLs do not appear as canonical, alternate, sitemap, or social metadata URLs in the sampled production output.
 10. [ ] Perform the controlled live SEO and platform verification below.
 
 DNS and primary-domain redirects belong to Vercel/domain configuration, not application middleware.
@@ -139,14 +182,14 @@ Domain and locales:
 
 - [ ] `https://venkoi.com` loads successfully with a valid HTTPS certificate.
 - [ ] Primary-domain behavior is correct, including the `www` → apex redirect if `www.venkoi.com` is attached.
-- [ ] `/en` and `/es` load successfully.
+- [x] `/en` and `/es` load successfully after the current reversed domain redirect.
 
 SEO:
 
-- [ ] Production `/robots.txt` allows public crawling, disallows `/api/`, and advertises `https://venkoi.com/sitemap.xml`.
-- [ ] `/sitemap.xml` contains only intended canonical EN/ES public routes, locale alternates, and English `x-default`; Demo remains excluded.
-- [ ] Representative EN and ES pages use `https://venkoi.com` canonical URLs.
-- [ ] Representative pages expose correct `hreflang` values for `en` and `es`, with `x-default` pointing to English.
+- [x] Production `/robots.txt` allows public crawling, disallows `/api/`, and advertises `https://venkoi.com/sitemap.xml`.
+- [x] `/sitemap.xml` contains only intended canonical EN/ES public routes, locale alternates, and English `x-default`; Demo remains excluded.
+- [x] Representative EN and ES HTML pages use `https://venkoi.com` canonical URLs.
+- [x] Representative HTML pages expose correct `hreflang` values for `en` and `es`, with `x-default` pointing to English. Response `Link` headers remain blocked by the `www` issue recorded above.
 - [ ] Representative Open Graph URLs and social image URLs resolve through the canonical production origin.
 
 Preview safety:

@@ -28,6 +28,10 @@ assert(getLocalizedPath('servicesWeb', 'en') === '/en/services/websites-web-appl
 assert(getLocalizedPath('servicesWeb', 'es') === '/es/servicios/paginas-web-aplicaciones-web', 'Web Services ES');
 assert(getLocalizedPath('insights', 'en') === '/en/insights', 'Insights EN');
 assert(getLocalizedPath('insights', 'es') === '/es/recursos', 'Insights ES');
+assert(getLocalizedPath('privacy', 'en') === '/en/privacy', 'Privacy EN');
+assert(getLocalizedPath('privacy', 'es') === '/es/privacidad', 'Privacy ES');
+assert(getLocalizedPath('terms', 'en') === '/en/terms', 'Terms EN');
+assert(getLocalizedPath('terms', 'es') === '/es/terminos', 'Terms ES');
 assert(getLocalizedPath('insightRestaurantInventory', 'en') === '/en/insights/restaurant-inventory-information', 'Restaurant Inventory EN');
 assert(getLocalizedPath('insightRestaurantInventory', 'es') === '/es/recursos/inventario-restaurante-informacion-dispersa', 'Restaurant Inventory ES');
 assert(getLocalizedPath('insightStartSoftwareProject', 'en') === '/en/insights/start-a-software-project', 'Start Project EN');
@@ -47,6 +51,10 @@ assert(getRouteKeyFromPath('/en/services/websites-web-applications') === 'servic
 assert(getRouteKeyFromPath('/es/servicios/paginas-web-aplicaciones-web') === 'servicesWeb', 'Path /es/servicios/paginas-web-aplicaciones-web -> servicesWeb');
 assert(getRouteKeyFromPath('/en/insights') === 'insights', 'Path /en/insights -> insights');
 assert(getRouteKeyFromPath('/es/recursos') === 'insights', 'Path /es/recursos -> insights');
+assert(getRouteKeyFromPath('/en/privacy') === 'privacy', 'Path /en/privacy -> privacy');
+assert(getRouteKeyFromPath('/es/privacidad') === 'privacy', 'Path /es/privacidad -> privacy');
+assert(getRouteKeyFromPath('/en/terms') === 'terms', 'Path /en/terms -> terms');
+assert(getRouteKeyFromPath('/es/terminos') === 'terms', 'Path /es/terminos -> terms');
 assert(getRouteKeyFromPath('/en/insights/restaurant-inventory-information') === 'insightRestaurantInventory', 'Path /en/insights/restaurant-inventory-information -> insightRestaurantInventory');
 assert(getRouteKeyFromPath('/es/recursos/inventario-restaurante-informacion-dispersa') === 'insightRestaurantInventory', 'Path /es/recursos/inventario-restaurante-informacion-dispersa -> insightRestaurantInventory');
 assert(getRouteKeyFromPath('/en/insights/start-a-software-project') === 'insightStartSoftwareProject', 'Path /en/insights/start-a-software-project -> insightStartSoftwareProject');

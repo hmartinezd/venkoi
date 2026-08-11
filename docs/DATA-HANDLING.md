@@ -83,7 +83,7 @@ The application creates IDs with a `lead_` prefix, time component, and random by
 
 The database permits current canonical interests plus specified historical compatibility values. Application validation emits `mobile`, `web`, or `unsure`. Demo product validation is registry-driven; current production verification records the stable `zaiko` slug, not the display name.
 
-No repository-managed retention schedule, deletion job, anonymization job, or lead administration interface was found. **Retention period is an unresolved operational/legal decision.** No deletion automation or database migration is introduced by this audit.
+No repository-managed deletion job, anonymization job, or lead administration interface was found. **Recorded operational decision:** unconverted Contact, Demo, and Early Access lead records should ordinarily be retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. Customer conversion may place the record under a later customer/business-record policy. Automated enforcement is not implemented; an owner-operated review and deletion/anonymization process remains required. No destructive automation or database migration is introduced by this milestone.
 
 ## Transactional email exposure
 
@@ -154,19 +154,20 @@ No sensitive service configuration is exposed through a `NEXT_PUBLIC_*` variable
 
 Repository documentation records Neon Contact and Demo persistence, stable `zaiko` slug persistence, Resend sending, English Contact/Demo internal notification and acknowledgement delivery, and the canonical production-origin code contract as verified. These are recorded operational facts, not re-tested against live services in this audit.
 
-The following remain pending: `venkoi.com` cutover, DNS/TLS, live canonical/sitemap/robots checks, live Analytics traffic, live Speed Insights, live BotID operation, Spanish production email delivery, Privacy/Terms decisions, retention decisions, and final go/no-go.
+The following remain pending: completion of the `venkoi.com` primary-domain correction, live Analytics traffic, live Speed Insights, live BotID operation, Spanish production email delivery, operational retention enforcement, and final go/no-go.
 
-The footer currently renders localized Privacy and Terms labels as non-link text. No public Privacy or Terms routes exist. They remain pending approved content and owner/legal decisions. No consent banner or consent-management platform is present or introduced.
+Spanish production email delivery remains pending manual verification.
 
-## Owner / legal decisions still required
+The `venkoi.com` cutover correction remains pending because the primary-domain redirect is still reversed, as detailed in the launch runbook.
 
-- Approved Privacy Policy content and a policy effective date.
-- Whether a Terms page is needed for the V1 website.
-- Lead retention duration.
-- Lead deletion and/or anonymization process.
-- Privacy/contact address to publish.
-- Whether future marketing email will exist.
-- Whether future account, authentication, or product data requires an expanded technical/policy review.
-- Whether vendor agreements or other contractual documentation need review.
+Localized public Privacy Policy and Website Terms of Use routes exist in English and Spanish and are linked from the footer. The published privacy contact is `privacy@venkoi.com`. The policies cover the current marketing website, Contact, Demo, and Early Access flows; they do not purport to govern future authenticated or paid products. No consent banner or consent-management platform is present or introduced.
 
-This document intentionally does not answer those questions.
+Recorded operational decisions for V1: Venkoi does not currently operate a marketing mailing list, sell personal information, or use submitted lead information for third-party targeted advertising. Contact, Demo, and Early Access responses are transactional or direct responses to the submitted request.
+
+## Operational and future product decisions still required
+
+- Configure and verify mailbox or forwarding delivery for `privacy@venkoi.com` outside this repository.
+- Establish and execute the operational review that deletes or anonymizes eligible leads under the 24-month rule; automation is intentionally deferred.
+- Review any future marketing email system before implementation; none currently exists.
+- Review Zaiko separately before authenticated or paid SaaS launch, including Product Terms of Service, subscription/payment terms, account and customer-data rules, product-specific privacy and retention/deletion provisions, data-processing agreements where appropriate, and product security/legal requirements.
+- Determine whether vendor agreements or other contractual documentation need separate review.

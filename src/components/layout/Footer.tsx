@@ -147,9 +147,21 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
           <LanguageSwitcher locale={locale} variant="footer" />
 
           <div className="flex items-center gap-4">
-            <span className="cursor-default text-foreground-muted">{tCommon('privacy')}</span>
+            <LocalizedLink
+              href={internalRoutes.privacy}
+              locale={locale}
+              className="rounded-sm outline-none transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
+            >
+              {tCommon('privacy')}
+            </LocalizedLink>
             <span>·</span>
-            <span className="cursor-default text-foreground-muted">{tCommon('terms')}</span>
+            <LocalizedLink
+              href={internalRoutes.terms}
+              locale={locale}
+              className="rounded-sm outline-none transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4"
+            >
+              {tCommon('terms')}
+            </LocalizedLink>
           </div>
 
           <div>{tCommon('copyright', { year: currentYear })}</div>

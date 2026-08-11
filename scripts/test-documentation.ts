@@ -37,8 +37,8 @@ assert.match(dataHandling, /not a Privacy Policy/i, 'DATA-HANDLING must not clai
 assert.match(dataHandling, /Neon[\s\S]*persists?|insert persists/i, 'DATA-HANDLING must document Neon persistence facts');
 assert.match(dataHandling, /Resend[\s\S]*internal notification[\s\S]*customer acknowledgement/i, 'DATA-HANDLING must document both Resend email paths');
 assert.match(dataHandling, /Same-origin Venkoi referrers are discarded/i, 'DATA-HANDLING must preserve external-referrer semantics');
-assert.match(dataHandling, /Retention period is an unresolved operational\/legal decision/i, 'DATA-HANDLING must leave retention unresolved');
-assert.match(dataHandling, /Owner \/ legal decisions still required/i, 'DATA-HANDLING must preserve pending owner/legal decisions');
+assert.match(dataHandling, /up to 24 months from the last meaningful interaction/i, 'DATA-HANDLING must document approved retention');
+assert.match(dataHandling, /Operational and future product decisions still required/i, 'DATA-HANDLING must identify remaining operational and product work');
 assert.match(dataHandling, /Spanish production email delivery[\s\S]*pending/i, 'DATA-HANDLING must preserve pending Spanish production email verification');
 assert.match(dataHandling, /venkoi\.com` cutover[\s\S]*pending/i, 'DATA-HANDLING must preserve pending domain cutover');
 
@@ -82,7 +82,8 @@ assert.match(launch, /Production lead persistence — done/, 'Runbook must disti
 assert.match(launch, /Spanish-language production delivery has not been manually verified/i, 'Runbook must distinguish unverified Spanish production delivery');
 assert.match(launch, /must not be interpreted as the previous SPA route/i, 'Runbook must document referrer semantics');
 assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
-assert.match(launch, /pending owner\/legal Privacy Policy and Terms decisions/i, 'Runbook must preserve the owner/legal launch decision');
+assert.match(launch, /Publish localized Privacy Policy and Website Terms routes/i, 'Runbook must record public legal routes');
+assert.match(launch, /privacy@venkoi\.com/, 'Runbook must record owner-side privacy mailbox action');
 assert.match(launch, /Domain cutover — owner checklist/, 'Runbook must include the owner domain-cutover checklist');
 assert.match(launch, /exact DNS records Vercel currently requests/, 'Runbook must defer exact DNS values to Vercel');
 assert.match(launch, /Make `venkoi\.com` the primary production domain/, 'Runbook must identify the apex primary domain');

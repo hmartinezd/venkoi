@@ -776,6 +776,87 @@
     "backToInsights": "Back to Insights",
     "relatedGuide": "RELATED GUIDE"
   },
+  "privacyPage": {
+    "seoTitle": "Privacy Policy | Venkoi",
+    "seoDescription": "Learn how Venkoi LLC collects, uses, shares, and retains information on the Venkoi marketing website.",
+    "eyebrow": "LEGAL",
+    "title": "Privacy Policy",
+    "introduction": "This Privacy Policy explains how Venkoi LLC handles information through the Venkoi marketing website, Contact and Demo forms, and current free-offer interest flow. It does not govern a future authenticated Venkoi or {productName} software product.",
+    "effectiveDate": "Effective August 11, 2026",
+    "sections": [
+      {
+        "title": "Who operates this website",
+        "paragraphs": ["Venkoi LLC operates https://venkoi.com. In this policy, “Venkoi,” “we,” “us,” and “our” refer to Venkoi LLC."]
+      },
+      {
+        "title": "Information you provide",
+        "paragraphs": ["Depending on the form and information you choose to submit, we collect the following categories:"],
+        "bullets": ["Name, or first and last name; email address; optional phone number; and company or business name.", "Restaurant location count and information about the inventory tools or systems currently used.", "Service interest, project stage, message, Demo or product interest, and free-offer interest.", "The selected website language, source path, permitted UTM attribution fields, and a normalized external referrer when available."]
+      },
+      {
+        "title": "Technical information and website tools",
+        "paragraphs": ["Normal browser, device, network, request, and security information may be processed as needed to deliver and protect the website. Vercel provides hosting and request processing, privacy-oriented Web Analytics, Speed Insights performance measurement, and BotID anti-abuse verification.", "Venkoi’s current application does not create cookies or localStorage tracking, build fingerprint-based customer profiles, preserve attribution across browser sessions, or track a visitor’s journey across pages. Infrastructure and security providers may still process technical browser, device, or network signals as part of their services."]
+      },
+      {
+        "title": "How we use information",
+        "bullets": ["Respond to Contact requests and communicate about a submitted request.", "Handle Demo requests and free-offer interest.", "Operate, secure, troubleshoot, and improve the website.", "Understand aggregated website usage and performance.", "Prevent fraud, spam, automated abuse, and bots.", "Maintain business records during the approved retention period."]
+      },
+      {
+        "title": "Service providers",
+        "paragraphs": ["We use service providers that support our operations: Vercel for hosting, platform functionality, analytics, performance measurement, and BotID; Neon for database persistence; and Resend for transactional email delivery. These providers process information to support the services they provide to Venkoi. We do not sell lead information to them."]
+      },
+      {
+        "title": "Emails",
+        "paragraphs": ["A Contact, Demo, or free-offer submission may result in transactional or direct-response email related to that request. Submitting a form does not enroll you in an unrelated marketing newsletter. Venkoi does not currently operate a marketing mailing list through these forms."]
+      },
+      {
+        "title": "Sale and targeted advertising",
+        "paragraphs": ["Venkoi does not currently sell personal information. Venkoi does not currently use submitted lead information for third-party targeted advertising."]
+      },
+      {
+        "title": "Retention",
+        "paragraphs": ["Unconverted Contact, Demo, and free-offer lead records are ordinarily retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. If a lead becomes a customer, its information may later be subject to a different customer or business-record retention policy.", "This retention rule is an operational policy. Automated deletion or anonymization is not yet implemented, and Venkoi must carry out the required review and deletion or anonymization process operationally."]
+      },
+      {
+        "title": "Privacy requests",
+        "paragraphs": ["To ask about Venkoi’s privacy practices or request access to, correction of, or deletion of information we maintain about you, email {privacyEmail}. Requests are handled where applicable. We may need to verify your identity before disclosing, changing, or deleting personal information."]
+      },
+      {
+        "title": "California and online privacy disclosures",
+        "paragraphs": ["The categories collected are described above and include identifiers and contact, business, request, attribution, and technical information. We disclose information to the service-provider categories described above to operate the website and respond to requests. You may use {privacyEmail} to request review, correction, or deletion where offered.", "The application does not currently respond differently to browser Do Not Track or similar preference signals. Venkoi does not use submitted lead information for cross-site targeted advertising, and the application does not authorize other parties to collect personally identifiable information about your activities over time and across unrelated websites for Venkoi advertising. Platform and security providers may process technical signals to provide their services."]
+      },
+      {
+        "title": "Changes to this policy",
+        "paragraphs": ["We may update this policy as our website or practices change. Material changes will be communicated by posting the revised policy here with a new effective or updated date. Review this page periodically for the current version."]
+      },
+      {
+        "title": "Contact",
+        "paragraphs": ["Privacy questions and requests may be sent to {privacyEmail}."]
+      }
+    ]
+  },
+  "termsPage": {
+    "seoTitle": "Website Terms of Use | Venkoi",
+    "seoDescription": "Terms governing use of the Venkoi LLC marketing website, including Demo and free-offer interest requests.",
+    "eyebrow": "LEGAL",
+    "title": "Website Terms of Use",
+    "introduction": "These Terms apply to the Venkoi LLC marketing website at https://venkoi.com. They are website terms, not terms for an authenticated or paid {productName} or other Venkoi software product.",
+    "effectiveDate": "Effective August 11, 2026",
+    "sections": [
+      {"title": "Acceptance and website scope", "paragraphs": ["By accessing or using this website, you agree to these Terms. If you do not agree, do not use the website. Its content is primarily informational and promotional."]},
+      {"title": "Products and plans", "paragraphs": ["Information about Venkoi products, including {productName}, may describe features, plans, free offers, or intended capabilities. Unless an express written offer says otherwise, website descriptions do not guarantee particular functionality, availability, or timing, which may change as products develop."]},
+      {"title": "Demo and free-offer requests", "paragraphs": ["Submitting a Demo request does not create a purchase contract. Expressing interest in a free offer does not guarantee acceptance or availability. Any subscription, purchase, or commercial relationship may be governed by a separate written agreement or product terms."]},
+      {"title": "Intellectual property", "paragraphs": ["Venkoi’s website content, branding, software demonstrations, graphics, text, and other original materials are owned by Venkoi LLC or used with permission and are protected by applicable intellectual-property laws. Third-party names, trademarks, and materials remain the property of their respective owners. You may use the website for ordinary personal or business evaluation, but may not copy, distribute, modify, or exploit protected material without permission or a legal right to do so."]},
+      {"title": "Acceptable use", "paragraphs": ["You may not use the website unlawfully; interfere maliciously with its operation; attempt unauthorized access or compromise; conduct unauthorized automated abuse; misuse forms; or submit fraudulent, harmful, or spam content."]},
+      {"title": "Third-party services and links", "paragraphs": ["The website may rely on third-party services or link to third-party websites. Venkoi does not control and is not responsible for third-party content, availability, security, or practices. A link does not necessarily imply endorsement."]},
+      {"title": "Informational content", "paragraphs": ["Website and Insights content is general information and is not legal, accounting, financial, or other regulated professional advice. You should obtain appropriate professional advice for decisions requiring it."]},
+      {"title": "Website availability and warranties", "paragraphs": ["We work to provide a useful website, but it is provided on an “as available” basis. To the extent permitted by law, Venkoi disclaims implied warranties regarding the website, including uninterrupted operation, error-free content, and fitness for a particular purpose. Nothing here excludes a warranty that applicable law does not allow us to exclude."]},
+      {"title": "Limitation of liability", "paragraphs": ["To the extent permitted by applicable law, Venkoi LLC will not be liable for indirect, incidental, special, consequential, or punitive damages arising from use of, or inability to use, this free informational website. This limitation does not apply where liability cannot lawfully be limited or excluded."]},
+      {"title": "Governing law", "paragraphs": ["These Terms are generally governed by Florida law, without regard to conflict-of-law rules, subject to any mandatory consumer protections or other laws that apply to you."]},
+      {"title": "Changes", "paragraphs": ["We may update these Terms prospectively. The effective or updated date displayed above identifies the current version. Continued use after an update means the updated Terms apply to later website use, to the extent permitted by law."]},
+      {"title": "Contact", "paragraphs": ["For general website questions, use the Contact page. For privacy questions or requests, email {privacyEmail}."]}
+    ]
+  },
   "breadcrumbs": {
     "home": "Home",
     "services": "Services",

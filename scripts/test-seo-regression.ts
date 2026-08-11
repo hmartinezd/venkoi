@@ -14,6 +14,8 @@ const sitemapRouteKeys: RouteKey[] = [
   'servicesWeb',
   'about',
   'contact',
+  'privacy',
+  'terms',
   'insights',
   'insightRestaurantInventory',
   'insightStartSoftwareProject',
@@ -130,6 +132,10 @@ export function testSeoRegression() {
     assertRouteMetadata('productsZaiko', 'es', 'Zaiko ES');
     assertRouteMetadata('insightRestaurantInventory', 'en', 'Insight article EN');
     assertRouteMetadata('insightRestaurantInventory', 'es', 'Insight article ES');
+    assertRouteMetadata('privacy', 'en', 'Privacy EN');
+    assertRouteMetadata('privacy', 'es', 'Privacy ES');
+    assertRouteMetadata('terms', 'en', 'Terms EN');
+    assertRouteMetadata('terms', 'es', 'Terms ES');
 
     setEnv('VERCEL_ENV', 'production');
     setEnv('NODE_ENV', 'production');
@@ -219,6 +225,9 @@ export function testSeoRegression() {
 
     const demoUrls = locales.map(locale => normalizeUrl(expectedUrl('demo', locale)));
     assert(!sitemapItems.some(item => demoUrls.includes(normalizeUrl(item.url))), 'Demo route is excluded from sitemap');
+    const legalItems = sitemapItems.filter(item => ['/en/privacy', '/es/privacidad', '/en/terms', '/es/terminos'].some(path => item.url.endsWith(path)));
+    assert(legalItems.length === 4, 'Sitemap includes all localized legal routes');
+    assert(legalItems.every(item => item.priority === 0.3), 'Legal sitemap routes use low priority');
   } finally {
     setEnv('VERCEL_ENV', origVercelEnv);
     setEnv('NODE_ENV', origNodeEnv);

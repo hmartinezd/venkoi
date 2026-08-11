@@ -10,6 +10,8 @@ export const internalRoutes = {
   about: '/about',
   contact: '/contact',
   demo: '/demo',
+  privacy: '/privacy',
+  terms: '/terms',
   insights: '/insights',
   insightRestaurantInventory: '/insights/restaurant-inventory-information',
   insightStartSoftwareProject: '/insights/start-a-software-project',
@@ -46,6 +48,14 @@ const pathnames = {
     es: '/contacto'
   },
   '/demo': '/demo',
+  '/privacy': {
+    en: '/privacy',
+    es: '/privacidad'
+  },
+  '/terms': {
+    en: '/terms',
+    es: '/terminos'
+  },
   '/insights': {
     en: '/insights',
     es: '/recursos'

@@ -37,18 +37,32 @@ assert.doesNotMatch(leadRuntime, /console\.(?:log|warn|error)\([^\n]*(?:rawPaylo
 assert.doesNotMatch(read('src/server/db/client.ts'), /console\.error\([^\n]*,\s*(?:error|err)\s*\)/, 'database initialization must not print a raw error that could contain credentials');
 
 for (const route of ['privacy', 'terms']) {
-  const routeDirectories = collectFiles(resolve(root, 'src/app')).filter((path) => relative(resolve(root, 'src/app'), path).split('/').includes(route));
-  assert.equal(routeDirectories.length, 0, `${route} route must not be created before approved content`);
+  const routeFiles = collectFiles(resolve(root, 'src/app')).filter((path) => relative(resolve(root, 'src/app'), path).split('/').includes(route));
+  assert.ok(routeFiles.some((path) => path.endsWith('page.tsx')), `${route} route must exist`);
 }
 const footer = read('src/components/layout/Footer.tsx');
-assert.doesNotMatch(footer, /href=[^\n]*(?:privacy|terms)/i, 'footer legal labels must not link to nonexistent routes');
+assert.match(footer, /internalRoutes\.privacy/, 'footer must link to Privacy');
+assert.match(footer, /internalRoutes\.terms/, 'footer must link to Terms');
+assert.doesNotMatch(footer, /(?:linkedin|instagram|href=["']#["'])/i, 'footer must not contain fake or placeholder social links');
+
+const siteConfig = read('src/lib/site-config.ts');
+assert.match(siteConfig, /PRIVACY_CONTACT_EMAIL\s*=\s*'privacy@venkoi\.com'/, 'privacy contact must be centralized');
+assert.equal((source.match(/privacy@venkoi\.com/g) ?? []).length, 1, 'privacy email literal must occur once in source');
 
 const dataHandlingPath = resolve(root, 'docs/DATA-HANDLING.md');
 assert.ok(existsSync(dataHandlingPath) && statSync(dataHandlingPath).isFile(), 'technical data-handling document must exist');
 const dataHandling = read('docs/DATA-HANDLING.md');
 assert.match(dataHandling, /Internal technical\/data-governance document/i, 'data-handling document must identify its internal technical purpose');
 assert.match(dataHandling, /not a Privacy Policy/i, 'data-handling document must not present itself as a legal policy');
-assert.match(dataHandling, /Retention period is an unresolved operational\/legal decision/i, 'retention must remain explicitly unresolved');
-assert.doesNotMatch(dataHandling, /\b(?:30|60|90|180|365) days?\b|\b(?:1|2|3|5|7) years?\b/i, 'data-handling document must not invent a retention duration');
+assert.match(dataHandling, /up to 24 months from the last meaningful interaction/i, 'approved retention baseline must be documented');
+assert.match(dataHandling, /Automated enforcement is not implemented/i, 'documentation must not claim automated retention enforcement');
+assert.match(dataHandling, /does not currently operate a marketing mailing list/i, 'documentation must record no current marketing list');
+assert.match(dataHandling, /does not currently[\s\S]*sell personal information/i, 'documentation must record no current sale');
+assert.match(dataHandling, /targeted advertising/i, 'documentation must address targeted advertising');
+
+const messages = read('src/i18n/messages/en.json') + read('src/i18n/messages/es.json');
+for (const claim of ['Google Analytics', 'Meta Pixel', 'marketing newsletter']) {
+  assert.doesNotMatch(messages, new RegExp(`add ${claim}`, 'i'), `legal content must not claim ${claim} was added`);
+}
 
 console.log('Data-governance regression checks passed.');

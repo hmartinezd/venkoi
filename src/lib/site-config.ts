@@ -1,4 +1,5 @@
 export const DEFAULT_SITE_ORIGIN = 'https://venkoi.com';
+export const PRIVACY_CONTACT_EMAIL = 'privacy@venkoi.com';
 
 const UNSAFE_URL_CHARACTERS = /[\s\u0000-\u001f\u007f-\u009f]/u;
 
