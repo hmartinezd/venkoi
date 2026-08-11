@@ -7,8 +7,8 @@ export function getDb(): NeonQueryFunction<boolean, boolean> | null {
   }
   try {
     return neon(connectionString);
-  } catch (error) {
-    console.error('Failed to initialize Neon DB client:', error);
+  } catch {
+    console.error('Failed to initialize Neon DB client: invalid database configuration.');
     return null;
   }
 }

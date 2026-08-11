@@ -37,7 +37,8 @@
     "test:insights": "tsx scripts/test-insights-structure.ts",
     "test:content": "tsx scripts/test-content-consistency.ts",
     "test:docs": "tsx scripts/test-documentation.ts",
-    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:contact-experience && npm run test:acquisition && npm run test:emails && npm run test:leads && npm run test:database && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about && npm run test:buttons && npm run test:platform && npm run test:insights && npm run test:content && npm run test:docs",
+    "test:data-governance": "tsx scripts/test-data-governance.ts",
+    "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:contact-experience && npm run test:acquisition && npm run test:emails && npm run test:leads && npm run test:database && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about && npm run test:buttons && npm run test:platform && npm run test:insights && npm run test:content && npm run test:data-governance && npm run test:docs",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
   "dependencies": {

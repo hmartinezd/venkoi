@@ -86,7 +86,7 @@ The code treats missing or invalid email configuration as a logged skip after pe
 - [x] Connect server-only `DATABASE_URL` to Vercel Production through Neon and redeploy.
 - [x] Verify controlled production Contact and Demo submissions persisted the expected rows.
 - [x] Verify Demo persistence stores the stable product slug `zaiko`.
-- [ ] Confirm Neon retention/backups are appropriate for launch.
+- [ ] Decide the lead retention period and confirm Neon backup/retention operations are appropriate for that approved decision. The retention period remains an unresolved operational/legal decision.
 - [x] Configure Resend and verify the approved sending domain.
 - [x] Configure `RESEND_API_KEY`, `RESEND_EMAIL_DOMAIN`, and `LEADS_NOTIFICATION_EMAIL` in Vercel Production.
 - [ ] Configure production `SITE_URL` as intended. (`DATABASE_URL` is done.)
@@ -97,7 +97,7 @@ The code treats missing or invalid email configuration as a logged skip after pe
 - [ ] Verify sitemap, robots, canonical, hreflang, and social metadata behavior.
 - [ ] Verify Vercel Analytics receives production traffic.
 - [ ] Verify Vercel Speed Insights receives production traffic.
-- [ ] Decide whether Privacy Policy / Terms pages are required for launch and provide approved legal content/routes if needed.
+- [ ] Complete the pending owner/legal Privacy Policy and Terms decisions and provide approved legal content/routes if needed.
 - [ ] Perform the final go/no-go review.
 
 Privacy and Terms currently render as non-link footer text; no corresponding routes are established by this milestone. The owner and appropriate legal reviewer must decide whether approved pages are required. That review should consider the actual production use of lead data, Vercel Analytics, and Speed Insights. This runbook does not establish legal or retention policy.

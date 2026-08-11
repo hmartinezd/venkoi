@@ -9,6 +9,9 @@ const readme = read('README.md');
 const launchPath = resolve(root, 'docs/LAUNCH.md');
 assert.ok(existsSync(launchPath), 'docs/LAUNCH.md must exist');
 const launch = read('docs/LAUNCH.md');
+const dataHandlingPath = resolve(root, 'docs/DATA-HANDLING.md');
+assert.ok(existsSync(dataHandlingPath), 'docs/DATA-HANDLING.md must exist');
+const dataHandling = read('docs/DATA-HANDLING.md');
 
 for (const term of ['Node.js 24', 'Next.js 16', 'React 19']) {
   assert.ok(readme.includes(term), `README must document ${term}`);
@@ -27,6 +30,17 @@ assert.match(readme, /Spanish production delivery has not been manually verified
 assert.doesNotMatch(readme, /production forms are fully operational/i, 'README must not claim forms are fully operational');
 assert.match(readme, /manually verified/i, 'README must record completed production persistence verification');
 assert.match(readme, /stable product slug `zaiko`/i, 'README must document rename-safe Demo persistence');
+assert.match(readme, /technical data-handling inventory/i, 'README must link to the technical data-handling inventory');
+
+assert.match(dataHandling, /Internal technical\/data-governance document/i, 'DATA-HANDLING must be explicitly internal and technical');
+assert.match(dataHandling, /not a Privacy Policy/i, 'DATA-HANDLING must not claim to be a legal policy');
+assert.match(dataHandling, /Neon[\s\S]*persists?|insert persists/i, 'DATA-HANDLING must document Neon persistence facts');
+assert.match(dataHandling, /Resend[\s\S]*internal notification[\s\S]*customer acknowledgement/i, 'DATA-HANDLING must document both Resend email paths');
+assert.match(dataHandling, /Same-origin Venkoi referrers are discarded/i, 'DATA-HANDLING must preserve external-referrer semantics');
+assert.match(dataHandling, /Retention period is an unresolved operational\/legal decision/i, 'DATA-HANDLING must leave retention unresolved');
+assert.match(dataHandling, /Owner \/ legal decisions still required/i, 'DATA-HANDLING must preserve pending owner/legal decisions');
+assert.match(dataHandling, /Spanish production email delivery[\s\S]*pending/i, 'DATA-HANDLING must preserve pending Spanish production email verification');
+assert.match(dataHandling, /venkoi\.com` cutover[\s\S]*pending/i, 'DATA-HANDLING must preserve pending domain cutover');
 
 const envLines = read('.env.example').split(/\r?\n/);
 const env = new Map<string, string>();
@@ -68,7 +82,7 @@ assert.match(launch, /Production lead persistence — done/, 'Runbook must disti
 assert.match(launch, /Spanish-language production delivery has not been manually verified/i, 'Runbook must distinguish unverified Spanish production delivery');
 assert.match(launch, /must not be interpreted as the previous SPA route/i, 'Runbook must document referrer semantics');
 assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
-assert.match(launch, /Privacy Policy \/ Terms pages are required for launch/, 'Runbook must preserve the owner/legal launch decision');
+assert.match(launch, /pending owner\/legal Privacy Policy and Terms decisions/i, 'Runbook must preserve the owner/legal launch decision');
 assert.match(launch, /Domain cutover — owner checklist/, 'Runbook must include the owner domain-cutover checklist');
 assert.match(launch, /exact DNS records Vercel currently requests/, 'Runbook must defer exact DNS values to Vercel');
 assert.match(launch, /Make `venkoi\.com` the primary production domain/, 'Runbook must identify the apex primary domain');

@@ -32,7 +32,7 @@ Database persistence is required for a successful submission. A database failure
 
 Lead attribution uses `source_path` for the form submission route without its query string. `referrer` is a normalized external HTTP(S) document referrer with query and fragment removed; same-origin Venkoi referrers are intentionally discarded. It is not a previous SPA route, and V1 does not implement internal customer-journey tracking.
 
-See the [launch runbook](docs/LAUNCH.md) for the environment contract, migration sequence, service configuration, and manual production verification.
+See the [launch runbook](docs/LAUNCH.md) for the environment contract, migration sequence, service configuration, and manual production verification. The [technical data-handling inventory](docs/DATA-HANDLING.md) records the V1 lead-data flow and unresolved governance decisions; it is not a legal policy.
 
 ## Important commands
 
@@ -52,6 +52,7 @@ The regression suite covers these stable areas without duplicating every individ
 - Routing & Navigation
 - Product Configuration
 - Lead & Contact Flow
+- Data Governance & Documentation
 - SEO & Accessibility
 - Rendering Boundaries
 - Page Structure
