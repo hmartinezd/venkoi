@@ -33,6 +33,9 @@ assert.equal(packageJson.devDependencies?.prettier, undefined);
 assert.equal(packageJson.devDependencies?.['@playwright/test'], undefined);
 assert.equal(packageJson.scripts?.['test:e2e'], undefined);
 assert.doesNotMatch(workflow, /playwright|chromium|test:e2e/i);
+for (const artifact of ['playwright.config.ts', 'e2e', 'test-results']) {
+  assert.equal(existsSync(path.join(root, artifact)), false, `${artifact} must remain absent`);
+}
 assert.doesNotMatch(validation, /\.superRefine\(/);
 assert.doesNotMatch(validation, /\.strict\(\)/);
 assert.doesNotMatch(validation, /\.toLowerCase\(\)\s*\.email\(/);

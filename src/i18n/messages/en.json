@@ -364,8 +364,11 @@
       "whatsappLabel": "Chat on WhatsApp",
       "whatsappAriaLabel": "Chat with Venkoi on WhatsApp",
       "genericMessage": "Hi, I found Venkoi online and would like to talk about a software project.",
-      "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}.",
-      "contactLink": "Have another question? Contact Venkoi."
+      "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
+    },
+    "contactEscape": {
+      "prompt": "Have another question?",
+      "link": "Contact Venkoi"
     },
     "contactCta": "Contact Team Directly",
     "form": {

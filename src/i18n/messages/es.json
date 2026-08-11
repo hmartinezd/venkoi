@@ -364,8 +364,11 @@
       "whatsappLabel": "Hablar por WhatsApp",
       "whatsappAriaLabel": "Hablar con Venkoi por WhatsApp",
       "genericMessage": "Hola, encontré Venkoi en línea y me gustaría hablar sobre un proyecto de software.",
-      "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}.",
-      "contactLink": "¿Tienes otra pregunta? Contacta con Venkoi."
+      "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}."
+    },
+    "contactEscape": {
+      "prompt": "¿Tienes otra pregunta?",
+      "link": "Contacta con Venkoi"
     },
     "contactCta": "Contactar al Equipo",
     "form": {

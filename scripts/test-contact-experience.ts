@@ -9,12 +9,33 @@ const read = (file: string) =>
 const form = read("src/components/forms/ContactProjectForm.tsx");
 const page = read("src/app/[locale]/contact/page.tsx");
 const demoPage = read("src/app/[locale]/demo/page.tsx");
+const nextSteps = read("src/components/shared/NextSteps.tsx");
 
 assert.match(page, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)/);
 assert.match(page, /FEATURED_PRODUCT\.name/);
 assert.doesNotMatch(form, /name=["']product["']|early_access_interest|location_count|current_system/);
 assert.match(demoPage, /getLocalizedPath\('contact', currentLocale\)/);
-assert.doesNotMatch(demoPage, /getLocalizedPath\('contact', currentLocale\).*type=services/s);
+assert.doesNotMatch(demoPage, /type=services|interest=|product=/);
+assert.match(demoPage, /contactEscape\.prompt/);
+assert.match(demoPage, /contactEscape\.link/);
+
+const directContactEnd = demoPage.indexOf("</div>", demoPage.indexOf("direct.heading"));
+const contactEscapeStart = demoPage.indexOf("contactEscape.prompt");
+assert.ok(
+  directContactEnd > 0 && contactEscapeStart > directContactEnd,
+  "Demo Contact escape must render separately from the direct-contact bar"
+);
+
+for (const source of [page, demoPage]) {
+  const primaryGridEnd = source.indexOf("</div>", source.indexOf("lg:grid-cols-12"));
+  assert.ok(
+    source.indexOf("<NextSteps", primaryGridEnd) > primaryGridEnd,
+    "NextSteps must render after the primary 7/5 grid"
+  );
+}
+assert.match(nextSteps, /<section/);
+assert.match(nextSteps, /<ol/);
+assert.match(nextSteps, /md:grid-cols-3/);
 
 const detailsStart = form.indexOf("<details");
 const detailsEnd = form.indexOf("</details>");

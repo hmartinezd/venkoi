@@ -3,6 +3,7 @@ import { Section } from '@/components/layout/Section';
 import { DemoRequestForm } from '@/components/forms/DemoRequestForm';
 import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 import { ProductDemoAgenda } from '@/components/demo/ProductDemoAgenda';
+import { NextSteps } from '@/components/shared/NextSteps';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
@@ -103,81 +104,76 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             <h2 className="font-bold text-ink">{t('direct.heading')}</h2>
             <p className="text-sm text-foreground-muted">{t('direct.body')}</p>
           </div>
-          <div className="flex shrink-0 flex-wrap items-center gap-4">
-            <DirectContactChannels
-              whatsappMessage={t('direct.productMessage', { productName: resolvedProduct.name })}
-              whatsappLabel={t('direct.whatsappLabel')}
-              whatsappAriaLabel={t('direct.whatsappAriaLabel')}
-              showEmail={false}
-            />
-            <a
-              href={getLocalizedPath('contact', currentLocale)}
-              className="text-sm font-semibold text-ink underline decoration-border-strong underline-offset-4 transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm outline-none"
-            >
-              {t('direct.contactLink')}
-            </a>
-          </div>
+          <DirectContactChannels
+            whatsappMessage={t('direct.productMessage', { productName: resolvedProduct.name })}
+            whatsappLabel={t('direct.whatsappLabel')}
+            whatsappAriaLabel={t('direct.whatsappAriaLabel')}
+            showEmail={false}
+            className="shrink-0"
+          />
         </div>
 
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
           {/* Demo Request / Early Access Form Shell */}
-          <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:col-span-7">
-            <div className="space-y-6">
-              <div className="space-y-2 border-b border-border pb-6">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h2 className="text-xl font-bold text-ink">{formTitle}</h2>
-                  {isEarlyAccess && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange-text">
-                      <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-                      {t('badge')}
-                    </span>
-                  )}
+          <div className="space-y-4 lg:col-span-7">
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8">
+              <div className="space-y-6">
+                <div className="space-y-2 border-b border-border pb-6">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="text-xl font-bold text-ink">{formTitle}</h2>
+                    {isEarlyAccess && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange-text">
+                        <span className="h-1.5 w-1.5 rounded-full bg-orange" />
+                        {t('badge')}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-foreground-muted leading-relaxed">{formDesc}</p>
                 </div>
-                <p className="text-sm text-foreground-muted leading-relaxed">{formDesc}</p>
-              </div>
 
-              <NextIntlClientProvider messages={{ demoPage: messages.demoPage }}>
-                <DemoRequestForm
-                  locale={currentLocale}
-                  initialProduct={selectedProduct}
-                  initialInterest={selectedInterest}
-                  productName={resolvedProduct.name}
-                  freeMonths={resolvedProduct.earlyAccess.freeMonths}
-                  earlyAccessEnabled={resolvedProduct.earlyAccess.enabled}
-                />
-              </NextIntlClientProvider>
+                <NextIntlClientProvider messages={{ demoPage: messages.demoPage }}>
+                  <DemoRequestForm
+                    locale={currentLocale}
+                    initialProduct={selectedProduct}
+                    initialInterest={selectedInterest}
+                    productName={resolvedProduct.name}
+                    freeMonths={resolvedProduct.earlyAccess.freeMonths}
+                    earlyAccessEnabled={resolvedProduct.earlyAccess.enabled}
+                  />
+                </NextIntlClientProvider>
+              </div>
             </div>
+            <p className="text-sm text-foreground-muted">
+              {t('contactEscape.prompt')}{' '}
+              <a
+                href={getLocalizedPath('contact', currentLocale)}
+                className="rounded-sm font-semibold text-ink underline decoration-border-strong underline-offset-4 outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+              >
+                {t('contactEscape.link')}
+              </a>
+            </p>
           </div>
 
           <aside className="rounded-2xl border border-border bg-surface-muted/50 p-6 sm:p-8 lg:col-span-5">
-            <div className="space-y-8">
-              <ProductDemoAgenda
-                eyebrow={t('agenda.eyebrow')}
-                heading={t('agenda.heading', { productName: resolvedProduct.name })}
-                items={['inventory', 'purchases', 'activity', 'costs'].map((area) => ({
-                  title: t(`agenda.items.${area}.title`),
-                  description: t(`agenda.items.${area}.description`)
-                }))}
-              />
-
-              <div className="space-y-5 border-t border-border pt-8">
-                <h2 className="text-xl font-bold text-ink">{t('nextSteps.heading')}</h2>
-                <ol className="space-y-4">
-                  {[1, 2, 3].map((step) => (
-                    <li key={step} className="grid grid-cols-[2rem_1fr] gap-3">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange-text">{step}</span>
-                      <p className="pt-0.5 text-sm leading-relaxed text-foreground-muted">
-                        {step === 3 && isEarlyAccess
-                          ? t('nextSteps.step3EarlyAccess')
-                          : t(`nextSteps.step${step}`, productProgramValues)}
-                      </p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
+            <ProductDemoAgenda
+              eyebrow={t('agenda.eyebrow')}
+              heading={t('agenda.heading', { productName: resolvedProduct.name })}
+              items={['inventory', 'purchases', 'activity', 'costs'].map((area) => ({
+                title: t(`agenda.items.${area}.title`),
+                description: t(`agenda.items.${area}.description`)
+              }))}
+            />
           </aside>
         </div>
+
+        <NextSteps
+          heading={t('nextSteps.heading')}
+          steps={[1, 2, 3].map((step) =>
+            step === 3 && isEarlyAccess
+              ? t('nextSteps.step3EarlyAccess')
+              : t(`nextSteps.step${step}`, productProgramValues)
+          )}
+        />
       </Container>
     </Section>
   );

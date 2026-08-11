@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { ContactProjectForm } from "@/components/forms/ContactProjectForm";
 import { DirectContactChannels } from "@/components/contact/DirectContactChannels";
+import { NextSteps } from "@/components/shared/NextSteps";
 import { locales, type Locale } from "@/i18n/config";
 import { createMetadata } from "@/lib/seo";
 import { normalizeServiceInterest } from "@/lib/services";
@@ -93,33 +94,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
-          <div className="order-1 rounded-2xl border border-border bg-surface p-6 shadow-card lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-1">
-            <div className="space-y-5">
-              <div className="space-y-3">
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-text">
-                  {t("direct.eyebrow")}
-                </p>
-                <h2 className="text-2xl font-bold text-ink sm:text-3xl">
-                  {t("direct.heading")}
-                </h2>
-                <p className="text-sm leading-relaxed text-foreground-muted">
-                  {t("direct.body")}
-                </p>
-              </div>
-              <DirectContactChannels
-                variant="panel"
-                whatsappMessage={t("direct.whatsappMessage")}
-                whatsappLabel={t("direct.whatsappLabel")}
-                whatsappAriaLabel={t("direct.whatsappAriaLabel")}
-                emailLabel={t("direct.emailLabel")}
-                emailAriaLabel={t("direct.emailAriaLabel")}
-                emailSubject={t("direct.emailSubject")}
-                showWhatsAppNumber
-              />
-            </div>
-          </div>
-
-          <div className="order-2 rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:order-none lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1">
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:col-span-7">
             <NextIntlClientProvider
               messages={{
                 contactPage: {
@@ -136,57 +111,69 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
             </NextIntlClientProvider>
           </div>
 
-          <div className="order-3 space-y-6 border-t border-border pt-7 lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-2">
-            <div className="space-y-2 rounded-xl bg-surface-muted p-4">
-              <h2 className="font-bold text-ink">
-                {t("productDemo.heading", { productName: FEATURED_PRODUCT.name })}
-              </h2>
-              <p className="text-sm text-foreground-muted">
-                {t("productDemo.body")}
+          <aside className="space-y-6 lg:col-span-5">
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
+              <div className="space-y-5">
+                <div className="space-y-3">
+                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-text">
+                    {t("direct.eyebrow")}
+                  </p>
+                  <h2 className="text-2xl font-bold text-ink sm:text-3xl">
+                    {t("direct.heading")}
+                  </h2>
+                  <p className="text-sm leading-relaxed text-foreground-muted">
+                    {t("direct.body")}
+                  </p>
+                </div>
+                <DirectContactChannels
+                  variant="panel"
+                  whatsappMessage={t("direct.whatsappMessage")}
+                  whatsappLabel={t("direct.whatsappLabel")}
+                  whatsappAriaLabel={t("direct.whatsappAriaLabel")}
+                  emailLabel={t("direct.emailLabel")}
+                  emailAriaLabel={t("direct.emailAriaLabel")}
+                  emailSubject={t("direct.emailSubject")}
+                  showWhatsAppNumber
+                />
+              </div>
+            </div>
+
+            <div className="border-t border-border pt-6">
+              <div className="space-y-2 rounded-xl bg-surface-muted p-4">
+                <h2 className="font-bold text-ink">
+                  {t("productDemo.heading", { productName: FEATURED_PRODUCT.name })}
+                </h2>
+                <p className="text-sm text-foreground-muted">
+                  {t("productDemo.body")}
+                </p>
+                <a
+                  href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
+                  className="inline-flex text-sm font-semibold text-orange-text underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm outline-none"
+                >
+                  {t("productDemo.cta")}
+                </a>
+              </div>
+            </div>
+
+            <div className="space-y-2 border-t border-border pt-6">
+              <p className="text-xs font-bold uppercase tracking-wider text-orange-text">
+                {t("locationEyebrow")}
               </p>
-              <a
-                href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
-                className="inline-flex text-sm font-semibold text-orange-text underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm outline-none"
-              >
-                {t("productDemo.cta")}
-              </a>
+              <h3 className="text-lg font-bold text-ink">
+                {t("locationBoxTitle")}
+              </h3>
+              <p className="text-sm leading-relaxed text-foreground-muted">
+                {t("locationBoxDesc")}
+              </p>
             </div>
-
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-ink">
-                {t("nextSteps.heading")}
-              </h2>
-              <ol className="space-y-4">
-                {[1, 2, 3].map((step) => (
-                  <li key={step} className="flex gap-4">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange/10 text-xs font-bold text-orange-text">
-                      {step}
-                    </span>
-                    <p className="text-sm text-foreground-muted leading-relaxed">
-                      {t(`nextSteps.step${step}`)}
-                    </p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <p className="text-sm font-medium text-ink border-l-2 border-orange/30 pl-4 py-1 italic">
-              {t("nextSteps.differentiator")}
-            </p>
-          </div>
-
-          <div className="order-4 space-y-2 border-t border-border pt-7 lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-3">
-            <p className="text-xs font-bold uppercase tracking-wider text-orange-text">
-              {t("locationEyebrow")}
-            </p>
-            <h3 className="text-lg font-bold text-ink">
-              {t("locationBoxTitle")}
-            </h3>
-            <p className="text-sm leading-relaxed text-foreground-muted">
-              {t("locationBoxDesc")}
-            </p>
-          </div>
+          </aside>
         </div>
+
+        <NextSteps
+          heading={t("nextSteps.heading")}
+          steps={[1, 2, 3].map((step) => t(`nextSteps.step${step}`))}
+          note={t("nextSteps.differentiator")}
+        />
       </Container>
     </Section>
   );
