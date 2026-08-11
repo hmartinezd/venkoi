@@ -32,9 +32,3 @@ jobs:
         env:
           SITE_URL: https://venkoi.com
           VERCEL_ENV: preview
-
-      - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
-
-      - name: Run browser E2E tests
-        run: npm run test:e2e

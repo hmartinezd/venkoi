@@ -5,6 +5,8 @@ import { DirectContactChannels } from "@/components/contact/DirectContactChannel
 import { locales, type Locale } from "@/i18n/config";
 import { createMetadata } from "@/lib/seo";
 import { normalizeServiceInterest } from "@/lib/services";
+import { buildProductDemoHref } from "@/lib/product-links";
+import { FEATURED_PRODUCT } from "@/lib/products";
 import type { Metadata } from "next";
 import {
   getMessages,
@@ -135,6 +137,21 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
           </div>
 
           <div className="order-3 space-y-6 border-t border-border pt-7 lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-2">
+            <div className="space-y-2 rounded-xl bg-surface-muted p-4">
+              <h2 className="font-bold text-ink">
+                {t("productDemo.heading", { productName: FEATURED_PRODUCT.name })}
+              </h2>
+              <p className="text-sm text-foreground-muted">
+                {t("productDemo.body")}
+              </p>
+              <a
+                href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
+                className="inline-flex text-sm font-semibold text-orange-text underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm outline-none"
+              >
+                {t("productDemo.cta")}
+              </a>
+            </div>
+
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-ink">
                 {t("nextSteps.heading")}

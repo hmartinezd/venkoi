@@ -8,6 +8,13 @@ const read = (file: string) =>
   readFileSync(resolve(process.cwd(), file), "utf8");
 const form = read("src/components/forms/ContactProjectForm.tsx");
 const page = read("src/app/[locale]/contact/page.tsx");
+const demoPage = read("src/app/[locale]/demo/page.tsx");
+
+assert.match(page, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)/);
+assert.match(page, /FEATURED_PRODUCT\.name/);
+assert.doesNotMatch(form, /name=["']product["']|early_access_interest|location_count|current_system/);
+assert.match(demoPage, /getLocalizedPath\('contact', currentLocale\)/);
+assert.doesNotMatch(demoPage, /getLocalizedPath\('contact', currentLocale\).*type=services/s);
 
 const detailsStart = form.indexOf("<details");
 const detailsEnd = form.indexOf("</details>");

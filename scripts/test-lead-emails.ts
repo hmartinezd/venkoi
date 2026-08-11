@@ -47,16 +47,22 @@ assert.match(spanish.text, new RegExp(FEATURED_PRODUCT.name));
 
 const earlyAccessLead = lead({ early_access_interest: true });
 const earlyAccess = buildUserAcknowledgementEmail(earlyAccessLead);
-assert.match(earlyAccess.text, new RegExp(`${FEATURED_PRODUCT.name} Early Access`));
+assert.match(earlyAccess.text, new RegExp(`${FEATURED_PRODUCT.name} free for ${FEATURED_PRODUCT.earlyAccess.freeMonths} months`));
+assert.doesNotMatch(earlyAccess.text, /Early Access/i);
+const spanishOffer = buildUserAcknowledgementEmail({ ...earlyAccessLead, locale: 'es' });
+assert.match(spanishOffer.text, new RegExp(`${FEATURED_PRODUCT.name} gratis durante ${FEATURED_PRODUCT.earlyAccess.freeMonths} meses`));
+assert.doesNotMatch(spanishOffer.text, /acceso anticipado/i);
 assert.match(buildInternalNotificationEmail(lead()).subject, new RegExp(`${FEATURED_PRODUCT.name} Demo`));
 assert.match(
   buildInternalNotificationEmail(earlyAccessLead).subject,
-  new RegExp(`${FEATURED_PRODUCT.name} Early Access Demo`)
+  new RegExp(`${FEATURED_PRODUCT.name} ${FEATURED_PRODUCT.earlyAccess.freeMonths}-Month Free Offer Demo`)
 );
 assert.match(buildInternalNotificationEmail(lead()).text, /UTM Content: hero/);
 
 const alternateResolver: LeadProductResolver = (slug) =>
-  slug === 'rename-test' ? { name: 'Rename Test Product' } : undefined;
+  slug === 'rename-test'
+    ? { name: 'Rename Test Product', earlyAccess: { enabled: true, freeMonths: 7 } }
+    : undefined;
 const alternateLead = lead({ product: 'rename-test', early_access_interest: true });
 for (const content of [
   buildInternalNotificationEmail(alternateLead, alternateResolver),
@@ -64,14 +70,17 @@ for (const content of [
   buildUserAcknowledgementEmail({ ...alternateLead, locale: 'es' }, alternateResolver)
 ]) {
   assert.match(`${content.subject}\n${content.text}`, /Rename Test Product/);
+  assert.match(`${content.subject}\n${content.text}`, /7/);
   assert.doesNotMatch(`${content.subject}\n${content.text}`, new RegExp(FEATURED_PRODUCT.name, 'i'));
 }
 
-const unknown = buildUserAcknowledgementEmail(lead({ product: 'historical-product' }));
+const unknown = buildUserAcknowledgementEmail(lead({ product: 'historical-product', early_access_interest: true }));
 assert.match(`${unknown.subject}\n${unknown.text}`, /historical-product/);
+assert.doesNotMatch(`${unknown.subject}\n${unknown.text}`, /\b\d+[ -]months?\b/i);
 assert.doesNotMatch(`${unknown.subject}\n${unknown.text}`, new RegExp(FEATURED_PRODUCT.name, 'i'));
 assert.doesNotThrow(() => buildInternalNotificationEmail(lead({ product: null })));
-assert.match(buildUserAcknowledgementEmail(lead({ product: null })).text, /the product/);
+assert.equal(buildUserAcknowledgementEmail(lead({ product: null })).subject, 'We received your demo request');
+assert.equal(buildUserAcknowledgementEmail(lead({ product: null, locale: 'es' })).subject, 'Recibimos tu solicitud de demo');
 
 for (const leadType of ['GENERAL_CONTACT', 'CUSTOM_PROJECT'] satisfies LeadType[]) {
   const generic = buildUserAcknowledgementEmail(lead({ lead_type: leadType, product: null }));

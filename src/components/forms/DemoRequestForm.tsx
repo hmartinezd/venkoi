@@ -225,7 +225,7 @@ export function DemoRequestForm({
       : tp('standard.successTitle');
 
     const successMessage = formData.early_access_interest
-      ? tp('earlyAccess.successMessage', { productName })
+      ? tp('earlyAccess.successMessage', { productName, freeMonths })
       : tp('standard.successMessage', { productName });
 
     return (

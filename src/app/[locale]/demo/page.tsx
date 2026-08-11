@@ -6,6 +6,7 @@ import { ProductDemoAgenda } from '@/components/demo/ProductDemoAgenda';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
+import { getLocalizedPath } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -102,13 +103,20 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             <h2 className="font-bold text-ink">{t('direct.heading')}</h2>
             <p className="text-sm text-foreground-muted">{t('direct.body')}</p>
           </div>
-          <DirectContactChannels
-            whatsappMessage={t('direct.productMessage', { productName: resolvedProduct.name })}
-            whatsappLabel={t('direct.whatsappLabel')}
-            whatsappAriaLabel={t('direct.whatsappAriaLabel')}
-            showEmail={false}
-            className="shrink-0"
-          />
+          <div className="flex shrink-0 flex-wrap items-center gap-4">
+            <DirectContactChannels
+              whatsappMessage={t('direct.productMessage', { productName: resolvedProduct.name })}
+              whatsappLabel={t('direct.whatsappLabel')}
+              whatsappAriaLabel={t('direct.whatsappAriaLabel')}
+              showEmail={false}
+            />
+            <a
+              href={getLocalizedPath('contact', currentLocale)}
+              className="text-sm font-semibold text-ink underline decoration-border-strong underline-offset-4 transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm outline-none"
+            >
+              {t('direct.contactLink')}
+            </a>
+          </div>
         </div>
 
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">

@@ -29,7 +29,7 @@
     "sectionProducts": "Productos",
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
-    "earlyAccess": "Acceso anticipado",
+    "earlyAccess": "{freeMonths} Meses Gratis",
     "locationText": "Con sede en Tampa Bay, Florida · Trabajando con clientes en South Florida y más allá",
     "contact": {
       "whatsappLabel": "WhatsApp",
@@ -49,8 +49,8 @@
     },
     "zaiko": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
-      "badge": "ACCESO ANTICIPADO",
-      "badgeText": "Usa {productName} gratis durante {freeMonths} meses.",
+      "badge": "{freeMonths} MESES GRATIS",
+      "badgeText": "Prueba {productName} gratis durante {freeMonths} meses.",
       "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
       "body": "{productName} ofrece a los restaurantes una forma más clara de gestionar inventario, compras, costos y movimientos de productos desde un solo lugar.",
       "discoverCta": "Conoce {productName}",
@@ -232,6 +232,11 @@
       "emailAriaLabel": "Enviar un correo a Venkoi",
       "emailSubject": "Consulta para Venkoi"
     },
+    "productDemo": {
+      "heading": "¿Buscas {productName}?",
+      "body": "Descubre cómo funciona con una demo del producto.",
+      "cta": "Solicita una demo"
+    },
     "intent": {
       "mobile": {
         "eyebrow": "PROYECTO DE APLICACIÓN MÓVIL",
@@ -313,20 +318,20 @@
       "successMessage": "Revisaremos la información que compartiste y nos pondremos en contacto para ver cómo {productName} podría adaptarse a la operación de tu restaurante."
     },
     "earlyAccess": {
-      "eyebrow": "ACCESO ANTICIPADO DE {productName}",
-      "heading": "Comienza a usar {productName} a través de nuestro acceso anticipado.",
-      "body": "Únete al programa de acceso anticipado y usa {productName} gratis durante {freeMonths} meses. Los operadores de restaurantes participantes pueden comenzar a usar el producto y compartir sus comentarios directamente con Venkoi.",
-      "formTitle": "Solicitud de acceso anticipado",
-      "badge": "{freeMonths} meses gratis durante el acceso anticipado.",
-      "successTitle": "Gracias — recibimos tu solicitud de acceso anticipado.",
-      "successMessage": "Revisaremos tu información y nos pondremos en contacto sobre el siguiente paso para usar {productName} a través del acceso anticipado."
+      "eyebrow": "{freeMonths} MESES GRATIS",
+      "heading": "Prueba {productName} gratis durante {freeMonths} meses.",
+      "body": "Usa {productName} en tu restaurante gratis durante los primeros {freeMonths} meses.",
+      "formTitle": "Solicitud de demo con oferta gratuita",
+      "badge": "{freeMonths} meses gratis.",
+      "successTitle": "Gracias — recibimos tu solicitud.",
+      "successMessage": "Hemos registrado que quieres usar {productName} gratis durante {freeMonths} meses y nos pondremos en contacto sobre el siguiente paso."
     },
     "nextSteps": {
       "heading": "¿Qué pasa después?",
       "step1": "Cuéntanos sobre tu restaurante.",
       "step2": "Aprendemos un poco sobre cómo gestionas el inventario actualmente.",
       "step3": "Coordinamos el siguiente paso adecuado para ver {productName}.",
-      "step3EarlyAccess": "Nos ponemos en contacto para ver si el acceso anticipado es el siguiente paso adecuado."
+      "step3EarlyAccess": "Nos ponemos en contacto sobre el siguiente paso para usar la oferta gratuita."
     },
     "agenda": {
       "eyebrow": "LO QUE VEREMOS",
@@ -350,16 +355,17 @@
         }
       }
     },
-    "earlyAccessTitle": "Programa de Acceso Anticipado",
-    "badge": "ACCESO ANTICIPADO",
-    "badgeText": "Usa {productName} gratis durante {freeMonths} meses en acceso anticipado.",
+    "earlyAccessTitle": "Oferta gratuita",
+    "badge": "{freeMonths} MESES GRATIS",
+    "badgeText": "Prueba {productName} gratis durante {freeMonths} meses.",
     "direct": {
       "heading": "¿Prefieres escribirnos directamente?",
       "body": "WhatsApp está disponible como alternativa al formulario de demo.",
       "whatsappLabel": "Hablar por WhatsApp",
       "whatsappAriaLabel": "Hablar con Venkoi por WhatsApp",
       "genericMessage": "Hola, encontré Venkoi en línea y me gustaría hablar sobre un proyecto de software.",
-      "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}."
+      "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}.",
+      "contactLink": "¿Tienes otra pregunta? Contacta con Venkoi."
     },
     "contactCta": "Contactar al Equipo",
     "form": {
@@ -385,7 +391,7 @@
         "other": "Otro software"
       },
       "message": "Cualquier detalle que quieras compartir",
-      "earlyAccess": "Me interesa usar {productName} gratis durante {freeMonths} meses a través del acceso anticipado.",
+      "earlyAccess": "Quiero usar {productName} gratis durante {freeMonths} meses.",
       "submit": "Solicitar una demo",
       "submitting": "Enviando...",
       "successTitle": "Gracias — recibimos tu solicitud.",
@@ -408,7 +414,7 @@
       "purchases": "Compras",
       "activity": "Actividad",
       "costs": "Costos",
-      "earlyAccess": "Acceso anticipado",
+      "earlyAccess": "{freeMonths} Meses Gratis",
       "requestDemo": "Solicita una demo"
     },
     "hero": {
@@ -416,8 +422,8 @@
       "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
       "body": "{productName} ayuda a los restaurantes a entender y gestionar su inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado.",
       "primaryCta": "Solicita una demo",
-      "secondaryCta": "Únete al acceso anticipado",
-      "microcopy": "{freeMonths} meses gratis durante el acceso anticipado.",
+      "secondaryCta": "Prueba {productName} Gratis",
+      "microcopy": "Prueba {productName} gratis durante {freeMonths} meses.",
       "noCreditCard": "Sin necesidad de tarjeta de crédito."
     },
     "intro": {
@@ -505,9 +511,9 @@
       ]
     },
     "earlyAccess": {
-      "eyebrow": "ACCESO ANTICIPADO",
-      "heading": "Usa {productName} gratis durante {freeMonths} meses.",
-      "body": "Únete a nuestro programa de acceso anticipado y usa {productName} gratis durante {freeMonths} meses. Los operadores de restaurantes participantes pueden comenzar a usar el producto y compartir sus comentarios directamente con Venkoi mientras el producto continúa evolucionando.",
+      "eyebrow": "{freeMonths} MESES GRATIS",
+      "heading": "Prueba {productName} gratis durante {freeMonths} meses.",
+      "body": "Comienza a usar {productName} en tu restaurante sin costo por el producto durante los primeros {freeMonths} meses.",
       "details": [
         "Usa {productName} gratis durante {freeMonths} meses",
         "Comienza a usar el producto en tu restaurante",
@@ -515,7 +521,7 @@
         "Accede a la oferta de lanzamiento sin costo durante {freeMonths} meses"
       ],
       "primaryCta": "Solicita una demo",
-      "secondaryCta": "Únete al acceso anticipado"
+      "secondaryCta": "Prueba {productName} Gratis"
     },
     "faq": {
       "heading": "Preguntas sobre {productName}",
@@ -533,12 +539,12 @@
           "a": "{productName} te ayuda a rastrear los niveles de inventario, la actividad de compras, el movimiento de productos y los costos conectados a tu inventario."
         },
         {
-          "q": "¿Qué es el programa de Acceso Anticipado?",
-          "a": "El programa de Acceso Anticipado permite a operadores de restaurantes participantes usar {productName} gratis durante {freeMonths} meses y compartir sus comentarios directamente con Venkoi durante la etapa inicial de lanzamiento del producto."
+          "q": "¿Qué es la oferta gratuita?",
+          "a": "Los operadores de restaurantes pueden usar {productName} gratis durante los primeros {freeMonths} meses."
         },
         {
           "q": "¿Cómo puedo comenzar a usar {productName}?",
-          "a": "Solicita una demostración o únete al programa de Acceso Anticipado para comenzar."
+          "a": "Solicita una demostración o elige la oferta de {freeMonths} meses gratis para comenzar."
         }
       ],
       "gettingStartedDemoOnly": "Solicita una demo para comenzar."
@@ -555,10 +561,10 @@
     },
     "finalCta": {
       "heading": "¿Listo para una visión más clara de tu inventario?",
-      "body": "Comienza con el acceso anticipado o solicita una demostración adaptada a la operación de tu restaurante.",
+      "body": "Prueba {productName} gratis durante {freeMonths} meses o solicita una demostración adaptada a la operación de tu restaurante.",
       "bodyDemoOnly": "Solicita una demostración adaptada a la operación de tu restaurante.",
       "primaryCta": "Solicita una demo",
-      "secondaryCta": "Únete al acceso anticipado",
+      "secondaryCta": "Prueba {productName} Gratis",
       "directHeading": "¿Tienes preguntas sobre {productName}?",
       "directBody": "Habla directamente con nosotros por WhatsApp.",
       "whatsappLabel": "Hablar por WhatsApp",

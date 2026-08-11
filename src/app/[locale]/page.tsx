@@ -120,7 +120,7 @@ export default async function HomePage({ params }: PageProps) {
         discoverCta={tHome('zaiko.discoverCta', { productName: FEATURED_PRODUCT.name })}
         demoCta={tCommon('demo')}
         earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? {
-          badge: tHome('zaiko.badge'),
+          badge: tHome('zaiko.badge', { freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths }),
           badgeText: tHome('zaiko.badgeText', {
             productName: FEATURED_PRODUCT.name,
             freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths

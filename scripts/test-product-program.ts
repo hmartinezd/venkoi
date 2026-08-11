@@ -23,11 +23,17 @@ assert.equal(FEATURED_PRODUCT.demoEnabled, true);
 assert.equal(FEATURED_PRODUCT.pricingEnabled, false);
 
 const keys = [
+  'home.zaiko.badge',
   'home.zaiko.badgeText',
+  'zaikoPage.nav.earlyAccess',
   'zaikoPage.hero.microcopy',
+  'zaikoPage.earlyAccess.eyebrow',
   'zaikoPage.earlyAccess.heading',
   'zaikoPage.earlyAccess.body',
+  'zaikoPage.finalCta.body',
   'demoPage.earlyAccess.badge',
+  'demoPage.earlyAccess.heading',
+  'demoPage.earlyAccess.successMessage',
   'demoPage.form.earlyAccess'
 ] as const;
 
@@ -38,14 +44,16 @@ for (const [locale, messages, expected, stale] of [
   const t = createTranslator({ locale, messages });
   for (const key of keys) {
     const rendered = t(key, { productName: 'Program Test Product', freeMonths: 6 });
-    assert.ok(rendered.includes(expected), `${locale.toUpperCase()} ${key} should use the alternate duration`);
-    assert.ok(!rendered.includes(stale), `${locale.toUpperCase()} ${key} should not retain the current duration`);
+    assert.match(rendered, new RegExp(expected, 'i'), `${locale.toUpperCase()} ${key} should use the alternate duration`);
+    assert.doesNotMatch(rendered, new RegExp(stale, 'i'), `${locale.toUpperCase()} ${key} should not retain the current duration`);
   }
 }
 
 for (const [locale, messages] of Object.entries({ en, es })) {
   const hardcoded = strings(messages).filter(value => /\b(?:3|three) months\b|\b(?:3|tres) meses\b/i.test(value));
-  assert.deepEqual(hardcoded, [], `${locale.toUpperCase()} translations must not hardcode the Early Access duration`);
+  assert.deepEqual(hardcoded, [], `${locale.toUpperCase()} translations must not hardcode the offer duration`);
+  const legacyPublicTerms = strings(messages).filter(value => /early access|acceso anticipado/i.test(value));
+  assert.deepEqual(legacyPublicTerms, [], `${locale.toUpperCase()} public translation values must use free-offer terminology`);
 }
 
 const disabledProduct: Product = {

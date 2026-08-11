@@ -7,16 +7,9 @@ export type LeadEmailContent = {
   text: string;
 };
 
-export type LeadProductResolver = (slug: string) => Pick<Product, 'name'> | undefined;
-
-function resolveLeadProductName(
-  lead: LeadRecord,
-  resolver: LeadProductResolver,
-  genericName: string
-): string {
-  if (!lead.product) return genericName;
-  return resolver(lead.product)?.name ?? lead.product;
-}
+export type LeadProductResolver = (
+  slug: string
+) => Pick<Product, 'name' | 'earlyAccess'> | undefined;
 
 export function buildInternalNotificationEmail(
   lead: LeadRecord,
@@ -24,9 +17,12 @@ export function buildInternalNotificationEmail(
 ): LeadEmailContent {
   let subjectTag = 'General Inquiry';
   if (lead.lead_type === 'DEMO') {
-    const productName = resolveLeadProductName(lead, resolver, 'Product');
+    const product = lead.product ? resolver(lead.product) : undefined;
+    const productName = product?.name ?? lead.product ?? 'Product';
     subjectTag = lead.early_access_interest
-      ? `${productName} Early Access Demo`
+      ? product
+        ? `${productName} ${product.earlyAccess.freeMonths}-Month Free Offer Demo`
+        : `${productName} Free Offer Demo`
       : `${productName} Demo`;
   } else if (lead.lead_type === 'CUSTOM_PROJECT') {
     if (lead.interest === 'mobile') {
@@ -51,7 +47,7 @@ export function buildInternalNotificationEmail(
     `Current System: ${lead.current_system || 'N/A'}`,
     `Interest: ${lead.interest || 'N/A'}`,
     `Project Stage: ${lead.project_stage || 'N/A'}`,
-    `Early Access Interest: ${lead.early_access_interest ? 'Yes' : 'No'}`,
+    `Free Offer Interest: ${lead.early_access_interest ? 'Yes' : 'No'}`,
     `Locale: ${lead.locale}`,
     `Source Path: ${lead.source_path || 'N/A'}`,
     `UTM Source: ${lead.utm_source || 'N/A'}`,
@@ -73,20 +69,33 @@ export function buildUserAcknowledgementEmail(
 
   if (lead.lead_type === 'DEMO') {
     const greetingName = lead.first_name || lead.name || (isSpanish ? 'hola' : 'there');
-    const productName = resolveLeadProductName(lead, resolver, isSpanish ? 'el producto' : 'the product');
+    const product = lead.product ? resolver(lead.product) : undefined;
+    const productName = product?.name ?? lead.product;
     if (isSpanish) {
-      const subject = `Recibimos tu solicitud de demo de ${productName}`;
-      let text = `Gracias, ${greetingName}.\n\nRecibimos tu solicitud para conocer mejor ${productName}.\n\nNos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.`;
+      const subject = productName
+        ? `Recibimos tu solicitud de demo de ${productName}`
+        : 'Recibimos tu solicitud de demo';
+      let text = productName
+        ? `Gracias, ${greetingName}.\n\nRecibimos tu solicitud para conocer mejor ${productName}.\n\nNos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.`
+        : `Gracias, ${greetingName}.\n\nRecibimos tu solicitud de demo.\n\nNos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinarla.`;
       if (lead.early_access_interest) {
-        text += `\n\nTambién hemos registrado tu interés en el acceso anticipado de ${productName}.`;
+        text += product
+          ? `\n\nTambién hemos registrado que quieres probar ${product.name} gratis durante ${product.earlyAccess.freeMonths} meses.`
+          : `\n\nTambién hemos registrado tu interés en la oferta gratuita${productName ? ` de ${productName}` : ''}.`;
       }
       return { subject, text };
     }
 
-    const subject = `We received your ${productName} demo request`;
-    let text = `Thanks, ${greetingName}.\n\nWe received your request to learn more about ${productName}.\n\nWe'll be in touch to learn more about your restaurant and help coordinate your demo.`;
+    const subject = productName
+      ? `We received your ${productName} demo request`
+      : 'We received your demo request';
+    let text = productName
+      ? `Thanks, ${greetingName}.\n\nWe received your request to learn more about ${productName}.\n\nWe'll be in touch to learn more about your restaurant and help coordinate your demo.`
+      : `Thanks, ${greetingName}.\n\nWe received your demo request.\n\nWe'll be in touch to learn more about your restaurant and help coordinate it.`;
     if (lead.early_access_interest) {
-      text += `\n\nWe've also noted your interest in ${productName} Early Access.`;
+      text += product
+        ? `\n\nWe've also noted that you'd like to try ${product.name} free for ${product.earlyAccess.freeMonths} months.`
+        : `\n\nWe've also noted your interest in the free offer${productName ? ` for ${productName}` : ''}.`;
     }
     return { subject, text };
   }

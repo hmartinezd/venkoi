@@ -29,7 +29,7 @@
     "sectionProducts": "Products",
     "sectionCompany": "Company",
     "sectionWorkWithUs": "Work With Us",
-    "earlyAccess": "Early Access",
+    "earlyAccess": "{freeMonths} Months Free",
     "locationText": "Based in Tampa Bay, Florida · Serving South Florida and beyond",
     "contact": {
       "whatsappLabel": "WhatsApp",
@@ -49,8 +49,8 @@
     },
     "zaiko": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
-      "badge": "EARLY ACCESS",
-      "badgeText": "Use {productName} free for {freeMonths} months.",
+      "badge": "{freeMonths} MONTHS FREE",
+      "badgeText": "Try {productName} free for {freeMonths} months.",
       "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
       "body": "{productName} gives restaurants a clearer way to manage inventory, purchases, costs, and product activity — all from one place.",
       "discoverCta": "Discover {productName}",
@@ -232,6 +232,11 @@
       "emailAriaLabel": "Email Venkoi",
       "emailSubject": "Venkoi inquiry"
     },
+    "productDemo": {
+      "heading": "Looking for {productName}?",
+      "body": "See how it works with a product demo.",
+      "cta": "Request a Demo"
+    },
     "intent": {
       "mobile": {
         "eyebrow": "MOBILE APPLICATION PROJECT",
@@ -313,20 +318,20 @@
       "successMessage": "We'll review the information you shared and follow up about seeing how {productName} could fit your restaurant operation."
     },
     "earlyAccess": {
-      "eyebrow": "{productName} EARLY ACCESS",
-      "heading": "Start using {productName} through Early Access.",
-      "body": "Join the Early Access program and use {productName} free for {freeMonths} months. Participating restaurant operators can start using the product and share feedback directly with Venkoi.",
-      "formTitle": "Early Access Request",
-      "badge": "{freeMonths} months free during Early Access.",
-      "successTitle": "Thanks — we received your Early Access request.",
-      "successMessage": "We'll review your information and follow up about the next step for using {productName} through Early Access."
+      "eyebrow": "{freeMonths} MONTHS FREE",
+      "heading": "Try {productName} free for {freeMonths} months.",
+      "body": "Use {productName} in your restaurant free for the first {freeMonths} months.",
+      "formTitle": "Free Offer Demo Request",
+      "badge": "{freeMonths} months free.",
+      "successTitle": "Thanks — we received your request.",
+      "successMessage": "We've noted that you'd like to use {productName} free for {freeMonths} months and will follow up about the next step."
     },
     "nextSteps": {
       "heading": "What happens next?",
       "step1": "Tell us about your restaurant.",
       "step2": "We learn a little about how you currently handle inventory.",
       "step3": "We coordinate the appropriate next step for seeing {productName}.",
-      "step3EarlyAccess": "We follow up about whether Early Access is the appropriate next step."
+      "step3EarlyAccess": "We follow up about the next step for using the free offer."
     },
     "agenda": {
       "eyebrow": "WHAT WE'LL COVER",
@@ -350,16 +355,17 @@
         }
       }
     },
-    "earlyAccessTitle": "Early Access Program",
-    "badge": "EARLY ACCESS",
-    "badgeText": "Use {productName} free for {freeMonths} months during Early Access.",
+    "earlyAccessTitle": "Free Offer",
+    "badge": "{freeMonths} MONTHS FREE",
+    "badgeText": "Try {productName} free for {freeMonths} months.",
     "direct": {
       "heading": "Prefer to message us directly?",
       "body": "WhatsApp is available as an alternative to the demo form.",
       "whatsappLabel": "Chat on WhatsApp",
       "whatsappAriaLabel": "Chat with Venkoi on WhatsApp",
       "genericMessage": "Hi, I found Venkoi online and would like to talk about a software project.",
-      "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
+      "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}.",
+      "contactLink": "Have another question? Contact Venkoi."
     },
     "contactCta": "Contact Team Directly",
     "form": {
@@ -385,7 +391,7 @@
         "other": "Other software"
       },
       "message": "Anything you'd like us to know",
-      "earlyAccess": "I'm interested in using {productName} free for {freeMonths} months through Early Access.",
+      "earlyAccess": "I'd like to use {productName} free for {freeMonths} months.",
       "submit": "Request a Demo",
       "submitting": "Submitting...",
       "successTitle": "Thanks — we received your request.",
@@ -408,7 +414,7 @@
       "purchases": "Purchases",
       "activity": "Activity",
       "costs": "Costs",
-      "earlyAccess": "Early Access",
+      "earlyAccess": "{freeMonths} Months Free",
       "requestDemo": "Request a Demo"
     },
     "hero": {
@@ -416,8 +422,8 @@
       "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
       "body": "{productName} helps restaurants understand and manage their inventory, purchases, costs, and product activity from one clear workspace.",
       "primaryCta": "Request a Demo",
-      "secondaryCta": "Join Early Access",
-      "microcopy": "{freeMonths} months free during Early Access.",
+      "secondaryCta": "Try {productName} Free",
+      "microcopy": "Try {productName} free for {freeMonths} months.",
       "noCreditCard": "No credit card required."
     },
     "intro": {
@@ -505,9 +511,9 @@
       ]
     },
     "earlyAccess": {
-      "eyebrow": "EARLY ACCESS",
-      "heading": "Use {productName} free for {freeMonths} months.",
-      "body": "Join our Early Access program and use {productName} free for {freeMonths} months. Participating restaurant operators can start using the product and share feedback directly with Venkoi as it continues to evolve.",
+      "eyebrow": "{freeMonths} MONTHS FREE",
+      "heading": "Try {productName} free for {freeMonths} months.",
+      "body": "Start using {productName} in your restaurant with no product fee for the first {freeMonths} months.",
       "details": [
         "Use {productName} free for {freeMonths} months",
         "Start using the product in your restaurant",
@@ -515,7 +521,7 @@
         "Access the launch offer at no cost for {freeMonths} months"
       ],
       "primaryCta": "Request a Demo",
-      "secondaryCta": "Join Early Access"
+      "secondaryCta": "Try {productName} Free"
     },
     "faq": {
       "heading": "Questions about {productName}",
@@ -533,12 +539,12 @@
           "a": "{productName} helps you track inventory levels, purchasing activity, product movement, and the costs connected to your inventory."
         },
         {
-          "q": "What is the Early Access program?",
-          "a": "Early Access lets participating restaurant operators use {productName} free for {freeMonths} months and share feedback directly with Venkoi during the product's early launch period."
+          "q": "What is the free offer?",
+          "a": "Restaurant operators can use {productName} free for the first {freeMonths} months."
         },
         {
           "q": "How can I start using {productName}?",
-          "a": "Request a demo or join the Early Access program to get started."
+          "a": "Request a demo or choose the {freeMonths}-month free offer to get started."
         }
       ],
       "gettingStartedDemoOnly": "Request a demo to get started."
@@ -555,10 +561,10 @@
     },
     "finalCta": {
       "heading": "Ready for a clearer view of your inventory?",
-      "body": "Start with Early Access or request a demo tailored to your restaurant's operation.",
+      "body": "Try {productName} free for {freeMonths} months or request a demo tailored to your restaurant's operation.",
       "bodyDemoOnly": "Request a demo tailored to your restaurant's operation.",
       "primaryCta": "Request a Demo",
-      "secondaryCta": "Join Early Access",
+      "secondaryCta": "Try {productName} Free",
       "directHeading": "Questions about {productName}?",
       "directBody": "Talk to us directly on WhatsApp.",
       "whatsappLabel": "Chat on WhatsApp",

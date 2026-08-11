@@ -7,6 +7,7 @@ const packageJson = JSON.parse(readFileSync(path.join(root, 'package.json'), 'ut
   engines?: {node?: string};
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
+  scripts?: Record<string, string>;
 };
 const workflow = readFileSync(path.join(root, '.github/workflows/quality.yml'), 'utf8');
 const eslintConfig = readFileSync(path.join(root, 'eslint.config.mjs'), 'utf8');
@@ -29,6 +30,9 @@ assert.equal(packageJson.devDependencies?.['@next/eslint-plugin-next'], undefine
 assert.equal(packageJson.devDependencies?.['typescript-eslint'], undefined);
 assert.equal(packageJson.devDependencies?.autoprefixer, undefined);
 assert.equal(packageJson.devDependencies?.prettier, undefined);
+assert.equal(packageJson.devDependencies?.['@playwright/test'], undefined);
+assert.equal(packageJson.scripts?.['test:e2e'], undefined);
+assert.doesNotMatch(workflow, /playwright|chromium|test:e2e/i);
 assert.doesNotMatch(validation, /\.superRefine\(/);
 assert.doesNotMatch(validation, /\.strict\(\)/);
 assert.doesNotMatch(validation, /\.toLowerCase\(\)\s*\.email\(/);

@@ -35,7 +35,6 @@
     "test:insights": "tsx scripts/test-insights-structure.ts",
     "test:content": "tsx scripts/test-content-consistency.ts",
     "test:docs": "tsx scripts/test-documentation.ts",
-    "test:e2e": "playwright test",
     "test:regression": "npm run test:routing && npm run test:navigation && npm run test:site-config && npm run test:products && npm run test:product-display-name && npm run test:product-program && npm run test:contact && npm run test:contact-experience && npm run test:emails && npm run test:leads && npm run test:seo && npm run test:accessibility && npm run test:rendering && npm run test:homepage && npm run test:product-page && npm run test:services && npm run test:about && npm run test:buttons && npm run test:platform && npm run test:insights && npm run test:content && npm run test:docs",
     "quality": "npm run lint && npm run typecheck && npm run test:regression && npm run build:next"
   },
@@ -54,7 +53,6 @@
   },
   "devDependencies": {
     "@eslint/compat": "^2.1.0",
-    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",

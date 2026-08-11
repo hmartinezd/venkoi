@@ -63,7 +63,7 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
                     href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
                     className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                   >
-                    {tFooter('earlyAccess')}
+                    {tFooter('earlyAccess', { freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths })}
                   </a>
                 </li>
               ) : null}

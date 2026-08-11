@@ -158,7 +158,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         purchasesLabel={tNav('purchases')}
         activityLabel={tNav('activity')}
         costsLabel={tNav('costs')}
-        earlyAccessLabel={FEATURED_PRODUCT.earlyAccess.enabled ? tNav('earlyAccess') : undefined}
+        earlyAccessLabel={FEATURED_PRODUCT.earlyAccess.enabled ? tNav('earlyAccess', productProgramValues) : undefined}
         requestDemoLabel={tNav('requestDemo')}
         navigationLabel={tHeader('productNavigation', { productName: FEATURED_PRODUCT.name })}
       />
@@ -171,7 +171,7 @@ export default async function ZaikoPage({ params }: PageProps) {
         body={tHero('body', productProgramValues)}
         primaryCta={tHero('primaryCta')}
         earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? {
-          cta: tHero('secondaryCta'),
+          cta: tHero('secondaryCta', productProgramValues),
           microcopy: tHero('microcopy', productProgramValues),
           noCreditCard: tHero('noCreditCard')
         } : undefined}
@@ -240,7 +240,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       {/* Early Access Highlight */}
       {FEATURED_PRODUCT.earlyAccess.enabled ? <ZaikoEarlyAccess
         locale={currentLocale}
-        eyebrow={tEarlyAccess('eyebrow')}
+        eyebrow={tEarlyAccess('eyebrow', productProgramValues)}
         heading={tEarlyAccess('heading', productProgramValues)}
         body={tEarlyAccess('body', productProgramValues)}
         details={[
@@ -250,7 +250,7 @@ export default async function ZaikoPage({ params }: PageProps) {
           tEarlyAccess('details.3', productProgramValues)
         ]}
         primaryCta={tEarlyAccess('primaryCta')}
-        secondaryCta={tEarlyAccess('secondaryCta')}
+        secondaryCta={tEarlyAccess('secondaryCta', productProgramValues)}
       /> : null}
 
       {/* FAQ Section */}
@@ -284,9 +284,9 @@ export default async function ZaikoPage({ params }: PageProps) {
       <ZaikoFinalCta
         locale={currentLocale}
         heading={tFinalCta('heading')}
-        body={tFinalCta(FEATURED_PRODUCT.earlyAccess.enabled ? 'body' : 'bodyDemoOnly')}
+        body={tFinalCta(FEATURED_PRODUCT.earlyAccess.enabled ? 'body' : 'bodyDemoOnly', productProgramValues)}
         primaryCta={tFinalCta('primaryCta')}
-        earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? { cta: tFinalCta('secondaryCta') } : undefined}
+        earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? { cta: tFinalCta('secondaryCta', productProgramValues) } : undefined}
         directHeading={tFinalCta('directHeading', { productName: FEATURED_PRODUCT.name })}
         directBody={tFinalCta('directBody')}
         whatsappLabel={tFinalCta('whatsappLabel')}
