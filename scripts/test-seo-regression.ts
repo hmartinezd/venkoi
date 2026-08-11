@@ -4,6 +4,7 @@ import { getLocalizedPath, type RouteKey } from '../src/i18n/routing';
 import { createMetadata } from '../src/lib/seo';
 import { getSiteOrigin } from '../src/lib/site-config';
 import sitemap from '../src/app/sitemap';
+import robots from '../src/app/robots';
 
 const sitemapRouteKeys: RouteKey[] = [
   'home',
@@ -59,6 +60,7 @@ export function testSeoRegression() {
 
   const origVercelEnv = process.env.VERCEL_ENV;
   const origNodeEnv = process.env.NODE_ENV;
+  const origSiteUrl = process.env.SITE_URL;
 
   const setEnv = (key: string, value: string | undefined) => {
     if (value === undefined) {
@@ -68,7 +70,7 @@ export function testSeoRegression() {
     }
   };
 
-  const origin = getSiteOrigin();
+  const origin = 'https://venkoi.com';
   const expectedUrl = (routeKey: RouteKey, locale: Locale) =>
     `${origin}${getLocalizedPath(routeKey, locale)}`;
 
@@ -99,6 +101,9 @@ export function testSeoRegression() {
   }
 
   try {
+    setEnv('SITE_URL', origin);
+    assert(getSiteOrigin() === origin, 'SEO suite uses the canonical production origin');
+
     const metadata = createMetadata({
       title: 'Home',
       description: 'Desc',
@@ -135,6 +140,30 @@ export function testSeoRegression() {
       locale: 'en'
     });
     assert(getProperty(prodMetadata.robots, 'index') === true, 'Production indexes by default');
+    assert(getProperty(prodMetadata.robots, 'follow') === true, 'Production follows by default');
+    assert(getCanonical(prodMetadata) === `${origin}/en`, 'Production canonical uses venkoi.com');
+    assert(getLanguageAlternate(prodMetadata, 'en') === `${origin}/en`, 'Production EN alternate uses venkoi.com');
+    assert(getLanguageAlternate(prodMetadata, 'es') === `${origin}/es`, 'Production ES alternate uses venkoi.com');
+    assert(getLanguageAlternate(prodMetadata, 'x-default') === `${origin}/en`, 'Production x-default uses English on venkoi.com');
+    assert(getProperty(prodMetadata.openGraph, 'url') === `${origin}/en`, 'Production OpenGraph URL uses venkoi.com');
+
+    const noIndexMetadata = createMetadata({
+      title: 'Private',
+      description: 'Desc',
+      routeKey: 'demo',
+      locale: 'en',
+      noIndex: true
+    });
+    assert(getProperty(noIndexMetadata.robots, 'index') === false, 'Explicit noIndex remains effective in production');
+
+    const productionRobots = robots();
+    assert(getProperty(productionRobots.rules, 'allow') === '/', 'Production robots allows public crawling');
+    assert(
+      Array.isArray(getProperty(productionRobots.rules, 'disallow')) &&
+        (getProperty(productionRobots.rules, 'disallow') as string[]).includes('/api/'),
+      'Production robots disallows /api/'
+    );
+    assert(productionRobots.sitemap === `${origin}/sitemap.xml`, 'Production robots advertises canonical sitemap');
 
     setEnv('VERCEL_ENV', 'preview');
     const previewMetadata = createMetadata({
@@ -144,11 +173,29 @@ export function testSeoRegression() {
       locale: 'en'
     });
     assert(getProperty(previewMetadata.robots, 'index') === false, 'Preview environment is noindex');
+    assert(getProperty(previewMetadata.robots, 'follow') === false, 'Preview environment is nofollow');
+    assert(getCanonical(previewMetadata) === `${origin}/en`, 'Preview canonical still uses venkoi.com');
+    assert(getLanguageAlternate(previewMetadata, 'en') === `${origin}/en`, 'Preview EN alternate still uses venkoi.com');
+    assert(getLanguageAlternate(previewMetadata, 'es') === `${origin}/es`, 'Preview ES alternate still uses venkoi.com');
+    assert(getProperty(previewMetadata.openGraph, 'url') === `${origin}/en`, 'Preview OpenGraph URL still uses venkoi.com');
+
+    const previewRobots = robots();
+    assert(getProperty(previewRobots.rules, 'disallow') === '/', 'Preview robots disallows crawling');
 
     const sitemapItems = sitemap();
     assert(Array.isArray(sitemapItems), 'Sitemap returns an array');
     assert(sitemapItems.length === sitemapRouteKeys.length * locales.length, 'Sitemap contains every indexable route and locale');
     assert(sitemapItems.every(item => item.lastModified == null), 'Sitemap items do NOT contain build-time lastModified');
+    assert(sitemapItems.every(item => item.url.startsWith(`${origin}/`)), 'Every sitemap URL uses venkoi.com');
+    assert(
+      sitemapItems.every(item =>
+        Object.values(item.alternates?.languages ?? {}).every(
+          url => typeof url === 'string' && url.startsWith(`${origin}/`)
+        )
+      ),
+      'Every sitemap alternate uses venkoi.com'
+    );
+    assert(!JSON.stringify(sitemapItems).includes('vercel.app'), 'Sitemap contains no vercel.app hostname');
 
     for (const routeKey of sitemapRouteKeys) {
       for (const locale of locales) {
@@ -175,6 +222,7 @@ export function testSeoRegression() {
   } finally {
     setEnv('VERCEL_ENV', origVercelEnv);
     setEnv('NODE_ENV', origNodeEnv);
+    setEnv('SITE_URL', origSiteUrl);
   }
 
   console.log(`\n=== SEO REGRESSION SUMMARY: ${passed} PASSED, ${failed} FAILED ===\n`);

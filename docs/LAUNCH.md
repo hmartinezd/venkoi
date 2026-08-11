@@ -39,7 +39,7 @@ No external error-monitoring or alerting service is present in this repository. 
 
 Keep secrets out of source control and do not expose them through `NEXT_PUBLIC_*`. `VERCEL_ENV` and `NODE_ENV` are runtime/system variables used by the code, not custom secrets. Vercel supplies `VERCEL_ENV`; it does not belong in `.env.example` unless an operator deliberately simulates Vercel behavior locally.
 
-`SITE_URL` defaults to `https://venkoi.com` and trailing slashes are removed. Preview deployments should continue to emit production-origin canonicals, not preview-specific canonical URLs.
+`SITE_URL` defaults to `https://venkoi.com`. It accepts an absolute HTTPS origin only: no credentials, non-root path, query, fragment, whitespace, or control characters. A root trailing slash is normalized away; invalid values safely fall back to the canonical production origin. Preview deployments intentionally continue to emit production-origin canonicals while remaining `noindex`; canonical identity is never derived from request hosts or Vercel deployment hostnames.
 
 ## Environment matrix
 
@@ -116,14 +116,52 @@ The EN Contact and EN Demo persistence and email paths described above are alrea
 
 Use a non-production environment for controlled failure-path testing. Confirm database failure yields submission failure, and email failure after persistence still yields submission success. Do not intentionally break production services.
 
-## SEO and platform verification
+## Domain cutover — owner checklist
 
-- [ ] Confirm `https://venkoi.com/sitemap.xml` is valid and contains intended EN/ES routes and alternates.
-- [ ] Confirm production `robots.txt` allows public pages, disallows `/api/`, and references the sitemap.
-- [ ] Confirm a preview deployment remains `noindex`, `nofollow`, with crawling disallowed.
-- [ ] Inspect live canonical and `hreflang`/`x-default` URLs and confirm they use `https://venkoi.com`.
-- [ ] Verify Open Graph and Twitter metadata/assets on representative EN/ES pages.
-- [ ] Confirm Vercel Analytics and Speed Insights receive production traffic after consent/legal decisions are resolved as applicable.
+These are external hosting actions and remain pending until the owner performs and verifies them:
+
+1. [ ] Attach `venkoi.com` to the Vercel Production project.
+2. [ ] Configure the exact DNS records Vercel currently requests for this project and domain; do not rely on copied generic A/CNAME values.
+3. [ ] Wait for Vercel to verify the domain.
+4. [ ] Confirm TLS is active and the HTTPS certificate is valid.
+5. [ ] Set or confirm Production `SITE_URL=https://venkoi.com`.
+6. [ ] Redeploy after the environment change if Vercel indicates that it is required.
+7. [ ] Make `venkoi.com` the primary production domain.
+8. [ ] If `www.venkoi.com` is attached, configure it to redirect to `venkoi.com`; keep the apex domain as the sole canonical origin.
+9. [ ] Confirm old `*.vercel.app` deployment URLs do not appear as canonical, alternate, sitemap, or social metadata URLs.
+10. [ ] Perform the controlled live SEO and platform verification below.
+
+DNS and primary-domain redirects belong to Vercel/domain configuration, not application middleware.
+
+## Live domain, SEO, and platform verification — after cutover
+
+Domain and locales:
+
+- [ ] `https://venkoi.com` loads successfully with a valid HTTPS certificate.
+- [ ] Primary-domain behavior is correct, including the `www` → apex redirect if `www.venkoi.com` is attached.
+- [ ] `/en` and `/es` load successfully.
+
+SEO:
+
+- [ ] Production `/robots.txt` allows public crawling, disallows `/api/`, and advertises `https://venkoi.com/sitemap.xml`.
+- [ ] `/sitemap.xml` contains only intended canonical EN/ES public routes, locale alternates, and English `x-default`; Demo remains excluded.
+- [ ] Representative EN and ES pages use `https://venkoi.com` canonical URLs.
+- [ ] Representative pages expose correct `hreflang` values for `en` and `es`, with `x-default` pointing to English.
+- [ ] Representative Open Graph URLs and social image URLs resolve through the canonical production origin.
+
+Preview safety:
+
+- [ ] A representative Vercel Preview remains `noindex`, `nofollow`, and its robots output disallows crawling.
+- [ ] That Preview still points canonical, alternate, and Open Graph metadata at `https://venkoi.com`, never its `vercel.app` hostname.
+
+Platform:
+
+- [ ] Vercel Analytics shows real production traffic.
+- [ ] Vercel Speed Insights begins receiving production observations.
+- [ ] Inspect production logs for BotID, database, and email errors.
+- [ ] Verify BotID operationally without intentional abusive or damaging production submissions.
+
+The completed English Contact and Demo persistence/email checks do not need to be repeated solely for domain cutover. Repeat them only if the cutover creates a concrete lead-flow concern. Spanish production email delivery remains pending.
 
 ## Code-verifiable prerequisites
 
@@ -138,7 +176,7 @@ This verifies lint (including deprecated API detection), type checking, routing/
 
 ## Post-launch check
 
-- [ ] Recheck EN/ES Contact and Demo submissions and delivered emails.
+- [ ] Recheck Contact or Demo only if launch behavior creates a concrete concern; Spanish production email delivery remains pending.
 - [ ] Review search indexing signals, sitemap, robots, canonicals, and alternates.
 - [ ] Confirm Analytics and Speed Insights traffic.
 - [ ] Review application logs for database, email, and BotID errors.

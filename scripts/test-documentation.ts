@@ -69,5 +69,14 @@ assert.match(launch, /Spanish-language production delivery has not been manually
 assert.match(launch, /must not be interpreted as the previous SPA route/i, 'Runbook must document referrer semantics');
 assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
 assert.match(launch, /Privacy Policy \/ Terms pages are required for launch/, 'Runbook must preserve the owner/legal launch decision');
+assert.match(launch, /Domain cutover — owner checklist/, 'Runbook must include the owner domain-cutover checklist');
+assert.match(launch, /exact DNS records Vercel currently requests/, 'Runbook must defer exact DNS values to Vercel');
+assert.match(launch, /Make `venkoi\.com` the primary production domain/, 'Runbook must identify the apex primary domain');
+assert.match(launch, /`www\.venkoi\.com` is attached[\s\S]*redirect to `venkoi\.com`/, 'Runbook must document the optional www redirect');
+assert.match(launch, /Live domain, SEO, and platform verification — after cutover/, 'Runbook must keep live verification pending until cutover');
+assert.match(launch, /Vercel Analytics shows real production traffic/, 'Runbook must require live Analytics verification');
+assert.match(launch, /Speed Insights begins receiving production observations/, 'Runbook must require live Speed Insights verification');
+assert.match(launch, /Spanish production email delivery remains pending/, 'Runbook must preserve pending Spanish email status');
+assert.doesNotMatch(launch, /\b(?:76\.76\.21\.21|cname\.vercel-dns\.com)\b/i, 'Runbook must not hardcode generic DNS records');
 
 console.log('Documentation regression checks passed.');

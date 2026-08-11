@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
@@ -12,6 +12,21 @@ const packageJson = JSON.parse(readFileSync(path.join(root, 'package.json'), 'ut
 const workflow = readFileSync(path.join(root, '.github/workflows/quality.yml'), 'utf8');
 const eslintConfig = readFileSync(path.join(root, 'eslint.config.mjs'), 'utf8');
 const validation = readFileSync(path.join(root, 'src/server/leads/validation.ts'), 'utf8');
+const localeLayout = readFileSync(path.join(root, 'src/app/[locale]/layout.tsx'), 'utf8');
+const leadsRoute = readFileSync(path.join(root, 'src/app/api/leads/route.ts'), 'utf8');
+const botIdClient = readFileSync(path.join(root, 'src/instrumentation-client.ts'), 'utf8');
+
+function readSourceTree(directory: string): string {
+  return readdirSync(directory, { withFileTypes: true })
+    .flatMap(entry => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) return [readSourceTree(entryPath)];
+      return /\.(?:ts|tsx|js|mjs)$/.test(entry.name) ? [readFileSync(entryPath, 'utf8')] : [];
+    })
+    .join('\n');
+}
+
+const sourceTree = readSourceTree(path.join(root, 'src'));
 
 assert.equal(packageJson.engines?.node, '24.x');
 assert.match(workflow, /node-version:\s*24/);
@@ -40,5 +55,13 @@ assert.doesNotMatch(validation, /\.superRefine\(/);
 assert.doesNotMatch(validation, /\.strict\(\)/);
 assert.doesNotMatch(validation, /\.toLowerCase\(\)\s*\.email\(/);
 assert.match(validation, /z\s*\.email\(/);
+assert.equal((localeLayout.match(/<Analytics\s*\/>/g) ?? []).length, 1, 'Analytics must be mounted exactly once');
+assert.equal((localeLayout.match(/<SpeedInsights\s*\/>/g) ?? []).length, 1, 'Speed Insights must be mounted exactly once');
+assert.equal((sourceTree.match(/initBotId\s*\(/g) ?? []).length, 1, 'BotID client initialization must not be duplicated');
+assert.match(botIdClient, /path:\s*['"]\/api\/leads['"][\s\S]*method:\s*['"]POST['"]/, 'BotID client must protect POST /api/leads');
+assert.match(leadsRoute, /checkBotId\s*\(\s*\)/, 'POST /api/leads must verify BotID server-side');
+assert.match(leadsRoute, /if\s*\(isDeployed\)[\s\S]*SUBMISSION_ERROR/, 'deployed BotID verification errors must fail closed');
+assert.equal((sourceTree.match(/NEXT_PUBLIC_SITE_URL/g) ?? []).length, 0, 'canonical origin must not require NEXT_PUBLIC_SITE_URL');
+assert.equal((sourceTree.match(/VERCEL_(?:BRANCH_)?URL/g) ?? []).length, 0, 'canonical origin must not derive from Vercel deployment hostnames');
 
 console.log('Platform modernization regression checks passed.');
