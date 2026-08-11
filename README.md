@@ -1,6 +1,6 @@
 # Venkoi
 
-The Venkoi marketing and product website. Its application architecture is production-oriented; external lead infrastructure is configured separately and must be verified before launch.
+The Venkoi marketing and product website. Production Contact and Demo persistence is backed by Neon PostgreSQL; transactional email delivery remains a separate operational step.
 
 ## Stack
 
@@ -24,7 +24,9 @@ The marketing site renders locally without production lead-service secrets.
 
 ## Lead infrastructure status
 
-**Deferred Production Infrastructure:** the Contact and Demo UI, validation, persistence, and email integrations are code-ready, but repository code does not prove that Neon, Resend, Vercel environment variables, or production BotID behavior are operationally configured. Forms must not be treated as production-operational until the external launch checklist is complete.
+Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. Demo persistence stores the stable product slug `zaiko`, independently of its registry-driven public display name.
+
+**Deferred Production Infrastructure:** Resend production email delivery is not active yet. Missing or failed email delivery remains secondary to successful persistence and does not discard an already stored lead.
 
 Database persistence is required for a successful submission. A database failure produces `SUBMISSION_ERROR`. If persistence succeeds but email delivery is unavailable or fails, the submission remains successful because the lead has already been stored; the email issue is logged.
 

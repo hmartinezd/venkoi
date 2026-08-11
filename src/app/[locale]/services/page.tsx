@@ -46,14 +46,14 @@ export default async function ServicesPage({ params }: PageProps) {
 
     <ServiceProcess eyebrow={t('howWeWork.eyebrow')} heading={t('howWeWork.heading')} stages={stages} testingPrinciple={t('howWeWork.testingPrinciple')} />
 
-    <Section variant="light" className="border-t border-border">
+    <Section variant="muted" className="border-y border-border">
       <Container className="space-y-8">
         <div className="max-w-3xl space-y-4"><p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">{t('projectFit.eyebrow')}</p><h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t('projectFit.heading')}</h2></div>
         <div className="grid gap-4 sm:grid-cols-3">{([1, 2, 3] as const).map((i) => <div key={i} className="rounded-2xl border border-border bg-surface p-6"><p className="text-sm font-semibold leading-relaxed text-ink">{t(`projectFit.item${i}`)}</p></div>)}</div>
       </Container>
     </Section>
 
-    <Section variant="light" spacing="compact" className="border-t border-border">
+    <Section variant="surface" spacing="compact" className="border-b border-border">
       <Container className="space-y-8"><h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{t('relatedGuides')}</h2><div className="grid gap-6 md:grid-cols-2">
         <InsightCard locale={currentLocale} category={articles('startSoftwareProject.category')} title={articles('startSoftwareProject.title')} description={articles('startSoftwareProject.description')} routeKey="insightStartSoftwareProject" readMoreLabel={insights('readMore')} />
         <InsightCard locale={currentLocale} category={articles('websiteOrWebApp.category')} title={articles('websiteOrWebApp.title')} description={articles('websiteOrWebApp.description')} routeKey="insightWebsiteOrWebApp" readMoreLabel={insights('readMore')} />

@@ -1,6 +1,7 @@
 -- Migration 003: Update service interests check constraint
--- Active public API values: 'mobile', 'website', 'web_application', 'unsure'
--- Historical legacy database values preserved for row compatibility: 'web', 'custom_business_software', 'product_development'
+-- Canonical current application values: 'mobile', 'web', 'unsure'
+-- Compatibility / legacy values preserved for row compatibility:
+-- 'website', 'web_application', 'custom_business_software', 'product_development'
 
 DO $$
 BEGIN
@@ -12,13 +13,13 @@ BEGIN
   -- Add updated constraint allowing both active and historical legacy values
   ALTER TABLE leads ADD CONSTRAINT chk_leads_interest CHECK (
     interest IS NULL OR interest IN (
-      -- Active V1 Services interest values
+      -- Canonical current application values
       'mobile',
+      'web',
+      'unsure',
+      -- Compatibility / legacy values (read and historical row compatibility)
       'website',
       'web_application',
-      'unsure',
-      -- Legacy historical interest values (read compatibility only)
-      'web',
       'custom_business_software',
       'product_development'
     )

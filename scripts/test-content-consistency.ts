@@ -32,6 +32,19 @@ function compareShape(left: unknown, right: unknown, path = 'messages'): void {
 
 compareShape(en, es);
 
+function strings(value: unknown): string[] {
+  if (typeof value === 'string') return [value];
+  if (Array.isArray(value)) return value.flatMap(strings);
+  if (value && typeof value === 'object') return Object.values(value).flatMap(strings);
+  return [];
+}
+
+const provisionalPublicCopy = /early access|acceso anticipado|want to see what we're building\?|still being built|work in progress|coming soon|\bbeta\b|\bprototype\b|\bMVP\b/i;
+for (const [locale, messages] of [['en', en], ['es', es]] as const) {
+  const violations = strings(messages).filter((value) => provisionalPublicCopy.test(value));
+  assert.deepEqual(violations, [], `${locale} public copy must not imply an available product is provisional`);
+}
+
 const navigation = read('src/i18n/navigation.ts');
 assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationItem|NavigationChild/);
 

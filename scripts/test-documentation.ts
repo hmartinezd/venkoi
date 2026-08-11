@@ -24,6 +24,8 @@ assert.match(readme, /npm run quality/, 'README must document npm run quality');
 assert.match(readme, /npm run test:regression/, 'README must document npm run test:regression');
 assert.match(readme, /Deferred Production Infrastructure/, 'README must qualify external production readiness');
 assert.doesNotMatch(readme, /production forms are fully operational/i, 'README must not claim forms are fully operational');
+assert.match(readme, /manually verified/i, 'README must record completed production persistence verification');
+assert.match(readme, /stable product slug `zaiko`/i, 'README must document rename-safe Demo persistence');
 
 const envLines = read('.env.example').split(/\r?\n/);
 const env = new Map<string, string>();
@@ -59,6 +61,9 @@ assert.ok(migrationPositions.every((position) => position >= 0), 'Runbook must n
 assert.ok(migrationPositions[0] < migrationPositions[1] && migrationPositions[1] < migrationPositions[2], 'Runbook must present migrations in numeric order');
 
 assert.match(launch, /Deferred Production Infrastructure/, 'Runbook must identify deferred infrastructure');
+assert.match(launch, /Production lead persistence — done/, 'Runbook must distinguish completed Neon persistence');
+assert.match(launch, /Production email delivery through Resend remains pending/, 'Runbook must distinguish pending email delivery');
+assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
 assert.match(launch, /Privacy Policy \/ Terms pages are required for launch/, 'Runbook must preserve the owner/legal launch decision');
 
 console.log('Documentation regression checks passed.');

@@ -1,10 +1,21 @@
 # Venkoi Launch Runbook
 
-This runbook is the operational source of truth for activating Venkoi's external production services. It documents work to perform and verify; it does not prove that any external resource currently exists.
+This runbook is the operational source of truth for Venkoi's external production services. It records completed production lead-persistence work separately from remaining operational work.
+
+## Production lead persistence — done
+
+The Neon production database is configured with Neon Auth off. Migrations `001` → `002` → `003` were applied manually in the Neon SQL Editor. Vercel Production receives `DATABASE_URL` through the Neon integration, and a new production deployment was created after configuration.
+
+Production persistence has been manually verified end to end:
+
+- Contact: `GENERAL_CONTACT`, `product = NULL`, `status = NEW`, `locale = en`, `source_path = /en/contact`.
+- Demo: `DEMO`, `product = zaiko`, `early_access_interest = true`, `status = NEW`, `locale = en`, `source_path = /en/demo`.
+
+The Demo row intentionally stores the stable product slug `zaiko`, not the registry-driven public display name. Do not require local `DATABASE_URL` or repeat these production submissions merely to re-prove this completed verification.
 
 ## Deferred Production Infrastructure
 
-The application is **code-ready**, but the lead pipeline is not **operationally configured** merely because its Neon, Resend, and BotID integrations exist in the repository. Treat production lead submission as a launch blocker until every applicable external checklist item below has been completed.
+Production email delivery through Resend remains pending. Do not describe Resend as active until its sender, recipients, credentials, and both delivery paths have been configured and verified.
 
 Contact and Demo UI and validation can work without production services. Validation alone is not lead success: `POST /api/leads` must persist the validated lead to PostgreSQL. A missing, invalid, or unavailable database returns `SUBMISSION_ERROR`. After persistence, unavailable or failed email delivery is logged but the submission remains successful because the lead is safely stored.
 
@@ -35,8 +46,8 @@ Keep secrets out of source control and do not expose them through `NEXT_PUBLIC_*
 | Environment | Indexability | `SITE_URL` | Lead persistence | Email | BotID |
 | --- | --- | --- | --- | --- | --- |
 | Local Development | `noindex`, `nofollow` under normal development runtime | Defaults to production origin; may be set for deliberate local testing | Not expected for ordinary site rendering; requires a safe local/test DB configuration | Not expected; requires safe test Resend configuration | Verification errors warn and processing continues |
-| Vercel Preview | `noindex`, `nofollow`; robots disallow crawling | Keep `https://venkoi.com` for canonical URLs | Only expected if preview-safe infrastructure is intentionally configured | Only expected if preview-safe email is intentionally configured | Deployed behavior: bots blocked and verification errors fail closed |
-| Vercel Production | `index`, `follow`; robots allow public pages and disallow `/api/` | `https://venkoi.com` | Required for successful form submissions | Expected after persistence once Resend is configured | Deployed behavior; must be verified on live lead POST traffic |
+| Vercel Preview | `noindex`, `nofollow`; robots disallow crawling | Keep `https://venkoi.com` for canonical URLs | Not required; do not share the Production database automatically. Use a separate Neon branch/database later only if needed | Not expected | Deployed behavior: bots blocked and verification errors fail closed |
+| Vercel Production | `index`, `follow`; robots allow public pages and disallow `/api/` | `https://venkoi.com` | Configured and manually verified through Neon | Pending Resend configuration; persistence success remains authoritative | Deployed behavior; continue operational monitoring |
 
 ## Database migrations
 
@@ -69,21 +80,21 @@ Perform this only after database persistence is verified:
 
 Do not assume a sender mailbox is approved until Resend confirms it. The code treats missing email configuration as a logged skip after persistence; individual send failures are also logged and do not roll back the lead.
 
-## Required launch order
+## Production status and remaining launch work
 
 - [ ] Configure `venkoi.com`, DNS, and TLS/HTTPS in the production host.
 - [ ] Set production `SITE_URL=https://venkoi.com`.
-- [ ] Create/configure the production Neon database and restrict access appropriately.
-- [ ] Determine the database's current migration state.
-- [ ] Apply migrations `001` → `002` → `003`, without skipping order.
-- [ ] Verify the production schema, indexes, defaults, nullability, and constraints against the migration SQL.
+- [x] Create/configure the production Neon database with Neon Auth off.
+- [x] Apply migrations `001` → `002` → `003` manually in numeric order.
+- [x] Connect server-only `DATABASE_URL` to Vercel Production through Neon and redeploy.
+- [x] Verify controlled production Contact and Demo submissions persisted the expected rows.
+- [x] Verify Demo persistence stores the stable product slug `zaiko`.
 - [ ] Confirm Neon retention/backups are appropriate for launch.
 - [ ] Configure Resend and verify the approved sending domain.
 - [ ] Create the Resend API key and configure the approved sender and notification recipient.
-- [ ] Configure `DATABASE_URL`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `LEADS_NOTIFICATION_EMAIL`, and `SITE_URL` in Vercel Production only as intended.
-- [ ] Deploy to Vercel Production after environment configuration is complete.
+- [ ] Configure `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `LEADS_NOTIFICATION_EMAIL`, and `SITE_URL` in Vercel Production only as intended. (`DATABASE_URL` is done.)
+- [ ] Deploy to Vercel Production after the remaining environment configuration is complete.
 - [ ] Verify BotID is active for `POST /api/leads` production traffic.
-- [ ] Complete controlled live lead submissions and confirm database rows.
 - [ ] Confirm both internal notifications and user acknowledgements.
 - [ ] Inspect production logs for database, email, and BotID errors after the controlled submissions.
 - [ ] Verify sitemap, robots, canonical, hreflang, and social metadata behavior.
@@ -96,7 +107,7 @@ Privacy and Terms currently render as non-link footer text; no corresponding rou
 
 ## Manual lead verification matrix
 
-Run these checks only after production infrastructure is intentionally configured. For every row, verify a valid submission, the database row, internal notification, user acknowledgement, and success UI.
+The EN Contact and EN Demo persistence rows described above are already verified and do not need to be repeated. Use this matrix for future locale/interest coverage and, after Resend activation, email verification. Database rows and UI success are persistence checks; internal notification and user acknowledgement are separate email checks.
 
 | Flow | Route / intent | Additional check |
 | --- | --- | --- |

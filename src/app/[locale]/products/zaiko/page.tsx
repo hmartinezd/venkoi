@@ -260,7 +260,7 @@ export default async function ZaikoPage({ params }: PageProps) {
       />
 
       {/* Related Guide Section */}
-      <Section variant="light" spacing="compact" className="border-t border-border">
+      <Section variant="muted" spacing="compact" className="border-t border-border">
         <Container className="max-w-4xl">
           <div className="space-y-8">
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text text-center">
