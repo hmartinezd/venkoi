@@ -93,7 +93,13 @@ export function buildAcknowledgementTemplateCopy(lead: LeadRecord, resolver: Lea
     nextText: demo
       ? isSpanish ? 'Nos pondremos en contacto para conocer más sobre tu restaurante y coordinar la demo.' : "We'll be in touch to learn more about your restaurant and help coordinate your demo."
       : isSpanish ? 'Revisaremos los detalles y nos pondremos en contacto contigo.' : "We'll review the details and be in touch.",
-    replyNote: isSpanish ? 'Puedes responder directamente a este correo si quieres agregar información.' : 'You can reply directly to this email if you would like to add anything.'
+    replyNote: demo
+      ? isSpanish
+        ? 'Si tienes alguna pregunta o quieres compartir algo más sobre tu solicitud de demo, responde directamente a este correo.'
+        : 'If you have any questions or want to share anything else about your demo request, just reply to this email.'
+      : isSpanish
+        ? 'Si quieres agregar algún detalle o tienes alguna pregunta, responde directamente a este correo.'
+        : "If you'd like to add any details or have a question, just reply to this email."
   };
 }
 

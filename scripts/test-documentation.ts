@@ -22,7 +22,8 @@ assert.match(readme, /\.nvmrc/, 'README must document .nvmrc');
 assert.match(readme, /\[launch runbook\]\(docs\/LAUNCH\.md\)/, 'README must link to launch runbook');
 assert.match(readme, /npm run quality/, 'README must document npm run quality');
 assert.match(readme, /npm run test:regression/, 'README must document npm run test:regression');
-assert.match(readme, /before production email delivery is marked verified/i, 'README must qualify production email verification');
+assert.match(readme, /Resend production transactional delivery is configured and manually verified/i, 'README must record production email verification');
+assert.match(readme, /Spanish production delivery has not been manually verified/i, 'README must qualify Spanish production email verification');
 assert.doesNotMatch(readme, /production forms are fully operational/i, 'README must not claim forms are fully operational');
 assert.match(readme, /manually verified/i, 'README must record completed production persistence verification');
 assert.match(readme, /stable product slug `zaiko`/i, 'README must document rename-safe Demo persistence');
@@ -62,9 +63,10 @@ const migrationPositions = migrations.map((migration) => {
 assert.ok(migrationPositions.every((position) => position >= 0), 'Runbook must name all migrations');
 assert.ok(migrationPositions[0] < migrationPositions[1] && migrationPositions[1] < migrationPositions[2], 'Runbook must present migrations in numeric order');
 
-assert.match(launch, /Deferred Production Infrastructure/, 'Runbook must identify deferred infrastructure');
+assert.match(launch, /Production email delivery — done/, 'Runbook must identify completed production email verification');
 assert.match(launch, /Production lead persistence — done/, 'Runbook must distinguish completed Neon persistence');
-assert.match(launch, /production email verification remains pending/i, 'Runbook must distinguish pending live email verification');
+assert.match(launch, /Spanish-language production delivery has not been manually verified/i, 'Runbook must distinguish unverified Spanish production delivery');
+assert.match(launch, /must not be interpreted as the previous SPA route/i, 'Runbook must document referrer semantics');
 assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
 assert.match(launch, /Privacy Policy \/ Terms pages are required for launch/, 'Runbook must preserve the owner/legal launch decision');
 

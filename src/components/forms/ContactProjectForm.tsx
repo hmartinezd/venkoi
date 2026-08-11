@@ -6,6 +6,7 @@ import { FormField } from "./FormField";
 import { FormStatus } from "./FormStatus";
 import { Button } from "@/components/ui/Button";
 import { trackCustomEvent } from "@/lib/analytics";
+import { getLeadAcquisitionContext } from "@/lib/lead-acquisition";
 import { type ServiceInterest } from "@/lib/services";
 import type { Locale } from "@/i18n/config";
 
@@ -65,16 +66,11 @@ export function ContactProjectForm({
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const searchParams = new URLSearchParams(window.location.search);
-
-      acquisitionRef.current = {
-        source_path: window.location.pathname,
-        referrer: document.referrer || "",
-        utm_source: searchParams.get("utm_source") || "",
-        utm_medium: searchParams.get("utm_medium") || "",
-        utm_campaign: searchParams.get("utm_campaign") || "",
-        utm_content: searchParams.get("utm_content") || "",
-      };
+      acquisitionRef.current = getLeadAcquisitionContext({
+        href: window.location.href,
+        pathname: window.location.pathname,
+        referrer: document.referrer,
+      });
     }
   }, []);
 

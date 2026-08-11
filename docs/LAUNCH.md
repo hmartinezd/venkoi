@@ -13,9 +13,9 @@ Production persistence has been manually verified end to end:
 
 The Demo row intentionally stores the stable product slug `zaiko`, not the registry-driven public display name. Do not require local `DATABASE_URL` or repeat these production submissions merely to re-prove this completed verification.
 
-## Deferred Production Infrastructure
+## Production email delivery — done
 
-Resend's sending domain and required Vercel variables are configured. Application support is active, but production email verification remains pending until live Contact and Demo submissions confirm both the internal notification and customer acknowledgement paths.
+Resend's sending domain and required Vercel variables are configured. Live English Contact and Demo submissions confirmed both internal notifications and customer acknowledgements in production. Automated tests cover English and Spanish templates, but Spanish-language production delivery has not been manually verified.
 
 Contact and Demo UI and validation can work without production services. Validation alone is not lead success: `POST /api/leads` must persist the validated lead to PostgreSQL. A missing, invalid, or unavailable database returns `SUBMISSION_ERROR`. After persistence, unavailable or failed email delivery is logged but the submission remains successful because the lead is safely stored.
 
@@ -47,7 +47,7 @@ Keep secrets out of source control and do not expose them through `NEXT_PUBLIC_*
 | --- | --- | --- | --- | --- | --- |
 | Local Development | `noindex`, `nofollow` under normal development runtime | Defaults to production origin; may be set for deliberate local testing | Not expected for ordinary site rendering; requires a safe local/test DB configuration | Not expected; requires safe test Resend configuration | Verification errors warn and processing continues |
 | Vercel Preview | `noindex`, `nofollow`; robots disallow crawling | Keep `https://venkoi.com` for canonical URLs | Not required; do not share the Production database automatically. Use a separate Neon branch/database later only if needed | Not expected | Deployed behavior: bots blocked and verification errors fail closed |
-| Vercel Production | `index`, `follow`; robots allow public pages and disallow `/api/` | `https://venkoi.com` | Configured and manually verified through Neon | Configured; live verification of both delivery paths pending | Deployed behavior; continue operational monitoring |
+| Vercel Production | `index`, `follow`; robots allow public pages and disallow `/api/` | `https://venkoi.com` | Configured and manually verified through Neon | Configured; Contact and Demo internal/customer delivery verified in English | Deployed behavior; continue operational monitoring |
 
 ## Database migrations
 
@@ -71,7 +71,11 @@ The Neon SQL Editor/Console may be used instead, preserving the same `001` → `
 
 The sending domain is verified and Vercel provides `RESEND_API_KEY`, the domain-only `RESEND_EMAIL_DOMAIN`, and the owner-configured `LEADS_NOTIFICATION_EMAIL`. The application derives `Venkoi <notifications@{RESEND_EMAIL_DOMAIN}>`; it rejects schemes, email addresses, and unsafe header content in the domain setting. Templates are source-owned React Email components, not Resend-hosted templates.
 
-The code treats missing or invalid email configuration as a logged skip after persistence. Individual send failures are logged and do not roll back the lead. Complete live Contact and Demo submissions to verify both delivery paths before marking production delivery verified.
+The code treats missing or invalid email configuration as a logged skip after persistence. Individual send failures are logged and do not roll back the lead. Live English Contact and Demo submissions have verified both delivery paths; Spanish production delivery remains unverified.
+
+## Lead attribution semantics
+
+`source_path` is the form submission route without a query string. `referrer` is the normalized external HTTP(S) document referrer when available, with query and fragment removed. Same-origin Venkoi referrers are intentionally discarded and must not be interpreted as the previous SPA route. Internal customer-journey tracking is not implemented in V1.
 
 ## Production status and remaining launch work
 
@@ -88,7 +92,7 @@ The code treats missing or invalid email configuration as a logged skip after pe
 - [ ] Configure production `SITE_URL` as intended. (`DATABASE_URL` is done.)
 - [ ] Deploy to Vercel Production after the remaining environment configuration is complete.
 - [ ] Verify BotID is active for `POST /api/leads` production traffic.
-- [ ] Confirm both internal notifications and user acknowledgements.
+- [x] Confirm Contact and Demo internal notifications and user acknowledgements in English.
 - [ ] Inspect production logs for database, email, and BotID errors after the controlled submissions.
 - [ ] Verify sitemap, robots, canonical, hreflang, and social metadata behavior.
 - [ ] Verify Vercel Analytics receives production traffic.
@@ -100,7 +104,7 @@ Privacy and Terms currently render as non-link footer text; no corresponding rou
 
 ## Manual lead verification matrix
 
-The EN Contact and EN Demo persistence rows described above are already verified and do not need to be repeated. Use this matrix for future locale/interest coverage and, after Resend activation, email verification. Database rows and UI success are persistence checks; internal notification and user acknowledgement are separate email checks.
+The EN Contact and EN Demo persistence and email paths described above are already verified and do not need to be repeated. Use this matrix for future locale/interest coverage. Database rows and UI success are persistence checks; internal notification and user acknowledgement are separate email checks.
 
 | Flow | Route / intent | Additional check |
 | --- | --- | --- |

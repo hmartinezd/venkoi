@@ -93,7 +93,21 @@ for (const leadType of ['GENERAL_CONTACT', 'CUSTOM_PROJECT'] satisfies LeadType[
   const generic = buildUserAcknowledgementEmail(lead({ lead_type: leadType, product: null }));
   assert.equal(generic.subject, 'We received your message — Venkoi');
   assert.doesNotMatch(`${generic.subject}\n${generic.text}`, new RegExp(FEATURED_PRODUCT.name, 'i'));
+  assert.match(generic.text, /If you'd like to add any details or have a question, just reply to this email\./);
 }
+
+const genericSpanish = buildUserAcknowledgementEmail(lead({ lead_type: 'GENERAL_CONTACT', product: null, locale: 'es' }));
+assert.match(genericSpanish.text, /Si quieres agregar algún detalle o tienes alguna pregunta, responde directamente a este correo\./);
+assert.match(english.text, /If you have any questions or want to share anything else about your demo request, just reply to this email\./);
+assert.match(spanish.text, /Si tienes alguna pregunta o quieres compartir algo más sobre tu solicitud de demo, responde directamente a este correo\./);
+const demoEnglishParts = english.text.split('\n\n');
+const contactEnglishParts = buildUserAcknowledgementEmail(
+  lead({ lead_type: 'GENERAL_CONTACT', product: null })
+).text.split('\n\n');
+assert.notEqual(
+  demoEnglishParts[demoEnglishParts.length - 1],
+  contactEnglishParts[contactEnglishParts.length - 1]
+);
 
 assert.equal(buildResendFromAddress(' send.venkoi.com '), 'Venkoi <notifications@send.venkoi.com>');
 assert.equal(normalizeResendEmailDomain('SEND.VENKOI.COM'), 'send.venkoi.com');
