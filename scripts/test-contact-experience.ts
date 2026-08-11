@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { createTranslator } from "next-intl";
+import en from "../src/i18n/messages/en.json";
+import es from "../src/i18n/messages/es.json";
+import { FEATURED_PRODUCT } from "../src/lib/products";
 import { leadSubmissionSchema } from "../src/server/leads/validation";
 import { normalizeServiceInterest } from "../src/lib/services";
 
@@ -12,7 +16,40 @@ const demoPage = read("src/app/[locale]/demo/page.tsx");
 const nextSteps = read("src/components/shared/NextSteps.tsx");
 
 assert.match(page, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)/);
-assert.match(page, /FEATURED_PRODUCT\.name/);
+for (const key of ["heading", "body"] as const) {
+  assert.match(
+    page,
+    new RegExp(
+      `t\\(\\"productDemo\\.${key}\\", \\{ productName: FEATURED_PRODUCT\\.name \\}\\)`
+    ),
+    `Contact product-demo ${key} should use the registry display name`
+  );
+}
+
+const productDemoMessages = { en: en.contactPage.productDemo, es: es.contactPage.productDemo };
+const placeholders = (message: string) => [...message.matchAll(/\{([\w]+)\}/g)].map((match) => match[1]).sort();
+
+for (const key of ["heading", "body"] as const) {
+  assert.deepEqual(
+    placeholders(productDemoMessages.en[key]),
+    ["productName"],
+    `EN Contact product-demo ${key} should require productName`
+  );
+  assert.deepEqual(
+    placeholders(productDemoMessages.es[key]),
+    placeholders(productDemoMessages.en[key]),
+    `EN and ES Contact product-demo ${key} should require equivalent interpolation values`
+  );
+}
+
+for (const [locale, messages] of Object.entries({ en, es })) {
+  const t = createTranslator({ locale, messages, namespace: "contactPage.productDemo" });
+  for (const key of ["heading", "body"] as const) {
+    const rendered = t(key, { productName: FEATURED_PRODUCT.name });
+    assert.match(rendered, new RegExp(FEATURED_PRODUCT.name));
+    assert.doesNotMatch(rendered, /\{productName\}/, `${locale.toUpperCase()} ${key} must fully interpolate`);
+  }
+}
 assert.doesNotMatch(form, /name=["']product["']|early_access_interest|location_count|current_system/);
 assert.match(demoPage, /getLocalizedPath\('contact', currentLocale\)/);
 assert.doesNotMatch(demoPage, /type=services|interest=|product=/);

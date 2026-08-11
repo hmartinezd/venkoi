@@ -147,7 +147,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
                   {t("productDemo.heading", { productName: FEATURED_PRODUCT.name })}
                 </h2>
                 <p className="text-sm text-foreground-muted">
-                  {t("productDemo.body")}
+                  {t("productDemo.body", { productName: FEATURED_PRODUCT.name })}
                 </p>
                 <a
                   href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}

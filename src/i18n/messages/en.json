@@ -43,8 +43,8 @@
   "home": {
     "hero": {
       "eyebrow": "SOFTWARE PRODUCT COMPANY",
-      "heading": "We create software products for real business work.",
-      "body": "Venkoi starts with a real operational problem, learns how the work happens, and builds a useful product around it. Our featured product brings restaurant inventory work into one clearer place.",
+      "heading": "We build software products that solve practical business problems.",
+      "body": "Venkoi turns specific operational problems into focused software products. Our featured product helps restaurants bring inventory, purchases, movement, and costs into one clear view.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
@@ -176,7 +176,7 @@
     "body": "Venkoi is a product-first software company based in Tampa Bay. We create our own useful products around real business problems and apply the same product discipline to selected client projects.",
     "strategicDirectionEyebrow": "STRATEGIC DIRECTION",
     "productDirectionHeading": "Products first. Services when you need something built.",
-    "productDirectionBody": "We begin with real workflows, simplify the parts that create friction, and build the useful version first. Our own products are the company's primary focus. For selected client projects, we bring the same connected approach to definition, design, development, and testing.",
+    "productDirectionBody": "We begin with real workflows, simplify the parts that create friction, and build the useful version first. Our own products are the company's primary focus. For selected client projects, we apply the same disciplined approach from definition and design through development and testing.",
     "primaryPillarBadge": "PRIMARY DIRECTION",
     "venkoiProductsTitle": "Venkoi Products",
     "venkoiProductsDesc": "Our current product, {productName}, helps restaurants understand and manage inventory, purchases, activity, and costs.",
