@@ -69,4 +69,16 @@ assert.match(
   'Insight metadata should resolve its title from the registry display name'
 );
 
+const leadEmailSource = read('src/server/email/lead-emails.ts');
+assert.doesNotMatch(
+  leadEmailSource,
+  new RegExp(FEATURED_PRODUCT.name, 'i'),
+  'Lead email templates must not hardcode the current product display name'
+);
+assert.match(
+  leadEmailSource,
+  /getProductBySlug/,
+  'Lead email templates should resolve display identity through the product registry'
+);
+
 console.log('Product display-name regression checks passed.');

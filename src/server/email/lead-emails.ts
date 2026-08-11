@@ -1,13 +1,33 @@
+import { getProductBySlug, type Product } from '@/lib/products';
 import { getEmailConfig, type EmailConfig } from './client';
 import type { LeadRecord } from '../leads/types';
 
-export async function sendInternalNotificationEmail(
+export type LeadEmailContent = {
+  subject: string;
+  text: string;
+};
+
+export type LeadProductResolver = (slug: string) => Pick<Product, 'name'> | undefined;
+
+function resolveLeadProductName(
   lead: LeadRecord,
-  config: EmailConfig
-): Promise<void> {
+  resolver: LeadProductResolver,
+  genericName: string
+): string {
+  if (!lead.product) return genericName;
+  return resolver(lead.product)?.name ?? lead.product;
+}
+
+export function buildInternalNotificationEmail(
+  lead: LeadRecord,
+  resolver: LeadProductResolver = getProductBySlug
+): LeadEmailContent {
   let subjectTag = 'General Inquiry';
   if (lead.lead_type === 'DEMO') {
-    subjectTag = lead.early_access_interest ? 'Zaiko Early Access Demo' : 'Zaiko Demo';
+    const productName = resolveLeadProductName(lead, resolver, 'Product');
+    subjectTag = lead.early_access_interest
+      ? `${productName} Early Access Demo`
+      : `${productName} Demo`;
   } else if (lead.lead_type === 'CUSTOM_PROJECT') {
     if (lead.interest === 'mobile') {
       subjectTag = 'Mobile Application Inquiry';
@@ -19,7 +39,6 @@ export async function sendInternalNotificationEmail(
   }
 
   const subject = `[Venkoi Lead] ${subjectTag} — ${lead.name || lead.first_name || lead.email}`;
-
   const detailsList = [
     `Lead ID: ${lead.id}`,
     `Type: ${lead.lead_type}`,
@@ -38,59 +57,67 @@ export async function sendInternalNotificationEmail(
     `UTM Source: ${lead.utm_source || 'N/A'}`,
     `UTM Medium: ${lead.utm_medium || 'N/A'}`,
     `UTM Campaign: ${lead.utm_campaign || 'N/A'}`,
+    `UTM Content: ${lead.utm_content || 'N/A'}`,
     `Referrer: ${lead.referrer || 'N/A'}`,
     `Message:\n${lead.message || 'N/A'}`
   ].join('\n');
 
-  await config.resend.emails.send({
-    from: config.fromEmail,
-    to: config.notificationEmail,
-    subject,
-    text: `New lead received:\n\n${detailsList}`
-  });
+  return { subject, text: `New lead received:\n\n${detailsList}` };
 }
 
-export async function sendUserAcknowledgementEmail(
+export function buildUserAcknowledgementEmail(
   lead: LeadRecord,
-  config: EmailConfig
-): Promise<void> {
+  resolver: LeadProductResolver = getProductBySlug
+): LeadEmailContent {
   const isSpanish = lead.locale === 'es';
-
-  let subject = '';
-  let body = '';
 
   if (lead.lead_type === 'DEMO') {
     const greetingName = lead.first_name || lead.name || (isSpanish ? 'hola' : 'there');
+    const productName = resolveLeadProductName(lead, resolver, isSpanish ? 'el producto' : 'the product');
     if (isSpanish) {
-      subject = 'Recibimos tu solicitud de demo de Zaiko';
-      body = `Gracias, ${greetingName}.\n\nRecibimos tu solicitud para conocer mejor Zaiko.\n\nNos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.`;
+      const subject = `Recibimos tu solicitud de demo de ${productName}`;
+      let text = `Gracias, ${greetingName}.\n\nRecibimos tu solicitud para conocer mejor ${productName}.\n\nNos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.`;
       if (lead.early_access_interest) {
-        body += `\n\nTambién hemos registrado tu interés en el acceso anticipado de Zaiko.`;
+        text += `\n\nTambién hemos registrado tu interés en el acceso anticipado de ${productName}.`;
       }
-    } else {
-      subject = 'We received your Zaiko demo request';
-      body = `Thanks, ${greetingName}.\n\nWe received your request to learn more about Zaiko.\n\nWe'll be in touch to learn more about your restaurant and help coordinate your demo.`;
-      if (lead.early_access_interest) {
-        body += `\n\nWe've also noted your interest in Zaiko Early Access.`;
-      }
+      return { subject, text };
     }
-  } else {
-    // CUSTOM_PROJECT or GENERAL_CONTACT
-    const greetingName = lead.name || lead.first_name || (isSpanish ? 'hola' : 'there');
-    if (isSpanish) {
-      subject = 'Recibimos tu mensaje — Venkoi';
-      body = `Gracias, ${greetingName}.\n\nRecibimos tu mensaje y revisaremos la información que compartiste sobre tu proyecto.\n\nNos pondremos en contacto contigo.`;
-    } else {
-      subject = 'We received your message — Venkoi';
-      body = `Thanks, ${greetingName}.\n\nWe received your message and will review the information you shared about your project.\n\nWe'll be in touch.`;
+
+    const subject = `We received your ${productName} demo request`;
+    let text = `Thanks, ${greetingName}.\n\nWe received your request to learn more about ${productName}.\n\nWe'll be in touch to learn more about your restaurant and help coordinate your demo.`;
+    if (lead.early_access_interest) {
+      text += `\n\nWe've also noted your interest in ${productName} Early Access.`;
     }
+    return { subject, text };
   }
 
+  const greetingName = lead.name || lead.first_name || (isSpanish ? 'hola' : 'there');
+  return isSpanish
+    ? {
+        subject: 'Recibimos tu mensaje — Venkoi',
+        text: `Gracias, ${greetingName}.\n\nRecibimos tu mensaje y revisaremos la información que compartiste sobre tu proyecto.\n\nNos pondremos en contacto contigo.`
+      }
+    : {
+        subject: 'We received your message — Venkoi',
+        text: `Thanks, ${greetingName}.\n\nWe received your message and will review the information you shared about your project.\n\nWe'll be in touch.`
+      };
+}
+
+export async function sendInternalNotificationEmail(lead: LeadRecord, config: EmailConfig): Promise<void> {
+  const content = buildInternalNotificationEmail(lead);
+  await config.resend.emails.send({
+    from: config.fromEmail,
+    to: config.notificationEmail,
+    ...content
+  });
+}
+
+export async function sendUserAcknowledgementEmail(lead: LeadRecord, config: EmailConfig): Promise<void> {
+  const content = buildUserAcknowledgementEmail(lead);
   await config.resend.emails.send({
     from: config.fromEmail,
     to: lead.email,
-    subject,
-    text: body
+    ...content
   });
 }
 
@@ -101,15 +128,18 @@ export async function sendLeadEmails(lead: LeadRecord): Promise<void> {
     return;
   }
 
-  const results = await Promise.allSettled([
-    sendInternalNotificationEmail(lead, config),
-    sendUserAcknowledgementEmail(lead, config)
-  ]);
+  const deliveries = [
+    { label: 'Internal notification', promise: sendInternalNotificationEmail(lead, config) },
+    { label: 'User acknowledgement', promise: sendUserAcknowledgementEmail(lead, config) }
+  ];
+  const results = await Promise.allSettled(deliveries.map(({ promise }) => promise));
 
-  results.forEach((result) => {
+  results.forEach((result, index) => {
     if (result.status === 'rejected') {
-      console.error(`[Email Service] Notification email failed for lead ${lead.id}:`, result.reason instanceof Error ? result.reason.message : 'Email delivery failed');
+      console.error(
+        `[Email Service] ${deliveries[index].label} email failed for lead ${lead.id}:`,
+        result.reason instanceof Error ? result.reason.message : 'Email delivery failed'
+      );
     }
   });
 }
-
