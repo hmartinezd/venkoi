@@ -79,7 +79,7 @@ The code treats missing or invalid email configuration as a logged skip after pe
 
 ## Production status and remaining launch work
 
-- [ ] Configure `venkoi.com`, DNS, and TLS/HTTPS in the production host. Both hostnames serve valid HTTPS, but the primary-domain redirect is reversed; see the 2026-08-11 verification below.
+- [x] Serve `venkoi.com` as the canonical production domain with valid HTTPS and redirect `www.venkoi.com` to the equivalent apex URL.
 - [ ] Set production `SITE_URL=https://venkoi.com`.
 - [x] Create/configure the production Neon database with Neon Auth off.
 - [x] Apply migrations `001` → `002` → `003` manually in numeric order.
@@ -95,7 +95,7 @@ The code treats missing or invalid email configuration as a logged skip after pe
 - [ ] Verify BotID is active for `POST /api/leads` production traffic.
 - [x] Confirm Contact and Demo internal notifications and user acknowledgements in English.
 - [ ] Inspect production logs for database, email, and BotID errors after the controlled submissions.
-- [ ] Verify sitemap, robots, canonical, hreflang, and social metadata behavior. The HTML/XML output passed, but the hosting redirect and response `Link` headers still expose `www`; see the 2026-08-11 verification below.
+- [x] Verify sitemap, robots, canonical, hreflang, Open Graph/social-image, and response-level alternate-link behavior on the apex canonical origin.
 - [ ] Verify Vercel Analytics receives production traffic.
 - [ ] Verify Vercel Speed Insights receives production traffic.
 - [x] Publish localized Privacy Policy and Website Terms routes and localized footer links.
@@ -119,11 +119,17 @@ Verification was performed against clean local `main` at commit `838599c`, which
 - [x] Representative EN/ES home, Zaiko, Services, Insights, and insight-article HTML uses `https://venkoi.com` for canonical URLs, EN/ES alternates, English `x-default`, and Open Graph URLs. Pages with generated Open Graph/Twitter images use `https://venkoi.com` image URLs, and sampled image endpoints return HTTP 200 PNG responses.
 - [x] Representative production pages emit `index, follow` robots metadata.
 
-### Launch blocker found
+### Domain and legal follow-up verification — 2026-08-11
 
-- [ ] Correct the Vercel primary-domain configuration. `https://venkoi.com` currently returns HTTP 308 to the equivalent `https://www.venkoi.com` URL; path and query are preserved, but this is the reverse of the required `www` → apex behavior. `www` serves HTTP 200 instead of redirecting to the apex.
-- [ ] Recheck response-level alternate links after correcting the primary domain. HTML canonical/hreflang tags use the apex as required, but responses served from `www` currently include HTTP `Link` alternate headers on the `www` origin. This allows `www` to leak as an alternate identity even though the HTML and sitemap are apex-canonical.
-- [ ] Repeat the apex, `www`, metadata-header, social-image, robots, and sitemap checks after the Vercel redirect is corrected. Do not add application middleware for this hosting-level redirect.
+- [x] `https://venkoi.com` serves directly on the apex. The root performs only the expected locale redirect to `/en`; it does not redirect to `www`.
+- [x] `https://www.venkoi.com` performs one HTTP 308 redirect to the equivalent apex URL. A sampled Spanish legal path and query string were preserved exactly, and following the redirect completed with HTTP 200 without a loop.
+- [x] TLS verification succeeded for apex and `www`, and both responses retained HSTS.
+- [x] Representative EN/ES response `Link` headers use only `https://venkoi.com` for EN, ES, and `x-default` alternates. The former `www` alternate-identity leak is resolved.
+- [x] Representative HTML canonical, EN/ES alternate, English `x-default`, and Open Graph URLs use the apex. Sampled Open Graph and Twitter image endpoints use the apex and returned HTTP 200 PNG responses. No sampled canonical/alternate output contained `www.venkoi.com` or a `vercel.app` hostname.
+- [x] `/en/privacy`, `/es/privacidad`, `/en/terms`, and `/es/terminos` returned HTTP 200 with the expected localized policy, titles, metadata, footer legal links, and `privacy@venkoi.com` contact. Rendered markup includes responsive viewport and breakpoint styles. No placeholder LinkedIn or Instagram link was present. Interactive viewport and language-switch clicks were not exercised because browser control was unavailable; localized destination routes and alternates were verified live.
+- [x] The production sitemap contains 26 intended localized URLs, including all four legal URLs with their alternates. Demo remains excluded, and no `www` or `vercel.app` hostname appears.
+
+No application redirect middleware or production code change was needed. The redirect remains correctly owned by Vercel.
 
 ### Verified by repository/code
 
@@ -134,7 +140,6 @@ Verification was performed against clean local `main` at commit `838599c`, which
 
 ### Owner-side verification still required
 
-- [ ] In Vercel Domains, make `venkoi.com` the primary production domain and configure `www.venkoi.com` to redirect to it, then rerun the blocker checks above.
 - [ ] Confirm the Vercel Production environment explicitly sets `SITE_URL=https://venkoi.com`. Live HTML is apex-canonical, but environment configuration itself was not accessible here.
 - [ ] Inspect the Vercel Analytics dashboard for real production traffic.
 - [ ] Inspect the Vercel Speed Insights dashboard for production observations.
@@ -142,8 +147,8 @@ Verification was performed against clean local `main` at commit `838599c`, which
 - [ ] Verify BotID operational status in Vercel without abusive or artificial submissions. The live site and repository establish instrumentation, not dashboard/runtime verification.
 - [ ] Authenticate to the protected Vercel Preview deployment and verify its live page and `/robots.txt`. The latest recorded Preview redirected unauthenticated requests to Vercel login, so live preview metadata could not be inspected; code regressions passed this contract.
 - [ ] Verify Spanish production email delivery when a genuine Spanish flow is available. English Contact and Demo persistence/email remain previously verified and were not repeated for this domain check.
-- [ ] Verify the public legal routes after deployment, configure `privacy@venkoi.com`, and establish the manual retention review/deletion or anonymization process.
-- [ ] Perform the final go/no-go review only after the reversed domain redirect and response-header leak are corrected and reverified.
+- [ ] Configure and verify `privacy@venkoi.com` mailbox delivery, and establish the manual retention review/deletion or anonymization process. Public legal routes are verified live.
+- [ ] Perform the final go/no-go review after the remaining owner/platform items are resolved.
 
 ## Manual lead verification matrix
 
@@ -169,10 +174,10 @@ These are external hosting actions. Items are checked only where live behavior o
 4. [x] Confirm TLS is active and the HTTPS certificate is valid.
 5. [ ] Set or confirm Production `SITE_URL=https://venkoi.com`.
 6. [x] Redeploy after the environment change if Vercel indicates that it is required.
-7. [ ] Make `venkoi.com` the primary production domain.
-8. [ ] If `www.venkoi.com` is attached, configure it to redirect to `venkoi.com`; keep the apex domain as the sole canonical origin.
+7. [x] Make `venkoi.com` the primary production domain, as established by direct apex responses and canonical output.
+8. [x] If `www.venkoi.com` is attached, configure it to redirect to `venkoi.com`; live verification establishes the single-hop path/query-preserving redirect.
 9. [x] Confirm old `*.vercel.app` deployment URLs do not appear as canonical, alternate, sitemap, or social metadata URLs in the sampled production output.
-10. [ ] Perform the controlled live SEO and platform verification below.
+10. [x] Perform the controlled live domain, legal-route, sitemap, and SEO identity verification below. Dashboard-only platform checks remain pending.
 
 DNS and primary-domain redirects belong to Vercel/domain configuration, not application middleware.
 
@@ -180,17 +185,17 @@ DNS and primary-domain redirects belong to Vercel/domain configuration, not appl
 
 Domain and locales:
 
-- [ ] `https://venkoi.com` loads successfully with a valid HTTPS certificate.
-- [ ] Primary-domain behavior is correct, including the `www` → apex redirect if `www.venkoi.com` is attached.
-- [x] `/en` and `/es` load successfully after the current reversed domain redirect.
+- [x] `https://venkoi.com` loads successfully with a valid HTTPS certificate.
+- [x] Primary-domain behavior is correct, including the `www` → apex redirect with path/query preservation.
+- [x] `/en` and `/es` load successfully directly on the apex origin.
 
 SEO:
 
 - [x] Production `/robots.txt` allows public crawling, disallows `/api/`, and advertises `https://venkoi.com/sitemap.xml`.
 - [x] `/sitemap.xml` contains only intended canonical EN/ES public routes, locale alternates, and English `x-default`; Demo remains excluded.
 - [x] Representative EN and ES HTML pages use `https://venkoi.com` canonical URLs.
-- [x] Representative HTML pages expose correct `hreflang` values for `en` and `es`, with `x-default` pointing to English. Response `Link` headers remain blocked by the `www` issue recorded above.
-- [ ] Representative Open Graph URLs and social image URLs resolve through the canonical production origin.
+- [x] Representative HTML pages expose correct `hreflang` values for `en` and `es`, with `x-default` pointing to English. Response `Link` headers now use only the apex origin.
+- [x] Representative Open Graph URLs and sampled social image URLs resolve through the canonical production origin.
 
 Preview safety:
 
