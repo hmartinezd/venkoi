@@ -42,17 +42,17 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "COMPAÑÍA DE SOFTWARE DE TAMPA BAY",
-      "heading": "Software creado para la forma en que realmente funciona tu negocio.",
-      "body": "En Venkoi creamos productos de software modernos y desarrollamos experiencias móviles y web que ayudan a los negocios a trabajar de forma más simple, rápida e inteligente.",
+      "eyebrow": "COMPAÑÍA DE PRODUCTOS DE SOFTWARE",
+      "heading": "Creamos productos de software para el trabajo real de los negocios.",
+      "body": "En Venkoi partimos de un problema operativo real, entendemos cómo se hace el trabajo y creamos un producto útil a su alrededor. Nuestro producto destacado reúne el trabajo de inventario de restaurantes en un solo lugar.",
       "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
       "badge": "{freeMonths} MESES GRATIS",
       "badgeText": "Prueba {productName} gratis durante {freeMonths} meses.",
-      "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
-      "body": "{productName} ofrece a los restaurantes una forma más clara de gestionar inventario, compras, costos y movimientos de productos desde un solo lugar.",
+      "heading": "Ve qué entró, qué cambió y cuánto costó.",
+      "body": "{productName} ayuda a los operadores de restaurantes a entender qué tienen disponible, seguir compras y movimientos, y mantener los costos visibles sin perseguir hojas de cálculo o registros desconectados.",
       "discoverCta": "Conoce {productName}",
       "theme1Title": "Inventario",
       "theme1Desc": "Conoce lo que tienes y dónde está.",
@@ -64,9 +64,9 @@
       "theme4Desc": "Sigue cómo se mueve el inventario dentro de tu operación."
     },
     "services": {
-      "eyebrow": "SERVICIOS",
-      "heading": "¿Tienes una idea? Podemos ayudarte a crearla.",
-      "body": "En Venkoi ayudamos a convertir ideas en aplicaciones móviles, páginas web y aplicaciones web — desde el diseño y el desarrollo hasta las pruebas.",
+      "eyebrow": "SOFTWARE A MEDIDA POR VENKOI",
+      "heading": "¿Necesitas software creado específicamente para tu negocio?",
+      "body": "Además de nuestros propios productos, desarrollamos proyectos móviles y web seleccionados. Trabaja directamente con quienes definen, diseñan, desarrollan y prueban tu software.",
       "cta": "Cuéntanos tu idea",
       "learnMore": "Conocer más",
       "mobileTitle": "APLICACIONES MÓVILES",
@@ -101,15 +101,15 @@
     },
     "aboutPreview": {
       "eyebrow": "SOBRE VENKOI",
-      "heading": "Creamos el software que creemos que debería existir.",
-      "p1": "Venkoi es una compañía de software de Tampa Bay enfocada en crear productos digitales prácticos y desarrollar experiencias móviles y web cuando necesitas crear algo.",
+      "heading": "Productos primero. Servicios cuando necesitas crear algo.",
+      "p1": "Venkoi es una compañía enfocada primero en sus productos de software. Creamos productos prácticos alrededor de problemas reales, comenzando con el inventario de restaurantes.",
       "p2": "Creemos que el mejor software comienza entendiendo un problema real, eliminando complejidad innecesaria y creando algo que las personas realmente quieran usar.",
       "p3": "Tampa Bay es nuestro hogar, mientras nuestros productos están diseñados para servir a negocios mucho más allá de un solo mercado.",
       "cta": "Conoce más sobre Venkoi"
     },
     "finalCta": {
-      "heading": "Creemos algo útil.",
-      "body": "Ya sea que quieras conocer uno de nuestros productos o tengas una idea para una experiencia móvil o web, nos gustaría escucharla.",
+      "heading": "Descubre lo que un producto de Venkoi puede hacer por tu operación.",
+      "body": "Empieza con una demo de nuestro producto de inventario para restaurantes. Si necesitas software a medida para tu negocio, también puedes iniciar esa conversación.",
       "locationLine": "Tampa Bay · South Florida · Más allá"
     },
     "insights": {
@@ -121,8 +121,8 @@
   },
   "servicesPage": {
     "eyebrow": "SERVICIOS",
-    "heading": "Creamos experiencias digitales que impulsan tu negocio.",
-    "body": "Desde aplicaciones móviles hasta páginas web y aplicaciones web, en Venkoi ayudamos a convertir ideas en experiencias digitales útiles — desde la definición y el diseño hasta el desarrollo y las pruebas.",
+    "heading": "Software a medida creado alrededor del problema que necesitas resolver.",
+    "body": "Venkoi desarrolla proyectos móviles y web seleccionados donde importa un enfoque claro de producto. Empieza con el problema o proceso del negocio; podemos llevarlo desde la definición y el diseño hasta el desarrollo y las pruebas.",
     "primaryCta": "Cuéntanos tu idea",
     "secondaryCue": "Empieza con una idea.",
     "mobileEyebrow": "01 · APLICACIONES MÓVILES",
@@ -173,10 +173,10 @@
     "seoDescription": "Conoce la filosofía de Venkoi y cómo creamos experiencias móviles y web enfocadas en resolver problemas reales.",
     "eyebrow": "SOBRE VENKOI",
     "heading": "El software debe hacer que los negocios sean más simples.",
-    "body": "Venkoi es una compañía de software con sede en Tampa Bay, Florida, enfocada en crear productos digitales útiles y experiencias móviles y web alrededor de problemas reales.",
+    "body": "Venkoi es una compañía de productos de software con sede en Tampa Bay. Creamos nuestros propios productos alrededor de problemas reales y aplicamos la misma disciplina a proyectos seleccionados para clientes.",
     "strategicDirectionEyebrow": "ORIENTACIÓN ESTRATÉGICA",
     "productDirectionHeading": "Productos primero. Servicios cuando necesitas crear algo.",
-    "productDirectionBody": "Nuestro enfoque a largo plazo es crear productos de software útiles que resuelvan problemas reales. También ayudamos a convertir ideas móviles y web en experiencias funcionales, desde la definición y el diseño hasta el desarrollo y las pruebas.",
+    "productDirectionBody": "Partimos de procesos reales, simplificamos lo que causa fricción y creamos primero la versión útil. Nuestros productos son el enfoque principal de la compañía. En proyectos seleccionados para clientes, aplicamos el mismo proceso conectado de definición, diseño, desarrollo y pruebas.",
     "primaryPillarBadge": "DIRECCIÓN PRINCIPAL",
     "venkoiProductsTitle": "Productos Venkoi",
     "venkoiProductsDesc": "Nuestro producto actual, {productName}, ayuda a restaurantes a entender y gestionar inventario, compras, actividad y costos.",
@@ -219,8 +219,8 @@
   },
   "contactPage": {
     "eyebrow": "CONTACTO VENKOI",
-    "heading": "Hablemos.",
-    "body": "Escríbenos para consultar sobre un producto Venkoi, una aplicación móvil, una página web o una aplicación web.",
+    "heading": "Cuéntanos qué necesitas crear.",
+    "body": "Este es el camino para un proyecto móvil o web a medida. Si te interesa nuestro producto de inventario para restaurantes, solicita una demo del producto.",
     "direct": {
       "eyebrow": "CONTACTO DIRECTO",
       "heading": "¿Prefieres hablar directamente?",
@@ -233,8 +233,9 @@
       "emailSubject": "Consulta para Venkoi"
     },
     "productDemo": {
+      "eyebrow": "INTERÉS EN EL PRODUCTO",
       "heading": "¿Buscas {productName}?",
-      "body": "Descubre cómo funciona con una demo del producto.",
+      "body": "{productName} es el producto de Venkoi para inventario de restaurantes. Descubre cómo encaja en tu operación a través de la demo dedicada.",
       "cta": "Solicita una demo"
     },
     "intent": {
@@ -304,8 +305,8 @@
   },
   "demoPage": {
     "eyebrow": "SOLICITA UNA DEMO",
-    "heading": "Ve el software de Venkoi en acción.",
-    "body": "Descubre cómo el software de Venkoi puede apoyar tu operación.",
+    "heading": "Ve nuestro producto de inventario para restaurantes en acción.",
+    "body": "Solicita una demo enfocada del producto de Venkoi creado para el trabajo de inventario en restaurantes.",
     "zaiko": {
       "eyebrow": "DEMO DE {productName}",
       "heading": "Ve {productName} en acción.",
@@ -580,8 +581,8 @@
     }
   },
   "seo": {
-    "title": "Venkoi | Productos de Software y Servicios en Tampa Bay",
-    "description": "Venkoi es una compañía de software en Tampa Bay que crea productos de software, aplicaciones móviles, páginas web y aplicaciones web en South Florida y más allá."
+    "title": "Venkoi | Productos de Software para Problemas Reales",
+    "description": "Venkoi es una compañía de productos de software que crea herramientas prácticas, incluido software de inventario para restaurantes, y desarrolla proyectos móviles y web seleccionados."
   },
   "notFound": {
     "title": "Página no encontrada",

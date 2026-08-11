@@ -139,7 +139,10 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
             </div>
 
             <div className="border-t border-border pt-6">
-              <div className="space-y-2 rounded-xl bg-surface-muted p-4">
+              <div className="space-y-3 rounded-xl border border-orange/30 bg-orange-subtle/40 p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-text">
+                  {t("productDemo.eyebrow")}
+                </p>
                 <h2 className="font-bold text-ink">
                   {t("productDemo.heading", { productName: FEATURED_PRODUCT.name })}
                 </h2>

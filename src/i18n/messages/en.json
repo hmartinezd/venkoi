@@ -42,17 +42,17 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "TAMPA BAY SOFTWARE COMPANY",
-      "heading": "Software built for the way business actually works.",
-      "body": "Venkoi creates modern software products and builds mobile and web experiences that help businesses work simpler, faster, and smarter.",
+      "eyebrow": "SOFTWARE PRODUCT COMPANY",
+      "heading": "We create software products for real business work.",
+      "body": "Venkoi starts with a real operational problem, learns how the work happens, and builds a useful product around it. Our featured product brings restaurant inventory work into one clearer place.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
       "badge": "{freeMonths} MONTHS FREE",
       "badgeText": "Try {productName} free for {freeMonths} months.",
-      "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
-      "body": "{productName} gives restaurants a clearer way to manage inventory, purchases, costs, and product activity — all from one place.",
+      "heading": "See what came in, what changed, and what it cost.",
+      "body": "{productName} helps restaurant operators understand what is on hand, follow purchases and inventory movement, and keep costs visible without chasing spreadsheets or disconnected records.",
       "discoverCta": "Discover {productName}",
       "theme1Title": "Inventory",
       "theme1Desc": "Know what you have and where it is.",
@@ -64,9 +64,9 @@
       "theme4Desc": "See how inventory moves through your operation."
     },
     "services": {
-      "eyebrow": "SERVICES",
-      "heading": "Have an idea? We can help you build it.",
-      "body": "Venkoi helps turn ideas into mobile applications, websites, and web applications — from design and development through testing.",
+      "eyebrow": "CUSTOM SOFTWARE BY VENKOI",
+      "heading": "Need software built specifically for your business?",
+      "body": "Alongside our own products, we take on selected mobile and web projects. Work directly with the people defining, designing, building, and testing your software.",
       "cta": "Tell us about your idea",
       "learnMore": "Learn more",
       "mobileTitle": "MOBILE APPLICATIONS",
@@ -101,15 +101,15 @@
     },
     "aboutPreview": {
       "eyebrow": "ABOUT VENKOI",
-      "heading": "We build software we believe should exist.",
-      "p1": "Venkoi is a Tampa Bay software company focused on creating practical digital products and building mobile and web experiences when you need something built.",
+      "heading": "Products first. Services when you need something built.",
+      "p1": "Venkoi is a product-first software company. We create practical products around real business problems, beginning with restaurant inventory.",
       "p2": "We believe the best software starts with understanding a real problem, removing unnecessary complexity, and building something people actually want to use.",
       "p3": "Tampa Bay is home, while our products are designed to serve businesses far beyond one market.",
       "cta": "Learn more about Venkoi"
     },
     "finalCta": {
-      "heading": "Let's build something useful.",
-      "body": "Whether you're interested in a Venkoi product or have an idea for a mobile or web experience, we'd like to hear about it.",
+      "heading": "See what a Venkoi product can do for your operation.",
+      "body": "Start with a demo of our restaurant inventory product. If you need custom software built for your business, that conversation is still one click away.",
       "locationLine": "Tampa Bay · South Florida · Beyond"
     },
     "insights": {
@@ -121,8 +121,8 @@
   },
   "servicesPage": {
     "eyebrow": "SERVICES",
-    "heading": "We build digital experiences that move your business forward.",
-    "body": "From mobile applications to websites and web applications, Venkoi helps turn ideas into useful digital experiences — from early definition and design through development and testing.",
+    "heading": "Custom software built around the problem you need to solve.",
+    "body": "Venkoi takes on selected mobile and web projects where a clear product approach matters. Start with the business problem or workflow; we can take it from definition and design through development and testing.",
     "primaryCta": "Tell us about your idea",
     "secondaryCue": "Start with an idea.",
     "mobileEyebrow": "01 · MOBILE APPLICATIONS",
@@ -173,10 +173,10 @@
     "seoDescription": "Learn about Venkoi's product-first philosophy and how we build mobile and web experiences focused on solving real problems.",
     "eyebrow": "ABOUT VENKOI",
     "heading": "Software should make business easier.",
-    "body": "Venkoi is a software company based in Tampa Bay, Florida, focused on building useful digital products and mobile and web experiences around real problems.",
+    "body": "Venkoi is a product-first software company based in Tampa Bay. We create our own useful products around real business problems and apply the same product discipline to selected client projects.",
     "strategicDirectionEyebrow": "STRATEGIC DIRECTION",
     "productDirectionHeading": "Products first. Services when you need something built.",
-    "productDirectionBody": "Our long-term focus is creating useful software products that solve real problems. We also help clients turn mobile and web ideas into working experiences, from early definition and design through development and testing.",
+    "productDirectionBody": "We begin with real workflows, simplify the parts that create friction, and build the useful version first. Our own products are the company's primary focus. For selected client projects, we bring the same connected approach to definition, design, development, and testing.",
     "primaryPillarBadge": "PRIMARY DIRECTION",
     "venkoiProductsTitle": "Venkoi Products",
     "venkoiProductsDesc": "Our current product, {productName}, helps restaurants understand and manage inventory, purchases, activity, and costs.",
@@ -219,8 +219,8 @@
   },
   "contactPage": {
     "eyebrow": "CONTACT VENKOI",
-    "heading": "Let's start a conversation.",
-    "body": "Reach out about a Venkoi product, a mobile application, a website, or a web application.",
+    "heading": "Tell us what you need to build.",
+    "body": "This is the path for a custom mobile or web project. If you're interested in our restaurant inventory product, request a product demo instead.",
     "direct": {
       "eyebrow": "DIRECT CONTACT",
       "heading": "Prefer to talk directly?",
@@ -233,8 +233,9 @@
       "emailSubject": "Venkoi inquiry"
     },
     "productDemo": {
+      "eyebrow": "PRODUCT INTEREST",
       "heading": "Looking for {productName}?",
-      "body": "See how it works with a product demo.",
+      "body": "{productName} is Venkoi's restaurant inventory product. See how it fits your operation through the dedicated demo path.",
       "cta": "Request a Demo"
     },
     "intent": {
@@ -304,8 +305,8 @@
   },
   "demoPage": {
     "eyebrow": "REQUEST A DEMO",
-    "heading": "See Venkoi software in action.",
-    "body": "Experience how Venkoi software can support your operation.",
+    "heading": "See our restaurant inventory product in action.",
+    "body": "Request a focused demo of the Venkoi product built for restaurant inventory work.",
     "zaiko": {
       "eyebrow": "{productName} DEMO",
       "heading": "See {productName} in action.",
@@ -580,8 +581,8 @@
     }
   },
   "seo": {
-    "title": "Venkoi | Software Products & Services in Tampa Bay",
-    "description": "Venkoi is a Tampa Bay software company creating software products, mobile applications, websites, and web applications in South Florida and beyond."
+    "title": "Venkoi | Software Products Built Around Real Business Work",
+    "description": "Venkoi is a product-first software company creating practical software products, including restaurant inventory software, with custom mobile and web development available for selected projects."
   },
   "notFound": {
     "title": "Page not found",

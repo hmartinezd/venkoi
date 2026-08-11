@@ -7,6 +7,10 @@ function read(file: string) {
 }
 
 const home = read('src/app/[locale]/page.tsx');
+const header = read('src/components/layout/Header.tsx');
+const footer = read('src/components/layout/Footer.tsx');
+const en = JSON.parse(read('src/i18n/messages/en.json'));
+const es = JSON.parse(read('src/i18n/messages/es.json'));
 const expectedOrder = [
   '<HeroSection',
   '<ZaikoFeature',
@@ -25,6 +29,18 @@ for (const component of expectedOrder) {
 }
 
 assert.ok(!home.includes('ProductsIntro'), 'ProductsIntro should not be rendered or imported by Home');
+
+assert.ok(
+  header.indexOf('href={internalRoutes.productsZaiko}') < header.indexOf('href={internalRoutes.services}'),
+  'The featured product should remain ahead of Services in navigation'
+);
+assert.ok(header.includes('buildProductDemoHref(locale, FEATURED_PRODUCT)'), 'Header Demo should retain product context');
+assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The featured product should precede Services');
+for (const messages of [en, es]) {
+  assert.match(messages.home.hero.eyebrow, /PRODUCT|PRODUCTOS/, 'Hero should identify Venkoi as a product company');
+  assert.ok(messages.contactPage.productDemo.eyebrow, 'Contact should distinguish product intent');
+}
+assert.doesNotMatch(header + '\n' + footer, /linkedin|instagram|twitter\.com|facebook/i, 'Layout must not add unsupported social links');
 
 for (const file of [
   'src/components/home/HeroSection.tsx',
