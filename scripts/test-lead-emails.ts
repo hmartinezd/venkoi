@@ -1,10 +1,17 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { FEATURED_PRODUCT } from '../src/lib/products';
 import {
   buildInternalNotificationEmail,
+  renderInternalNotificationHtml,
+  renderUserAcknowledgementHtml,
+  sendInternalNotificationEmail,
+  sendLeadEmails,
+  sendUserAcknowledgementEmail,
   buildUserAcknowledgementEmail,
   type LeadProductResolver
 } from '../src/server/email/lead-emails';
+import { buildResendFromAddress, getEmailConfig, normalizeResendEmailDomain, type EmailConfig, type EmailSender } from '../src/server/email/client';
 import type { LeadRecord, LeadType } from '../src/server/leads/types';
 
 function lead(overrides: Partial<LeadRecord> = {}): LeadRecord {
@@ -57,7 +64,7 @@ assert.match(
   buildInternalNotificationEmail(earlyAccessLead).subject,
   new RegExp(`${FEATURED_PRODUCT.name} ${FEATURED_PRODUCT.earlyAccess.freeMonths}-Month Free Offer Demo`)
 );
-assert.match(buildInternalNotificationEmail(lead()).text, /UTM Content: hero/);
+assert.match(buildInternalNotificationEmail(lead()).text, /UTM content: hero/);
 
 const alternateResolver: LeadProductResolver = (slug) =>
   slug === 'rename-test'
@@ -88,4 +95,81 @@ for (const leadType of ['GENERAL_CONTACT', 'CUSTOM_PROJECT'] satisfies LeadType[
   assert.doesNotMatch(`${generic.subject}\n${generic.text}`, new RegExp(FEATURED_PRODUCT.name, 'i'));
 }
 
+assert.equal(buildResendFromAddress(' send.venkoi.com '), 'Venkoi <notifications@send.venkoi.com>');
+assert.equal(normalizeResendEmailDomain('SEND.VENKOI.COM'), 'send.venkoi.com');
+for (const invalid of ['', 'https://send.venkoi.com', 'notifications@send.venkoi.com', 'send.venkoi.com\r\nBcc: attacker@example.com', 'localhost', '-bad.example']) {
+  assert.equal(buildResendFromAddress(invalid), null, `Invalid domain should be rejected: ${JSON.stringify(invalid)}`);
+}
+
+const originalEnv = { ...process.env };
+delete process.env.RESEND_API_KEY;
+delete process.env.RESEND_EMAIL_DOMAIN;
+delete process.env.LEADS_NOTIFICATION_EMAIL;
+process.env.RESEND_FROM_EMAIL = 'Venkoi <old@example.com>';
+assert.equal(getEmailConfig(), null, 'The obsolete RESEND_FROM_EMAIL variable must not satisfy configuration');
+for (const key of ['RESEND_API_KEY', 'RESEND_EMAIL_DOMAIN', 'LEADS_NOTIFICATION_EMAIL', 'RESEND_FROM_EMAIL']) {
+  if (originalEnv[key] === undefined) delete process.env[key];
+  else process.env[key] = originalEnv[key];
+}
+
+async function runAsyncTests() {
+const englishHtml = await renderUserAcknowledgementHtml(earlyAccessLead);
+assert.match(englishHtml, /<html[^>]+lang="en"/);
+assert.match(englishHtml, new RegExp(FEATURED_PRODUCT.name));
+assert.match(englishHtml, new RegExp(`free for ${FEATURED_PRODUCT.earlyAccess.freeMonths} months`));
+const spanishHtml = await renderUserAcknowledgementHtml({ ...earlyAccessLead, locale: 'es' });
+assert.match(spanishHtml, /<html[^>]+lang="es"/);
+assert.match(spanishHtml, new RegExp(`gratis durante ${FEATURED_PRODUCT.earlyAccess.freeMonths} meses`));
+const internalHtml = await renderInternalNotificationHtml(lead());
+assert.match(internalHtml, /Harbor Kitchen/);
+assert.match(internalHtml, /lead_email_test/);
+
+type RecordedSend = { payload: Parameters<EmailSender['emails']['send']>[0]; options: Parameters<EmailSender['emails']['send']>[1] };
+function fakeConfig(errorForRecipient?: string): { config: EmailConfig; sends: RecordedSend[] } {
+  const sends: RecordedSend[] = [];
+  return {
+    sends,
+    config: {
+      fromEmail: 'Venkoi <notifications@send.venkoi.com>',
+      notificationEmail: 'leads@venkoi.com',
+      resend: { emails: { send: async (payload, options) => {
+        sends.push({ payload, options });
+        return { data: errorForRecipient === payload.to ? null : { id: 'email_test' }, error: errorForRecipient === payload.to ? { message: 'provider detail' } : null };
+      } } }
+    }
+  };
+}
+
+const successful = fakeConfig();
+await sendInternalNotificationEmail(lead(), successful.config);
+await sendUserAcknowledgementEmail(lead(), successful.config);
+assert.equal(successful.sends[0].payload.replyTo, 'jamie@example.com');
+assert.equal(successful.sends[1].payload.replyTo, 'leads@venkoi.com');
+assert.equal(successful.sends[0].options.idempotencyKey, 'venkoi-lead-internal/lead_email_test');
+assert.equal(successful.sends[1].options.idempotencyKey, 'venkoi-lead-ack/lead_email_test');
+assert.notEqual(successful.sends[0].options.idempotencyKey, successful.sends[1].options.idempotencyKey);
+for (const send of successful.sends) {
+  assert.ok(send.payload.html);
+  assert.ok(send.payload.text);
+}
+
+const rejected = fakeConfig('jamie@example.com');
+await assert.rejects(() => sendUserAcknowledgementEmail(lead(), rejected.config), /Resend rejected/);
+const independent = fakeConfig('jamie@example.com');
+const originalError = console.error;
+console.error = () => undefined;
+await sendLeadEmails(lead(), independent.config);
+console.error = originalError;
+assert.equal(independent.sends.length, 2, 'Both deliveries should be attempted independently');
+assert.ok(independent.sends.some(({ payload }) => payload.to === 'leads@venkoi.com'));
+
+const emailSources = [readFileSync('src/server/email/client.ts', 'utf8'), readFileSync('src/server/email/lead-emails.tsx', 'utf8')].join('\n');
+assert.doesNotMatch(emailSources, /NEXT_PUBLIC_(?:RESEND|LEADS)/);
+
 console.log('Lead email regression checks passed.');
+}
+
+runAsyncTests().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

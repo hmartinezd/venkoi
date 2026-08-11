@@ -15,7 +15,7 @@ The Demo row intentionally stores the stable product slug `zaiko`, not the regis
 
 ## Deferred Production Infrastructure
 
-Production email delivery through Resend remains pending. Do not describe Resend as active until its sender, recipients, credentials, and both delivery paths have been configured and verified.
+Resend's sending domain and required Vercel variables are configured. Application support is active, but production email verification remains pending until live Contact and Demo submissions confirm both the internal notification and customer acknowledgement paths.
 
 Contact and Demo UI and validation can work without production services. Validation alone is not lead success: `POST /api/leads` must persist the validated lead to PostgreSQL. A missing, invalid, or unavailable database returns `SUBMISSION_ERROR`. After persistence, unavailable or failed email delivery is logged but the submission remains successful because the lead is safely stored.
 
@@ -33,7 +33,7 @@ No external error-monitoring or alerting service is present in this repository. 
 | --- | --- | --- |
 | `DATABASE_URL` | Server-only | Neon PostgreSQL connection used for required lead persistence. |
 | `RESEND_API_KEY` | Server-only secret | Authenticates transactional email delivery. |
-| `RESEND_FROM_EMAIL` | Server-only | Verified Resend sender identity. |
+| `RESEND_EMAIL_DOMAIN` | Server-only | Verified sending domain only; the application derives `Venkoi <notifications@{RESEND_EMAIL_DOMAIN}>`. |
 | `LEADS_NOTIFICATION_EMAIL` | Server-only | Operational recipient for internal lead notifications. |
 | `SITE_URL` | Server use, public value | Canonical public origin; production must be `https://venkoi.com`. |
 
@@ -47,7 +47,7 @@ Keep secrets out of source control and do not expose them through `NEXT_PUBLIC_*
 | --- | --- | --- | --- | --- | --- |
 | Local Development | `noindex`, `nofollow` under normal development runtime | Defaults to production origin; may be set for deliberate local testing | Not expected for ordinary site rendering; requires a safe local/test DB configuration | Not expected; requires safe test Resend configuration | Verification errors warn and processing continues |
 | Vercel Preview | `noindex`, `nofollow`; robots disallow crawling | Keep `https://venkoi.com` for canonical URLs | Not required; do not share the Production database automatically. Use a separate Neon branch/database later only if needed | Not expected | Deployed behavior: bots blocked and verification errors fail closed |
-| Vercel Production | `index`, `follow`; robots allow public pages and disallow `/api/` | `https://venkoi.com` | Configured and manually verified through Neon | Pending Resend configuration; persistence success remains authoritative | Deployed behavior; continue operational monitoring |
+| Vercel Production | `index`, `follow`; robots allow public pages and disallow `/api/` | `https://venkoi.com` | Configured and manually verified through Neon | Configured; live verification of both delivery paths pending | Deployed behavior; continue operational monitoring |
 
 ## Database migrations
 
@@ -69,16 +69,9 @@ The Neon SQL Editor/Console may be used instead, preserving the same `001` → `
 
 ## Resend setup
 
-Perform this only after database persistence is verified:
+The sending domain is verified and Vercel provides `RESEND_API_KEY`, the domain-only `RESEND_EMAIL_DOMAIN`, and the owner-configured `LEADS_NOTIFICATION_EMAIL`. The application derives `Venkoi <notifications@{RESEND_EMAIL_DOMAIN}>`; it rejects schemes, email addresses, and unsafe header content in the domain setting. Templates are source-owned React Email components, not Resend-hosted templates.
 
-1. Create or configure the Resend account.
-2. Verify the approved sending domain.
-3. Create an API key.
-4. Set `RESEND_FROM_EMAIL` to an approved sender (for example only: `Venkoi <notifications@venkoi.com>`).
-5. Set `LEADS_NOTIFICATION_EMAIL` to the operational recipient.
-6. Test both the internal notification and user acknowledgement.
-
-Do not assume a sender mailbox is approved until Resend confirms it. The code treats missing email configuration as a logged skip after persistence; individual send failures are also logged and do not roll back the lead.
+The code treats missing or invalid email configuration as a logged skip after persistence. Individual send failures are logged and do not roll back the lead. Complete live Contact and Demo submissions to verify both delivery paths before marking production delivery verified.
 
 ## Production status and remaining launch work
 
@@ -90,9 +83,9 @@ Do not assume a sender mailbox is approved until Resend confirms it. The code tr
 - [x] Verify controlled production Contact and Demo submissions persisted the expected rows.
 - [x] Verify Demo persistence stores the stable product slug `zaiko`.
 - [ ] Confirm Neon retention/backups are appropriate for launch.
-- [ ] Configure Resend and verify the approved sending domain.
-- [ ] Create the Resend API key and configure the approved sender and notification recipient.
-- [ ] Configure `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `LEADS_NOTIFICATION_EMAIL`, and `SITE_URL` in Vercel Production only as intended. (`DATABASE_URL` is done.)
+- [x] Configure Resend and verify the approved sending domain.
+- [x] Configure `RESEND_API_KEY`, `RESEND_EMAIL_DOMAIN`, and `LEADS_NOTIFICATION_EMAIL` in Vercel Production.
+- [ ] Configure production `SITE_URL` as intended. (`DATABASE_URL` is done.)
 - [ ] Deploy to Vercel Production after the remaining environment configuration is complete.
 - [ ] Verify BotID is active for `POST /api/leads` production traffic.
 - [ ] Confirm both internal notifications and user acknowledgements.

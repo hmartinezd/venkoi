@@ -69,7 +69,11 @@ assert.match(
   'Insight metadata should resolve its title from the registry display name'
 );
 
-const leadEmailSource = read('src/server/email/lead-emails.ts');
+const leadEmailSource = [
+  read('src/server/email/lead-emails.tsx'),
+  read('src/server/email/templates/UserAcknowledgementEmail.tsx'),
+  read('src/server/email/templates/InternalLeadNotificationEmail.tsx')
+].join('\n');
 assert.doesNotMatch(
   leadEmailSource,
   new RegExp(FEATURED_PRODUCT.name, 'i'),

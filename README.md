@@ -1,6 +1,6 @@
 # Venkoi
 
-The Venkoi marketing and product website. Production Contact and Demo persistence is backed by Neon PostgreSQL; transactional email delivery remains a separate operational step.
+The Venkoi marketing and product website. Production Contact and Demo persistence is backed by Neon PostgreSQL; transactional email delivery uses Resend after persistence.
 
 ## Stack
 
@@ -26,7 +26,7 @@ The marketing site renders locally without production lead-service secrets.
 
 Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. Demo persistence stores the stable product slug `zaiko`, independently of its registry-driven public display name.
 
-**Deferred Production Infrastructure:** Resend production email delivery is not active yet. Missing or failed email delivery remains secondary to successful persistence and does not discard an already stored lead.
+Resend is configured in Vercel with server-only `RESEND_API_KEY` and `RESEND_EMAIL_DOMAIN`; the owner-configured `LEADS_NOTIFICATION_EMAIL` is the monitored destination. The application derives `Venkoi <notifications@{RESEND_EMAIL_DOMAIN}>` and renders source-owned React Email templates—no Resend-hosted template IDs are used. Live production Contact and Demo submissions must still verify both the internal and customer delivery paths before production email delivery is marked verified.
 
 Database persistence is required for a successful submission. A database failure produces `SUBMISSION_ERROR`. If persistence succeeds but email delivery is unavailable or fails, the submission remains successful because the lead has already been stored; the email issue is logged.
 

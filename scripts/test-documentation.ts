@@ -22,7 +22,7 @@ assert.match(readme, /\.nvmrc/, 'README must document .nvmrc');
 assert.match(readme, /\[launch runbook\]\(docs\/LAUNCH\.md\)/, 'README must link to launch runbook');
 assert.match(readme, /npm run quality/, 'README must document npm run quality');
 assert.match(readme, /npm run test:regression/, 'README must document npm run test:regression');
-assert.match(readme, /Deferred Production Infrastructure/, 'README must qualify external production readiness');
+assert.match(readme, /before production email delivery is marked verified/i, 'README must qualify production email verification');
 assert.doesNotMatch(readme, /production forms are fully operational/i, 'README must not claim forms are fully operational');
 assert.match(readme, /manually verified/i, 'README must record completed production persistence verification');
 assert.match(readme, /stable product slug `zaiko`/i, 'README must document rename-safe Demo persistence');
@@ -36,15 +36,17 @@ for (const line of envLines) {
 for (const variable of [
   'DATABASE_URL',
   'RESEND_API_KEY',
-  'RESEND_FROM_EMAIL',
+  'RESEND_EMAIL_DOMAIN',
   'LEADS_NOTIFICATION_EMAIL',
   'SITE_URL'
 ]) {
   assert.ok(env.has(variable), `.env.example must include ${variable}`);
 }
-for (const secret of ['DATABASE_URL', 'RESEND_API_KEY', 'RESEND_FROM_EMAIL', 'LEADS_NOTIFICATION_EMAIL']) {
+for (const secret of ['DATABASE_URL', 'RESEND_API_KEY', 'LEADS_NOTIFICATION_EMAIL']) {
   assert.equal(env.get(secret), '', `${secret} must not contain a committed credential or operational value`);
 }
+assert.equal(env.get('RESEND_EMAIL_DOMAIN'), 'send.venkoi.com', 'RESEND_EMAIL_DOMAIN must show domain-only format');
+assert.ok(!env.has('RESEND_FROM_EMAIL'), '.env.example must not include the obsolete RESEND_FROM_EMAIL variable');
 assert.equal(env.get('SITE_URL'), 'https://venkoi.com', 'SITE_URL must show the canonical public origin');
 
 const migrations = [
@@ -62,7 +64,7 @@ assert.ok(migrationPositions[0] < migrationPositions[1] && migrationPositions[1]
 
 assert.match(launch, /Deferred Production Infrastructure/, 'Runbook must identify deferred infrastructure');
 assert.match(launch, /Production lead persistence — done/, 'Runbook must distinguish completed Neon persistence');
-assert.match(launch, /Production email delivery through Resend remains pending/, 'Runbook must distinguish pending email delivery');
+assert.match(launch, /production email verification remains pending/i, 'Runbook must distinguish pending live email verification');
 assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
 assert.match(launch, /Privacy Policy \/ Terms pages are required for launch/, 'Runbook must preserve the owner/legal launch decision');
 
