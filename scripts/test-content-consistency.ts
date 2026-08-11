@@ -39,7 +39,7 @@ function strings(value: unknown): string[] {
   return [];
 }
 
-const provisionalPublicCopy = /early access|acceso anticipado|want to see what we're building\?|still being built|work in progress|coming soon|\bbeta\b|\bprototype\b|\bMVP\b/i;
+const provisionalPublicCopy = /early access|acceso anticipado|want to see what we're building\?|still being built|work in progress|coming soon|we're starting close to home|Venkoi is starting|Estamos comenzando cerca de casa|Venkoi está comenzando|\bbeta\b|\bprototype\b|\bMVP\b/i;
 for (const [locale, messages] of [['en', en], ['es', es]] as const) {
   const violations = strings(messages).filter((value) => provisionalPublicCopy.test(value));
   assert.deepEqual(violations, [], `${locale} public copy must not imply an available product is provisional`);
