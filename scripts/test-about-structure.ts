@@ -22,10 +22,10 @@ for (const marker of chapterMarkers) {
 
 assert.match(about, /t\('venkoiProductsDesc', \{ productName: FEATURED_PRODUCT\.name \}\)/);
 assert.match(about, /t\('exploreZaikoCta', \{ productName: FEATURED_PRODUCT\.name \}\)/);
-assert.match(about, /href=\{buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)\}/);
+assert.match(about, /href=\{buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'about' \}\)\}/);
 assert.match(about, /eventName="zaiko_demo_cta"/);
 assert.match(about, /product: FEATURED_PRODUCT\.analyticsProduct/);
-assert.match(about, /source: 'about_footer'/);
+assert.match(about, /source: 'about'/);
 assert.match(about, /href=\{getLocalizedPath\('contact', currentLocale\)\}/);
 assert.ok(!about.includes("'?type=services"), 'The generic About conversation should not force service intent');
 assert.ok(!/^\s*(['"])use client\1;/m.test(about), 'About should remain a Server Component');

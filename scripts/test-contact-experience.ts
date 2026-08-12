@@ -15,7 +15,9 @@ const page = read("src/app/[locale]/contact/page.tsx");
 const demoPage = read("src/app/[locale]/demo/page.tsx");
 const nextSteps = read("src/components/shared/NextSteps.tsx");
 
-assert.match(page, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)/);
+assert.match(page, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'contact_escape' \}\)/);
+assert.match(page, /eventName="zaiko_demo_cta"/);
+assert.match(page, /source: 'contact_escape'/);
 for (const key of ["heading", "body"] as const) {
   assert.match(
     page,

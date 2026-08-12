@@ -58,13 +58,13 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
   const ctaArea = (
     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
       <TrackedButton
-        href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
+        href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT, { source: 'insight' })}
         variant="primary"
         eventName="zaiko_demo_cta"
         properties={{
           locale: currentLocale,
           product: FEATURED_PRODUCT.analyticsProduct,
-          source: 'insight_restaurant_inventory'
+          source: 'insight'
         }}
       >
         {content.ctaDemo}

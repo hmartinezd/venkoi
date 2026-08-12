@@ -64,9 +64,9 @@ assert.match(homePage, /location=\{tCommon\('locationLine'\)\}/);
 assert.match(homePage, /talkCta=\{tCommon\('startConversation'\)\}/);
 
 const about = read('src/app/[locale]/about/page.tsx');
-assert.match(about, /href=\{buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)\}/);
+assert.match(about, /href=\{buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'about' \}\)\}/);
 assert.match(about, /eventName="zaiko_demo_cta"/);
-assert.match(about, /source: 'about_footer'/);
+assert.match(about, /source: 'about'/);
 assert.match(about, /href=\{getLocalizedPath\('contact', currentLocale\)\}/);
 assert.doesNotMatch(about, /type=services|interest=/);
 
@@ -84,9 +84,9 @@ for (const [file, interest] of [
 }
 
 const restaurantInsight = read('src/app/[locale]/insights/restaurant-inventory-information/page.tsx');
-assert.match(restaurantInsight, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT\)/);
+assert.match(restaurantInsight, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'insight' \}\)/);
 assert.match(restaurantInsight, /eventName="zaiko_demo_cta"/);
-assert.match(restaurantInsight, /source: 'insight_restaurant_inventory'/);
+assert.match(restaurantInsight, /source: 'insight'/);
 
 const projectInsight = read('src/app/[locale]/insights/start-a-software-project/page.tsx');
 assert.match(projectInsight, /\?type=services&interest=unsure/);

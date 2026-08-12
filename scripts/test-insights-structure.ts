@@ -13,7 +13,7 @@ const articles = [
     file: 'src/app/[locale]/insights/restaurant-inventory-information/page.tsx',
     ids: ['problem', 'purchases', 'quantities', 'activity', 'costs', 'together', 'product-approach'],
     related: ['insightStartSoftwareProject', 'insightWebsiteOrWebApp'],
-    source: 'insight_restaurant_inventory'
+    source: 'insight'
   },
   {
     key: 'insightStartSoftwareProject',

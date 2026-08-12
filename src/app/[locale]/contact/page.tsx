@@ -8,6 +8,7 @@ import { createMetadata } from "@/lib/seo";
 import { normalizeServiceInterest } from "@/lib/services";
 import { buildProductDemoHref } from "@/lib/product-links";
 import { FEATURED_PRODUCT } from "@/lib/products";
+import { TrackedButton } from "@/components/analytics/TrackedButton";
 import type { Metadata } from "next";
 import {
   getMessages,
@@ -149,12 +150,19 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
                 <p className="text-sm text-foreground-muted">
                   {t("productDemo.body", { productName: FEATURED_PRODUCT.name })}
                 </p>
-                <a
-                  href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
+                <TrackedButton
+                  href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT, { source: 'contact_escape' })}
+                  variant="text"
+                  eventName="zaiko_demo_cta"
+                  properties={{
+                    locale: currentLocale,
+                    product: FEATURED_PRODUCT.analyticsProduct,
+                    source: 'contact_escape'
+                  }}
                   className="inline-flex text-sm font-semibold text-orange-text underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-sm outline-none"
                 >
                   {t("productDemo.cta")}
-                </a>
+                </TrackedButton>
               </div>
             </div>
 

@@ -210,13 +210,13 @@ export default async function AboutPage({ params }: PageProps) {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <TrackedButton
-              href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT)}
+              href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT, { source: 'about' })}
               variant="brand"
               eventName="zaiko_demo_cta"
               properties={{
                 locale: currentLocale,
                 product: FEATURED_PRODUCT.analyticsProduct,
-                source: 'about_footer'
+                source: 'about'
               }}
             >
               {tCommon('demo')}

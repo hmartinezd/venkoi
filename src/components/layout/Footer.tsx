@@ -7,6 +7,7 @@ import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 import { DirectContactChannels } from '@/components/contact/DirectContactChannels';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 
 export async function Footer({ locale, productName }: { locale: Locale; productName: string }) {
   const tFooter = await getTranslations('footer');
@@ -44,27 +45,33 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
                 <LocalizedLink
                   href={internalRoutes.productsZaiko}
                   locale={locale}
-                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
+                  className="font-normal text-foreground-muted transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {productName}
                 </LocalizedLink>
               </li>
               <li>
-                <a
-                  href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
+                <TrackedButton
+                  href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'footer' })}
+                  variant="text"
+                  eventName="zaiko_demo_cta"
+                  properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'footer' }}
                   className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tCommon('demo')}
-                </a>
+                </TrackedButton>
               </li>
               {FEATURED_PRODUCT.earlyAccess.enabled ? (
                 <li>
-                  <a
-                    href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
-                    className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
+                  <TrackedButton
+                    href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'footer' })}
+                    variant="text"
+                    eventName="zaiko_early_access_cta"
+                    properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'footer' }}
+                    className="font-normal text-foreground-muted transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                   >
                     {tFooter('earlyAccess', { freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths })}
-                  </a>
+                  </TrackedButton>
                 </li>
               ) : null}
             </ul>

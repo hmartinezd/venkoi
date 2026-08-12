@@ -4,6 +4,39 @@ import { readFileSync } from 'node:fs';
 const read = (path: string) => readFileSync(path, 'utf8');
 const form = read('src/components/forms/DemoRequestForm.tsx');
 const page = read('src/app/[locale]/demo/page.tsx');
+const footer = read('src/components/layout/Footer.tsx');
+const about = read('src/app/[locale]/about/page.tsx');
+const insight = read('src/app/[locale]/insights/restaurant-inventory-information/page.tsx');
+const contact = read('src/app/[locale]/contact/page.tsx');
+
+const assertConversionEntry = (
+  source: string,
+  expectedSource: string,
+  eventName: 'zaiko_demo_cta' | 'zaiko_early_access_cta'
+) => {
+  assert.match(source, new RegExp(`eventName=["']${eventName}["']`));
+  assert.match(source, new RegExp(`source: ["']${expectedSource}["']`));
+};
+
+assert.match(footer, /buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'footer' \}\)/);
+assert.match(footer, /buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ interest: 'early-access', source: 'footer' \}\)/);
+assertConversionEntry(footer, 'footer', 'zaiko_demo_cta');
+assertConversionEntry(footer, 'footer', 'zaiko_early_access_cta');
+
+assert.match(about, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'about' \}\)/);
+assertConversionEntry(about, 'about', 'zaiko_demo_cta');
+
+assert.match(insight, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'insight' \}\)/);
+assertConversionEntry(insight, 'insight', 'zaiko_demo_cta');
+
+assert.match(contact, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'contact_escape' \}\)/);
+assertConversionEntry(contact, 'contact_escape', 'zaiko_demo_cta');
+
+for (const legacySource of ['about_footer', 'insight_restaurant_inventory', 'zaiko_explorer']) {
+  for (const conversionEntry of [footer, about, insight, contact]) {
+    assert.doesNotMatch(conversionEntry, new RegExp(`source: ["']${legacySource}["']`));
+  }
+}
 
 assert.match(form, /if \(pending\) return;/, 'pending submissions have a synchronous guard');
 assert.match(form, /disabled=\{pending\}/, 'submit is disabled while pending');
