@@ -16,9 +16,15 @@ import {
 import {
   DEMO_AGENDA,
   filterMarketableEntries,
+  filterProductNavigationItems,
+  getEntriesMarketingState,
   getGroupsMarketingState,
+  getHomepageMarketingState,
+  getWorkflowMarketingState,
   HOMEPAGE_PRODUCT_OUTCOMES,
-  PRODUCT_STORY_CHAPTERS
+  PRODUCT_STORY_CHAPTERS,
+  PRODUCT_WORKFLOW_STEPS,
+  type ProductMarketingStateResolver
 } from '../src/lib/product-marketing';
 
 const read = (file: string) => readFileSync(resolve(process.cwd(), file), 'utf8');
@@ -40,24 +46,90 @@ for (const [states, expected] of [
   [['available', 'launch-release'], 'launch-release'],
   [['early-access', 'launch-release'], 'launch-release'],
   [['available', 'not-marketed'], 'available'],
+  [['early-access', 'not-marketed'], 'early-access'],
   [['launch-release', 'not-marketed'], 'launch-release']
 ] as const) {
   assert.equal(aggregateCapabilityAvailability(states), expected, `${states.join(' + ')} should be ${expected}`);
 }
+const stateResolver = (
+  states: Partial<Record<(typeof PRODUCT_CAPABILITY_GROUPS)[number], ReturnType<typeof getGroupAvailability>>>,
+  fallback: ReturnType<typeof getGroupAvailability> = 'available'
+): ProductMarketingStateResolver => (groups) => aggregateCapabilityAvailability(
+  groups.map((group) => states[group] ?? fallback)
+);
+
+const foodCost = PRODUCT_STORY_CHAPTERS.find(({ id }) => id === 'food-cost');
+assert.ok(foodCost);
+assert.equal(
+  getEntriesMarketingState([foodCost], stateResolver({
+    'vendor-price-intelligence': 'available',
+    'preparation-costing': 'launch-release',
+    'menu-costing': 'launch-release'
+  })),
+  'launch-release'
+);
+assert.equal(
+  getEntriesMarketingState([foodCost], stateResolver({
+    'vendor-price-intelligence': 'available',
+    'preparation-costing': 'early-access',
+    'menu-costing': 'available'
+  })),
+  'early-access'
+);
+
+assert.equal(
+  getWorkflowMarketingState(stateResolver({ setup: 'launch-release' })),
+  'launch-release',
+  'Visible Setup must keep an otherwise available workflow at launch-release'
+);
+assert.equal(getWorkflowMarketingState(stateResolver({})), 'available');
+assert.equal(
+  getWorkflowMarketingState(stateResolver({ traceability: 'early-access' })),
+  'early-access'
+);
+const setupHidden = stateResolver({ setup: 'not-marketed' });
+assert.ok(!filterMarketableEntries(PRODUCT_WORKFLOW_STEPS, setupHidden).some(({ key }) => key === 0));
+assert.equal(getWorkflowMarketingState(setupHidden), 'available');
+
+const ownerHidden = stateResolver({ 'owner-view': 'not-marketed' });
+const visibleChapters = filterMarketableEntries(PRODUCT_STORY_CHAPTERS, ownerHidden);
+assert.ok(!visibleChapters.some(({ id }) => id === 'owner-view'));
+assert.ok(visibleChapters.some(({ id }) => id === 'food-cost'));
+const mixedFoodCost = stateResolver({
+  'vendor-price-intelligence': 'not-marketed',
+  'preparation-costing': 'available',
+  'menu-costing': 'not-marketed'
+});
+assert.ok(filterMarketableEntries([foodCost], mixedFoodCost).includes(foodCost));
+
+const navFixture = [
+  { href: '#overview' },
+  { href: '#invoice-capture' },
+  { href: '#owner-view' }
+];
+assert.deepEqual(
+  filterProductNavigationItems(navFixture, visibleChapters.map(({ id }) => id)).map(({ href }) => href),
+  ['#overview', '#invoice-capture']
+);
+
+const homepageOwnerHidden = filterMarketableEntries(HOMEPAGE_PRODUCT_OUTCOMES, ownerHidden);
+assert.ok(!homepageOwnerHidden.some(({ id }) => id === 'owner-view'));
+assert.equal(getHomepageMarketingState(ownerHidden), 'available');
+assert.equal(
+  getHomepageMarketingState(stateResolver({ 'invoice-purchase-capture': 'launch-release' })),
+  'launch-release'
+);
+
+const hiddenDemoOwner = filterMarketableEntries(DEMO_AGENDA, stateResolver({
+  'owner-view': 'not-marketed', exports: 'not-marketed', 'data-safety': 'not-marketed'
+}));
+assert.ok(!hiddenDemoOwner.some(({ key }) => key === 'ownerView'));
+assert.ok(hiddenDemoOwner.some(({ key }) => key === 'invoicePurchase'));
+
 assert.equal(
   getGroupsMarketingState(['vendor-price-intelligence', 'preparation-costing', 'menu-costing']),
   'launch-release',
-  'A multi-group chapter must use conservative aggregation'
-);
-
-const visibilityFixture = [
-  { id: 'public', groups: ['inventory'] as const },
-  { id: 'hidden', groups: ['owner-view'] as const }
-];
-assert.deepEqual(
-  filterMarketableEntries(visibilityFixture, (groups) => groups.includes('owner-view') ? 'not-marketed' : 'available').map(({ id }) => id),
-  ['public'],
-  'An all-not-marketed chapter must be omitted'
+  'Current multi-group chapter truth must remain conservative'
 );
 assert.equal(PRODUCT_STORY_CHAPTERS.length, 5);
 assert.equal(HOMEPAGE_PRODUCT_OUTCOMES.length, 5);
@@ -129,7 +201,7 @@ for (const chapter of ['invoice-capture', 'inventory', 'food-cost', 'counts-reor
 assert.doesNotMatch(productPage, /getGroupAvailability\(group\) === 'launch-release'/);
 assert.match(productPage, /filterMarketableEntries\(PRODUCT_STORY_CHAPTERS\)/);
 assert.match(productPage, /visibleChapterIds=\{chapters\.map/);
-assert.match(read('src/app/[locale]/page.tsx'), /availability\.\$\{workflowState\}/);
+assert.match(read('src/app/[locale]/page.tsx'), /availability\.\$\{homepageState\}/);
 assert.match(read('src/app/[locale]/demo/page.tsx'), /filterMarketableEntries\(DEMO_AGENDA\)/);
 assert.match(en.zaikoPage.story.chapters.invoice.trust, /restaurant decides/i);
 assert.match(en.zaikoPage.story.chapters.costing.trust, /instead of inventing precision/i);

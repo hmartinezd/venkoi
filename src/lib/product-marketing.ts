@@ -6,6 +6,9 @@ import {
 } from './product-capabilities';
 
 export type ProductMarketingState = ProductCapabilityAvailability;
+export type ProductMarketingStateResolver = (
+  groups: readonly ProductCapabilityGroup[]
+) => ProductMarketingState;
 
 export const PRODUCT_STORY_CHAPTERS = [
   { id: 'invoice-capture', key: 'invoice', groups: ['invoice-purchase-capture'], visual: 'purchases' },
@@ -54,11 +57,35 @@ export function areGroupsMarketable(groups: readonly ProductCapabilityGroup[]): 
 
 export function filterMarketableEntries<T extends { groups: readonly ProductCapabilityGroup[] }>(
   entries: readonly T[],
-  resolveState: (groups: readonly ProductCapabilityGroup[]) => ProductMarketingState = getGroupsMarketingState
+  resolveState: ProductMarketingStateResolver = getGroupsMarketingState
 ): T[] {
   return entries.filter(({ groups }) => resolveState(groups) !== 'not-marketed');
 }
 
-export function getWorkflowMarketingState(): ProductMarketingState {
-  return getGroupsMarketingState(PRODUCT_STORY_CHAPTERS.flatMap(({ groups }) => groups));
+export function getEntriesMarketingState<T extends { groups: readonly ProductCapabilityGroup[] }>(
+  entries: readonly T[],
+  resolveState: ProductMarketingStateResolver = getGroupsMarketingState
+): ProductMarketingState {
+  return aggregateCapabilityAvailability(
+    filterMarketableEntries(entries, resolveState).map(({ groups }) => resolveState(groups))
+  );
+}
+
+export function getWorkflowMarketingState(
+  resolveState: ProductMarketingStateResolver = getGroupsMarketingState
+): ProductMarketingState {
+  return getEntriesMarketingState(PRODUCT_WORKFLOW_STEPS, resolveState);
+}
+
+export function getHomepageMarketingState(
+  resolveState: ProductMarketingStateResolver = getGroupsMarketingState
+): ProductMarketingState {
+  return getEntriesMarketingState(HOMEPAGE_PRODUCT_OUTCOMES, resolveState);
+}
+
+export function filterProductNavigationItems<T extends { href: string }>(
+  items: readonly T[],
+  visibleChapterIds: readonly string[]
+): T[] {
+  return items.filter(({ href }) => href === '#overview' || visibleChapterIds.includes(href.slice(1)));
 }

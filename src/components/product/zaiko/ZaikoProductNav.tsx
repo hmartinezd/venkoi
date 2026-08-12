@@ -2,6 +2,7 @@ import { TrackedButton } from '@/components/analytics/TrackedButton';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
+import { filterProductNavigationItems } from '@/lib/product-marketing';
 
 interface ZaikoProductNavProps {
   locale: Locale;
@@ -28,14 +29,14 @@ export function ZaikoProductNav({
   navigationLabel,
   visibleChapterIds
 }: ZaikoProductNavProps) {
-  const navItems = [
+  const navItems = filterProductNavigationItems([
     { label: overviewLabel, href: '#overview' },
     { label: invoiceLabel, href: '#invoice-capture' },
     { label: inventoryLabel, href: '#inventory' },
     { label: foodCostLabel, href: '#food-cost' },
     { label: countsLabel, href: '#counts-reorder' },
     { label: ownerLabel, href: '#owner-view' }
-  ].filter((item) => item.href === '#overview' || visibleChapterIds.includes(item.href.slice(1)));
+  ], visibleChapterIds);
 
   return (
     <div className="sticky top-[72px] z-40 border-b border-border bg-surface/95 backdrop-blur-md transition-all">

@@ -41,7 +41,7 @@ assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The
 assert.ok(hero.includes('<ZaikoProductVisual type="hero"'), 'Homepage Hero should show the overview product preview');
 assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
 assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should use the shared visual-label builder');
-assert.match(home, /getWorkflowMarketingState\(\)/, 'Homepage availability copy should use derived product state');
+assert.match(home, /getHomepageMarketingState\(\)/, 'Homepage availability copy should use its own derived product state');
 assert.match(home, /filterMarketableEntries\(HOMEPAGE_PRODUCT_OUTCOMES\)/, 'Homepage should hide non-marketable outcomes');
 for (const messages of [en, es]) {
   assert.match(messages.home.hero.eyebrow, /PRODUCT|PRODUCTOS/, 'Hero should identify Venkoi as a product company');

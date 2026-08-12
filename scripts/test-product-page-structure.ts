@@ -22,7 +22,7 @@ assert.ok(story.includes('<ol'), 'Workflow sequence should use ordered semantic 
 assert.ok(!story.includes('overflow-x-auto'), 'Workflow should wrap rather than require horizontal scrolling');
 assert.ok(page.includes('filterMarketableEntries'), 'Product chapters should consult shared marketing availability');
 assert.ok(page.includes('getWorkflowMarketingState'), 'Workflow copy should derive its availability state');
-assert.ok(nav.includes('visibleChapterIds.includes'), 'Navigation should omit links for hidden chapters');
+assert.ok(nav.includes('filterProductNavigationItems'), 'Navigation should use shared filtering for hidden chapters');
 assert.match(page, /visibleChapterIds=\{chapters\.map\(\(\{ id \}\) => id\)\}/, 'Navigation visibility should use the rendered chapters');
 assert.match(read('src/components/product/zaiko/ZaikoHero.tsx'), /id="overview"/, 'Overview navigation must retain its hero target');
 assert.ok(page.includes('PRODUCT_TRUST_PRINCIPLES'), 'Product page should consume trust principles');

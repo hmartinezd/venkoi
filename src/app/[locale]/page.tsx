@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FEATURED_PRODUCT } from '@/lib/products';
 import { buildZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
-import { filterMarketableEntries, getWorkflowMarketingState, HOMEPAGE_PRODUCT_OUTCOMES } from '@/lib/product-marketing';
+import { filterMarketableEntries, getHomepageMarketingState, HOMEPAGE_PRODUCT_OUTCOMES } from '@/lib/product-marketing';
 
 import { HeroSection } from '@/components/home/HeroSection';
 import { ZaikoFeature } from '@/components/home/ZaikoFeature';
@@ -50,7 +50,7 @@ export default async function HomePage({ params }: PageProps) {
   const tVisuals = await getTranslations('zaikoPage.visuals');
   const origin = getSiteOrigin();
   const visualLabels = buildZaikoVisualLabels(tVisuals);
-  const workflowState = getWorkflowMarketingState();
+  const homepageState = getHomepageMarketingState();
   const outcomeKeys = filterMarketableEntries(HOMEPAGE_PRODUCT_OUTCOMES)
     .map(({ key }) => key);
 
@@ -124,7 +124,7 @@ export default async function HomePage({ params }: PageProps) {
         demoCta={tCommon('demo')}
         earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? {
           badge: tHome('zaiko.badge', { freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths }),
-          badgeText: tHome(`zaiko.availability.${workflowState}`, {
+          badgeText: tHome(`zaiko.availability.${homepageState}`, {
             productName: FEATURED_PRODUCT.name,
             freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
           })
