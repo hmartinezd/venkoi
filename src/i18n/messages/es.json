@@ -26,7 +26,7 @@
     "closeMenu": "Cerrar menú"
   },
   "footer": {
-    "tagline": "Productos de software para trabajos que deben hacerse bien.",
+    "tagline": "Productos de software, comenzando por inventario y costo de alimentos para restaurantes.",
     "sectionProducts": "Productos",
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
@@ -43,9 +43,9 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS",
-      "heading": "Venkoi crea productos de software enfocados en el trabajo que cada negocio necesita hacer bien.",
-      "body": "El producto principal de Venkoi conecta compras, inventario, costo de alimentos y conteos en restaurantes. También aceptamos proyectos móviles y web a medida seleccionados.",
+      "eyebrow": "INVENTARIO Y COSTO DE ALIMENTOS",
+      "heading": "Conoce qué llegó, qué cambió, cuánto cuesta y qué requiere atención.",
+      "body": "El producto principal de Venkoi conecta facturas y compras con movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de reposición. También aceptamos algunos proyectos móviles y web a medida.",
       "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
@@ -57,19 +57,19 @@
         "launch-release": "La primera versión está prevista para incluir estas funciones. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
         "not-marketed": "Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses."
       },
-      "heading": "Inventario y costo de alimentos, conectados desde la factura hasta la revisión del dueño.",
-      "body": "{productName} mantiene conectada la información operativa para que el equipo revise qué llegó, qué cambió, cuánto cuesta y qué requiere atención.",
+      "heading": "Sigue la información desde la factura hasta las decisiones que vienen después.",
+      "body": "{productName} conecta una compra aprobada con el historial de inventario y los costos de origen, y conserva ese contexto para conteos, preparación de reposición y revisión del dueño.",
       "discoverCta": "Conoce {productName}",
-      "theme1Title": "Factura → Compra",
-      "theme1Desc": "Captura, revisa, corrige y registra la compra explícitamente.",
-      "theme2Title": "Inventario → Trazabilidad",
-      "theme2Desc": "Conoce las existencias y rastrea cada cambio hasta su origen.",
-      "theme3Title": "Precios → Costo de Alimentos",
-      "theme3Desc": "Sigue precios comparables hasta el costo de preparaciones y platos.",
-      "theme4Title": "Conteo → Reposición",
-      "theme4Desc": "Revisa variaciones y prepara una lista de compras por proveedor.",
-      "theme5Title": "Vista del Dueño",
-      "theme5Desc": "Reúne compras, merma, cambios de precios, costos faltantes y artículos bajo par."
+      "theme1Title": "¿Qué llegó?",
+      "theme1Desc": "Detecta los datos, corrige el borrador de compra y registra solo después de revisarlo.",
+      "theme2Title": "¿Qué cambió y por qué?",
+      "theme2Desc": "Rastrea un movimiento hasta una recepción, merma, producción, conteo o ajuste manual.",
+      "theme3Title": "¿Cuánto costó?",
+      "theme3Desc": "Lleva costos válidos a preparaciones y platos; muestra Parcial o Costos faltantes cuando el origen está incompleto.",
+      "theme4Title": "¿Qué hay que comprar?",
+      "theme4Desc": "Compara el conteo con el par, considera los empaques y prepara una lista agrupada por proveedor.",
+      "theme5Title": "¿Qué requiere atención?",
+      "theme5Desc": "Revisa cambios de precio, merma, variaciones, costos incompletos, artículos bajo par y actividad reciente."
     },
     "services": {
       "eyebrow": "SOFTWARE A MEDIDA POR VENKOI",
@@ -178,7 +178,7 @@
     "seoTitle": "Sobre Venkoi | Productos y Desarrollo de Software",
     "seoDescription": "Conoce cómo Venkoi crea sus propios productos de software y acepta proyectos móviles y web seleccionados desde Tampa Bay.",
     "eyebrow": "SOBRE VENKOI",
-    "heading": "Empieza por el trabajo. Crea primero la parte útil.",
+    "heading": "El software empieza por entender el trabajo que debe cambiar.",
     "body": "Venkoi es una empresa de software con sede en Tampa Bay. Creamos nuestros propios productos y aceptamos proyectos a medida seleccionados cuando el problema y el alcance encajan con nuestra forma de trabajar.",
     "strategicDirectionEyebrow": "ORIENTACIÓN ESTRATÉGICA",
     "productDirectionHeading": "Primero, nuestros productos. También desarrollamos software a medida.",
@@ -312,7 +312,7 @@
   "demoPage": {
     "eyebrow": "SOLICITA UNA DEMO",
     "heading": "Ve nuestro producto de inventario para restaurantes en acción.",
-    "body": "Solicita una demo del producto de Venkoi diseñado para gestionar el inventario de restaurantes.",
+    "body": "Solicita una demo para ver cómo se conectan compras, movimientos de inventario, costo de alimentos, conteos y preparación de reposición.",
     "zaiko": {
       "eyebrow": "DEMO DE {productName}",
       "heading": "Ve {productName} en acción.",
@@ -425,7 +425,7 @@
     "hero": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
       "heading": "Sabes qué llegó.\nSabes qué tienes.\nSabes cuánto cuesta.\nSabes qué requiere atención.",
-      "body": "{productName} es un producto de inventario y costo de alimentos para restaurantes independientes, diseñado para funcionar localmente. Conecta compras, movimientos de inventario, precios de proveedores, costeo, conteos físicos y decisiones de reposición en un solo historial operativo. Plataforma inicial: Android; enfoque en una sola ubicación.",
+      "body": "{productName} conecta compras, movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de reposición para restaurantes independientes. Funciona localmente, comienza en Android y se enfoca inicialmente en un solo local.",
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Solicitar Acceso",
       "microcopy": "{freeMonths} meses gratis para participantes aceptados.",
@@ -434,8 +434,8 @@
     "story": {
       "workflow": {
         "eyebrow": "TRABAJO CONECTADO DEL RESTAURANTE",
-        "heading": "Desde el dato operativo hasta la decisión, la información permanece conectada.",
-        "body": "No todos los restaurantes trabajan en una secuencia estricta. Esta vista muestra cómo un documento, una compra, un movimiento, un costo, un conteo y una decisión pueden conservar el contexto que los conecta.",
+        "heading": "Ve cómo una compra aprobada afecta el trabajo que viene después.",
+        "body": "Una factura se convierte en un borrador de compra para revisar. Después de corregirlo y registrarlo explícitamente, la información aprobada puede actualizar el historial de inventario y los costos de origen usados en costeo, conteo, reposición y revisión del dueño.",
         "availability": {
           "available": "Estas funciones ya forman parte de la experiencia actual.",
           "early-access": "Algunas de estas funciones están disponibles para restaurantes participantes.",
@@ -445,22 +445,22 @@
         "steps": ["Configuración", "Factura", "Revisión", "Compra", "Inventario y Actividad", "Costeo", "Conteo", "Reposición", "Revisión del Dueño"]
       },
       "chapters": {
-        "invoice": {"eyebrow":"CAPTURA DE FACTURAS","heading":"Captura la factura. Revisa lo detectado. Registra cuando esté correcto.","body":"{productName} convierte una foto o documento en un borrador de compra revisable y conserva el documento original adjunto.","points":["Detecta datos, líneas y totales de la factura","Conecta artículos del proveedor con ingredientes","Revisa empaques y conversiones","Corrige el borrador antes del registro explícito"],"trust":"La detección sugiere. El restaurante decide qué se registra."},
-        "inventory": {"eyebrow":"INVENTARIO Y TRAZABILIDAD","heading":"Ve qué cambió y por qué.","body":"Cada movimiento conserva su conexión con la fuente operativa. Así, Actividad funciona como una capa de confianza y no como una lista aislada de eventos.","points":["Compras y recepción","Merma y producción","Ajustes por conteo físico","Ajustes manuales con historial de origen"]},
-        "costing": {"eyebrow":"PRECIOS Y COSTO DE ALIMENTOS","heading":"Sigue los precios del proveedor hasta el costo de preparaciones y platos.","body":"El proceso compara precios válidos y lleva el costo del ingrediente a preparaciones y platos sin confundir la ganancia bruta con la ganancia neta.","points":["Precio comparable actual y anterior","Costo normalizado por unidad base y línea de compra de origen","Costo por lote, rendimiento y costo por unidad de rendimiento","Costo del plato, precio de venta, porcentaje de costo y ganancia bruta antes de mano de obra y gastos generales"],"trust":"Completo, Parcial o Costos faltantes: si faltan costos de origen, el producto muestra el vacío en vez de inventar precisión. No compara empaques distintos sin datos suficientes de conversión."},
-        "counts": {"eyebrow":"CONTEOS FÍSICOS Y REPOSICIÓN","heading":"Cuenta la operación, revisa la variación y prepara lo que hay que comprar.","body":"El proceso incluye entrada numérica práctica, unidades de conteo, progreso y reanudación, revisión antes de registrar y una lista por proveedor basada en ingredientes bajo par.","points":["Búsqueda, filtros, progreso y reanudación","Conversiones transparentes de unidades de conteo","Revisión de esperado, contado y variación","Cantidades según empaque y lista CSV compartible"],"trust":"0 significa contado y se encontraron cero; sin contar significa que aún no se contó. El producto ayuda a preparar el pedido; la versión inicial no envía pedidos electrónicos a proveedores."},
-        "owner": {"eyebrow":"VISTA DEL DUEÑO","heading":"Revisa las señales que requieren atención operativa.","body":"La vista del dueño reúne cifras y excepciones que puede necesitar revisar, sin presentar la ganancia bruta como ganancia neta ni completar vacíos con estimaciones.","points":["Valor del inventario y compras recientes","Merma y cambios de precios","Costos de preparaciones y platos y cobertura incompleta","Artículos bajo par y actividad reciente útil"]}
+        "invoice": {"eyebrow":"CAPTURA DE FACTURAS","heading":"Captura la factura. Revisa lo detectado. Registra cuando esté correcto.","body":"Una factura debe servir para más que guardar un documento. {productName} detecta datos desde una foto o archivo, crea un borrador de compra revisable y conserva el original para que el restaurante lo corrija antes del registro explícito.","points":["Detecta datos, líneas y totales de la factura","Conecta artículos del proveedor con ingredientes","Revisa empaques y conversiones","Corrige el borrador antes del registro explícito"],"trust":"La detección sugiere. El restaurante decide qué se registra."},
+        "inventory": {"eyebrow":"INVENTARIO Y TRAZABILIDAD","heading":"Ve qué cambió y por qué.","body":"Actividad responde dos preguntas: qué cambió y por qué. Cada movimiento conserva su conexión con una compra, recepción, merma, producción, conteo físico o ajuste manual cuando existe ese origen.","points":["Compras y recepción","Merma y producción","Ajustes por conteo físico","Ajustes manuales con historial de origen"]},
+        "costing": {"eyebrow":"PRECIOS Y COSTO DE ALIMENTOS","heading":"Sigue los precios del proveedor hasta el costo de preparaciones y platos.","body":"Un precio válido del proveedor puede convertirse en el costo de origen usado para revisar ingredientes, preparaciones y platos. Las comparaciones necesitan datos suficientes de empaque y conversión, y la ganancia bruta sigue siendo antes de mano de obra y gastos generales.","points":["Precio comparable actual y anterior","Costo normalizado por unidad base y línea de compra de origen","Costo por lote, rendimiento y costo por unidad de rendimiento","Costo del plato, precio de venta, porcentaje de costo y ganancia bruta antes de mano de obra y gastos generales"],"trust":"Completo, Parcial o Costos faltantes: si faltan costos de origen, el producto muestra el vacío en vez de inventar precisión. No compara empaques distintos sin datos suficientes de conversión."},
+        "counts": {"eyebrow":"CONTEOS FÍSICOS Y REPOSICIÓN","heading":"Cuenta la operación, revisa la variación y prepara lo que hay que comprar.","body":"Un conteo no termina al ingresar cantidades. Registra y reanuda unidades prácticas, compara lo esperado con lo contado, revisa la variación y publica explícitamente. Después, los artículos bajo par pueden calcularse hasta el par, considerar empaques y agruparse por proveedor.","points":["Búsqueda, filtros, progreso y reanudación","Conversiones transparentes de unidades de conteo","Revisión de esperado, contado y variación","Cantidades según empaque y lista CSV compartible"],"trust":"0 significa contado y se encontraron cero; sin contar significa que aún no se contó. El producto ayuda a preparar el pedido; la versión inicial no envía pedidos electrónicos a proveedores."},
+        "owner": {"eyebrow":"VISTA DEL DUEÑO","heading":"Revisa las señales que requieren atención operativa.","body":"Aquí el operador puede ver qué merece revisión: compras recientes, merma, cambios de precios, costos incompletos, variaciones de conteo, artículos bajo par, valor del inventario y actividad reciente. No completa vacíos con estimaciones ni presenta la ganancia bruta como neta.","points":["Valor del inventario y compras recientes","Merma y cambios de precios","Costos de preparaciones y platos y cobertura incompleta","Artículos bajo par y actividad reciente útil"]}
       },
       "dataSafety": {"eyebrow":"SEGURIDAD DE DATOS","heading":"Los datos operativos deben poder recuperarse.","body":"Las copias de seguridad, la restauración y la recuperación en un dispositivo limpio forman parte del trabajo de recuperación. No afirmamos que la copia automática esté disponible actualmente.","points":["Respaldo","Restauración y recuperación","Validación de recuperación en un dispositivo limpio","Soporte y diagnóstico"]}
     },
     "workflow": {
       "eyebrow": "EXPERIENCIA DE PRODUCTO",
-      "heading": "Una sola historia de inventario en lugar de piezas desconectadas.",
-      "body": "Lo que entró, lo que hay disponible, lo que cambió y cuánto costó es más fácil de entender cuando forman parte de la misma historia de inventario."
+      "heading": "¿Está pensado para un restaurante como el tuyo?",
+      "body": "El enfoque inicial es un restaurante independiente, operado de cerca por sus dueños y con un solo local, donde compras, inventario, conteos y costos necesitan conservar su contexto operativo."
     },
     "audience": {
-      "heading": "Creado para restaurantes que buscan una visión más clara de su inventario.",
-      "body": "{productName} está diseñado para operadores de restaurantes, dueños, gerentes y equipos responsables de la recepción o el seguimiento de productos que necesitan una mejor forma de gestionar su información de inventario.",
+      "heading": "Para restaurantes independientes que gestionan el inventario cerca de la operación.",
+      "body": "{productName} está pensado para dueños, gerentes y equipos de recepción o inventario de un solo local, especialmente cuando las hojas de cálculo o registros separados dificultan reconstruir qué cambió. No se presenta como gestión empresarial para múltiples ubicaciones.",
       "items": ["Restaurantes independientes y operados por sus dueños", "Dueños y gerentes de restaurantes", "Equipos de inventario y recepción", "Operaciones de una ubicación que ya superaron las hojas de cálculo o herramientas desconectadas"]
     },
     "earlyAccess": {
@@ -513,7 +513,7 @@
       "workflow": "flujo", "connected": "Conectado"
     },
     "finalCta": {
-      "heading": "¿Listo para una visión más clara de tu inventario?",
+      "heading": "Ve cómo se mantiene conectada la información de inventario de tu restaurante.",
       "body": "Solicita acceso al producto o pide una demostración adaptada a la operación de tu restaurante. Los participantes aceptados reciben {freeMonths} meses gratis.",
       "bodyDemoOnly": "Solicita una demostración adaptada a la operación de tu restaurante.",
       "primaryCta": "Solicita una demo",
@@ -530,8 +530,8 @@
     }
   },
   "seo": {
-    "title": "Venkoi | Productos de Software para Problemas Reales",
-    "description": "Venkoi es una empresa de software que crea productos prácticos, incluido un sistema de inventario para restaurantes, y desarrolla proyectos móviles y web seleccionados."
+    "title": "Venkoi | Inventario para Restaurantes y Proyectos Seleccionados",
+    "description": "Venkoi crea productos de software, comenzando por inventario y costo de alimentos para restaurantes, y acepta proyectos móviles y web seleccionados."
   },
   "notFound": {
     "title": "Página no encontrada",
@@ -546,8 +546,8 @@
   },
   "mobileServicePage": {
     "eyebrow": "APLICACIONES MÓVILES",
-    "heroHeading": "Experiencias móviles creadas alrededor de personas y objetivos reales.",
-    "heroBody": "En Venkoi diseñamos, desarrollamos y probamos aplicaciones móviles para iOS y Android, ayudando a convertir ideas en experiencias útiles desde la definición inicial hasta un producto listo para avanzar.",
+    "heroHeading": "¿Qué debe ayudar a hacer la aplicación?",
+    "heroBody": "Cuéntanos el problema del negocio, quién usará la aplicación, qué existe hoy y qué debe lograr la primera versión útil. Venkoi define, diseña, desarrolla y prueba proyectos seleccionados para iOS y Android.",
     "primaryCta": "Cuéntanos sobre tu aplicación",
     "rangeHeading": "Aplicaciones móviles para diferentes tipos de ideas.",
     "rangeItem1": "Experiencias para clientes",
@@ -592,8 +592,8 @@
   },
   "webServicePage": {
     "eyebrow": "PÁGINAS WEB Y APLICACIONES WEB",
-    "heroHeading": "La experiencia web debe adaptarse a la idea, no al revés.",
-    "heroBody": "Desde páginas web sencillas hasta aplicaciones web más interactivas, en Venkoi te ayudamos a definir, diseñar, desarrollar y probar la experiencia web adecuada para lo que quieres lograr.",
+    "heroHeading": "¿Qué deben poder hacer las personas en la web?",
+    "heroBody": "Cuéntanos el objetivo, quiénes participan, qué existe hoy y qué debe funcionar de otra manera. Venkoi define, diseña, desarrolla y prueba páginas web y aplicaciones web seleccionadas.",
     "primaryCta": "Cuéntanos sobre tu proyecto web",
     "rangeHeading": "Desde una presencia web clara hasta experiencias más interactivas.",
     "rangeItem1": "Páginas web sencillas",

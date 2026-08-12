@@ -96,10 +96,16 @@ for (const [locale, messages] of [['en', en], ['es', es]] as const) {
   assert.ok(!('genericMessage' in (demo.direct as Record<string, unknown>)), `${locale}.demoPage.direct.genericMessage is obsolete`);
 }
 
-assert.match(en.home.hero.eyebrow, /PRODUCT-FIRST/);
-assert.match(en.home.hero.body, /selected custom mobile and web projects/i);
+assert.doesNotMatch(en.home.hero.eyebrow, /PRODUCT-FIRST/);
+assert.match(en.home.hero.eyebrow, /RESTAURANT INVENTORY/);
+assert.match(en.home.hero.body, /Selected custom mobile and web projects/i);
 assert.match(en.aboutPage.productDirectionBody, /primary focus/i);
 assert.match(en.contactPage.body, /custom mobile or web project/i);
+
+for (const messages of [en, es]) {
+  assert.match(messages.zaikoPage.visuals.sampleData, /Representative|representativa/i, 'Product previews must disclose representative sample data');
+  assert.doesNotMatch(strings(messages).join('\n'), /Screenshot coming soon|Captura de pantalla próximamente/i, 'Public copy must not contain empty screenshot placeholders');
+}
 
 const navigation = read('src/i18n/navigation.ts');
 assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationItem|NavigationChild/);

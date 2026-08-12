@@ -55,7 +55,9 @@ assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should us
 assert.match(home, /getHomepageMarketingState\(\)/, 'Homepage availability copy should use its own derived product state');
 assert.match(home, /filterMarketableEntries\(HOMEPAGE_PRODUCT_OUTCOMES\)/, 'Homepage should hide non-marketable outcomes');
 for (const messages of [en, es]) {
-  assert.match(messages.home.hero.eyebrow, /PRODUCT|PRODUCTOS/, 'Hero should identify Venkoi as a product company');
+  assert.doesNotMatch(messages.home.hero.eyebrow, /PRODUCT-FIRST SOFTWARE COMPANY|EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS/i, 'Hero should not lead with internal company positioning');
+  assert.match(messages.home.hero.eyebrow, /RESTAURANT INVENTORY|INVENTARIO/i, 'Hero should identify the featured restaurant inventory context');
+  assert.match(messages.home.hero.heading, /came|changed|costs|attention|llegó|cambió|cuesta|atención/i, 'Hero should lead with operational questions or outcomes');
   assert.match(messages.home.hero.body, /Venkoi/, 'Homepage should present Venkoi as the company');
   for (const key of ['theme1Title', 'theme2Title', 'theme3Title', 'theme4Title', 'theme5Title']) {
     assert.ok(messages.home.zaiko[key], `Homepage product outcome ${key} should exist`);
@@ -65,6 +67,12 @@ for (const messages of [en, es]) {
   }
   assert.ok(messages.contactPage.productDemo.eyebrow, 'Contact should distinguish product intent');
 }
+assert.match(en.home.zaiko.theme1Desc, /review/i, 'Homepage should explain invoice review before posting');
+assert.match(en.home.zaiko.theme2Desc, /receiving|waste|production/i, 'Homepage should explain why inventory changed');
+assert.match(en.home.zaiko.theme3Desc, /Partial|Missing/i, 'Homepage should expose incomplete cost coverage');
+assert.match(en.home.zaiko.theme4Desc, /par[\s\S]*packages[\s\S]*supplier/i, 'Homepage should explain reorder preparation logic');
+assert.match(en.home.zaiko.theme5Desc, /price changes[\s\S]*variance[\s\S]*cost gaps/i, 'Homepage Owner View should identify signals requiring attention');
+assert.doesNotMatch(JSON.stringify(en.home) + JSON.stringify(es.home), /PRODUCT-FIRST SOFTWARE COMPANY|EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS/i);
 assert.doesNotMatch(header + '\n' + footer, /linkedin|instagram|twitter\.com|facebook/i, 'Layout must not add unsupported social links');
 
 for (const file of [

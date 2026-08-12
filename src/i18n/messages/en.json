@@ -26,7 +26,7 @@
     "closeMenu": "Close menu"
   },
   "footer": {
-    "tagline": "Software products for work businesses need to get right.",
+    "tagline": "Software products, beginning with restaurant inventory and food cost.",
     "sectionProducts": "Products",
     "sectionCompany": "Company",
     "sectionWorkWithUs": "Work With Us",
@@ -43,9 +43,9 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "PRODUCT-FIRST SOFTWARE COMPANY",
-      "heading": "Venkoi builds focused software products around work businesses need to get right.",
-      "body": "Venkoi's featured product connects restaurant purchasing, inventory, food cost, and counts. We also accept selected custom mobile and web projects.",
+      "eyebrow": "RESTAURANT INVENTORY & FOOD COST",
+      "heading": "Know what came in, what changed, what it costs, and what needs attention.",
+      "body": "Venkoi's featured product connects invoices and purchases to inventory movement, supplier prices, food cost, physical counts, and reorder preparation. Selected custom mobile and web projects remain a secondary part of our work.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
@@ -57,19 +57,19 @@
         "launch-release": "The first release is planned to include these workflows. Accepted participants can use {productName} free for {freeMonths} months.",
         "not-marketed": "Accepted participants can use {productName} free for {freeMonths} months."
       },
-      "heading": "Restaurant inventory and food cost, connected from invoice to owner review.",
-      "body": "{productName} keeps operational information connected so restaurant teams can review what came in, what changed, what it costs, and what needs attention.",
+    "heading": "Follow the information from an invoice to the decisions that follow.",
+    "body": "{productName} connects an approved purchase to inventory history and source costs, then carries that context into counts, reorder preparation, and owner review.",
       "discoverCta": "Discover {productName}",
-      "theme1Title": "Invoice → Purchase",
-      "theme1Desc": "Capture, review, correct, and explicitly post a purchase.",
-      "theme2Title": "Inventory → Traceability",
-      "theme2Desc": "Know what is on hand and trace each change to its source.",
-      "theme3Title": "Prices → Food Cost",
-      "theme3Desc": "Follow comparable supplier prices into preparation and menu cost.",
-      "theme4Title": "Count → Reorder",
-      "theme4Desc": "Review variance and prepare a supplier-grouped shopping list.",
-      "theme5Title": "Owner View",
-      "theme5Desc": "Bring purchases, waste, price changes, cost gaps, and below-par items into one review."
+    "theme1Title": "What came in?",
+    "theme1Desc": "Detect invoice details, correct the Purchase Draft, and explicitly post only after review.",
+    "theme2Title": "What changed — and why?",
+    "theme2Desc": "Trace a movement back to receiving, waste, production, a count, or a manual adjustment.",
+    "theme3Title": "What did it cost?",
+    "theme3Desc": "Carry valid supplier costs into preparation and menu review; show Partial or Missing when source costs are incomplete.",
+    "theme4Title": "What should be purchased?",
+    "theme4Desc": "Compare the count with par, account for packages, and prepare a supplier-grouped shopping list.",
+    "theme5Title": "What needs attention?",
+    "theme5Desc": "Review price changes, waste, count variance, cost gaps, below-par items, and recent activity."
     },
     "services": {
       "eyebrow": "CUSTOM SOFTWARE BY VENKOI",
@@ -178,7 +178,7 @@
     "seoTitle": "About Venkoi | Software Products & Development",
     "seoDescription": "Learn how Venkoi builds its own software products and accepts selected custom mobile and web projects from its Tampa Bay base.",
     "eyebrow": "ABOUT VENKOI",
-    "heading": "Start with the work. Build the useful part first.",
+    "heading": "Software starts with understanding the work it needs to change.",
     "body": "Venkoi is a software company based in Tampa Bay. We create our own products and accept selected custom projects when the problem and scope fit how we work.",
     "strategicDirectionEyebrow": "STRATEGIC DIRECTION",
     "productDirectionHeading": "Products first. Services when you need something built.",
@@ -312,7 +312,7 @@
   "demoPage": {
     "eyebrow": "REQUEST A DEMO",
     "heading": "See our restaurant inventory product in action.",
-    "body": "Request a focused demo of the Venkoi product built for restaurant inventory work.",
+    "body": "Request a demo of how purchasing, inventory movement, food cost, counts, and reorder preparation stay connected.",
     "zaiko": {
       "eyebrow": "{productName} DEMO",
       "heading": "See {productName} in action.",
@@ -425,7 +425,7 @@
     "hero": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
       "heading": "Know what came in.\nKnow what you have.\nKnow what it costs.\nKnow what needs attention.",
-      "body": "{productName} is local-first restaurant inventory and food-cost software for independent restaurants. It connects purchasing, inventory movement, supplier prices, costing, physical counts, and reorder decisions in one operational history. Initial platform: Android; single-location focus.",
+      "body": "{productName} connects purchasing, inventory movement, supplier prices, food cost, physical counts, and reorder preparation for independent restaurants. It is local-first, starts on Android, and initially focuses on one restaurant location.",
       "primaryCta": "Request a Demo",
       "secondaryCta": "Request Access",
       "microcopy": "{freeMonths} months free for accepted participants.",
@@ -434,8 +434,8 @@
     "story": {
       "workflow": {
         "eyebrow": "CONNECTED RESTAURANT WORK",
-        "heading": "From operational input to a decision, the information stays connected.",
-        "body": "Restaurants do not all work in one strict sequence. This view shows how a document, purchase, inventory change, cost, count, and owner decision can retain the context that connects them.",
+      "heading": "See how one approved purchase affects the work that follows.",
+      "body": "An invoice becomes a Purchase Draft for review. Once corrected and explicitly posted, the approved information can update inventory history and source costs used in later costing, count, reorder, and owner review.",
         "availability": {
           "available": "These workflows are part of the current product experience.",
           "early-access": "Some of these workflows are currently available to participating restaurants.",
@@ -448,34 +448,34 @@
         "invoice": {
           "eyebrow": "INVOICE CAPTURE",
           "heading": "Capture the invoice. Review what was found. Post when it is right.",
-          "body": "{productName} turns camera or document input into a reviewable Purchase Draft while keeping the source document attached.",
+        "body": "An invoice should do more than become a stored document. {productName} detects details from camera or document input, creates a reviewable Purchase Draft, and keeps the source attached so the restaurant can correct it before explicit posting.",
           "points": ["Detect invoice details, lines, and totals", "Connect vendor items to ingredients", "Review packages and conversions", "Correct the draft before explicit posting"],
           "trust": "Detection suggests. The restaurant decides what gets posted."
         },
         "inventory": {
           "eyebrow": "INVENTORY & TRACEABILITY",
           "heading": "See what changed — and why.",
-          "body": "Inventory movement remains connected to its operational source, making Activity a trust layer rather than a separate list of events.",
+        "body": "Activity answers two questions: what changed, and why? Each movement remains connected to a purchase, receiving event, waste, production, physical count, or manual adjustment when that source exists.",
           "points": ["Purchases and receiving", "Waste and production", "Physical-count adjustments", "Manual adjustments with source history"]
         },
         "costing": {
           "eyebrow": "PRICES & FOOD COST",
           "heading": "Follow supplier prices into preparation and menu cost.",
-          "body": "The workflow compares valid supplier prices, then carries ingredient cost into preparations and menu items without confusing gross profit with net profit.",
+        "body": "A valid supplier price can become the source cost used for ingredient, preparation, and menu review. Comparisons require enough package and conversion information, and gross profit remains gross profit before labor and overhead.",
           "points": ["Current and previous comparable supplier price", "Normalized base-unit cost and source purchase line", "Preparation batch, yield, and cost per yield unit", "Plate cost, selling price, food-cost percentage, and gross profit before labor and overhead"],
           "trust": "Complete, Partial, or Missing costs: if source costs are missing, the product shows the gap instead of inventing precision. Unlike packages are not compared without sufficient conversion data."
         },
         "counts": {
           "eyebrow": "PHYSICAL COUNTS & REORDER",
           "heading": "Count the operation, review variance, then prepare what to buy.",
-          "body": "The workflow supports practical numeric entry, count units, progress and resume, review before posting, and a supplier-grouped list based on below-par ingredients.",
+        "body": "A count is not just data entry. Enter and resume practical count units, compare expected with counted, review variance, and explicitly post. Below-par items can then be calculated to par using package configuration and grouped by supplier for a shopping list.",
           "points": ["Search, filter, progress, and resume", "Transparent count-unit conversions", "Expected, counted, and variance review", "Package-aware quantities and a shareable CSV shopping list"],
           "trust": "0 means counted and found zero; uncounted means not counted yet. The product helps prepare the order; the initial release does not place supplier orders electronically."
         },
         "owner": {
           "eyebrow": "OWNER VIEW",
           "heading": "Review the signals that need operational attention.",
-          "body": "The owner view gathers the numbers and exceptions an operator may need to review, without presenting gross profit as net profit or filling gaps with estimates.",
+        "body": "This is where an operator can see what deserves review: recent purchasing, waste, supplier price changes, incomplete costs, count variance, below-par items, inventory value, and recent activity. It does not fill gaps with estimates or present gross profit as net profit.",
           "points": ["Inventory value and recent purchasing", "Waste and supplier price changes", "Preparation, menu, and incomplete cost coverage", "Below-par items and useful recent activity"]
         }
       },
@@ -488,12 +488,12 @@
     },
     "workflow": {
       "eyebrow": "PRODUCT EXPERIENCE",
-      "heading": "One inventory story instead of disconnected pieces.",
-      "body": "What came in, what is on hand, what changed, and what it cost become easier to understand when they are part of the same inventory history."
+    "heading": "Is this intended for a restaurant like yours?",
+    "body": "The initial fit is an independent, owner-operated, single-location restaurant that needs purchasing, inventory, counts, and cost information to retain their operational context."
     },
     "audience": {
-      "heading": "Built for restaurant operations that want a clearer inventory picture.",
-      "body": "{productName} is designed for restaurant operators, owners, managers, and teams responsible for receiving or tracking product who need a better way to manage their inventory information.",
+    "heading": "For independent restaurants managing inventory close to the work.",
+    "body": "{productName} is for owners, managers, and receiving or inventory teams at one restaurant location—especially when spreadsheets or disconnected records make it hard to reconstruct what changed. It is not positioned as multi-location enterprise management.",
       "items": ["Independent and owner-operated restaurants", "Owners and restaurant managers", "Inventory and receiving teams", "Single-location operations outgrowing spreadsheets or disconnected tools"]
     },
     "earlyAccess": {
@@ -546,7 +546,7 @@
       "workflow": "workflow", "connected": "Connected"
     },
     "finalCta": {
-      "heading": "Ready for a clearer view of your inventory?",
+      "heading": "See how your restaurant's inventory information stays connected.",
       "body": "Request product access or ask for a demo tailored to your restaurant's operation. Accepted participants receive {freeMonths} months free.",
       "bodyDemoOnly": "Request a demo tailored to your restaurant's operation.",
       "primaryCta": "Request a Demo",
@@ -563,8 +563,8 @@
     }
   },
   "seo": {
-    "title": "Venkoi | Software Products Built Around Real Business Work",
-    "description": "Venkoi is a product-first software company creating practical software products, including restaurant inventory software, with custom mobile and web development available for selected projects."
+    "title": "Venkoi | Restaurant Inventory Software & Selected Custom Work",
+    "description": "Venkoi builds software products, beginning with restaurant inventory and food cost, and accepts selected custom mobile and web projects."
   },
   "notFound": {
     "title": "Page not found",
@@ -579,8 +579,8 @@
   },
   "mobileServicePage": {
     "eyebrow": "MOBILE APPLICATIONS",
-    "heroHeading": "Mobile experiences built around real people and real goals.",
-    "heroBody": "Venkoi designs, builds, and tests mobile applications for iOS and Android, helping turn ideas into useful experiences from early definition through launch-ready development.",
+    "heroHeading": "What should the app help someone do?",
+    "heroBody": "Bring the business problem, who will use the app, what exists today, and what the first useful version must accomplish. Venkoi defines, designs, builds, and tests selected iOS and Android projects.",
     "primaryCta": "Tell us about your mobile app",
     "rangeHeading": "Mobile applications for different kinds of ideas.",
     "rangeItem1": "Customer-facing experiences",
@@ -625,8 +625,8 @@
   },
   "webServicePage": {
     "eyebrow": "WEBSITES & WEB APPLICATIONS",
-    "heroHeading": "The web experience should fit the idea — not the other way around.",
-    "heroBody": "From straightforward websites to more interactive web applications, Venkoi helps define, design, build, and test the web experience that fits what you want to accomplish.",
+    "heroHeading": "What should people be able to do on the web?",
+    "heroBody": "Bring the goal, the people involved, what exists today, and what needs to work differently. Venkoi defines, designs, builds, and tests selected websites and web applications.",
     "primaryCta": "Tell us about your web project",
     "rangeHeading": "From a clear web presence to more interactive experiences.",
     "rangeItem1": "Simple websites",
