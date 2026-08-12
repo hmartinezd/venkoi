@@ -45,13 +45,25 @@ assert.equal(packageJson.devDependencies?.['@next/eslint-plugin-next'], undefine
 assert.equal(packageJson.devDependencies?.['typescript-eslint'], undefined);
 assert.equal(packageJson.devDependencies?.autoprefixer, undefined);
 assert.equal(packageJson.devDependencies?.prettier, undefined);
-assert.match(packageJson.devDependencies?.['@playwright/test'] ?? '', /^\^?1\./);
-assert.match(packageJson.devDependencies?.['@axe-core/playwright'] ?? '', /^\^?4\./);
-assert.equal(packageJson.scripts?.['test:e2e'], 'playwright test');
-assert.match(packageJson.scripts?.quality ?? '', /test:e2e/);
-assert.match(workflow, /playwright install --with-deps chromium/);
-assert.equal(existsSync(path.join(root, 'playwright.config.ts')), true);
-assert.equal(existsSync(path.join(root, 'tests/e2e')), true);
+const browserAutomationPackages = [
+  '@playwright/test',
+  '@axe-core/playwright',
+  'cypress',
+  'puppeteer',
+  'selenium-webdriver',
+];
+for (const packageName of browserAutomationPackages) {
+  assert.equal(packageJson.dependencies?.[packageName], undefined);
+  assert.equal(packageJson.devDependencies?.[packageName], undefined);
+}
+assert.equal(packageJson.scripts?.['test:e2e'], undefined);
+assert.equal(
+  packageJson.scripts?.quality,
+  'npm run lint && npm run typecheck && npm run test:regression && npm run build:next'
+);
+assert.doesNotMatch(workflow, /(?:playwright|chromium|chrome-headless|puppeteer|selenium|cypress)/i);
+assert.equal(existsSync(path.join(root, 'playwright.config.ts')), false);
+assert.equal(existsSync(path.join(root, 'tests/e2e')), false);
 assert.doesNotMatch(validation, /\.superRefine\(/);
 assert.doesNotMatch(validation, /\.strict\(\)/);
 assert.doesNotMatch(validation, /\.toLowerCase\(\)\s*\.email\(/);
