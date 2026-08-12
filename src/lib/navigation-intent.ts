@@ -1,6 +1,7 @@
 import { type RouteKey } from '@/i18n/routing';
 import { normalizeServiceInterest } from './services';
 import { isDemoEnabledProduct } from './products';
+import { normalizeDemoConversionSource } from './product-links';
 
 /**
  * Validates and filters search parameters to preserve only recognized
@@ -33,6 +34,7 @@ export function getSafeLocalizedIntentQuery(
   if (routeKey === 'demo') {
     const product = searchParams.get('product');
     const interest = searchParams.get('interest');
+    const source = normalizeDemoConversionSource(searchParams.get('source'));
 
     if (product && isDemoEnabledProduct(product)) {
       safeParams.set('product', product);
@@ -40,6 +42,10 @@ export function getSafeLocalizedIntentQuery(
 
     if (interest === 'early-access') {
       safeParams.set('interest', 'early-access');
+    }
+
+    if (source) {
+      safeParams.set('source', source);
     }
   }
 

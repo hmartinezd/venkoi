@@ -52,8 +52,12 @@ for (const [locale, messages, expected, stale] of [
 for (const [locale, messages] of Object.entries({ en, es })) {
   const hardcoded = strings(messages).filter(value => /\b(?:3|three) months\b|\b(?:3|tres) meses\b/i.test(value));
   assert.deepEqual(hardcoded, [], `${locale.toUpperCase()} translations must not hardcode the offer duration`);
-  const legacyPublicTerms = strings(messages).filter(value => /early access|acceso anticipado/i.test(value));
-  assert.deepEqual(legacyPublicTerms, [], `${locale.toUpperCase()} public translation values must use free-offer terminology`);
+  const demoIntentCopy = strings(messages.demoPage.earlyAccess);
+  const intentPattern = locale === 'en' ? /early access/i : /acceso anticipado/i;
+  assert.ok(
+    demoIntentCopy.some(value => intentPattern.test(value)),
+    `${locale.toUpperCase()} Demo copy should explicitly identify Early Access intent`
+  );
 }
 
 const disabledProduct: Product = {

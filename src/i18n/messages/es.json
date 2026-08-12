@@ -319,20 +319,20 @@
       "successMessage": "Revisaremos la información que compartiste y nos pondremos en contacto para ver cómo {productName} podría adaptarse a la operación de tu restaurante."
     },
     "earlyAccess": {
-      "eyebrow": "{freeMonths} MESES GRATIS",
-      "heading": "Prueba {productName} gratis durante {freeMonths} meses.",
-      "body": "Usa {productName} en tu restaurante gratis durante los primeros {freeMonths} meses.",
-      "formTitle": "Solicitud de demo con oferta gratuita",
+      "eyebrow": "SOLICITUD DE ACCESO ANTICIPADO",
+      "heading": "Solicita Acceso Anticipado a {productName} con {freeMonths} meses gratis.",
+      "body": "Cuéntanos sobre tu restaurante para solicitar la oferta de Acceso Anticipado, que incluye {freeMonths} meses gratis para los participantes aceptados.",
+      "formTitle": "Solicitud de Acceso Anticipado a {productName}",
       "badge": "{freeMonths} meses gratis.",
-      "successTitle": "Gracias — recibimos tu solicitud.",
-      "successMessage": "Hemos registrado que quieres usar {productName} gratis durante {freeMonths} meses y nos pondremos en contacto sobre el siguiente paso."
+      "successTitle": "Gracias — recibimos tu solicitud de Acceso Anticipado.",
+      "successMessage": "Registramos tu interés en el Acceso Anticipado a {productName}, cuya oferta incluye {freeMonths} meses gratis para los participantes aceptados. Revisaremos la información que compartiste y te contactaremos sobre el siguiente paso."
     },
     "nextSteps": {
       "heading": "¿Qué pasa después?",
       "step1": "Cuéntanos sobre tu restaurante.",
       "step2": "Aprendemos un poco sobre cómo gestionas el inventario actualmente.",
       "step3": "Coordinamos el siguiente paso adecuado para ver {productName}.",
-      "step3EarlyAccess": "Nos ponemos en contacto sobre el siguiente paso para usar la oferta gratuita."
+      "step3EarlyAccess": "Revisamos tu solicitud de Acceso Anticipado y te contactamos sobre el siguiente paso adecuado."
     },
     "agenda": {
       "eyebrow": "LO QUE VEREMOS",
@@ -397,9 +397,12 @@
       "message": "Cualquier detalle que quieras compartir",
       "earlyAccess": "Quiero usar {productName} gratis durante {freeMonths} meses.",
       "submit": "Solicitar una demo",
+      "submitEarlyAccess": "Solicitar Acceso Anticipado",
       "submitting": "Enviando...",
       "successTitle": "Gracias — recibimos tu solicitud.",
       "successMessage": "Nos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.",
+      "earlyAccessFixed": "Estás solicitando Acceso Anticipado a {productName}, que incluye {freeMonths} meses gratis.",
+      "earlyAccessFixedHelp": "Esta es una solicitud. Revisaremos si el programa es adecuado para tu restaurante y te contactaremos sobre el siguiente paso; la aceptación y los plazos no están garantizados.",
       "required": "Campo obligatorio",
       "invalidEmail": "Por favor ingresa un email de trabajo válido",
       "submissionError": "No pudimos enviar tu solicitud en este momento. Inténtalo nuevamente.",
@@ -407,6 +410,10 @@
       "tooLong": "El texto excede la longitud máxima.",
       "invalidOption": "Opción seleccionada no válida.",
       "botBlocked": "Solicitud bloqueada por comprobaciones de seguridad."
+    },
+    "successActions": {
+      "product": "Explorar las capacidades del producto",
+      "guide": "Leer la guía de inventario para restaurantes"
     }
   },
 

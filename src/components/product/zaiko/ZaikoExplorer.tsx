@@ -104,9 +104,9 @@ export function ZaikoExplorer({
                 properties={{
                   locale,
                   product: FEATURED_PRODUCT.analyticsProduct,
-                  source: 'zaiko_explorer'
+                  source: 'product_explorer'
                 }}
-                href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
+                href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_explorer' })}
                 variant="primary"
                 className="w-full sm:w-auto"
               >

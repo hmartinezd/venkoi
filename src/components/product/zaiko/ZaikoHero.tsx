@@ -47,23 +47,23 @@ export function ZaikoHero({
           {/* Action CTAs */}
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3.5">
             <TrackedButton
-              href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
+              href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_hero' })}
               variant="primary"
               eventName="zaiko_demo_cta"
               properties={{
                 locale,
                 product: FEATURED_PRODUCT.analyticsProduct,
-                source: 'zaiko_hero'
+                source: 'product_hero'
               }}
             >
               {primaryCta}
             </TrackedButton>
             {earlyAccess ? (
               <TrackedButton
-                href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
+                href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'product_hero' })}
                 variant="secondary"
                 eventName="zaiko_early_access_cta"
-                properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'zaiko_hero', earlyAccess: true }}
+                properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'product_hero', earlyAccess: true }}
               >
                 {earlyAccess.cta}
               </TrackedButton>

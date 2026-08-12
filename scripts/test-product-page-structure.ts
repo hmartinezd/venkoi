@@ -50,7 +50,7 @@ assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/
 assert.ok(!explorer.includes('supporting:'), 'Explorer content model should not receive supporting bullets');
 assert.ok(!explorer.includes('activeContent.supporting'), 'Explorer should not render detailed supporting bullets');
 assert.ok(explorer.includes('activeContent.summary'), 'Explorer should render concise area summaries');
-assert.ok(explorer.includes("source: 'zaiko_explorer'"), 'Explorer Demo analytics source should remain stable');
+assert.ok(explorer.includes("source: 'product_explorer'"), 'Explorer Demo analytics source should use the controlled funnel taxonomy');
 assert.ok(explorer.includes('eventName="zaiko_demo_cta"'), 'Explorer Demo event should remain stable');
 assert.ok(explorer.includes('buildProductDemoHref'), 'Explorer Demo URL should use the product-link helper');
 assert.ok(explorer.includes('href={`#${activeArea}`}'), 'Explorer detail link should target the active capability');

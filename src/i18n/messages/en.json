@@ -319,20 +319,20 @@
       "successMessage": "We'll review the information you shared and follow up about seeing how {productName} could fit your restaurant operation."
     },
     "earlyAccess": {
-      "eyebrow": "{freeMonths} MONTHS FREE",
-      "heading": "Try {productName} free for {freeMonths} months.",
-      "body": "Use {productName} in your restaurant free for the first {freeMonths} months.",
-      "formTitle": "Free Offer Demo Request",
+      "eyebrow": "EARLY ACCESS REQUEST",
+      "heading": "Request {productName} Early Access with {freeMonths} months free.",
+      "body": "Tell us about your restaurant to request the Early Access offer, which includes {freeMonths} free months for accepted participants.",
+      "formTitle": "{productName} Early Access Request",
       "badge": "{freeMonths} months free.",
-      "successTitle": "Thanks — we received your request.",
-      "successMessage": "We've noted that you'd like to use {productName} free for {freeMonths} months and will follow up about the next step."
+      "successTitle": "Thanks — we received your Early Access request.",
+      "successMessage": "We've recorded your interest in {productName} Early Access, whose offer includes {freeMonths} months free for accepted participants. We'll review the information you shared and follow up about the next step."
     },
     "nextSteps": {
       "heading": "What happens next?",
       "step1": "Tell us about your restaurant.",
       "step2": "We learn a little about how you currently handle inventory.",
       "step3": "We coordinate the appropriate next step for seeing {productName}.",
-      "step3EarlyAccess": "We follow up about the next step for using the free offer."
+    "step3EarlyAccess": "We review your Early Access request and follow up about the appropriate next step."
     },
     "agenda": {
       "eyebrow": "WHAT WE'LL COVER",
@@ -397,9 +397,12 @@
       "message": "Anything you'd like us to know",
       "earlyAccess": "I'd like to use {productName} free for {freeMonths} months.",
       "submit": "Request a Demo",
+      "submitEarlyAccess": "Request Early Access",
       "submitting": "Submitting...",
       "successTitle": "Thanks — we received your request.",
       "successMessage": "We'll be in touch to learn more about your restaurant and coordinate your demo.",
+      "earlyAccessFixed": "You're requesting Early Access to {productName}, including {freeMonths} free months.",
+      "earlyAccessFixedHelp": "This is a request. We'll review your restaurant's fit and follow up about the next step; acceptance and timing are not guaranteed.",
       "required": "Required field",
       "invalidEmail": "Please enter a valid work email address",
       "submissionError": "We couldn't submit your request right now. Please try again.",
@@ -407,6 +410,10 @@
       "tooLong": "Text exceeds maximum length.",
       "invalidOption": "Invalid option selected.",
       "botBlocked": "Request blocked by security checks."
+    },
+    "successActions": {
+      "product": "Explore product capabilities",
+      "guide": "Read the restaurant inventory guide"
     }
   },
 

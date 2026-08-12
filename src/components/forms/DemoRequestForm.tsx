@@ -9,6 +9,8 @@ import { trackCustomEvent } from '@/lib/analytics';
 import { getLeadAcquisitionContext } from '@/lib/lead-acquisition';
 import { getDefaultDemoProduct } from '@/lib/products';
 import type { Locale } from '@/i18n/config';
+import { getLocalizedPath } from '@/i18n/routing';
+import type { DemoConversionSource } from '@/lib/product-links';
 
 interface DemoRequestFormProps {
   locale: Locale;
@@ -17,6 +19,8 @@ interface DemoRequestFormProps {
   productName: string;
   freeMonths: number;
   earlyAccessEnabled: boolean;
+  fixedEarlyAccessIntent?: boolean;
+  conversionSource?: DemoConversionSource;
 }
 
 export function DemoRequestForm({
@@ -25,7 +29,9 @@ export function DemoRequestForm({
   initialInterest = '',
   productName,
   freeMonths,
-  earlyAccessEnabled
+  earlyAccessEnabled,
+  fixedEarlyAccessIntent = false,
+  conversionSource
 }: DemoRequestFormProps) {
   const activeProduct = initialProduct || getDefaultDemoProduct().slug;
   const t = useTranslations('demoPage.form');
@@ -104,7 +110,8 @@ export function DemoRequestForm({
       trackCustomEvent('demo_form_start', {
         locale,
         product: activeProduct,
-        earlyAccess: effectiveEarlyAccess
+        earlyAccess: effectiveEarlyAccess,
+        source: conversionSource
       });
     }
 
@@ -125,6 +132,7 @@ export function DemoRequestForm({
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (pending) return;
     setPending(true);
     setErrors({});
     setStatus('idle');
@@ -132,7 +140,8 @@ export function DemoRequestForm({
     trackCustomEvent('demo_form_submit', {
       locale,
       product: activeProduct,
-      earlyAccess: formData.early_access_interest
+      earlyAccess: formData.early_access_interest,
+      source: conversionSource
     });
 
     // Inline client validation
@@ -205,7 +214,8 @@ export function DemoRequestForm({
         trackCustomEvent('demo_form_success', {
           locale,
           product: activeProduct,
-          earlyAccess: formData.early_access_interest
+          earlyAccess: formData.early_access_interest,
+          source: conversionSource
         });
       }
     } catch {
@@ -232,6 +242,14 @@ export function DemoRequestForm({
           title={successTitle}
           message={successMessage}
         />
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Button href={getLocalizedPath('productsZaiko', locale)} variant="secondary">
+            {tp('successActions.product')}
+          </Button>
+          <Button href={getLocalizedPath('insightRestaurantInventory', locale)} variant="text">
+            {tp('successActions.guide')}
+          </Button>
+        </div>
       </div>
     );
   }
@@ -386,6 +404,12 @@ export function DemoRequestForm({
       </details>
 
       {earlyAccessEnabled ? <div className="flex flex-col gap-2 pt-2">
+        {fixedEarlyAccessIntent ? (
+          <div className="rounded-xl border border-orange/30 bg-orange/10 p-4">
+            <p className="text-sm font-semibold text-ink">{t('earlyAccessFixed', { productName, freeMonths })}</p>
+            <p className="mt-1 text-xs leading-relaxed text-foreground-muted">{t('earlyAccessFixedHelp')}</p>
+          </div>
+        ) : <>
         <div className="flex items-start gap-3">
           <input
             id="demo-early-access"
@@ -404,6 +428,7 @@ export function DemoRequestForm({
             {tp('earlyAccess.badge', { freeMonths })}
           </p>
         )}
+        </>}
       </div> : null}
 
       <div className="pt-2">
@@ -413,7 +438,11 @@ export function DemoRequestForm({
           disabled={pending}
           className="w-full justify-center sm:w-auto min-w-[200px]"
         >
-          {pending ? t('submitting') : t('submit')}
+          {pending
+            ? t('submitting')
+            : formData.early_access_interest
+              ? t('submitEarlyAccess')
+              : t('submit')}
         </Button>
       </div>
     </form>

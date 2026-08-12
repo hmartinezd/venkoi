@@ -1,6 +1,7 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
+import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
@@ -44,9 +45,14 @@ export function HeroSection({
             <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
               {primaryCta}
             </Button>
-            <Button href={buildProductDemoHref(locale, FEATURED_PRODUCT)} variant="secondary">
+            <TrackedButton
+              href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'home_hero' })}
+              variant="secondary"
+              eventName="zaiko_demo_cta"
+              properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'home_hero' }}
+            >
               {secondaryCta}
-            </Button>
+            </TrackedButton>
           </div>
 
           <div className="pt-6 border-t border-border/80">

@@ -7,7 +7,7 @@ import {
   resolveDemoProduct,
   type Product
 } from '../src/lib/products';
-import { buildProductDemoHref } from '../src/lib/product-links';
+import { buildProductDemoHref, normalizeDemoConversionSource } from '../src/lib/product-links';
 
 console.log('=== RUNNING PRODUCT REGISTRY TESTS ===\n');
 
@@ -46,6 +46,13 @@ assert(
     '/en/demo?product=zaiko&interest=early-access',
   'Early Access URL includes product and interest context'
 );
+assert(
+  buildProductDemoHref('en', FEATURED_PRODUCT, { source: 'product_hero' }) ===
+    '/en/demo?product=zaiko&source=product_hero',
+  'Demo URL carries a controlled conversion source'
+);
+assert(normalizeDemoConversionSource('product_hero') === 'product_hero', 'Approved conversion source is accepted');
+assert(normalizeDemoConversionSource('customer@example.com') === undefined, 'Arbitrary conversion source is rejected');
 assert(
   buildProductDemoHref('en', { slug: FEATURED_PRODUCT.slug }) === '/en/demo?product=zaiko',
   'Demo URLs consume the stable product slug rather than the display name'

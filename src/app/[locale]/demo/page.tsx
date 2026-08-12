@@ -8,6 +8,7 @@ import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
 import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
 import { getLocalizedPath } from '@/i18n/routing';
+import { normalizeDemoConversionSource } from '@/lib/product-links';
 import type { Metadata } from 'next';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function DemoPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
-  const { product, interest } = await searchParams;
+  const { product, interest, source } = await searchParams;
   const currentLocale = parseLocale(locale);
 
   const t = await getTranslations('demoPage');
@@ -51,6 +52,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   const selectedProduct = resolvedProduct.slug;
   const isEarlyAccess = isEarlyAccessInterest(resolvedProduct, interest);
   const selectedInterest = isEarlyAccess ? 'early-access' : '';
+  const conversionSource = normalizeDemoConversionSource(source);
 
   const isZaiko = resolvedProduct.slug === 'zaiko';
   const productProgramValues = {
@@ -139,6 +141,8 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
                     productName={resolvedProduct.name}
                     freeMonths={resolvedProduct.earlyAccess.freeMonths}
                     earlyAccessEnabled={resolvedProduct.earlyAccess.enabled}
+                    fixedEarlyAccessIntent={isEarlyAccess}
+                    conversionSource={conversionSource}
                   />
                 </NextIntlClientProvider>
               </div>

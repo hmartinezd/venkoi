@@ -44,6 +44,8 @@ testIntent('demo', { product: 'zaiko' }, { product: 'zaiko' }, 'Product zaiko pr
 testIntent('demo', { product: 'evil' }, {}, 'Invalid product removed');
 testIntent('demo', { product: 'zaiko', interest: 'early-access' }, { product: 'zaiko', interest: 'early-access' }, 'Early access preserved');
 testIntent('demo', { product: 'zaiko', interest: 'random' }, { product: 'zaiko' }, 'Invalid interest removed');
+testIntent('demo', { product: 'zaiko', source: 'product_hero' }, { product: 'zaiko', source: 'product_hero' }, 'Controlled conversion source preserved');
+testIntent('demo', { product: 'zaiko', source: 'private-value' }, { product: 'zaiko' }, 'Arbitrary conversion source removed');
 
 // Unknown route
 console.log('\nTesting Unknown Route:');

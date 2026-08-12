@@ -57,27 +57,27 @@ export function ZaikoEarlyAccess({
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <TrackedButton
-            href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
+            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_early_access' })}
             variant="brand"
             className="w-full sm:w-auto"
             eventName="zaiko_demo_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,
-              source: 'zaiko_early_access'
+              source: 'product_early_access'
             }}
           >
             {primaryCta}
           </TrackedButton>
           <TrackedButton
-            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
+            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'product_early_access' })}
             variant="inverse"
             className="w-full sm:w-auto"
             eventName="zaiko_early_access_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,
-              source: 'zaiko_early_access',
+              source: 'product_early_access',
               earlyAccess: true
             }}
           >

@@ -36,7 +36,7 @@ assert.ok(
   header.indexOf('href={internalRoutes.productsZaiko}') < header.indexOf('href={internalRoutes.services}'),
   'The featured product should remain ahead of Services in navigation'
 );
-assert.ok(header.includes('buildProductDemoHref(locale, FEATURED_PRODUCT)'), 'Header Demo should retain product context');
+assert.ok(header.includes("buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })"), 'Header Demo should retain product and source context');
 assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The featured product should precede Services');
 assert.ok(hero.includes('<ZaikoProductVisual type="hero"'), 'Homepage Hero should show the overview product preview');
 assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');

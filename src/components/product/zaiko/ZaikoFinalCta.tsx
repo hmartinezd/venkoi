@@ -43,25 +43,25 @@ export function ZaikoFinalCta({
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <TrackedButton
-            href={buildProductDemoHref(locale, FEATURED_PRODUCT)}
+            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_final_cta' })}
             variant="primary"
             eventName="zaiko_demo_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,
-              source: 'zaiko_final_cta'
+              source: 'product_final_cta'
             }}
           >
             {primaryCta}
           </TrackedButton>
           {earlyAccess ? <TrackedButton
-            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access' })}
+            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'product_final_cta' })}
             variant="secondary"
             eventName="zaiko_early_access_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,
-              source: 'zaiko_final_cta',
+              source: 'product_final_cta',
               earlyAccess: true
             }}
           >

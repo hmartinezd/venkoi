@@ -39,7 +39,7 @@ function strings(value: unknown): string[] {
   return [];
 }
 
-const provisionalPublicCopy = /early access|acceso anticipado|want to see what we're building\?|still being built|work in progress|coming soon|we're starting close to home|Venkoi is starting|Estamos comenzando cerca de casa|Venkoi está comenzando|\bbeta\b|\bprototype\b|\bMVP\b/i;
+const provisionalPublicCopy = /want to see what we're building\?|still being built|work in progress|coming soon|we're starting close to home|Venkoi is starting|Estamos comenzando cerca de casa|Venkoi está comenzando|\bbeta\b|\bprototype\b|\bMVP\b/i;
 for (const [locale, messages] of [['en', en], ['es', es]] as const) {
   const violations = strings(messages).filter((value) => provisionalPublicCopy.test(value));
   assert.deepEqual(violations, [], `${locale} public copy must not imply an available product is provisional`);
@@ -50,11 +50,11 @@ assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationIte
 
 const header = read('src/components/layout/Header.tsx');
 assert.match(header, /href=\{internalRoutes\.productsZaiko\}/);
-assert.match(header, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT\)\}/);
+assert.match(header, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'header' \}\)\}/);
 assert.match(header, /\{tCommon\('demo'\)\}/);
 
 const homeFinal = read('src/components/home/FinalCta.tsx');
-assert.match(homeFinal, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT\)\}/);
+assert.match(homeFinal, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'home_final_cta' \}\)\}/);
 assert.match(homeFinal, /href=\{getLocalizedPath\('contact', locale\)\}/);
 assert.doesNotMatch(homeFinal, /type=services|interest=/);
 
