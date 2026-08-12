@@ -46,7 +46,9 @@ function lead(overrides: Partial<LeadRecord> = {}): LeadRecord {
 
 const english = buildUserAcknowledgementEmail(lead());
 assert.match(english.subject, new RegExp(FEATURED_PRODUCT.name));
-assert.match(english.text, new RegExp(FEATURED_PRODUCT.name));
+assert.match(english.subject, /demo request/i);
+assert.match(english.text, /demo request/i);
+assert.match(english.text, /coordinate your demo/i);
 
 const spanish = buildUserAcknowledgementEmail(lead({ locale: 'es' }));
 assert.match(spanish.subject, new RegExp(FEATURED_PRODUCT.name));
@@ -54,16 +56,27 @@ assert.match(spanish.text, new RegExp(FEATURED_PRODUCT.name));
 
 const earlyAccessLead = lead({ early_access_interest: true });
 const earlyAccess = buildUserAcknowledgementEmail(earlyAccessLead);
-assert.match(earlyAccess.text, new RegExp(`${FEATURED_PRODUCT.name} free for ${FEATURED_PRODUCT.earlyAccess.freeMonths} months`));
+assert.match(earlyAccess.subject, new RegExp(`${FEATURED_PRODUCT.name} access request`, 'i'));
+assert.match(earlyAccess.text, /access request/i);
+assert.doesNotMatch(`${earlyAccess.subject}\n${earlyAccess.text}`, /demo request/i);
+assert.match(earlyAccess.text, new RegExp(`Accepted participants can use ${FEATURED_PRODUCT.name} free for ${FEATURED_PRODUCT.earlyAccess.freeMonths} months`));
+assert.match(earlyAccess.text, /acceptance/i);
+assert.match(earlyAccess.text, /timing/i);
+assert.doesNotMatch(earlyAccess.text, /Try .* free/i);
 assert.doesNotMatch(earlyAccess.text, /Early Access/i);
 const spanishOffer = buildUserAcknowledgementEmail({ ...earlyAccessLead, locale: 'es' });
-assert.match(spanishOffer.text, new RegExp(`${FEATURED_PRODUCT.name} gratis durante ${FEATURED_PRODUCT.earlyAccess.freeMonths} meses`));
+assert.match(spanishOffer.subject, new RegExp(`solicitud de acceso a ${FEATURED_PRODUCT.name}`, 'i'));
+assert.match(spanishOffer.text, /solicitud de acceso/i);
+assert.doesNotMatch(`${spanishOffer.subject}\n${spanishOffer.text}`, /solicitud de demo/i);
+assert.match(spanishOffer.text, new RegExp(`participantes aceptados pueden usar ${FEATURED_PRODUCT.name} gratis durante ${FEATURED_PRODUCT.earlyAccess.freeMonths} meses`, 'i'));
+assert.match(spanishOffer.text, /aceptación/i);
+assert.match(spanishOffer.text, /plazos/i);
 assert.doesNotMatch(spanishOffer.text, /acceso anticipado/i);
 assert.match(buildInternalNotificationEmail(lead()).subject, new RegExp(`${FEATURED_PRODUCT.name} Demo`));
-assert.match(
-  buildInternalNotificationEmail(earlyAccessLead).subject,
-  new RegExp(`${FEATURED_PRODUCT.name} ${FEATURED_PRODUCT.earlyAccess.freeMonths}-Month Free Offer Demo`)
-);
+const internalAccess = buildInternalNotificationEmail(earlyAccessLead);
+assert.match(internalAccess.subject, new RegExp(`${FEATURED_PRODUCT.name} Access Request`));
+assert.match(internalAccess.text, /Access request: Yes/);
+assert.doesNotMatch(`${internalAccess.subject}\n${internalAccess.text}`, /Free Offer Demo|Free-offer interest/i);
 assert.match(buildInternalNotificationEmail(lead()).text, /UTM content: hero/);
 
 const alternateResolver: LeadProductResolver = (slug) =>
@@ -71,8 +84,11 @@ const alternateResolver: LeadProductResolver = (slug) =>
     ? { name: 'Rename Test Product', earlyAccess: { enabled: true, freeMonths: 7 } }
     : undefined;
 const alternateLead = lead({ product: 'rename-test', early_access_interest: true });
+const alternateInternal = buildInternalNotificationEmail(alternateLead, alternateResolver);
+assert.match(`${alternateInternal.subject}\n${alternateInternal.text}`, /Rename Test Product/);
+assert.match(alternateInternal.subject, /Access Request/);
+assert.doesNotMatch(`${alternateInternal.subject}\n${alternateInternal.text}`, new RegExp(FEATURED_PRODUCT.name, 'i'));
 for (const content of [
-  buildInternalNotificationEmail(alternateLead, alternateResolver),
   buildUserAcknowledgementEmail(alternateLead, alternateResolver),
   buildUserAcknowledgementEmail({ ...alternateLead, locale: 'es' }, alternateResolver)
 ]) {
@@ -83,11 +99,18 @@ for (const content of [
 
 const unknown = buildUserAcknowledgementEmail(lead({ product: 'historical-product', early_access_interest: true }));
 assert.match(`${unknown.subject}\n${unknown.text}`, /historical-product/);
+assert.match(`${unknown.subject}\n${unknown.text}`, /access request/i);
+assert.doesNotMatch(`${unknown.subject}\n${unknown.text}`, /demo request/i);
 assert.doesNotMatch(`${unknown.subject}\n${unknown.text}`, /\b\d+[ -]months?\b/i);
 assert.doesNotMatch(`${unknown.subject}\n${unknown.text}`, new RegExp(FEATURED_PRODUCT.name, 'i'));
 assert.doesNotThrow(() => buildInternalNotificationEmail(lead({ product: null })));
 assert.equal(buildUserAcknowledgementEmail(lead({ product: null })).subject, 'We received your demo request');
 assert.equal(buildUserAcknowledgementEmail(lead({ product: null, locale: 'es' })).subject, 'Recibimos tu solicitud de demo');
+const nullProductAccess = buildUserAcknowledgementEmail(lead({ product: null, early_access_interest: true }));
+assert.equal(nullProductAccess.subject, 'We received your access request');
+assert.match(nullProductAccess.text, /access request/i);
+assert.doesNotMatch(nullProductAccess.text, /demo request|\b\d+[ -]months?\b/i);
+assert.match(buildInternalNotificationEmail(lead({ product: null, early_access_interest: true })).subject, /Product Access Request/);
 
 for (const leadType of ['GENERAL_CONTACT', 'CUSTOM_PROJECT'] satisfies LeadType[]) {
   const generic = buildUserAcknowledgementEmail(lead({ lead_type: leadType, product: null }));
@@ -130,10 +153,12 @@ async function runAsyncTests() {
 const englishHtml = await renderUserAcknowledgementHtml(earlyAccessLead);
 assert.match(englishHtml, /<html[^>]+lang="en"/);
 assert.match(englishHtml, new RegExp(FEATURED_PRODUCT.name));
-assert.match(englishHtml, new RegExp(`free for ${FEATURED_PRODUCT.earlyAccess.freeMonths} months`));
+assert.match(englishHtml, new RegExp(`Accepted participants can use ${FEATURED_PRODUCT.name} free for ${FEATURED_PRODUCT.earlyAccess.freeMonths} months`));
+assert.match(englishHtml, /access request received/i);
 const spanishHtml = await renderUserAcknowledgementHtml({ ...earlyAccessLead, locale: 'es' });
 assert.match(spanishHtml, /<html[^>]+lang="es"/);
-assert.match(spanishHtml, new RegExp(`gratis durante ${FEATURED_PRODUCT.earlyAccess.freeMonths} meses`));
+assert.match(spanishHtml, new RegExp(`participantes aceptados pueden usar ${FEATURED_PRODUCT.name} gratis durante ${FEATURED_PRODUCT.earlyAccess.freeMonths} meses`, 'i'));
+assert.match(spanishHtml, /Solicitud de acceso a .* recibida/i);
 const internalHtml = await renderInternalNotificationHtml(lead());
 assert.match(internalHtml, /Harbor Kitchen/);
 assert.match(internalHtml, /lead_email_test/);

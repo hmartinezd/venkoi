@@ -17,9 +17,7 @@ function subjectTagForLead(lead: LeadRecord, resolver: LeadProductResolver): str
     const product = resolveProduct(lead, resolver);
     const productName = product?.name ?? lead.product ?? 'Product';
     return lead.early_access_interest
-      ? product
-        ? `${productName} ${product.earlyAccess.freeMonths}-Month Free Offer Demo`
-        : `${productName} Free Offer Demo`
+      ? `${productName} Access Request`
       : `${productName} Demo`;
   }
   if (lead.lead_type === 'CUSTOM_PROJECT') {
@@ -35,7 +33,7 @@ export function getInternalEmailFields(lead: LeadRecord, resolver: LeadProductRe
   const fullName = lead.name || [lead.first_name, lead.last_name].filter(Boolean).join(' ');
   const optional: Array<[string, string | null | undefined]> = [
     ['Product', product?.name ?? lead.product],
-    ['Free-offer interest', lead.early_access_interest ? 'Yes' : undefined],
+    ['Access request', lead.early_access_interest ? 'Yes' : undefined],
     ['Name', fullName],
     ['Email', lead.email],
     ['Phone', lead.phone],
@@ -71,16 +69,21 @@ export function buildAcknowledgementTemplateCopy(lead: LeadRecord, resolver: Lea
   const product = resolveProduct(lead, resolver);
   const productName = product?.name ?? lead.product;
   const demo = lead.lead_type === 'DEMO';
-  const heading = demo
+  const accessRequest = demo && lead.early_access_interest;
+  const heading = accessRequest
+    ? isSpanish ? (productName ? `Solicitud de acceso a ${productName} recibida` : 'Solicitud de acceso recibida') : (productName ? `${productName} access request received` : 'Access request received')
+    : demo
     ? isSpanish ? (productName ? `Solicitud de demo de ${productName} recibida` : 'Solicitud de demo recibida') : (productName ? `${productName} demo request received` : 'Demo request received')
     : isSpanish ? 'Mensaje recibido' : 'Message received';
-  const confirmation = demo
+  const confirmation = accessRequest
+    ? isSpanish ? (productName ? `Recibimos tu solicitud de acceso a ${productName}.` : 'Recibimos tu solicitud de acceso.') : (productName ? `We received your request for access to ${productName}.` : 'We received your access request.')
+    : demo
     ? isSpanish ? (productName ? `Recibimos tu solicitud para conocer mejor ${productName}.` : 'Recibimos tu solicitud de demo.') : (productName ? `We received your request to learn more about ${productName}.` : 'We received your demo request.')
     : isSpanish ? 'Recibimos tu mensaje y revisaremos la información que compartiste sobre tu proyecto.' : 'We received your message and will review the information you shared about your project.';
-  const offer = lead.early_access_interest
+  const offer = accessRequest && product
     ? isSpanish
-      ? product ? `Prueba ${product.name} gratis durante ${product.earlyAccess.freeMonths} meses.` : `También registramos tu interés en la oferta gratuita${productName ? ` de ${productName}` : ''}.`
-      : product ? `Try ${product.name} free for ${product.earlyAccess.freeMonths} months.` : `We also noted your interest in the free offer${productName ? ` for ${productName}` : ''}.`
+      ? `Los participantes aceptados pueden usar ${product.name} gratis durante ${product.earlyAccess.freeMonths} meses.`
+      : `Accepted participants can use ${product.name} free for ${product.earlyAccess.freeMonths} months.`
     : undefined;
   return {
     locale: lead.locale,
@@ -90,10 +93,16 @@ export function buildAcknowledgementTemplateCopy(lead: LeadRecord, resolver: Lea
     confirmation,
     offer,
     nextHeading: isSpanish ? 'Qué sigue' : 'What happens next',
-    nextText: demo
+    nextText: accessRequest
+      ? isSpanish ? 'Revisaremos tu solicitud y nos pondremos en contacto contigo para explicarte la disponibilidad y los próximos pasos. El acceso es limitado, por lo que la aceptación y los plazos no están garantizados.' : "We'll review your request and contact you about availability and next steps. Access is limited, so acceptance and timing aren't guaranteed."
+      : demo
       ? isSpanish ? 'Nos pondremos en contacto para conocer más sobre tu restaurante y coordinar la demo.' : "We'll be in touch to learn more about your restaurant and help coordinate your demo."
       : isSpanish ? 'Revisaremos los detalles y nos pondremos en contacto contigo.' : "We'll review the details and be in touch.",
-    replyNote: demo
+    replyNote: accessRequest
+      ? isSpanish
+        ? 'Si tienes alguna pregunta o quieres compartir algo más sobre tu solicitud de acceso, responde directamente a este correo.'
+        : 'If you have any questions or want to share anything else about your access request, just reply to this email.'
+      : demo
       ? isSpanish
         ? 'Si tienes alguna pregunta o quieres compartir algo más sobre tu solicitud de demo, responde directamente a este correo.'
         : 'If you have any questions or want to share anything else about your demo request, just reply to this email.'
@@ -105,8 +114,11 @@ export function buildAcknowledgementTemplateCopy(lead: LeadRecord, resolver: Lea
 
 export function buildUserAcknowledgementEmail(lead: LeadRecord, resolver: LeadProductResolver = getProductBySlug): LeadEmailContent {
   const copy = buildAcknowledgementTemplateCopy(lead, resolver);
-  const subject = lead.lead_type === 'DEMO'
-    ? copy.locale === 'es' ? (resolveProduct(lead, resolver) || lead.product ? `Recibimos tu solicitud de demo de ${resolveProduct(lead, resolver)?.name ?? lead.product}` : 'Recibimos tu solicitud de demo') : (resolveProduct(lead, resolver) || lead.product ? `We received your ${resolveProduct(lead, resolver)?.name ?? lead.product} demo request` : 'We received your demo request')
+  const productName = resolveProduct(lead, resolver)?.name ?? lead.product;
+  const subject = lead.lead_type === 'DEMO' && lead.early_access_interest
+    ? copy.locale === 'es' ? (productName ? `Recibimos tu solicitud de acceso a ${productName}` : 'Recibimos tu solicitud de acceso') : (productName ? `We received your ${productName} access request` : 'We received your access request')
+    : lead.lead_type === 'DEMO'
+    ? copy.locale === 'es' ? (productName ? `Recibimos tu solicitud de demo de ${productName}` : 'Recibimos tu solicitud de demo') : (productName ? `We received your ${productName} demo request` : 'We received your demo request')
     : copy.locale === 'es' ? 'Recibimos tu mensaje — Venkoi' : 'We received your message — Venkoi';
   const parts = [copy.greeting, copy.confirmation, copy.offer, `${copy.nextHeading}\n${copy.nextText}`, copy.replyNote].filter(Boolean);
   return { subject, text: parts.join('\n\n') };
