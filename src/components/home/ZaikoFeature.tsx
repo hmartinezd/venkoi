@@ -26,7 +26,6 @@ export function ZaikoFeature({
   theme4Desc,
   theme5Title,
   theme5Desc,
-  productName,
   visualLabels,
   visibleOutcomeKeys
 }: {
@@ -36,7 +35,7 @@ export function ZaikoFeature({
   body: string;
   discoverCta: string;
   demoCta: string;
-  earlyAccess?: { badge: string; badgeText: string };
+  earlyAccess?: { badge: string; badgeText: string; cta: string };
   theme1Title: string;
   theme1Desc: string;
   theme2Title: string;
@@ -47,7 +46,6 @@ export function ZaikoFeature({
   theme4Desc: string;
   theme5Title: string;
   theme5Desc: string;
-  productName: string;
   visualLabels: ZaikoVisualLabels;
   visibleOutcomeKeys: readonly string[];
 }) {
@@ -96,13 +94,24 @@ export function ZaikoFeature({
             ))}
           </div>
 
-          {/* Early Access Callout */}
+          {/* Access program callout */}
           {earlyAccess ? (
-            <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 flex items-center justify-between gap-4">
+            <div className="rounded-xl border border-orange/30 bg-orange-subtle/50 p-4 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <p className="text-xs font-semibold text-ink">{earlyAccess.badgeText}</p>
-              <span className="text-[11px] font-bold text-orange-text uppercase tracking-widest whitespace-nowrap">
-                01 / {productName.toUpperCase()}
-              </span>
+              <TrackedButton
+                href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'home_product' })}
+                variant="text"
+                eventName="zaiko_early_access_cta"
+                properties={{
+                  locale,
+                  product: FEATURED_PRODUCT.analyticsProduct,
+                  source: 'home_product',
+                  earlyAccess: true
+                }}
+                className="shrink-0 whitespace-nowrap"
+              >
+                {earlyAccess.cta}
+              </TrackedButton>
             </div>
           ) : null}
 

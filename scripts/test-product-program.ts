@@ -35,6 +35,11 @@ const keys = [
   'demoPage.earlyAccess.successMessage'
 ] as const;
 
+assert.equal(en.common.requestAccess, 'Request Access');
+assert.equal(es.common.requestAccess, 'Solicitar Acceso');
+assert.equal(en.footer.earlyAccess, 'Request Access');
+assert.equal(es.footer.earlyAccess, 'Solicitar Acceso');
+
 for (const [locale, messages, expected, stale] of [
   ['en', en, '6 months', '3 months'],
   ['es', es, '6 meses', '3 meses']
@@ -75,6 +80,18 @@ const sources: Array<[string, RegExp]> = [
   ['src/components/forms/DemoRequestForm.tsx', /earlyAccessEnabled \? <div/]
 ];
 for (const [file, pattern] of sources) assert.match(read(file), pattern, `${file} should derive Early Access UI from program state`);
+
+const homepageFeature = read('src/components/home/ZaikoFeature.tsx');
+assert.match(homepageFeature, /interest: 'early-access', source: 'home_product'/);
+assert.match(homepageFeature, /eventName="zaiko_early_access_cta"/);
+assert.match(homepageFeature, /source: 'home_product',[\s\S]*earlyAccess: true/);
+
+const footer = read('src/components/layout/Footer.tsx');
+assert.match(footer, /FEATURED_PRODUCT\.earlyAccess\.enabled \? \(/);
+assert.match(footer, /interest: 'early-access', source: 'footer'/);
+assert.match(footer, /eventName="zaiko_early_access_cta"/);
+assert.match(footer, /source: 'footer', earlyAccess: true/);
+assert.match(footer, /\{tFooter\('earlyAccess'\)\}/);
 
 assert.ok(!read('src/components/home/ZaikoFeature.tsx').match(/^\s*(['"])use client\1;/m));
 assert.ok(!read('src/components/product/zaiko/ZaikoHero.tsx').match(/^\s*(['"])use client\1;/m));

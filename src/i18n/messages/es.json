@@ -5,6 +5,7 @@
     "terms": "Términos",
     "copyright": "© {year} Venkoi. Todos los derechos reservados.",
     "demo": "Solicitar una demo",
+    "requestAccess": "Solicitar Acceso",
     "startConversation": "Hablemos",
     "skipToContent": "Saltar al contenido"
   },
@@ -29,7 +30,7 @@
     "sectionProducts": "Productos",
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
-    "earlyAccess": "{freeMonths} Meses Gratis",
+    "earlyAccess": "Solicitar Acceso",
     "locationText": "Con sede en Tampa Bay, Florida · Trabajando con clientes en South Florida y más allá",
     "contact": {
       "whatsappLabel": "WhatsApp",

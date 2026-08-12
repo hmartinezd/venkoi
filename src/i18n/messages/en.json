@@ -5,6 +5,7 @@
     "terms": "Terms",
     "copyright": "© {year} Venkoi. All rights reserved.",
     "demo": "Request a Demo",
+    "requestAccess": "Request Access",
     "startConversation": "Start a Conversation",
     "skipToContent": "Skip to content"
   },
@@ -29,7 +30,7 @@
     "sectionProducts": "Products",
     "sectionCompany": "Company",
     "sectionWorkWithUs": "Work With Us",
-    "earlyAccess": "{freeMonths} Months Free",
+    "earlyAccess": "Request Access",
     "locationText": "Based in Tampa Bay, Florida · Serving South Florida and beyond",
     "contact": {
       "whatsappLabel": "WhatsApp",

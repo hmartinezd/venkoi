@@ -67,10 +67,10 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
                     href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'footer' })}
                     variant="text"
                     eventName="zaiko_early_access_cta"
-                    properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'footer' }}
+                    properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'footer', earlyAccess: true }}
                     className="font-normal text-foreground-muted transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                   >
-                    {tFooter('earlyAccess', { freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths })}
+                    {tFooter('earlyAccess')}
                   </TrackedButton>
                 </li>
               ) : null}

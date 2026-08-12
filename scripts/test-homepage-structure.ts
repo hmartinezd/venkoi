@@ -44,6 +44,13 @@ assert.ok(!hero.includes('location'), 'Homepage Hero should not foreground geogr
 assert.ok(!read('src/components/home/FinalCta.tsx').includes('locationLine'), 'Final CTA should focus on the two conversion paths');
 assert.ok(!read('src/components/home/CompanyContext.tsx').includes('regions.map'), 'Company context should not present geography as a regional framework');
 assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
+assert.match(home, /cta: tCommon\('requestAccess'\)/, 'Homepage should pass the localized public access label to the featured product');
+assert.match(feature, /interest: 'early-access', source: 'home_product'/, 'Homepage access should use the fixed access intent and controlled source');
+assert.match(feature, /eventName="zaiko_early_access_cta"/, 'Homepage access should preserve the access CTA analytics event');
+assert.ok(
+  feature.indexOf('earlyAccess.cta') < feature.indexOf('{/* CTAs */}'),
+  'Request Access should remain inside the program callout rather than the main CTA row'
+);
 assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should use the shared visual-label builder');
 assert.match(home, /getHomepageMarketingState\(\)/, 'Homepage availability copy should use its own derived product state');
 assert.match(home, /filterMarketableEntries\(HOMEPAGE_PRODUCT_OUTCOMES\)/, 'Homepage should hide non-marketable outcomes');

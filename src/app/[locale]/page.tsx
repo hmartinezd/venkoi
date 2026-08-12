@@ -126,7 +126,8 @@ export default async function HomePage({ params }: PageProps) {
           badgeText: tHome(`zaiko.availability.${homepageState}`, {
             productName: FEATURED_PRODUCT.name,
             freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
-          })
+          }),
+          cta: tCommon('requestAccess')
         } : undefined}
         visibleOutcomeKeys={outcomeKeys}
         theme1Title={tHome('zaiko.theme1Title')}
@@ -139,7 +140,6 @@ export default async function HomePage({ params }: PageProps) {
         theme4Desc={tHome('zaiko.theme4Desc')}
         theme5Title={tHome('zaiko.theme5Title')}
         theme5Desc={tHome('zaiko.theme5Desc')}
-        productName={FEATURED_PRODUCT.name}
         visualLabels={visualLabels}
       />
 
