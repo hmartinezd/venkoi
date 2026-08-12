@@ -58,7 +58,7 @@ export default async function LocaleLayout({ params, children }: PageProps) {
   );
 
   return (
-    <html lang={currentLocale} className={geist.variable} suppressHydrationWarning>
+    <html lang={currentLocale} className={geist.variable} suppressHydrationWarning data-scroll-behavior="smooth">
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         <NextIntlClientProvider messages={clientMessages} locale={currentLocale}>
           <Header locale={currentLocale} productName={FEATURED_PRODUCT.name} />

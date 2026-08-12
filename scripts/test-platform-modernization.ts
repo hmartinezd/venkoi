@@ -45,12 +45,13 @@ assert.equal(packageJson.devDependencies?.['@next/eslint-plugin-next'], undefine
 assert.equal(packageJson.devDependencies?.['typescript-eslint'], undefined);
 assert.equal(packageJson.devDependencies?.autoprefixer, undefined);
 assert.equal(packageJson.devDependencies?.prettier, undefined);
-assert.equal(packageJson.devDependencies?.['@playwright/test'], undefined);
-assert.equal(packageJson.scripts?.['test:e2e'], undefined);
-assert.doesNotMatch(workflow, /playwright|chromium|test:e2e/i);
-for (const artifact of ['playwright.config.ts', 'e2e', 'test-results']) {
-  assert.equal(existsSync(path.join(root, artifact)), false, `${artifact} must remain absent`);
-}
+assert.match(packageJson.devDependencies?.['@playwright/test'] ?? '', /^\^?1\./);
+assert.match(packageJson.devDependencies?.['@axe-core/playwright'] ?? '', /^\^?4\./);
+assert.equal(packageJson.scripts?.['test:e2e'], 'playwright test');
+assert.match(packageJson.scripts?.quality ?? '', /test:e2e/);
+assert.match(workflow, /playwright install --with-deps chromium/);
+assert.equal(existsSync(path.join(root, 'playwright.config.ts')), true);
+assert.equal(existsSync(path.join(root, 'tests/e2e')), true);
 assert.doesNotMatch(validation, /\.superRefine\(/);
 assert.doesNotMatch(validation, /\.strict\(\)/);
 assert.doesNotMatch(validation, /\.toLowerCase\(\)\s*\.email\(/);

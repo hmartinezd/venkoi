@@ -26,7 +26,7 @@ function Frame({ l, children, className = '', tone = 'light' }: { l: ZaikoVisual
           <span className="h-2.5 w-2.5 flex-none rounded-full bg-orange" />
           <span className={`truncate text-xs font-bold uppercase tracking-wider ${dark ? 'text-white' : 'text-ink'}`}>{FEATURED_PRODUCT.name}</span>
         </div>
-        <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${dark ? 'bg-white/10 text-orange' : 'bg-orange-subtle text-orange-text'}`}>
+        <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${dark ? 'bg-white/10 text-white' : 'bg-orange-subtle text-orange-text'}`}>
           {l.preview}
         </span>
       </div>

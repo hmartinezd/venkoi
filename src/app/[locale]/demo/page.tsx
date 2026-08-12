@@ -72,7 +72,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   }
 
   const formTitle = isEarlyAccess
-    ? t('earlyAccess.formTitle')
+    ? t('earlyAccess.formTitle', productProgramValues)
     : (isZaiko ? t('zaiko.title', productProgramValues) : t('earlyAccessTitle'));
 
   const formDesc = isEarlyAccess
@@ -89,7 +89,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             </span>
             {isEarlyAccess && (
               <span className="inline-flex items-center rounded-md bg-orange/10 px-2 py-0.5 text-[10px] font-bold text-orange-text uppercase tracking-wider border border-orange/20">
-                {t('badge')}
+                {t('badge', productProgramValues)}
               </span>
             )}
           </div>
@@ -127,7 +127,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
                     {isEarlyAccess && (
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-orange/10 border border-orange/30 px-3 py-0.5 text-xs font-bold text-orange-text">
                         <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-                        {t('badge')}
+                        {t('badge', productProgramValues)}
                       </span>
                     )}
                   </div>
