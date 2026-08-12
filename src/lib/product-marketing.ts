@@ -51,6 +51,14 @@ export function getGroupsMarketingState(
   return aggregateCapabilityAvailability(groups.map(getGroupAvailability));
 }
 
+export function getProductSectionMarketingState(
+  groups: readonly ProductCapabilityGroup[],
+  resolveState: ProductMarketingStateResolver = getGroupsMarketingState
+): ProductMarketingState | null {
+  const state = resolveState(groups);
+  return state === 'not-marketed' ? null : state;
+}
+
 export function areGroupsMarketable(groups: readonly ProductCapabilityGroup[]): boolean {
   return getGroupsMarketingState(groups) !== 'not-marketed';
 }

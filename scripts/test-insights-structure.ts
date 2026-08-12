@@ -41,9 +41,13 @@ for (const [key, file] of [
   const source = read(file);
   assert.ok(source.includes('RestaurantInsightGuide'), `${key} should use the shared article architecture`);
   assert.ok(source.includes('product-approach'), `${key} should include a product connection`);
+  assert.ok(source.includes('getProductSectionMarketingState'), `${key} should derive its product connection from capability truth`);
+  assert.ok(source.includes('...(productState ?'), `${key} should omit the product section when it is not marketed`);
 }
 assert.ok(restaurantGuide.includes("source: 'insight'") && restaurantGuide.includes('eventName="zaiko_demo_cta"'), 'Restaurant guides should preserve Demo analytics');
 assert.ok(index.indexOf('restaurantArticles') < index.indexOf('softwareArticles'), 'Restaurant operations should lead the landing page');
+assert.equal((index.match(/headingLevel="h3"/g) ?? []).length, 3, 'Both restaurant card paths and the software card path should use h3');
+assert.doesNotMatch(index, /headingLevel="h2"/, 'Cards beneath family h2 headings must not render h2 headings');
 
 const featuredPosition = index.indexOf('featured');
 assert.ok(featuredPosition > index.indexOf('articles[0]'), 'The first index article should be featured');

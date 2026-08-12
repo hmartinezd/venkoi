@@ -120,7 +120,7 @@ export default async function InsightsPage({ params }: PageProps) {
                 routeKey={restaurantArticles[0].routeKey}
                 readMoreLabel={t('readMore')}
                 featured
-                headingLevel="h2"
+                headingLevel="h3"
               />
             ) : null}
             <div className="grid gap-6 lg:col-span-5">
@@ -133,7 +133,7 @@ export default async function InsightsPage({ params }: PageProps) {
                   description={article.description}
                   routeKey={article.routeKey}
                   readMoreLabel={t('readMore')}
-                  headingLevel="h2"
+                  headingLevel="h3"
                 />
               ))}
             </div>

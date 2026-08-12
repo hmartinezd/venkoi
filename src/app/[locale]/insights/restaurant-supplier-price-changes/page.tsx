@@ -1,4 +1,23 @@
-import { RestaurantInsightGuide } from '@/components/insights/RestaurantInsightGuide'; import {locales,type Locale} from '@/i18n/config'; import {FEATURED_PRODUCT} from '@/lib/products'; import {createMetadata} from '@/lib/seo'; import type {Metadata} from 'next'; import {getTranslations} from 'next-intl/server'; import {notFound} from 'next/navigation';
-interface Props{params:Promise<{locale:string}>} function localeOf(v:string):Locale{if(locales.includes(v as Locale))return v as Locale;notFound();}
-export async function generateMetadata({params}:Props):Promise<Metadata>{const locale=localeOf((await params).locale);const t=await getTranslations({locale,namespace:'insightsArticles.restaurantSupplierPrices'});return createMetadata({title:t('seoTitle'),description:t('seoDescription'),routeKey:'insightRestaurantSupplierPrices',locale,openGraphType:'article'});}
-export default async function Page({params}:Props){const locale=localeOf((await params).locale);const t=await getTranslations('insightsArticles.restaurantSupplierPrices.content');const sections=[{id:'package-comparison',title:t('problemTitle'),paragraphs:[t('problemBody')]},{id:'example',title:t('exampleTitle'),paragraphs:[t('exampleBody')]},{id:'comparable-purchase',title:t('comparableTitle'),paragraphs:[t('comparableBody')]},{id:'incomplete-comparison',title:t('incompleteTitle'),paragraphs:[t('incompleteBody')]},{id:'price-change',title:t('changesTitle'),paragraphs:[t('changesBody')]},{id:'source-context',title:t('sourceTitle'),paragraphs:[t('sourceBody')]},{id:'product-approach',title:t('productTitle',{productName:FEATURED_PRODUCT.name}),paragraphs:[t('productBody',{productName:FEATURED_PRODUCT.name})]}];return <RestaurantInsightGuide locale={locale} routeKey="insightRestaurantSupplierPrices" articleKey="restaurantSupplierPrices" sections={sections} related={['restaurantFoodCost','restaurantInventory']}/>;}
+import { RestaurantInsightGuide } from '@/components/insights/RestaurantInsightGuide';
+import { locales, type Locale } from '@/i18n/config';
+import { getProductSectionMarketingState } from '@/lib/product-marketing';
+import { FEATURED_PRODUCT } from '@/lib/products';
+import { createMetadata } from '@/lib/seo';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
+interface Props { params: Promise<{ locale: string }> }
+function localeOf(value: string): Locale { if (locales.includes(value as Locale)) return value as Locale; notFound(); }
+export async function generateMetadata({ params }: Props): Promise<Metadata> { const locale = localeOf((await params).locale); const t = await getTranslations({ locale, namespace: 'insightsArticles.restaurantSupplierPrices' }); return createMetadata({ title: t('seoTitle'), description: t('seoDescription'), routeKey: 'insightRestaurantSupplierPrices', locale, openGraphType: 'article' }); }
+
+export default async function Page({ params }: Props) {
+  const locale = localeOf((await params).locale);
+  const t = await getTranslations('insightsArticles.restaurantSupplierPrices.content');
+  const productState = getProductSectionMarketingState(['vendor-price-intelligence']);
+  const sections = [
+    { id: 'package-comparison', title: t('problemTitle'), paragraphs: [t('problemBody')] }, { id: 'example', title: t('exampleTitle'), paragraphs: [t('exampleBody')] }, { id: 'comparable-purchase', title: t('comparableTitle'), paragraphs: [t('comparableBody')] }, { id: 'incomplete-comparison', title: t('incompleteTitle'), paragraphs: [t('incompleteBody')] }, { id: 'price-change', title: t('changesTitle'), paragraphs: [t('changesBody')] }, { id: 'source-context', title: t('sourceTitle'), paragraphs: [t('sourceBody')] },
+    ...(productState ? [{ id: 'product-approach', title: t('productTitle', { productName: FEATURED_PRODUCT.name }), paragraphs: [t(`productAvailability.${productState}`, { productName: FEATURED_PRODUCT.name })] }] : [])
+  ];
+  return <RestaurantInsightGuide locale={locale} routeKey="insightRestaurantSupplierPrices" articleKey="restaurantSupplierPrices" sections={sections} related={['restaurantFoodCost', 'restaurantInventory']} />;
+}

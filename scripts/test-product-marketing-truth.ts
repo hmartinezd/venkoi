@@ -20,6 +20,7 @@ import {
   getEntriesMarketingState,
   getGroupsMarketingState,
   getHomepageMarketingState,
+  getProductSectionMarketingState,
   getWorkflowMarketingState,
   HOMEPAGE_PRODUCT_OUTCOMES,
   PRODUCT_STORY_CHAPTERS,
@@ -57,6 +58,28 @@ const stateResolver = (
 ): ProductMarketingStateResolver => (groups) => aggregateCapabilityAvailability(
   groups.map((group) => states[group] ?? fallback)
 );
+
+for (const state of ['available', 'early-access', 'launch-release'] as const) {
+  assert.equal(getProductSectionMarketingState(['physical-counts'], stateResolver({ 'physical-counts': state })), state);
+}
+assert.equal(getProductSectionMarketingState(['physical-counts'], stateResolver({ 'physical-counts': 'not-marketed' })), null);
+assert.equal(
+  getProductSectionMarketingState(
+    ['vendor-price-intelligence', 'preparation-costing', 'menu-costing'],
+    stateResolver({ 'vendor-price-intelligence': 'available', 'preparation-costing': 'launch-release', 'menu-costing': 'available' })
+  ),
+  'launch-release'
+);
+
+for (const messages of [en, es]) {
+  for (const key of ['restaurantInventoryCounts', 'restaurantFoodCost', 'restaurantSupplierPrices'] as const) {
+    const copy = messages.insightsArticles[key].content.productAvailability;
+    assert.match(copy.available, /Zaiko|\{productName\}/);
+    assert.match(copy['early-access'], /participating restaurants|restaurantes participantes/i);
+    assert.match(copy['launch-release'], /initial release|primera versión/i);
+    assert.doesNotMatch(JSON.stringify(copy), /Early Access|Acceso Anticipado/i);
+  }
+}
 
 const foodCost = PRODUCT_STORY_CHAPTERS.find(({ id }) => id === 'food-cost');
 assert.ok(foodCost);
