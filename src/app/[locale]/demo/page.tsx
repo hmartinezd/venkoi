@@ -162,7 +162,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             <ProductDemoAgenda
               eyebrow={t('agenda.eyebrow')}
               heading={t('agenda.heading', { productName: resolvedProduct.name })}
-              items={['inventory', 'purchases', 'activity', 'costs'].map((area) => ({
+              items={['setupInventory', 'invoicePurchase', 'costIntelligence', 'countsReorder', 'ownerView'].map((area) => ({
                 title: t(`agenda.items.${area}.title`),
                 description: t(`agenda.items.${area}.description`)
               }))}

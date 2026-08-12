@@ -133,6 +133,8 @@ export default async function HomePage({ params }: PageProps) {
         theme3Desc={tHome('zaiko.theme3Desc')}
         theme4Title={tHome('zaiko.theme4Title')}
         theme4Desc={tHome('zaiko.theme4Desc')}
+        theme5Title={tHome('zaiko.theme5Title')}
+        theme5Desc={tHome('zaiko.theme5Desc')}
         productName={FEATURED_PRODUCT.name}
         visualLabels={visualLabels}
       />

@@ -43,6 +43,10 @@ assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured pr
 assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should use the shared visual-label builder');
 for (const messages of [en, es]) {
   assert.match(messages.home.hero.eyebrow, /PRODUCT|PRODUCTOS/, 'Hero should identify Venkoi as a product company');
+  assert.match(messages.home.hero.body, /Venkoi/, 'Homepage should present Venkoi as the company');
+  for (const key of ['theme1Title', 'theme2Title', 'theme3Title', 'theme4Title', 'theme5Title']) {
+    assert.ok(messages.home.zaiko[key], `Homepage product outcome ${key} should exist`);
+  }
   assert.ok(messages.contactPage.productDemo.eyebrow, 'Contact should distinguish product intent');
 }
 assert.doesNotMatch(header + '\n' + footer, /linkedin|instagram|twitter\.com|facebook/i, 'Layout must not add unsupported social links');

@@ -42,26 +42,28 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "EMPRESA DE PRODUCTOS DE SOFTWARE",
-      "heading": "Creamos productos de software que resuelven problemas concretos de los negocios.",
-      "body": "En Venkoi convertimos problemas operativos específicos en productos de software bien enfocados. Nuestro producto destacado ayuda a los restaurantes a reunir inventario, compras, movimientos y costos en una sola vista clara.",
+      "eyebrow": "EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS",
+      "heading": "Creamos software enfocado en el trabajo diario de los negocios.",
+      "body": "Venkoi crea sus propios productos de software para problemas operativos específicos. Nuestro producto destacado conecta compras, inventario, costo de alimentos, conteos y el trabajo que requiere atención en restaurantes.",
       "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
       "badge": "{freeMonths} MESES GRATIS",
-      "badgeText": "Prueba {productName} gratis durante {freeMonths} meses.",
-      "heading": "Ve qué entró, qué cambió y cuánto costó.",
-      "body": "{productName} ayuda a los restaurantes a saber qué tienen disponible, seguir las compras y los movimientos, y mantener los costos a la vista sin tener que buscar entre hojas de cálculo y registros desconectados.",
+      "badgeText": "El Acceso Anticipado conecta el flujo de lanzamiento. Los participantes elegibles pueden usar {productName} gratis durante {freeMonths} meses; la aceptación no está garantizada.",
+      "heading": "Inventario y costo de alimentos, conectados desde la factura hasta la revisión del dueño.",
+      "body": "{productName} mantiene conectada la información operativa para que el equipo revise qué llegó, qué cambió, cuánto cuesta y qué requiere atención.",
       "discoverCta": "Conoce {productName}",
-      "theme1Title": "Inventario",
-      "theme1Desc": "Conoce lo que tienes y dónde está.",
-      "theme2Title": "Compras",
-      "theme2Desc": "Mantén organizadas las compras y recepciones.",
-      "theme3Title": "Costos",
-      "theme3Desc": "Entiende cuánto te está costando realmente tu inventario.",
-      "theme4Title": "Actividad",
-      "theme4Desc": "Sigue cómo se mueve el inventario dentro de tu operación."
+      "theme1Title": "Factura → Compra",
+      "theme1Desc": "Captura, revisa, corrige y registra la compra explícitamente.",
+      "theme2Title": "Inventario → Trazabilidad",
+      "theme2Desc": "Conoce las existencias y rastrea cada cambio hasta su origen.",
+      "theme3Title": "Precios → Costo de Alimentos",
+      "theme3Desc": "Sigue precios comparables hasta el costo de preparaciones y platos.",
+      "theme4Title": "Conteo → Reposición",
+      "theme4Desc": "Revisa variaciones y prepara una lista de compras por proveedor.",
+      "theme5Title": "Vista del Dueño",
+      "theme5Desc": "Reúne compras, merma, cambios de precios, costos faltantes y artículos bajo par."
     },
     "services": {
       "eyebrow": "SOFTWARE A MEDIDA POR VENKOI",
@@ -338,22 +340,11 @@
       "eyebrow": "LO QUE VEREMOS",
       "heading": "Descubre cómo {productName} reúne las áreas esenciales del inventario de un restaurante.",
       "items": {
-        "inventory": {
-          "title": "Inventario",
-          "description": "Consulta qué tienes y dónde se encuentra."
-        },
-        "purchases": {
-          "title": "Compras",
-          "description": "Ve cómo se mantienen organizadas las compras y recepciones."
-        },
-        "activity": {
-          "title": "Actividad",
-          "description": "Sigue cómo se mueve el inventario dentro de la operación."
-        },
-        "costs": {
-          "title": "Costos",
-          "description": "Entiende cuánto está costando el inventario."
-        }
+        "setupInventory": {"title":"Configuración e Inventario","description":"Ingredientes, unidades, proveedores y estructura del inventario."},
+        "invoicePurchase": {"title":"Factura → Compra","description":"Captura, revisión, corrección y registro explícito."},
+        "costIntelligence": {"title":"Inteligencia de Costos","description":"Cambios de precios, costo de preparaciones y costo de platos."},
+        "countsReorder": {"title":"Conteos y Reposición","description":"Conteo físico, variación, artículos bajo par y planificación de compras."},
+        "ownerView": {"title":"Vista del Dueño","description":"Señales operativas, historial, exportaciones CSV y seguridad de datos."}
       }
     },
     "earlyAccessTitle": "Oferta gratuita",
@@ -421,21 +412,39 @@
     "nav": {
       "subtitle": "Un Producto Venkoi",
       "overview": "Visión General",
+      "invoice": "Captura de Facturas",
       "inventory": "Inventario",
-      "purchases": "Compras",
-      "activity": "Actividad",
-      "costs": "Costos",
+      "foodCost": "Costo de Alimentos",
+      "counts": "Conteo y Reposición",
+      "owner": "Vista del Dueño",
       "earlyAccess": "{freeMonths} Meses Gratis",
       "requestDemo": "Solicita una demo"
     },
     "hero": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
-      "heading": "Sabe lo que tienes.\nDónde fue.\nY cuánto costó.",
-      "body": "{productName} ayuda a los restaurantes a entender y gestionar su inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado.",
+      "heading": "Sabe qué llegó.\nSabe qué tienes.\nSabe cuánto cuesta.\nSabe qué requiere atención.",
+      "body": "{productName} es un producto local-first de inventario y costo de alimentos para restaurantes independientes. Conecta compras, movimientos de inventario, precios de proveedores, costeo, conteos físicos y decisiones de reposición en un solo historial operativo. Plataforma inicial: Android; enfoque en una sola ubicación.",
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Prueba {productName} Gratis",
       "microcopy": "Prueba {productName} gratis durante {freeMonths} meses.",
       "noCreditCard": "Sin necesidad de tarjeta de crédito."
+    },
+    "story": {
+      "workflow": {
+        "eyebrow": "TRABAJO CONECTADO DEL RESTAURANTE",
+        "heading": "Desde el dato operativo hasta la decisión, la información permanece conectada.",
+        "body": "No todos los restaurantes trabajan en una secuencia estricta. Esta vista muestra cómo un documento, una compra, un movimiento, un costo, un conteo y una decisión pueden conservar el contexto que los conecta.",
+        "availability": "El Acceso Anticipado cubre el flujo de la versión de lanzamiento descrito a continuación.",
+        "steps": ["Configuración", "Factura", "Revisión", "Compra", "Inventario y Actividad", "Costeo", "Conteo", "Reposición", "Revisión del Dueño"]
+      },
+      "chapters": {
+        "invoice": {"eyebrow":"CAPTURA DE FACTURAS","heading":"Captura la factura. Revisa lo detectado. Registra cuando esté correcto.","body":"En la versión de lanzamiento, {productName} convierte una foto o documento en un Borrador de Compra revisable y conserva el documento original adjunto.","points":["Detecta datos, líneas y totales de la factura","Conecta artículos del proveedor con ingredientes","Revisa empaques y conversiones","Corrige el borrador antes del registro explícito"],"trust":"La detección sugiere. El restaurante decide qué se registra."},
+        "inventory": {"eyebrow":"INVENTARIO Y TRAZABILIDAD","heading":"Ve qué cambió y por qué.","body":"Cada movimiento conserva su conexión con la fuente operativa. Así, Actividad funciona como una capa de confianza y no como una lista aislada de eventos.","points":["Compras y recepción","Merma y producción","Ajustes por conteo físico","Ajustes manuales con historial de origen"]},
+        "costing": {"eyebrow":"PRECIOS Y COSTO DE ALIMENTOS","heading":"Sigue los precios del proveedor hasta el costo de preparaciones y platos.","body":"El flujo de lanzamiento compara precios válidos y lleva el costo del ingrediente a preparaciones y platos sin confundir la ganancia bruta con la ganancia neta.","points":["Precio comparable actual y anterior","Costo normalizado por unidad base y línea de compra de origen","Costo por lote, rendimiento y costo por unidad de rendimiento","Costo del plato, precio de venta, porcentaje de costo y ganancia bruta antes de mano de obra y gastos generales"],"trust":"Completo, Parcial o Costos faltantes: si faltan costos de origen, el producto muestra el vacío en vez de inventar precisión. No compara empaques distintos sin datos suficientes de conversión."},
+        "counts": {"eyebrow":"CONTEOS FÍSICOS Y REPOSICIÓN","heading":"Cuenta la operación, revisa la variación y prepara lo que hay que comprar.","body":"La versión de lanzamiento incluye entrada numérica práctica, unidades de conteo, progreso y reanudación, revisión antes de registrar y una lista por proveedor basada en ingredientes bajo par.","points":["Búsqueda, filtros, progreso y reanudación","Conversiones transparentes de unidades de conteo","Revisión de esperado, contado y variación","Cantidades según empaque y lista CSV compartible"],"trust":"0 significa contado y se encontraron cero; sin contar significa que aún no se contó. El producto ayuda a preparar el pedido; la versión inicial no envía pedidos electrónicos a proveedores."},
+        "owner": {"eyebrow":"VISTA DEL DUEÑO","heading":"Revisa las señales que requieren atención operativa.","body":"La vista del dueño de la versión de lanzamiento reúne señales útiles sin pronósticos, referencias inventadas ni cifras falsas de ahorro.","points":["Valor del inventario y compras recientes","Merma y cambios de precios","Costos de preparaciones y platos y cobertura incompleta","Artículos bajo par y actividad reciente útil"]}
+      },
+      "dataSafety": {"eyebrow":"SEGURIDAD DE DATOS","heading":"Los datos operativos deben poder recuperarse.","body":"El alcance de lanzamiento incluye recuperación y soporte prácticos. No se presenta el respaldo automático como disponible sin aceptación de lanzamiento.","points":["Respaldo","Restauración y recuperación","Validación de recuperación en un dispositivo limpio","Soporte y diagnóstico"]}
     },
     "intro": {
       "eyebrow": "UNA VISIÓN MÁS CLARA",
@@ -515,11 +524,7 @@
     "audience": {
       "heading": "Creado para restaurantes que buscan una visión más clara de su inventario.",
       "body": "{productName} está diseñado para operadores de restaurantes, dueños, gerentes y equipos responsables de la recepción o el seguimiento de productos que necesitan una mejor forma de gestionar su información de inventario.",
-      "items": [
-        "Operadores de restaurantes",
-        "Dueños o gerentes involucrados en el inventario",
-        "Equipos responsables de la recepción o seguimiento de productos"
-      ]
+      "items": ["Restaurantes independientes y operados por sus dueños", "Dueños y gerentes de restaurantes", "Equipos de inventario y recepción", "Operaciones de una ubicación que ya superaron las hojas de cálculo o herramientas desconectadas"]
     },
     "earlyAccess": {
       "eyebrow": "{freeMonths} MESES GRATIS",
@@ -537,26 +542,16 @@
     "faq": {
       "heading": "Preguntas sobre {productName}",
       "items": [
-        {
-          "q": "¿Qué es {productName}?",
-          "a": "{productName} es un producto de Venkoi que ayuda a los restaurantes a gestionar y entender el inventario, las compras, los costos y la actividad de los productos desde un espacio de trabajo más claro."
-        },
-        {
-          "q": "¿Para quién es {productName}?",
-          "a": "Operadores de restaurantes y equipos que buscan una forma más clara de entender y gestionar la actividad del inventario."
-        },
-        {
-          "q": "¿Qué me ayuda a rastrear {productName}?",
-          "a": "{productName} te ayuda a rastrear los niveles de inventario, la actividad de compras, el movimiento de productos y los costos conectados a tu inventario."
-        },
-        {
-          "q": "¿Qué es la oferta gratuita?",
-          "a": "Los operadores de restaurantes pueden usar {productName} gratis durante los primeros {freeMonths} meses."
-        },
-        {
-          "q": "¿Cómo puedo comenzar a usar {productName}?",
-          "a": "Solicita una demostración o elige la oferta de {freeMonths} meses gratis para comenzar."
-        }
+        {"q":"¿Qué es {productName}?","a":"{productName} es software local-first de inventario y costo de alimentos para restaurantes independientes."},
+        {"q":"¿Registra las facturas automáticamente?","a":"No. La detección crea un borrador revisable. El restaurante lo revisa, corrige y registra la compra explícitamente."},
+        {"q":"¿Puede seguir cambios de precios de proveedores?","a":"La versión de lanzamiento compara precios actuales y anteriores mediante el costo normalizado por unidad base y conserva la línea de compra de origen. Si faltan datos de conversión, indica que la comparación está incompleta."},
+        {"q":"¿Puede calcular el costo de preparaciones y platos?","a":"La versión de lanzamiento cubre costo por lote y rendimiento de preparaciones, además de costo del plato, porcentaje de costo y ganancia bruta antes de mano de obra y gastos generales."},
+        {"q":"¿Qué ocurre cuando faltan costos?","a":"El producto muestra la cobertura como Completa, Parcial o Costos faltantes. No inventa precisión cuando faltan costos de origen."},
+        {"q":"¿Admite conteos físicos?","a":"La versión de lanzamiento incluye unidades, entrada numérica, progreso y reanudación, revisión de variaciones y registro explícito. Cero sigue siendo distinto de sin contar."},
+        {"q":"¿Ayuda con la reposición?","a":"Sí. Identifica ingredientes bajo par y prepara una lista por proveedor considerando empaques. La versión inicial no envía pedidos electrónicos a proveedores."},
+        {"q":"¿Se conecta con sistemas POS o contables?","a":"No en la primera versión. No se promete una fecha de integración."},
+        {"q":"¿Cuál es la plataforma inicial?","a":"Android. El producto es local-first; Web, iOS y sincronización en la nube no son promesas de disponibilidad de la primera versión."},
+        {"q":"¿Está diseñado para cadenas con varias ubicaciones?","a":"El enfoque inicial es un restaurante y una ubicación, no la gestión empresarial de múltiples locales."}
       ],
       "gettingStartedDemoOnly": "Solicita una demo para comenzar."
     },
@@ -593,8 +588,8 @@
       "whatsappMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}."
     },
     "seo": {
-      "title": "{productName} | Software de Inventario para Restaurantes de Venkoi",
-      "description": "{productName} ayuda a restaurantes a gestionar inventario, compras, costos y movimientos de productos desde un espacio de trabajo claro y centralizado."
+      "title": "{productName} | Inventario y Costo de Alimentos para Restaurantes",
+      "description": "{productName} conecta inventario, captura de facturas, precios de proveedores, costeo de recetas y platos, conteos físicos y reposición en Android."
     }
   },
   "seo": {

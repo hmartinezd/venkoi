@@ -48,7 +48,7 @@ for (const [locale, messages] of Object.entries({ en, es })) {
 
 const callSites: Array<[string, RegExp]> = [
   ['src/app/[locale]/page.tsx', /tHome\('zaiko\.discoverCta',\s*\{\s*productName:/],
-  ['src/app/[locale]/products/zaiko/page.tsx', /tHero\('body',\s*productProgramValues\)/],
+  ['src/app/[locale]/products/zaiko/page.tsx', /t\('hero\.body',\s*values\)/],
   ['src/app/[locale]/demo/page.tsx', /t\('zaiko\.heading',\s*productProgramValues\)/],
   ['src/app/[locale]/about/page.tsx', /t\('exploreZaikoCta',\s*\{\s*productName:/],
   ['src/app/[locale]/insights/restaurant-inventory-information/page.tsx', /t\('content\.zaikoTitle',\s*productValues\)/]

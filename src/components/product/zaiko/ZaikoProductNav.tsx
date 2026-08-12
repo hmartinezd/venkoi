@@ -8,11 +8,11 @@ interface ZaikoProductNavProps {
   productName: string;
   subtitle: string;
   overviewLabel: string;
+  invoiceLabel: string;
   inventoryLabel: string;
-  purchasesLabel: string;
-  activityLabel: string;
-  costsLabel: string;
-  earlyAccessLabel?: string;
+  foodCostLabel: string;
+  countsLabel: string;
+  ownerLabel: string;
   requestDemoLabel: string;
   navigationLabel: string;
 }
@@ -22,21 +22,17 @@ export function ZaikoProductNav({
   productName,
   subtitle,
   overviewLabel,
-  inventoryLabel,
-  purchasesLabel,
-  activityLabel,
-  costsLabel,
-  earlyAccessLabel,
+  invoiceLabel, inventoryLabel, foodCostLabel, countsLabel, ownerLabel,
   requestDemoLabel,
   navigationLabel
 }: ZaikoProductNavProps) {
   const navItems = [
     { label: overviewLabel, href: '#overview' },
+    { label: invoiceLabel, href: '#invoice-capture' },
     { label: inventoryLabel, href: '#inventory' },
-    { label: purchasesLabel, href: '#purchases' },
-    { label: activityLabel, href: '#activity' },
-    { label: costsLabel, href: '#costs' },
-    ...(earlyAccessLabel ? [{ label: earlyAccessLabel, href: '#early-access' }] : [])
+    { label: foodCostLabel, href: '#food-cost' },
+    { label: countsLabel, href: '#counts-reorder' },
+    { label: ownerLabel, href: '#owner-view' }
   ];
 
   return (

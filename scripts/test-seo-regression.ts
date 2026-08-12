@@ -8,6 +8,8 @@ import robots from '../src/app/robots';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { FEATURED_PRODUCT, productPlatformToSchemaOperatingSystem } from '../src/lib/products';
+import en from '../src/i18n/messages/en.json';
+import es from '../src/i18n/messages/es.json';
 
 const sitemapRouteKeys: RouteKey[] = [
   'home',
@@ -135,6 +137,12 @@ export function testSeoRegression() {
     assert(schemaPlatform === 'Android', 'Product JSON-LD platform identifies Android');
     assert(schemaPlatform !== 'Web', 'Product JSON-LD platform does not identify Web');
     assert(schemaPlatform !== 'iOS', 'Product JSON-LD platform does not identify iOS');
+    for (const messages of [en, es]) {
+      const productSeo = messages.zaikoPage.seo;
+      assert(/inventory|inventario/i.test(productSeo.title), 'Product SEO title identifies restaurant inventory');
+      assert(/food-cost|costo de alimentos/i.test(productSeo.title), 'Product SEO title identifies food cost');
+      assert(/invoice|facturas/i.test(productSeo.description), 'Product SEO description covers invoice capture');
+    }
 
     const articleMetadata = createMetadata({
       title: 'Article',

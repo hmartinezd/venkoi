@@ -142,3 +142,15 @@ export const PRODUCT_NON_CLAIMS = [
   'automatic-invoice-posting',
   'enterprise-chain-management'
 ] as const;
+
+export function getCapabilitiesForGroup(group: ProductCapabilityGroup): readonly ProductCapability[] {
+  return PRODUCT_CAPABILITIES.filter((capability) => capability.group === group);
+}
+
+export function getGroupAvailability(group: ProductCapabilityGroup): ProductCapabilityAvailability {
+  const capabilities = getCapabilitiesForGroup(group);
+  if (capabilities.some((capability) => capability.availability === 'available')) return 'available';
+  if (capabilities.some((capability) => capability.availability === 'early-access')) return 'early-access';
+  if (capabilities.some((capability) => capability.availability === 'launch-release')) return 'launch-release';
+  return 'not-marketed';
+}

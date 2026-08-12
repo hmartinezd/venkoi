@@ -42,26 +42,28 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "SOFTWARE PRODUCT COMPANY",
-      "heading": "We build software products that solve practical business problems.",
-      "body": "Venkoi turns specific operational problems into focused software products. Our featured product helps restaurants bring inventory, purchases, movement, and costs into one clear view.",
+      "eyebrow": "PRODUCT-FIRST SOFTWARE COMPANY",
+      "heading": "We build focused software for the work businesses do every day.",
+      "body": "Venkoi creates its own software products around specific operational problems. Our featured product connects restaurant purchases, inventory, food cost, counts, and the work that needs attention.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
       "badge": "{freeMonths} MONTHS FREE",
-      "badgeText": "Try {productName} free for {freeMonths} months.",
-      "heading": "See what came in, what changed, and what it cost.",
-      "body": "{productName} helps restaurant operators understand what is on hand, follow purchases and inventory movement, and keep costs visible without chasing spreadsheets or disconnected records.",
+      "badgeText": "Early Access connects the launch-release workflow. Eligible participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
+      "heading": "Restaurant inventory and food cost, connected from invoice to owner review.",
+      "body": "{productName} keeps operational information connected so restaurant teams can review what came in, what changed, what it costs, and what needs attention.",
       "discoverCta": "Discover {productName}",
-      "theme1Title": "Inventory",
-      "theme1Desc": "Know what you have and where it is.",
-      "theme2Title": "Purchases",
-      "theme2Desc": "Keep purchasing and receiving organized.",
-      "theme3Title": "Costs",
-      "theme3Desc": "Understand what your inventory is really costing.",
-      "theme4Title": "Activity",
-      "theme4Desc": "See how inventory moves through your operation."
+      "theme1Title": "Invoice → Purchase",
+      "theme1Desc": "Capture, review, correct, and explicitly post a purchase.",
+      "theme2Title": "Inventory → Traceability",
+      "theme2Desc": "Know what is on hand and trace each change to its source.",
+      "theme3Title": "Prices → Food Cost",
+      "theme3Desc": "Follow comparable supplier prices into preparation and menu cost.",
+      "theme4Title": "Count → Reorder",
+      "theme4Desc": "Review variance and prepare a supplier-grouped shopping list.",
+      "theme5Title": "Owner View",
+      "theme5Desc": "Bring purchases, waste, price changes, cost gaps, and below-par items into one review."
     },
     "services": {
       "eyebrow": "CUSTOM SOFTWARE BY VENKOI",
@@ -338,22 +340,11 @@
       "eyebrow": "WHAT WE'LL COVER",
       "heading": "See how {productName} brings together the core parts of restaurant inventory work.",
       "items": {
-        "inventory": {
-          "title": "Inventory",
-          "description": "See what you have and where it is."
-        },
-        "purchases": {
-          "title": "Purchases",
-          "description": "See how purchasing and receiving stay organized."
-        },
-        "activity": {
-          "title": "Activity",
-          "description": "Follow how inventory moves through the operation."
-        },
-        "costs": {
-          "title": "Costs",
-          "description": "Understand what inventory is costing."
-        }
+        "setupInventory": {"title":"Setup & Inventory","description":"Ingredients, units, suppliers, and inventory structure."},
+        "invoicePurchase": {"title":"Invoice → Purchase","description":"Capture, review, correction, and explicit posting."},
+        "costIntelligence": {"title":"Cost Intelligence","description":"Supplier price changes, preparation cost, and menu-item cost."},
+        "countsReorder": {"title":"Counts & Reorder","description":"Physical count, variance, below-par items, and purchase planning."},
+        "ownerView": {"title":"Owner View","description":"Operational signals, history, CSV exports, and data-safety context."}
       }
     },
     "earlyAccessTitle": "Free Offer",
@@ -421,21 +412,72 @@
     "nav": {
       "subtitle": "A Venkoi Product",
       "overview": "Overview",
+      "invoice": "Invoice Capture",
       "inventory": "Inventory",
-      "purchases": "Purchases",
-      "activity": "Activity",
-      "costs": "Costs",
+      "foodCost": "Food Cost",
+      "counts": "Counts & Reorder",
+      "owner": "Owner View",
       "earlyAccess": "{freeMonths} Months Free",
       "requestDemo": "Request a Demo"
     },
     "hero": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
-      "heading": "Know what you have.\nKnow where it went.\nKnow what it cost.",
-      "body": "{productName} helps restaurants understand and manage their inventory, purchases, costs, and product activity from one clear workspace.",
+      "heading": "Know what came in.\nKnow what you have.\nKnow what it costs.\nKnow what needs attention.",
+      "body": "{productName} is local-first restaurant inventory and food-cost software for independent restaurants. It connects purchasing, inventory movement, supplier prices, costing, physical counts, and reorder decisions in one operational history. Initial platform: Android; single-location focus.",
       "primaryCta": "Request a Demo",
       "secondaryCta": "Try {productName} Free",
       "microcopy": "Try {productName} free for {freeMonths} months.",
       "noCreditCard": "No credit card required."
+    },
+    "story": {
+      "workflow": {
+        "eyebrow": "CONNECTED RESTAURANT WORK",
+        "heading": "From operational input to a decision, the information stays connected.",
+        "body": "Restaurants do not all work in one strict sequence. This view shows how a document, purchase, inventory change, cost, count, and owner decision can retain the context that connects them.",
+        "availability": "Early Access covers the launch-release workflow described below.",
+        "steps": ["Setup", "Invoice", "Review", "Purchase", "Inventory & Activity", "Costing", "Count", "Reorder", "Owner Review"]
+      },
+      "chapters": {
+        "invoice": {
+          "eyebrow": "INVOICE CAPTURE",
+          "heading": "Capture the invoice. Review what was found. Post when it is right.",
+          "body": "In the launch release, {productName} turns camera or document input into a reviewable Purchase Draft while keeping the source document attached.",
+          "points": ["Detect invoice details, lines, and totals", "Connect vendor items to ingredients", "Review packages and conversions", "Correct the draft before explicit posting"],
+          "trust": "Detection suggests. The restaurant decides what gets posted."
+        },
+        "inventory": {
+          "eyebrow": "INVENTORY & TRACEABILITY",
+          "heading": "See what changed — and why.",
+          "body": "Inventory movement remains connected to its operational source, making Activity a trust layer rather than a separate list of events.",
+          "points": ["Purchases and receiving", "Waste and production", "Physical-count adjustments", "Manual adjustments with source history"]
+        },
+        "costing": {
+          "eyebrow": "PRICES & FOOD COST",
+          "heading": "Follow supplier prices into preparation and menu cost.",
+          "body": "The launch-release workflow compares valid supplier prices, then carries ingredient cost into preparations and menu items without confusing gross profit with net profit.",
+          "points": ["Current and previous comparable supplier price", "Normalized base-unit cost and source purchase line", "Preparation batch, yield, and cost per yield unit", "Plate cost, selling price, food-cost percentage, and gross profit before labor and overhead"],
+          "trust": "Complete, Partial, or Missing costs: if source costs are missing, the product shows the gap instead of inventing precision. Unlike packages are not compared without sufficient conversion data."
+        },
+        "counts": {
+          "eyebrow": "PHYSICAL COUNTS & REORDER",
+          "heading": "Count the operation, review variance, then prepare what to buy.",
+          "body": "The launch release supports practical numeric entry, count units, progress and resume, review before posting, and a supplier-grouped list based on below-par ingredients.",
+          "points": ["Search, filter, progress, and resume", "Transparent count-unit conversions", "Expected, counted, and variance review", "Package-aware quantities and a shareable CSV shopping list"],
+          "trust": "0 means counted and found zero; uncounted means not counted yet. The product helps prepare the order; the initial release does not place supplier orders electronically."
+        },
+        "owner": {
+          "eyebrow": "OWNER VIEW",
+          "heading": "Review the signals that need operational attention.",
+          "body": "The launch-release owner view brings useful operating signals together without forecasts, invented benchmarks, or fake savings claims.",
+          "points": ["Inventory value and recent purchasing", "Waste and supplier price changes", "Preparation, menu, and incomplete cost coverage", "Below-par items and useful recent activity"]
+        }
+      },
+      "dataSafety": {
+        "eyebrow": "DATA SAFETY",
+        "heading": "Operational data should be recoverable.",
+        "body": "The launch-release scope includes practical recovery and support work. Automatic backup is not presented as currently available without release acceptance.",
+        "points": ["Backup", "Restore and recovery", "Clean-device recovery validation", "Support and diagnostics"]
+      }
     },
     "intro": {
       "eyebrow": "A CLEARER VIEW",
@@ -515,11 +557,7 @@
     "audience": {
       "heading": "Built for restaurant operations that want a clearer inventory picture.",
       "body": "{productName} is designed for restaurant operators, owners, managers, and teams responsible for receiving or tracking product who need a better way to manage their inventory information.",
-      "items": [
-        "Restaurant operators",
-        "Owners or managers involved in inventory",
-        "Teams responsible for receiving or tracking product"
-      ]
+      "items": ["Independent and owner-operated restaurants", "Owners and restaurant managers", "Inventory and receiving teams", "Single-location operations outgrowing spreadsheets or disconnected tools"]
     },
     "earlyAccess": {
       "eyebrow": "{freeMonths} MONTHS FREE",
@@ -537,26 +575,16 @@
     "faq": {
       "heading": "Questions about {productName}",
       "items": [
-        {
-          "q": "What is {productName}?",
-          "a": "{productName} is a Venkoi product that helps restaurants manage and understand inventory, purchases, costs, and product activity from one clearer workspace."
-        },
-        {
-          "q": "Who is {productName} for?",
-          "a": "Restaurant operators and teams looking for a clearer way to understand and manage inventory activity."
-        },
-        {
-          "q": "What does {productName} help me track?",
-          "a": "{productName} helps you track inventory levels, purchasing activity, product movement, and the costs connected to your inventory."
-        },
-        {
-          "q": "What is the free offer?",
-          "a": "Restaurant operators can use {productName} free for the first {freeMonths} months."
-        },
-        {
-          "q": "How can I start using {productName}?",
-          "a": "Request a demo or choose the {freeMonths}-month free offer to get started."
-        }
+        {"q":"What is {productName}?","a":"{productName} is local-first restaurant inventory and food-cost software for independent restaurants."},
+        {"q":"Does it automatically post invoices?","a":"No. Detection creates a reviewable draft. The restaurant reviews, corrects, and explicitly posts the purchase."},
+        {"q":"Can it track supplier price changes?","a":"The launch release compares current and previous prices using normalized base-unit cost and retains the source purchase line. If package conversion data is insufficient, it shows that the comparison is incomplete."},
+        {"q":"Can it calculate preparation and menu-item cost?","a":"The launch release covers preparation batch and yield cost, plus menu plate cost, food-cost percentage, and gross profit before labor and overhead."},
+        {"q":"What happens when costs are missing?","a":"The product labels cost coverage as Complete, Partial, or Missing costs. It does not invent precision when source costs are unavailable."},
+        {"q":"Does it support physical counts?","a":"The launch release includes count units, numeric entry, progress and resume, variance review, and explicit posting. Zero remains different from uncounted."},
+        {"q":"Does it help with reordering?","a":"Yes. It identifies below-par ingredients and prepares a supplier-grouped, package-aware shopping list. The initial release does not electronically place supplier orders."},
+        {"q":"Does it connect to POS or accounting systems?","a":"Not in the first release. No integration date is being promised."},
+        {"q":"What platform is the initial release?","a":"Android. The product is local-first; Web, iOS, and cloud sync are not first-release availability claims."},
+        {"q":"Is it designed for multi-location chains?","a":"The initial focus is one restaurant and one location, not enterprise multi-location management."}
       ],
       "gettingStartedDemoOnly": "Request a demo to get started."
     },
@@ -593,8 +621,8 @@
       "whatsappMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
     },
     "seo": {
-      "title": "{productName} | Restaurant Inventory Software by Venkoi",
-      "description": "{productName} helps restaurants manage inventory, purchases, costs, and product activity from one clear workspace."
+      "title": "{productName} | Restaurant Inventory & Food-Cost Software",
+      "description": "{productName} connects restaurant inventory, invoice capture, supplier price tracking, recipe and menu costing, physical counts, and reorder decisions on Android."
     }
   },
   "seo": {

@@ -24,6 +24,8 @@ export function ZaikoFeature({
   theme3Desc,
   theme4Title,
   theme4Desc,
+  theme5Title,
+  theme5Desc,
   productName,
   visualLabels
 }: {
@@ -42,6 +44,8 @@ export function ZaikoFeature({
   theme3Desc: string;
   theme4Title: string;
   theme4Desc: string;
+  theme5Title: string;
+  theme5Desc: string;
   productName: string;
   visualLabels: ZaikoVisualLabels;
 }) {
@@ -49,7 +53,8 @@ export function ZaikoFeature({
     { title: theme1Title, desc: theme1Desc },
     { title: theme2Title, desc: theme2Desc },
     { title: theme3Title, desc: theme3Desc },
-    { title: theme4Title, desc: theme4Desc }
+    { title: theme4Title, desc: theme4Desc },
+    { title: theme5Title, desc: theme5Desc }
   ];
 
   return (

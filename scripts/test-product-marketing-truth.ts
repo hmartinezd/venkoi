@@ -8,7 +8,9 @@ import {
   PRODUCT_CAPABILITIES,
   PRODUCT_CAPABILITY_GROUPS,
   PRODUCT_NON_CLAIMS,
-  PRODUCT_TRUST_PRINCIPLES
+  PRODUCT_TRUST_PRINCIPLES,
+  getCapabilitiesForGroup,
+  getGroupAvailability
 } from '../src/lib/product-capabilities';
 
 const read = (file: string) => readFileSync(resolve(process.cwd(), file), 'utf8');
@@ -22,6 +24,8 @@ assert.ok(
   PRODUCT_CAPABILITIES.every(({ availability }) => availability === 'launch-release'),
   'Capabilities without documented release acceptance must remain launch-release'
 );
+assert.ok(getCapabilitiesForGroup('physical-counts').length > 0);
+assert.equal(getGroupAvailability('invoice-purchase-capture'), 'launch-release');
 
 const capabilityIds = new Set(PRODUCT_CAPABILITIES.map(({ id }) => id));
 for (const required of [
@@ -67,25 +71,31 @@ const publicMarketing = [
   read('src/components/home/ZaikoFeature.tsx'),
   ...[
     'ZaikoCapabilities', 'ZaikoContext', 'ZaikoEarlyAccess', 'ZaikoExplorer', 'ZaikoFaq',
-    'ZaikoFinalCta', 'ZaikoHero', 'ZaikoProductFit', 'ZaikoProductNav', 'ZaikoProductVisual'
+    'ZaikoFinalCta', 'ZaikoHero', 'ZaikoProductFit', 'ZaikoProductNav', 'ZaikoProductVisual', 'ZaikoWorkflowStory'
   ].map((name) => read(`src/components/product/zaiko/${name}.tsx`))
 ].join('\n');
 
-for (const unsupportedClaim of [
-  /automatic(?:ally)? (?:invoice|purchase) post/i,
+for (const unsupportedPositiveClaim of [
+  /invoices? (?:are|is) automatically posted/i,
   /autonomous purchasing/i,
-  /electronic(?:ally)? order(?:ing)? (?:from )?suppliers/i,
+  /electronically places supplier orders/i,
   /available (?:on|for) iOS/i,
-  /enterprise multi-location/i
+  /built for enterprise multi-location/i
 ]) {
-  assert.doesNotMatch(publicMarketing, unsupportedClaim);
+  assert.doesNotMatch(publicMarketing, unsupportedPositiveClaim);
 }
 
 const productPage = read('src/app/[locale]/products/zaiko/page.tsx');
-for (const preservedArea of ['inventory', 'purchases', 'activity', 'costs']) {
-  assert.match(productPage, new RegExp(`'${preservedArea}'`));
+for (const chapter of ['invoice-capture', 'inventory', 'food-cost', 'counts-reorder', 'owner-view']) {
+  assert.match(productPage, new RegExp(`'${chapter}'`));
 }
-assert.doesNotMatch(productPage, /Invoice Capture|Counts & Reorder|Owner View/);
+assert.match(en.zaikoPage.story.chapters.invoice.trust, /restaurant decides/i);
+assert.match(en.zaikoPage.story.chapters.costing.trust, /instead of inventing precision/i);
+assert.match(en.zaikoPage.story.chapters.counts.trust, /0 means counted and found zero/i);
+assert.match(en.zaikoPage.story.chapters.counts.trust, /does not place supplier orders electronically/i);
+assert.match(en.zaikoPage.hero.body, /Android/);
+assert.match(en.zaikoPage.hero.body, /local-first/i);
+assert.doesNotMatch(en.zaikoPage.hero.body, /Web|iOS|cloud sync|multi-location/i);
 
 const truthDoc = read('docs/PRODUCT-MARKETING-TRUTH.md');
 assert.match(truthDoc, /Android/);

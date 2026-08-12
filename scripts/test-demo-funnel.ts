@@ -52,5 +52,8 @@ assert.match(form, /successActions\.product/);
 assert.match(form, /successActions\.guide/);
 assert.match(page, /normalizeDemoConversionSource\(source\)/, 'Demo page normalizes source before client analytics');
 assert.match(page, /fixedEarlyAccessIntent=\{isEarlyAccess\}/);
+for (const agendaKey of ['setupInventory', 'invoicePurchase', 'costIntelligence', 'countsReorder', 'ownerView']) {
+  assert.match(page, new RegExp(agendaKey), `Demo agenda should include ${agendaKey}`);
+}
 
 console.log('Demo funnel regression tests passed.');

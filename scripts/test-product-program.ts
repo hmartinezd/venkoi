@@ -72,9 +72,7 @@ const sources: Array<[string, RegExp]> = [
   ['src/components/home/ZaikoFeature.tsx', /earlyAccess \? \(/],
   ['src/app/[locale]/products/zaiko/page.tsx', /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/],
   ['src/components/product/zaiko/ZaikoHero.tsx', /earlyAccess \? \(/],
-  ['src/components/product/zaiko/ZaikoProductNav.tsx', /\.\.\.\(earlyAccessLabel \?/],
   ['src/components/product/zaiko/ZaikoFinalCta.tsx', /earlyAccess \? <TrackedButton/],
-  ['src/app/[locale]/products/zaiko/page.tsx', /gettingStartedDemoOnly/],
   ['src/app/[locale]/demo/page.tsx', /earlyAccessEnabled=\{resolvedProduct\.earlyAccess\.enabled\}/],
   ['src/components/forms/DemoRequestForm.tsx', /earlyAccessEnabled \? <div/]
 ];
