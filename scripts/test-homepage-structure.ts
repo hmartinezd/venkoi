@@ -38,6 +38,7 @@ assert.ok(
 );
 assert.ok(header.includes("buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })"), 'Header Demo should retain product and source context');
 assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The featured product should precede Services');
+assert.ok(home.includes("routeKey: 'insightRestaurantFoodCost'") && home.includes("routeKey: 'insightRestaurantInventoryCounts'"), 'Homepage Insights preview should be product-first');
 assert.ok(hero.includes('<ZaikoProductVisual type="hero"'), 'Homepage Hero should show the overview product preview');
 assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
 assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should use the shared visual-label builder');

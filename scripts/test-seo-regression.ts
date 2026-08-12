@@ -23,6 +23,9 @@ const sitemapRouteKeys: RouteKey[] = [
   'terms',
   'insights',
   'insightRestaurantInventory',
+  'insightRestaurantInventoryCounts',
+  'insightRestaurantFoodCost',
+  'insightRestaurantSupplierPrices',
   'insightStartSoftwareProject',
   'insightWebsiteOrWebApp'
 ];

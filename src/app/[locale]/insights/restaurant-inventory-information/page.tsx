@@ -97,16 +97,22 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
           readMoreLabel={tInsights('readMore')}
           articles={[
             {
-              routeKey: 'insightStartSoftwareProject',
-              category: tArticles('startSoftwareProject.category'),
-              title: tArticles('startSoftwareProject.title'),
-              description: tArticles('startSoftwareProject.description')
+              routeKey: 'insightRestaurantInventoryCounts',
+              category: tArticles('restaurantInventoryCounts.category'),
+              title: tArticles('restaurantInventoryCounts.title'),
+              description: tArticles('restaurantInventoryCounts.description')
             },
             {
-              routeKey: 'insightWebsiteOrWebApp',
-              category: tArticles('websiteOrWebApp.category'),
-              title: tArticles('websiteOrWebApp.title'),
-              description: tArticles('websiteOrWebApp.description')
+              routeKey: 'insightRestaurantFoodCost',
+              category: tArticles('restaurantFoodCost.category'),
+              title: tArticles('restaurantFoodCost.title'),
+              description: tArticles('restaurantFoodCost.description')
+            },
+            {
+              routeKey: 'insightRestaurantSupplierPrices',
+              category: tArticles('restaurantSupplierPrices.category'),
+              title: tArticles('restaurantSupplierPrices.title'),
+              description: tArticles('restaurantSupplierPrices.description')
             }
           ]}
         />

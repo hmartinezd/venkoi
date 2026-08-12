@@ -6,13 +6,14 @@ const read = (file: string): string => readFileSync(resolve(process.cwd(), file)
 const index = read('src/app/[locale]/insights/page.tsx');
 const shell = read('src/components/insights/InsightArticle.tsx');
 const related = read('src/components/insights/RelatedInsights.tsx');
+const restaurantGuide = read('src/components/insights/RestaurantInsightGuide.tsx');
 
 const articles = [
   {
     key: 'insightRestaurantInventory',
     file: 'src/app/[locale]/insights/restaurant-inventory-information/page.tsx',
     ids: ['problem', 'purchases', 'quantities', 'activity', 'costs', 'together', 'product-approach'],
-    related: ['insightStartSoftwareProject', 'insightWebsiteOrWebApp'],
+    related: ['insightRestaurantInventoryCounts', 'insightRestaurantFoodCost', 'insightRestaurantSupplierPrices'],
     source: 'insight'
   },
   {
@@ -30,6 +31,19 @@ const articles = [
     source: 'insight_web_decision'
   }
 ] as const;
+
+for (const [key, file] of [
+  ['insightRestaurantInventoryCounts', 'src/app/[locale]/insights/restaurant-inventory-counts/page.tsx'],
+  ['insightRestaurantFoodCost', 'src/app/[locale]/insights/restaurant-food-cost/page.tsx'],
+  ['insightRestaurantSupplierPrices', 'src/app/[locale]/insights/restaurant-supplier-price-changes/page.tsx']
+] as const) {
+  assert.ok(index.includes(`routeKey: '${key}'`), `Index should include ${key}`);
+  const source = read(file);
+  assert.ok(source.includes('RestaurantInsightGuide'), `${key} should use the shared article architecture`);
+  assert.ok(source.includes('product-approach'), `${key} should include a product connection`);
+}
+assert.ok(restaurantGuide.includes("source: 'insight'") && restaurantGuide.includes('eventName="zaiko_demo_cta"'), 'Restaurant guides should preserve Demo analytics');
+assert.ok(index.indexOf('restaurantArticles') < index.indexOf('softwareArticles'), 'Restaurant operations should lead the landing page');
 
 const featuredPosition = index.indexOf('featured');
 assert.ok(featuredPosition > index.indexOf('articles[0]'), 'The first index article should be featured');

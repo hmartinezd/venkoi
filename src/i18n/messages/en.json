@@ -749,6 +749,10 @@
     "heading": "Practical guides for building and using better software.",
     "body": "Clear thinking around software products, digital experiences, and the real workflows behind them.",
     "readMore": "Read more",
+    "families": {
+      "restaurantOperations": "Restaurant operations",
+      "buildingSoftware": "Building software"
+    },
     "categories": {
       "restaurantOperations": "RESTAURANT OPERATIONS",
       "buildingSoftware": "BUILDING SOFTWARE",
@@ -780,6 +784,94 @@
         "zaikoBody": "{productName} is designed to bring these four areas—inventory, purchases, activity, and costs—into a single, focused experience. It focuses on providing clearer visibility into your operation without adding unnecessary complexity.",
         "ctaExplore": "Explore {productName}",
         "ctaDemo": "Request a Demo"
+      }
+    },
+    "restaurantInventoryCounts": {
+      "seoTitle": "Restaurant Inventory Counts: Zero, Uncounted, and Variance | Venkoi",
+      "seoDescription": "Learn how expected inventory, physical counts, count units, variance review, and traceable adjustments fit together.",
+      "category": "RESTAURANT OPERATIONS",
+      "title": "Restaurant inventory counts: zero, uncounted, and variance",
+      "description": "A practical guide to recording what was found, separating zero from unfinished work, and reviewing variance before inventory changes.",
+      "content": {
+        "intro": "A physical count is where the inventory record meets the shelf. The result is trustworthy only when the count preserves what someone actually found, what they have not checked yet, and what the restaurant reviewed before posting an adjustment.",
+        "expectedTitle": "Expected inventory is a reference, not the count",
+        "expectedBody": "Expected inventory may be calculated from the previous balance and the activity recorded since then: purchases, usage, waste, transfers, or earlier adjustments. It gives the person counting a point of comparison. It does not prove what is physically present.",
+        "expectedBody2": "Counted quantity is different. It is the amount someone actually finds during the physical count. Keeping expected and counted quantities separate makes variance visible instead of allowing the system's estimate to replace an observation.",
+        "statesTitle": "Zero and uncounted are different states",
+        "statesBody": "0 means counted and found zero. Uncounted means not counted yet. If both states are stored as zero, an unfinished count can look like a confirmed empty shelf and create an incorrect adjustment.",
+        "statesExample": "Fictional example: tomatoes are expected at 8 cases and counted at 0 cases, so their status is Counted. Chicken breast is expected at 12 packs but has no entry, so its status is Uncounted. The tomatoes may require review; the chicken still requires a count.",
+        "unitsTitle": "Count units need visible conversions",
+        "unitsBody": "Restaurants receive, store, and count products in different units: case, bag, bottle, each, pound, or ounce. A person may count two cases while inventory is maintained in pounds. That conversion is useful only when the package and unit relationship is known.",
+        "unitsBody2": "Conversions should be understandable and reviewable. Some products do not have enough information for a reliable conversion, and variable-weight products may not fit a fixed assumption. In those cases, the gap should remain visible instead of being hidden behind a precise-looking number.",
+        "progressTitle": "Progress matters when a count takes time",
+        "progressBody": "A full count rarely happens in one uninterrupted pass. The team needs to see what has been counted, what remains, where work stopped, and which entries need review. Saving progress also prevents a resumed count from turning blank items into accidental zeros.",
+        "varianceTitle": "Variance is expected compared with counted",
+        "varianceBody": "Variance is the difference between the expected quantity and the counted quantity. It is an operational signal, not an explanation by itself. A difference may point to missing activity, a unit error, spoilage, portioning, theft, or a simple counting mistake.",
+        "varianceBody2": "Large or surprising differences deserve review. Check the count entry, unit, recent purchases, waste, and other recorded activity before deciding that the inventory record should change.",
+        "reviewTitle": "Review first, then post the adjustment",
+        "reviewBody": "A completed count should not silently rewrite inventory. The restaurant should review the variance and explicitly post the approved adjustment. That moment separates observation from the decision to change the official quantity.",
+        "traceTitle": "Keep the adjustment connected to the count",
+        "traceBody": "After posting, the adjustment should remain linked to the physical-count event. Later, an operator can see what changed, where it came from, when it happened, and which operational action caused it. History is a trust layer, not just a log.",
+        "productTitle": "How {productName} approaches physical counts",
+        "productBody": "{productName} supports numeric count entry, count units and transparent conversions, search and filtering, saved progress, and expected-versus-counted review. The restaurant reviews the result and explicitly posts the count adjustment, which remains traceable to the count event. When a conversion is not supported by sufficient information, the workflow should show the limitation rather than invent a quantity.",
+        "ctaDemo": "Request a Demo",
+        "ctaExplore": "Explore {productName}"
+      }
+    },
+    "restaurantFoodCost": {
+      "seoTitle": "Restaurant Food Cost: From Ingredient Cost to Menu Item | Venkoi",
+      "seoDescription": "Understand how supplier package costs flow through ingredients, preparations, yield, menu items, and food-cost coverage.",
+      "category": "RESTAURANT OPERATIONS",
+      "title": "Restaurant food cost: from ingredient cost to menu item",
+      "description": "How package prices become usable ingredient costs, flow through preparations and yield, and reach the cost of a plate.",
+      "content": {
+        "intro": "Food cost is a chain of connected calculations. Each result depends on the source information before it. Following that chain makes the number explainable and makes missing information visible.",
+        "packageTitle": "Start with the supplier package",
+        "packageBody": "The price on a purchase usually belongs to a package: a case, bag, bottle, or box. That total is important for the purchase record, but it may not be the unit used in a recipe. A $24 case is not yet a cost per pound unless the case weight is known.",
+        "normalizedTitle": "Normalize cost only when the conversion is known",
+        "normalizedBody": "With sufficient package information, the purchase cost can be converted to a useful base unit. For example, a fictional 12-pound case purchased for $24 costs $2 per pound. The arithmetic is simple; the reliability depends on the package actually containing 12 pounds.",
+        "normalizedBody2": "Not every package has a complete or fixed conversion. If weight, quantity, or another required relationship is missing, the system should not guess a base-unit cost.",
+        "preparationTitle": "Preparations carry ingredient cost into a batch",
+        "preparationBody": "Restaurants turn ingredients into sauces, stocks, dressings, dough, and other prepared components. The preparation's batch cost comes from its ingredients. To make that cost useful for recipes, the restaurant also needs the batch quantity and usable yield.",
+        "yieldTitle": "Batch cost needs yield",
+        "yieldBody": "Suppose a fictional tomato-sauce batch uses $8 of tomatoes, $2 of oil, and $1 of seasoning. The batch costs $11. If it produces 22 usable portions, each portion costs $0.50. If the actual yield changes, the cost per portion changes even when ingredient prices stay the same.",
+        "menuTitle": "A plate can combine ingredients and preparations",
+        "menuBody": "A menu item's cost may include direct ingredients, measured portions of preparations, and other components. Each component should bring its own supported cost into the plate calculation. This creates a path back from the menu-item total to the purchases and conversions behind it.",
+        "percentageTitle": "Food-cost percentage is one relationship, not the whole business",
+        "percentageBody": "Food-cost percentage compares plate cost with selling price: plate cost divided by selling price. The result can help an operator review pricing and portions, but no single percentage is universally right for every restaurant or menu item.",
+        "percentageBody2": "Selling price minus plate cost shows gross profit before labor and overhead. Gross profit is not net profit. Rent, payroll, utilities, fees, waste, and other expenses still matter.",
+        "coverageTitle": "Missing source costs must stay visible",
+        "coverageBody": "If an ingredient has no supported cost, any preparation or menu item that depends on it is incomplete. Cost coverage can be described as Complete, Partial, or Missing costs. If source costs are missing, show the gap instead of inventing precision.",
+        "productTitle": "How {productName} connects the cost chain",
+        "productBody": "{productName} connects supplier purchase cost to ingredient cost, preparation and batch cost, yield, and menu-item cost. It can present food-cost percentage, gross profit before labor and overhead, and cost coverage. These results depend on the source costs and conversions the restaurant has recorded; gaps remain visible rather than becoming estimated certainty.",
+        "ctaDemo": "Request a Demo",
+        "ctaExplore": "Explore {productName}"
+      }
+    },
+    "restaurantSupplierPrices": {
+      "seoTitle": "How to Track Restaurant Supplier Price Changes | Venkoi",
+      "seoDescription": "Learn how package size, unit conversion, comparable purchases, and source context make supplier price changes meaningful.",
+      "category": "RESTAURANT OPERATIONS",
+      "title": "Track supplier price changes without comparing the wrong things",
+      "description": "Why package totals can mislead, how normalized unit costs help, and when a price comparison should remain incomplete.",
+      "content": {
+        "intro": "A higher invoice line does not always mean the ingredient became more expensive. Before comparing two purchases, the restaurant needs to know whether the packages represent the same usable quantity.",
+        "problemTitle": "Package prices are not automatically comparable",
+        "problemBody": "A 12-unit case and a 24-unit case are different purchasing units. The same is true for a 5-pound bag and a 10-pound bag. The larger package can cost more in total while costing less for each usable unit.",
+        "exampleTitle": "Compare the package and the unit",
+        "exampleBody": "Fictional example: Purchase A is a 12-unit case for $24, or $2 per unit. Purchase B is a 24-unit case for $42, or $1.75 per unit. The package price increased by $18, or 75%, while the unit price decreased by $0.25, or 12.5%. Looking only at $24 to $42 would give the wrong operational signal.",
+        "comparableTitle": "Use the previous comparable purchase",
+        "comparableBody": "The latest purchase should be compared with a previous purchase that can be expressed in the same base unit. That may require a known package size and unit conversion. Supplier, product identity, and packaging context also matter; the immediately previous invoice line is not always the right comparison.",
+        "incompleteTitle": "Do not force a comparison",
+        "incompleteBody": "Sometimes the information needed to normalize two packages is missing or unreliable. A variable-weight case may lack its actual weight, or a package quantity may never have been recorded. In that situation, a trustworthy system should mark the comparison incomplete instead of calculating a confident percentage from incompatible totals.",
+        "changesTitle": "Show both absolute and percentage change",
+        "changesBody": "Once two base-unit costs are comparable, absolute change shows the amount added or removed per unit. Percentage change shows that difference relative to the earlier cost. Both should be tied to the units being compared so the number cannot be mistaken for a package-level change.",
+        "sourceTitle": "Keep the number connected to its source",
+        "sourceBody": "An operator reviewing a change should be able to see the supplier, package, purchase date, source purchase line, and previous comparable purchase. That context makes price history verifiable and helps reveal a packaging change or data-entry issue.",
+        "productTitle": "How {productName} approaches supplier price history",
+        "productBody": "{productName} can connect the latest comparable price with the previous comparable price, show absolute and percentage changes, preserve package price and normalized base-unit cost, and retain the source purchase line and supplier history. When conversion information is insufficient, the comparison should carry a warning rather than a forced result. The initial release does not negotiate with suppliers or electronically place orders.",
+        "ctaDemo": "Request a Demo",
+        "ctaExplore": "Explore {productName}"
       }
     },
     "startSoftwareProject": {
@@ -920,6 +1012,9 @@
     "webApplications": "Websites & Web Applications",
     "insights": "Insights",
     "insightRestaurantInventory": "Restaurant Inventory",
+    "insightRestaurantInventoryCounts": "Physical Inventory Counts",
+    "insightRestaurantFoodCost": "Restaurant Food Cost",
+    "insightRestaurantSupplierPrices": "Supplier Price Changes",
     "insightStartSoftwareProject": "Starting a Project",
     "insightWebsiteOrWebApp": "Website or App"
   }

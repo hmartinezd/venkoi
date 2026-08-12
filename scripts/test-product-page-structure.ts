@@ -32,6 +32,7 @@ assert.ok(visual.includes("type: 'hero' | 'inventory' | 'purchases' | 'activity'
 assert.ok(visual.includes('FEATURED_PRODUCT.name'), 'Representative visuals use the registry product name');
 assert.ok(visual.includes('<figcaption'), 'Representative sample data remains disclosed');
 assert.ok(page.includes("operatingSystem: productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform)"), 'Structured data platform remains registry-driven');
+assert.ok(page.includes('routeKey="insightRestaurantFoodCost"') && page.includes('routeKey="insightRestaurantInventoryCounts"'), 'Product page should expose multiple relevant guides');
 
 for (const messages of [en, es]) {
   assert.equal(messages.zaikoPage.story.workflow.steps.length, 9);

@@ -12,7 +12,7 @@ interface InsightsPreviewProps {
   cta: string;
   readMoreLabel: string;
   articles: Array<{
-    routeKey: 'insightRestaurantInventory' | 'insightStartSoftwareProject' | 'insightWebsiteOrWebApp';
+    routeKey: 'insightRestaurantInventory' | 'insightRestaurantInventoryCounts' | 'insightRestaurantFoodCost' | 'insightRestaurantSupplierPrices' | 'insightStartSoftwareProject' | 'insightWebsiteOrWebApp';
     category: string;
     title: string;
     description: string;

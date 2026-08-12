@@ -62,16 +62,16 @@ export default async function HomePage({ params }: PageProps) {
       description: tArticles('restaurantInventory.description')
     },
     {
-      routeKey: 'insightStartSoftwareProject' as const,
-      category: tArticles('startSoftwareProject.category'),
-      title: tArticles('startSoftwareProject.title'),
-      description: tArticles('startSoftwareProject.description')
+      routeKey: 'insightRestaurantFoodCost' as const,
+      category: tArticles('restaurantFoodCost.category'),
+      title: tArticles('restaurantFoodCost.title'),
+      description: tArticles('restaurantFoodCost.description')
     },
     {
-      routeKey: 'insightWebsiteOrWebApp' as const,
-      category: tArticles('websiteOrWebApp.category'),
-      title: tArticles('websiteOrWebApp.title'),
-      description: tArticles('websiteOrWebApp.description')
+      routeKey: 'insightRestaurantInventoryCounts' as const,
+      category: tArticles('restaurantInventoryCounts.category'),
+      title: tArticles('restaurantInventoryCounts.title'),
+      description: tArticles('restaurantInventoryCounts.description')
     }
   ];
 

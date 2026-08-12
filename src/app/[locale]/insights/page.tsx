@@ -39,13 +39,33 @@ export default async function InsightsPage({ params }: PageProps) {
   const t = await getTranslations('insightsPage');
   const tArticles = await getTranslations('insightsArticles');
 
-  const articles = [
+  const restaurantArticles = [
     {
       routeKey: 'insightRestaurantInventory' as const,
       category: tArticles('restaurantInventory.category'),
       title: tArticles('restaurantInventory.title'),
       description: tArticles('restaurantInventory.description')
     },
+    {
+      routeKey: 'insightRestaurantInventoryCounts' as const,
+      category: tArticles('restaurantInventoryCounts.category'),
+      title: tArticles('restaurantInventoryCounts.title'),
+      description: tArticles('restaurantInventoryCounts.description')
+    },
+    {
+      routeKey: 'insightRestaurantFoodCost' as const,
+      category: tArticles('restaurantFoodCost.category'),
+      title: tArticles('restaurantFoodCost.title'),
+      description: tArticles('restaurantFoodCost.description')
+    },
+    {
+      routeKey: 'insightRestaurantSupplierPrices' as const,
+      category: tArticles('restaurantSupplierPrices.category'),
+      title: tArticles('restaurantSupplierPrices.title'),
+      description: tArticles('restaurantSupplierPrices.description')
+    }
+  ];
+  const softwareArticles = [
     {
       routeKey: 'insightStartSoftwareProject' as const,
       category: tArticles('startSoftwareProject.category'),
@@ -87,22 +107,24 @@ export default async function InsightsPage({ params }: PageProps) {
       </Section>
 
       <Section variant="surface" spacing="compact" className="border-t border-border">
-        <Container>
+        <Container className="space-y-14">
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{t('families.restaurantOperations')}</h2>
           <div className="grid gap-6 lg:grid-cols-12">
-            {articles[0] ? (
+            {restaurantArticles[0] ? (
               <InsightCard
                 locale={currentLocale}
-                category={articles[0].category}
-                title={articles[0].title}
-                description={articles[0].description}
-                routeKey={articles[0].routeKey}
+                category={restaurantArticles[0].category}
+                title={restaurantArticles[0].title}
+                description={restaurantArticles[0].description}
+                routeKey={restaurantArticles[0].routeKey}
                 readMoreLabel={t('readMore')}
                 featured
                 headingLevel="h2"
               />
             ) : null}
             <div className="grid gap-6 lg:col-span-5">
-              {articles.slice(1).map((article) => (
+              {restaurantArticles.slice(1).map((article) => (
                 <InsightCard
                   key={article.routeKey}
                   locale={currentLocale}
@@ -114,6 +136,13 @@ export default async function InsightsPage({ params }: PageProps) {
                   headingLevel="h2"
                 />
               ))}
+            </div>
+          </div>
+          </div>
+          <div className="space-y-6 border-t border-border pt-12">
+            <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{t('families.buildingSoftware')}</h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {softwareArticles.map((article) => <InsightCard key={article.routeKey} locale={currentLocale} category={article.category} title={article.title} description={article.description} routeKey={article.routeKey} readMoreLabel={t('readMore')} headingLevel="h3" />)}
             </div>
           </div>
         </Container>

@@ -716,6 +716,7 @@
     "heading": "Guías prácticas para crear y usar mejor software.",
     "body": "Ideas claras sobre productos de software, experiencias digitales y los procesos reales que hay detrás de ellos.",
     "readMore": "Leer más",
+    "families": { "restaurantOperations": "Operaciones de restaurantes", "buildingSoftware": "Desarrollo de software" },
     "categories": {
       "restaurantOperations": "OPERACIONES DE RESTAURANTES",
       "buildingSoftware": "CREACIÓN DE SOFTWARE",
@@ -747,6 +748,51 @@
         "zaikoBody": "{productName} está diseñado para reunir estas cuatro áreas —inventario, compras, actividad y costos— en una experiencia única y enfocada. Se centra en ofrecer una visibilidad más clara de tu operación sin añadir una complejidad innecesaria.",
         "ctaExplore": "Explorar {productName}",
         "ctaDemo": "Solicitar una demostración"
+      }
+    },
+    "restaurantInventoryCounts": {
+      "seoTitle": "Conteo físico de inventario: cero, sin contar y variaciones | Venkoi",
+      "seoDescription": "Cómo se relacionan inventario esperado, conteo físico, unidades, variaciones y ajustes trazables.",
+      "category": "OPERACIONES DE RESTAURANTES",
+      "title": "Conteo físico de inventario: cero, sin contar y variaciones",
+      "description": "Cómo registrar lo encontrado, separar el cero del trabajo pendiente y revisar antes de ajustar el inventario.",
+      "content": {
+        "intro": "El conteo físico compara el registro con lo que realmente hay. Un resultado confiable conserva qué se encontró, qué falta por contar y qué revisó el restaurante antes de publicar un ajuste.",
+        "expectedTitle": "Lo esperado es una referencia, no el conteo", "expectedBody": "La cantidad esperada puede partir del saldo anterior y de compras, consumo, desperdicio, transferencias y ajustes registrados. Sirve para comparar, pero no demuestra cuánto producto existe físicamente.", "expectedBody2": "La cantidad contada es lo que alguien encuentra. Mantener ambos valores separados deja visible la variación e impide que una estimación sustituya la observación.",
+        "statesTitle": "Cero y sin contar son estados distintos", "statesBody": "0 significa contado y encontrado en cero. Sin contar significa que todavía no se ha contado. Si ambos se guardan como cero, un conteo incompleto puede provocar un ajuste incorrecto.", "statesExample": "Ejemplo ficticio: se esperaban 8 cajas de tomates y se contaron 0; el estado es Contado. Se esperan 12 paquetes de pollo, pero no hay entrada; el estado es Sin contar. Los tomates pueden requerir revisión; el pollo todavía debe contarse.",
+        "unitsTitle": "Las conversiones deben ser visibles", "unitsBody": "Un restaurante puede contar por caja, bolsa, botella, unidad, libra u onza. Contar dos cajas cuando el inventario se controla en libras solo funciona si se conoce la relación entre empaque y unidad.", "unitsBody2": "Algunos productos no tienen información suficiente y los de peso variable no siempre admiten equivalencias fijas. En esos casos se debe mostrar el vacío, no ocultarlo con precisión aparente.",
+        "progressTitle": "El progreso importa", "progressBody": "Un conteo puede interrumpirse. El equipo necesita saber qué contó, qué falta, dónde se detuvo y qué debe revisar. Guardar progreso evita convertir espacios pendientes en ceros accidentales.",
+        "varianceTitle": "La variación compara esperado y contado", "varianceBody": "La diferencia es una señal operativa, no una explicación. Puede indicar actividad faltante, una unidad incorrecta, desperdicio o un error de conteo.", "varianceBody2": "Antes de ajustar, conviene revisar la entrada, la unidad, las compras recientes, el desperdicio y la actividad registrada.",
+        "reviewTitle": "Primero se revisa; luego se publica", "reviewBody": "Terminar el conteo no debería reescribir el inventario de forma silenciosa. El restaurante revisa la variación y publica explícitamente el ajuste aprobado.",
+        "traceTitle": "El ajuste queda conectado al conteo", "traceBody": "La relación permite entender después qué cambió, de dónde vino, cuándo ocurrió y qué acción lo causó. El historial es una capa de confianza.",
+        "productTitle": "Cómo aborda {productName} los conteos", "productBody": "{productName} admite entradas numéricas, unidades y conversiones transparentes, búsqueda, filtros, progreso guardado y revisión de esperado frente a contado. El restaurante publica explícitamente el ajuste, que queda vinculado al conteo. Si falta información para convertir, se muestra la limitación.", "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
+      }
+    },
+    "restaurantFoodCost": {
+      "seoTitle": "Costo de alimentos: del ingrediente al plato | Venkoi", "seoDescription": "Cómo el costo de un empaque pasa por ingredientes, preparaciones, rendimiento, platos y cobertura.", "category": "OPERACIONES DE RESTAURANTES", "title": "Costo de alimentos: del ingrediente al plato", "description": "Cómo el precio de compra se convierte en costo de ingrediente y llega al plato mediante preparaciones y rendimiento.",
+      "content": {
+        "intro": "El costo de alimentos es una cadena. Cada resultado depende de la información anterior; seguirla permite explicar el número y mostrar los vacíos.",
+        "packageTitle": "Empieza con el empaque del proveedor", "packageBody": "El precio suele corresponder a una caja, bolsa, botella o paquete. Ese total no es un costo por libra si no se conoce el peso del empaque.",
+        "normalizedTitle": "Normaliza solo con una conversión conocida", "normalizedBody": "Ejemplo ficticio: una caja de 12 libras por $24 cuesta $2 por libra. El cálculo es confiable solo si la caja realmente contiene 12 libras.", "normalizedBody2": "Si falta peso, cantidad u otra relación necesaria, no se debe adivinar un costo por unidad base.",
+        "preparationTitle": "Las preparaciones reúnen costos en un lote", "preparationBody": "Salsas, fondos, aderezos y masas combinan ingredientes. Además del costo del lote, se necesita su cantidad y rendimiento útil.",
+        "yieldTitle": "El lote necesita rendimiento", "yieldBody": "Ejemplo ficticio: tomates por $8, aceite por $2 y condimentos por $1 producen un lote de $11. Si rinde 22 porciones, cada una cuesta $0.50. Un rendimiento distinto cambia ese costo.",
+        "menuTitle": "Un plato combina ingredientes y preparaciones", "menuBody": "El costo puede incluir ingredientes directos, porciones de preparaciones y otros componentes. Cada uno debe aportar un costo respaldado que pueda seguirse hasta su origen.",
+        "percentageTitle": "El porcentaje no describe todo el negocio", "percentageBody": "El porcentaje de costo es costo del plato dividido entre precio de venta. No existe un número universalmente correcto para todos los restaurantes.", "percentageBody2": "Precio menos costo del plato muestra ganancia bruta antes de mano de obra y gastos generales. Ganancia bruta no es ganancia neta.",
+        "coverageTitle": "Los costos faltantes permanecen visibles", "coverageBody": "Si falta el costo de un ingrediente, las preparaciones y platos que dependen de él están incompletos. La cobertura puede ser Completa, Parcial o Costos faltantes. No se inventa precisión.",
+        "productTitle": "Cómo conecta {productName} los costos", "productBody": "{productName} conecta compra, ingrediente, preparación, rendimiento y plato. Puede mostrar porcentaje, ganancia bruta antes de mano de obra y gastos generales, y cobertura. Los vacíos de origen permanecen visibles.", "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
+      }
+    },
+    "restaurantSupplierPrices": {
+      "seoTitle": "Cómo seguir cambios de precios de proveedores | Venkoi", "seoDescription": "Cómo empaque, conversiones, compras comparables y contexto de origen hacen útil un cambio de precio.", "category": "OPERACIONES DE RESTAURANTES", "title": "Sigue precios de proveedores sin comparar cosas distintas", "description": "Por qué los totales de empaque pueden confundir y cuándo una comparación debe quedar incompleta.",
+      "content": {
+        "intro": "Una línea de compra más alta no siempre significa que el ingrediente subió. Primero hay que saber si los empaques representan la misma cantidad utilizable.",
+        "problemTitle": "Los empaques no siempre son comparables", "problemBody": "Una caja de 12 unidades y otra de 24 son distintas. El empaque grande puede costar más en total y menos por unidad.",
+        "exampleTitle": "Compara empaque y unidad", "exampleBody": "Ejemplo ficticio: Compra A, 12 unidades por $24, cuesta $2 por unidad. Compra B, 24 por $42, cuesta $1.75. El empaque subió $18 (75%), pero la unidad bajó $0.25 (12.5%). Comparar solo $24 con $42 sería engañoso.",
+        "comparableTitle": "Usa la compra comparable anterior", "comparableBody": "La compra reciente debe compararse con otra expresable en la misma unidad base. Se necesitan conversiones conocidas y contexto de producto, proveedor y empaque.",
+        "incompleteTitle": "No fuerces la comparación", "incompleteBody": "Si falta peso o cantidad, los empaques quizá no puedan normalizarse. Un sistema confiable marca el análisis como incompleto en vez de calcular un porcentaje con totales incompatibles.",
+        "changesTitle": "Muestra cambio absoluto y porcentual", "changesBody": "Cuando los costos base son comparables, el cambio absoluto muestra la diferencia por unidad y el porcentaje la relaciona con el costo anterior. La unidad debe quedar clara.",
+        "sourceTitle": "Conserva el contexto de origen", "sourceBody": "Proveedor, empaque, fecha, línea de compra y compra comparable anterior vuelven verificable el historial y ayudan a detectar cambios de presentación o errores.",
+        "productTitle": "Cómo aborda {productName} el historial", "productBody": "{productName} puede mostrar precios comparables, cambios absolutos y porcentuales, precio de empaque, costo normalizado, línea de compra e historial del proveedor. Si falta conversión, muestra una advertencia. La versión inicial no negocia ni envía pedidos electrónicamente.", "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
       }
     },
     "startSoftwareProject": {
@@ -850,6 +896,9 @@
     "webApplications": "Páginas Web y Aplicaciones Web",
     "insights": "Recursos",
     "insightRestaurantInventory": "Inventario de Restaurante",
+    "insightRestaurantInventoryCounts": "Conteo Físico",
+    "insightRestaurantFoodCost": "Costo de Alimentos",
+    "insightRestaurantSupplierPrices": "Cambios de Precios",
     "insightStartSoftwareProject": "Empezar un Proyecto",
     "insightWebsiteOrWebApp": "Página Web o Aplicación"
   }

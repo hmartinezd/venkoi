@@ -14,6 +14,9 @@ export const internalRoutes = {
   terms: '/terms',
   insights: '/insights',
   insightRestaurantInventory: '/insights/restaurant-inventory-information',
+  insightRestaurantInventoryCounts: '/insights/restaurant-inventory-counts',
+  insightRestaurantFoodCost: '/insights/restaurant-food-cost',
+  insightRestaurantSupplierPrices: '/insights/restaurant-supplier-price-changes',
   insightStartSoftwareProject: '/insights/start-a-software-project',
   insightWebsiteOrWebApp: '/insights/website-or-web-application'
 } as const;
@@ -63,6 +66,18 @@ const pathnames = {
   '/insights/restaurant-inventory-information': {
     en: '/insights/restaurant-inventory-information',
     es: '/recursos/inventario-restaurante-informacion-dispersa'
+  },
+  '/insights/restaurant-inventory-counts': {
+    en: '/insights/restaurant-inventory-counts',
+    es: '/recursos/conteo-fisico-inventario-restaurante'
+  },
+  '/insights/restaurant-food-cost': {
+    en: '/insights/restaurant-food-cost',
+    es: '/recursos/costo-alimentos-restaurante'
+  },
+  '/insights/restaurant-supplier-price-changes': {
+    en: '/insights/restaurant-supplier-price-changes',
+    es: '/recursos/cambios-precios-proveedores-restaurante'
   },
   '/insights/start-a-software-project': {
     en: '/insights/start-a-software-project',

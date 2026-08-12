@@ -15,6 +15,9 @@ const sitemapRoutes: RouteKey[] = [
   'terms',
   'insights',
   'insightRestaurantInventory',
+  'insightRestaurantInventoryCounts',
+  'insightRestaurantFoodCost',
+  'insightRestaurantSupplierPrices',
   'insightStartSoftwareProject',
   'insightWebsiteOrWebApp'
 ];
@@ -41,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: routeKey === 'home' ? 1.0 :
                  (routeKey === 'privacy' || routeKey === 'terms') ? 0.3 :
                  (routeKey === 'productsZaiko' || routeKey === 'servicesMobile' || routeKey === 'servicesWeb') ? 0.9 :
-                 (routeKey === 'insightRestaurantInventory') ? 0.8 : 0.7,
+                 (routeKey === 'insightRestaurantInventory' || routeKey === 'insightRestaurantInventoryCounts' || routeKey === 'insightRestaurantFoodCost' || routeKey === 'insightRestaurantSupplierPrices') ? 0.8 : 0.7,
         alternates: {
           languages
         }
