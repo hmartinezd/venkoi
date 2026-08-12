@@ -1,6 +1,9 @@
 import {
   getLocalizedPath,
-  getRouteKeyFromPath
+  getRouteKeyFromPath,
+  isInsightRoute,
+  isServiceRoute,
+  type RouteKey
 } from '../src/i18n/routing';
 
 console.log('=== RUNNING ROUTING REGRESSION TESTS ===\n');
@@ -77,6 +80,37 @@ assert(getRouteKeyFromPath('/es/recursos/pagina-web-o-aplicacion-web') === 'insi
 // 3. Test internalRoutes mapping
 console.log('\nTesting internalRoutes mapping:');
 assert(getRouteKeyFromPath('/services/mobile-applications') === 'servicesMobile', 'Internal Path /services/mobile-applications -> servicesMobile');
+
+// 4. Test navigation route families
+console.log('\nTesting navigation route families:');
+
+const insightRoutes: RouteKey[] = [
+  'insights',
+  'insightRestaurantInventory',
+  'insightRestaurantInventoryCounts',
+  'insightRestaurantFoodCost',
+  'insightRestaurantSupplierPrices',
+  'insightStartSoftwareProject',
+  'insightWebsiteOrWebApp'
+];
+const nonInsightRoutes: RouteKey[] = ['home', 'productsZaiko', 'services', 'contact'];
+
+insightRoutes.forEach((routeKey) => {
+  assert(isInsightRoute(routeKey), `${routeKey} belongs to the Insights family`);
+});
+nonInsightRoutes.forEach((routeKey) => {
+  assert(!isInsightRoute(routeKey), `${routeKey} does not belong to the Insights family`);
+});
+
+const serviceRoutes: RouteKey[] = ['services', 'servicesMobile', 'servicesWeb'];
+const nonServiceRoutes: RouteKey[] = ['home', 'productsZaiko', 'insights', 'contact'];
+
+serviceRoutes.forEach((routeKey) => {
+  assert(isServiceRoute(routeKey), `${routeKey} belongs to the Services family`);
+});
+nonServiceRoutes.forEach((routeKey) => {
+  assert(!isServiceRoute(routeKey), `${routeKey} does not belong to the Services family`);
+});
 
 console.log(`\nTests finished: ${passed} passed, ${failed} failed.`);
 

@@ -2,7 +2,12 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
-import { internalRoutes, getRouteKeyFromPath } from '@/i18n/routing';
+import {
+  getRouteKeyFromPath,
+  internalRoutes,
+  isInsightRoute,
+  isServiceRoute
+} from '@/i18n/routing';
 import { type Locale } from '@/i18n/config';
 import { useTranslations } from 'next-intl';
 import { BrandLogo } from '@/components/brand/BrandLogo';
@@ -25,13 +30,8 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
   const tCommon = useTranslations('common');
 
   const isProductsActive = routeKey === 'productsZaiko';
-  const isInsightsActive = [
-    'insights',
-    'insightRestaurantInventory',
-    'insightStartSoftwareProject',
-    'insightWebsiteOrWebApp'
-  ].includes(routeKey);
-  const isServicesActive = ['services', 'servicesMobile', 'servicesWeb'].includes(routeKey);
+  const isInsightsActive = isInsightRoute(routeKey);
+  const isServicesActive = isServiceRoute(routeKey);
   const isAboutActive = routeKey === 'about';
   const isContactActive = routeKey === 'contact';
 

@@ -24,6 +24,30 @@ export const internalRoutes = {
 export type RouteKey = keyof typeof internalRoutes;
 export type InternalPathname = (typeof internalRoutes)[RouteKey];
 
+export const insightRouteKeys = [
+  'insights',
+  'insightRestaurantInventory',
+  'insightRestaurantInventoryCounts',
+  'insightRestaurantFoodCost',
+  'insightRestaurantSupplierPrices',
+  'insightStartSoftwareProject',
+  'insightWebsiteOrWebApp'
+] as const satisfies readonly RouteKey[];
+
+export const serviceRouteKeys = [
+  'services',
+  'servicesMobile',
+  'servicesWeb'
+] as const satisfies readonly RouteKey[];
+
+export function isInsightRoute(routeKey: RouteKey): boolean {
+  return insightRouteKeys.some((insightRouteKey) => insightRouteKey === routeKey);
+}
+
+export function isServiceRoute(routeKey: RouteKey): boolean {
+  return serviceRouteKeys.some((serviceRouteKey) => serviceRouteKey === routeKey);
+}
+
 const pathnames = {
   '/': '/',
   '/products/zaiko': {
