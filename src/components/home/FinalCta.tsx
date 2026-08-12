@@ -12,15 +12,13 @@ export function FinalCta({
   heading,
   body,
   demoCta,
-  talkCta,
-  locationLine
+  talkCta
 }: {
   locale: Locale;
   heading: string;
   body: string;
   demoCta: string;
   talkCta: string;
-  locationLine: string;
 }) {
   return (
     <Section variant="dark" spacing="spacious" className="text-center">
@@ -47,10 +45,6 @@ export function FinalCta({
             {talkCta}
           </Button>
         </div>
-
-        <p className="text-xs text-white/50 pt-6 tracking-wider uppercase font-medium">
-          {locationLine}
-        </p>
       </Container>
     </Section>
   );

@@ -43,8 +43,8 @@
   "home": {
     "hero": {
       "eyebrow": "PRODUCT-FIRST SOFTWARE COMPANY",
-      "heading": "We build our own software around the operational work businesses need to get right.",
-      "body": "Venkoi's featured product connects restaurant purchases, inventory, food cost, counts, and the work that needs attention. We also take on selected custom software projects.",
+      "heading": "Venkoi builds focused software products around work businesses need to get right.",
+      "body": "Venkoi's featured product connects restaurant purchasing, inventory, food cost, and counts for a clearer operational review. We also accept selected custom software projects.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
@@ -108,21 +108,19 @@
     },
     "aboutPreview": {
       "eyebrow": "ABOUT VENKOI",
-      "heading": "Products first. Services when you need something built.",
-      "p1": "Venkoi is a product-first software company. We create practical products around real business problems, beginning with restaurant inventory.",
-      "p2": "We learn the work, choose the part that matters most, and build a version people can use and test before adding more.",
-      "p3": "Tampa Bay is home, while our products are designed to serve businesses far beyond one market.",
+      "heading": "A software company that starts with its own products.",
+      "p1": "Venkoi creates focused software for specific operational problems. Our first product begins with restaurant inventory, while selected custom projects remain part of what we build.",
+      "location": "Based in Tampa Bay. Building products for businesses well beyond one market.",
       "cta": "Learn more about Venkoi"
     },
     "finalCta": {
-      "heading": "Start with the product, or bring us a problem to build around.",
-      "body": "Request a demo of our restaurant inventory product. For a custom mobile or web project, use the separate project contact path.",
-      "locationLine": "Tampa Bay · South Florida · Beyond"
+      "heading": "See the product, or tell us what you need built.",
+      "body": "Want to see our restaurant inventory product? Request a demo. Have a different mobile or web software problem? Tell us about the project."
     },
     "insights": {
       "eyebrow": "INSIGHTS",
-      "heading": "Practical guidance for deciding what to build — and what should change in the work.",
-      "body": "Practical guides about software projects, web experiences, and restaurant inventory workflows.",
+      "heading": "Practical guidance for restaurant operations.",
+      "body": "Guides to restaurant inventory, physical counts, food cost, and the supplier information behind day-to-day decisions.",
       "cta": "Explore all insights"
     }
   },

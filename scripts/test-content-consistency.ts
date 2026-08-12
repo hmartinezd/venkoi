@@ -101,7 +101,8 @@ assert.doesNotMatch(homeFinal, /type=services|interest=/);
 
 const homePage = read('src/app/[locale]/page.tsx');
 assert.match(homePage, /secondaryCta=\{tCommon\('demo'\)\}/);
-assert.match(homePage, /location=\{tCommon\('locationLine'\)\}/);
+assert.doesNotMatch(homePage, /location=\{tCommon\('locationLine'\)\}/);
+assert.match(homePage, /location=\{tHome\('aboutPreview\.location'\)\}/);
 assert.match(homePage, /talkCta=\{tCommon\('startConversation'\)\}/);
 
 const about = read('src/app/[locale]/about/page.tsx');

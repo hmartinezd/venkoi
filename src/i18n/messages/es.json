@@ -43,8 +43,8 @@
   "home": {
     "hero": {
       "eyebrow": "EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS",
-      "heading": "Creamos nuestros propios productos para el trabajo operativo que cada negocio necesita hacer bien.",
-      "body": "El producto destacado de Venkoi conecta compras, inventario, costo de alimentos, conteos y el trabajo que requiere atención en restaurantes. También aceptamos proyectos de software a medida cuidadosamente seleccionados.",
+      "heading": "Venkoi crea productos de software enfocados en el trabajo que cada negocio necesita hacer bien.",
+      "body": "El producto destacado de Venkoi conecta compras, inventario, costo de alimentos y conteos para facilitar la revisión operativa de restaurantes. También aceptamos proyectos de software a medida seleccionados.",
       "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
@@ -108,21 +108,19 @@
     },
     "aboutPreview": {
       "eyebrow": "SOBRE VENKOI",
-      "heading": "Primero, nuestros productos. También desarrollamos software a medida.",
-      "p1": "Venkoi es una empresa de software enfocada en crear sus propios productos. Desarrollamos soluciones prácticas para problemas reales, comenzando por el inventario de restaurantes.",
-      "p2": "Conocemos el trabajo, elegimos lo que más importa y creamos una versión que se pueda usar y probar antes de añadir más.",
-      "p3": "Tampa Bay es nuestro hogar, mientras nuestros productos están diseñados para servir a negocios mucho más allá de un solo mercado.",
+      "heading": "Una empresa de software que empieza por sus propios productos.",
+      "p1": "Venkoi crea software enfocado en problemas operativos concretos. Nuestro primer producto parte del inventario de restaurantes, y también desarrollamos algunos proyectos a medida.",
+      "location": "Nuestra sede está en Tampa Bay. Creamos productos para negocios dentro y fuera de nuestro mercado local.",
       "cta": "Conoce más sobre Venkoi"
     },
     "finalCta": {
-      "heading": "Empieza con el producto o cuéntanos qué problema necesitas resolver.",
-      "body": "Solicita una demo de nuestro producto de inventario para restaurantes. Para un proyecto móvil o web a medida, usa el contacto de proyectos.",
-      "locationLine": "Tampa Bay · South Florida · Más allá"
+      "heading": "Conoce el producto o cuéntanos qué necesitas crear.",
+      "body": "¿Quieres conocer nuestro producto de inventario para restaurantes? Solicita una demo. ¿Tienes otro proyecto móvil o web? Cuéntanos qué necesitas resolver."
     },
     "insights": {
       "eyebrow": "RECURSOS",
-      "heading": "Guías prácticas para decidir qué crear y qué debe cambiar en el trabajo.",
-      "body": "Guías prácticas sobre proyectos de software, experiencias web y procesos de inventario en restaurantes.",
+      "heading": "Guías prácticas para la operación de restaurantes.",
+      "body": "Recursos sobre inventario, conteos físicos, costo de alimentos y la información de proveedores que orienta las decisiones diarias.",
       "cta": "Ver todos los recursos"
     }
   },

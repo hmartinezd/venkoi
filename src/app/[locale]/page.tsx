@@ -111,7 +111,6 @@ export default async function HomePage({ params }: PageProps) {
         body={tHome('hero.body')}
         primaryCta={tHome('hero.primaryCta', { productName: FEATURED_PRODUCT.name })}
         secondaryCta={tCommon('demo')}
-        location={tCommon('locationLine')}
         visualLabels={visualLabels}
       />
 
@@ -144,6 +143,16 @@ export default async function HomePage({ params }: PageProps) {
         visualLabels={visualLabels}
       />
 
+      <InsightsPreview
+        locale={currentLocale}
+        eyebrow={tHome('insights.eyebrow')}
+        heading={tHome('insights.heading')}
+        body={tHome('insights.body')}
+        cta={tHome('insights.cta')}
+        readMoreLabel={tInsights('readMore')}
+        articles={articles}
+      />
+
       <PhilosophySection
         eyebrow={tHome('philosophy.eyebrow')}
         heading={tHome('philosophy.heading')}
@@ -158,34 +167,13 @@ export default async function HomePage({ params }: PageProps) {
         item3Desc={tHome('philosophy.item3Desc')}
       />
 
-      <InsightsPreview
-        locale={currentLocale}
-        eyebrow={tHome('insights.eyebrow')}
-        heading={tHome('insights.heading')}
-        body={tHome('insights.body')}
-        cta={tHome('insights.cta')}
-        readMoreLabel={tInsights('readMore')}
-        articles={articles}
-      />
-
       <CompanyContext
         locale={currentLocale}
         eyebrow={tHome('aboutPreview.eyebrow')}
         heading={tHome('aboutPreview.heading')}
         p1={tHome('aboutPreview.p1')}
-        p2={tHome('aboutPreview.p2')}
-        p3={tHome('aboutPreview.p3')}
+        location={tHome('aboutPreview.location')}
         cta={tHome('aboutPreview.cta')}
-        localEyebrow={tHome('local.eyebrow')}
-        localHeading={tHome('local.heading')}
-        localBody={tHome('local.body')}
-        tampaTitle={tHome('local.tampaTitle')}
-        tampaDesc={tHome('local.tampaDesc')}
-        southFloridaTitle={tHome('local.southFloridaTitle')}
-        southFloridaDesc={tHome('local.southFloridaDesc')}
-        beyondTitle={tHome('local.beyondTitle')}
-        beyondDesc={tHome('local.beyondDesc')}
-        prominentStatement={tHome('local.prominentStatement')}
       />
 
       <ServicesSection
@@ -207,7 +195,6 @@ export default async function HomePage({ params }: PageProps) {
         body={tHome('finalCta.body')}
         demoCta={tCommon('demo')}
         talkCta={tCommon('startConversation')}
-        locationLine={tHome('finalCta.locationLine')}
       />
     </>
   );

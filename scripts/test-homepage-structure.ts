@@ -16,8 +16,8 @@ const es = JSON.parse(read('src/i18n/messages/es.json'));
 const expectedOrder = [
   '<HeroSection',
   '<ZaikoFeature',
-  '<PhilosophySection',
   '<InsightsPreview',
+  '<PhilosophySection',
   '<CompanyContext',
   '<ServicesSection',
   '<FinalCta'
@@ -40,6 +40,9 @@ assert.ok(header.includes("buildProductDemoHref(locale, FEATURED_PRODUCT, { sour
 assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The featured product should precede Services');
 assert.ok(home.includes("routeKey: 'insightRestaurantFoodCost'") && home.includes("routeKey: 'insightRestaurantInventoryCounts'"), 'Homepage Insights preview should be product-first');
 assert.ok(hero.includes('<ZaikoProductVisual type="hero"'), 'Homepage Hero should show the overview product preview');
+assert.ok(!hero.includes('location'), 'Homepage Hero should not foreground geography');
+assert.ok(!read('src/components/home/FinalCta.tsx').includes('locationLine'), 'Final CTA should focus on the two conversion paths');
+assert.ok(!read('src/components/home/CompanyContext.tsx').includes('regions.map'), 'Company context should not present geography as a regional framework');
 assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
 assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should use the shared visual-label builder');
 assert.match(home, /getHomepageMarketingState\(\)/, 'Homepage availability copy should use its own derived product state');

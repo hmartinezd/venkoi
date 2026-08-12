@@ -15,7 +15,6 @@ export function HeroSection({
   body,
   primaryCta,
   secondaryCta,
-  location,
   visualLabels
 }: {
   locale: Locale;
@@ -24,7 +23,6 @@ export function HeroSection({
   body: string;
   primaryCta: string;
   secondaryCta: string;
-  location: string;
   visualLabels: ZaikoVisualLabels;
 }) {
   return (
@@ -55,12 +53,6 @@ export function HeroSection({
             </TrackedButton>
           </div>
 
-          <div className="pt-6 border-t border-border/80">
-            <p className="text-xs font-medium text-foreground-muted flex items-center gap-2">
-              <span className="inline-block h-2 w-2 rounded-full bg-orange" />
-              {location}
-            </p>
-          </div>
         </div>
 
         <div className="relative isolate w-full">
