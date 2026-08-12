@@ -8,7 +8,7 @@ Detailed featured-product scope, availability, trust principles, and explicit no
 - **Primary commercial focus:** The current FEATURED_PRODUCT, resolved through the product registry. Public copy must not hard-code its display name where registry interpolation is available.
 - **Company/product relationship:** Venkoi is the company; FEATURED_PRODUCT is a product created by Venkoi. The site should support additional real products later without inventing them now.
 - **Secondary business line:** Selected custom mobile applications, websites, and web applications. Services should remain credible and easy to find without defining the company or competing with the featured product on the homepage.
-- **Primary product conversion:** Request a product Demo, with the registry-controlled Early Access offer shown when enabled.
+- **Primary product conversions:** Request a Demo and, when the registry-controlled access program is enabled, Request Access. These are distinct intents: Demo means seeing the product; Access Request means asking Venkoi to consider the restaurant for product access. Technical identifiers such as `earlyAccess` remain internal implementation details, not public program branding.
 - **Primary service conversion:** Start a custom-project conversation through Contact.
 
 When reviewing future homepage changes, ask whether the first screen makes the company, featured product, intended customer, business problem, and next product action clear. Preserve factual claims, localized routing, legal pages, lead handling, analytics, and the registry-controlled product program.

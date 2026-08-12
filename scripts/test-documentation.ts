@@ -30,6 +30,7 @@ assert.match(readme, /Spanish production delivery has not been manually verified
 assert.doesNotMatch(readme, /production forms are fully operational/i, 'README must not claim forms are fully operational');
 assert.match(readme, /manually verified/i, 'README must record completed production persistence verification');
 assert.match(readme, /stable product slug `zaiko`/i, 'README must document rename-safe Demo persistence');
+assert.match(readme, /early_access_interest = false[\s\S]*Demo[\s\S]*true[\s\S]*Request Access/i, 'README must document shared Demo and Request Access storage');
 assert.match(readme, /technical data-handling inventory/i, 'README must link to the technical data-handling inventory');
 
 assert.match(dataHandling, /Internal technical\/data-governance document/i, 'DATA-HANDLING must be explicitly internal and technical');
@@ -40,7 +41,13 @@ assert.match(dataHandling, /Same-origin Venkoi referrers are discarded/i, 'DATA-
 assert.match(dataHandling, /up to 24 months from the last meaningful interaction/i, 'DATA-HANDLING must document approved retention');
 assert.match(dataHandling, /Operational and future product decisions still required/i, 'DATA-HANDLING must identify remaining operational and product work');
 assert.match(dataHandling, /Spanish production email delivery[\s\S]*pending/i, 'DATA-HANDLING must preserve pending Spanish production email verification');
-assert.match(dataHandling, /venkoi\.com` cutover[\s\S]*pending/i, 'DATA-HANDLING must preserve pending domain cutover');
+assert.match(dataHandling, /https:\/\/venkoi\.com` serves as the primary domain/i, 'DATA-HANDLING must record the verified apex production identity');
+assert.doesNotMatch(dataHandling, /cutover correction remains pending|primary-domain redirect is still reversed/i, 'DATA-HANDLING must not preserve stale domain blockers');
+assert.match(dataHandling, /Standard Demo[^\n]*early_access_interest = false/i, 'DATA-HANDLING must document Standard Demo storage');
+assert.match(dataHandling, /Request Access[^\n]*early_access_interest = true/i, 'DATA-HANDLING must document Request Access storage');
+assert.match(dataHandling, /\{product\} Access Request/i, 'DATA-HANDLING must document Access Request notification subjects');
+assert.match(dataHandling, /Access request: Yes/i, 'DATA-HANDLING must document the human-readable access field');
+assert.match(dataHandling, /does not guarantee acceptance or timing/i, 'DATA-HANDLING must preserve Access Request qualification');
 
 const envLines = read('.env.example').split(/\r?\n/);
 const env = new Map<string, string>();
@@ -79,19 +86,33 @@ assert.ok(migrationPositions[0] < migrationPositions[1] && migrationPositions[1]
 
 assert.match(launch, /Production email delivery — done/, 'Runbook must identify completed production email verification');
 assert.match(launch, /Production lead persistence — done/, 'Runbook must distinguish completed Neon persistence');
+assert.match(launch, /Current operational state/, 'Runbook must summarize the reconciled current state');
+assert.match(launch, /Apex domain[^\n]*Production verified/i, 'Runbook must record apex production verification');
 assert.match(launch, /Spanish-language production delivery has not been manually verified/i, 'Runbook must distinguish unverified Spanish production delivery');
 assert.match(launch, /must not be interpreted as the previous SPA route/i, 'Runbook must document referrer semantics');
 assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
-assert.match(launch, /Publish localized Privacy Policy and Website Terms routes/i, 'Runbook must record public legal routes');
+assert.match(launch, /Privacy is published at `\/en\/privacy`[\s\S]*Website Terms are published at `\/en\/terms`/i, 'Runbook must record public legal routes');
 assert.match(launch, /privacy@venkoi\.com/, 'Runbook must record owner-side privacy mailbox action');
-assert.match(launch, /Domain cutover — owner checklist/, 'Runbook must include the owner domain-cutover checklist');
-assert.match(launch, /exact DNS records Vercel currently requests/, 'Runbook must defer exact DNS values to Vercel');
+assert.match(launch, /Domain cutover — historical owner checklist/, 'Runbook must preserve the historical domain-cutover checklist');
+assert.match(launch, /Exact record values[^\n]*Vercel's project-specific instructions/i, 'Runbook must defer exact DNS values to Vercel');
 assert.match(launch, /Make `venkoi\.com` the primary production domain/, 'Runbook must identify the apex primary domain');
 assert.match(launch, /`www\.venkoi\.com` is attached[\s\S]*redirect to `venkoi\.com`/, 'Runbook must document the optional www redirect');
-assert.match(launch, /Live domain, SEO, and platform verification — after cutover/, 'Runbook must keep live verification pending until cutover');
-assert.match(launch, /Vercel Analytics shows real production traffic/, 'Runbook must require live Analytics verification');
-assert.match(launch, /Speed Insights begins receiving production observations/, 'Runbook must require live Speed Insights verification');
+assert.match(launch, /Live domain, SEO, and platform verification — recorded after cutover/, 'Runbook must preserve the dated post-cutover verification');
+assert.match(launch, /Final owner go\/no-go/, 'Runbook must provide one authoritative remaining-action checklist');
+assert.match(launch, /Confirm Vercel Analytics receives real production traffic/, 'Runbook must require live Analytics verification');
+assert.match(launch, /Confirm Vercel Speed Insights receives production observations/, 'Runbook must require live Speed Insights verification');
+assert.match(launch, /Confirm BotID is operational in Vercel Production/, 'Runbook must require live BotID verification');
+assert.match(launch, /Confirm the Vercel Production environment explicitly sets `SITE_URL=https:\/\/venkoi\.com`/, 'Runbook must distinguish SITE_URL environment inspection from correct live output');
 assert.match(launch, /Spanish production email delivery remains pending/, 'Runbook must preserve pending Spanish email status');
+assert.match(launch, /During the 2026-08-11 production-domain verification, commit `838599c` was the verified deployment/i, 'Runbook must frame the verified SHA as dated history');
+assert.doesNotMatch(launch, /Deploy the current `main` commit/i, 'Historical SHAs must not be described as current deployments');
 assert.doesNotMatch(launch, /\b(?:76\.76\.21\.21|cname\.vercel-dns\.com)\b/i, 'Runbook must not hardcode generic DNS records');
+
+const positioning = read('docs/POSITIONING.md');
+assert.match(positioning, /product-first software company/i, 'POSITIONING must remain product-first');
+assert.match(positioning, /Secondary business line[^\n]*Selected custom/i, 'POSITIONING must keep Services secondary');
+assert.match(positioning, /Request a Demo[\s\S]*Request Access/i, 'POSITIONING must document both product conversions');
+assert.match(positioning, /distinct intents/i, 'POSITIONING must distinguish Demo from Request Access');
+assert.doesNotMatch(positioning, /Early Access offer/i, 'POSITIONING must not use legacy public program branding');
 
 console.log('Documentation regression checks passed.');

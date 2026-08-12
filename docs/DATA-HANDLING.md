@@ -49,7 +49,7 @@ The Demo UI submits `DEMO`. Blank optional strings are normalized to `null` befo
 | Restaurant/business | `current_system` | Optional; `none`, `spreadsheet`, `pos_tools`, or `other`. |
 | Restaurant/business | `message` | Optional; maximum 5,000 characters. |
 | Product/funnel | `product` | Required for Demo and must resolve to a Demo-enabled registry product. The stored stable technical slug is `zaiko`; it is distinct from the registry-driven human-facing display name and must not be renamed by presentation changes. |
-| Product/funnel | `early_access_interest` | Boolean free-offer interest flag; defaults to `false`. |
+| Product/funnel | `early_access_interest` | Boolean Request Access intent flag; defaults to `false`. Standard Demo stores `false`; Request Access stores `true`. The technical field name is intentionally stable. |
 | Context | `locale` | `en` or `es`. |
 | Context | `source_path`, `referrer`, UTM fields | Same behavior and limits as Contact. |
 | Technical/internal | `id`, `lead_type`, `status`, `created_at` | Server ID; `DEMO`; initial `NEW`; creation timestamp. |
@@ -83,7 +83,14 @@ The application creates IDs with a `lead_` prefix, time component, and random by
 
 The database permits current canonical interests plus specified historical compatibility values. Application validation emits `mobile`, `web`, or `unsure`. Demo product validation is registry-driven; current production verification records the stable `zaiko` slug, not the display name.
 
-No repository-managed deletion job, anonymization job, or lead administration interface was found. **Recorded operational decision:** unconverted Contact, Demo, and Early Access lead records should ordinarily be retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. Customer conversion may place the record under a later customer/business-record policy. Automated enforcement is not implemented; an owner-operated review and deletion/anonymization process remains required. No destructive automation or database migration is introduced by this milestone.
+No repository-managed deletion job, anonymization job, or lead administration interface was found. **Recorded operational decision:** unconverted Contact, Demo, and Access Request lead records should ordinarily be retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. Customer conversion may place the record under a later customer/business-record policy. Automated enforcement is not implemented; an owner-operated review and deletion/anonymization process remains required. No destructive automation or database migration is introduced by this milestone.
+
+The shared product lead architecture intentionally keeps both intents under `lead_type = DEMO`:
+
+- Standard Demo → `lead_type = DEMO`, `early_access_interest = false`.
+- Request Access → `lead_type = DEMO`, `early_access_interest = true`.
+
+This storage model does not make an Access Request a customer-facing Demo and does not require a new lead type.
 
 ## Transactional email exposure
 
@@ -91,16 +98,16 @@ No repository-managed deletion job, anonymization job, or lead administration in
 
 - Recipient: server-configured `LEADS_NOTIFICATION_EMAIL`.
 - Reply-To: the submitted lead email address.
-- It always contains lead type. When present, it may contain registry-resolved product display name, free-offer interest, name, email, phone, company, location count, current system, service interest, project stage, message, locale, source path, UTM values, normalized referrer, lead ID, and creation time.
-- The subject may contain the lead name/first name/email and a registry-driven product display name. Product presentation is resolved from the stored slug; an unresolved slug is used as fallback text.
+- It always contains lead type. When present, it may contain registry-resolved product display name, the human-readable field `Access request: Yes`, name, email, phone, company, location count, current system, service interest, project stage, message, locale, source path, UTM values, normalized referrer, lead ID, and creation time.
+- Standard Demo uses the subject `{product} Demo`; Request Access uses `{product} Access Request`. Product presentation is resolved from the stored slug; an unresolved slug is used as fallback text.
 
 ### Customer acknowledgement
 
 - Recipient: the submitted lead email address.
 - Reply-To: `LEADS_NOTIFICATION_EMAIL`.
-- It contains a greeting using first name or composite name (with a localized fallback), confirmation of Contact or Demo receipt, next-step copy, and reply instructions. Demo messages can contain the registry-driven product display name.
+- It contains a greeting using first name or composite name (with a localized fallback), confirmation of Contact, Demo, or Access Request receipt, next-step copy, and reply instructions. Product messages can contain the registry-driven product display name.
 - Content is selected from `lead.locale`: English for `en`, Spanish for `es`.
-- If the free-offer flag is true, the acknowledgement includes localized offer text. For a registry-resolved product this includes display name and configured free-month count.
+- When `early_access_interest` is true, the acknowledgement confirms an Access Request rather than a Demo. It describes the configured free-month benefit only conditionally for accepted participants and does not guarantee acceptance or timing.
 
 The Resend API key is read only on the server and is not placed in email content or logs.
 
@@ -152,17 +159,15 @@ No sensitive service configuration is exposed through a `NEXT_PUBLIC_*` variable
 
 ## Recorded production and public-UI status
 
-Repository documentation records Neon Contact and Demo persistence, stable `zaiko` slug persistence, Resend sending, English Contact/Demo internal notification and acknowledgement delivery, and the canonical production-origin code contract as verified. These are recorded operational facts, not re-tested against live services in this audit.
+Repository documentation records Neon Contact and product-lead persistence, stable `zaiko` slug persistence, Resend sending, English Contact/product internal notification and acknowledgement delivery, and the apex production identity as verified. The 2026-08-11 record confirms that `https://venkoi.com` serves as the primary domain, `www` redirects to the equivalent apex URL, and canonical/hreflang/Open Graph/sitemap output uses the apex. These are recorded operational facts, not re-tested against live services in this audit.
 
-The following remain pending: completion of the `venkoi.com` primary-domain correction, live Analytics traffic, live Speed Insights, live BotID operation, Spanish production email delivery, operational retention enforcement, and final go/no-go.
+The following remain owner/platform verification items: explicit inspection of the Vercel Production `SITE_URL` setting, Analytics dashboard traffic, Speed Insights observations, recent production logs, live BotID operation, Spanish production email delivery, `privacy@venkoi.com` delivery, the operational retention process, and final go/no-go. Repository instrumentation does not establish dashboard or mailbox health.
 
 Spanish production email delivery remains pending manual verification.
 
-The `venkoi.com` cutover correction remains pending because the primary-domain redirect is still reversed, as detailed in the launch runbook.
+Localized public Privacy Policy and Website Terms of Use routes exist in English and Spanish and are linked from the footer. The published privacy contact is `privacy@venkoi.com`. The policies cover the current marketing website, Contact, Demo, and product-access request flows; they do not purport to govern future authenticated or paid products. No consent banner or consent-management platform is present or introduced.
 
-Localized public Privacy Policy and Website Terms of Use routes exist in English and Spanish and are linked from the footer. The published privacy contact is `privacy@venkoi.com`. The policies cover the current marketing website, Contact, Demo, and Early Access flows; they do not purport to govern future authenticated or paid products. No consent banner or consent-management platform is present or introduced.
-
-Recorded operational decisions for V1: Venkoi does not currently operate a marketing mailing list, sell personal information, or use submitted lead information for third-party targeted advertising. Contact, Demo, and Early Access responses are transactional or direct responses to the submitted request.
+Recorded operational decisions for V1: Venkoi does not currently operate a marketing mailing list, sell personal information, or use submitted lead information for third-party targeted advertising. Contact, Demo, and Access Request responses are transactional or direct responses to the submitted request.
 
 ## Operational and future product decisions still required
 
