@@ -1,47 +1,7 @@
 import { FEATURED_PRODUCT } from '@/lib/products';
+import type { ZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
 
-export type ZaikoVisualLabels = {
-  inventory: string;
-  purchases: string;
-  activity: string;
-  costs: string;
-  onHand: string;
-  incoming: string;
-  history: string;
-  trend: string;
-  preview: string;
-  sampleData: string;
-  item: string;
-  quantity: string;
-  location: string;
-  status: string;
-  vendor: string;
-  received: string;
-  total: string;
-  change: string;
-  source: string;
-  currentCost: string;
-  previousCost: string;
-  tomatoes: string;
-  chickenBreast: string;
-  avocado: string;
-  oliveOil: string;
-  flour: string;
-  produceVendor: string;
-  foodDistributor: string;
-  walkIn: string;
-  dryStorage: string;
-  available: string;
-  receivedStatus: string;
-  orderedStatus: string;
-  purchase: string;
-  adjustment: string;
-  receiving: string;
-  today: string;
-  yesterday: string;
-  workflow: string;
-  connected: string;
-};
+export type { ZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
 
 interface Props {
   type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'workflow';
@@ -55,26 +15,30 @@ const inventoryRows = (l: ZaikoVisualLabels) => [
   [l.oliveOil, '6 gal', l.dryStorage, l.available]
 ];
 
-function Frame({ l, children, className = '' }: { l: ZaikoVisualLabels; children: React.ReactNode; className?: string }) {
+type PreviewTone = 'light' | 'dark';
+
+function Frame({ l, children, className = '', tone = 'light' }: { l: ZaikoVisualLabels; children: React.ReactNode; className?: string; tone?: PreviewTone }) {
+  const dark = tone === 'dark';
   return (
-    <figure className={`min-w-0 rounded-3xl border border-border bg-surface p-4 shadow-card sm:p-6 ${className}`}>
-      <div className="mb-5 flex items-center justify-between gap-3 border-b border-border pb-4">
+    <figure className={`min-w-0 rounded-3xl border p-4 shadow-card sm:p-6 ${dark ? 'border-white/15 bg-ink text-white' : 'border-border bg-surface text-ink'} ${className}`}>
+      <div className={`mb-5 flex items-center justify-between gap-3 border-b pb-4 ${dark ? 'border-white/15' : 'border-border'}`}>
         <div className="flex min-w-0 items-center gap-2">
           <span className="h-2.5 w-2.5 flex-none rounded-full bg-orange" />
-          <span className="truncate text-xs font-bold uppercase tracking-wider text-ink">{FEATURED_PRODUCT.name}</span>
+          <span className={`truncate text-xs font-bold uppercase tracking-wider ${dark ? 'text-white' : 'text-ink'}`}>{FEATURED_PRODUCT.name}</span>
         </div>
-        <span className="rounded-full bg-orange-subtle px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-orange-text">
+        <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${dark ? 'bg-white/10 text-orange' : 'bg-orange-subtle text-orange-text'}`}>
           {l.preview}
         </span>
       </div>
       {children}
-      <figcaption className="mt-4 text-[11px] leading-relaxed text-foreground-muted">{l.sampleData}</figcaption>
+      <figcaption className={`mt-4 text-[11px] leading-relaxed ${dark ? 'text-white/70' : 'text-foreground-muted'}`}>{l.sampleData}</figcaption>
     </figure>
   );
 }
 
-function Heading({ title, meta }: { title: string; meta: string }) {
-  return <div className="mb-3 flex items-end justify-between gap-3"><h3 className="text-sm font-bold text-ink">{title}</h3><span className="text-[10px] font-semibold uppercase tracking-wide text-foreground-muted">{meta}</span></div>;
+function Heading({ title, meta, tone = 'light' }: { title: string; meta: string; tone?: PreviewTone }) {
+  const dark = tone === 'dark';
+  return <div className="mb-3 flex items-end justify-between gap-3"><h3 className={`text-sm font-bold ${dark ? 'text-white' : 'text-ink'}`}>{title}</h3><span className={`text-[10px] font-semibold uppercase tracking-wide ${dark ? 'text-white/70' : 'text-foreground-muted'}`}>{meta}</span></div>;
 }
 
 function Inventory({ l }: { l: ZaikoVisualLabels }) {
@@ -118,7 +82,7 @@ function Costs({ l }: { l: ZaikoVisualLabels }) {
 }
 
 export function ZaikoProductVisual({ type, className = '', labels: l }: Props) {
-  if (type === 'workflow') return <Frame l={l} className={`bg-ink text-white ${className}`}><Heading title={`${FEATURED_PRODUCT.name} ${l.workflow}`} meta={l.connected} /><div className="grid gap-2 sm:grid-cols-4">{[
+  if (type === 'workflow') return <Frame l={l} tone="dark" className={className}><Heading title={`${FEATURED_PRODUCT.name} ${l.workflow}`} meta={l.connected} tone="dark" /><div className="grid gap-2 sm:grid-cols-4">{[
     [l.purchases, 'PO-1048'], [l.inventory, `${l.tomatoes} · 24 lb`], [l.activity, '+24 lb'], [l.costs, '$2.10/lb']
   ].map(([label, value], i) => <div key={label} className="relative rounded-xl border border-white/15 bg-white/5 p-3"><span className="block text-[10px] font-bold uppercase tracking-wide text-orange">{label}</span><strong className="mt-2 block text-xs text-white">{value}</strong>{i < 3 ? <span className="absolute -bottom-2 left-1/2 text-orange sm:-right-3 sm:bottom-auto sm:left-auto sm:top-1/2" aria-hidden="true">→</span> : null}</div>)}</div></Frame>;
   if (type === 'hero') return <Frame l={l} className={className}><div className="grid gap-4 sm:grid-cols-[1.35fr_.65fr]"><Inventory l={l} /><div className="grid gap-3"><div className="rounded-xl border border-orange/30 bg-orange-subtle/40 p-3"><span className="text-[10px] font-bold uppercase text-orange-text">{l.incoming}</span><strong className="mt-1 block text-sm text-ink">PO-1048</strong><span className="text-xs text-foreground-muted">{l.produceVendor}</span></div><div className="rounded-xl border border-border bg-background p-3"><span className="text-[10px] font-bold uppercase text-foreground-muted">{l.activity}</span><strong className="mt-1 block text-sm text-ink">{l.tomatoes} +24 lb</strong><span className="text-xs text-foreground-muted">{l.today}</span></div><div className="rounded-xl border border-border bg-background p-3"><span className="text-[10px] font-bold uppercase text-foreground-muted">{l.costs}</span><strong className="mt-1 block text-sm text-ink">$2.10 / lb</strong></div></div></div></Frame>;

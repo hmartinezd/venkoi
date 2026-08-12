@@ -1,0 +1,89 @@
+export type ZaikoVisualLabels = {
+  inventory: string;
+  purchases: string;
+  activity: string;
+  costs: string;
+  onHand: string;
+  incoming: string;
+  history: string;
+  trend: string;
+  preview: string;
+  sampleData: string;
+  item: string;
+  quantity: string;
+  location: string;
+  status: string;
+  vendor: string;
+  received: string;
+  total: string;
+  change: string;
+  source: string;
+  currentCost: string;
+  previousCost: string;
+  tomatoes: string;
+  chickenBreast: string;
+  avocado: string;
+  oliveOil: string;
+  flour: string;
+  produceVendor: string;
+  foodDistributor: string;
+  walkIn: string;
+  dryStorage: string;
+  available: string;
+  receivedStatus: string;
+  orderedStatus: string;
+  purchase: string;
+  adjustment: string;
+  receiving: string;
+  today: string;
+  yesterday: string;
+  workflow: string;
+  connected: string;
+};
+
+type VisualTranslator = (key: keyof ZaikoVisualLabels) => string;
+
+export function buildZaikoVisualLabels(tVisuals: VisualTranslator): ZaikoVisualLabels {
+  return {
+    inventory: tVisuals('inventory'),
+    purchases: tVisuals('purchases'),
+    activity: tVisuals('activity'),
+    costs: tVisuals('costs'),
+    onHand: tVisuals('onHand'),
+    incoming: tVisuals('incoming'),
+    history: tVisuals('history'),
+    trend: tVisuals('trend'),
+    preview: tVisuals('preview'),
+    sampleData: tVisuals('sampleData'),
+    item: tVisuals('item'),
+    quantity: tVisuals('quantity'),
+    location: tVisuals('location'),
+    status: tVisuals('status'),
+    vendor: tVisuals('vendor'),
+    received: tVisuals('received'),
+    total: tVisuals('total'),
+    change: tVisuals('change'),
+    source: tVisuals('source'),
+    currentCost: tVisuals('currentCost'),
+    previousCost: tVisuals('previousCost'),
+    tomatoes: tVisuals('tomatoes'),
+    chickenBreast: tVisuals('chickenBreast'),
+    avocado: tVisuals('avocado'),
+    oliveOil: tVisuals('oliveOil'),
+    flour: tVisuals('flour'),
+    produceVendor: tVisuals('produceVendor'),
+    foodDistributor: tVisuals('foodDistributor'),
+    walkIn: tVisuals('walkIn'),
+    dryStorage: tVisuals('dryStorage'),
+    available: tVisuals('available'),
+    receivedStatus: tVisuals('receivedStatus'),
+    orderedStatus: tVisuals('orderedStatus'),
+    purchase: tVisuals('purchase'),
+    adjustment: tVisuals('adjustment'),
+    receiving: tVisuals('receiving'),
+    today: tVisuals('today'),
+    yesterday: tVisuals('yesterday'),
+    workflow: tVisuals('workflow'),
+    connected: tVisuals('connected')
+  };
+}

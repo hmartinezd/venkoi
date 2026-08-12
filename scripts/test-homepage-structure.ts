@@ -40,6 +40,7 @@ assert.ok(header.includes('buildProductDemoHref(locale, FEATURED_PRODUCT)'), 'He
 assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The featured product should precede Services');
 assert.ok(hero.includes('<ZaikoProductVisual type="hero"'), 'Homepage Hero should show the overview product preview');
 assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
+assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should use the shared visual-label builder');
 for (const messages of [en, es]) {
   assert.match(messages.home.hero.eyebrow, /PRODUCT|PRODUCTOS/, 'Hero should identify Venkoi as a product company');
   assert.ok(messages.contactPage.productDemo.eyebrow, 'Contact should distinguish product intent');

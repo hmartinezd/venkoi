@@ -11,6 +11,7 @@ const explorer = read('src/components/product/zaiko/ZaikoExplorer.tsx');
 const capabilities = read('src/components/product/zaiko/ZaikoCapabilities.tsx');
 const productNav = read('src/components/product/zaiko/ZaikoProductNav.tsx');
 const visual = read('src/components/product/zaiko/ZaikoProductVisual.tsx');
+const visualLabels = read('src/lib/zaiko-visual-labels.ts');
 const en = JSON.parse(read('src/i18n/messages/en.json'));
 const es = JSON.parse(read('src/i18n/messages/es.json'));
 
@@ -59,6 +60,12 @@ assert.ok(visual.includes('Representative interface with sample operational data
 assert.ok(visual.includes('FEATURED_PRODUCT.name'), 'Product preview should use the registry-driven display name');
 assert.ok(visual.includes('<figcaption'), 'Representative sample data should be explicitly disclosed');
 assert.ok(!visual.includes('overflow-x-auto'), 'Preview should adapt without introducing horizontal scrolling');
+assert.ok(visual.includes("type PreviewTone = 'light' | 'dark'"), 'Shared preview styling should expose explicit light and dark tones');
+assert.ok(visual.includes('tone="dark"'), 'Workflow preview should explicitly request the dark tone');
+assert.ok(visual.includes("tone === 'dark'"), 'Shared Frame and Heading should branch their styling by tone');
+assert.ok(!visual.includes('className={`bg-ink text-white'), 'Workflow should not fight light Frame defaults with generic classes');
+assert.ok(page.includes('buildZaikoVisualLabels(tVisuals)'), 'Product page should use the shared visual-label builder');
+assert.ok(visualLabels.includes('ZaikoVisualLabels'), 'Shared visual-label builder should retain the typed label contract');
 for (const messages of [en, es]) {
   const labels = messages.zaikoPage.visuals;
   for (const key of ['preview', 'sampleData', 'item', 'quantity', 'vendor', 'currentCost', 'tomatoes', 'receiving', 'workflow']) {

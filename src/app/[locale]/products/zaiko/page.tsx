@@ -18,6 +18,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { FEATURED_PRODUCT } from '@/lib/products';
+import { buildZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -67,25 +68,7 @@ export default async function ZaikoPage({ params }: PageProps) {
 
   const origin = getSiteOrigin();
 
-  const visualLabels = {
-    inventory: tVisuals('inventory'),
-    purchases: tVisuals('purchases'),
-    activity: tVisuals('activity'),
-    costs: tVisuals('costs'),
-    onHand: tVisuals('onHand'),
-    incoming: tVisuals('incoming'),
-    history: tVisuals('history'),
-    trend: tVisuals('trend')
-    ,preview: tVisuals('preview'), sampleData: tVisuals('sampleData'), item: tVisuals('item'), quantity: tVisuals('quantity'),
-    location: tVisuals('location'), status: tVisuals('status'), vendor: tVisuals('vendor'), received: tVisuals('received'),
-    total: tVisuals('total'), change: tVisuals('change'), source: tVisuals('source'), currentCost: tVisuals('currentCost'),
-    previousCost: tVisuals('previousCost'), tomatoes: tVisuals('tomatoes'), chickenBreast: tVisuals('chickenBreast'),
-    avocado: tVisuals('avocado'), oliveOil: tVisuals('oliveOil'), flour: tVisuals('flour'), produceVendor: tVisuals('produceVendor'),
-    foodDistributor: tVisuals('foodDistributor'), walkIn: tVisuals('walkIn'), dryStorage: tVisuals('dryStorage'),
-    available: tVisuals('available'), receivedStatus: tVisuals('receivedStatus'), orderedStatus: tVisuals('orderedStatus'),
-    purchase: tVisuals('purchase'), adjustment: tVisuals('adjustment'), receiving: tVisuals('receiving'), today: tVisuals('today'),
-    yesterday: tVisuals('yesterday'), workflow: tVisuals('workflow'), connected: tVisuals('connected')
-  };
+  const visualLabels = buildZaikoVisualLabels(tVisuals);
 
   const explorerAreas = {
     inventory: {
