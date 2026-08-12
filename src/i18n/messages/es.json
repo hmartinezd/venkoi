@@ -26,7 +26,7 @@
     "closeMenu": "Cerrar menú"
   },
   "footer": {
-    "tagline": "Software enfocado en trabajos que necesitan una mejor forma de hacerse.",
+    "tagline": "Productos de software para trabajos que deben hacerse bien.",
     "sectionProducts": "Productos",
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
@@ -45,7 +45,7 @@
     "hero": {
       "eyebrow": "EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS",
       "heading": "Venkoi crea productos de software enfocados en el trabajo que cada negocio necesita hacer bien.",
-      "body": "El producto destacado de Venkoi conecta compras, inventario, costo de alimentos y conteos para facilitar la revisión operativa de restaurantes. También aceptamos proyectos de software a medida seleccionados.",
+      "body": "El producto principal de Venkoi conecta compras, inventario, costo de alimentos y conteos en restaurantes. También aceptamos proyectos móviles y web a medida seleccionados.",
       "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
@@ -73,8 +73,8 @@
     },
     "services": {
       "eyebrow": "SOFTWARE A MEDIDA POR VENKOI",
-      "heading": "¿Necesitas software creado específicamente para tu negocio?",
-      "body": "Además de nuestros propios productos, desarrollamos proyectos móviles y web seleccionados. Trabaja directamente con quienes definen, diseñan, desarrollan y prueban tu software.",
+      "heading": "¿Tienes un proceso móvil o web que necesita software propio?",
+      "body": "Además de nuestros productos, aceptamos proyectos a medida seleccionados. Cuéntanos el problema, a quién afecta y qué necesita funcionar mejor.",
       "cta": "Cuéntanos tu idea",
       "learnMore": "Conocer más",
       "mobileTitle": "APLICACIONES MÓVILES",
@@ -110,7 +110,7 @@
     "aboutPreview": {
       "eyebrow": "SOBRE VENKOI",
       "heading": "Una empresa de software que empieza por sus propios productos.",
-      "p1": "Venkoi crea software enfocado en problemas operativos concretos. Nuestro primer producto parte del inventario de restaurantes, y también desarrollamos algunos proyectos a medida.",
+      "p1": "Nuestros productos son la actividad principal de la empresa. Hoy nos enfocamos comercialmente en el inventario y el costo de alimentos para restaurantes; los proyectos a medida son una línea secundaria.",
       "location": "Nuestra sede está en Tampa Bay. Creamos productos para negocios dentro y fuera de nuestro mercado local.",
       "cta": "Conoce más sobre Venkoi"
     },
@@ -131,11 +131,11 @@
     "body": "Venkoi desarrolla proyectos móviles y web seleccionados donde importa un enfoque claro de producto. Empieza con el problema o proceso del negocio; podemos llevarlo desde la definición y el diseño hasta el desarrollo y las pruebas.",
     "primaryCta": "Cuéntanos tu idea",
     "secondaryCue": "Empieza con una idea.",
-    "mobileEyebrow": "01 · APLICACIONES MÓVILES",
+    "mobileEyebrow": "APLICACIONES MÓVILES",
     "mobileTitle": "Aplicaciones Móviles",
     "mobileBody": "Diseñamos, desarrollamos y probamos aplicaciones para iOS y Android destinadas a clientes, equipos internos o un proceso concreto del negocio.",
     "mobileSupporting": "iOS + Android",
-    "webEyebrow": "02 · PÁGINAS WEB Y APLICACIONES WEB",
+    "webEyebrow": "PÁGINAS WEB Y APLICACIONES WEB",
     "webTitle": "Páginas Web y Aplicaciones Web",
     "webBody": "No necesitas saber si lo que necesitas es una página web o una aplicación web. Cuéntanos qué quieres lograr y te ayudaremos a definir y crear la experiencia web adecuada.",
     "webSupporting": "Desde páginas web sencillas hasta experiencias web más interactivas, la solución debe adaptarse a la idea y no al revés.",
@@ -176,13 +176,13 @@
   },
   "aboutPage": {
     "seoTitle": "Sobre Venkoi | Productos y Desarrollo de Software",
-    "seoDescription": "Conoce la filosofía de Venkoi y cómo creamos experiencias móviles y web enfocadas en resolver problemas reales.",
+    "seoDescription": "Conoce cómo Venkoi crea sus propios productos de software y acepta proyectos móviles y web seleccionados desde Tampa Bay.",
     "eyebrow": "SOBRE VENKOI",
     "heading": "Empieza por el trabajo. Crea primero la parte útil.",
-    "body": "Venkoi es una empresa de software con sede en Tampa Bay, enfocada en crear sus propios productos. Diseñamos soluciones para problemas reales y aplicamos la misma disciplina a proyectos seleccionados para clientes.",
+    "body": "Venkoi es una empresa de software con sede en Tampa Bay. Creamos nuestros propios productos y aceptamos proyectos a medida seleccionados cuando el problema y el alcance encajan con nuestra forma de trabajar.",
     "strategicDirectionEyebrow": "ORIENTACIÓN ESTRATÉGICA",
     "productDirectionHeading": "Primero, nuestros productos. También desarrollamos software a medida.",
-    "productDirectionBody": "Partimos de procesos reales, simplificamos lo que genera fricción y desarrollamos primero una versión útil. Nuestros productos son el enfoque principal de la empresa. En proyectos seleccionados para clientes, aplicamos el mismo método, desde la definición y el diseño hasta el desarrollo y las pruebas.",
+    "productDirectionBody": "Nuestros propios productos son la actividad principal de la empresa. En proyectos seleccionados para clientes, definimos el problema y el primer alcance útil antes de pasar al diseño, el desarrollo y las pruebas.",
     "primaryPillarBadge": "DIRECCIÓN PRINCIPAL",
     "venkoiProductsTitle": "Productos Venkoi",
     "venkoiProductsDesc": "Nuestro producto principal, {productName}, conecta facturas, compras, movimientos de inventario, costo de alimentos, conteos físicos y preparación de reposición.",
@@ -351,22 +351,20 @@
         "ownerView": {"title":"Vista del Dueño","description":"Señales operativas, historial, exportaciones CSV y seguridad de datos."}
       }
     },
-    "earlyAccessTitle": "Oferta gratuita",
+    "earlyAccessTitle": "Demo del producto",
     "badge": "{freeMonths} MESES GRATIS",
-    "badgeText": "{freeMonths} meses gratis para participantes aceptados.",
+    "badgeText": "Cuéntanos sobre tu restaurante y cómo gestionas hoy el inventario.",
     "direct": {
       "heading": "¿Prefieres escribirnos directamente?",
       "body": "WhatsApp está disponible como alternativa al formulario de demo.",
       "whatsappLabel": "Hablar por WhatsApp",
       "whatsappAriaLabel": "Hablar con Venkoi por WhatsApp",
-      "genericMessage": "Hola, encontré Venkoi en línea y me gustaría hablar sobre un proyecto de software.",
       "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}."
     },
     "contactEscape": {
       "prompt": "¿Tienes otra pregunta?",
       "link": "Contacta con Venkoi"
     },
-    "contactCta": "Contactar al Equipo",
     "form": {
       "firstName": "Nombre",
       "lastName": "Apellido",
@@ -454,76 +452,6 @@
         "owner": {"eyebrow":"VISTA DEL DUEÑO","heading":"Revisa las señales que requieren atención operativa.","body":"La vista del dueño reúne cifras y excepciones que puede necesitar revisar, sin presentar la ganancia bruta como ganancia neta ni completar vacíos con estimaciones.","points":["Valor del inventario y compras recientes","Merma y cambios de precios","Costos de preparaciones y platos y cobertura incompleta","Artículos bajo par y actividad reciente útil"]}
       },
       "dataSafety": {"eyebrow":"SEGURIDAD DE DATOS","heading":"Los datos operativos deben poder recuperarse.","body":"Las copias de seguridad, la restauración y la recuperación en un dispositivo limpio forman parte del trabajo de recuperación. No afirmamos que la copia automática esté disponible actualmente.","points":["Respaldo","Restauración y recuperación","Validación de recuperación en un dispositivo limpio","Soporte y diagnóstico"]}
-    },
-    "intro": {
-      "eyebrow": "UNA VISIÓN MÁS CLARA",
-      "heading": "Una forma más clara de ver el inventario de tu restaurante.",
-      "body": "Gestionar inventario no debería significar saltar entre hojas de cálculo, recibos, sistemas desconectados y suposiciones. {productName} reúne la información esencial del inventario para que tu equipo pueda entender mejor lo que está ocurriendo y tomar decisiones con mayor claridad."
-    },
-    "problem": {
-      "eyebrow": "EL PROBLEMA DEL INVENTARIO",
-      "heading": "El inventario se complica cuando la información está repartida en distintos lugares.",
-      "body": "Las compras pueden registrarse de una forma, las cantidades de otra, los cambios de costo en otro lugar y los movimientos pueden ser difíciles de reconstruir después. {productName} está diseñado para reunir esas piezas en una visión más clara del inventario."
-    },
-    "explorer": {
-      "eyebrow": "EXPLORA {productName}",
-      "heading": "Ve con más claridad cada parte de la historia de tu inventario.",
-      "body": "Explora las cuatro áreas que {productName} reúne. Selecciona una para ver qué está diseñada para ayudarte a entender.",
-      "detailLink": "Ver más sobre {area}",
-      "demoCta": "Solicitar una demo",
-      "summaries": {
-        "inventory": "Conoce lo que tienes y dónde está.",
-        "purchases": "Mantén organizadas las compras y recepciones.",
-        "activity": "Sigue cómo se mueve el inventario dentro de tu operación.",
-        "costs": "Entiende cuánto te está costando el inventario."
-      }
-    },
-    "capabilities": {
-      "eyebrow": "LAS ÁREAS PRINCIPALES",
-      "heading": "Cuatro partes de una misma visión del inventario.",
-      "body": "El inventario, las compras, la actividad y los costos forman parte del mismo historial. Juntos, hacen que la visión completa sea más fácil de entender."
-    },
-    "areas": {
-      "inventory": {
-        "eyebrow": "INVENTARIO",
-        "heading": "Conoce lo que tienes y dónde está.",
-        "body": "{productName} ofrece a tu restaurante una forma más clara de entender el inventario disponible y mantenerlo organizado alrededor de la forma en que realmente funciona tu operación.",
-        "supporting": [
-          "qué inventario tienes actualmente",
-          "dónde se organiza el inventario dentro de la operación",
-          "una visión actual y clara del inventario"
-        ]
-      },
-      "purchases": {
-        "eyebrow": "COMPRAS",
-        "heading": "Mantén organizadas las compras y recepciones.",
-        "body": "Integra la actividad de compras dentro de la misma visión del inventario para que sea más fácil seguir los productos que entran y los costos relacionados con ellos.",
-        "supporting": [
-          "qué entró en la operación",
-          "actividad de compras conectada al inventario",
-          "información de costos relacionados con las compras"
-        ]
-      },
-      "activity": {
-        "eyebrow": "ACTIVIDAD",
-        "heading": "Sigue cómo se mueve el inventario dentro de tu operación.",
-        "body": "{productName} reúne la actividad del inventario en un historial claro para que sea más fácil entender qué cambió y seguir el movimiento de los productos a lo largo del tiempo.",
-        "supporting": [
-          "qué cambió",
-          "cuándo ocurrió la actividad de inventario",
-          "un historial más claro del movimiento de productos"
-        ]
-      },
-      "costs": {
-        "eyebrow": "COSTOS",
-        "heading": "Entiende cuánto te está costando realmente tu inventario.",
-        "body": "Mantén más visibles los costos de inventario y compras para que los cambios en los productos no se pierdan entre hojas de cálculo y registros desconectados.",
-        "supporting": [
-          "costos de compra conectados al inventario",
-          "visibilidad de los cambios en los costos",
-          "un historial de costos más claro"
-        ]
-      }
     },
     "workflow": {
       "eyebrow": "EXPERIENCIA DE PRODUCTO",

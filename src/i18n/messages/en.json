@@ -26,7 +26,7 @@
     "closeMenu": "Close menu"
   },
   "footer": {
-    "tagline": "Focused products for work that needs a better way forward.",
+    "tagline": "Software products for work businesses need to get right.",
     "sectionProducts": "Products",
     "sectionCompany": "Company",
     "sectionWorkWithUs": "Work With Us",
@@ -45,7 +45,7 @@
     "hero": {
       "eyebrow": "PRODUCT-FIRST SOFTWARE COMPANY",
       "heading": "Venkoi builds focused software products around work businesses need to get right.",
-      "body": "Venkoi's featured product connects restaurant purchasing, inventory, food cost, and counts for a clearer operational review. We also accept selected custom software projects.",
+      "body": "Venkoi's featured product connects restaurant purchasing, inventory, food cost, and counts. We also accept selected custom mobile and web projects.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
@@ -73,8 +73,8 @@
     },
     "services": {
       "eyebrow": "CUSTOM SOFTWARE BY VENKOI",
-      "heading": "Need software built specifically for your business?",
-      "body": "Alongside our own products, we take on selected mobile and web projects. Work directly with the people defining, designing, building, and testing your software.",
+      "heading": "Have a mobile or web workflow that needs its own software?",
+      "body": "We take on selected custom projects alongside our products. Bring us the problem, the people affected, and what needs to work better.",
       "cta": "Tell us about your idea",
       "learnMore": "Learn more",
       "mobileTitle": "MOBILE APPLICATIONS",
@@ -110,7 +110,7 @@
     "aboutPreview": {
       "eyebrow": "ABOUT VENKOI",
       "heading": "A software company that starts with its own products.",
-      "p1": "Venkoi creates focused software for specific operational problems. Our first product begins with restaurant inventory, while selected custom projects remain part of what we build.",
+      "p1": "Our products are the company's main work. The current commercial focus is restaurant inventory and food-cost operations; selected custom projects are a secondary line of business.",
       "location": "Based in Tampa Bay. Building products for businesses well beyond one market.",
       "cta": "Learn more about Venkoi"
     },
@@ -131,11 +131,11 @@
     "body": "Venkoi takes on selected mobile and web projects where a clear product approach matters. Start with the business problem or workflow; we can take it from definition and design through development and testing.",
     "primaryCta": "Tell us about your idea",
     "secondaryCue": "Start with an idea.",
-    "mobileEyebrow": "01 · MOBILE APPLICATIONS",
+    "mobileEyebrow": "MOBILE APPLICATIONS",
     "mobileTitle": "Mobile Applications",
     "mobileBody": "We design, build, and test iOS and Android applications for customers, staff, or a specific business workflow.",
     "mobileSupporting": "iOS + Android",
-    "webEyebrow": "02 · WEBSITES & WEB APPLICATIONS",
+    "webEyebrow": "WEBSITES & WEB APPLICATIONS",
     "webTitle": "Websites & Web Applications",
     "webBody": "You don't need to know whether you need a website or a web application. Tell us what you want to accomplish, and we'll help shape and build the right web experience.",
     "webSupporting": "From straightforward websites to more interactive web experiences, the solution should fit the idea — not the other way around.",
@@ -176,13 +176,13 @@
   },
   "aboutPage": {
     "seoTitle": "About Venkoi | Software Products & Development",
-    "seoDescription": "Learn about Venkoi's product-first philosophy and how we build mobile and web experiences focused on solving real problems.",
+    "seoDescription": "Learn how Venkoi builds its own software products and accepts selected custom mobile and web projects from its Tampa Bay base.",
     "eyebrow": "ABOUT VENKOI",
     "heading": "Start with the work. Build the useful part first.",
-    "body": "Venkoi is a product-first software company based in Tampa Bay. We create our own useful products around real business problems and apply the same product discipline to selected client projects.",
+    "body": "Venkoi is a software company based in Tampa Bay. We create our own products and accept selected custom projects when the problem and scope fit how we work.",
     "strategicDirectionEyebrow": "STRATEGIC DIRECTION",
     "productDirectionHeading": "Products first. Services when you need something built.",
-    "productDirectionBody": "We begin with real workflows, simplify the parts that create friction, and build the useful version first. Our own products are the company's primary focus. For selected client projects, we apply the same disciplined approach from definition and design through development and testing.",
+    "productDirectionBody": "Our own products are the company's primary focus. For selected client projects, we define the problem and first useful scope before moving through design, development, and testing.",
     "primaryPillarBadge": "PRIMARY DIRECTION",
     "venkoiProductsTitle": "Venkoi Products",
     "venkoiProductsDesc": "Our featured product, {productName}, connects restaurant invoices, purchases, inventory changes, food cost, physical counts, and reorder preparation.",
@@ -351,22 +351,20 @@
         "ownerView": {"title":"Owner View","description":"Operational signals, history, CSV exports, and data-safety context."}
       }
     },
-    "earlyAccessTitle": "Free Offer",
+    "earlyAccessTitle": "Product Demo",
     "badge": "{freeMonths} MONTHS FREE",
-    "badgeText": "{freeMonths} months free for accepted participants.",
+    "badgeText": "Tell us about your restaurant and how you handle inventory today.",
     "direct": {
       "heading": "Prefer to message us directly?",
       "body": "WhatsApp is available as an alternative to the demo form.",
       "whatsappLabel": "Chat on WhatsApp",
       "whatsappAriaLabel": "Chat with Venkoi on WhatsApp",
-      "genericMessage": "Hi, I found Venkoi online and would like to talk about a software project.",
       "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
     },
     "contactEscape": {
       "prompt": "Have another question?",
       "link": "Contact Venkoi"
     },
-    "contactCta": "Contact Team Directly",
     "form": {
       "firstName": "First name",
       "lastName": "Last name",
@@ -486,76 +484,6 @@
         "heading": "Operational data should be recoverable.",
         "body": "Backup, restore, and clean-device recovery are part of the recovery work. Automatic backup is not claimed as currently available.",
         "points": ["Backup", "Restore and recovery", "Clean-device recovery validation", "Support and diagnostics"]
-      }
-    },
-    "intro": {
-      "eyebrow": "A CLEARER VIEW",
-      "heading": "A clearer view of your restaurant inventory.",
-      "body": "Inventory shouldn't require jumping between spreadsheets, receipts, disconnected systems, and guesswork. {productName} brings the core inventory picture together so your team can understand what is happening and make better-informed decisions."
-    },
-    "problem": {
-      "eyebrow": "THE INVENTORY PROBLEM",
-      "heading": "Inventory gets harder when the information lives in different places.",
-      "body": "Purchases may be tracked one way, quantities another, cost changes somewhere else, and movement may be difficult to reconstruct later. {productName} is designed to bring those pieces into one clearer inventory picture."
-    },
-    "explorer": {
-      "eyebrow": "EXPLORE {productName}",
-      "heading": "See each part of your inventory story more clearly.",
-      "body": "Explore the four areas {productName} brings together. Select an area to see what it is designed to help you understand.",
-      "detailLink": "See more about {area}",
-      "demoCta": "Request a Demo",
-      "summaries": {
-        "inventory": "Know what you have and where it is.",
-        "purchases": "Keep purchasing and receiving organized.",
-        "activity": "Follow how inventory moves through the operation.",
-        "costs": "Understand what inventory is costing."
-      }
-    },
-    "capabilities": {
-      "eyebrow": "THE CORE AREAS",
-      "heading": "Four parts of one inventory picture.",
-      "body": "Inventory, purchases, activity, and costs each contribute to the same inventory history. Together, they make the full picture easier to understand."
-    },
-    "areas": {
-      "inventory": {
-        "eyebrow": "INVENTORY",
-        "heading": "Know what you have and where it is.",
-        "body": "{productName} gives your restaurant a clearer way to understand the inventory you have on hand and keep it organized around the way your operation actually works.",
-        "supporting": [
-          "what inventory you currently have",
-          "where inventory is organized within the operation",
-          "a clearer current inventory picture"
-        ]
-      },
-      "purchases": {
-        "eyebrow": "PURCHASES",
-        "heading": "Keep purchasing and receiving organized.",
-        "body": "Bring purchasing activity into the same inventory picture so incoming products and the costs connected to them are easier to follow.",
-        "supporting": [
-          "what came into the operation",
-          "purchasing activity connected to inventory",
-          "purchase-related cost information"
-        ]
-      },
-      "activity": {
-        "eyebrow": "ACTIVITY",
-        "heading": "See how inventory moves through your operation.",
-        "body": "{productName} brings inventory activity into a clear history so it's easier to understand what changed and follow the movement of products over time.",
-        "supporting": [
-          "what changed",
-          "when inventory activity occurred",
-          "a clearer history of product movement"
-        ]
-      },
-      "costs": {
-        "eyebrow": "COSTS",
-        "heading": "Understand what your inventory is really costing.",
-        "body": "Keep inventory and purchasing costs easier to see so changes in product costs don't disappear inside spreadsheets and disconnected records.",
-        "supporting": [
-          "purchasing costs connected to inventory",
-          "visibility into cost changes",
-          "a clearer cost history"
-        ]
       }
     },
     "workflow": {

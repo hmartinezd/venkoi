@@ -86,6 +86,21 @@ assert.match(es.demoPage.form.submitEarlyAccess, /Solicitar|Solicita/);
 assert.doesNotMatch(en.zaikoPage.hero.secondaryCta, /Try|Free/i);
 assert.doesNotMatch(es.zaikoPage.hero.secondaryCta, /Prueba|Gratis/i);
 
+for (const [locale, messages] of [['en', en], ['es', es]] as const) {
+  const product = messages.zaikoPage as Record<string, unknown>;
+  for (const legacyKey of ['intro', 'problem', 'explorer', 'capabilities', 'areas']) {
+    assert.ok(!(legacyKey in product), `${locale}.zaikoPage.${legacyKey} is an obsolete product narrative`);
+  }
+  const demo = messages.demoPage as Record<string, unknown>;
+  assert.ok(!('contactCta' in demo), `${locale}.demoPage.contactCta is obsolete`);
+  assert.ok(!('genericMessage' in (demo.direct as Record<string, unknown>)), `${locale}.demoPage.direct.genericMessage is obsolete`);
+}
+
+assert.match(en.home.hero.eyebrow, /PRODUCT-FIRST/);
+assert.match(en.home.hero.body, /selected custom mobile and web projects/i);
+assert.match(en.aboutPage.productDirectionBody, /primary focus/i);
+assert.match(en.contactPage.body, /custom mobile or web project/i);
+
 const navigation = read('src/i18n/navigation.ts');
 assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationItem|NavigationChild/);
 
