@@ -5,6 +5,9 @@ import { createMetadata } from '../src/lib/seo';
 import { getSiteOrigin } from '../src/lib/site-config';
 import sitemap from '../src/app/sitemap';
 import robots from '../src/app/robots';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { FEATURED_PRODUCT, productPlatformToSchemaOperatingSystem } from '../src/lib/products';
 
 const sitemapRouteKeys: RouteKey[] = [
   'home',
@@ -116,6 +119,22 @@ export function testSeoRegression() {
     assert(getProperty(metadata.openGraph, 'type') === 'website', 'Default metadata uses type: website');
     assert(getProperty(metadata.openGraph, 'siteName') === 'Venkoi', 'OpenGraph siteName is Venkoi');
     assert(getProperty(metadata.twitter, 'card') === 'summary_large_image', 'Twitter card is summary_large_image');
+
+    const productPage = readFileSync(resolve(process.cwd(), 'src/app/[locale]/products/zaiko/page.tsx'), 'utf8');
+    assert(productPage.includes("'@type': 'SoftwareApplication'"), 'Product SoftwareApplication JSON-LD remains present');
+    assert(productPage.includes('name: FEATURED_PRODUCT.name'), 'Product JSON-LD name remains registry-driven');
+    assert(
+      productPage.includes("getLocalizedPath('productsZaiko', currentLocale)"),
+      'Product JSON-LD URL remains localized and canonical'
+    );
+    assert(
+      productPage.includes('productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform)'),
+      'Product JSON-LD derives its platform from the registry'
+    );
+    const schemaPlatform = productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform);
+    assert(schemaPlatform === 'Android', 'Product JSON-LD platform identifies Android');
+    assert(schemaPlatform !== 'Web', 'Product JSON-LD platform does not identify Web');
+    assert(schemaPlatform !== 'iOS', 'Product JSON-LD platform does not identify iOS');
 
     const articleMetadata = createMetadata({
       title: 'Article',

@@ -56,7 +56,7 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
                   variant="text"
                   eventName="zaiko_demo_cta"
                   properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'footer' }}
-                  className="transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
+                  className="font-normal text-foreground-muted transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
                   {tCommon('demo')}
                 </TrackedButton>

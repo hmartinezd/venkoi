@@ -17,7 +17,7 @@ import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { FEATURED_PRODUCT } from '@/lib/products';
+import { FEATURED_PRODUCT, productPlatformToSchemaOperatingSystem } from '@/lib/products';
 import { buildZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
 
 interface PageProps {
@@ -109,7 +109,7 @@ export default async function ZaikoPage({ params }: PageProps) {
     url: `${origin}${getLocalizedPath('productsZaiko', currentLocale)}`,
     applicationCategory: 'BusinessApplication',
     description: tSeo('description', productProgramValues),
-    operatingSystem: 'Web',
+    operatingSystem: productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform),
     author: {
       '@type': 'Organization',
       name: 'Venkoi',

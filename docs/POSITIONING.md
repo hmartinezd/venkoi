@@ -2,6 +2,8 @@
 
 This is an internal guardrail for public website decisions. It is not launch copy.
 
+Detailed featured-product scope, availability, trust principles, and explicit non-claims live in [Product marketing truth](PRODUCT-MARKETING-TRUTH.md).
+
 - **Company:** Venkoi is a product-first software company. It identifies real business problems and creates useful software products around the work people actually do.
 - **Primary commercial focus:** The current FEATURED_PRODUCT, resolved through the product registry. Public copy must not hard-code its display name where registry interpolation is available.
 - **Company/product relationship:** Venkoi is the company; FEATURED_PRODUCT is a product created by Venkoi. The site should support additional real products later without inventing them now.

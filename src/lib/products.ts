@@ -1,4 +1,6 @@
 export type ProductStatus = 'available' | 'comingSoon';
+export type ProductPlatform = 'android';
+export type ProductOperatingModel = 'local-first';
 
 export type Product = {
   id: string;
@@ -7,6 +9,8 @@ export type Product = {
   routeKey: 'productsZaiko';
   analyticsProduct: 'zaiko';
   status: ProductStatus;
+  platform: ProductPlatform;
+  operatingModel: ProductOperatingModel;
   earlyAccess: {
     enabled: boolean;
     freeMonths: number;
@@ -23,14 +27,20 @@ export const FEATURED_PRODUCT = {
   routeKey: 'productsZaiko',
   analyticsProduct: 'zaiko',
   status: 'available',
+  platform: 'android',
+  operatingModel: 'local-first',
   earlyAccess: {
     enabled: true,
     freeMonths: 3
   },
-  shortDescription: 'Restaurant inventory software for understanding inventory, purchases, activity, and costs.',
+  shortDescription: 'Restaurant inventory and food-cost software connecting purchases, inventory movement, vendor price intelligence, recipe and menu costing, physical counts, and reorder decisions.',
   demoEnabled: true,
   pricingEnabled: false
 } satisfies Product;
+
+export function productPlatformToSchemaOperatingSystem(platform: ProductPlatform): string {
+  return platform === 'android' ? 'Android' : platform;
+}
 
 export const PRODUCTS: Product[] = [FEATURED_PRODUCT];
 

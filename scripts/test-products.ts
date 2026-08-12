@@ -4,6 +4,7 @@ import {
   getDefaultDemoProduct,
   getProductBySlug,
   isEarlyAccessInterest,
+  productPlatformToSchemaOperatingSystem,
   resolveDemoProduct,
   type Product
 } from '../src/lib/products';
@@ -30,6 +31,17 @@ assert(FEATURED_PRODUCT.slug === 'zaiko', 'Featured product slug remains zaiko')
 assert(FEATURED_PRODUCT.routeKey === 'productsZaiko', 'Featured product route key remains stable');
 assert(FEATURED_PRODUCT.analyticsProduct === 'zaiko', 'Featured analytics product remains zaiko');
 assert(FEATURED_PRODUCT.status === 'available', 'Featured product is available');
+assert(FEATURED_PRODUCT.platform === 'android', 'Featured product platform is Android');
+assert(FEATURED_PRODUCT.operatingModel === 'local-first', 'Featured product operating model is local-first');
+assert(
+  /restaurant inventory and food-cost/i.test(FEATURED_PRODUCT.shortDescription),
+  'Short description identifies restaurant inventory and food-cost scope'
+);
+assert(
+  /purchases|vendor price intelligence|recipe and menu costing|physical counts|reorder decisions/i.test(FEATURED_PRODUCT.shortDescription),
+  'Short description represents the richer connected workflow'
+);
+assert(productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform) === 'Android', 'Schema platform mapping identifies Android');
 assert(FEATURED_PRODUCT.earlyAccess.enabled === true, 'Early Access program is enabled');
 assert(FEATURED_PRODUCT.earlyAccess.freeMonths === 3, 'Early Access includes three free months');
 assert(FEATURED_PRODUCT.demoEnabled === true, 'Featured product demos are enabled');
