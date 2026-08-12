@@ -45,6 +45,22 @@ for (const [locale, messages] of [['en', en], ['es', es]] as const) {
   assert.deepEqual(violations, [], `${locale} public copy must not imply an available product is provisional`);
 }
 
+const marketingMessages = [en.home, en.servicesPage, en.aboutPage, en.contactPage, en.demoPage, en.zaikoPage, en.footer];
+const stockSaasCopy = /unlock powerful insights|streamline your operations|transform your workflow|seamless end-to-end experience|empower your business|turn complexity into clarity|game-changing/i;
+assert.deepEqual(
+  strings(marketingMessages).filter((value) => stockSaasCopy.test(value)),
+  [],
+  'Public English marketing copy must not contain known stock SaaS phrases'
+);
+
+const spanishMarketingMessages = [es.home, es.servicesPage, es.aboutPage, es.contactPage, es.demoPage, es.zaikoPage, es.footer];
+const awkwardSpanishProductCopy = /software local-first|flujo de lanzamiento/i;
+assert.deepEqual(
+  strings(spanishMarketingMessages).filter((value) => awkwardSpanishProductCopy.test(value)),
+  [],
+  'Public Spanish marketing copy must use natural product terminology'
+);
+
 const navigation = read('src/i18n/navigation.ts');
 assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationItem|NavigationChild/);
 

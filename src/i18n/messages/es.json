@@ -25,7 +25,7 @@
     "closeMenu": "Cerrar menú"
   },
   "footer": {
-    "tagline": "Software que impulsa tu negocio.",
+    "tagline": "Productos enfocados en trabajos que necesitan una mejor herramienta.",
     "sectionProducts": "Productos",
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
@@ -83,8 +83,8 @@
     },
     "local": {
       "eyebrow": "PRESENCIA LOCAL",
-      "heading": "El buen software comienza entendiendo el negocio detrás de él.",
-      "body": "Estamos en Tampa Bay y creemos que trabajar cerca de las personas que usan el software conduce a mejores productos y mejores soluciones.",
+      "heading": "Tampa Bay es nuestro hogar. Los problemas que resolvemos no tienen fronteras.",
+      "body": "La cercanía nos permite observar el trabajo, hacer mejores preguntas y probar lo que creamos con quienes lo van a usar.",
       "tampaTitle": "TAMPA BAY",
       "tampaDesc": "Nuestro hogar y mercado principal.",
       "southFloridaTitle": "SOUTH FLORIDA",
@@ -95,28 +95,28 @@
     },
     "philosophy": {
       "eyebrow": "FILOSOFÍA DE PRODUCTO",
-      "heading": "El software debe eliminar complejidad, no crear más.",
+      "heading": "Primero, la parte que de verdad resulta útil.",
       "item1Num": "01",
-      "item1Title": "Simple por diseño",
-      "item1Desc": "Potente no tiene por qué significar complicado.",
+      "item1Title": "Trabajo visible",
+      "item1Desc": "Debe quedar claro qué ocurrió y qué toca hacer después.",
       "item2Num": "02",
       "item2Title": "Diseñado para procesos reales",
-      "item2Desc": "Empezamos entendiendo cómo trabajan realmente las personas.",
+      "item2Desc": "Conocemos el proceso actual antes de decidir qué debe cambiar el software.",
       "item3Num": "03",
-      "item3Title": "Preparado para evolucionar",
-      "item3Desc": "Los negocios cambian. El buen software debe poder cambiar con ellos."
+      "item3Title": "Cada función tiene un motivo",
+      "item3Desc": "Añadimos funciones para resolver problemas conocidos, no para llenar una lista."
     },
     "aboutPreview": {
       "eyebrow": "SOBRE VENKOI",
       "heading": "Primero, nuestros productos. También desarrollamos software a medida.",
       "p1": "Venkoi es una empresa de software enfocada en crear sus propios productos. Desarrollamos soluciones prácticas para problemas reales, comenzando por el inventario de restaurantes.",
-      "p2": "Creemos que el mejor software comienza entendiendo un problema real, eliminando complejidad innecesaria y creando algo que las personas realmente quieran usar.",
+      "p2": "Conocemos el trabajo, elegimos lo que más importa y creamos una versión que se pueda usar y probar antes de añadir más.",
       "p3": "Tampa Bay es nuestro hogar, mientras nuestros productos están diseñados para servir a negocios mucho más allá de un solo mercado.",
       "cta": "Conoce más sobre Venkoi"
     },
     "finalCta": {
-      "heading": "Descubre lo que un producto de Venkoi puede hacer por tu operación.",
-      "body": "Empieza con una demo de nuestro producto de inventario para restaurantes. Si necesitas software a medida para tu negocio, también puedes iniciar esa conversación.",
+      "heading": "Empieza con el producto o cuéntanos qué problema necesitas resolver.",
+      "body": "Solicita una demo de nuestro producto de inventario para restaurantes. Para un proyecto móvil o web a medida, usa el contacto de proyectos.",
       "locationLine": "Tampa Bay · South Florida · Más allá"
     },
     "insights": {
@@ -134,7 +134,7 @@
     "secondaryCue": "Empieza con una idea.",
     "mobileEyebrow": "01 · APLICACIONES MÓVILES",
     "mobileTitle": "Aplicaciones Móviles",
-    "mobileBody": "Diseñamos y desarrollamos aplicaciones móviles para iOS y Android, desde experiencias para clientes hasta herramientas internas — intuitivas, útiles y preparadas para crecer.",
+    "mobileBody": "Diseñamos, desarrollamos y probamos aplicaciones para iOS y Android destinadas a clientes, equipos internos o un proceso concreto del negocio.",
     "mobileSupporting": "iOS + Android",
     "webEyebrow": "02 · PÁGINAS WEB Y APLICACIONES WEB",
     "webTitle": "Páginas Web y Aplicaciones Web",
@@ -148,18 +148,18 @@
       "stage1Desc": "Empieza con una idea, un objetivo o un problema. Te ayudamos a definir qué hay que crear, para quién y qué es lo más importante.",
       "stage2Num": "02",
       "stage2Title": "Diseño",
-      "stage2Desc": "Definimos la estructura, los flujos y la interfaz para que la experiencia sea clara antes y durante el desarrollo.",
+      "stage2Desc": "Definimos las pantallas, decisiones y recorridos importantes antes de que implementarlos haga más costoso cambiarlos.",
       "stage3Num": "03",
       "stage3Title": "Desarrollo",
-      "stage3Desc": "Desarrollamos la experiencia móvil o web utilizando el enfoque técnico que mejor se adapte al proyecto.",
+      "stage3Desc": "Convertimos la dirección acordada en software funcional y revisamos el producto a medida que cada parte toma forma.",
       "stage4Num": "04",
       "stage4Title": "Pruebas y Calidad",
-      "stage4Desc": "Probamos la funcionalidad principal, los flujos importantes, la adaptación a diferentes pantallas y la experiencia general para detectar problemas antes de que lleguen a los usuarios.",
+      "stage4Desc": "Probamos el comportamiento principal, los recorridos importantes y distintos tamaños de pantalla durante el desarrollo, y verificamos la versión terminada.",
       "testingPrinciple": "Las pruebas no son algo que dejamos para el final. Son parte de cómo construimos."
     },
     "approachEyebrow": "EMPIEZA CON UNA IDEA",
     "ideaTitle": "No necesitas una especificación terminada.",
-    "ideaBody": "Tráenos la idea, el problema o lo que quieres crear. Te ayudaremos a convertirlo en algo claro, útil y listo para construir.",
+    "ideaBody": "Trae la idea, el proceso que está frenando al equipo o el producto que necesita trabajo. Podemos definir qué crear antes de decidir cómo hacerlo.",
     "ideaCta": "Cuéntanos tu idea",
     "projectFit": {
       "heading": "Puedes empezar con más que una especificación terminada.",
@@ -186,7 +186,7 @@
     "productDirectionBody": "Partimos de procesos reales, simplificamos lo que genera fricción y desarrollamos primero una versión útil. Nuestros productos son el enfoque principal de la empresa. En proyectos seleccionados para clientes, aplicamos el mismo método, desde la definición y el diseño hasta el desarrollo y las pruebas.",
     "primaryPillarBadge": "DIRECCIÓN PRINCIPAL",
     "venkoiProductsTitle": "Productos Venkoi",
-    "venkoiProductsDesc": "Nuestro producto actual, {productName}, ayuda a restaurantes a entender y gestionar inventario, compras, actividad y costos.",
+    "venkoiProductsDesc": "Nuestro producto principal, {productName}, conecta facturas, compras, movimientos de inventario, costo de alimentos, conteos físicos y preparación de reposición.",
     "exploreZaikoCta": "Conoce {productName}",
     "clientSolutionsBadge": "SERVICIOS",
     "servicesTitle": "Móvil y Web",
@@ -317,7 +317,7 @@
     "zaiko": {
       "eyebrow": "DEMO DE {productName}",
       "heading": "Ve {productName} en acción.",
-      "body": "Cuéntanos un poco sobre tu restaurante y te ayudaremos a dar el siguiente paso para ver cómo {productName} puede adaptarse a tu operación.",
+      "body": "Cuéntanos cómo gestiona hoy el inventario tu restaurante. Revisaremos la solicitud y te contactaremos para definir el siguiente paso adecuado para conocer {productName}.",
       "title": "Demo de {productName} para Restaurantes",
       "formDescription": "Cuéntanos un poco sobre tu restaurante y cómo gestionas el inventario actualmente para que podamos entender el siguiente paso adecuado para una demo de {productName}."
     },
@@ -343,11 +343,11 @@
     },
     "agenda": {
       "eyebrow": "LO QUE VEREMOS",
-      "heading": "Descubre cómo {productName} reúne las áreas esenciales del inventario de un restaurante.",
+      "heading": "La demo puede recorrer el trabajo desde la configuración y las facturas hasta los conteos y la revisión del dueño.",
       "items": {
         "setupInventory": {"title":"Configuración e Inventario","description":"Ingredientes, unidades, proveedores y estructura del inventario."},
         "invoicePurchase": {"title":"Factura → Compra","description":"Captura, revisión, corrección y registro explícito."},
-        "costIntelligence": {"title":"Inteligencia de Costos","description":"Cambios de precios, costo de preparaciones y costo de platos."},
+        "costIntelligence": {"title":"Precios y Costo de Alimentos","description":"Cambios de precios, costo de preparaciones y platos, y costos faltantes."},
         "countsReorder": {"title":"Conteos y Reposición","description":"Conteo físico, variación, artículos bajo par y planificación de compras."},
         "ownerView": {"title":"Vista del Dueño","description":"Señales operativas, historial, exportaciones CSV y seguridad de datos."}
       }
@@ -452,9 +452,9 @@
         "inventory": {"eyebrow":"INVENTARIO Y TRAZABILIDAD","heading":"Ve qué cambió y por qué.","body":"Cada movimiento conserva su conexión con la fuente operativa. Así, Actividad funciona como una capa de confianza y no como una lista aislada de eventos.","points":["Compras y recepción","Merma y producción","Ajustes por conteo físico","Ajustes manuales con historial de origen"]},
         "costing": {"eyebrow":"PRECIOS Y COSTO DE ALIMENTOS","heading":"Sigue los precios del proveedor hasta el costo de preparaciones y platos.","body":"El proceso compara precios válidos y lleva el costo del ingrediente a preparaciones y platos sin confundir la ganancia bruta con la ganancia neta.","points":["Precio comparable actual y anterior","Costo normalizado por unidad base y línea de compra de origen","Costo por lote, rendimiento y costo por unidad de rendimiento","Costo del plato, precio de venta, porcentaje de costo y ganancia bruta antes de mano de obra y gastos generales"],"trust":"Completo, Parcial o Costos faltantes: si faltan costos de origen, el producto muestra el vacío en vez de inventar precisión. No compara empaques distintos sin datos suficientes de conversión."},
         "counts": {"eyebrow":"CONTEOS FÍSICOS Y REPOSICIÓN","heading":"Cuenta la operación, revisa la variación y prepara lo que hay que comprar.","body":"El proceso incluye entrada numérica práctica, unidades de conteo, progreso y reanudación, revisión antes de registrar y una lista por proveedor basada en ingredientes bajo par.","points":["Búsqueda, filtros, progreso y reanudación","Conversiones transparentes de unidades de conteo","Revisión de esperado, contado y variación","Cantidades según empaque y lista CSV compartible"],"trust":"0 significa contado y se encontraron cero; sin contar significa que aún no se contó. El producto ayuda a preparar el pedido; la versión inicial no envía pedidos electrónicos a proveedores."},
-        "owner": {"eyebrow":"VISTA DEL DUEÑO","heading":"Revisa las señales que requieren atención operativa.","body":"La vista del dueño reúne señales útiles sin pronósticos, referencias inventadas ni cifras falsas de ahorro.","points":["Valor del inventario y compras recientes","Merma y cambios de precios","Costos de preparaciones y platos y cobertura incompleta","Artículos bajo par y actividad reciente útil"]}
+        "owner": {"eyebrow":"VISTA DEL DUEÑO","heading":"Revisa las señales que requieren atención operativa.","body":"La vista del dueño reúne cifras y excepciones que puede necesitar revisar, sin presentar la ganancia bruta como ganancia neta ni completar vacíos con estimaciones.","points":["Valor del inventario y compras recientes","Merma y cambios de precios","Costos de preparaciones y platos y cobertura incompleta","Artículos bajo par y actividad reciente útil"]}
       },
-      "dataSafety": {"eyebrow":"SEGURIDAD DE DATOS","heading":"Los datos operativos deben poder recuperarse.","body":"El producto incluye opciones prácticas de recuperación y soporte. El respaldo automático no se presenta como una función disponible sin que se haya validado para la primera versión.","points":["Respaldo","Restauración y recuperación","Validación de recuperación en un dispositivo limpio","Soporte y diagnóstico"]}
+      "dataSafety": {"eyebrow":"SEGURIDAD DE DATOS","heading":"Los datos operativos deben poder recuperarse.","body":"Las copias de seguridad, la restauración y la recuperación en un dispositivo limpio forman parte del trabajo de recuperación. No afirmamos que la copia automática esté disponible actualmente.","points":["Respaldo","Restauración y recuperación","Validación de recuperación en un dispositivo limpio","Soporte y diagnóstico"]}
     },
     "intro": {
       "eyebrow": "UNA VISIÓN MÁS CLARA",
@@ -539,12 +539,12 @@
     "earlyAccess": {
       "eyebrow": "{freeMonths} MESES GRATIS",
       "heading": "Prueba {productName} gratis durante {freeMonths} meses.",
-      "body": "Comienza a usar {productName} en tu restaurante sin costo por el producto durante los primeros {freeMonths} meses.",
+      "body": "Solicita Acceso Anticipado. Los participantes aceptados podrán usar {productName} sin costo durante {freeMonths} meses; la aceptación y las fechas no están garantizadas.",
       "details": [
-        "Usa {productName} gratis durante {freeMonths} meses",
-        "Comienza a usar el producto en tu restaurante",
+        "Los participantes aceptados reciben {freeMonths} meses gratis",
+        "Usa el producto en un solo local",
         "Comparte tus comentarios directamente con Venkoi",
-        "Accede a la oferta de lanzamiento sin costo durante {freeMonths} meses"
+        "Trabaja directamente con Venkoi mientras avanza la versión inicial"
       ],
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Prueba {productName} Gratis"

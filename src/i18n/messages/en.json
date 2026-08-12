@@ -25,7 +25,7 @@
     "closeMenu": "Close menu"
   },
   "footer": {
-    "tagline": "Software that moves business forward.",
+    "tagline": "Focused products for work that needs a better tool.",
     "sectionProducts": "Products",
     "sectionCompany": "Company",
     "sectionWorkWithUs": "Work With Us",
@@ -83,8 +83,8 @@
     },
     "local": {
       "eyebrow": "LOCAL BY CHOICE",
-      "heading": "Great software starts with understanding the business behind it.",
-      "body": "We're based in Tampa Bay and believe working closely with the people using the software leads to better products and better solutions.",
+      "heading": "Tampa Bay is home. The problems we build for are not limited by geography.",
+      "body": "Being nearby makes it easier to observe the work, ask better questions, and test what we build with the people who will use it.",
       "tampaTitle": "TAMPA BAY",
       "tampaDesc": "Our home and primary market.",
       "southFloridaTitle": "SOUTH FLORIDA",
@@ -95,28 +95,28 @@
     },
     "philosophy": {
       "eyebrow": "PRODUCT PHILOSOPHY",
-      "heading": "Software should remove complexity, not create more of it.",
+      "heading": "Build the useful part first.",
       "item1Num": "01",
-      "item1Title": "Simple by design",
-      "item1Desc": "Powerful doesn't have to mean complicated.",
+      "item1Title": "Keep the work visible",
+      "item1Desc": "A person should be able to see what happened and what to do next.",
       "item2Num": "02",
       "item2Title": "Built around real workflows",
-      "item2Desc": "We start by understanding how people actually work.",
+      "item2Desc": "We learn the existing process before deciding what the software should change.",
       "item3Num": "03",
-      "item3Title": "Made to evolve",
-      "item3Desc": "Businesses change. Good software should change with them."
+      "item3Title": "Add with a reason",
+      "item3Desc": "New functionality should solve a known problem, not fill a feature list."
     },
     "aboutPreview": {
       "eyebrow": "ABOUT VENKOI",
       "heading": "Products first. Services when you need something built.",
       "p1": "Venkoi is a product-first software company. We create practical products around real business problems, beginning with restaurant inventory.",
-      "p2": "We believe the best software starts with understanding a real problem, removing unnecessary complexity, and building something people actually want to use.",
+      "p2": "We learn the work, choose the part that matters most, and build a version people can use and test before adding more.",
       "p3": "Tampa Bay is home, while our products are designed to serve businesses far beyond one market.",
       "cta": "Learn more about Venkoi"
     },
     "finalCta": {
-      "heading": "See what a Venkoi product can do for your operation.",
-      "body": "Start with a demo of our restaurant inventory product. If you need custom software built for your business, that conversation is still one click away.",
+      "heading": "Start with the product, or bring us a problem to build around.",
+      "body": "Request a demo of our restaurant inventory product. For a custom mobile or web project, use the separate project contact path.",
       "locationLine": "Tampa Bay · South Florida · Beyond"
     },
     "insights": {
@@ -134,7 +134,7 @@
     "secondaryCue": "Start with an idea.",
     "mobileEyebrow": "01 · MOBILE APPLICATIONS",
     "mobileTitle": "Mobile Applications",
-    "mobileBody": "We design and build mobile applications for iOS and Android, from customer-facing experiences to internal tools — intuitive, useful, and ready to grow.",
+    "mobileBody": "We design, build, and test iOS and Android applications for customers, staff, or a specific business workflow.",
     "mobileSupporting": "iOS + Android",
     "webEyebrow": "02 · WEBSITES & WEB APPLICATIONS",
     "webTitle": "Websites & Web Applications",
@@ -148,18 +148,18 @@
       "stage1Desc": "Start with an idea, goal, or problem. We help clarify what should be built, who it is for, and what matters most.",
       "stage2Num": "02",
       "stage2Title": "Design",
-      "stage2Desc": "We shape the structure, flows, and interface so the experience is clear before and throughout development.",
+      "stage2Desc": "We map the important screens, decisions, and paths before implementation makes them expensive to change.",
       "stage3Num": "03",
       "stage3Title": "Development",
-      "stage3Desc": "We build the mobile or web experience using the technical approach that best fits the project.",
+      "stage3Desc": "We turn the agreed direction into working software, checking the product as each part becomes real.",
       "stage4Num": "04",
       "stage4Title": "Testing & Quality",
-      "stage4Desc": "We test core functionality, important user flows, responsiveness, and the overall experience so issues are found before they reach users.",
+      "stage4Desc": "We test core behavior, important user paths, and screen sizes throughout the build, then verify the finished release.",
       "testingPrinciple": "Testing isn't an afterthought. It's part of how we build."
     },
     "approachEyebrow": "START WITH AN IDEA",
     "ideaTitle": "You don't need a finished specification.",
-    "ideaBody": "Bring us the idea, the problem, or what you want to create. We'll help turn it into something clear, useful, and ready to build.",
+    "ideaBody": "Bring the idea, the workflow that is slowing people down, or the product that needs work. We can define what to build before deciding how to build it.",
     "ideaCta": "Tell us about your idea",
     "projectFit": {
       "heading": "You can start with more than a finished specification.",
@@ -186,7 +186,7 @@
     "productDirectionBody": "We begin with real workflows, simplify the parts that create friction, and build the useful version first. Our own products are the company's primary focus. For selected client projects, we apply the same disciplined approach from definition and design through development and testing.",
     "primaryPillarBadge": "PRIMARY DIRECTION",
     "venkoiProductsTitle": "Venkoi Products",
-    "venkoiProductsDesc": "Our current product, {productName}, helps restaurants understand and manage inventory, purchases, activity, and costs.",
+    "venkoiProductsDesc": "Our featured product, {productName}, connects restaurant invoices, purchases, inventory changes, food cost, physical counts, and reorder preparation.",
     "exploreZaikoCta": "Explore {productName}",
     "clientSolutionsBadge": "SERVICES",
     "servicesTitle": "Mobile & Web",
@@ -317,7 +317,7 @@
     "zaiko": {
       "eyebrow": "{productName} DEMO",
       "heading": "See {productName} in action.",
-      "body": "Tell us a little about your restaurant and we'll help you take the next step toward seeing how {productName} could fit your operation.",
+      "body": "Tell us how your restaurant handles inventory today. We'll review the request and follow up about an appropriate next step for seeing {productName}.",
       "title": "{productName} Restaurant Demo",
       "formDescription": "Tell us a little about your restaurant and how you currently handle inventory so we can understand the right next step for a {productName} demo."
     },
@@ -343,11 +343,11 @@
     },
     "agenda": {
       "eyebrow": "WHAT WE'LL COVER",
-      "heading": "See how {productName} brings together the core parts of restaurant inventory work.",
+      "heading": "A demo can follow the work from setup and invoices through counts and owner review.",
       "items": {
         "setupInventory": {"title":"Setup & Inventory","description":"Ingredients, units, suppliers, and inventory structure."},
         "invoicePurchase": {"title":"Invoice → Purchase","description":"Capture, review, correction, and explicit posting."},
-        "costIntelligence": {"title":"Cost Intelligence","description":"Supplier price changes, preparation cost, and menu-item cost."},
+        "costIntelligence": {"title":"Prices & Food Cost","description":"Supplier price changes, preparation cost, menu-item cost, and cost gaps."},
         "countsReorder": {"title":"Counts & Reorder","description":"Physical count, variance, below-par items, and purchase planning."},
         "ownerView": {"title":"Owner View","description":"Operational signals, history, CSV exports, and data-safety context."}
       }
@@ -478,14 +478,14 @@
         "owner": {
           "eyebrow": "OWNER VIEW",
           "heading": "Review the signals that need operational attention.",
-          "body": "The owner view brings useful operating signals together without forecasts, invented benchmarks, or fake savings claims.",
+          "body": "The owner view gathers the numbers and exceptions an operator may need to review, without presenting gross profit as net profit or filling gaps with estimates.",
           "points": ["Inventory value and recent purchasing", "Waste and supplier price changes", "Preparation, menu, and incomplete cost coverage", "Below-par items and useful recent activity"]
         }
       },
       "dataSafety": {
         "eyebrow": "DATA SAFETY",
         "heading": "Operational data should be recoverable.",
-        "body": "The product includes practical recovery and support work. Automatic backup is not presented as currently available without release acceptance.",
+        "body": "Backup, restore, and clean-device recovery are part of the recovery work. Automatic backup is not claimed as currently available.",
         "points": ["Backup", "Restore and recovery", "Clean-device recovery validation", "Support and diagnostics"]
       }
     },
@@ -572,12 +572,12 @@
     "earlyAccess": {
       "eyebrow": "{freeMonths} MONTHS FREE",
       "heading": "Try {productName} free for {freeMonths} months.",
-      "body": "Start using {productName} in your restaurant with no product fee for the first {freeMonths} months.",
+      "body": "Apply for Early Access. Accepted participants can use {productName} with no product fee for {freeMonths} months; acceptance and timing are not guaranteed.",
       "details": [
-        "Use {productName} free for {freeMonths} months",
-        "Start using the product in your restaurant",
+        "Accepted participants receive {freeMonths} free months",
+        "Use the product in one restaurant location",
         "Share feedback directly with Venkoi",
-        "Access the launch offer at no cost for {freeMonths} months"
+        "Work directly with Venkoi while the initial release develops"
       ],
       "primaryCta": "Request a Demo",
       "secondaryCta": "Try {productName} Free"
