@@ -25,7 +25,7 @@
     "closeMenu": "Close menu"
   },
   "footer": {
-    "tagline": "Focused products for work that needs a better tool.",
+    "tagline": "Focused products for work that needs a better way forward.",
     "sectionProducts": "Products",
     "sectionCompany": "Company",
     "sectionWorkWithUs": "Work With Us",
@@ -43,18 +43,18 @@
   "home": {
     "hero": {
       "eyebrow": "PRODUCT-FIRST SOFTWARE COMPANY",
-      "heading": "We build focused software for the work businesses do every day.",
-      "body": "Venkoi creates its own software products around specific operational problems. Our featured product connects restaurant purchases, inventory, food cost, counts, and the work that needs attention.",
+      "heading": "We build our own software around the operational work businesses need to get right.",
+      "body": "Venkoi's featured product connects restaurant purchases, inventory, food cost, counts, and the work that needs attention. We also take on selected custom software projects.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
       "badge": "{freeMonths} MONTHS FREE",
       "availability": {
-        "available": "These workflows are part of the current product experience. Eligible Early Access participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
-        "early-access": "Some workflows are currently available through Early Access. Eligible participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
-        "launch-release": "Early Access covers the workflows planned for the initial release. Eligible participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
-        "not-marketed": "Eligible Early Access participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed."
+        "available": "These workflows are part of the current product experience. Accepted participants can use {productName} free for {freeMonths} months.",
+        "early-access": "Some workflows are currently available to accepted participants, who can use {productName} free for {freeMonths} months.",
+        "launch-release": "The first release is planned to include these workflows. Accepted participants can use {productName} free for {freeMonths} months.",
+        "not-marketed": "Accepted participants can use {productName} free for {freeMonths} months."
       },
       "heading": "Restaurant inventory and food cost, connected from invoice to owner review.",
       "body": "{productName} keeps operational information connected so restaurant teams can review what came in, what changed, what it costs, and what needs attention.",
@@ -121,14 +121,14 @@
     },
     "insights": {
       "eyebrow": "INSIGHTS",
-      "heading": "Useful ideas before you build — or before you change how you work.",
+      "heading": "Practical guidance for deciding what to build — and what should change in the work.",
       "body": "Practical guides about software projects, web experiences, and restaurant inventory workflows.",
       "cta": "Explore all insights"
     }
   },
   "servicesPage": {
     "eyebrow": "SERVICES",
-    "heading": "Custom software built around the problem you need to solve.",
+    "heading": "Bring us the workflow that is not working.",
     "body": "Venkoi takes on selected mobile and web projects where a clear product approach matters. Start with the business problem or workflow; we can take it from definition and design through development and testing.",
     "primaryCta": "Tell us about your idea",
     "secondaryCue": "Start with an idea.",
@@ -179,7 +179,7 @@
     "seoTitle": "About Venkoi | Software Products & Development",
     "seoDescription": "Learn about Venkoi's product-first philosophy and how we build mobile and web experiences focused on solving real problems.",
     "eyebrow": "ABOUT VENKOI",
-    "heading": "Software should make business easier.",
+    "heading": "Start with the work. Build the useful part first.",
     "body": "Venkoi is a product-first software company based in Tampa Bay. We create our own useful products around real business problems and apply the same product discipline to selected client projects.",
     "strategicDirectionEyebrow": "STRATEGIC DIRECTION",
     "productDirectionHeading": "Products first. Services when you need something built.",
@@ -326,20 +326,20 @@
       "successMessage": "We'll review the information you shared and follow up about seeing how {productName} could fit your restaurant operation."
     },
     "earlyAccess": {
-      "eyebrow": "EARLY ACCESS REQUEST",
-      "heading": "Request {productName} Early Access with {freeMonths} months free.",
-      "body": "Tell us about your restaurant to request the Early Access offer, which includes {freeMonths} free months for accepted participants.",
-      "formTitle": "{productName} Early Access Request",
+      "eyebrow": "ACCESS REQUEST",
+      "heading": "Request access to {productName}.",
+      "body": "Tell us about your restaurant. Accepted participants can use {productName} free for {freeMonths} months.",
+      "formTitle": "Request access to {productName}",
       "badge": "{freeMonths} months free.",
-      "successTitle": "Thanks — we received your Early Access request.",
-      "successMessage": "We've recorded your interest in {productName} Early Access, whose offer includes {freeMonths} months free for accepted participants. We'll review the information you shared and follow up about the next step."
+      "successTitle": "Thanks — we received your access request.",
+      "successMessage": "We'll review the information you shared. If accepted, you can use {productName} free for {freeMonths} months. Acceptance and timing are not guaranteed."
     },
     "nextSteps": {
       "heading": "What happens next?",
       "step1": "Tell us about your restaurant.",
       "step2": "We learn a little about how you currently handle inventory.",
       "step3": "We coordinate the appropriate next step for seeing {productName}.",
-    "step3EarlyAccess": "We review your Early Access request and follow up about the appropriate next step."
+    "step3EarlyAccess": "We review your access request and follow up about the appropriate next step."
     },
     "agenda": {
       "eyebrow": "WHAT WE'LL COVER",
@@ -354,7 +354,7 @@
     },
     "earlyAccessTitle": "Free Offer",
     "badge": "{freeMonths} MONTHS FREE",
-    "badgeText": "Try {productName} free for {freeMonths} months.",
+    "badgeText": "{freeMonths} months free for accepted participants.",
     "direct": {
       "heading": "Prefer to message us directly?",
       "body": "WhatsApp is available as an alternative to the demo form.",
@@ -391,13 +391,13 @@
         "other": "Other software"
       },
       "message": "Anything you'd like us to know",
-      "earlyAccess": "I'd like to use {productName} free for {freeMonths} months.",
+      "earlyAccess": "I'd like to request access to {productName}.",
       "submit": "Request a Demo",
-      "submitEarlyAccess": "Request Early Access",
+      "submitEarlyAccess": "Request Access",
       "submitting": "Submitting...",
       "successTitle": "Thanks — we received your request.",
       "successMessage": "We'll be in touch to learn more about your restaurant and coordinate your demo.",
-      "earlyAccessFixed": "You're requesting Early Access to {productName}, including {freeMonths} free months.",
+      "earlyAccessFixed": "You're requesting access to {productName}. Accepted participants receive {freeMonths} free months.",
       "earlyAccessFixedHelp": "This is a request. We'll review your restaurant's fit and follow up about the next step; acceptance and timing are not guaranteed.",
       "required": "Required field",
       "invalidEmail": "Please enter a valid work email address",
@@ -430,8 +430,8 @@
       "heading": "Know what came in.\nKnow what you have.\nKnow what it costs.\nKnow what needs attention.",
       "body": "{productName} is local-first restaurant inventory and food-cost software for independent restaurants. It connects purchasing, inventory movement, supplier prices, costing, physical counts, and reorder decisions in one operational history. Initial platform: Android; single-location focus.",
       "primaryCta": "Request a Demo",
-      "secondaryCta": "Try {productName} Free",
-      "microcopy": "Try {productName} free for {freeMonths} months.",
+      "secondaryCta": "Request Access",
+      "microcopy": "{freeMonths} months free for accepted participants.",
       "noCreditCard": "No credit card required."
     },
     "story": {
@@ -441,7 +441,7 @@
         "body": "Restaurants do not all work in one strict sequence. This view shows how a document, purchase, inventory change, cost, count, and owner decision can retain the context that connects them.",
         "availability": {
           "available": "These workflows are part of the current product experience.",
-          "early-access": "Some of these workflows are currently available through Early Access.",
+          "early-access": "Some of these workflows are currently available to participating restaurants.",
           "launch-release": "The initial release is planned to include the workflows described below.",
           "not-marketed": ""
         },
@@ -571,8 +571,8 @@
     },
     "earlyAccess": {
       "eyebrow": "{freeMonths} MONTHS FREE",
-      "heading": "Try {productName} free for {freeMonths} months.",
-      "body": "Apply for Early Access. Accepted participants can use {productName} with no product fee for {freeMonths} months; acceptance and timing are not guaranteed.",
+      "heading": "Request access to {productName}.",
+      "body": "Accepted participants can use {productName} with no product fee for {freeMonths} months and share feedback directly with Venkoi. Access is limited; acceptance and timing are not guaranteed.",
       "details": [
         "Accepted participants receive {freeMonths} free months",
         "Use the product in one restaurant location",
@@ -580,7 +580,7 @@
         "Work directly with Venkoi while the initial release develops"
       ],
       "primaryCta": "Request a Demo",
-      "secondaryCta": "Try {productName} Free"
+      "secondaryCta": "Request Access"
     },
     "faq": {
       "heading": "Questions about {productName}",
@@ -620,10 +620,10 @@
     },
     "finalCta": {
       "heading": "Ready for a clearer view of your inventory?",
-      "body": "Try {productName} free for {freeMonths} months or request a demo tailored to your restaurant's operation.",
+      "body": "Request product access or ask for a demo tailored to your restaurant's operation. Accepted participants receive {freeMonths} months free.",
       "bodyDemoOnly": "Request a demo tailored to your restaurant's operation.",
       "primaryCta": "Request a Demo",
-      "secondaryCta": "Try {productName} Free",
+      "secondaryCta": "Request Access",
       "directHeading": "Questions about {productName}?",
       "directBody": "Talk to us directly on WhatsApp.",
       "whatsappLabel": "Chat on WhatsApp",

@@ -28,13 +28,11 @@ const keys = [
   'zaikoPage.nav.earlyAccess',
   'zaikoPage.hero.microcopy',
   'zaikoPage.earlyAccess.eyebrow',
-  'zaikoPage.earlyAccess.heading',
   'zaikoPage.earlyAccess.body',
   'zaikoPage.finalCta.body',
   'demoPage.earlyAccess.badge',
-  'demoPage.earlyAccess.heading',
-  'demoPage.earlyAccess.successMessage',
-  'demoPage.form.earlyAccess'
+  'demoPage.earlyAccess.body',
+  'demoPage.earlyAccess.successMessage'
 ] as const;
 
 for (const [locale, messages, expected, stale] of [
@@ -53,10 +51,10 @@ for (const [locale, messages] of Object.entries({ en, es })) {
   const hardcoded = strings(messages).filter(value => /\b(?:3|three) months\b|\b(?:3|tres) meses\b/i.test(value));
   assert.deepEqual(hardcoded, [], `${locale.toUpperCase()} translations must not hardcode the offer duration`);
   const demoIntentCopy = strings(messages.demoPage.earlyAccess);
-  const intentPattern = locale === 'en' ? /early access/i : /acceso anticipado/i;
+  const intentPattern = locale === 'en' ? /access request|request access/i : /solicitud de acceso|solicita acceso/i;
   assert.ok(
     demoIntentCopy.some(value => intentPattern.test(value)),
-    `${locale.toUpperCase()} Demo copy should explicitly identify Early Access intent`
+    `${locale.toUpperCase()} Demo copy should explicitly identify the access-request intent`
   );
 }
 

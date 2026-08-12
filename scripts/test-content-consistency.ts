@@ -61,6 +61,31 @@ assert.deepEqual(
   'Public Spanish marketing copy must use natural product terminology'
 );
 
+assert.equal(
+  es.zaikoPage.hero.heading,
+  'Sabes qué llegó.\nSabes qué tienes.\nSabes cuánto cuesta.\nSabes qué requiere atención.',
+  'The Spanish product hero must consistently use the informal tú voice'
+);
+
+const publicAccessMessages = [en.home.zaiko, en.demoPage, en.zaikoPage, en.footer];
+const publicAccessMessagesEs = [es.home.zaiko, es.demoPage, es.zaikoPage, es.footer];
+assert.deepEqual(
+  strings(publicAccessMessages).filter((value) => /EARLY ACCESS|Early Access Request|Request Early Access|Try \{productName\} Free/i.test(value)),
+  [],
+  'Public English product access copy must use request language without presenting Early Access as the customer-facing label'
+);
+assert.deepEqual(
+  strings(publicAccessMessagesEs).filter((value) => /ACCESO ANTICIPADO|Solicitud de Acceso Anticipado|Solicitar Acceso Anticipado|Prueba \{productName\} Gratis/i.test(value)),
+  [],
+  'Public Spanish product access copy must use request language without presenting Acceso Anticipado as the customer-facing label'
+);
+assert.match(en.zaikoPage.hero.secondaryCta, /Request|Apply/);
+assert.match(en.demoPage.form.submitEarlyAccess, /Request|Apply/);
+assert.match(es.zaikoPage.hero.secondaryCta, /Solicitar|Solicita/);
+assert.match(es.demoPage.form.submitEarlyAccess, /Solicitar|Solicita/);
+assert.doesNotMatch(en.zaikoPage.hero.secondaryCta, /Try|Free/i);
+assert.doesNotMatch(es.zaikoPage.hero.secondaryCta, /Prueba|Gratis/i);
+
 const navigation = read('src/i18n/navigation.ts');
 assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationItem|NavigationChild/);
 

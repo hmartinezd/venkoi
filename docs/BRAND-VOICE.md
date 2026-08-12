@@ -24,10 +24,10 @@ Venkoi is a product-first software company. Its own focused products come first;
 
 ## CTA hierarchy
 
-- Product interest → Demo / Early Access
+- Product interest → Demo / Access Request
 - Custom mobile or web work → Contact
 
-Do not merge these paths. Early Access is an application, and acceptance or timing is not guaranteed.
+Do not merge these paths: Demo ≠ Access Request. Technical program identifiers may use `early-access`, but public copy should normally describe the action plainly as requesting or applying for access. An access request is an application; do not imply that acceptance or timing is guaranteed.
 
 ## English
 
@@ -42,7 +42,7 @@ Write short sentences with concrete nouns and verbs.
 
 ## Spanish
 
-Rewrite the meaning naturally in Spanish; do not mechanically copy English sentence structure. Prefer terms such as “diseñado para funcionar localmente,” “primera versión,” “versión inicial,” and “acceso anticipado.” Avoid unnecessary English terminology, especially “software local-first” and “flujo de lanzamiento.” EN and ES must agree on product truth, limitations, availability, Early Access, and CTA intent even when their sentence structures differ.
+Rewrite the meaning naturally in Spanish; do not mechanically copy English sentence structure. Prefer terms such as “diseñado para funcionar localmente,” “primera versión,” “versión inicial,” and “solicitar acceso.” Use the site's direct, informal voice consistently. Avoid unnecessary English terminology, especially “software local-first” and “flujo de lanzamiento.” EN and ES must agree on product truth, limitations, availability, access qualification, and CTA intent even when their sentence structures differ.
 
 ## Avoid
 

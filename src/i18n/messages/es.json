@@ -25,7 +25,7 @@
     "closeMenu": "Cerrar menú"
   },
   "footer": {
-    "tagline": "Productos enfocados en trabajos que necesitan una mejor herramienta.",
+    "tagline": "Software enfocado en trabajos que necesitan una mejor forma de hacerse.",
     "sectionProducts": "Productos",
     "sectionCompany": "Empresa",
     "sectionWorkWithUs": "Trabaja con Nosotros",
@@ -43,18 +43,18 @@
   "home": {
     "hero": {
       "eyebrow": "EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS",
-      "heading": "Creamos software enfocado en el trabajo diario de los negocios.",
-      "body": "Venkoi crea sus propios productos de software para problemas operativos específicos. Nuestro producto destacado conecta compras, inventario, costo de alimentos, conteos y el trabajo que requiere atención en restaurantes.",
+      "heading": "Creamos nuestros propios productos para el trabajo operativo que cada negocio necesita hacer bien.",
+      "body": "El producto destacado de Venkoi conecta compras, inventario, costo de alimentos, conteos y el trabajo que requiere atención en restaurantes. También aceptamos proyectos de software a medida cuidadosamente seleccionados.",
       "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
       "badge": "{freeMonths} MESES GRATIS",
       "availability": {
-        "available": "Estas funciones ya forman parte de la experiencia actual. Los participantes elegibles del acceso anticipado pueden usar {productName} gratis durante {freeMonths} meses; la aceptación no está garantizada.",
-        "early-access": "Algunas funciones están disponibles mediante acceso anticipado. Los participantes elegibles pueden usar {productName} gratis durante {freeMonths} meses; la aceptación no está garantizada.",
-        "launch-release": "El acceso anticipado cubre las funciones previstas para la primera versión. Los participantes elegibles pueden usar {productName} gratis durante {freeMonths} meses; la aceptación no está garantizada.",
-        "not-marketed": "Los participantes elegibles del acceso anticipado pueden usar {productName} gratis durante {freeMonths} meses; la aceptación no está garantizada."
+        "available": "Estas funciones ya forman parte de la experiencia actual. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
+        "early-access": "Algunas funciones ya están disponibles para participantes aceptados, quienes pueden usar {productName} gratis durante {freeMonths} meses.",
+        "launch-release": "La primera versión está prevista para incluir estas funciones. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
+        "not-marketed": "Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses."
       },
       "heading": "Inventario y costo de alimentos, conectados desde la factura hasta la revisión del dueño.",
       "body": "{productName} mantiene conectada la información operativa para que el equipo revise qué llegó, qué cambió, cuánto cuesta y qué requiere atención.",
@@ -121,14 +121,14 @@
     },
     "insights": {
       "eyebrow": "RECURSOS",
-      "heading": "Ideas útiles antes de crear algo — o de cambiar cómo trabajas.",
+      "heading": "Guías prácticas para decidir qué crear y qué debe cambiar en el trabajo.",
       "body": "Guías prácticas sobre proyectos de software, experiencias web y procesos de inventario en restaurantes.",
       "cta": "Ver todos los recursos"
     }
   },
   "servicesPage": {
     "eyebrow": "SERVICIOS",
-    "heading": "Software a medida para el problema que necesitas resolver.",
+    "heading": "Cuéntanos qué proceso no está funcionando.",
     "body": "Venkoi desarrolla proyectos móviles y web seleccionados donde importa un enfoque claro de producto. Empieza con el problema o proceso del negocio; podemos llevarlo desde la definición y el diseño hasta el desarrollo y las pruebas.",
     "primaryCta": "Cuéntanos tu idea",
     "secondaryCue": "Empieza con una idea.",
@@ -179,7 +179,7 @@
     "seoTitle": "Sobre Venkoi | Productos y Desarrollo de Software",
     "seoDescription": "Conoce la filosofía de Venkoi y cómo creamos experiencias móviles y web enfocadas en resolver problemas reales.",
     "eyebrow": "SOBRE VENKOI",
-    "heading": "El software debe hacer que los negocios sean más simples.",
+    "heading": "Empieza por el trabajo. Crea primero la parte útil.",
     "body": "Venkoi es una empresa de software con sede en Tampa Bay, enfocada en crear sus propios productos. Diseñamos soluciones para problemas reales y aplicamos la misma disciplina a proyectos seleccionados para clientes.",
     "strategicDirectionEyebrow": "ORIENTACIÓN ESTRATÉGICA",
     "productDirectionHeading": "Primero, nuestros productos. También desarrollamos software a medida.",
@@ -326,20 +326,20 @@
       "successMessage": "Revisaremos la información que compartiste y nos pondremos en contacto para ver cómo {productName} podría adaptarse a la operación de tu restaurante."
     },
     "earlyAccess": {
-      "eyebrow": "SOLICITUD DE ACCESO ANTICIPADO",
-      "heading": "Solicita Acceso Anticipado a {productName} con {freeMonths} meses gratis.",
-      "body": "Cuéntanos sobre tu restaurante para solicitar la oferta de Acceso Anticipado, que incluye {freeMonths} meses gratis para los participantes aceptados.",
-      "formTitle": "Solicitud de Acceso Anticipado a {productName}",
+      "eyebrow": "SOLICITUD DE ACCESO",
+      "heading": "Solicita acceso a {productName}.",
+      "body": "Cuéntanos sobre tu restaurante. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
+      "formTitle": "Solicita acceso a {productName}",
       "badge": "{freeMonths} meses gratis.",
-      "successTitle": "Gracias — recibimos tu solicitud de Acceso Anticipado.",
-      "successMessage": "Registramos tu interés en el Acceso Anticipado a {productName}, cuya oferta incluye {freeMonths} meses gratis para los participantes aceptados. Revisaremos la información que compartiste y te contactaremos sobre el siguiente paso."
+      "successTitle": "Gracias — recibimos tu solicitud de acceso.",
+      "successMessage": "Revisaremos la información que compartiste. Si tu solicitud es aceptada, podrás usar {productName} gratis durante {freeMonths} meses. La aceptación y las fechas no están garantizadas."
     },
     "nextSteps": {
       "heading": "¿Qué pasa después?",
       "step1": "Cuéntanos sobre tu restaurante.",
       "step2": "Aprendemos un poco sobre cómo gestionas el inventario actualmente.",
       "step3": "Coordinamos el siguiente paso adecuado para ver {productName}.",
-      "step3EarlyAccess": "Revisamos tu solicitud de Acceso Anticipado y te contactamos sobre el siguiente paso adecuado."
+      "step3EarlyAccess": "Revisamos tu solicitud de acceso y te contactamos sobre el siguiente paso adecuado."
     },
     "agenda": {
       "eyebrow": "LO QUE VEREMOS",
@@ -354,7 +354,7 @@
     },
     "earlyAccessTitle": "Oferta gratuita",
     "badge": "{freeMonths} MESES GRATIS",
-    "badgeText": "Prueba {productName} gratis durante {freeMonths} meses.",
+    "badgeText": "{freeMonths} meses gratis para participantes aceptados.",
     "direct": {
       "heading": "¿Prefieres escribirnos directamente?",
       "body": "WhatsApp está disponible como alternativa al formulario de demo.",
@@ -391,13 +391,13 @@
         "other": "Otro software"
       },
       "message": "Cualquier detalle que quieras compartir",
-      "earlyAccess": "Quiero usar {productName} gratis durante {freeMonths} meses.",
+      "earlyAccess": "Quiero solicitar acceso a {productName}.",
       "submit": "Solicitar una demo",
-      "submitEarlyAccess": "Solicitar Acceso Anticipado",
+      "submitEarlyAccess": "Solicitar Acceso",
       "submitting": "Enviando...",
       "successTitle": "Gracias — recibimos tu solicitud.",
       "successMessage": "Nos pondremos en contacto contigo para conocer un poco más sobre tu restaurante y coordinar la demo.",
-      "earlyAccessFixed": "Estás solicitando Acceso Anticipado a {productName}, que incluye {freeMonths} meses gratis.",
+      "earlyAccessFixed": "Estás solicitando acceso a {productName}. Los participantes aceptados reciben {freeMonths} meses gratis.",
       "earlyAccessFixedHelp": "Esta es una solicitud. Revisaremos si el programa es adecuado para tu restaurante y te contactaremos sobre el siguiente paso; la aceptación y los plazos no están garantizados.",
       "required": "Campo obligatorio",
       "invalidEmail": "Por favor ingresa un email de trabajo válido",
@@ -427,11 +427,11 @@
     },
     "hero": {
       "eyebrow": "{productName} · UN PRODUCTO VENKOI",
-      "heading": "Sabe qué llegó.\nSabe qué tienes.\nSabe cuánto cuesta.\nSabe qué requiere atención.",
+      "heading": "Sabes qué llegó.\nSabes qué tienes.\nSabes cuánto cuesta.\nSabes qué requiere atención.",
       "body": "{productName} es un producto de inventario y costo de alimentos para restaurantes independientes, diseñado para funcionar localmente. Conecta compras, movimientos de inventario, precios de proveedores, costeo, conteos físicos y decisiones de reposición en un solo historial operativo. Plataforma inicial: Android; enfoque en una sola ubicación.",
       "primaryCta": "Solicita una demo",
-      "secondaryCta": "Prueba {productName} Gratis",
-      "microcopy": "Prueba {productName} gratis durante {freeMonths} meses.",
+      "secondaryCta": "Solicitar Acceso",
+      "microcopy": "{freeMonths} meses gratis para participantes aceptados.",
       "noCreditCard": "Sin necesidad de tarjeta de crédito."
     },
     "story": {
@@ -441,7 +441,7 @@
         "body": "No todos los restaurantes trabajan en una secuencia estricta. Esta vista muestra cómo un documento, una compra, un movimiento, un costo, un conteo y una decisión pueden conservar el contexto que los conecta.",
         "availability": {
           "available": "Estas funciones ya forman parte de la experiencia actual.",
-          "early-access": "Algunas de estas funciones están disponibles mediante acceso anticipado.",
+          "early-access": "Algunas de estas funciones están disponibles para restaurantes participantes.",
           "launch-release": "La primera versión está prevista para incluir las funciones descritas a continuación.",
           "not-marketed": ""
         },
@@ -538,8 +538,8 @@
     },
     "earlyAccess": {
       "eyebrow": "{freeMonths} MESES GRATIS",
-      "heading": "Prueba {productName} gratis durante {freeMonths} meses.",
-      "body": "Solicita Acceso Anticipado. Los participantes aceptados podrán usar {productName} sin costo durante {freeMonths} meses; la aceptación y las fechas no están garantizadas.",
+      "heading": "Solicita acceso a {productName}.",
+      "body": "Los participantes aceptados podrán usar {productName} sin costo durante {freeMonths} meses y compartir sus comentarios directamente con Venkoi. El acceso es limitado; la aceptación y las fechas no están garantizadas.",
       "details": [
         "Los participantes aceptados reciben {freeMonths} meses gratis",
         "Usa el producto en un solo local",
@@ -547,7 +547,7 @@
         "Trabaja directamente con Venkoi mientras avanza la versión inicial"
       ],
       "primaryCta": "Solicita una demo",
-      "secondaryCta": "Prueba {productName} Gratis"
+      "secondaryCta": "Solicitar Acceso"
     },
     "faq": {
       "heading": "Preguntas sobre {productName}",
@@ -587,10 +587,10 @@
     },
     "finalCta": {
       "heading": "¿Listo para una visión más clara de tu inventario?",
-      "body": "Prueba {productName} gratis durante {freeMonths} meses o solicita una demostración adaptada a la operación de tu restaurante.",
+      "body": "Solicita acceso al producto o pide una demostración adaptada a la operación de tu restaurante. Los participantes aceptados reciben {freeMonths} meses gratis.",
       "bodyDemoOnly": "Solicita una demostración adaptada a la operación de tu restaurante.",
       "primaryCta": "Solicita una demo",
-      "secondaryCta": "Prueba {productName} Gratis",
+      "secondaryCta": "Solicitar Acceso",
       "directHeading": "¿Tienes preguntas sobre {productName}?",
       "directBody": "Habla directamente con nosotros por WhatsApp.",
       "whatsappLabel": "Hablar por WhatsApp",
