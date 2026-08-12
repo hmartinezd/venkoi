@@ -561,7 +561,17 @@
       "onHand": "On Hand",
       "incoming": "Incoming",
       "history": "History",
-      "trend": "Trend"
+      "trend": "Trend",
+      "preview": "Product preview",
+      "sampleData": "Representative interface with sample operational data.",
+      "item": "Item", "quantity": "Quantity", "location": "Location", "status": "Status",
+      "vendor": "Vendor", "received": "Received", "total": "Total", "change": "Change", "source": "Source",
+      "currentCost": "Current cost", "previousCost": "Previous cost",
+      "tomatoes": "Tomatoes", "chickenBreast": "Chicken Breast", "avocado": "Avocado", "oliveOil": "Olive Oil", "flour": "Flour",
+      "produceVendor": "Produce Vendor", "foodDistributor": "Food Distributor", "walkIn": "Walk-in", "dryStorage": "Dry storage",
+      "available": "Available", "receivedStatus": "Received", "orderedStatus": "Ordered", "purchase": "Purchase",
+      "adjustment": "Adjustment", "receiving": "Receiving", "today": "Today", "yesterday": "Yesterday",
+      "workflow": "workflow", "connected": "Connected"
     },
     "finalCta": {
       "heading": "Ready for a clearer view of your inventory?",

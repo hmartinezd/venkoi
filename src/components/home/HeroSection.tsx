@@ -5,6 +5,7 @@ import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
+import { ZaikoProductVisual, type ZaikoVisualLabels } from '@/components/product/zaiko/ZaikoProductVisual';
 
 export function HeroSection({
   locale,
@@ -14,11 +15,7 @@ export function HeroSection({
   primaryCta,
   secondaryCta,
   location,
-  productName,
-  inventoryLabel,
-  purchasesLabel,
-  activityLabel,
-  costsLabel
+  visualLabels
 }: {
   locale: Locale;
   eyebrow: string;
@@ -27,11 +24,7 @@ export function HeroSection({
   primaryCta: string;
   secondaryCta: string;
   location: string;
-  productName: string;
-  inventoryLabel: string;
-  purchasesLabel: string;
-  activityLabel: string;
-  costsLabel: string;
+  visualLabels: ZaikoVisualLabels;
 }) {
   return (
     <Section variant="light" spacing="hero">
@@ -64,56 +57,8 @@ export function HeroSection({
           </div>
         </div>
 
-        {/* Abstract Product Composition Right Visual */}
         <div className="relative isolate w-full">
-          <div className="rounded-3xl border border-border bg-surface p-6 shadow-card space-y-6">
-            {/* Header bar */}
-            <div className="flex items-center justify-between pb-4 border-b border-border">
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-orange" />
-                <span className="h-2 w-24 rounded-full bg-ink/70" />
-              </div>
-              <div className="flex items-center gap-1.5 bg-surface-muted px-2.5 py-1 rounded-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-                <span className="h-2 w-16 rounded-full bg-foreground-muted/50" />
-              </div>
-            </div>
-
-            {/* Main Visual Panels */}
-            <div className="space-y-4">
-              {/* Primary Product Card */}
-              <div className="rounded-2xl border border-orange/30 bg-orange-subtle/30 p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-ink">{productName}</span>
-                  <span className="text-[10px] font-bold text-orange-text uppercase tracking-wider bg-orange-subtle px-2 py-0.5 rounded">
-                    01
-                  </span>
-                </div>
-                <div className="grid grid-cols-2 gap-3 text-[11px] font-semibold text-ink sm:grid-cols-4">
-                  {[inventoryLabel, purchasesLabel, activityLabel, costsLabel].map((label, index) => (
-                    <div key={label} className="rounded-lg border border-orange/20 bg-surface px-3 py-3">
-                      <span className="mb-2 block h-1.5 rounded-full bg-orange" style={{ opacity: 1 - index * 0.16 }} />
-                      {label}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Graphic Matrix */}
-            <div className="rounded-2xl border border-border bg-ink p-5 text-white space-y-3">
-              <div className="flex items-center justify-between text-xs">
-                <div className="h-2 w-28 rounded-full bg-white/80" />
-                <div className="h-2 w-12 rounded-full bg-orange" />
-              </div>
-              <div className="grid grid-cols-4 gap-2 pt-1">
-                <div className="h-1.5 rounded-full bg-orange" />
-                <div className="h-1.5 rounded-full bg-white/40" />
-                <div className="h-1.5 rounded-full bg-white/40" />
-                <div className="h-1.5 rounded-full bg-orange/60" />
-              </div>
-            </div>
-          </div>
+          <ZaikoProductVisual type="hero" labels={visualLabels} />
         </div>
       </Container>
     </Section>

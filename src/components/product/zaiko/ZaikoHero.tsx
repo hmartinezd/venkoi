@@ -4,7 +4,7 @@ import { TrackedButton } from '@/components/analytics/TrackedButton';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
-import { ZaikoProductVisual } from './ZaikoProductVisual';
+import { ZaikoProductVisual, type ZaikoVisualLabels } from './ZaikoProductVisual';
 
 interface ZaikoHeroProps {
   locale: Locale;
@@ -13,16 +13,7 @@ interface ZaikoHeroProps {
   body: string;
   primaryCta: string;
   earlyAccess?: { cta: string; microcopy: string; noCreditCard: string };
-  labels?: {
-    inventory: string;
-    purchases: string;
-    activity: string;
-    costs: string;
-    onHand: string;
-    incoming: string;
-    history: string;
-    trend: string;
-  };
+  labels: ZaikoVisualLabels;
 }
 
 export function ZaikoHero({

@@ -46,7 +46,7 @@ for (const [locale, messages] of Object.entries({ en, es })) {
   const t = createTranslator({ locale, messages, namespace: "contactPage.productDemo" });
   for (const key of ["heading", "body"] as const) {
     const rendered = t(key, { productName: FEATURED_PRODUCT.name });
-    assert.match(rendered, new RegExp(FEATURED_PRODUCT.name));
+    assert.ok(rendered.includes(FEATURED_PRODUCT.name));
     assert.doesNotMatch(rendered, /\{productName\}/, `${locale.toUpperCase()} ${key} must fully interpolate`);
   }
 }

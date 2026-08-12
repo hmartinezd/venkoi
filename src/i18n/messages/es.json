@@ -561,7 +561,17 @@
       "onHand": "Disponible",
       "incoming": "Entrante",
       "history": "Historial",
-      "trend": "Tendencia"
+      "trend": "Tendencia",
+      "preview": "Vista previa del producto",
+      "sampleData": "Interfaz representativa con datos operativos de muestra.",
+      "item": "Producto", "quantity": "Cantidad", "location": "Ubicación", "status": "Estado",
+      "vendor": "Proveedor", "received": "Recibido", "total": "Total", "change": "Cambio", "source": "Origen",
+      "currentCost": "Costo actual", "previousCost": "Costo anterior",
+      "tomatoes": "Tomates", "chickenBreast": "Pechuga de pollo", "avocado": "Aguacate", "oliveOil": "Aceite de oliva", "flour": "Harina",
+      "produceVendor": "Proveedor de productos frescos", "foodDistributor": "Distribuidor de alimentos", "walkIn": "Cámara frigorífica", "dryStorage": "Almacén seco",
+      "available": "Disponible", "receivedStatus": "Recibida", "orderedStatus": "Ordenada", "purchase": "Compra",
+      "adjustment": "Ajuste", "receiving": "Recepción", "today": "Hoy", "yesterday": "Ayer",
+      "workflow": "flujo", "connected": "Conectado"
     },
     "finalCta": {
       "heading": "¿Listo para una visión más clara de tu inventario?",

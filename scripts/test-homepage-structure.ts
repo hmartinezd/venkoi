@@ -9,6 +9,8 @@ function read(file: string) {
 const home = read('src/app/[locale]/page.tsx');
 const header = read('src/components/layout/Header.tsx');
 const footer = read('src/components/layout/Footer.tsx');
+const hero = read('src/components/home/HeroSection.tsx');
+const feature = read('src/components/home/ZaikoFeature.tsx');
 const en = JSON.parse(read('src/i18n/messages/en.json'));
 const es = JSON.parse(read('src/i18n/messages/es.json'));
 const expectedOrder = [
@@ -36,6 +38,8 @@ assert.ok(
 );
 assert.ok(header.includes('buildProductDemoHref(locale, FEATURED_PRODUCT)'), 'Header Demo should retain product context');
 assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The featured product should precede Services');
+assert.ok(hero.includes('<ZaikoProductVisual type="hero"'), 'Homepage Hero should show the overview product preview');
+assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
 for (const messages of [en, es]) {
   assert.match(messages.home.hero.eyebrow, /PRODUCT|PRODUCTOS/, 'Hero should identify Venkoi as a product company');
   assert.ok(messages.contactPage.productDemo.eyebrow, 'Contact should distinguish product intent');

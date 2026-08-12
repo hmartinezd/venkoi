@@ -1,17 +1,6 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { ZaikoProductVisual } from './ZaikoProductVisual';
-
-interface VisualLabels {
-  inventory: string;
-  purchases: string;
-  activity: string;
-  costs: string;
-  onHand: string;
-  incoming: string;
-  history: string;
-  trend: string;
-}
+import { ZaikoProductVisual, type ZaikoVisualLabels } from './ZaikoProductVisual';
 
 interface ZaikoProductFitProps {
   workflow: {
@@ -24,7 +13,7 @@ interface ZaikoProductFitProps {
     body: string;
     items: string[];
   };
-  labels: VisualLabels;
+  labels: ZaikoVisualLabels;
 }
 
 export function ZaikoProductFit({ workflow, audience, labels }: ZaikoProductFitProps) {

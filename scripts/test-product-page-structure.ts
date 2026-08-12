@@ -10,6 +10,9 @@ const page = read('src/app/[locale]/products/zaiko/page.tsx');
 const explorer = read('src/components/product/zaiko/ZaikoExplorer.tsx');
 const capabilities = read('src/components/product/zaiko/ZaikoCapabilities.tsx');
 const productNav = read('src/components/product/zaiko/ZaikoProductNav.tsx');
+const visual = read('src/components/product/zaiko/ZaikoProductVisual.tsx');
+const en = JSON.parse(read('src/i18n/messages/en.json'));
+const es = JSON.parse(read('src/i18n/messages/es.json'));
 
 const expectedOrder = [
   '<ZaikoHero',
@@ -51,6 +54,17 @@ assert.ok(explorer.includes('eventName="zaiko_demo_cta"'), 'Explorer Demo event 
 assert.ok(explorer.includes('buildProductDemoHref'), 'Explorer Demo URL should use the product-link helper');
 assert.ok(explorer.includes('href={`#${activeArea}`}'), 'Explorer detail link should target the active capability');
 assert.ok(explorer.includes('aria-pressed={activeArea === area}'), 'Explorer selectors should preserve aria-pressed');
+assert.ok(visual.includes("type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'workflow'"), 'Preview system should expose every supported product view');
+assert.ok(visual.includes('Representative interface with sample operational data') === false, 'Visible preview copy should remain localized rather than hard-coded');
+assert.ok(visual.includes('FEATURED_PRODUCT.name'), 'Product preview should use the registry-driven display name');
+assert.ok(visual.includes('<figcaption'), 'Representative sample data should be explicitly disclosed');
+assert.ok(!visual.includes('overflow-x-auto'), 'Preview should adapt without introducing horizontal scrolling');
+for (const messages of [en, es]) {
+  const labels = messages.zaikoPage.visuals;
+  for (const key of ['preview', 'sampleData', 'item', 'quantity', 'vendor', 'currentCost', 'tomatoes', 'receiving', 'workflow']) {
+    assert.ok(labels[key], `Product preview label ${key} should exist in every locale`);
+  }
+}
 
 for (const file of [
   'src/components/product/zaiko/ZaikoContext.tsx',

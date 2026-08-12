@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { ZaikoProductVisual } from './ZaikoProductVisual';
+import { ZaikoProductVisual, type ZaikoVisualLabels } from './ZaikoProductVisual';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { type Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
@@ -26,16 +26,7 @@ interface ZaikoExplorerProps {
   detailLinkLabel: string;
   demoCtaLabel: string;
   areas: Record<ZaikoExplorerArea, AreaContent>;
-  visualLabels: {
-    inventory: string;
-    purchases: string;
-    activity: string;
-    costs: string;
-    onHand: string;
-    incoming: string;
-    history: string;
-    trend: string;
-  };
+  visualLabels: ZaikoVisualLabels;
 }
 
 export function ZaikoExplorer({

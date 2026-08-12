@@ -45,7 +45,21 @@ export default async function HomePage({ params }: PageProps) {
   const tCommon = await getTranslations('common');
   const tArticles = await getTranslations('insightsArticles');
   const tInsights = await getTranslations('insightsPage');
+  const tVisuals = await getTranslations('zaikoPage.visuals');
   const origin = getSiteOrigin();
+  const visualLabels = {
+    inventory: tVisuals('inventory'), purchases: tVisuals('purchases'), activity: tVisuals('activity'), costs: tVisuals('costs'),
+    onHand: tVisuals('onHand'), incoming: tVisuals('incoming'), history: tVisuals('history'), trend: tVisuals('trend'),
+    preview: tVisuals('preview'), sampleData: tVisuals('sampleData'), item: tVisuals('item'), quantity: tVisuals('quantity'),
+    location: tVisuals('location'), status: tVisuals('status'), vendor: tVisuals('vendor'), received: tVisuals('received'),
+    total: tVisuals('total'), change: tVisuals('change'), source: tVisuals('source'), currentCost: tVisuals('currentCost'),
+    previousCost: tVisuals('previousCost'), tomatoes: tVisuals('tomatoes'), chickenBreast: tVisuals('chickenBreast'),
+    avocado: tVisuals('avocado'), oliveOil: tVisuals('oliveOil'), flour: tVisuals('flour'), produceVendor: tVisuals('produceVendor'),
+    foodDistributor: tVisuals('foodDistributor'), walkIn: tVisuals('walkIn'), dryStorage: tVisuals('dryStorage'),
+    available: tVisuals('available'), receivedStatus: tVisuals('receivedStatus'), orderedStatus: tVisuals('orderedStatus'),
+    purchase: tVisuals('purchase'), adjustment: tVisuals('adjustment'), receiving: tVisuals('receiving'), today: tVisuals('today'),
+    yesterday: tVisuals('yesterday'), workflow: tVisuals('workflow'), connected: tVisuals('connected')
+  };
 
   const articles = [
     {
@@ -105,11 +119,7 @@ export default async function HomePage({ params }: PageProps) {
         primaryCta={tHome('hero.primaryCta', { productName: FEATURED_PRODUCT.name })}
         secondaryCta={tCommon('demo')}
         location={tCommon('locationLine')}
-        productName={FEATURED_PRODUCT.name}
-        inventoryLabel={tHome('zaiko.theme1Title')}
-        purchasesLabel={tHome('zaiko.theme2Title')}
-        costsLabel={tHome('zaiko.theme3Title')}
-        activityLabel={tHome('zaiko.theme4Title')}
+        visualLabels={visualLabels}
       />
 
       <ZaikoFeature
@@ -135,6 +145,7 @@ export default async function HomePage({ params }: PageProps) {
         theme4Title={tHome('zaiko.theme4Title')}
         theme4Desc={tHome('zaiko.theme4Desc')}
         productName={FEATURED_PRODUCT.name}
+        visualLabels={visualLabels}
       />
 
       <PhilosophySection

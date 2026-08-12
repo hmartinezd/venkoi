@@ -5,6 +5,7 @@ import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
+import { ZaikoProductVisual, type ZaikoVisualLabels } from '@/components/product/zaiko/ZaikoProductVisual';
 
 export function ZaikoFeature({
   locale,
@@ -22,7 +23,8 @@ export function ZaikoFeature({
   theme3Desc,
   theme4Title,
   theme4Desc,
-  productName
+  productName,
+  visualLabels
 }: {
   locale: Locale;
   eyebrow: string;
@@ -40,6 +42,7 @@ export function ZaikoFeature({
   theme4Title: string;
   theme4Desc: string;
   productName: string;
+  visualLabels: ZaikoVisualLabels;
 }) {
   const themes = [
     { title: theme1Title, desc: theme1Desc },
@@ -106,67 +109,8 @@ export function ZaikoFeature({
           </div>
         </div>
 
-        {/* Right Abstract Product Composition */}
         <div className="lg:col-span-6">
-          <div className="rounded-2xl border border-border bg-background p-6 shadow-card space-y-5">
-            {/* Top Bar */}
-            <div className="flex items-center justify-between pb-3 border-b border-border">
-              <div className="flex items-center gap-2">
-                <div className="h-2.5 w-2.5 rounded-full bg-orange" />
-                <span className="text-xs font-bold tracking-wider text-ink uppercase">{productName}</span>
-              </div>
-              <span className="text-[11px] text-orange-text font-bold uppercase tracking-wider bg-orange-subtle px-2.5 py-0.5 rounded">
-                01
-              </span>
-            </div>
-
-            {/* Abstract Structured Rows */}
-            <div className="space-y-3">
-              <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
-                <div className="space-y-1">
-                  <p className="font-semibold text-ink">{theme1Title}</p>
-                  <p className="text-[11px] text-foreground-muted">{theme1Desc}</p>
-                </div>
-                <div className="text-right">
-                  <span className="h-2 w-12 rounded-full bg-orange/40 inline-block" />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
-                <div className="space-y-1">
-                  <p className="font-semibold text-ink">{theme2Title}</p>
-                  <p className="text-[11px] text-foreground-muted">{theme2Desc}</p>
-                </div>
-                <div className="text-right">
-                  <span className="h-2 w-10 rounded-full bg-border-strong inline-block" />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between rounded-xl border border-border bg-surface p-4 text-xs">
-                <div className="space-y-1">
-                  <p className="font-semibold text-ink">{theme3Title}</p>
-                  <p className="text-[11px] text-foreground-muted">{theme3Desc}</p>
-                </div>
-                <div className="text-right">
-                  <span className="h-2 w-14 rounded-full bg-orange/60 inline-block" />
-                </div>
-              </div>
-            </div>
-
-            {/* Abstract Activity Stream Motif */}
-            <div className="rounded-xl border border-border bg-surface p-4 space-y-3">
-              <div className="flex items-center justify-between text-xs font-semibold text-ink">
-                <span>{theme4Title}</span>
-                <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-              </div>
-              <div className="space-y-2">
-                <div className="h-1.5 w-full rounded-full bg-surface-muted overflow-hidden">
-                  <div className="h-full w-3/4 rounded-full bg-orange" />
-                </div>
-                <p className="text-[11px] text-foreground-muted pt-0.5">{theme4Desc}</p>
-              </div>
-            </div>
-          </div>
+          <ZaikoProductVisual type="inventory" labels={visualLabels} />
         </div>
       </Container>
     </Section>
