@@ -13,6 +13,7 @@ import type { Metadata } from 'next';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
+import { DEMO_AGENDA, filterMarketableEntries } from '@/lib/product-marketing';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -162,9 +163,9 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             <ProductDemoAgenda
               eyebrow={t('agenda.eyebrow')}
               heading={t('agenda.heading', { productName: resolvedProduct.name })}
-              items={['setupInventory', 'invoicePurchase', 'costIntelligence', 'countsReorder', 'ownerView'].map((area) => ({
-                title: t(`agenda.items.${area}.title`),
-                description: t(`agenda.items.${area}.description`)
+              items={(isZaiko ? filterMarketableEntries(DEMO_AGENDA) : DEMO_AGENDA).map(({ key }) => ({
+                title: t(`agenda.items.${key}.title`),
+                description: t(`agenda.items.${key}.description`)
               }))}
             />
           </aside>

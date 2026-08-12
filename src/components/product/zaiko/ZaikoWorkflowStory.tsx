@@ -15,7 +15,7 @@ export type WorkflowChapter = {
 type Props = {
   workflow: { eyebrow: string; heading: string; body: string; steps: string[]; availability: string };
   chapters: WorkflowChapter[];
-  dataSafety: { eyebrow: string; heading: string; body: string; points: string[] };
+  dataSafety?: { eyebrow: string; heading: string; body: string; points: string[] };
   labels: ZaikoVisualLabels;
 };
 
@@ -28,7 +28,7 @@ export function ZaikoWorkflowStory({ workflow, chapters, dataSafety, labels }: P
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">{workflow.eyebrow}</p>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">{workflow.heading}</h2>
             <p className="text-base leading-relaxed text-white/75 sm:text-lg">{workflow.body}</p>
-            <p className="text-sm font-semibold text-orange">{workflow.availability}</p>
+            {workflow.availability ? <p className="text-sm font-semibold text-orange">{workflow.availability}</p> : null}
           </div>
           <ol className="grid gap-2 sm:grid-cols-3 lg:grid-cols-5" aria-label={workflow.heading}>
             {workflow.steps.map((step, index) => (
@@ -59,12 +59,12 @@ export function ZaikoWorkflowStory({ workflow, chapters, dataSafety, labels }: P
         </Section>
       ))}
 
-      <Section variant="muted" spacing="compact" className="border-y border-border">
+      {dataSafety ? <Section variant="muted" spacing="compact" className="border-y border-border">
         <Container className="grid gap-6 lg:grid-cols-12 lg:items-start">
           <div className="space-y-3 lg:col-span-5"><p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">{dataSafety.eyebrow}</p><h2 className="text-2xl font-bold text-ink sm:text-3xl">{dataSafety.heading}</h2><p className="text-sm leading-relaxed text-foreground-muted">{dataSafety.body}</p></div>
           <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-7" role="list">{dataSafety.points.map((point) => <li key={point} className="rounded-xl border border-border bg-surface p-4 text-sm font-semibold text-ink">{point}</li>)}</ul>
         </Container>
-      </Section>
+      </Section> : null}
     </>
   );
 }

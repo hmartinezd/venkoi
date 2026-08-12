@@ -16,7 +16,8 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { FEATURED_PRODUCT, productPlatformToSchemaOperatingSystem } from '@/lib/products';
-import { getGroupAvailability, PRODUCT_NON_CLAIMS, PRODUCT_TRUST_PRINCIPLES } from '@/lib/product-capabilities';
+import { PRODUCT_NON_CLAIMS, PRODUCT_TRUST_PRINCIPLES } from '@/lib/product-capabilities';
+import { areGroupsMarketable, filterMarketableEntries, getWorkflowMarketingState, PRODUCT_STORY_CHAPTERS, PRODUCT_WORKFLOW_STEPS } from '@/lib/product-marketing';
 import { buildZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
 
 interface PageProps { params: Promise<{ locale: string }> }
@@ -37,24 +38,25 @@ export default async function ZaikoPage({ params }: PageProps) {
   const values = { productName: FEATURED_PRODUCT.name, freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths };
   const labels = buildZaikoVisualLabels(await getTranslations('zaikoPage.visuals'));
 
-  // These checks keep public claims tied to the typed Milestone 46 truth layer.
-  const launchGroups = ['invoice-purchase-capture', 'physical-counts', 'reorder-assistance', 'owner-view'] as const;
-  const launchRelease = launchGroups.every((group) => getGroupAvailability(group) === 'launch-release');
-  if (!launchRelease || PRODUCT_TRUST_PRINCIPLES.invoicePosting.automaticPosting || PRODUCT_TRUST_PRINCIPLES.costing.fabricateMissingCosts || PRODUCT_TRUST_PRINCIPLES.physicalCounts.zeroEqualsUncounted || PRODUCT_TRUST_PRINCIPLES.reorder.supplierElectronicOrdering || !PRODUCT_NON_CLAIMS.includes('supplier-electronic-ordering')) throw new Error('Product marketing truth is inconsistent.');
+  // Valid release progression must never fail rendering; only actual trust
+  // contradictions remain fatal public-marketing inconsistencies.
+  if (PRODUCT_TRUST_PRINCIPLES.invoicePosting.automaticPosting || PRODUCT_TRUST_PRINCIPLES.costing.fabricateMissingCosts || PRODUCT_TRUST_PRINCIPLES.physicalCounts.zeroEqualsUncounted || PRODUCT_TRUST_PRINCIPLES.reorder.supplierElectronicOrdering || !PRODUCT_NON_CLAIMS.includes('supplier-electronic-ordering')) throw new Error('Product marketing truth is inconsistent.');
 
-  const chapterConfig = [
-    { id: 'invoice-capture', key: 'invoice', visual: 'purchases' },
-    { id: 'inventory', key: 'inventory', visual: 'activity' },
-    { id: 'food-cost', key: 'costing', visual: 'costs' },
-    { id: 'counts-reorder', key: 'counts' },
-    { id: 'owner-view', key: 'owner' }
-  ] as const;
-  const chapters: WorkflowChapter[] = chapterConfig.map(({ id, key, ...rest }) => ({
+  const visibleChapterConfig = filterMarketableEntries(PRODUCT_STORY_CHAPTERS);
+  const chapters: WorkflowChapter[] = visibleChapterConfig.map(({ id, key, ...rest }) => ({
     id, ...rest,
     eyebrow: t(`story.chapters.${key}.eyebrow`), heading: t(`story.chapters.${key}.heading`), body: t(`story.chapters.${key}.body`, values),
     points: [0, 1, 2, 3].map((index) => t(`story.chapters.${key}.points.${index}`)),
     trust: key === 'invoice' || key === 'costing' || key === 'counts' ? t(`story.chapters.${key}.trust`) : undefined
   }));
+  const workflowState = getWorkflowMarketingState();
+  const workflowSteps = PRODUCT_WORKFLOW_STEPS
+    .filter(({ groups }) => areGroupsMarketable(groups))
+    .map(({ key }) => t(`story.workflow.steps.${key}`));
+  const dataSafety = areGroupsMarketable(['data-safety']) ? {
+    eyebrow: t('story.dataSafety.eyebrow'), heading: t('story.dataSafety.heading'), body: t('story.dataSafety.body'),
+    points: [0,1,2,3].map((i) => t(`story.dataSafety.points.${i}`))
+  } : undefined;
 
   const origin = getSiteOrigin();
   const jsonLd = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: FEATURED_PRODUCT.name, url: `${origin}${getLocalizedPath('productsZaiko', currentLocale)}`, applicationCategory: 'BusinessApplication', description: t('seo.description', values), operatingSystem: productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform), author: { '@type': 'Organization', name: 'Venkoi', url: origin } };
@@ -62,9 +64,9 @@ export default async function ZaikoPage({ params }: PageProps) {
 
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-    <ZaikoProductNav locale={currentLocale} productName={FEATURED_PRODUCT.name} subtitle={t('nav.subtitle')} overviewLabel={t('nav.overview')} invoiceLabel={t('nav.invoice')} inventoryLabel={t('nav.inventory')} foodCostLabel={t('nav.foodCost')} countsLabel={t('nav.counts')} ownerLabel={t('nav.owner')} requestDemoLabel={t('nav.requestDemo')} navigationLabel={tHeader('productNavigation', { productName: FEATURED_PRODUCT.name })} />
+    <ZaikoProductNav locale={currentLocale} productName={FEATURED_PRODUCT.name} subtitle={t('nav.subtitle')} overviewLabel={t('nav.overview')} invoiceLabel={t('nav.invoice')} inventoryLabel={t('nav.inventory')} foodCostLabel={t('nav.foodCost')} countsLabel={t('nav.counts')} ownerLabel={t('nav.owner')} requestDemoLabel={t('nav.requestDemo')} navigationLabel={tHeader('productNavigation', { productName: FEATURED_PRODUCT.name })} visibleChapterIds={chapters.map(({ id }) => id)} />
     <ZaikoHero locale={currentLocale} eyebrow={t('hero.eyebrow', values)} heading={t('hero.heading')} body={t('hero.body', values)} primaryCta={t('hero.primaryCta')} earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? { cta: t('hero.secondaryCta', values), microcopy: t('hero.microcopy', values), noCreditCard: t('hero.noCreditCard') } : undefined} labels={labels} />
-    <ZaikoWorkflowStory workflow={{ eyebrow: t('story.workflow.eyebrow'), heading: t('story.workflow.heading'), body: t('story.workflow.body'), availability: t('story.workflow.availability'), steps: [0,1,2,3,4,5,6,7,8].map((i) => t(`story.workflow.steps.${i}`)) }} chapters={chapters} dataSafety={{ eyebrow: t('story.dataSafety.eyebrow'), heading: t('story.dataSafety.heading'), body: t('story.dataSafety.body'), points: [0,1,2,3].map((i) => t(`story.dataSafety.points.${i}`)) }} labels={labels} />
+    {chapters.length > 0 ? <ZaikoWorkflowStory workflow={{ eyebrow: t('story.workflow.eyebrow'), heading: t('story.workflow.heading'), body: t('story.workflow.body'), availability: t(`story.workflow.availability.${workflowState}`), steps: workflowSteps }} chapters={chapters} dataSafety={dataSafety} labels={labels} /> : null}
     <ZaikoProductFit workflow={{ eyebrow: t('workflow.eyebrow'), heading: t('workflow.heading'), body: t('workflow.body') }} audience={{ heading: t('audience.heading'), body: t('audience.body', values), items: [0,1,2,3].map((i) => t(`audience.items.${i}`)) }} labels={labels} />
     {FEATURED_PRODUCT.earlyAccess.enabled ? <ZaikoEarlyAccess locale={currentLocale} eyebrow={t('earlyAccess.eyebrow', values)} heading={t('earlyAccess.heading', values)} body={t('earlyAccess.body', values)} details={[0,1,2,3].map((i) => t(`earlyAccess.details.${i}`, values))} primaryCta={t('earlyAccess.primaryCta')} secondaryCta={t('earlyAccess.secondaryCta', values)} /> : null}
     <ZaikoFaq heading={t('faq.heading', values)} items={faqItems} />

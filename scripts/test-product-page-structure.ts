@@ -7,6 +7,7 @@ const page = read('src/app/[locale]/products/zaiko/page.tsx');
 const story = read('src/components/product/zaiko/ZaikoWorkflowStory.tsx');
 const nav = read('src/components/product/zaiko/ZaikoProductNav.tsx');
 const visual = read('src/components/product/zaiko/ZaikoProductVisual.tsx');
+const marketing = read('src/lib/product-marketing.ts');
 const en = JSON.parse(read('src/i18n/messages/en.json'));
 const es = JSON.parse(read('src/i18n/messages/es.json'));
 
@@ -14,12 +15,16 @@ for (const component of ['<ZaikoHero', '<ZaikoWorkflowStory', '<ZaikoProductFit'
   assert.ok(page.includes(component), `${component} should remain in the product story`);
 }
 for (const anchor of ['overview', 'invoice-capture', 'inventory', 'food-cost', 'counts-reorder', 'owner-view']) {
-  assert.ok((page + nav + story).includes(anchor), `${anchor} should be exposed as a semantic chapter or navigation anchor`);
+  assert.ok((page + nav + story + marketing).includes(anchor), `${anchor} should be exposed as a semantic chapter or navigation anchor`);
 }
 assert.ok(story.includes('scroll-mt-36'), 'Workflow anchors should account for sticky navigation');
 assert.ok(story.includes('<ol'), 'Workflow sequence should use ordered semantic markup');
 assert.ok(!story.includes('overflow-x-auto'), 'Workflow should wrap rather than require horizontal scrolling');
-assert.ok(page.includes('getGroupAvailability'), 'Product claims should consult capability availability');
+assert.ok(page.includes('filterMarketableEntries'), 'Product chapters should consult shared marketing availability');
+assert.ok(page.includes('getWorkflowMarketingState'), 'Workflow copy should derive its availability state');
+assert.ok(nav.includes('visibleChapterIds.includes'), 'Navigation should omit links for hidden chapters');
+assert.match(page, /visibleChapterIds=\{chapters\.map\(\(\{ id \}\) => id\)\}/, 'Navigation visibility should use the rendered chapters');
+assert.match(read('src/components/product/zaiko/ZaikoHero.tsx'), /id="overview"/, 'Overview navigation must retain its hero target');
 assert.ok(page.includes('PRODUCT_TRUST_PRINCIPLES'), 'Product page should consume trust principles');
 assert.ok(page.includes('PRODUCT_NON_CLAIMS'), 'Product page should consume explicit non-claims');
 assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/, 'Early Access remains registry-controlled');
@@ -32,5 +37,8 @@ for (const messages of [en, es]) {
   assert.equal(messages.zaikoPage.story.workflow.steps.length, 9);
   assert.equal(messages.zaikoPage.faq.items.length, 10);
   for (const key of ['invoice', 'inventory', 'costing', 'counts', 'owner']) assert.ok(messages.zaikoPage.story.chapters[key]);
+  for (const state of ['available', 'early-access', 'launch-release', 'not-marketed']) {
+    assert.equal(typeof messages.zaikoPage.story.workflow.availability[state], 'string');
+  }
 }
 console.log('Product page structure regression checks passed.');

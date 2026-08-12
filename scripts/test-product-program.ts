@@ -24,7 +24,7 @@ assert.equal(FEATURED_PRODUCT.pricingEnabled, false);
 
 const keys = [
   'home.zaiko.badge',
-  'home.zaiko.badgeText',
+  'home.zaiko.availability.launch-release',
   'zaikoPage.nav.earlyAccess',
   'zaikoPage.hero.microcopy',
   'zaikoPage.earlyAccess.eyebrow',

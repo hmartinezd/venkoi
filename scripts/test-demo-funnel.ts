@@ -8,6 +8,7 @@ const footer = read('src/components/layout/Footer.tsx');
 const about = read('src/app/[locale]/about/page.tsx');
 const insight = read('src/app/[locale]/insights/restaurant-inventory-information/page.tsx');
 const contact = read('src/app/[locale]/contact/page.tsx');
+const productMarketing = read('src/lib/product-marketing.ts');
 
 const assertConversionEntry = (
   source: string,
@@ -53,7 +54,8 @@ assert.match(form, /successActions\.guide/);
 assert.match(page, /normalizeDemoConversionSource\(source\)/, 'Demo page normalizes source before client analytics');
 assert.match(page, /fixedEarlyAccessIntent=\{isEarlyAccess\}/);
 for (const agendaKey of ['setupInventory', 'invoicePurchase', 'costIntelligence', 'countsReorder', 'ownerView']) {
-  assert.match(page, new RegExp(agendaKey), `Demo agenda should include ${agendaKey}`);
+  assert.match(productMarketing, new RegExp(agendaKey), `Demo agenda should include ${agendaKey}`);
 }
+assert.match(page, /filterMarketableEntries\(DEMO_AGENDA\)/, 'Demo agenda should omit non-marketable workflows');
 
 console.log('Demo funnel regression tests passed.');

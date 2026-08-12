@@ -9,9 +9,17 @@ import {
   PRODUCT_CAPABILITY_GROUPS,
   PRODUCT_NON_CLAIMS,
   PRODUCT_TRUST_PRINCIPLES,
+  aggregateCapabilityAvailability,
   getCapabilitiesForGroup,
   getGroupAvailability
 } from '../src/lib/product-capabilities';
+import {
+  DEMO_AGENDA,
+  filterMarketableEntries,
+  getGroupsMarketingState,
+  HOMEPAGE_PRODUCT_OUTCOMES,
+  PRODUCT_STORY_CHAPTERS
+} from '../src/lib/product-marketing';
 
 const read = (file: string) => readFileSync(resolve(process.cwd(), file), 'utf8');
 
@@ -20,12 +28,40 @@ for (const group of PRODUCT_CAPABILITY_GROUPS) {
   assert.ok(PRODUCT_CAPABILITIES.some((capability) => capability.group === group), `${group} must be represented`);
 }
 assert.ok(PRODUCT_CAPABILITIES.every(({ releaseScope }) => releaseScope === 'first-release'));
-assert.ok(
-  PRODUCT_CAPABILITIES.every(({ availability }) => availability === 'launch-release'),
-  'Capabilities without documented release acceptance must remain launch-release'
-);
 assert.ok(getCapabilitiesForGroup('physical-counts').length > 0);
-assert.equal(getGroupAvailability('invoice-purchase-capture'), 'launch-release');
+assert.notEqual(getGroupAvailability('invoice-purchase-capture'), 'not-marketed');
+
+for (const [states, expected] of [
+  [['available', 'available'], 'available'],
+  [['early-access', 'early-access'], 'early-access'],
+  [['launch-release', 'launch-release'], 'launch-release'],
+  [['not-marketed', 'not-marketed'], 'not-marketed'],
+  [['available', 'early-access'], 'early-access'],
+  [['available', 'launch-release'], 'launch-release'],
+  [['early-access', 'launch-release'], 'launch-release'],
+  [['available', 'not-marketed'], 'available'],
+  [['launch-release', 'not-marketed'], 'launch-release']
+] as const) {
+  assert.equal(aggregateCapabilityAvailability(states), expected, `${states.join(' + ')} should be ${expected}`);
+}
+assert.equal(
+  getGroupsMarketingState(['vendor-price-intelligence', 'preparation-costing', 'menu-costing']),
+  'launch-release',
+  'A multi-group chapter must use conservative aggregation'
+);
+
+const visibilityFixture = [
+  { id: 'public', groups: ['inventory'] as const },
+  { id: 'hidden', groups: ['owner-view'] as const }
+];
+assert.deepEqual(
+  filterMarketableEntries(visibilityFixture, (groups) => groups.includes('owner-view') ? 'not-marketed' : 'available').map(({ id }) => id),
+  ['public'],
+  'An all-not-marketed chapter must be omitted'
+);
+assert.equal(PRODUCT_STORY_CHAPTERS.length, 5);
+assert.equal(HOMEPAGE_PRODUCT_OUTCOMES.length, 5);
+assert.equal(DEMO_AGENDA.length, 5);
 
 const capabilityIds = new Set(PRODUCT_CAPABILITIES.map(({ id }) => id));
 for (const required of [
@@ -86,9 +122,15 @@ for (const unsupportedPositiveClaim of [
 }
 
 const productPage = read('src/app/[locale]/products/zaiko/page.tsx');
+const productMarketing = read('src/lib/product-marketing.ts');
 for (const chapter of ['invoice-capture', 'inventory', 'food-cost', 'counts-reorder', 'owner-view']) {
-  assert.match(productPage, new RegExp(`'${chapter}'`));
+  assert.match(productMarketing, new RegExp(`'${chapter}'`));
 }
+assert.doesNotMatch(productPage, /getGroupAvailability\(group\) === 'launch-release'/);
+assert.match(productPage, /filterMarketableEntries\(PRODUCT_STORY_CHAPTERS\)/);
+assert.match(productPage, /visibleChapterIds=\{chapters\.map/);
+assert.match(read('src/app/[locale]/page.tsx'), /availability\.\$\{workflowState\}/);
+assert.match(read('src/app/[locale]/demo/page.tsx'), /filterMarketableEntries\(DEMO_AGENDA\)/);
 assert.match(en.zaikoPage.story.chapters.invoice.trust, /restaurant decides/i);
 assert.match(en.zaikoPage.story.chapters.costing.trust, /instead of inventing precision/i);
 assert.match(en.zaikoPage.story.chapters.counts.trust, /0 means counted and found zero/i);

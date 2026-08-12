@@ -27,7 +27,8 @@ export function ZaikoFeature({
   theme5Title,
   theme5Desc,
   productName,
-  visualLabels
+  visualLabels,
+  visibleOutcomeKeys
 }: {
   locale: Locale;
   eyebrow: string;
@@ -48,14 +49,15 @@ export function ZaikoFeature({
   theme5Desc: string;
   productName: string;
   visualLabels: ZaikoVisualLabels;
+  visibleOutcomeKeys: readonly string[];
 }) {
   const themes = [
-    { title: theme1Title, desc: theme1Desc },
-    { title: theme2Title, desc: theme2Desc },
-    { title: theme3Title, desc: theme3Desc },
-    { title: theme4Title, desc: theme4Desc },
-    { title: theme5Title, desc: theme5Desc }
-  ];
+    { key: 'invoice', title: theme1Title, desc: theme1Desc },
+    { key: 'inventory', title: theme2Title, desc: theme2Desc },
+    { key: 'costing', title: theme3Title, desc: theme3Desc },
+    { key: 'counts', title: theme4Title, desc: theme4Desc },
+    { key: 'owner', title: theme5Title, desc: theme5Desc }
+  ].filter(({ key }) => visibleOutcomeKeys.includes(key));
 
   return (
     <Section variant="surface" spacing="spacious" className="border-y border-border">

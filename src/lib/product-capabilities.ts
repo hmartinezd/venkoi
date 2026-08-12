@@ -147,10 +147,21 @@ export function getCapabilitiesForGroup(group: ProductCapabilityGroup): readonly
   return PRODUCT_CAPABILITIES.filter((capability) => capability.group === group);
 }
 
+export function aggregateCapabilityAvailability(
+  availabilities: readonly ProductCapabilityAvailability[]
+): ProductCapabilityAvailability {
+  // Hidden capabilities do not affect public aggregation. Among marketable
+  // capabilities, return the least advanced state so mixed groups cannot be
+  // presented more optimistically than their least-available public capability.
+  const marketable = availabilities.filter((availability) => availability !== 'not-marketed');
+  if (marketable.length === 0) return 'not-marketed';
+  if (marketable.includes('launch-release')) return 'launch-release';
+  if (marketable.includes('early-access')) return 'early-access';
+  return 'available';
+}
+
 export function getGroupAvailability(group: ProductCapabilityGroup): ProductCapabilityAvailability {
-  const capabilities = getCapabilitiesForGroup(group);
-  if (capabilities.some((capability) => capability.availability === 'available')) return 'available';
-  if (capabilities.some((capability) => capability.availability === 'early-access')) return 'early-access';
-  if (capabilities.some((capability) => capability.availability === 'launch-release')) return 'launch-release';
-  return 'not-marketed';
+  return aggregateCapabilityAvailability(
+    getCapabilitiesForGroup(group).map(({ availability }) => availability)
+  );
 }

@@ -41,11 +41,16 @@ assert.ok(home.indexOf('<ZaikoFeature') < home.indexOf('<ServicesSection'), 'The
 assert.ok(hero.includes('<ZaikoProductVisual type="hero"'), 'Homepage Hero should show the overview product preview');
 assert.ok(feature.includes('<ZaikoProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
 assert.ok(home.includes('buildZaikoVisualLabels(tVisuals)'), 'Homepage should use the shared visual-label builder');
+assert.match(home, /getWorkflowMarketingState\(\)/, 'Homepage availability copy should use derived product state');
+assert.match(home, /filterMarketableEntries\(HOMEPAGE_PRODUCT_OUTCOMES\)/, 'Homepage should hide non-marketable outcomes');
 for (const messages of [en, es]) {
   assert.match(messages.home.hero.eyebrow, /PRODUCT|PRODUCTOS/, 'Hero should identify Venkoi as a product company');
   assert.match(messages.home.hero.body, /Venkoi/, 'Homepage should present Venkoi as the company');
   for (const key of ['theme1Title', 'theme2Title', 'theme3Title', 'theme4Title', 'theme5Title']) {
     assert.ok(messages.home.zaiko[key], `Homepage product outcome ${key} should exist`);
+  }
+  for (const state of ['available', 'early-access', 'launch-release', 'not-marketed']) {
+    assert.equal(typeof messages.home.zaiko.availability[state], 'string');
   }
   assert.ok(messages.contactPage.productDemo.eyebrow, 'Contact should distinguish product intent');
 }

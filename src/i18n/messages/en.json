@@ -50,7 +50,12 @@
     "zaiko": {
       "eyebrow": "{productName} · A VENKOI PRODUCT",
       "badge": "{freeMonths} MONTHS FREE",
-      "badgeText": "Early Access connects the launch-release workflow. Eligible participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
+      "availability": {
+        "available": "These workflows are part of the current product experience. Eligible Early Access participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
+        "early-access": "Some workflows are currently available through Early Access. Eligible participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
+        "launch-release": "Early Access covers the workflows planned for the initial release. Eligible participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed.",
+        "not-marketed": "Eligible Early Access participants can use {productName} free for {freeMonths} months; acceptance is not guaranteed."
+      },
       "heading": "Restaurant inventory and food cost, connected from invoice to owner review.",
       "body": "{productName} keeps operational information connected so restaurant teams can review what came in, what changed, what it costs, and what needs attention.",
       "discoverCta": "Discover {productName}",
@@ -434,14 +439,19 @@
         "eyebrow": "CONNECTED RESTAURANT WORK",
         "heading": "From operational input to a decision, the information stays connected.",
         "body": "Restaurants do not all work in one strict sequence. This view shows how a document, purchase, inventory change, cost, count, and owner decision can retain the context that connects them.",
-        "availability": "Early Access covers the launch-release workflow described below.",
+        "availability": {
+          "available": "These workflows are part of the current product experience.",
+          "early-access": "Some of these workflows are currently available through Early Access.",
+          "launch-release": "The initial release is planned to include the workflows described below.",
+          "not-marketed": ""
+        },
         "steps": ["Setup", "Invoice", "Review", "Purchase", "Inventory & Activity", "Costing", "Count", "Reorder", "Owner Review"]
       },
       "chapters": {
         "invoice": {
           "eyebrow": "INVOICE CAPTURE",
           "heading": "Capture the invoice. Review what was found. Post when it is right.",
-          "body": "In the launch release, {productName} turns camera or document input into a reviewable Purchase Draft while keeping the source document attached.",
+          "body": "{productName} turns camera or document input into a reviewable Purchase Draft while keeping the source document attached.",
           "points": ["Detect invoice details, lines, and totals", "Connect vendor items to ingredients", "Review packages and conversions", "Correct the draft before explicit posting"],
           "trust": "Detection suggests. The restaurant decides what gets posted."
         },
@@ -454,28 +464,28 @@
         "costing": {
           "eyebrow": "PRICES & FOOD COST",
           "heading": "Follow supplier prices into preparation and menu cost.",
-          "body": "The launch-release workflow compares valid supplier prices, then carries ingredient cost into preparations and menu items without confusing gross profit with net profit.",
+          "body": "The workflow compares valid supplier prices, then carries ingredient cost into preparations and menu items without confusing gross profit with net profit.",
           "points": ["Current and previous comparable supplier price", "Normalized base-unit cost and source purchase line", "Preparation batch, yield, and cost per yield unit", "Plate cost, selling price, food-cost percentage, and gross profit before labor and overhead"],
           "trust": "Complete, Partial, or Missing costs: if source costs are missing, the product shows the gap instead of inventing precision. Unlike packages are not compared without sufficient conversion data."
         },
         "counts": {
           "eyebrow": "PHYSICAL COUNTS & REORDER",
           "heading": "Count the operation, review variance, then prepare what to buy.",
-          "body": "The launch release supports practical numeric entry, count units, progress and resume, review before posting, and a supplier-grouped list based on below-par ingredients.",
+          "body": "The workflow supports practical numeric entry, count units, progress and resume, review before posting, and a supplier-grouped list based on below-par ingredients.",
           "points": ["Search, filter, progress, and resume", "Transparent count-unit conversions", "Expected, counted, and variance review", "Package-aware quantities and a shareable CSV shopping list"],
           "trust": "0 means counted and found zero; uncounted means not counted yet. The product helps prepare the order; the initial release does not place supplier orders electronically."
         },
         "owner": {
           "eyebrow": "OWNER VIEW",
           "heading": "Review the signals that need operational attention.",
-          "body": "The launch-release owner view brings useful operating signals together without forecasts, invented benchmarks, or fake savings claims.",
+          "body": "The owner view brings useful operating signals together without forecasts, invented benchmarks, or fake savings claims.",
           "points": ["Inventory value and recent purchasing", "Waste and supplier price changes", "Preparation, menu, and incomplete cost coverage", "Below-par items and useful recent activity"]
         }
       },
       "dataSafety": {
         "eyebrow": "DATA SAFETY",
         "heading": "Operational data should be recoverable.",
-        "body": "The launch-release scope includes practical recovery and support work. Automatic backup is not presented as currently available without release acceptance.",
+        "body": "The product includes practical recovery and support work. Automatic backup is not presented as currently available without release acceptance.",
         "points": ["Backup", "Restore and recovery", "Clean-device recovery validation", "Support and diagnostics"]
       }
     },

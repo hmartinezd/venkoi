@@ -15,6 +15,7 @@ interface ZaikoProductNavProps {
   ownerLabel: string;
   requestDemoLabel: string;
   navigationLabel: string;
+  visibleChapterIds: readonly string[];
 }
 
 export function ZaikoProductNav({
@@ -24,7 +25,8 @@ export function ZaikoProductNav({
   overviewLabel,
   invoiceLabel, inventoryLabel, foodCostLabel, countsLabel, ownerLabel,
   requestDemoLabel,
-  navigationLabel
+  navigationLabel,
+  visibleChapterIds
 }: ZaikoProductNavProps) {
   const navItems = [
     { label: overviewLabel, href: '#overview' },
@@ -33,7 +35,7 @@ export function ZaikoProductNav({
     { label: foodCostLabel, href: '#food-cost' },
     { label: countsLabel, href: '#counts-reorder' },
     { label: ownerLabel, href: '#owner-view' }
-  ];
+  ].filter((item) => item.href === '#overview' || visibleChapterIds.includes(item.href.slice(1)));
 
   return (
     <div className="sticky top-[72px] z-40 border-b border-border bg-surface/95 backdrop-blur-md transition-all">
