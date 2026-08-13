@@ -44,8 +44,9 @@ export type ZaikoVisualLabels = {
   counted: string;
   variance: string;
   uncounted: string;
-  toBuy: string;
-  package: string;
+  target: string;
+  neededToTarget: string;
+  suggestedPurchase: string;
 };
 
 type VisualTranslator = (key: keyof ZaikoVisualLabels) => string;
@@ -97,7 +98,8 @@ export function buildZaikoVisualLabels(tVisuals: VisualTranslator): ZaikoVisualL
     counted: tVisuals('counted'),
     variance: tVisuals('variance'),
     uncounted: tVisuals('uncounted'),
-    toBuy: tVisuals('toBuy'),
-    package: tVisuals('package')
+    target: tVisuals('target'),
+    neededToTarget: tVisuals('neededToTarget'),
+    suggestedPurchase: tVisuals('suggestedPurchase')
   };
 }

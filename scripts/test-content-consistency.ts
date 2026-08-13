@@ -61,6 +61,13 @@ assert.deepEqual(
   'Public Spanish marketing copy must use natural product terminology'
 );
 
+const spanishReorderCopy = strings([es.home.zaiko.theme4Desc, es.zaikoPage.visuals]);
+assert.deepEqual(
+  spanishReorderCopy.filter((value) => /\b(?:con el par|bajo par|por debajo del par|hasta el par)\b/i.test(value)),
+  [],
+  'Public Spanish reorder copy must use natural target-level terminology instead of par calques'
+);
+
 assert.equal(
   es.zaikoPage.hero.heading,
   'Sabes qué llegó.\nSabes qué tienes.\nSabes cuánto cuesta.\nSabes qué requiere atención.',

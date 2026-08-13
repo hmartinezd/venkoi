@@ -67,7 +67,7 @@
       "theme3Title": "¿Cuánto costó?",
       "theme3Desc": "Lleva costos válidos a preparaciones y platos; muestra Parcial o Costos faltantes cuando el origen está incompleto.",
       "theme4Title": "¿Qué hay que comprar?",
-      "theme4Desc": "Compara el conteo con el par, considera los empaques y prepara una lista agrupada por proveedor.",
+      "theme4Desc": "Compara el conteo con el nivel objetivo, considera los empaques y prepara una lista agrupada por proveedor.",
       "theme5Title": "¿Qué requiere atención?",
       "theme5Desc": "Revisa cambios de precio, merma, variaciones, costos incompletos, artículos por debajo del nivel definido y actividad reciente."
     },
@@ -512,7 +512,7 @@
       "adjustment": "Ajuste", "receiving": "Recepción", "today": "Hoy", "yesterday": "Ayer",
       "workflow": "flujo", "connected": "Conectado",
       "countReview": "Revisión del conteo", "expected": "Esperado", "counted": "Contado", "variance": "Variación",
-      "uncounted": "Sin contar", "toBuy": "Por comprar", "package": "Empaque"
+      "uncounted": "Sin contar", "target": "Nivel objetivo", "neededToTarget": "Cantidad necesaria", "suggestedPurchase": "Compra sugerida"
     },
     "finalCta": {
       "heading": "Ve cómo se mantiene conectada la información de inventario de tu restaurante.",

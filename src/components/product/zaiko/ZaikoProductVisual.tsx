@@ -83,14 +83,16 @@ function Costs({ l }: { l: ZaikoVisualLabels }) {
 
 function Counts({ l }: { l: ZaikoVisualLabels }) {
   const rows = [
-    [l.tomatoes, '24 lb', '18 lb', '-6 lb'],
+    [l.tomatoes, '20 lb', '18 lb', '-2 lb'],
     [l.chickenBreast, '12 lb', '0 lb', '-12 lb'],
     [l.oliveOil, '6 gal', l.uncounted, '—']
   ];
   return <div><Heading title={l.countReview} meta={l.variance} /><div className="overflow-hidden rounded-xl border border-border bg-background">
     <div className="grid grid-cols-[1.3fr_.8fr_.8fr] gap-2 bg-surface-muted px-3 py-2 text-[10px] font-bold uppercase text-foreground-muted sm:grid-cols-[1.4fr_.8fr_.8fr_.7fr]"><span>{l.item}</span><span>{l.expected}</span><span>{l.counted}</span><span className="hidden sm:block">{l.variance}</span></div>
     {rows.map(([item, expected, counted, variance]) => <div key={item} className="grid grid-cols-[1.3fr_.8fr_.8fr] gap-2 border-t border-border px-3 py-3 text-xs sm:grid-cols-[1.4fr_.8fr_.8fr_.7fr]"><strong className="truncate text-ink">{item}</strong><span>{expected}</span><span className={counted === l.uncounted ? 'font-semibold text-foreground-muted' : 'font-semibold text-ink'}>{counted}</span><span className="hidden font-semibold text-orange-text sm:block">{variance}</span></div>)}
-  </div><div className="mt-3 grid grid-cols-2 gap-3"><div className="rounded-xl border border-orange/30 bg-orange-subtle/40 p-3"><span className="text-[10px] font-bold uppercase text-orange-text">{l.toBuy}</span><strong className="mt-1 block text-sm text-ink">{l.tomatoes} · 6 lb</strong></div><div className="rounded-xl border border-border bg-background p-3"><span className="text-[10px] font-bold uppercase text-foreground-muted">{l.package}</span><strong className="mt-1 block text-sm text-ink">1 × 10 lb</strong></div></div></div>;
+  </div><div className="mt-3 rounded-xl border border-border bg-background p-3"><strong className="block text-xs text-ink">{l.tomatoes}</strong><div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">{[
+    [l.target, '24 lb'], [l.counted, '18 lb'], [l.neededToTarget, '6 lb'], [l.suggestedPurchase, '1 × 10 lb']
+  ].map(([label, value], index) => <div key={label} className={index === 3 ? 'rounded-lg bg-orange-subtle/40 p-2' : 'p-2'}><span className={`block text-[10px] font-bold uppercase ${index === 3 ? 'text-orange-text' : 'text-foreground-muted'}`}>{label}</span><strong className="mt-1 block text-sm text-ink">{value}</strong></div>)}</div></div></div>;
 }
 
 export function ZaikoProductVisual({ type, className = '', labels: l }: Props) {

@@ -545,7 +545,7 @@
       "adjustment": "Adjustment", "receiving": "Receiving", "today": "Today", "yesterday": "Yesterday",
       "workflow": "workflow", "connected": "Connected",
       "countReview": "Count review", "expected": "Expected", "counted": "Counted", "variance": "Variance",
-      "uncounted": "Uncounted", "toBuy": "To buy", "package": "Package"
+      "uncounted": "Uncounted", "target": "Target", "neededToTarget": "Needed to target", "suggestedPurchase": "Suggested purchase"
     },
     "finalCta": {
       "heading": "See how your restaurant's inventory information stays connected.",

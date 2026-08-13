@@ -31,7 +31,12 @@ assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/
 assert.ok(visual.includes("type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'counts' | 'workflow'"), 'Representative visual types include Counts/Reorder');
 assert.match(marketing, /id: 'counts-reorder'[\s\S]*visual: 'counts'/, 'Counts/Reorder should map to its representative visual');
 assert.match(visual, /function Counts/, 'Counts/Reorder representative visual should exist');
-assert.match(visual, /l\.uncounted/, 'Counts visual should distinguish uncounted from a numeric zero');
+for (const concept of ['l.expected', 'l.counted', 'l.variance', 'l.target', 'l.neededToTarget', 'l.suggestedPurchase']) {
+  assert.ok(visual.includes(concept), `Counts/Reorder visual should represent ${concept.slice(2)} separately`);
+}
+assert.match(visual, /\[l\.chickenBreast, '12 lb', '0 lb', '-12 lb'\]/, 'A numeric zero should remain a completed count with variance');
+assert.match(visual, /\[l\.oliveOil, '6 gal', l\.uncounted, '—'\]/, 'Uncounted should remain distinct from a numeric zero and have no variance');
+assert.doesNotMatch(visual, /l\.toBuy|l\.package/, 'Shortage and package-aware purchase must not use ambiguous legacy labels');
 assert.ok(visual.includes('FEATURED_PRODUCT.name'), 'Representative visuals use the registry product name');
 assert.ok(visual.includes('<figcaption'), 'Representative sample data remains disclosed');
 assert.ok(page.includes("operatingSystem: productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform)"), 'Structured data platform remains registry-driven');
