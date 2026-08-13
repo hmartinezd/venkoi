@@ -43,7 +43,7 @@ export function ZaikoWorkflowStory({ workflow, chapters, dataSafety, labels }: P
       </Section>
 
       {chapters.map((chapter, index) => (
-        <Section key={chapter.id} id={chapter.id} variant={index % 2 === 0 ? 'light' : 'surface'} spacing="standard" className="scroll-mt-36 border-t border-border">
+        <Section key={chapter.id} id={chapter.id} variant={index % 2 === 0 ? 'light' : 'surface'} spacing="standard" className="scroll-mt-44 border-t border-border lg:scroll-mt-36">
           <Container className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
             <article className={`${chapter.visual ? 'lg:col-span-6' : 'lg:col-span-8'} space-y-5`}>
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">{chapter.eyebrow}</p>

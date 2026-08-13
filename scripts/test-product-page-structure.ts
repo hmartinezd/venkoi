@@ -17,14 +17,19 @@ for (const component of ['<ZaikoHero', '<ZaikoWorkflowStory', '<ZaikoProductFit'
 for (const anchor of ['overview', 'invoice-capture', 'inventory', 'food-cost', 'counts-reorder', 'owner-view']) {
   assert.ok((page + nav + story + marketing).includes(anchor), `${anchor} should be exposed as a semantic chapter or navigation anchor`);
 }
-assert.ok(story.includes('scroll-mt-36'), 'Workflow anchors should account for sticky navigation');
+assert.ok(story.includes('scroll-mt-44') && story.includes('lg:scroll-mt-36'), 'Workflow anchors should account for the taller mobile sticky navigation and compact desktop navigation');
 assert.ok(story.includes('<ol'), 'Workflow sequence should use ordered semantic markup');
 assert.ok(!story.includes('overflow-x-auto'), 'Workflow should wrap rather than require horizontal scrolling');
 assert.ok(page.includes('filterMarketableEntries'), 'Product chapters should consult shared marketing availability');
 assert.ok(page.includes('getWorkflowMarketingState'), 'Workflow copy should derive its availability state');
 assert.ok(nav.includes('filterProductNavigationItems'), 'Navigation should use shared filtering for hidden chapters');
+assert.match(nav, /grid-cols-\[minmax\(0,1fr\)_auto\][\s\S]*lg:grid-cols-\[auto_minmax\(0,1fr\)_auto\]/, 'Product navigation should use two mobile rows and retain a desktop single row');
+assert.match(nav, /<nav[\s\S]*col-span-2[\s\S]*row-start-2[\s\S]*overflow-x-auto/, 'Mobile anchor navigation should have a distinct, horizontally scrollable full-width row');
+assert.match(nav, /<TrackedButton[\s\S]*source: 'product_nav'[\s\S]*eventName="zaiko_demo_cta"/, 'Product Nav Request Demo analytics should remain intact');
+assert.doesNotMatch(nav, /flex-wrap|Request Access/, 'Product anchor links should not wrap and Product Nav should not add Request Access');
 assert.match(page, /visibleChapterIds=\{chapters\.map\(\(\{ id \}\) => id\)\}/, 'Navigation visibility should use the rendered chapters');
 assert.match(read('src/components/product/zaiko/ZaikoHero.tsx'), /id="overview"/, 'Overview navigation must retain its hero target');
+assert.match(read('src/components/product/zaiko/ZaikoHero.tsx'), /scroll-mt-44 lg:scroll-mt-36/, 'Overview should clear the responsive sticky navigation stack');
 assert.ok(page.includes('PRODUCT_TRUST_PRINCIPLES'), 'Product page should consume trust principles');
 assert.ok(page.includes('PRODUCT_NON_CLAIMS'), 'Product page should consume explicit non-claims');
 assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/, 'Early Access remains registry-controlled');

@@ -26,7 +26,7 @@ export function ZaikoHero({
   labels
 }: ZaikoHeroProps) {
   return (
-    <Section variant="light" spacing="hero" className="scroll-mt-36" id="overview">
+    <Section variant="light" spacing="hero" className="scroll-mt-44 lg:scroll-mt-36" id="overview">
       <Container className="grid gap-12 lg:grid-cols-12 lg:items-center">
         {/* Left Copy */}
         <div className="lg:col-span-6 space-y-6">
