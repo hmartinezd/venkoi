@@ -4,7 +4,7 @@ import type { ZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
 export type { ZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
 
 interface Props {
-  type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'workflow';
+  type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'counts' | 'workflow';
   className?: string;
   labels: ZaikoVisualLabels;
 }
@@ -81,10 +81,22 @@ function Costs({ l }: { l: ZaikoVisualLabels }) {
   </div></div>;
 }
 
+function Counts({ l }: { l: ZaikoVisualLabels }) {
+  const rows = [
+    [l.tomatoes, '24 lb', '18 lb', '-6 lb'],
+    [l.chickenBreast, '12 lb', '0 lb', '-12 lb'],
+    [l.oliveOil, '6 gal', l.uncounted, '—']
+  ];
+  return <div><Heading title={l.countReview} meta={l.variance} /><div className="overflow-hidden rounded-xl border border-border bg-background">
+    <div className="grid grid-cols-[1.3fr_.8fr_.8fr] gap-2 bg-surface-muted px-3 py-2 text-[10px] font-bold uppercase text-foreground-muted sm:grid-cols-[1.4fr_.8fr_.8fr_.7fr]"><span>{l.item}</span><span>{l.expected}</span><span>{l.counted}</span><span className="hidden sm:block">{l.variance}</span></div>
+    {rows.map(([item, expected, counted, variance]) => <div key={item} className="grid grid-cols-[1.3fr_.8fr_.8fr] gap-2 border-t border-border px-3 py-3 text-xs sm:grid-cols-[1.4fr_.8fr_.8fr_.7fr]"><strong className="truncate text-ink">{item}</strong><span>{expected}</span><span className={counted === l.uncounted ? 'font-semibold text-foreground-muted' : 'font-semibold text-ink'}>{counted}</span><span className="hidden font-semibold text-orange-text sm:block">{variance}</span></div>)}
+  </div><div className="mt-3 grid grid-cols-2 gap-3"><div className="rounded-xl border border-orange/30 bg-orange-subtle/40 p-3"><span className="text-[10px] font-bold uppercase text-orange-text">{l.toBuy}</span><strong className="mt-1 block text-sm text-ink">{l.tomatoes} · 6 lb</strong></div><div className="rounded-xl border border-border bg-background p-3"><span className="text-[10px] font-bold uppercase text-foreground-muted">{l.package}</span><strong className="mt-1 block text-sm text-ink">1 × 10 lb</strong></div></div></div>;
+}
+
 export function ZaikoProductVisual({ type, className = '', labels: l }: Props) {
   if (type === 'workflow') return <Frame l={l} tone="dark" className={className}><Heading title={`${FEATURED_PRODUCT.name} ${l.workflow}`} meta={l.connected} tone="dark" /><div className="grid gap-2 sm:grid-cols-4">{[
     [l.purchases, 'PO-1048'], [l.inventory, `${l.tomatoes} · 24 lb`], [l.activity, '+24 lb'], [l.costs, '$2.10/lb']
   ].map(([label, value], i) => <div key={label} className="relative rounded-xl border border-white/15 bg-white/5 p-3"><span className="block text-[10px] font-bold uppercase tracking-wide text-orange">{label}</span><strong className="mt-2 block text-xs text-white">{value}</strong>{i < 3 ? <span className="absolute -bottom-2 left-1/2 text-orange sm:-right-3 sm:bottom-auto sm:left-auto sm:top-1/2" aria-hidden="true">→</span> : null}</div>)}</div></Frame>;
   if (type === 'hero') return <Frame l={l} className={className}><div className="grid gap-4 sm:grid-cols-[1.35fr_.65fr]"><Inventory l={l} /><div className="grid gap-3"><div className="rounded-xl border border-orange/30 bg-orange-subtle/40 p-3"><span className="text-[10px] font-bold uppercase text-orange-text">{l.incoming}</span><strong className="mt-1 block text-sm text-ink">PO-1048</strong><span className="text-xs text-foreground-muted">{l.produceVendor}</span></div><div className="rounded-xl border border-border bg-background p-3"><span className="text-[10px] font-bold uppercase text-foreground-muted">{l.activity}</span><strong className="mt-1 block text-sm text-ink">{l.tomatoes} +24 lb</strong><span className="text-xs text-foreground-muted">{l.today}</span></div><div className="rounded-xl border border-border bg-background p-3"><span className="text-[10px] font-bold uppercase text-foreground-muted">{l.costs}</span><strong className="mt-1 block text-sm text-ink">$2.10 / lb</strong></div></div></div></Frame>;
-  return <Frame l={l} className={className}>{type === 'inventory' ? <Inventory l={l} /> : type === 'purchases' ? <Purchases l={l} /> : type === 'activity' ? <Activity l={l} /> : <Costs l={l} />}</Frame>;
+  return <Frame l={l} className={className}>{type === 'inventory' ? <Inventory l={l} /> : type === 'purchases' ? <Purchases l={l} /> : type === 'activity' ? <Activity l={l} /> : type === 'counts' ? <Counts l={l} /> : <Costs l={l} />}</Frame>;
 }

@@ -39,6 +39,13 @@ export type ZaikoVisualLabels = {
   yesterday: string;
   workflow: string;
   connected: string;
+  countReview: string;
+  expected: string;
+  counted: string;
+  variance: string;
+  uncounted: string;
+  toBuy: string;
+  package: string;
 };
 
 type VisualTranslator = (key: keyof ZaikoVisualLabels) => string;
@@ -84,6 +91,13 @@ export function buildZaikoVisualLabels(tVisuals: VisualTranslator): ZaikoVisualL
     today: tVisuals('today'),
     yesterday: tVisuals('yesterday'),
     workflow: tVisuals('workflow'),
-    connected: tVisuals('connected')
+    connected: tVisuals('connected'),
+    countReview: tVisuals('countReview'),
+    expected: tVisuals('expected'),
+    counted: tVisuals('counted'),
+    variance: tVisuals('variance'),
+    uncounted: tVisuals('uncounted'),
+    toBuy: tVisuals('toBuy'),
+    package: tVisuals('package')
   };
 }

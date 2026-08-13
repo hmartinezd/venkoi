@@ -99,7 +99,11 @@ for (const [locale, messages] of [['en', en], ['es', es]] as const) {
 assert.doesNotMatch(en.home.hero.eyebrow, /PRODUCT-FIRST/);
 assert.match(en.home.hero.eyebrow, /RESTAURANT INVENTORY/);
 assert.match(en.home.hero.body, /Selected custom mobile and web projects/i);
-assert.match(en.aboutPage.productDirectionBody, /primary focus/i);
+assert.match(en.aboutPage.body, /software company/i);
+assert.match(en.aboutPage.productDirectionHeading, /software products[\s\S]*selected custom projects/i);
+assert.match(en.aboutPage.venkoiProductsDesc, /\{productName\}/i);
+assert.match(en.aboutPage.servicesDesc, /Mobile applications[\s\S]*web applications/i);
+assert.doesNotMatch(strings([en.aboutPage, es.aboutPage]).join('\n'), /STRATEGIC DIRECTION|PRIMARY DIRECTION|ORIENTACIÓN ESTRATÉGICA|DIRECCIÓN PRINCIPAL|PRODUCT-FIRST SOFTWARE COMPANY/i);
 assert.match(en.contactPage.body, /custom mobile or web project/i);
 
 for (const messages of [en, es]) {

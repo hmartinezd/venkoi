@@ -14,13 +14,13 @@ export const PRODUCT_STORY_CHAPTERS = [
   { id: 'invoice-capture', key: 'invoice', groups: ['invoice-purchase-capture'], visual: 'purchases' },
   { id: 'inventory', key: 'inventory', groups: ['inventory', 'traceability'], visual: 'activity' },
   { id: 'food-cost', key: 'costing', groups: ['vendor-price-intelligence', 'preparation-costing', 'menu-costing'], visual: 'costs' },
-  { id: 'counts-reorder', key: 'counts', groups: ['physical-counts', 'reorder-assistance'] },
+  { id: 'counts-reorder', key: 'counts', groups: ['physical-counts', 'reorder-assistance'], visual: 'counts' },
   { id: 'owner-view', key: 'owner', groups: ['owner-view'] }
 ] as const satisfies readonly {
   id: string;
   key: string;
   groups: readonly ProductCapabilityGroup[];
-  visual?: 'purchases' | 'inventory' | 'activity' | 'costs';
+  visual?: 'purchases' | 'inventory' | 'activity' | 'costs' | 'counts';
 }[];
 
 export const PRODUCT_WORKFLOW_STEPS = [

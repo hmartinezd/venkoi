@@ -45,7 +45,7 @@
     "hero": {
       "eyebrow": "RESTAURANT INVENTORY & FOOD COST",
       "heading": "Know what came in, what changed, what it costs, and what needs attention.",
-      "body": "Venkoi's featured product connects invoices and purchases to inventory movement, supplier prices, food cost, physical counts, and reorder preparation. Selected custom mobile and web projects remain a secondary part of our work.",
+      "body": "Venkoi's featured product connects invoices and purchases to inventory movement, supplier prices, food cost, physical counts, and reorder preparation. Venkoi also takes on selected custom mobile and web projects.",
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
@@ -110,7 +110,7 @@
     "aboutPreview": {
       "eyebrow": "ABOUT VENKOI",
       "heading": "A software company that starts with its own products.",
-      "p1": "Our products are the company's main work. The current commercial focus is restaurant inventory and food-cost operations; selected custom projects are a secondary line of business.",
+      "p1": "We build software products, with a current focus on restaurant inventory and food-cost operations. We also accept selected custom mobile and web projects.",
       "location": "Based in Tampa Bay. Building products for businesses well beyond one market.",
       "cta": "Learn more about Venkoi"
     },
@@ -180,10 +180,10 @@
     "eyebrow": "ABOUT VENKOI",
     "heading": "Software starts with understanding the work it needs to change.",
     "body": "Venkoi is a software company based in Tampa Bay. We create our own products and accept selected custom projects when the problem and scope fit how we work.",
-    "strategicDirectionEyebrow": "STRATEGIC DIRECTION",
-    "productDirectionHeading": "Products first. Services when you need something built.",
-    "productDirectionBody": "Our own products are the company's primary focus. For selected client projects, we define the problem and first useful scope before moving through design, development, and testing.",
-    "primaryPillarBadge": "PRIMARY DIRECTION",
+    "strategicDirectionEyebrow": "WHAT WE BUILD",
+    "productDirectionHeading": "Venkoi creates software products and accepts selected custom projects.",
+    "productDirectionBody": "Our featured product addresses restaurant inventory and food cost. For selected mobile and web projects, we define the problem and first useful scope before moving through design, development, and testing.",
+    "primaryPillarBadge": "FEATURED PRODUCT",
     "venkoiProductsTitle": "Venkoi Products",
     "venkoiProductsDesc": "Our featured product, {productName}, connects restaurant invoices, purchases, inventory changes, food cost, physical counts, and reorder preparation.",
     "exploreZaikoCta": "Explore {productName}",
@@ -191,9 +191,9 @@
     "servicesTitle": "Mobile & Web",
     "servicesDesc": "Mobile applications, websites, and web applications built around specific ideas and project requirements, from design and development through testing.",
     "servicesCta": "Explore Services",
-    "foundationExpansionEyebrow": "FOUNDATION & EXPANSION",
-    "localGlobalHeading": "Close enough to understand. Built to go further.",
-    "localGlobalBody": "Venkoi is based in Tampa Bay, working close to the businesses and people using the software we create. That proximity helps us understand real workflows and real problems — while our products are designed to serve businesses far beyond one market.",
+    "foundationExpansionEyebrow": "BASED IN TAMPA BAY",
+    "localGlobalHeading": "Direct collaboration, without a geographic boundary.",
+    "localGlobalBody": "Venkoi is based in Tampa Bay. Working directly with the people who use the software helps us understand the work and make decisions with them, whether the business is nearby or beyond our local market.",
     "locationEyebrow": "WHERE WE WORK",
     "directBuilderStatement": "Talk directly to the people building your software.",
     "directBuilderBody": "A direct working relationship keeps decisions close to the problem, the people using the software, and the people responsible for building it.",
@@ -488,8 +488,8 @@
     },
     "workflow": {
       "eyebrow": "PRODUCT EXPERIENCE",
-    "heading": "Is this intended for a restaurant like yours?",
-    "body": "The initial fit is an independent, owner-operated, single-location restaurant that needs purchasing, inventory, counts, and cost information to retain their operational context."
+    "heading": "Review connected records instead of unrelated totals.",
+    "body": "Purchases, inventory movement, Activity, and source costs retain the context that links them, so an operator can follow what came in, what changed, and where a cost originated."
     },
     "audience": {
     "heading": "For independent restaurants managing inventory close to the work.",
@@ -543,7 +543,9 @@
       "produceVendor": "Produce Vendor", "foodDistributor": "Food Distributor", "walkIn": "Walk-in", "dryStorage": "Dry storage",
       "available": "Available", "receivedStatus": "Received", "orderedStatus": "Ordered", "purchase": "Purchase",
       "adjustment": "Adjustment", "receiving": "Receiving", "today": "Today", "yesterday": "Yesterday",
-      "workflow": "workflow", "connected": "Connected"
+      "workflow": "workflow", "connected": "Connected",
+      "countReview": "Count review", "expected": "Expected", "counted": "Counted", "variance": "Variance",
+      "uncounted": "Uncounted", "toBuy": "To buy", "package": "Package"
     },
     "finalCta": {
       "heading": "See how your restaurant's inventory information stays connected.",

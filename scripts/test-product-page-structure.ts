@@ -28,7 +28,10 @@ assert.match(read('src/components/product/zaiko/ZaikoHero.tsx'), /id="overview"/
 assert.ok(page.includes('PRODUCT_TRUST_PRINCIPLES'), 'Product page should consume trust principles');
 assert.ok(page.includes('PRODUCT_NON_CLAIMS'), 'Product page should consume explicit non-claims');
 assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/, 'Early Access remains registry-controlled');
-assert.ok(visual.includes("type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'workflow'"), 'Existing representative visual types remain available');
+assert.ok(visual.includes("type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'counts' | 'workflow'"), 'Representative visual types include Counts/Reorder');
+assert.match(marketing, /id: 'counts-reorder'[\s\S]*visual: 'counts'/, 'Counts/Reorder should map to its representative visual');
+assert.match(visual, /function Counts/, 'Counts/Reorder representative visual should exist');
+assert.match(visual, /l\.uncounted/, 'Counts visual should distinguish uncounted from a numeric zero');
 assert.ok(visual.includes('FEATURED_PRODUCT.name'), 'Representative visuals use the registry product name');
 assert.ok(visual.includes('<figcaption'), 'Representative sample data remains disclosed');
 assert.ok(page.includes("operatingSystem: productPlatformToSchemaOperatingSystem(FEATURED_PRODUCT.platform)"), 'Structured data platform remains registry-driven');
@@ -42,4 +45,7 @@ for (const messages of [en, es]) {
     assert.equal(typeof messages.zaikoPage.story.workflow.availability[state], 'string');
   }
 }
+assert.doesNotMatch(en.zaikoPage.workflow.heading, /restaurant like yours|intended for/i, 'Connected-workflow copy should not duplicate audience fit');
+assert.doesNotMatch(es.zaikoPage.workflow.heading, /restaurante como el tuyo|está pensado/i, 'Spanish connected-workflow copy should not duplicate audience fit');
+assert.match(en.zaikoPage.audience.body, /one restaurant location|single-location|one location/i, 'Audience copy should retain single-location fit');
 console.log('Product page structure regression checks passed.');

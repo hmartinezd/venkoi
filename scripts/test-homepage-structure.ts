@@ -73,6 +73,8 @@ assert.match(en.home.zaiko.theme3Desc, /Partial|Missing/i, 'Homepage should expo
 assert.match(en.home.zaiko.theme4Desc, /par[\s\S]*packages[\s\S]*supplier/i, 'Homepage should explain reorder preparation logic');
 assert.match(en.home.zaiko.theme5Desc, /price changes[\s\S]*variance[\s\S]*cost gaps/i, 'Homepage Owner View should identify signals requiring attention');
 assert.doesNotMatch(JSON.stringify(en.home) + JSON.stringify(es.home), /PRODUCT-FIRST SOFTWARE COMPANY|EMPRESA DE SOFTWARE CENTRADA EN PRODUCTOS/i);
+assert.doesNotMatch(en.home.hero.body, /secondary part|secondary line/i, 'Hero should describe selected custom work without internal hierarchy language');
+assert.doesNotMatch(es.home.hero.body, /parte secundaria|línea secundaria/i, 'Spanish Hero should describe selected custom work without internal hierarchy language');
 assert.doesNotMatch(header + '\n' + footer, /linkedin|instagram|twitter\.com|facebook/i, 'Layout must not add unsupported social links');
 
 for (const file of [

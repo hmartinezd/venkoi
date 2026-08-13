@@ -9,7 +9,7 @@ export type WorkflowChapter = {
   body: string;
   points: string[];
   trust?: string;
-  visual?: 'purchases' | 'inventory' | 'activity' | 'costs';
+  visual?: 'purchases' | 'inventory' | 'activity' | 'costs' | 'counts';
 };
 
 type Props = {
