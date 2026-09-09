@@ -9,7 +9,7 @@ export const socialCardSize = {
 
 export const socialCardContentType = 'image/png';
 
-export type SocialCardVariant = 'venkoi' | 'zaiko' | 'insights';
+export type SocialCardVariant = 'venkoi' | 'serve' | 'insights';
 
 interface SocialCardOptions {
   locale: string;
@@ -37,7 +37,7 @@ export async function generateSocialCardResponse({
   let heading = '';
   let subheading = '';
 
-  if (variant === 'zaiko') {
+  if (variant === 'serve') {
     eyebrow = productName ?? 'VENKOI SERVE';
     heading = isSpanish
       ? 'Inventario de restaurantes, más claro.'
@@ -106,7 +106,7 @@ export async function generateSocialCardResponse({
           <div
             style={{
               color: '#F7F8FA', // Branded Off White
-              fontSize: isSpanish && variant !== 'zaiko' ? '56px' : '64px',
+              fontSize: isSpanish && variant !== 'serve' ? '56px' : '64px',
               fontWeight: 800,
               lineHeight: 1.1,
               letterSpacing: '-0.02em'

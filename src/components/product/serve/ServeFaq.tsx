@@ -7,12 +7,12 @@ interface FaqItem {
   a: string;
 }
 
-interface ZaikoFaqProps {
+interface ServeFaqProps {
   heading: string;
   items: FaqItem[];
 }
 
-export function ZaikoFaq({ heading, items }: ZaikoFaqProps) {
+export function ServeFaq({ heading, items }: ServeFaqProps) {
   return (
     <Section variant="light" className="border-t border-border" id="faq">
       <Container className="max-w-3xl space-y-10">

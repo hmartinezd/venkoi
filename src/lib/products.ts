@@ -6,8 +6,8 @@ export type Product = {
   id: string;
   slug: string;
   name: string;
-  routeKey: 'productsZaiko';
-  analyticsProduct: 'zaiko';
+  routeKey: 'productsServe';
+  analyticsProduct: 'serve';
   status: ProductStatus;
   platform: ProductPlatform;
   operatingModel: ProductOperatingModel;
@@ -21,11 +21,11 @@ export type Product = {
 };
 
 export const FEATURED_PRODUCT = {
-  id: 'zaiko',
-  slug: 'zaiko',
+  id: 'serve',
+  slug: 'serve',
   name: 'Venkoi Serve',
-  routeKey: 'productsZaiko',
-  analyticsProduct: 'zaiko',
+  routeKey: 'productsServe',
+  analyticsProduct: 'serve',
   status: 'available',
   platform: 'android',
   operatingModel: 'local-first',

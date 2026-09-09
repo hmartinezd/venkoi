@@ -10,7 +10,7 @@
     "skipToContent": "Saltar al contenido"
   },
   "navigation": {
-    "zaikoSubtitle": "Gestión de Inventario para Restaurantes",
+    "serveSubtitle": "Gestión de Inventario para Restaurantes",
     "services": "Servicios",
     "about": "Nosotros",
     "contact": "Contacto",
@@ -48,7 +48,7 @@
       "body": "El producto principal de Venkoi conecta facturas y compras con movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de compras. Venkoi también acepta algunos proyectos móviles y web a medida.",
       "primaryCta": "Conoce {productName}"
     },
-    "zaiko": {
+    "serve": {
       "eyebrow": "{productName} · INVENTARIO DE RESTAURANTES",
       "badge": "{freeMonths} MESES GRATIS",
       "availability": {
@@ -186,7 +186,7 @@
     "primaryPillarBadge": "PRODUCTO DESTACADO",
     "venkoiProductsTitle": "Productos Venkoi",
     "venkoiProductsDesc": "Nuestro producto destacado, {productName}, conecta facturas, compras, movimientos de inventario, costo de alimentos, conteos físicos y preparación de compras.",
-    "exploreZaikoCta": "Conoce {productName}",
+    "exploreServeCta": "Conoce {productName}",
     "clientSolutionsBadge": "SERVICIOS",
     "servicesTitle": "Móvil y Web",
     "servicesDesc": "Aplicaciones móviles, páginas web y aplicaciones web diseñadas para objetivos y requisitos específicos, desde el diseño y el desarrollo hasta las pruebas.",
@@ -313,7 +313,7 @@
     "eyebrow": "SOLICITA UNA DEMO",
     "heading": "Ve nuestro producto de inventario para restaurantes en acción.",
     "body": "Solicita una demo para ver cómo se conectan compras, movimientos de inventario, costo de alimentos, conteos y preparación de compras.",
-    "zaiko": {
+    "serve": {
       "eyebrow": "DEMO DE {productName}",
       "heading": "Ve {productName} en acción.",
       "body": "Cuéntanos cómo gestiona hoy el inventario tu restaurante. Revisaremos la solicitud y te contactaremos para definir el siguiente paso adecuado para conocer {productName}.",
@@ -410,7 +410,7 @@
     }
   },
 
-  "zaikoPage": {
+  "servePage": {
     "nav": {
       "subtitle": "Un Producto Venkoi",
       "overview": "Visión General",
@@ -673,8 +673,8 @@
         "costsBody": "El inventario representa una inversión significativa. Cuando la información de los costos vive en una carpeta de facturas o en una hoja de cálculo aparte, es más difícil ver el historial de costos de lo que tienes en los estantes y cómo los cambios de precios pueden estar afectando la operación.",
         "togetherTitle": "Por qué es importante unificar la información",
         "togetherBody": "Cuando las compras, los recuentos de inventario, la actividad y los costos forman parte de la misma visión, la información se vuelve más útil. Ayuda a eliminar suposiciones y ofrece una visión más clara de a dónde van los recursos.",
-        "zaikoTitle": "Cómo aborda {productName} el problema",
-        "zaikoBody": "{productName} está diseñado para reunir estas cuatro áreas —inventario, compras, actividad y costos— en una experiencia única y enfocada. Se centra en ofrecer una visibilidad más clara de tu operación sin añadir una complejidad innecesaria.",
+        "serveTitle": "Cómo aborda {productName} el problema",
+        "serveBody": "{productName} está diseñado para reunir estas cuatro áreas —inventario, compras, actividad y costos— en una experiencia única y enfocada. Se centra en ofrecer una visibilidad más clara de tu operación sin añadir una complejidad innecesaria.",
         "ctaExplore": "Explorar {productName}",
         "ctaDemo": "Solicitar una demostración"
       }

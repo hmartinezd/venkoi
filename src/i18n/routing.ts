@@ -3,7 +3,7 @@ import { defaultLocale, locales, type Locale } from './config';
 
 export const internalRoutes = {
   home: '/',
-  productsZaiko: '/products/zaiko',
+  productsServe: '/products/serve',
   services: '/services',
   servicesMobile: '/services/mobile-applications',
   servicesWeb: '/services/websites-web-applications',
@@ -50,9 +50,9 @@ export function isServiceRoute(routeKey: RouteKey): boolean {
 
 const pathnames = {
   '/': '/',
-  '/products/zaiko': {
-    en: '/products/zaiko',
-    es: '/productos/zaiko'
+  '/products/serve': {
+    en: '/products/serve',
+    es: '/productos/serve'
   },
   '/services': {
     en: '/services',

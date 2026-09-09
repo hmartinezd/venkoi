@@ -5,11 +5,11 @@ import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FEATURED_PRODUCT } from '@/lib/products';
-import { buildZaikoVisualLabels } from '@/lib/zaiko-visual-labels';
+import { buildServeVisualLabels } from '@/lib/serve-visual-labels';
 import { filterMarketableEntries, getHomepageMarketingState, HOMEPAGE_PRODUCT_OUTCOMES } from '@/lib/product-marketing';
 
 import { HeroSection } from '@/components/home/HeroSection';
-import { ZaikoFeature } from '@/components/home/ZaikoFeature';
+import { ServeFeature } from '@/components/home/ServeFeature';
 import { ServicesSection } from '@/components/home/ServicesSection';
 import { PhilosophySection } from '@/components/home/PhilosophySection';
 import { CompanyContext } from '@/components/home/CompanyContext';
@@ -47,9 +47,9 @@ export default async function HomePage({ params }: PageProps) {
   const tCommon = await getTranslations('common');
   const tArticles = await getTranslations('insightsArticles');
   const tInsights = await getTranslations('insightsPage');
-  const tVisuals = await getTranslations('zaikoPage.visuals');
+  const tVisuals = await getTranslations('servePage.visuals');
   const origin = getSiteOrigin();
-  const visualLabels = buildZaikoVisualLabels(tVisuals);
+  const visualLabels = buildServeVisualLabels(tVisuals);
   const homepageState = getHomepageMarketingState();
   const outcomeKeys = filterMarketableEntries(HOMEPAGE_PRODUCT_OUTCOMES)
     .map(({ key }) => key);
@@ -114,32 +114,32 @@ export default async function HomePage({ params }: PageProps) {
         visualLabels={visualLabels}
       />
 
-      <ZaikoFeature
+      <ServeFeature
         locale={currentLocale}
-        eyebrow={tHome('zaiko.eyebrow', { productName: FEATURED_PRODUCT.name })}
-        heading={tHome('zaiko.heading')}
-        body={tHome('zaiko.body', { productName: FEATURED_PRODUCT.name })}
-        discoverCta={tHome('zaiko.discoverCta', { productName: FEATURED_PRODUCT.name })}
+        eyebrow={tHome('serve.eyebrow', { productName: FEATURED_PRODUCT.name })}
+        heading={tHome('serve.heading')}
+        body={tHome('serve.body', { productName: FEATURED_PRODUCT.name })}
+        discoverCta={tHome('serve.discoverCta', { productName: FEATURED_PRODUCT.name })}
         demoCta={tCommon('demo')}
         earlyAccess={FEATURED_PRODUCT.earlyAccess.enabled ? {
-          badge: tHome('zaiko.badge', { freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths }),
-          badgeText: tHome(`zaiko.availability.${homepageState}`, {
+          badge: tHome('serve.badge', { freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths }),
+          badgeText: tHome(`serve.availability.${homepageState}`, {
             productName: FEATURED_PRODUCT.name,
             freeMonths: FEATURED_PRODUCT.earlyAccess.freeMonths
           }),
           cta: tCommon('requestAccess')
         } : undefined}
         visibleOutcomeKeys={outcomeKeys}
-        theme1Title={tHome('zaiko.theme1Title')}
-        theme1Desc={tHome('zaiko.theme1Desc')}
-        theme2Title={tHome('zaiko.theme2Title')}
-        theme2Desc={tHome('zaiko.theme2Desc')}
-        theme3Title={tHome('zaiko.theme3Title')}
-        theme3Desc={tHome('zaiko.theme3Desc')}
-        theme4Title={tHome('zaiko.theme4Title')}
-        theme4Desc={tHome('zaiko.theme4Desc')}
-        theme5Title={tHome('zaiko.theme5Title')}
-        theme5Desc={tHome('zaiko.theme5Desc')}
+        theme1Title={tHome('serve.theme1Title')}
+        theme1Desc={tHome('serve.theme1Desc')}
+        theme2Title={tHome('serve.theme2Title')}
+        theme2Desc={tHome('serve.theme2Desc')}
+        theme3Title={tHome('serve.theme3Title')}
+        theme3Desc={tHome('serve.theme3Desc')}
+        theme4Title={tHome('serve.theme4Title')}
+        theme4Desc={tHome('serve.theme4Desc')}
+        theme5Title={tHome('serve.theme5Title')}
+        theme5Desc={tHome('serve.theme5Desc')}
         visualLabels={visualLabels}
       />
 

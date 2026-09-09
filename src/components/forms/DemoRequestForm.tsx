@@ -243,7 +243,7 @@ export function DemoRequestForm({
           message={successMessage}
         />
         <div className="mt-5 flex flex-wrap gap-3">
-          <Button href={getLocalizedPath('productsZaiko', locale)} variant="secondary">
+          <Button href={getLocalizedPath('productsServe', locale)} variant="secondary">
             {tp('successActions.product')}
           </Button>
           <Button href={getLocalizedPath('insightRestaurantInventory', locale)} variant="text">

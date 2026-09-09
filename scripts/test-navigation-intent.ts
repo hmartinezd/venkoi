@@ -40,12 +40,12 @@ testIntent('contact', { utm_source: 'google' }, {}, 'UTM removed');
 
 // Demo tests
 console.log('\nTesting Demo Intent:');
-testIntent('demo', { product: 'zaiko' }, { product: 'zaiko' }, 'Product zaiko preserved');
+testIntent('demo', { product: 'serve' }, { product: 'serve' }, 'Product serve preserved');
 testIntent('demo', { product: 'evil' }, {}, 'Invalid product removed');
-testIntent('demo', { product: 'zaiko', interest: 'early-access' }, { product: 'zaiko', interest: 'early-access' }, 'Early access preserved');
-testIntent('demo', { product: 'zaiko', interest: 'random' }, { product: 'zaiko' }, 'Invalid interest removed');
-testIntent('demo', { product: 'zaiko', source: 'product_hero' }, { product: 'zaiko', source: 'product_hero' }, 'Controlled conversion source preserved');
-testIntent('demo', { product: 'zaiko', source: 'private-value' }, { product: 'zaiko' }, 'Arbitrary conversion source removed');
+testIntent('demo', { product: 'serve', interest: 'early-access' }, { product: 'serve', interest: 'early-access' }, 'Early access preserved');
+testIntent('demo', { product: 'serve', interest: 'random' }, { product: 'serve' }, 'Invalid interest removed');
+testIntent('demo', { product: 'serve', source: 'product_hero' }, { product: 'serve', source: 'product_hero' }, 'Controlled conversion source preserved');
+testIntent('demo', { product: 'serve', source: 'private-value' }, { product: 'serve' }, 'Arbitrary conversion source removed');
 
 // Unknown route
 console.log('\nTesting Unknown Route:');

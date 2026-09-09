@@ -196,14 +196,14 @@ for (const nonClaim of [
 const publicMarketing = [
   JSON.stringify(en),
   JSON.stringify(es),
-  read('src/app/[locale]/products/zaiko/page.tsx'),
+  read('src/app/[locale]/products/serve/page.tsx'),
   read('src/app/[locale]/page.tsx'),
   read('src/app/[locale]/demo/page.tsx'),
-  read('src/components/home/ZaikoFeature.tsx'),
+  read('src/components/home/ServeFeature.tsx'),
   ...[
-    'ZaikoCapabilities', 'ZaikoContext', 'ZaikoEarlyAccess', 'ZaikoExplorer', 'ZaikoFaq',
-    'ZaikoFinalCta', 'ZaikoHero', 'ZaikoProductFit', 'ZaikoProductNav', 'ZaikoProductVisual', 'ZaikoWorkflowStory'
-  ].map((name) => read(`src/components/product/zaiko/${name}.tsx`))
+    'ServeCapabilities', 'ServeContext', 'ServeEarlyAccess', 'ServeExplorer', 'ServeFaq',
+    'ServeFinalCta', 'ServeHero', 'ServeProductFit', 'ServeProductNav', 'ServeProductVisual', 'ServeWorkflowStory'
+  ].map((name) => read(`src/components/product/serve/${name}.tsx`))
 ].join('\n');
 
 for (const unsupportedPositiveClaim of [
@@ -216,7 +216,7 @@ for (const unsupportedPositiveClaim of [
   assert.doesNotMatch(publicMarketing, unsupportedPositiveClaim);
 }
 
-const productPage = read('src/app/[locale]/products/zaiko/page.tsx');
+const productPage = read('src/app/[locale]/products/serve/page.tsx');
 const productMarketing = read('src/lib/product-marketing.ts');
 for (const chapter of ['invoice-capture', 'inventory', 'food-cost', 'counts-reorder', 'owner-view']) {
   assert.match(productMarketing, new RegExp(`'${chapter}'`));
@@ -226,13 +226,13 @@ assert.match(productPage, /filterMarketableEntries\(PRODUCT_STORY_CHAPTERS\)/);
 assert.match(productPage, /visibleChapterIds=\{chapters\.map/);
 assert.match(read('src/app/[locale]/page.tsx'), /availability\.\$\{homepageState\}/);
 assert.match(read('src/app/[locale]/demo/page.tsx'), /filterMarketableEntries\(DEMO_AGENDA\)/);
-assert.match(en.zaikoPage.story.chapters.invoice.trust, /restaurant decides/i);
-assert.match(en.zaikoPage.story.chapters.costing.trust, /instead of inventing precision/i);
-assert.match(en.zaikoPage.story.chapters.counts.trust, /0 means counted and found zero/i);
-assert.match(en.zaikoPage.story.chapters.counts.trust, /does not place supplier orders electronically/i);
-assert.match(en.zaikoPage.hero.body, /Android/);
-assert.match(en.zaikoPage.hero.body, /local-first/i);
-assert.doesNotMatch(en.zaikoPage.hero.body, /Web|iOS|cloud sync|multi-location/i);
+assert.match(en.servePage.story.chapters.invoice.trust, /restaurant decides/i);
+assert.match(en.servePage.story.chapters.costing.trust, /instead of inventing precision/i);
+assert.match(en.servePage.story.chapters.counts.trust, /0 means counted and found zero/i);
+assert.match(en.servePage.story.chapters.counts.trust, /does not place supplier orders electronically/i);
+assert.match(en.servePage.hero.body, /Android/);
+assert.match(en.servePage.hero.body, /local-first/i);
+assert.doesNotMatch(en.servePage.hero.body, /Web|iOS|cloud sync|multi-location/i);
 
 const truthDoc = read('docs/PRODUCT-MARKETING-TRUTH.md');
 assert.match(truthDoc, /Android/);

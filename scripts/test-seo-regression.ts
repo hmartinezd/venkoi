@@ -13,7 +13,7 @@ import es from '../src/i18n/messages/es.json';
 
 const sitemapRouteKeys: RouteKey[] = [
   'home',
-  'productsZaiko',
+  'productsServe',
   'services',
   'servicesMobile',
   'servicesWeb',
@@ -125,11 +125,11 @@ export function testSeoRegression() {
     assert(getProperty(metadata.openGraph, 'siteName') === 'Venkoi', 'OpenGraph siteName is Venkoi');
     assert(getProperty(metadata.twitter, 'card') === 'summary_large_image', 'Twitter card is summary_large_image');
 
-    const productPage = readFileSync(resolve(process.cwd(), 'src/app/[locale]/products/zaiko/page.tsx'), 'utf8');
+    const productPage = readFileSync(resolve(process.cwd(), 'src/app/[locale]/products/serve/page.tsx'), 'utf8');
     assert(productPage.includes("'@type': 'SoftwareApplication'"), 'Product SoftwareApplication JSON-LD remains present');
     assert(productPage.includes('name: FEATURED_PRODUCT.name'), 'Product JSON-LD name remains registry-driven');
     assert(
-      productPage.includes("getLocalizedPath('productsZaiko', currentLocale)"),
+      productPage.includes("getLocalizedPath('productsServe', currentLocale)"),
       'Product JSON-LD URL remains localized and canonical'
     );
     assert(
@@ -141,7 +141,7 @@ export function testSeoRegression() {
     assert(schemaPlatform !== 'Web', 'Product JSON-LD platform does not identify Web');
     assert(schemaPlatform !== 'iOS', 'Product JSON-LD platform does not identify iOS');
     for (const messages of [en, es]) {
-      const productSeo = messages.zaikoPage.seo;
+      const productSeo = messages.servePage.seo;
       assert(/inventory|inventario/i.test(productSeo.title), 'Product SEO title identifies restaurant inventory');
       assert(/food-cost|costo de alimentos/i.test(productSeo.title), 'Product SEO title identifies food cost');
       assert(/invoice|facturas/i.test(productSeo.description), 'Product SEO description covers invoice capture');
@@ -158,8 +158,8 @@ export function testSeoRegression() {
 
     assertRouteMetadata('home', 'en', 'Home EN');
     assertRouteMetadata('home', 'es', 'Home ES');
-    assertRouteMetadata('productsZaiko', 'en', 'Venkoi Serve EN');
-    assertRouteMetadata('productsZaiko', 'es', 'Venkoi Serve ES');
+    assertRouteMetadata('productsServe', 'en', 'Venkoi Serve EN');
+    assertRouteMetadata('productsServe', 'es', 'Venkoi Serve ES');
     assertRouteMetadata('insightRestaurantInventory', 'en', 'Insight article EN');
     assertRouteMetadata('insightRestaurantInventory', 'es', 'Insight article ES');
     assertRouteMetadata('privacy', 'en', 'Privacy EN');

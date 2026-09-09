@@ -11,14 +11,14 @@ interface Capability {
   supporting: string[];
 }
 
-interface ZaikoCapabilitiesProps {
+interface ServeCapabilitiesProps {
   eyebrow: string;
   heading: string;
   body: string;
   capabilities: Capability[];
 }
 
-export function ZaikoCapabilities({ eyebrow, heading, body, capabilities }: ZaikoCapabilitiesProps) {
+export function ServeCapabilities({ eyebrow, heading, body, capabilities }: ServeCapabilitiesProps) {
   return (
     <Section variant="surface" spacing="standard" className="border-t border-border">
       <Container className="space-y-12 lg:space-y-16">

@@ -5,7 +5,7 @@ import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
-interface ZaikoEarlyAccessProps {
+interface ServeEarlyAccessProps {
   locale: Locale;
   eyebrow: string;
   heading: string;
@@ -15,7 +15,7 @@ interface ZaikoEarlyAccessProps {
   secondaryCta: string;
 }
 
-export function ZaikoEarlyAccess({
+export function ServeEarlyAccess({
   locale,
   eyebrow,
   heading,
@@ -23,7 +23,7 @@ export function ZaikoEarlyAccess({
   details = [],
   primaryCta,
   secondaryCta
-}: ZaikoEarlyAccessProps) {
+}: ServeEarlyAccessProps) {
   return (
     <Section variant="dark" spacing="spacious" className="scroll-mt-36" id="early-access">
       <Container className="max-w-4xl text-center space-y-10">
@@ -60,7 +60,7 @@ export function ZaikoEarlyAccess({
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_early_access' })}
             variant="brand"
             className="w-full sm:w-auto"
-            eventName="zaiko_demo_cta"
+            eventName="serve_demo_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,
@@ -73,7 +73,7 @@ export function ZaikoEarlyAccess({
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'product_early_access' })}
             variant="inverse"
             className="w-full sm:w-auto"
-            eventName="zaiko_early_access_cta"
+            eventName="serve_early_access_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,

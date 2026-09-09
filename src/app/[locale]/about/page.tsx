@@ -88,8 +88,8 @@ export default async function AboutPage({ params }: PageProps) {
                 </p>
               </div>
               <div className="pt-4 border-t border-border">
-                <Button href={getLocalizedPath('productsZaiko', currentLocale)} variant="secondary">
-                  {t('exploreZaikoCta', { productName: FEATURED_PRODUCT.name })}
+                <Button href={getLocalizedPath('productsServe', currentLocale)} variant="secondary">
+                  {t('exploreServeCta', { productName: FEATURED_PRODUCT.name })}
                 </Button>
               </div>
             </div>
@@ -212,7 +212,7 @@ export default async function AboutPage({ params }: PageProps) {
             <TrackedButton
               href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT, { source: 'about' })}
               variant="brand"
-              eventName="zaiko_demo_cta"
+              eventName="serve_demo_cta"
               properties={{
                 locale: currentLocale,
                 product: FEATURED_PRODUCT.analyticsProduct,

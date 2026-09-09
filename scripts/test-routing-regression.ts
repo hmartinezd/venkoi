@@ -25,6 +25,8 @@ function assert(condition: boolean, testName: string) {
 console.log('Testing getLocalizedPath:');
 assert(getLocalizedPath('home', 'en') === '/en', 'Home EN');
 assert(getLocalizedPath('home', 'es') === '/es', 'Home ES');
+assert(getLocalizedPath('productsServe', 'en') === '/en/products/serve', 'Venkoi Serve EN');
+assert(getLocalizedPath('productsServe', 'es') === '/es/productos/serve', 'Venkoi Serve ES');
 assert(getLocalizedPath('servicesMobile', 'en') === '/en/services/mobile-applications', 'Mobile Services EN');
 assert(getLocalizedPath('servicesMobile', 'es') === '/es/servicios/aplicaciones-moviles', 'Mobile Services ES');
 assert(getLocalizedPath('servicesWeb', 'en') === '/en/services/websites-web-applications', 'Web Services EN');
@@ -93,7 +95,7 @@ const insightRoutes: RouteKey[] = [
   'insightStartSoftwareProject',
   'insightWebsiteOrWebApp'
 ];
-const nonInsightRoutes: RouteKey[] = ['home', 'productsZaiko', 'services', 'contact'];
+const nonInsightRoutes: RouteKey[] = ['home', 'productsServe', 'services', 'contact'];
 
 insightRoutes.forEach((routeKey) => {
   assert(isInsightRoute(routeKey), `${routeKey} belongs to the Insights family`);
@@ -103,7 +105,7 @@ nonInsightRoutes.forEach((routeKey) => {
 });
 
 const serviceRoutes: RouteKey[] = ['services', 'servicesMobile', 'servicesWeb'];
-const nonServiceRoutes: RouteKey[] = ['home', 'productsZaiko', 'insights', 'contact'];
+const nonServiceRoutes: RouteKey[] = ['home', 'productsServe', 'insights', 'contact'];
 
 serviceRoutes.forEach((routeKey) => {
   assert(isServiceRoute(routeKey), `${routeKey} belongs to the Services family`);

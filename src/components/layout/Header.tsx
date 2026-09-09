@@ -29,7 +29,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
   const tHeader = useTranslations('header');
   const tCommon = useTranslations('common');
 
-  const isProductsActive = routeKey === 'productsZaiko';
+  const isProductsActive = routeKey === 'productsServe';
   const isInsightsActive = isInsightRoute(routeKey);
   const isServicesActive = isServiceRoute(routeKey);
   const isAboutActive = routeKey === 'about';
@@ -96,7 +96,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
         {/* Desktop Nav */}
         <nav aria-label={tHeader('mainNavigation')} className="hidden items-center gap-5 lg:flex xl:gap-7">
           <LocalizedLink
-            href={internalRoutes.productsZaiko}
+            href={internalRoutes.productsServe}
             locale={locale}
             aria-current={isProductsActive ? 'page' : undefined}
             className={cn(
@@ -163,7 +163,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })}
             variant="primary"
             className="text-xs"
-            onClick={() => trackCustomEvent('zaiko_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' })}
+            onClick={() => trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' })}
           >
             {tCommon('demo')}
           </Button>
@@ -202,17 +202,17 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
         >
           <nav aria-label={tHeader('mainNavigation')} className="grid gap-3 text-base font-medium">
             <LocalizedLink
-              href={internalRoutes.productsZaiko}
+              href={internalRoutes.productsServe}
               locale={locale}
               onClick={() => setMenuOpen(false)}
-              aria-current={routeKey === 'productsZaiko' ? 'page' : undefined}
+              aria-current={routeKey === 'productsServe' ? 'page' : undefined}
               className={cn(
                 'flex items-center justify-between rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
-                routeKey === 'productsZaiko' ? 'text-orange-text' : 'text-ink'
+                routeKey === 'productsServe' ? 'text-orange-text' : 'text-ink'
               )}
             >
               <span className="break-words">{productName}</span>
-              <span className="text-xs text-foreground-muted">{tNav('zaikoSubtitle')}</span>
+              <span className="text-xs text-foreground-muted">{tNav('serveSubtitle')}</span>
             </LocalizedLink>
             <LocalizedLink
               href={internalRoutes.insights}
@@ -270,7 +270,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               variant="primary"
               className="w-full justify-center"
               onClick={() => {
-                trackCustomEvent('zaiko_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
+                trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
                 setMenuOpen(false);
               }}
             >

@@ -30,7 +30,7 @@ assert(parsedGenericUrl.pathname === '/16145863968', 'Generic WhatsApp URL uses 
 assert(parsedGenericUrl.searchParams.get('text') === genericMessage, 'Generic message survives URL encoding');
 assert(genericUrl.includes('text=') && !genericUrl.includes(' '), 'WhatsApp message is URL encoded');
 assert(productUrl.searchParams.get('text')?.includes(FEATURED_PRODUCT.name) === true, 'Product message uses public registry name');
-assert(FEATURED_PRODUCT.id === 'zaiko' && FEATURED_PRODUCT.slug === 'zaiko', 'Machine product identifiers remain zaiko');
+assert(FEATURED_PRODUCT.id === 'serve' && FEATURED_PRODUCT.slug === 'serve', 'Machine product identifiers remain serve');
 assert(buildEmailUrl('Venkoi inquiry').startsWith(`mailto:${PUBLIC_CONTACT.email}?subject=`), 'Mailto uses canonical email and encoded subject');
 
 const configKeys = Object.keys(PUBLIC_CONTACT).join(' ').toLowerCase();

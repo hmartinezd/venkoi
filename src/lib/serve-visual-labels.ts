@@ -1,4 +1,4 @@
-export type ZaikoVisualLabels = {
+export type ServeVisualLabels = {
   inventory: string;
   purchases: string;
   activity: string;
@@ -49,9 +49,9 @@ export type ZaikoVisualLabels = {
   suggestedPurchase: string;
 };
 
-type VisualTranslator = (key: keyof ZaikoVisualLabels) => string;
+type VisualTranslator = (key: keyof ServeVisualLabels) => string;
 
-export function buildZaikoVisualLabels(tVisuals: VisualTranslator): ZaikoVisualLabels {
+export function buildServeVisualLabels(tVisuals: VisualTranslator): ServeVisualLabels {
   return {
     inventory: tVisuals('inventory'),
     purchases: tVisuals('purchases'),

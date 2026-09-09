@@ -1,6 +1,6 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { ZaikoProductVisual, type ZaikoVisualLabels } from './ZaikoProductVisual';
+import { ServeProductVisual, type ServeVisualLabels } from './ServeProductVisual';
 
 export type WorkflowChapter = {
   id: 'invoice-capture' | 'inventory' | 'food-cost' | 'counts-reorder' | 'owner-view';
@@ -16,10 +16,10 @@ type Props = {
   workflow: { eyebrow: string; heading: string; body: string; steps: string[]; availability: string };
   chapters: WorkflowChapter[];
   dataSafety?: { eyebrow: string; heading: string; body: string; points: string[] };
-  labels: ZaikoVisualLabels;
+  labels: ServeVisualLabels;
 };
 
-export function ZaikoWorkflowStory({ workflow, chapters, dataSafety, labels }: Props) {
+export function ServeWorkflowStory({ workflow, chapters, dataSafety, labels }: Props) {
   return (
     <>
       <Section variant="dark" spacing="standard" className="border-t border-white/10">
@@ -54,7 +54,7 @@ export function ZaikoWorkflowStory({ workflow, chapters, dataSafety, labels }: P
               </ul>
               {chapter.trust ? <p className="border-l-2 border-orange pl-4 text-base font-bold leading-relaxed text-ink">{chapter.trust}</p> : null}
             </article>
-            {chapter.visual ? <div className="lg:col-span-6"><ZaikoProductVisual type={chapter.visual} labels={labels} /></div> : null}
+            {chapter.visual ? <div className="lg:col-span-6"><ServeProductVisual type={chapter.visual} labels={labels} /></div> : null}
           </Container>
         </Section>
       ))}

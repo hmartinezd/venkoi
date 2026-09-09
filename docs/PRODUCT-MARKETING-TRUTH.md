@@ -10,7 +10,7 @@ Venkoi is a product-first software company. Its own products define the company.
 
 The featured product is restaurant inventory and food-cost software for independent restaurant owners, managers, receiving and inventory teams, and operators responsible for food cost—especially small operations moving beyond spreadsheets or disconnected systems.
 
-Its initial platform is Android. It is local-first and focused on a single restaurant / single-location operating model. The public display name is **Venkoi Serve**; internal identity remains `zaiko`, and public display naming comes from `FEATURED_PRODUCT.name`.
+Its initial platform is Android. It is local-first and focused on a single restaurant / single-location operating model. The public display name is **Venkoi Serve**; internal identity remains `serve`, and public display naming comes from `FEATURED_PRODUCT.name`.
 
 ## First-release scope
 

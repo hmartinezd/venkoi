@@ -1,8 +1,8 @@
 import { track } from '@vercel/analytics';
 
 export type AnalyticsEventName =
-  | 'zaiko_demo_cta'
-  | 'zaiko_early_access_cta'
+  | 'serve_demo_cta'
+  | 'serve_early_access_cta'
   | 'services_cta'
   | 'demo_form_start'
   | 'demo_form_submit'

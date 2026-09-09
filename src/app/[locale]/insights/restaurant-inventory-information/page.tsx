@@ -52,7 +52,7 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
     { id: 'activity', label: content.activityTitle },
     { id: 'costs', label: content.costsTitle },
     { id: 'together', label: content.togetherTitle },
-    { id: 'product-approach', label: t('content.zaikoTitle', productValues) }
+    { id: 'product-approach', label: t('content.serveTitle', productValues) }
   ];
 
   const ctaArea = (
@@ -60,7 +60,7 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
       <TrackedButton
         href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT, { source: 'insight' })}
         variant="primary"
-        eventName="zaiko_demo_cta"
+        eventName="serve_demo_cta"
         properties={{
           locale: currentLocale,
           product: FEATURED_PRODUCT.analyticsProduct,
@@ -70,7 +70,7 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
         {content.ctaDemo}
       </TrackedButton>
       <Button
-        href={getLocalizedPath('productsZaiko', currentLocale)}
+        href={getLocalizedPath('productsServe', currentLocale)}
         variant="secondary"
       >
         {t('content.ctaExplore', productValues)}
@@ -146,8 +146,8 @@ export default async function RestaurantInventoryArticle({ params }: PageProps) 
         <p>{content.togetherBody}</p>
       </ArticleSection>
 
-      <ArticleSection id="product-approach" title={t('content.zaikoTitle', productValues)}>
-        <p>{t('content.zaikoBody', productValues)}</p>
+      <ArticleSection id="product-approach" title={t('content.serveTitle', productValues)}>
+        <p>{t('content.serveBody', productValues)}</p>
       </ArticleSection>
     </InsightArticle>
   );

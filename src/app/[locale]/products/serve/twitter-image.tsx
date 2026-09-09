@@ -13,5 +13,5 @@ export const contentType = socialCardContentType;
 
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return generateSocialCardResponse({ locale, variant: 'zaiko', productName: FEATURED_PRODUCT.name });
+  return generateSocialCardResponse({ locale, variant: 'serve', productName: FEATURED_PRODUCT.name });
 }

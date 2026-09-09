@@ -1,6 +1,6 @@
 # Venkoi
 
-The Venkoi marketing and product website. Its current public product is Venkoi Serve; the stable technical product identity remains `zaiko`. Production Contact and Demo persistence is backed by Neon PostgreSQL; transactional email delivery uses Resend after persistence.
+The Venkoi marketing and product website. Its current public product is Venkoi Serve; the stable technical product identity remains `serve`. Production Contact and Demo persistence is backed by Neon PostgreSQL; transactional email delivery uses Resend after persistence.
 
 ## Stack
 
@@ -24,7 +24,7 @@ The marketing site renders locally without production lead-service secrets.
 
 ## Lead infrastructure status
 
-Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. Demo persistence stores the stable product slug `zaiko`, independently of its registry-driven public display name.
+Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. New Demo persistence uses the `serve` product slug; migration `004` is prepared to convert previously persisted legacy product values and must be applied by the owner after review.
 
 Standard Demo and Request Access share the product lead architecture without changing persistence types: both store `lead_type = DEMO`; `early_access_interest = false` represents Demo and `true` represents Request Access. The field name is a stable technical identifier, not the public program label.
 

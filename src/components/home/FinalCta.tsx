@@ -36,7 +36,7 @@ export function FinalCta({
           <TrackedButton
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'home_final_cta' })}
             variant="brand"
-            eventName="zaiko_demo_cta"
+            eventName="serve_demo_cta"
             properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'home_final_cta' }}
           >
             {demoCta}

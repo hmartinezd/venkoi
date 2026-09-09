@@ -21,9 +21,9 @@ for (const marker of chapterMarkers) {
 }
 
 assert.match(about, /t\('venkoiProductsDesc', \{ productName: FEATURED_PRODUCT\.name \}\)/);
-assert.match(about, /t\('exploreZaikoCta', \{ productName: FEATURED_PRODUCT\.name \}\)/);
+assert.match(about, /t\('exploreServeCta', \{ productName: FEATURED_PRODUCT\.name \}\)/);
 assert.match(about, /href=\{buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'about' \}\)\}/);
-assert.match(about, /eventName="zaiko_demo_cta"/);
+assert.match(about, /eventName="serve_demo_cta"/);
 assert.match(about, /product: FEATURED_PRODUCT\.analyticsProduct/);
 assert.match(about, /source: 'about'/);
 assert.match(about, /href=\{getLocalizedPath\('contact', currentLocale\)\}/);

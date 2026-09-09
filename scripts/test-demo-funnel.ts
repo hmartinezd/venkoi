@@ -13,7 +13,7 @@ const productMarketing = read('src/lib/product-marketing.ts');
 const assertConversionEntry = (
   source: string,
   expectedSource: string,
-  eventName: 'zaiko_demo_cta' | 'zaiko_early_access_cta'
+  eventName: 'serve_demo_cta' | 'serve_early_access_cta'
 ) => {
   assert.match(source, new RegExp(`eventName=["']${eventName}["']`));
   assert.match(source, new RegExp(`source: ["']${expectedSource}["']`));
@@ -21,19 +21,19 @@ const assertConversionEntry = (
 
 assert.match(footer, /buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'footer' \}\)/);
 assert.match(footer, /buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ interest: 'early-access', source: 'footer' \}\)/);
-assertConversionEntry(footer, 'footer', 'zaiko_demo_cta');
-assertConversionEntry(footer, 'footer', 'zaiko_early_access_cta');
+assertConversionEntry(footer, 'footer', 'serve_demo_cta');
+assertConversionEntry(footer, 'footer', 'serve_early_access_cta');
 
 assert.match(about, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'about' \}\)/);
-assertConversionEntry(about, 'about', 'zaiko_demo_cta');
+assertConversionEntry(about, 'about', 'serve_demo_cta');
 
 assert.match(insight, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'insight' \}\)/);
-assertConversionEntry(insight, 'insight', 'zaiko_demo_cta');
+assertConversionEntry(insight, 'insight', 'serve_demo_cta');
 
 assert.match(contact, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'contact_escape' \}\)/);
-assertConversionEntry(contact, 'contact_escape', 'zaiko_demo_cta');
+assertConversionEntry(contact, 'contact_escape', 'serve_demo_cta');
 
-for (const legacySource of ['about_footer', 'insight_restaurant_inventory', 'zaiko_explorer']) {
+for (const legacySource of ['about_footer', 'insight_restaurant_inventory', 'serve_explorer']) {
   for (const conversionEntry of [footer, about, insight, contact]) {
     assert.doesNotMatch(conversionEntry, new RegExp(`source: ["']${legacySource}["']`));
   }

@@ -43,7 +43,7 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
             <ul className="space-y-2">
               <li>
                 <LocalizedLink
-                  href={internalRoutes.productsZaiko}
+                  href={internalRoutes.productsServe}
                   locale={locale}
                   className="font-normal text-foreground-muted transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
@@ -54,7 +54,7 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
                 <TrackedButton
                   href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'footer' })}
                   variant="text"
-                  eventName="zaiko_demo_cta"
+                  eventName="serve_demo_cta"
                   properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'footer' }}
                   className="font-normal text-foreground-muted transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                 >
@@ -66,7 +66,7 @@ export async function Footer({ locale, productName }: { locale: Locale; productN
                   <TrackedButton
                     href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'footer' })}
                     variant="text"
-                    eventName="zaiko_early_access_cta"
+                    eventName="serve_early_access_cta"
                     properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'footer', earlyAccess: true }}
                     className="font-normal text-foreground-muted transition hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm outline-none"
                   >

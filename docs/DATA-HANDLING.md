@@ -48,7 +48,7 @@ The Demo UI submits `DEMO`. Blank optional strings are normalized to `null` befo
 | Restaurant/business | `location_count` | Optional; `1`, `2_5`, `6_20`, or `20_plus`. |
 | Restaurant/business | `current_system` | Optional; `none`, `spreadsheet`, `pos_tools`, or `other`. |
 | Restaurant/business | `message` | Optional; maximum 5,000 characters. |
-| Product/funnel | `product` | Required for Demo and must resolve to a Demo-enabled registry product. The stored stable technical slug is `zaiko`; it is distinct from the registry-driven human-facing display name and must not be renamed by presentation changes. |
+| Product/funnel | `product` | Required for Demo and must resolve to a Demo-enabled registry product. The stored stable technical slug is `serve`; it is distinct from the registry-driven human-facing display name and must not be renamed by presentation changes. |
 | Product/funnel | `early_access_interest` | Boolean Request Access intent flag; defaults to `false`. Standard Demo stores `false`; Request Access stores `true`. The technical field name is intentionally stable. |
 | Context | `locale` | `en` or `es`. |
 | Context | `source_path`, `referrer`, UTM fields | Same behavior and limits as Contact. |
@@ -81,9 +81,9 @@ The insert persists: `id`, `lead_type`, `product`, `first_name`, `last_name`, de
 
 The application creates IDs with a `lead_` prefix, time component, and random bytes; creates every record with status `NEW`; and supplies an ISO creation timestamp. The database also defaults `early_access_interest` to false, `status` to `NEW`, and `created_at` to the current timestamp. Migrations make those three columns non-null and constrain lead type, locale, status, location count, current system, interest, and project stage. Email is non-null. Length limits are represented in both validation and applicable `VARCHAR` columns; `message` is `TEXT` with the application enforcing 5,000 characters.
 
-The database permits current canonical interests plus specified historical compatibility values. Application validation emits `mobile`, `web`, or `unsure`. Demo product validation is registry-driven; current production verification records the stable `zaiko` slug, not the display name.
+The database permits current canonical interests plus specified historical compatibility values. Application validation emits `mobile`, `web`, or `unsure`. Demo product validation is registry-driven; current production verification records the stable `serve` slug, not the display name.
 
-No repository-managed deletion job, anonymization job, or lead administration interface was found. **Recorded operational decision:** unconverted Contact, Demo, and Access Request lead records should ordinarily be retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. Customer conversion may place the record under a later customer/business-record policy. Automated enforcement is not implemented; an owner-operated review and deletion/anonymization process remains required. No destructive automation or database migration is introduced by this milestone.
+No repository-managed deletion job, anonymization job, or lead administration interface was found. **Recorded operational decision:** unconverted Contact, Demo, and Access Request lead records should ordinarily be retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. Customer conversion may place the record under a later customer/business-record policy. Automated enforcement is not implemented; an owner-operated review and deletion/anonymization process remains required. Product identity migration `004` is prepared separately and is not applied automatically or against Production by this milestone.
 
 The shared product lead architecture intentionally keeps both intents under `lead_type = DEMO`:
 
@@ -117,7 +117,7 @@ The Resend API key is read only on the server and is not placed in email content
 
 | Event | Current properties |
 | --- | --- |
-| `zaiko_demo_cta`, `zaiko_early_access_cta` | `locale`, technical analytics product identity, CTA `source`, and where applicable `earlyAccess`. |
+| `serve_demo_cta`, `serve_early_access_cta` | `locale`, technical analytics product identity, CTA `source`, and where applicable `earlyAccess`. |
 | `services_cta` | `locale`, CTA `source`, and where applicable service `interest`. |
 | `demo_form_start`, `demo_form_submit`, `demo_form_success` | `locale`, stable product slug, `earlyAccess`. |
 | `contact_form_start`, `contact_form_submit`, `contact_form_success` | `locale`, `leadType`, service `interest`. |
@@ -159,7 +159,7 @@ No sensitive service configuration is exposed through a `NEXT_PUBLIC_*` variable
 
 ## Recorded production and public-UI status
 
-Repository documentation records Neon Contact and product-lead persistence, stable `zaiko` slug persistence, Resend sending, English Contact/product internal notification and acknowledgement delivery, and the apex production identity as verified. The 2026-08-11 record confirms that `https://venkoi.com` serves as the primary domain, `www` redirects to the equivalent apex URL, and canonical/hreflang/Open Graph/sitemap output uses the apex. These are recorded operational facts, not re-tested against live services in this audit.
+Repository documentation records Neon Contact and product-lead persistence, stable `serve` slug persistence, Resend sending, English Contact/product internal notification and acknowledgement delivery, and the apex production identity as verified. The 2026-08-11 record confirms that `https://venkoi.com` serves as the primary domain, `www` redirects to the equivalent apex URL, and canonical/hreflang/Open Graph/sitemap output uses the apex. These are recorded operational facts, not re-tested against live services in this audit.
 
 The following remain owner/platform verification items: explicit inspection of the Vercel Production `SITE_URL` setting, Analytics dashboard traffic, Speed Insights observations, recent production logs, live BotID operation, Spanish production email delivery, `privacy@venkoi.com` delivery, the operational retention process, and final go/no-go. Repository instrumentation does not establish dashboard or mailbox health.
 

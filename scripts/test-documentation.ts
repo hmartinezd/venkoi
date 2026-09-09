@@ -29,7 +29,7 @@ assert.match(readme, /Resend production transactional delivery is configured and
 assert.match(readme, /Spanish production delivery has not been manually verified/i, 'README must qualify Spanish production email verification');
 assert.doesNotMatch(readme, /production forms are fully operational/i, 'README must not claim forms are fully operational');
 assert.match(readme, /manually verified/i, 'README must record completed production persistence verification');
-assert.match(readme, /stable product slug `zaiko`/i, 'README must document rename-safe Demo persistence');
+assert.match(readme, /New Demo persistence uses the `serve` product slug/i, 'README must document the current Demo product identity');
 assert.match(readme, /early_access_interest = false[\s\S]*Demo[\s\S]*true[\s\S]*Request Access/i, 'README must document shared Demo and Request Access storage');
 assert.match(readme, /technical data-handling inventory/i, 'README must link to the technical data-handling inventory');
 
@@ -74,7 +74,8 @@ assert.equal(env.get('SITE_URL'), 'https://venkoi.com', 'SITE_URL must show the 
 const migrations = [
   'db/migrations/001_create_leads.sql',
   'db/migrations/002_harden_leads.sql',
-  'db/migrations/003_update_service_interests.sql'
+  'db/migrations/003_update_service_interests.sql',
+  'db/migrations/004_migrate_legacy_product_slug.sql'
 ];
 for (const migration of migrations) assert.ok(existsSync(resolve(root, migration)), `${migration} must exist`);
 const migrationPositions = migrations.map((migration) => {
@@ -82,7 +83,7 @@ const migrationPositions = migrations.map((migration) => {
   return launch.indexOf(segments[segments.length - 1]);
 });
 assert.ok(migrationPositions.every((position) => position >= 0), 'Runbook must name all migrations');
-assert.ok(migrationPositions[0] < migrationPositions[1] && migrationPositions[1] < migrationPositions[2], 'Runbook must present migrations in numeric order');
+assert.ok(migrationPositions.every((position, index) => index === 0 || migrationPositions[index - 1] < position), 'Runbook must present migrations in numeric order');
 
 assert.match(launch, /Production email delivery — done/, 'Runbook must identify completed production email verification');
 assert.match(launch, /Production lead persistence — done/, 'Runbook must distinguish completed Neon persistence');
@@ -90,7 +91,7 @@ assert.match(launch, /Current operational state/, 'Runbook must summarize the re
 assert.match(launch, /Apex domain[^\n]*Production verified/i, 'Runbook must record apex production verification');
 assert.match(launch, /Spanish-language production delivery has not been manually verified/i, 'Runbook must distinguish unverified Spanish production delivery');
 assert.match(launch, /must not be interpreted as the previous SPA route/i, 'Runbook must document referrer semantics');
-assert.match(launch, /product = zaiko/, 'Runbook must record stable product slug verification');
+assert.match(launch, /product = serve/, 'Runbook must record stable product slug verification');
 assert.match(launch, /Privacy is published at `\/en\/privacy`[\s\S]*Website Terms are published at `\/en\/terms`/i, 'Runbook must record public legal routes');
 assert.match(launch, /privacy@venkoi\.com/, 'Runbook must record owner-side privacy mailbox action');
 assert.match(launch, /Domain cutover — historical owner checklist/, 'Runbook must preserve the historical domain-cutover checklist');

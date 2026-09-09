@@ -10,7 +10,7 @@
     "skipToContent": "Skip to content"
   },
   "navigation": {
-    "zaikoSubtitle": "Restaurant Inventory Management",
+    "serveSubtitle": "Restaurant Inventory Management",
     "services": "Services",
     "about": "About",
     "contact": "Contact",
@@ -48,7 +48,7 @@
       "body": "Venkoi's featured product connects invoices and purchases to inventory movement, supplier prices, food cost, physical counts, and reorder preparation. Venkoi also takes on selected custom mobile and web projects.",
       "primaryCta": "Explore {productName}"
     },
-    "zaiko": {
+    "serve": {
       "eyebrow": "{productName} · RESTAURANT INVENTORY",
       "badge": "{freeMonths} MONTHS FREE",
       "availability": {
@@ -186,7 +186,7 @@
     "primaryPillarBadge": "FEATURED PRODUCT",
     "venkoiProductsTitle": "Venkoi Products",
     "venkoiProductsDesc": "Our featured product, {productName}, connects restaurant invoices, purchases, inventory changes, food cost, physical counts, and reorder preparation.",
-    "exploreZaikoCta": "Explore {productName}",
+    "exploreServeCta": "Explore {productName}",
     "clientSolutionsBadge": "SERVICES",
     "servicesTitle": "Mobile & Web",
     "servicesDesc": "Mobile applications, websites, and web applications built around specific ideas and project requirements, from design and development through testing.",
@@ -313,7 +313,7 @@
     "eyebrow": "REQUEST A DEMO",
     "heading": "See our restaurant inventory product in action.",
     "body": "Request a demo of how purchasing, inventory movement, food cost, counts, and reorder preparation stay connected.",
-    "zaiko": {
+    "serve": {
       "eyebrow": "{productName} DEMO",
       "heading": "See {productName} in action.",
       "body": "Tell us how your restaurant handles inventory today. We'll review the request and follow up about an appropriate next step for seeing {productName}.",
@@ -410,7 +410,7 @@
     }
   },
 
-  "zaikoPage": {
+  "servePage": {
     "nav": {
       "subtitle": "A Venkoi Product",
       "overview": "Overview",
@@ -709,8 +709,8 @@
         "costsBody": "Inventory represents a significant investment. When cost information lives in an invoice folder or a separate spreadsheet, it's harder to see the cost history of what is on your shelves and how price changes may be affecting the operation.",
         "togetherTitle": "Why bringing the information together matters",
         "togetherBody": "When purchasing, inventory counts, activity, and costs are part of the same picture, the information becomes more useful. It helps remove guesswork and provides a clearer view of where resources are going.",
-        "zaikoTitle": "How {productName} approaches the problem",
-        "zaikoBody": "{productName} is designed to bring these four areas—inventory, purchases, activity, and costs—into a single, focused experience. It focuses on providing clearer visibility into your operation without adding unnecessary complexity.",
+        "serveTitle": "How {productName} approaches the problem",
+        "serveBody": "{productName} is designed to bring these four areas—inventory, purchases, activity, and costs—into a single, focused experience. It focuses on providing clearer visibility into your operation without adding unnecessary complexity.",
         "ctaExplore": "Explore {productName}",
         "ctaDemo": "Request a Demo"
       }

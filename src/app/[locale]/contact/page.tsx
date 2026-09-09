@@ -153,7 +153,7 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
                 <TrackedButton
                   href={buildProductDemoHref(currentLocale, FEATURED_PRODUCT, { source: 'contact_escape' })}
                   variant="text"
-                  eventName="zaiko_demo_cta"
+                  eventName="serve_demo_cta"
                   properties={{
                     locale: currentLocale,
                     product: FEATURED_PRODUCT.analyticsProduct,

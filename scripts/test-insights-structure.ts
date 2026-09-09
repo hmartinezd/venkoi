@@ -44,7 +44,7 @@ for (const [key, file] of [
   assert.ok(source.includes('getProductSectionMarketingState'), `${key} should derive its product connection from capability truth`);
   assert.ok(source.includes('...(productState ?'), `${key} should omit the product section when it is not marketed`);
 }
-assert.ok(restaurantGuide.includes("source: 'insight'") && restaurantGuide.includes('eventName="zaiko_demo_cta"'), 'Restaurant guides should preserve Demo analytics');
+assert.ok(restaurantGuide.includes("source: 'insight'") && restaurantGuide.includes('eventName="serve_demo_cta"'), 'Restaurant guides should preserve Demo analytics');
 assert.ok(index.indexOf('restaurantArticles') < index.indexOf('softwareArticles'), 'Restaurant operations should lead the landing page');
 assert.equal((index.match(/headingLevel="h3"/g) ?? []).length, 3, 'Both restaurant card paths and the software card path should use h3');
 assert.doesNotMatch(index, /headingLevel="h2"/, 'Cards beneath family h2 headings must not render h2 headings');
@@ -70,7 +70,7 @@ for (const article of articles) {
 
 const restaurant = read(articles[0].file);
 assert.ok(restaurant.indexOf('<TrackedButton') < restaurant.indexOf('<Button'), 'Restaurant Demo should precede Explore Product in DOM order');
-assert.ok(restaurant.includes('eventName="zaiko_demo_cta"'), 'Restaurant Demo analytics event should remain stable');
+assert.ok(restaurant.includes('eventName="serve_demo_cta"'), 'Restaurant Demo analytics event should remain stable');
 assert.ok(shell.includes('href={`#${section.id}`}') && shell.includes('scroll-mt-24'), 'TOC anchors and header offset should remain connected');
 assert.ok(!/^\s*(['"])use client\1;/m.test(shell), 'InsightArticle should remain a Server Component');
 assert.ok(!/^\s*(['"])use client\1;/m.test(related), 'RelatedInsights should remain a Server Component');

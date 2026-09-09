@@ -6,7 +6,7 @@ import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
-import { ZaikoProductVisual, type ZaikoVisualLabels } from '@/components/product/zaiko/ZaikoProductVisual';
+import { ServeProductVisual, type ServeVisualLabels } from '@/components/product/serve/ServeProductVisual';
 
 export function HeroSection({
   locale,
@@ -23,7 +23,7 @@ export function HeroSection({
   body: string;
   primaryCta: string;
   secondaryCta: string;
-  visualLabels: ZaikoVisualLabels;
+  visualLabels: ServeVisualLabels;
 }) {
   return (
     <Section variant="light" spacing="hero">
@@ -40,13 +40,13 @@ export function HeroSection({
           </p>
 
           <div className="pt-4 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-            <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
+            <Button href={getLocalizedPath('productsServe', locale)} variant="primary">
               {primaryCta}
             </Button>
             <TrackedButton
               href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'home_hero' })}
               variant="secondary"
-              eventName="zaiko_demo_cta"
+              eventName="serve_demo_cta"
               properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'home_hero' }}
             >
               {secondaryCta}
@@ -56,7 +56,7 @@ export function HeroSection({
         </div>
 
         <div className="relative isolate w-full">
-          <ZaikoProductVisual type="hero" labels={visualLabels} />
+          <ServeProductVisual type="hero" labels={visualLabels} />
         </div>
       </Container>
     </Section>

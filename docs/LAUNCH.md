@@ -28,9 +28,9 @@ The Neon production database is configured with Neon Auth off. Migrations `001` 
 Production persistence has been manually verified end to end:
 
 - Contact: `GENERAL_CONTACT`, `product = NULL`, `status = NEW`, `locale = en`, `source_path = /en/contact`.
-- Request Access: `DEMO`, `product = zaiko`, `early_access_interest = true`, `status = NEW`, `locale = en`, `source_path = /en/demo`.
+- Request Access: `DEMO`, `product = serve`, `early_access_interest = true`, `status = NEW`, `locale = en`, `source_path = /en/demo`.
 
-The Demo row intentionally stores the stable product slug `zaiko`, not the registry-driven public display name. Do not require local `DATABASE_URL` or repeat these production submissions merely to re-prove this completed verification.
+The Demo row intentionally stores the stable product slug `serve`, not the registry-driven public display name. Do not require local `DATABASE_URL` or repeat these production submissions merely to re-prove this completed verification.
 
 ## Production email delivery — done
 
@@ -44,7 +44,7 @@ No external error-monitoring or alerting service is present in this repository. 
 
 ## Product configuration
 
-`src/lib/products.ts` is the source of truth. Its stable technical identifiers include `zaiko`, and its `earlyAccess` configuration controls whether the public Request Access option and configured benefit are available. The public display name and free-month duration are registry-driven; re-check the registry rather than treating this summary as a constant. Product identity is not an environment variable.
+`src/lib/products.ts` is the source of truth. Its stable technical identifiers include `serve`, and its `earlyAccess` configuration controls whether the public Request Access option and configured benefit are available. The public display name and free-month duration are registry-driven; re-check the registry rather than treating this summary as a constant. Product identity is not an environment variable.
 
 ## Environment contract
 
@@ -84,7 +84,9 @@ psql "$DATABASE_URL" -f db/migrations/002_harden_leads.sql
 psql "$DATABASE_URL" -f db/migrations/003_update_service_interests.sql
 ```
 
-The Neon SQL Editor/Console may be used instead, preserving the same `001` → `002` → `003` order. For an existing database, first determine its actual migration and schema state. Do not assume migration 002 was applied merely because the database exists; apply only the missing migrations in order and verify the resulting table, indexes, defaults, nullability, and named checks against the SQL files.
+4. `004_migrate_legacy_product_slug.sql` converts previously persisted legacy product values to the current `serve` value. Review this migration before applying it; it must not be applied automatically by the application or by this coding task.
+
+The Neon SQL Editor/Console may be used instead, preserving the same `001` → `002` → `003` → `004` order. For an existing database, first determine its actual migration and schema state. Do not assume migration 002 was applied merely because the database exists; apply only the missing migrations in order and verify the resulting table, indexes, defaults, nullability, named checks, and the narrow product-value conversion against the SQL files.
 
 ## Resend setup
 
@@ -144,11 +146,11 @@ The EN Contact and EN Demo persistence and email paths described above are alrea
 
 | Flow | Route / intent | Additional check |
 | --- | --- | --- |
-| EN Demo | `/en/demo?product=zaiko` | Venkoi Serve demo submission |
-| ES Demo | `/es/demo?product=zaiko` | Spanish Venkoi Serve acknowledgement |
+| EN Demo | `/en/demo?product=serve` | Venkoi Serve demo submission |
+| ES Demo | `/es/demo?product=serve` | Spanish Venkoi Serve acknowledgement |
 | EN Contact | `/en/contact` | Test `mobile`, `web`, and `unsure` service interests |
 | ES Contact | `/es/contacto` | Test `mobile`, `web`, and `unsure` service interests |
-| Request Access | `?product=zaiko&interest=early-access` on each localized Demo route | Request Access intent persists through the technical `early_access_interest` flag while the registry setting remains enabled |
+| Request Access | `?product=serve&interest=early-access` on each localized Demo route | Request Access intent persists through the technical `early_access_interest` flag while the registry setting remains enabled |
 
 Use a non-production environment for controlled failure-path testing. Confirm database failure yields submission failure, and email failure after persistence still yields submission success. Do not intentionally break production services.
 

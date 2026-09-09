@@ -6,7 +6,7 @@ const currentOrigin = 'https://venkoi.vercel.app';
 assert.equal(normalizeExternalReferrer('', currentOrigin), '');
 assert.equal(normalizeExternalReferrer('not a URL', currentOrigin), '');
 assert.equal(normalizeExternalReferrer('mailto:hello@example.com', currentOrigin), '');
-assert.equal(normalizeExternalReferrer(' https://venkoi.vercel.app/en/demo?product=zaiko ', currentOrigin), '');
+assert.equal(normalizeExternalReferrer(' https://venkoi.vercel.app/en/demo?product=serve ', currentOrigin), '');
 assert.equal(
   normalizeExternalReferrer(' https://example.com/article?foo=bar#section ', currentOrigin),
   'https://example.com/article'

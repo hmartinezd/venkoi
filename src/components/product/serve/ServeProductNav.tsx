@@ -4,7 +4,7 @@ import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
 import { filterProductNavigationItems } from '@/lib/product-marketing';
 
-interface ZaikoProductNavProps {
+interface ServeProductNavProps {
   locale: Locale;
   productName: string;
   subtitle: string;
@@ -19,7 +19,7 @@ interface ZaikoProductNavProps {
   visibleChapterIds: readonly string[];
 }
 
-export function ZaikoProductNav({
+export function ServeProductNav({
   locale,
   productName,
   subtitle,
@@ -28,7 +28,7 @@ export function ZaikoProductNav({
   requestDemoLabel,
   navigationLabel,
   visibleChapterIds
-}: ZaikoProductNavProps) {
+}: ServeProductNavProps) {
   const navItems = filterProductNavigationItems([
     { label: overviewLabel, href: '#overview' },
     { label: invoiceLabel, href: '#invoice-capture' },
@@ -69,7 +69,7 @@ export function ZaikoProductNav({
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_nav' })}
             variant="primary"
             className="text-xs px-3.5 py-2 rounded-lg"
-            eventName="zaiko_demo_cta"
+            eventName="serve_demo_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,

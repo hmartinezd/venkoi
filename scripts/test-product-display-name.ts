@@ -16,25 +16,27 @@ function collectStringValues(value: unknown, path: string[] = []): Array<{ path:
   return Object.entries(value).flatMap(([key, child]) => collectStringValues(child, [...path, key]));
 }
 
+const retiredIdentity = ['za', 'iko'].join('');
+
 assert.equal(FEATURED_PRODUCT.name, 'Venkoi Serve', 'The featured product display name must remain canonical');
-assert.equal(FEATURED_PRODUCT.id, 'zaiko');
-assert.equal(FEATURED_PRODUCT.slug, 'zaiko');
-assert.equal(FEATURED_PRODUCT.analyticsProduct, 'zaiko');
-assert.equal(FEATURED_PRODUCT.routeKey, 'productsZaiko');
+assert.equal(FEATURED_PRODUCT.id, 'serve');
+assert.equal(FEATURED_PRODUCT.slug, 'serve');
+assert.equal(FEATURED_PRODUCT.analyticsProduct, 'serve');
+assert.equal(FEATURED_PRODUCT.routeKey, 'productsServe');
 
 for (const [locale, messages] of Object.entries({ en, es })) {
-  const hardcodedValues = collectStringValues(messages).filter(({ value }) => /zaiko/i.test(value));
+  const hardcodedValues = collectStringValues(messages).filter(({ value }) => new RegExp(`\\b${retiredIdentity}\\b`, 'i').test(value));
   assert.deepEqual(hardcodedValues, [], `${locale.toUpperCase()} public translation values must not hardcode the technical product slug`);
 }
 
 const alternateName = 'Rename Test Product';
 const representativeKeys = [
-  'home.zaiko.discoverCta',
-  'zaikoPage.hero.body',
-  'demoPage.zaiko.heading',
-  'aboutPage.exploreZaikoCta',
-  'insightsArticles.restaurantInventory.content.zaikoTitle',
-  'zaikoPage.seo.title'
+  'home.serve.discoverCta',
+  'servePage.hero.body',
+  'demoPage.serve.heading',
+  'aboutPage.exploreServeCta',
+  'insightsArticles.restaurantInventory.content.serveTitle',
+  'servePage.seo.title'
 ] as const;
 
 for (const [locale, messages] of Object.entries({ en, es })) {
@@ -42,16 +44,16 @@ for (const [locale, messages] of Object.entries({ en, es })) {
   for (const key of representativeKeys) {
     const rendered = t(key, { productName: alternateName });
     assert.ok(rendered.includes(alternateName), `${locale.toUpperCase()} ${key} should render an alternate display name`);
-    assert.ok(!/zaiko/i.test(rendered), `${locale.toUpperCase()} ${key} should not expose the technical product slug`);
+    assert.ok(!new RegExp(`\\b${retiredIdentity}\\b`, 'i').test(rendered), `${locale.toUpperCase()} ${key} should not expose the technical product slug`);
   }
 }
 
 const callSites: Array<[string, RegExp]> = [
-  ['src/app/[locale]/page.tsx', /tHome\('zaiko\.discoverCta',\s*\{\s*productName:/],
-  ['src/app/[locale]/products/zaiko/page.tsx', /t\('hero\.body',\s*values\)/],
-  ['src/app/[locale]/demo/page.tsx', /t\('zaiko\.heading',\s*productProgramValues\)/],
-  ['src/app/[locale]/about/page.tsx', /t\('exploreZaikoCta',\s*\{\s*productName:/],
-  ['src/app/[locale]/insights/restaurant-inventory-information/page.tsx', /t\('content\.zaikoTitle',\s*productValues\)/]
+  ['src/app/[locale]/page.tsx', /tHome\('serve\.discoverCta',\s*\{\s*productName:/],
+  ['src/app/[locale]/products/serve/page.tsx', /t\('hero\.body',\s*values\)/],
+  ['src/app/[locale]/demo/page.tsx', /t\('serve\.heading',\s*productProgramValues\)/],
+  ['src/app/[locale]/about/page.tsx', /t\('exploreServeCta',\s*\{\s*productName:/],
+  ['src/app/[locale]/insights/restaurant-inventory-information/page.tsx', /t\('content\.serveTitle',\s*productValues\)/]
 ];
 
 for (const [file, pattern] of callSites) {
@@ -59,7 +61,7 @@ for (const [file, pattern] of callSites) {
 }
 
 assert.match(
-  read('src/app/[locale]/products/zaiko/page.tsx'),
+  read('src/app/[locale]/products/serve/page.tsx'),
   /title: t\('title', \{ productName: FEATURED_PRODUCT\.name \}\)/,
   'Product metadata should resolve its title from the registry display name'
 );

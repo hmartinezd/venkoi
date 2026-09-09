@@ -17,6 +17,16 @@ const nextConfig = withNextIntl({
         source: '/es/software-a-medida',
         destination: '/es/servicios',
         permanent: true
+      },
+      {
+        source: '/en/products/zaiko',
+        destination: '/en/products/serve',
+        permanent: true
+      },
+      {
+        source: '/es/productos/zaiko',
+        destination: '/es/productos/serve',
+        permanent: true
       }
     ];
   },

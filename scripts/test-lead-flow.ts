@@ -23,7 +23,7 @@ async function runTests() {
   // 1. Missing email
   const t1 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto'
@@ -41,7 +41,7 @@ async function runTests() {
   ] as const) {
     const result = leadSubmissionSchema.safeParse({
       lead_type: 'DEMO',
-      product: 'zaiko',
+      product: 'serve',
       first_name: 'John',
       last_name: 'Doe',
       company: 'Test Resto',
@@ -55,7 +55,7 @@ async function runTests() {
 
   const emptyEmail = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto',
@@ -69,7 +69,7 @@ async function runTests() {
   // 2. Invalid email
   const t2 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto',
@@ -84,7 +84,7 @@ async function runTests() {
   const tooLongEmail = `${'a'.repeat(250)}@a.com`;
   const longEmailResult = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto',
@@ -123,7 +123,7 @@ async function runTests() {
   // 3. Missing required fields for DEMO
   const t3 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     email: 'john@example.com'
   });
   assert(!t3.success, 'Reject DEMO missing first/last name & company');
@@ -142,7 +142,7 @@ async function runTests() {
   // 5. Valid product for DEMO
   const t5 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto',
@@ -154,7 +154,7 @@ async function runTests() {
 
   const optionalDemoBase = {
     lead_type: 'DEMO' as const,
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'Jamie',
     last_name: 'Rivera',
     company: 'Harbor Kitchen',
@@ -206,7 +206,7 @@ async function runTests() {
   // 8. Invalid enum values
   const t8 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto',
@@ -247,7 +247,7 @@ async function runTests() {
   // 9. Populated honeypot (website)
   const t10 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'Spam',
     last_name: 'Bot',
     email: 'spam@bot.com',
@@ -259,7 +259,7 @@ async function runTests() {
   // 10. Normalization: lowercase email & trim strings
   const t11 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: '  John  ',
     last_name: '  Doe  ',
     company: '  Tasty Tacos  ',
@@ -325,7 +325,7 @@ async function runTests() {
   // 13. Unknown extra field (strict mode test)
   const t13 = leadSubmissionSchema.safeParse({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'John',
     last_name: 'Doe',
     company: 'Test Resto',
@@ -338,7 +338,7 @@ async function runTests() {
   delete process.env.DATABASE_URL;
   const processResult = await processLeadSubmission({
     lead_type: 'DEMO',
-    product: 'zaiko',
+    product: 'serve',
     first_name: 'Alice',
     last_name: 'Smith',
     email: 'alice@restaurant.com',

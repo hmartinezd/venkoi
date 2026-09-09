@@ -6,9 +6,9 @@ import { getLocalizedPath } from '@/i18n/routing';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
-import { ZaikoProductVisual, type ZaikoVisualLabels } from '@/components/product/zaiko/ZaikoProductVisual';
+import { ServeProductVisual, type ServeVisualLabels } from '@/components/product/serve/ServeProductVisual';
 
-export function ZaikoFeature({
+export function ServeFeature({
   locale,
   eyebrow,
   heading,
@@ -46,7 +46,7 @@ export function ZaikoFeature({
   theme4Desc: string;
   theme5Title: string;
   theme5Desc: string;
-  visualLabels: ZaikoVisualLabels;
+  visualLabels: ServeVisualLabels;
   visibleOutcomeKeys: readonly string[];
 }) {
   const themes = [
@@ -101,7 +101,7 @@ export function ZaikoFeature({
               <TrackedButton
                 href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'home_product' })}
                 variant="text"
-                eventName="zaiko_early_access_cta"
+                eventName="serve_early_access_cta"
                 properties={{
                   locale,
                   product: FEATURED_PRODUCT.analyticsProduct,
@@ -117,13 +117,13 @@ export function ZaikoFeature({
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 pt-2">
-            <Button href={getLocalizedPath('productsZaiko', locale)} variant="primary">
+            <Button href={getLocalizedPath('productsServe', locale)} variant="primary">
               {discoverCta}
             </Button>
             <TrackedButton
               href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'home_product' })}
               variant="secondary"
-              eventName="zaiko_demo_cta"
+              eventName="serve_demo_cta"
               properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'home_product' }}
             >
               {demoCta}
@@ -132,7 +132,7 @@ export function ZaikoFeature({
         </div>
 
         <div className="lg:col-span-6">
-          <ZaikoProductVisual type="inventory" labels={visualLabels} />
+          <ServeProductVisual type="inventory" labels={visualLabels} />
         </div>
       </Container>
     </Section>

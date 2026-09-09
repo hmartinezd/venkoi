@@ -1,7 +1,7 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 
-interface ZaikoContextProps {
+interface ServeContextProps {
   intro: {
     eyebrow: string;
     heading: string;
@@ -14,7 +14,7 @@ interface ZaikoContextProps {
   };
 }
 
-export function ZaikoContext({ intro, problem }: ZaikoContextProps) {
+export function ServeContext({ intro, problem }: ServeContextProps) {
   return (
     <Section variant="surface" spacing="standard" className="border-t border-border">
       <Container className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">

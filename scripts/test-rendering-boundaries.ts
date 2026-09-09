@@ -14,10 +14,10 @@ const serverComponents = [
   "src/components/services/ServiceStartingPoint.tsx",
   "src/components/services/ServiceDecisionSupport.tsx",
   "src/components/services/ServiceFaqList.tsx",
-  "src/components/product/zaiko/ZaikoProductNav.tsx",
-  "src/components/product/zaiko/ZaikoContext.tsx",
-  "src/components/product/zaiko/ZaikoCapabilities.tsx",
-  "src/components/product/zaiko/ZaikoProductFit.tsx",
+  "src/components/product/serve/ServeProductNav.tsx",
+  "src/components/product/serve/ServeContext.tsx",
+  "src/components/product/serve/ServeCapabilities.tsx",
+  "src/components/product/serve/ServeProductFit.tsx",
   "src/components/layout/Footer.tsx",
   "src/components/insights/InsightArticle.tsx",
   "src/components/insights/RelatedInsights.tsx",
@@ -26,7 +26,7 @@ const serverComponents = [
 
 const clientComponents = [
   "src/components/analytics/TrackedButton.tsx",
-  "src/components/product/zaiko/ZaikoExplorer.tsx",
+  "src/components/product/serve/ServeExplorer.tsx",
   "src/components/layout/Header.tsx",
   "src/components/i18n/LanguageSwitcher.tsx",
   "src/components/forms/DemoRequestForm.tsx",

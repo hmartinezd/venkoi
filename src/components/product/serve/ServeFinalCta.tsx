@@ -6,7 +6,7 @@ import { DirectContactChannels } from '@/components/contact/DirectContactChannel
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
-interface ZaikoFinalCtaProps {
+interface ServeFinalCtaProps {
   locale: Locale;
   heading: string;
   body: string;
@@ -19,7 +19,7 @@ interface ZaikoFinalCtaProps {
   whatsappMessage: string;
 }
 
-export function ZaikoFinalCta({
+export function ServeFinalCta({
   locale,
   heading,
   body,
@@ -30,7 +30,7 @@ export function ZaikoFinalCta({
   whatsappLabel,
   whatsappAriaLabel,
   whatsappMessage
-}: ZaikoFinalCtaProps) {
+}: ServeFinalCtaProps) {
   return (
     <Section variant="light" spacing="spacious" className="border-t border-border">
       <Container className="max-w-4xl text-center space-y-6">
@@ -45,7 +45,7 @@ export function ZaikoFinalCta({
           <TrackedButton
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_final_cta' })}
             variant="primary"
-            eventName="zaiko_demo_cta"
+            eventName="serve_demo_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,
@@ -57,7 +57,7 @@ export function ZaikoFinalCta({
           {earlyAccess ? <TrackedButton
             href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'product_final_cta' })}
             variant="secondary"
-            eventName="zaiko_early_access_cta"
+            eventName="serve_early_access_cta"
             properties={{
               locale,
               product: FEATURED_PRODUCT.analyticsProduct,

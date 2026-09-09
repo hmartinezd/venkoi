@@ -1,8 +1,8 @@
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { ZaikoProductVisual, type ZaikoVisualLabels } from './ZaikoProductVisual';
+import { ServeProductVisual, type ServeVisualLabels } from './ServeProductVisual';
 
-interface ZaikoProductFitProps {
+interface ServeProductFitProps {
   workflow: {
     eyebrow: string;
     heading: string;
@@ -13,10 +13,10 @@ interface ZaikoProductFitProps {
     body: string;
     items: string[];
   };
-  labels: ZaikoVisualLabels;
+  labels: ServeVisualLabels;
 }
 
-export function ZaikoProductFit({ workflow, audience, labels }: ZaikoProductFitProps) {
+export function ServeProductFit({ workflow, audience, labels }: ServeProductFitProps) {
   return (
     <Section variant="light" spacing="standard" className="border-t border-border">
       <Container className="grid gap-12 xl:grid-cols-12 xl:items-start xl:gap-16">
@@ -30,7 +30,7 @@ export function ZaikoProductFit({ workflow, audience, labels }: ZaikoProductFitP
             </h2>
             <p className="text-base leading-relaxed text-foreground-muted sm:text-lg">{workflow.body}</p>
           </div>
-          <ZaikoProductVisual type="workflow" labels={labels} />
+          <ServeProductVisual type="workflow" labels={labels} />
         </div>
 
         <aside className="space-y-6 border-t border-border pt-8 xl:col-span-4 xl:border-l xl:border-t-0 xl:pl-10 xl:pt-1">

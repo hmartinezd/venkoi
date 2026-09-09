@@ -23,13 +23,13 @@ assert.equal(FEATURED_PRODUCT.demoEnabled, true);
 assert.equal(FEATURED_PRODUCT.pricingEnabled, false);
 
 const keys = [
-  'home.zaiko.badge',
-  'home.zaiko.availability.launch-release',
-  'zaikoPage.nav.earlyAccess',
-  'zaikoPage.hero.microcopy',
-  'zaikoPage.earlyAccess.eyebrow',
-  'zaikoPage.earlyAccess.body',
-  'zaikoPage.finalCta.body',
+  'home.serve.badge',
+  'home.serve.availability.launch-release',
+  'servePage.nav.earlyAccess',
+  'servePage.hero.microcopy',
+  'servePage.earlyAccess.eyebrow',
+  'servePage.earlyAccess.body',
+  'servePage.finalCta.body',
   'demoPage.earlyAccess.badge',
   'demoPage.earlyAccess.body',
   'demoPage.earlyAccess.successMessage'
@@ -72,29 +72,29 @@ assert.equal(isEarlyAccessInterest(disabledProduct, 'early-access'), false);
 
 const sources: Array<[string, RegExp]> = [
   ['src/app/[locale]/page.tsx', /earlyAccess=\{FEATURED_PRODUCT\.earlyAccess\.enabled \?/],
-  ['src/components/home/ZaikoFeature.tsx', /earlyAccess \? \(/],
-  ['src/app/[locale]/products/zaiko/page.tsx', /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/],
-  ['src/components/product/zaiko/ZaikoHero.tsx', /earlyAccess \? \(/],
-  ['src/components/product/zaiko/ZaikoFinalCta.tsx', /earlyAccess \? <TrackedButton/],
+  ['src/components/home/ServeFeature.tsx', /earlyAccess \? \(/],
+  ['src/app/[locale]/products/serve/page.tsx', /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ServeEarlyAccess/],
+  ['src/components/product/serve/ServeHero.tsx', /earlyAccess \? \(/],
+  ['src/components/product/serve/ServeFinalCta.tsx', /earlyAccess \? <TrackedButton/],
   ['src/app/[locale]/demo/page.tsx', /earlyAccessEnabled=\{resolvedProduct\.earlyAccess\.enabled\}/],
   ['src/components/forms/DemoRequestForm.tsx', /earlyAccessEnabled \? <div/]
 ];
 for (const [file, pattern] of sources) assert.match(read(file), pattern, `${file} should derive Early Access UI from program state`);
 
-const homepageFeature = read('src/components/home/ZaikoFeature.tsx');
+const homepageFeature = read('src/components/home/ServeFeature.tsx');
 assert.match(homepageFeature, /interest: 'early-access', source: 'home_product'/);
-assert.match(homepageFeature, /eventName="zaiko_early_access_cta"/);
+assert.match(homepageFeature, /eventName="serve_early_access_cta"/);
 assert.match(homepageFeature, /source: 'home_product',[\s\S]*earlyAccess: true/);
 
 const footer = read('src/components/layout/Footer.tsx');
 assert.match(footer, /FEATURED_PRODUCT\.earlyAccess\.enabled \? \(/);
 assert.match(footer, /interest: 'early-access', source: 'footer'/);
-assert.match(footer, /eventName="zaiko_early_access_cta"/);
+assert.match(footer, /eventName="serve_early_access_cta"/);
 assert.match(footer, /source: 'footer', earlyAccess: true/);
 assert.match(footer, /\{tFooter\('earlyAccess'\)\}/);
 
-assert.ok(!read('src/components/home/ZaikoFeature.tsx').match(/^\s*(['"])use client\1;/m));
-assert.ok(!read('src/components/product/zaiko/ZaikoHero.tsx').match(/^\s*(['"])use client\1;/m));
-assert.ok(!read('src/components/product/zaiko/ZaikoFinalCta.tsx').match(/^\s*(['"])use client\1;/m));
+assert.ok(!read('src/components/home/ServeFeature.tsx').match(/^\s*(['"])use client\1;/m));
+assert.ok(!read('src/components/product/serve/ServeHero.tsx').match(/^\s*(['"])use client\1;/m));
+assert.ok(!read('src/components/product/serve/ServeFinalCta.tsx').match(/^\s*(['"])use client\1;/m));
 
 console.log('Product program regression checks passed.');

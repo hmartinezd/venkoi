@@ -3,13 +3,13 @@
 import React, { useState } from 'react';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { ZaikoProductVisual, type ZaikoVisualLabels } from './ZaikoProductVisual';
+import { ServeProductVisual, type ServeVisualLabels } from './ServeProductVisual';
 import { TrackedButton } from '@/components/analytics/TrackedButton';
 import { type Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
-type ZaikoExplorerArea = 'inventory' | 'purchases' | 'activity' | 'costs';
+type ServeExplorerArea = 'inventory' | 'purchases' | 'activity' | 'costs';
 
 interface AreaContent {
   label: string;
@@ -18,18 +18,18 @@ interface AreaContent {
   summary: string;
 }
 
-interface ZaikoExplorerProps {
+interface ServeExplorerProps {
   locale: Locale;
   eyebrow: string;
   heading: string;
   body: string;
   detailLinkLabel: string;
   demoCtaLabel: string;
-  areas: Record<ZaikoExplorerArea, AreaContent>;
-  visualLabels: ZaikoVisualLabels;
+  areas: Record<ServeExplorerArea, AreaContent>;
+  visualLabels: ServeVisualLabels;
 }
 
-export function ZaikoExplorer({
+export function ServeExplorer({
   locale,
   eyebrow,
   heading,
@@ -38,10 +38,10 @@ export function ZaikoExplorer({
   demoCtaLabel,
   areas,
   visualLabels
-}: ZaikoExplorerProps) {
-  const [activeArea, setActiveArea] = useState<ZaikoExplorerArea>('inventory');
+}: ServeExplorerProps) {
+  const [activeArea, setActiveArea] = useState<ServeExplorerArea>('inventory');
 
-  const areaKeys: ZaikoExplorerArea[] = ['inventory', 'purchases', 'activity', 'costs'];
+  const areaKeys: ServeExplorerArea[] = ['inventory', 'purchases', 'activity', 'costs'];
   const activeContent = areas[activeArea];
 
   return (
@@ -100,7 +100,7 @@ export function ZaikoExplorer({
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
               <TrackedButton
-                eventName="zaiko_demo_cta"
+                eventName="serve_demo_cta"
                 properties={{
                   locale,
                   product: FEATURED_PRODUCT.analyticsProduct,
@@ -124,7 +124,7 @@ export function ZaikoExplorer({
 
           {/* Visual Column */}
           <div className="lg:col-span-7">
-            <ZaikoProductVisual type={activeArea} labels={visualLabels} />
+            <ServeProductVisual type={activeArea} labels={visualLabels} />
           </div>
         </div>
       </Container>

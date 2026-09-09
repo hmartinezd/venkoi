@@ -3,15 +3,15 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 const read = (file: string) => readFileSync(resolve(process.cwd(), file), 'utf8');
 
-const page = read('src/app/[locale]/products/zaiko/page.tsx');
-const story = read('src/components/product/zaiko/ZaikoWorkflowStory.tsx');
-const nav = read('src/components/product/zaiko/ZaikoProductNav.tsx');
-const visual = read('src/components/product/zaiko/ZaikoProductVisual.tsx');
+const page = read('src/app/[locale]/products/serve/page.tsx');
+const story = read('src/components/product/serve/ServeWorkflowStory.tsx');
+const nav = read('src/components/product/serve/ServeProductNav.tsx');
+const visual = read('src/components/product/serve/ServeProductVisual.tsx');
 const marketing = read('src/lib/product-marketing.ts');
 const en = JSON.parse(read('src/i18n/messages/en.json'));
 const es = JSON.parse(read('src/i18n/messages/es.json'));
 
-for (const component of ['<ZaikoHero', '<ZaikoWorkflowStory', '<ZaikoProductFit', '<ZaikoEarlyAccess', '<ZaikoFaq', '<InsightCard', '<ZaikoFinalCta']) {
+for (const component of ['<ServeHero', '<ServeWorkflowStory', '<ServeProductFit', '<ServeEarlyAccess', '<ServeFaq', '<InsightCard', '<ServeFinalCta']) {
   assert.ok(page.includes(component), `${component} should remain in the product story`);
 }
 for (const anchor of ['overview', 'invoice-capture', 'inventory', 'food-cost', 'counts-reorder', 'owner-view']) {
@@ -25,14 +25,14 @@ assert.ok(page.includes('getWorkflowMarketingState'), 'Workflow copy should deri
 assert.ok(nav.includes('filterProductNavigationItems'), 'Navigation should use shared filtering for hidden chapters');
 assert.match(nav, /grid-cols-\[minmax\(0,1fr\)_auto\][\s\S]*lg:grid-cols-\[auto_minmax\(0,1fr\)_auto\]/, 'Product navigation should use two mobile rows and retain a desktop single row');
 assert.match(nav, /<nav[\s\S]*col-span-2[\s\S]*row-start-2[\s\S]*overflow-x-auto/, 'Mobile anchor navigation should have a distinct, horizontally scrollable full-width row');
-assert.match(nav, /<TrackedButton[\s\S]*source: 'product_nav'[\s\S]*eventName="zaiko_demo_cta"/, 'Product Nav Request Demo analytics should remain intact');
+assert.match(nav, /<TrackedButton[\s\S]*source: 'product_nav'[\s\S]*eventName="serve_demo_cta"/, 'Product Nav Request Demo analytics should remain intact');
 assert.doesNotMatch(nav, /flex-wrap|Request Access/, 'Product anchor links should not wrap and Product Nav should not add Request Access');
 assert.match(page, /visibleChapterIds=\{chapters\.map\(\(\{ id \}\) => id\)\}/, 'Navigation visibility should use the rendered chapters');
-assert.match(read('src/components/product/zaiko/ZaikoHero.tsx'), /id="overview"/, 'Overview navigation must retain its hero target');
-assert.match(read('src/components/product/zaiko/ZaikoHero.tsx'), /scroll-mt-44 lg:scroll-mt-36/, 'Overview should clear the responsive sticky navigation stack');
+assert.match(read('src/components/product/serve/ServeHero.tsx'), /id="overview"/, 'Overview navigation must retain its hero target');
+assert.match(read('src/components/product/serve/ServeHero.tsx'), /scroll-mt-44 lg:scroll-mt-36/, 'Overview should clear the responsive sticky navigation stack');
 assert.ok(page.includes('PRODUCT_TRUST_PRINCIPLES'), 'Product page should consume trust principles');
 assert.ok(page.includes('PRODUCT_NON_CLAIMS'), 'Product page should consume explicit non-claims');
-assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ZaikoEarlyAccess/, 'Early Access remains registry-controlled');
+assert.match(page, /FEATURED_PRODUCT\.earlyAccess\.enabled \? <ServeEarlyAccess/, 'Early Access remains registry-controlled');
 assert.ok(visual.includes("type: 'hero' | 'inventory' | 'purchases' | 'activity' | 'costs' | 'counts' | 'workflow'"), 'Representative visual types include Counts/Reorder');
 assert.match(marketing, /id: 'counts-reorder'[\s\S]*visual: 'counts'/, 'Counts/Reorder should map to its representative visual');
 assert.match(visual, /function Counts/, 'Counts/Reorder representative visual should exist');
@@ -48,14 +48,14 @@ assert.ok(page.includes("operatingSystem: productPlatformToSchemaOperatingSystem
 assert.ok(page.includes('routeKey="insightRestaurantFoodCost"') && page.includes('routeKey="insightRestaurantInventoryCounts"'), 'Product page should expose multiple relevant guides');
 
 for (const messages of [en, es]) {
-  assert.equal(messages.zaikoPage.story.workflow.steps.length, 9);
-  assert.equal(messages.zaikoPage.faq.items.length, 10);
-  for (const key of ['invoice', 'inventory', 'costing', 'counts', 'owner']) assert.ok(messages.zaikoPage.story.chapters[key]);
+  assert.equal(messages.servePage.story.workflow.steps.length, 9);
+  assert.equal(messages.servePage.faq.items.length, 10);
+  for (const key of ['invoice', 'inventory', 'costing', 'counts', 'owner']) assert.ok(messages.servePage.story.chapters[key]);
   for (const state of ['available', 'early-access', 'launch-release', 'not-marketed']) {
-    assert.equal(typeof messages.zaikoPage.story.workflow.availability[state], 'string');
+    assert.equal(typeof messages.servePage.story.workflow.availability[state], 'string');
   }
 }
-assert.doesNotMatch(en.zaikoPage.workflow.heading, /restaurant like yours|intended for/i, 'Connected-workflow copy should not duplicate audience fit');
-assert.doesNotMatch(es.zaikoPage.workflow.heading, /restaurante como el tuyo|está pensado/i, 'Spanish connected-workflow copy should not duplicate audience fit');
-assert.match(en.zaikoPage.audience.body, /one restaurant location|single-location|one location/i, 'Audience copy should retain single-location fit');
+assert.doesNotMatch(en.servePage.workflow.heading, /restaurant like yours|intended for/i, 'Connected-workflow copy should not duplicate audience fit');
+assert.doesNotMatch(es.servePage.workflow.heading, /restaurante como el tuyo|está pensado/i, 'Spanish connected-workflow copy should not duplicate audience fit');
+assert.match(en.servePage.audience.body, /one restaurant location|single-location|one location/i, 'Audience copy should retain single-location fit');
 console.log('Product page structure regression checks passed.');

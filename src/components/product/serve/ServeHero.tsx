@@ -4,19 +4,19 @@ import { TrackedButton } from '@/components/analytics/TrackedButton';
 import type { Locale } from '@/i18n/config';
 import { buildProductDemoHref } from '@/lib/product-links';
 import { FEATURED_PRODUCT } from '@/lib/products';
-import { ZaikoProductVisual, type ZaikoVisualLabels } from './ZaikoProductVisual';
+import { ServeProductVisual, type ServeVisualLabels } from './ServeProductVisual';
 
-interface ZaikoHeroProps {
+interface ServeHeroProps {
   locale: Locale;
   eyebrow: string;
   heading: string;
   body: string;
   primaryCta: string;
   earlyAccess?: { cta: string; microcopy: string; noCreditCard: string };
-  labels: ZaikoVisualLabels;
+  labels: ServeVisualLabels;
 }
 
-export function ZaikoHero({
+export function ServeHero({
   locale,
   eyebrow,
   heading,
@@ -24,7 +24,7 @@ export function ZaikoHero({
   primaryCta,
   earlyAccess,
   labels
-}: ZaikoHeroProps) {
+}: ServeHeroProps) {
   return (
     <Section variant="light" spacing="hero" className="scroll-mt-44 lg:scroll-mt-36" id="overview">
       <Container className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -49,7 +49,7 @@ export function ZaikoHero({
             <TrackedButton
               href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'product_hero' })}
               variant="primary"
-              eventName="zaiko_demo_cta"
+              eventName="serve_demo_cta"
               properties={{
                 locale,
                 product: FEATURED_PRODUCT.analyticsProduct,
@@ -62,7 +62,7 @@ export function ZaikoHero({
               <TrackedButton
                 href={buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'product_hero' })}
                 variant="secondary"
-                eventName="zaiko_early_access_cta"
+                eventName="serve_early_access_cta"
                 properties={{ locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'product_hero', earlyAccess: true }}
               >
                 {earlyAccess.cta}
@@ -83,7 +83,7 @@ export function ZaikoHero({
 
         {/* Right Product Visual */}
         <div className="lg:col-span-6">
-          <ZaikoProductVisual type="hero" labels={labels} />
+          <ServeProductVisual type="hero" labels={labels} />
         </div>
       </Container>
     </Section>

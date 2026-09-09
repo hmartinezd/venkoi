@@ -45,7 +45,7 @@ for (const [locale, messages] of [['en', en], ['es', es]] as const) {
   assert.deepEqual(violations, [], `${locale} public copy must not imply an available product is provisional`);
 }
 
-const marketingMessages = [en.home, en.servicesPage, en.aboutPage, en.contactPage, en.demoPage, en.zaikoPage, en.footer];
+const marketingMessages = [en.home, en.servicesPage, en.aboutPage, en.contactPage, en.demoPage, en.servePage, en.footer];
 const stockSaasCopy = /unlock powerful insights|streamline your operations|transform your workflow|seamless end-to-end experience|empower your business|turn complexity into clarity|game-changing/i;
 assert.deepEqual(
   strings(marketingMessages).filter((value) => stockSaasCopy.test(value)),
@@ -53,7 +53,7 @@ assert.deepEqual(
   'Public English marketing copy must not contain known stock SaaS phrases'
 );
 
-const spanishMarketingMessages = [es.home, es.servicesPage, es.aboutPage, es.contactPage, es.demoPage, es.zaikoPage, es.footer];
+const spanishMarketingMessages = [es.home, es.servicesPage, es.aboutPage, es.contactPage, es.demoPage, es.servePage, es.footer];
 const awkwardSpanishProductCopy = /software local-first|flujo de lanzamiento/i;
 assert.deepEqual(
   strings(spanishMarketingMessages).filter((value) => awkwardSpanishProductCopy.test(value)),
@@ -61,7 +61,7 @@ assert.deepEqual(
   'Public Spanish marketing copy must use natural product terminology'
 );
 
-const spanishReorderCopy = strings([es.home.zaiko.theme4Desc, es.zaikoPage.visuals]);
+const spanishReorderCopy = strings([es.home.serve.theme4Desc, es.servePage.visuals]);
 assert.deepEqual(
   spanishReorderCopy.filter((value) => /\b(?:con el par|bajo par|por debajo del par|hasta el par)\b/i.test(value)),
   [],
@@ -69,13 +69,13 @@ assert.deepEqual(
 );
 
 assert.equal(
-  es.zaikoPage.hero.heading,
+  es.servePage.hero.heading,
   'Sabes qué llegó.\nSabes qué tienes.\nSabes cuánto cuesta.\nSabes qué requiere atención.',
   'The Spanish product hero must consistently use the informal tú voice'
 );
 
-const publicAccessMessages = [en.home.zaiko, en.demoPage, en.zaikoPage, en.footer];
-const publicAccessMessagesEs = [es.home.zaiko, es.demoPage, es.zaikoPage, es.footer];
+const publicAccessMessages = [en.home.serve, en.demoPage, en.servePage, en.footer];
+const publicAccessMessagesEs = [es.home.serve, es.demoPage, es.servePage, es.footer];
 assert.deepEqual(
   strings(publicAccessMessages).filter((value) => /EARLY ACCESS|Early Access Request|Request Early Access|Try \{productName\} Free/i.test(value)),
   [],
@@ -86,17 +86,17 @@ assert.deepEqual(
   [],
   'Public Spanish product access copy must use request language without presenting Acceso Anticipado as the customer-facing label'
 );
-assert.match(en.zaikoPage.hero.secondaryCta, /Request|Apply/);
+assert.match(en.servePage.hero.secondaryCta, /Request|Apply/);
 assert.match(en.demoPage.form.submitEarlyAccess, /Request|Apply/);
-assert.match(es.zaikoPage.hero.secondaryCta, /Solicitar|Solicita/);
+assert.match(es.servePage.hero.secondaryCta, /Solicitar|Solicita/);
 assert.match(es.demoPage.form.submitEarlyAccess, /Solicitar|Solicita/);
-assert.doesNotMatch(en.zaikoPage.hero.secondaryCta, /Try|Free/i);
-assert.doesNotMatch(es.zaikoPage.hero.secondaryCta, /Prueba|Gratis/i);
+assert.doesNotMatch(en.servePage.hero.secondaryCta, /Try|Free/i);
+assert.doesNotMatch(es.servePage.hero.secondaryCta, /Prueba|Gratis/i);
 
 for (const [locale, messages] of [['en', en], ['es', es]] as const) {
-  const product = messages.zaikoPage as Record<string, unknown>;
+  const product = messages.servePage as Record<string, unknown>;
   for (const legacyKey of ['intro', 'problem', 'explorer', 'capabilities', 'areas']) {
-    assert.ok(!(legacyKey in product), `${locale}.zaikoPage.${legacyKey} is an obsolete product narrative`);
+    assert.ok(!(legacyKey in product), `${locale}.servePage.${legacyKey} is an obsolete product narrative`);
   }
   const demo = messages.demoPage as Record<string, unknown>;
   assert.ok(!('contactCta' in demo), `${locale}.demoPage.contactCta is obsolete`);
@@ -114,7 +114,7 @@ assert.doesNotMatch(strings([en.aboutPage, es.aboutPage]).join('\n'), /STRATEGIC
 assert.match(en.contactPage.body, /custom mobile or web project/i);
 
 for (const messages of [en, es]) {
-  assert.match(messages.zaikoPage.visuals.sampleData, /Representative|representativa/i, 'Product previews must disclose representative sample data');
+  assert.match(messages.servePage.visuals.sampleData, /Representative|representativa/i, 'Product previews must disclose representative sample data');
   assert.doesNotMatch(strings(messages).join('\n'), /Screenshot coming soon|Captura de pantalla próximamente/i, 'Public copy must not contain empty screenshot placeholders');
 }
 
@@ -122,7 +122,7 @@ const navigation = read('src/i18n/navigation.ts');
 assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationItem|NavigationChild/);
 
 const header = read('src/components/layout/Header.tsx');
-assert.match(header, /href=\{internalRoutes\.productsZaiko\}/);
+assert.match(header, /href=\{internalRoutes\.productsServe\}/);
 assert.match(header, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'header' \}\)\}/);
 assert.match(header, /\{tCommon\('demo'\)\}/);
 
@@ -139,7 +139,7 @@ assert.match(homePage, /talkCta=\{tCommon\('startConversation'\)\}/);
 
 const about = read('src/app/[locale]/about/page.tsx');
 assert.match(about, /href=\{buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'about' \}\)\}/);
-assert.match(about, /eventName="zaiko_demo_cta"/);
+assert.match(about, /eventName="serve_demo_cta"/);
 assert.match(about, /source: 'about'/);
 assert.match(about, /href=\{getLocalizedPath\('contact', currentLocale\)\}/);
 assert.doesNotMatch(about, /type=services|interest=/);
@@ -159,7 +159,7 @@ for (const [file, interest] of [
 
 const restaurantInsight = read('src/app/[locale]/insights/restaurant-inventory-information/page.tsx');
 assert.match(restaurantInsight, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'insight' \}\)/);
-assert.match(restaurantInsight, /eventName="zaiko_demo_cta"/);
+assert.match(restaurantInsight, /eventName="serve_demo_cta"/);
 assert.match(restaurantInsight, /source: 'insight'/);
 
 const projectInsight = read('src/app/[locale]/insights/start-a-software-project/page.tsx');
@@ -177,7 +177,7 @@ for (const messages of [en, es]) {
   const services = messages.servicesPage as Record<string, unknown>;
   const aboutFooter = messages.aboutPage.footerCta as Record<string, unknown>;
   const homeHero = messages.home.hero as Record<string, unknown>;
-  const homeProduct = messages.home.zaiko as Record<string, unknown>;
+  const homeProduct = messages.home.serve as Record<string, unknown>;
   const homeFinalCta = messages.home.finalCta as Record<string, unknown>;
   const contact = messages.contactPage as Record<string, unknown>;
   const mobileService = messages.mobileServicePage as Record<string, unknown>;

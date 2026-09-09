@@ -55,17 +55,17 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   const selectedInterest = isEarlyAccess ? 'early-access' : '';
   const conversionSource = normalizeDemoConversionSource(source);
 
-  const isZaiko = resolvedProduct.slug === 'zaiko';
+  const isServe = resolvedProduct.slug === 'serve';
   const productProgramValues = {
     productName: resolvedProduct.name,
     freeMonths: resolvedProduct.earlyAccess.freeMonths
   };
 
-  let eyebrowText = isZaiko ? t('zaiko.eyebrow', productProgramValues) : t('eyebrow');
-  let headingText = isZaiko ? t('zaiko.heading', productProgramValues) : t('heading');
-  let bodyText = isZaiko ? t('zaiko.body', productProgramValues) : t('body');
+  let eyebrowText = isServe ? t('serve.eyebrow', productProgramValues) : t('eyebrow');
+  let headingText = isServe ? t('serve.heading', productProgramValues) : t('heading');
+  let bodyText = isServe ? t('serve.body', productProgramValues) : t('body');
 
-  if (isZaiko && isEarlyAccess) {
+  if (isServe && isEarlyAccess) {
     eyebrowText = t('earlyAccess.eyebrow', productProgramValues);
     headingText = t('earlyAccess.heading', productProgramValues);
     bodyText = t('earlyAccess.body', productProgramValues);
@@ -73,11 +73,11 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const formTitle = isEarlyAccess
     ? t('earlyAccess.formTitle', productProgramValues)
-    : (isZaiko ? t('zaiko.title', productProgramValues) : t('earlyAccessTitle'));
+    : (isServe ? t('serve.title', productProgramValues) : t('earlyAccessTitle'));
 
   const formDesc = isEarlyAccess
     ? t('earlyAccess.badge', productProgramValues)
-    : (isZaiko ? t('zaiko.formDescription', productProgramValues) : t('badgeText', productProgramValues));
+    : (isServe ? t('serve.formDescription', productProgramValues) : t('badgeText', productProgramValues));
 
   return (
     <Section variant="light" spacing="hero">
@@ -163,7 +163,7 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
             <ProductDemoAgenda
               eyebrow={t('agenda.eyebrow')}
               heading={t('agenda.heading', { productName: resolvedProduct.name })}
-              items={(isZaiko ? filterMarketableEntries(DEMO_AGENDA) : DEMO_AGENDA).map(({ key }) => ({
+              items={(isServe ? filterMarketableEntries(DEMO_AGENDA) : DEMO_AGENDA).map(({ key }) => ({
                 title: t(`agenda.items.${key}.title`),
                 description: t(`agenda.items.${key}.description`)
               }))}
