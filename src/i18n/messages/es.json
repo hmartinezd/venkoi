@@ -49,7 +49,7 @@
       "primaryCta": "Conoce {productName}"
     },
     "zaiko": {
-      "eyebrow": "{productName} · UN PRODUCTO VENKOI",
+      "eyebrow": "{productName} · INVENTARIO DE RESTAURANTES",
       "badge": "{freeMonths} MESES GRATIS",
       "availability": {
         "available": "Estas funciones ya forman parte de la experiencia actual. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
@@ -423,7 +423,7 @@
       "requestDemo": "Solicita una demo"
     },
     "hero": {
-      "eyebrow": "{productName} · UN PRODUCTO VENKOI",
+      "eyebrow": "{productName} · INVENTARIO DE RESTAURANTES",
       "heading": "Sabes qué llegó.\nSabes qué tienes.\nSabes cuánto cuesta.\nSabes qué requiere atención.",
       "body": "{productName} conecta compras, movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de compras para restaurantes independientes. Funciona localmente, comienza en Android y se enfoca inicialmente en un solo local.",
       "primaryCta": "Solicita una demo",
@@ -654,7 +654,7 @@
   },
   "insightsArticles": {
     "restaurantInventory": {
-      "seoTitle": "Información del Inventario de Restaurante en un Solo Lugar | {productName} por Venkoi",
+      "seoTitle": "Información del Inventario de Restaurante en un Solo Lugar | {productName}",
       "seoDescription": "Descubre por qué el inventario de un restaurante se complica cuando la información está en distintos lugares y cómo unificarla.",
       "category": "OPERACIONES DE RESTAURANTES",
       "title": "El inventario se complica cuando la información está repartida en distintos lugares.",

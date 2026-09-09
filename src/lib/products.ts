@@ -23,7 +23,7 @@ export type Product = {
 export const FEATURED_PRODUCT = {
   id: 'zaiko',
   slug: 'zaiko',
-  name: 'Zaiko',
+  name: 'Venkoi Serve',
   routeKey: 'productsZaiko',
   analyticsProduct: 'zaiko',
   status: 'available',

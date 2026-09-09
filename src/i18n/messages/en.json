@@ -49,7 +49,7 @@
       "primaryCta": "Explore {productName}"
     },
     "zaiko": {
-      "eyebrow": "{productName} · A VENKOI PRODUCT",
+      "eyebrow": "{productName} · RESTAURANT INVENTORY",
       "badge": "{freeMonths} MONTHS FREE",
       "availability": {
         "available": "These workflows are part of the current product experience. Accepted participants can use {productName} free for {freeMonths} months.",
@@ -423,7 +423,7 @@
       "requestDemo": "Request a Demo"
     },
     "hero": {
-      "eyebrow": "{productName} · A VENKOI PRODUCT",
+      "eyebrow": "{productName} · RESTAURANT INVENTORY",
       "heading": "Know what came in.\nKnow what you have.\nKnow what it costs.\nKnow what needs attention.",
       "body": "{productName} connects purchasing, inventory movement, supplier prices, food cost, physical counts, and reorder preparation for independent restaurants. It is local-first, starts on Android, and initially focuses on one restaurant location.",
       "primaryCta": "Request a Demo",
@@ -690,7 +690,7 @@
   },
   "insightsArticles": {
     "restaurantInventory": {
-      "seoTitle": "Restaurant Inventory Information in One Place | {productName} by Venkoi",
+      "seoTitle": "Restaurant Inventory Information in One Place | {productName}",
       "seoDescription": "Learn why restaurant inventory becomes difficult when information lives in different places and how to bring it together.",
       "category": "RESTAURANT OPERATIONS",
       "title": "Inventory gets harder when the information lives in different places.",

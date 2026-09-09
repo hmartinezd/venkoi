@@ -74,7 +74,7 @@ assert.equal(
 for (const messages of [en, es]) {
   for (const key of ['restaurantInventoryCounts', 'restaurantFoodCost', 'restaurantSupplierPrices'] as const) {
     const copy = messages.insightsArticles[key].content.productAvailability;
-    assert.match(copy.available, /Zaiko|\{productName\}/);
+    assert.match(copy.available, /\{productName\}/);
     assert.match(copy['early-access'], /participating restaurants|restaurantes participantes/i);
     assert.match(copy['launch-release'], /initial release|primera versión/i);
     assert.doesNotMatch(JSON.stringify(copy), /Early Access|Acceso Anticipado/i);

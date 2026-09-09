@@ -38,7 +38,7 @@ export async function generateSocialCardResponse({
   let subheading = '';
 
   if (variant === 'zaiko') {
-    eyebrow = `${productName ?? ''} · A VENKOI PRODUCT`;
+    eyebrow = productName ?? 'VENKOI SERVE';
     heading = isSpanish
       ? 'Inventario de restaurantes, más claro.'
       : 'Restaurant inventory, made clearer.';

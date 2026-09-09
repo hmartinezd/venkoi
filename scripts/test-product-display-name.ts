@@ -16,7 +16,7 @@ function collectStringValues(value: unknown, path: string[] = []): Array<{ path:
   return Object.entries(value).flatMap(([key, child]) => collectStringValues(child, [...path, key]));
 }
 
-assert.equal(FEATURED_PRODUCT.name, 'Zaiko', 'This milestone must not change the current display name');
+assert.equal(FEATURED_PRODUCT.name, 'Venkoi Serve', 'The featured product display name must remain canonical');
 assert.equal(FEATURED_PRODUCT.id, 'zaiko');
 assert.equal(FEATURED_PRODUCT.slug, 'zaiko');
 assert.equal(FEATURED_PRODUCT.analyticsProduct, 'zaiko');
@@ -24,7 +24,7 @@ assert.equal(FEATURED_PRODUCT.routeKey, 'productsZaiko');
 
 for (const [locale, messages] of Object.entries({ en, es })) {
   const hardcodedValues = collectStringValues(messages).filter(({ value }) => /zaiko/i.test(value));
-  assert.deepEqual(hardcodedValues, [], `${locale.toUpperCase()} public translation values must not hardcode Zaiko`);
+  assert.deepEqual(hardcodedValues, [], `${locale.toUpperCase()} public translation values must not hardcode the technical product slug`);
 }
 
 const alternateName = 'Rename Test Product';
@@ -42,7 +42,7 @@ for (const [locale, messages] of Object.entries({ en, es })) {
   for (const key of representativeKeys) {
     const rendered = t(key, { productName: alternateName });
     assert.ok(rendered.includes(alternateName), `${locale.toUpperCase()} ${key} should render an alternate display name`);
-    assert.ok(!/zaiko/i.test(rendered), `${locale.toUpperCase()} ${key} should not retain the current display name`);
+    assert.ok(!/zaiko/i.test(rendered), `${locale.toUpperCase()} ${key} should not expose the technical product slug`);
   }
 }
 

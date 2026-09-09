@@ -158,8 +158,8 @@ export function testSeoRegression() {
 
     assertRouteMetadata('home', 'en', 'Home EN');
     assertRouteMetadata('home', 'es', 'Home ES');
-    assertRouteMetadata('productsZaiko', 'en', 'Zaiko EN');
-    assertRouteMetadata('productsZaiko', 'es', 'Zaiko ES');
+    assertRouteMetadata('productsZaiko', 'en', 'Venkoi Serve EN');
+    assertRouteMetadata('productsZaiko', 'es', 'Venkoi Serve ES');
     assertRouteMetadata('insightRestaurantInventory', 'en', 'Insight article EN');
     assertRouteMetadata('insightRestaurantInventory', 'es', 'Insight article ES');
     assertRouteMetadata('privacy', 'en', 'Privacy EN');

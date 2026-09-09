@@ -100,7 +100,7 @@ The code treats missing or invalid email configuration as a logged skip after pe
 
 Neon persistence, the Resend sending domain, English transactional delivery, localized legal routes, and the apex-domain SEO identity have recorded production verification. Privacy is published at `/en/privacy` and `/es/privacidad`; Website Terms are published at `/en/terms` and `/es/terminos`. The approved V1 retention baseline is up to 24 months from the last meaningful interaction for unconverted leads, followed by deletion or anonymization unless a documented exception applies. Enforcement is owner-operated and is not automated.
 
-Before authenticated or paid Zaiko functionality launches, perform a separate product legal review covering Product Terms, subscriptions/payments, accounts and customer data, product privacy and retention/deletion, DPAs where appropriate, and product security/legal requirements.
+Before authenticated or paid Venkoi Serve functionality launches, perform a separate product legal review covering Product Terms, subscriptions/payments, accounts and customer data, product privacy and retention/deletion, DPAs where appropriate, and product security/legal requirements.
 
 ## Production-domain verification — 2026-08-11
 
@@ -112,7 +112,7 @@ During the 2026-08-11 production-domain verification, commit `838599c` was the v
 - [x] `/en` and `/es` render successfully with HTTP 200 responses after the current domain redirect.
 - [x] `/robots.txt` allows `/`, disallows `/api/`, and advertises `https://venkoi.com/sitemap.xml`.
 - [x] `/sitemap.xml` contains 22 intended EN/ES canonical entries, including correct EN, ES, and English `x-default` alternates. Demo is excluded, while the intended public Contact routes remain included. No `www.venkoi.com` or `*.vercel.app` URL appears in its XML.
-- [x] Representative EN/ES home, Zaiko, Services, Insights, and insight-article HTML uses `https://venkoi.com` for canonical URLs, EN/ES alternates, English `x-default`, and Open Graph URLs. Pages with generated Open Graph/Twitter images use `https://venkoi.com` image URLs, and sampled image endpoints return HTTP 200 PNG responses.
+- [x] Representative EN/ES home, Venkoi Serve, Services, Insights, and insight-article HTML uses `https://venkoi.com` for canonical URLs, EN/ES alternates, English `x-default`, and Open Graph URLs. Pages with generated Open Graph/Twitter images use `https://venkoi.com` image URLs, and sampled image endpoints return HTTP 200 PNG responses.
 - [x] Representative production pages emit `index, follow` robots metadata.
 
 ### Domain and legal follow-up verification — 2026-08-11
@@ -144,8 +144,8 @@ The EN Contact and EN Demo persistence and email paths described above are alrea
 
 | Flow | Route / intent | Additional check |
 | --- | --- | --- |
-| EN Demo | `/en/demo?product=zaiko` | Zaiko demo submission |
-| ES Demo | `/es/demo?product=zaiko` | Spanish acknowledgement |
+| EN Demo | `/en/demo?product=zaiko` | Venkoi Serve demo submission |
+| ES Demo | `/es/demo?product=zaiko` | Spanish Venkoi Serve acknowledgement |
 | EN Contact | `/en/contact` | Test `mobile`, `web`, and `unsure` service interests |
 | ES Contact | `/es/contacto` | Test `mobile`, `web`, and `unsure` service interests |
 | Request Access | `?product=zaiko&interest=early-access` on each localized Demo route | Request Access intent persists through the technical `early_access_interest` flag while the registry setting remains enabled |

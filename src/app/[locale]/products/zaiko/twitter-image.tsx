@@ -7,7 +7,7 @@ import { FEATURED_PRODUCT } from '@/lib/products';
 
 export const runtime = 'nodejs';
 
-export const alt = `${FEATURED_PRODUCT.name} by Venkoi`;
+export const alt = `${FEATURED_PRODUCT.name} — Restaurant inventory software`;
 export const size = socialCardSize;
 export const contentType = socialCardContentType;
 

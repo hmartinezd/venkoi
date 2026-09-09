@@ -1,6 +1,6 @@
 # Venkoi
 
-The Venkoi marketing and product website. Production Contact and Demo persistence is backed by Neon PostgreSQL; transactional email delivery uses Resend after persistence.
+The Venkoi marketing and product website. Its current public product is Venkoi Serve; the stable technical product identity remains `zaiko`. Production Contact and Demo persistence is backed by Neon PostgreSQL; transactional email delivery uses Resend after persistence.
 
 ## Stack
 

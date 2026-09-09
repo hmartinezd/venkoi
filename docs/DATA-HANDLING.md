@@ -174,5 +174,5 @@ Recorded operational decisions for V1: Venkoi does not currently operate a marke
 - Configure and verify mailbox or forwarding delivery for `privacy@venkoi.com` outside this repository.
 - Establish and execute the operational review that deletes or anonymizes eligible leads under the 24-month rule; automation is intentionally deferred.
 - Review any future marketing email system before implementation; none currently exists.
-- Review Zaiko separately before authenticated or paid SaaS launch, including Product Terms of Service, subscription/payment terms, account and customer-data rules, product-specific privacy and retention/deletion provisions, data-processing agreements where appropriate, and product security/legal requirements.
+- Review Venkoi Serve separately before authenticated or paid SaaS launch, including Product Terms of Service, subscription/payment terms, account and customer-data rules, product-specific privacy and retention/deletion provisions, data-processing agreements where appropriate, and product security/legal requirements.
 - Determine whether vendor agreements or other contractual documentation need separate review.
