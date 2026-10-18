@@ -178,7 +178,7 @@
   },
   "customSoftwarePage": {
     "seoTitle": "Custom Software Development for Businesses | Venkoi",
-    "seoDescription": "Custom business software, workflow automation, web applications, mobile applications, and integrations for companies that have outgrown spreadsheets and tools that do not fit.",
+    "seoDescription": "Custom business software, AI integration for business workflows, workflow automation, web applications, mobile applications, and integrations for companies that have outgrown spreadsheets and tools that do not fit.",
     "hero": {
       "eyebrow": "CUSTOM SOFTWARE FOR BUSINESS OPERATIONS",
       "heading": "Software built around how your business actually works.",
@@ -219,7 +219,35 @@
       "item6Title": "Mobile applications",
       "item6Body": "Create purpose-built Android or mobile experiences when the work belongs in the hands of the people doing it.",
       "item7Title": "Integrations",
-      "item7Body": "Connect existing tools and reduce duplicate data entry where APIs and system access permit."
+      "item7Body": "Connect existing tools and reduce duplicate data entry where APIs and system access permit.",
+      "item8Title": "AI-enabled workflows",
+      "item8Body": "Add AI where it can meaningfully reduce manual work, understand unstructured information, assist decisions, or make custom software more useful."
+    },
+    "ai": {
+      "eyebrow": "AI IN REAL WORKFLOWS",
+      "heading": "AI is most useful when it solves a specific problem inside a real process.",
+      "body": "AI (artificial intelligence) can be one tool inside a broader software solution. Venkoi can help identify where it makes sense, integrate it into an existing workflow where feasible, or include it directly in custom software we build. That may mean a new application with AI capabilities, a connection to existing systems where technical access permits, or a controlled workflow instead of a raw chatbot.",
+      "useCase1Title": "Document and data extraction",
+      "useCase1Body": "Extract structured information from invoices, receipts, forms, PDFs, emails, and other business documents.",
+      "useCase2Title": "Internal knowledge assistants",
+      "useCase2Body": "Help employees find and work with approved company documents, manuals, policies, procedures, or operational knowledge.",
+      "useCase3Title": "Workflow copilots",
+      "useCase3Body": "Summarize information, prepare drafts, suggest next actions, or assist repetitive knowledge work while people remain in control.",
+      "useCase4Title": "Classification and routing",
+      "useCase4Body": "Categorize requests, documents, messages, leads, support issues, or operational events and route them to the right workflow.",
+      "useCase5Title": "Customer-facing AI",
+      "useCase5Body": "Create guided assistants connected to approved business information and workflows when that is more useful than an open-ended chat experience.",
+      "useCase6Title": "AI inside custom applications",
+      "useCase6Body": "Embed AI-assisted functionality directly in a Venkoi-built web or mobile application so people can work in a structured interface.",
+      "workflowLabel": "A CONTROLLED WORKFLOW",
+      "workflow1": "Business input",
+      "workflow2": "AI-assisted step",
+      "workflow3": "Human or system review",
+      "workflow4": "Useful action",
+      "trust": "Not every problem needs AI.",
+      "safeguards": "Where AI influences important decisions or business actions, we design for appropriate review, clear data boundaries, access controls, privacy, and validation where consequences matter.",
+      "automationNote": "Reliable rules should stay in conventional software. AI can help where language, documents, images, classification, extraction, or summarization are part of the work.",
+      "cta": "Discuss an AI workflow"
     },
     "fit": {
       "eyebrow": "IS CUSTOM SOFTWARE THE RIGHT CHOICE?",
@@ -279,7 +307,15 @@
       "q6": "What happens after I contact you?",
       "a6": "We review what you shared, follow up to understand the business problem, and determine an appropriate next step if the project appears to fit. A conversation does not guarantee a proposal.",
       "q7": "How much does custom software cost?",
-      "a7": "Cost depends on the scope, integrations, complexity, and required platforms. We first understand the problem and then recommend an approach and scope."
+      "a7": "Cost depends on the scope, integrations, complexity, and required platforms. We first understand the problem and then recommend an approach and scope.",
+      "q8": "Can Venkoi add AI to software we already use?",
+      "a8": "Potentially, depending on the systems, available integrations, data access, and the workflow. We first evaluate whether AI is appropriate and technically feasible.",
+      "q9": "Can AI be included in custom software you build?",
+      "a9": "Yes. AI capabilities can be included directly in a custom web or mobile application when they solve a useful part of the workflow.",
+      "q10": "What kinds of business tasks are good candidates for AI?",
+      "a10": "Tasks involving documents, text, classification, summarization, extraction, search, drafting, or repetitive knowledge work may be good candidates, but the workflow and risk level should be evaluated first.",
+      "q11": "Does every automation need AI?",
+      "a11": "No. Many processes are better handled with conventional rules and software automation. Venkoi chooses the simplest reliable approach that fits the problem."
     }
   },
   "aboutPage": {

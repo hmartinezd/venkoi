@@ -178,7 +178,7 @@
   },
   "customSoftwarePage": {
     "seoTitle": "Desarrollo de Software a Medida para Empresas | Venkoi",
-    "seoDescription": "Software personalizado para empresas, automatización de procesos, aplicaciones web, aplicaciones móviles e integraciones para compañías que ya superaron las hojas de cálculo y las herramientas que no se adaptan.",
+    "seoDescription": "Software personalizado para empresas, integración de IA, automatización de procesos, aplicaciones web, aplicaciones móviles e integraciones para compañías que ya superaron las hojas de cálculo y las herramientas que no se adaptan.",
     "hero": {
       "eyebrow": "SOFTWARE A MEDIDA PARA OPERACIONES EMPRESARIALES",
       "heading": "Software diseñado alrededor de cómo funciona realmente tu empresa.",
@@ -219,7 +219,35 @@
       "item6Title": "Aplicaciones móviles",
       "item6Body": "Desarrolla experiencias Android o móviles a medida cuando el trabajo debe estar en las manos de quienes lo realizan.",
       "item7Title": "Integraciones",
-      "item7Body": "Conecta las herramientas existentes y reduce la duplicación de datos cuando las APIs y el acceso a los sistemas lo permiten."
+      "item7Body": "Conecta las herramientas existentes y reduce la duplicación de datos cuando las APIs y el acceso a los sistemas lo permiten.",
+      "item8Title": "Flujos de trabajo con IA",
+      "item8Body": "Integramos IA cuando puede reducir de forma significativa el trabajo manual, entender información no estructurada, apoyar decisiones o hacer más útil el software a medida."
+    },
+    "ai": {
+      "eyebrow": "IA EN PROCESOS REALES",
+      "heading": "La IA aporta más valor cuando resuelve un problema concreto dentro de un proceso real.",
+      "body": "La inteligencia artificial (IA) puede ser una herramienta dentro de una solución de software más amplia. Venkoi puede ayudarte a identificar dónde tiene sentido aplicarla, integrarla en un flujo existente cuando sea viable o incorporarla directamente al software a medida que desarrollamos. Puede tratarse de una aplicación nueva con capacidades de IA, una conexión con sistemas existentes cuando haya acceso técnico o un flujo controlado en lugar de un chatbot abierto.",
+      "useCase1Title": "Extracción de documentos y datos",
+      "useCase1Body": "Extraer información estructurada de facturas, recibos, formularios, PDFs, correos electrónicos y otros documentos empresariales.",
+      "useCase2Title": "Asistentes de conocimiento interno",
+      "useCase2Body": "Ayudar al equipo a encontrar y utilizar documentos, manuales, políticas, procedimientos o conocimiento operativo aprobado por la empresa.",
+      "useCase3Title": "Copilotos para procesos",
+      "useCase3Body": "Resumir información, preparar borradores, sugerir próximos pasos o apoyar tareas repetitivas de conocimiento, manteniendo a las personas al mando.",
+      "useCase4Title": "Clasificación y distribución",
+      "useCase4Body": "Clasificar solicitudes, documentos, mensajes, prospectos, casos de soporte o eventos operativos y enviarlos al flujo adecuado.",
+      "useCase5Title": "IA para clientes",
+      "useCase5Body": "Crear asistentes guiados conectados con información y procesos empresariales aprobados cuando resulten más útiles que una experiencia de chat abierta.",
+      "useCase6Title": "IA dentro de aplicaciones a medida",
+      "useCase6Body": "Incorporar funciones asistidas por IA directamente en una aplicación web o móvil creada por Venkoi para que el equipo trabaje en una interfaz estructurada.",
+      "workflowLabel": "UN FLUJO CONTROLADO",
+      "workflow1": "Entrada del negocio",
+      "workflow2": "Paso asistido por IA",
+      "workflow3": "Revisión humana o del sistema",
+      "workflow4": "Acción útil",
+      "trust": "No todos los problemas necesitan IA.",
+      "safeguards": "Cuando la IA influye en decisiones importantes o acciones del negocio, diseñamos con revisión adecuada, límites claros para los datos, controles de acceso, privacidad y validación cuando las consecuencias lo requieren.",
+      "automationNote": "Las reglas confiables deben resolverse con software convencional. La IA puede ayudar cuando intervienen lenguaje, documentos, imágenes, clasificación, extracción o resúmenes.",
+      "cta": "Hablemos de un proceso con IA"
     },
     "fit": {
       "eyebrow": "¿EL SOFTWARE A MEDIDA ES LA OPCIÓN ADECUADA?",
@@ -279,7 +307,15 @@
       "q6": "¿Qué ocurre después de contactar a Venkoi?",
       "a6": "Revisamos lo que compartiste, hacemos un seguimiento para entender el problema y definimos un siguiente paso adecuado si el proyecto parece encajar. La conversación no garantiza una propuesta.",
       "q7": "¿Cuánto cuesta el software a medida?",
-      "a7": "El costo depende del alcance, las integraciones, la complejidad y las plataformas necesarias. Primero entendemos el problema y después recomendamos un enfoque y un alcance."
+      "a7": "El costo depende del alcance, las integraciones, la complejidad y las plataformas necesarias. Primero entendemos el problema y después recomendamos un enfoque y un alcance.",
+      "q8": "¿Puede Venkoi añadir IA al software que ya usamos?",
+      "a8": "Es posible en algunos casos, dependiendo de los sistemas, las integraciones disponibles, el acceso a los datos y el proceso. Primero evaluamos si la IA es adecuada y técnicamente viable.",
+      "q9": "¿Pueden incluir IA en el software a medida que desarrollen?",
+      "a9": "Sí. Las capacidades de IA pueden incorporarse directamente en una aplicación web o móvil a medida cuando resuelven una parte útil del proceso.",
+      "q10": "¿Qué tareas empresariales pueden ser buenas candidatas para IA?",
+      "a10": "Las tareas con documentos, texto, clasificación, resúmenes, extracción, búsqueda, redacción o trabajo repetitivo de conocimiento pueden ser buenas candidatas, pero primero hay que evaluar el proceso y su nivel de riesgo.",
+      "q11": "¿Toda automatización necesita IA?",
+      "a11": "No. Muchos procesos se resuelven mejor con reglas convencionales y automatización de software. Venkoi elige el enfoque confiable más sencillo que se ajuste al problema."
     }
   },
   "aboutPage": {

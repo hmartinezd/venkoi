@@ -5,6 +5,7 @@ export type AnalyticsEventName =
   | 'serve_early_access_cta'
   | 'services_cta'
   | 'custom_software_cta'
+  | 'ai_software_cta'
   | 'demo_form_start'
   | 'demo_form_submit'
   | 'demo_form_success'
