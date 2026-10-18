@@ -27,6 +27,8 @@ assert(getLocalizedPath('home', 'en') === '/en', 'Home EN');
 assert(getLocalizedPath('home', 'es') === '/es', 'Home ES');
 assert(getLocalizedPath('productsServe', 'en') === '/en/products/serve', 'Venkoi Serve EN');
 assert(getLocalizedPath('productsServe', 'es') === '/es/productos/serve', 'Venkoi Serve ES');
+assert(getLocalizedPath('customSoftware', 'en') === '/en/custom-software', 'Custom software EN');
+assert(getLocalizedPath('customSoftware', 'es') === '/es/software-a-medida', 'Custom software ES');
 assert(getLocalizedPath('servicesMobile', 'en') === '/en/services/mobile-applications', 'Mobile Services EN');
 assert(getLocalizedPath('servicesMobile', 'es') === '/es/servicios/aplicaciones-moviles', 'Mobile Services ES');
 assert(getLocalizedPath('servicesWeb', 'en') === '/en/services/websites-web-applications', 'Web Services EN');
@@ -56,6 +58,9 @@ assert(getRouteKeyFromPath('/en') === 'home', 'Path /en -> home');
 assert(getRouteKeyFromPath('/es/') === 'home', 'Path /es/ -> home');
 assert(getRouteKeyFromPath('/en/services') === 'services', 'Path /en/services -> services');
 assert(getRouteKeyFromPath('/es/servicios') === 'services', 'Path /es/servicios -> services');
+assert(getRouteKeyFromPath('/en/custom-software') === 'customSoftware', 'Path /en/custom-software -> customSoftware');
+assert(getRouteKeyFromPath('/es/software-a-medida') === 'customSoftware', 'Path /es/software-a-medida -> customSoftware');
+assert(getRouteKeyFromPath('/custom-software') === 'customSoftware', 'Internal Path /custom-software -> customSoftware');
 assert(getRouteKeyFromPath('/en/services/mobile-applications') === 'servicesMobile', 'Path /en/services/mobile-applications -> servicesMobile');
 assert(getRouteKeyFromPath('/es/servicios/aplicaciones-moviles') === 'servicesMobile', 'Path /es/servicios/aplicaciones-moviles -> servicesMobile');
 assert(getRouteKeyFromPath('/en/services/websites-web-applications') === 'servicesWeb', 'Path /en/services/websites-web-applications -> servicesWeb');
@@ -95,7 +100,7 @@ const insightRoutes: RouteKey[] = [
   'insightStartSoftwareProject',
   'insightWebsiteOrWebApp'
 ];
-const nonInsightRoutes: RouteKey[] = ['home', 'productsServe', 'services', 'contact'];
+const nonInsightRoutes: RouteKey[] = ['home', 'productsServe', 'services', 'customSoftware', 'contact'];
 
 insightRoutes.forEach((routeKey) => {
   assert(isInsightRoute(routeKey), `${routeKey} belongs to the Insights family`);
@@ -105,7 +110,7 @@ nonInsightRoutes.forEach((routeKey) => {
 });
 
 const serviceRoutes: RouteKey[] = ['services', 'servicesMobile', 'servicesWeb'];
-const nonServiceRoutes: RouteKey[] = ['home', 'productsServe', 'insights', 'contact'];
+const nonServiceRoutes: RouteKey[] = ['home', 'productsServe', 'customSoftware', 'insights', 'contact'];
 
 serviceRoutes.forEach((routeKey) => {
   assert(isServiceRoute(routeKey), `${routeKey} belongs to the Services family`);

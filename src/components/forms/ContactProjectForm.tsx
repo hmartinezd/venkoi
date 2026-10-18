@@ -14,12 +14,14 @@ interface ContactProjectFormProps {
   locale: Locale;
   initialType?: string;
   initialInterest?: ServiceInterest | "";
+  analyticsSource?: string;
 }
 
 export function ContactProjectForm({
   locale,
   initialType = "",
   initialInterest = "",
+  analyticsSource,
 }: ContactProjectFormProps) {
   const t = useTranslations("contactPage.form");
   const tp = useTranslations("contactPage");
@@ -109,6 +111,7 @@ export function ContactProjectForm({
         locale,
         leadType: lead_type,
         interest: effectiveInterest,
+        source: analyticsSource,
       });
     }
 
@@ -133,6 +136,7 @@ export function ContactProjectForm({
       locale,
       leadType: lead_type,
       interest: formData.interest,
+      source: analyticsSource,
     });
 
     // Client inline validation
@@ -206,6 +210,7 @@ export function ContactProjectForm({
           locale,
           leadType: lead_type,
           interest: formData.interest,
+          source: analyticsSource,
         });
       }
     } catch {

@@ -5,6 +5,7 @@ export const internalRoutes = {
   home: '/',
   productsServe: '/products/serve',
   services: '/services',
+  customSoftware: '/custom-software',
   servicesMobile: '/services/mobile-applications',
   servicesWeb: '/services/websites-web-applications',
   about: '/about',
@@ -57,6 +58,10 @@ const pathnames = {
   '/services': {
     en: '/services',
     es: '/servicios'
+  },
+  '/custom-software': {
+    en: '/custom-software',
+    es: '/software-a-medida'
   },
   '/services/mobile-applications': {
     en: '/services/mobile-applications',

@@ -9,16 +9,6 @@ const nextConfig = withNextIntl({
   async redirects() {
     return [
       {
-        source: '/en/custom-software',
-        destination: '/en/services',
-        permanent: true
-      },
-      {
-        source: '/es/software-a-medida',
-        destination: '/es/servicios',
-        permanent: true
-      },
-      {
         source: '/en/products/zaiko',
         destination: '/en/products/serve',
         permanent: true

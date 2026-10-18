@@ -7,6 +7,7 @@ const sitemapRoutes: RouteKey[] = [
   'home',
   'productsServe',
   'services',
+  'customSoftware',
   'servicesMobile',
   'servicesWeb',
   'about',
@@ -43,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: routeKey === 'home' ? 'weekly' : 'monthly',
         priority: routeKey === 'home' ? 1.0 :
                  (routeKey === 'privacy' || routeKey === 'terms') ? 0.3 :
-                 (routeKey === 'productsServe' || routeKey === 'servicesMobile' || routeKey === 'servicesWeb') ? 0.9 :
+                 (routeKey === 'productsServe' || routeKey === 'customSoftware' || routeKey === 'servicesMobile' || routeKey === 'servicesWeb') ? 0.9 :
                  (routeKey === 'insightRestaurantInventory' || routeKey === 'insightRestaurantInventoryCounts' || routeKey === 'insightRestaurantFoodCost' || routeKey === 'insightRestaurantSupplierPrices') ? 0.8 : 0.7,
         alternates: {
           languages

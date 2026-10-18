@@ -24,15 +24,17 @@ export function Section({
   className = '',
   variant = 'light',
   spacing = 'standard',
-  id
+  id,
+  tabIndex
 }: PropsWithChildren<{
   className?: string;
   variant?: SectionVariant;
   spacing?: SectionSpacing;
   id?: string;
+  tabIndex?: number;
 }>) {
   return (
-    <section id={id} className={cn(variantClasses[variant], spacingClasses[spacing], className)}>
+    <section id={id} tabIndex={tabIndex} className={cn(variantClasses[variant], spacingClasses[spacing], className)}>
       {children}
     </section>
   );

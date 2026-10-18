@@ -44,6 +44,13 @@ export default async function ServicesPage({ params }: PageProps) {
       { eyebrow: t('webEyebrow'), title: t('webTitle'), body: t('webBody'), cue: t('webSupporting'), cta: t('exploreWeb'), routeKey: 'servicesWeb', source: 'services_overview_web' }
     ]} />
 
+    <Section variant="surface" spacing="compact" className="border-b border-border">
+      <Container className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="max-w-2xl text-sm leading-relaxed text-foreground-muted">{t('customSoftwareCue')}</p>
+        <TrackedButton href={getLocalizedPath('customSoftware', currentLocale)} variant="secondary" eventName="custom_software_cta" properties={{ locale: currentLocale, source: 'services_overview' }}>{t('customSoftwareCta')}</TrackedButton>
+      </Container>
+    </Section>
+
     <ServiceProcess eyebrow={t('howWeWork.eyebrow')} heading={t('howWeWork.heading')} stages={stages} testingPrinciple={t('howWeWork.testingPrinciple')} />
 
     <Section variant="muted" className="border-y border-border">

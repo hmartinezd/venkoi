@@ -15,6 +15,7 @@ const sitemapRouteKeys: RouteKey[] = [
   'home',
   'productsServe',
   'services',
+  'customSoftware',
   'servicesMobile',
   'servicesWeb',
   'about',
@@ -160,6 +161,8 @@ export function testSeoRegression() {
     assertRouteMetadata('home', 'es', 'Home ES');
     assertRouteMetadata('productsServe', 'en', 'Venkoi Serve EN');
     assertRouteMetadata('productsServe', 'es', 'Venkoi Serve ES');
+    assertRouteMetadata('customSoftware', 'en', 'Custom software EN');
+    assertRouteMetadata('customSoftware', 'es', 'Custom software ES');
     assertRouteMetadata('insightRestaurantInventory', 'en', 'Insight article EN');
     assertRouteMetadata('insightRestaurantInventory', 'es', 'Insight article ES');
     assertRouteMetadata('privacy', 'en', 'Privacy EN');
