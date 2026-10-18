@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join, relative, resolve, sep } from 'node:path';
 
 function read(file: string): string {
   return readFileSync(resolve(process.cwd(), file), 'utf8');
@@ -22,9 +21,40 @@ assert.match(migration, /UPDATE leads/);
 assert.match(migration, /SET product = 'serve'/);
 assert.match(migration, new RegExp(`WHERE product = '${retiredIdentity}'`));
 
-const output = execFileSync('rg', ['-l', '-i', '-w', retiredIdentity, '--glob', '!node_modules/**', '--glob', '!.next/**', '--glob', '!.git/**', '--glob', '!package-lock.json', '.'], { encoding: 'utf8' });
+const ignoredDirectories = new Set(['.git', '.next', 'node_modules']);
+const ignoredFiles = new Set(['package-lock.json']);
+const retiredIdentityPattern = new RegExp(`\\b${retiredIdentity}\\b`, 'i');
 
-const occurrences = output.trim() ? output.trim().split('\n').map((file) => file.replace(/^\.\//, '')) : [];
+function scanRepository(root: string): string[] {
+  const occurrences: string[] = [];
+
+  function visit(directory: string): void {
+    const entries = readdirSync(directory, { withFileTypes: true });
+
+    for (const entry of entries) {
+      // Match the previous ripgrep invocation, which did not search hidden workspace files.
+      if (entry.name.startsWith('.')) continue;
+      if (entry.isDirectory() && ignoredDirectories.has(entry.name)) continue;
+      if (!entry.isDirectory() && ignoredFiles.has(entry.name)) continue;
+
+      const absolutePath = join(directory, entry.name);
+      const relativePath = relative(root, absolutePath).split(sep).join('/');
+      const pathMatches = retiredIdentityPattern.test(relativePath);
+      const contentMatches = entry.isFile() && retiredIdentityPattern.test(readFileSync(absolutePath, 'utf8'));
+
+      if (pathMatches || contentMatches) {
+        occurrences.push(relativePath);
+      }
+
+      if (entry.isDirectory()) visit(absolutePath);
+    }
+  }
+
+  visit(root);
+  return occurrences;
+}
+
+const occurrences = scanRepository(resolve(process.cwd()));
 assert.deepEqual(occurrences.filter((file) => !allowedLegacyFiles.has(file)), [], 'Retired product identity must be limited to migration/redirect compatibility files');
 
 console.log('Product identity migration regression checks passed.');
