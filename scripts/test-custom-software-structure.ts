@@ -53,6 +53,8 @@ assert.match(en.customSoftwarePage.ai.safeguards, /review|data boundaries|valida
 assert.match(es.customSoftwarePage.ai.safeguards, /revisi[oó]n|l[ií]mites.*datos|validaci[oó]n/i, 'Spanish AI section should mention practical safeguards');
 assert.doesNotMatch(en.customSoftwarePage.proof.body, /\bAI\b|artificial intelligence/i, 'English Venkoi Serve proof must not claim AI functionality');
 assert.doesNotMatch(es.customSoftwarePage.proof.body, /\bIA\b|inteligencia artificial/i, 'Spanish Venkoi Serve proof must not claim AI functionality');
+assert.match(page, /const faqItems = \[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11\] as const;/, 'Landing page should render all custom-software FAQ items');
+assert.match(page, /faqItems\.map\(\(item\) => \(\{ question: t\(`faq\.q\$\{item\}`\), answer: t\(`faq\.a\$\{item\}`\) \}\)\)/, 'Rendered FAQ should remain translation-driven');
 for (const faqKey of ['q8', 'q9', 'q10', 'q11', 'a8', 'a9', 'a10', 'a11']) {
   assert.ok(en.customSoftwarePage.faq[faqKey as keyof typeof en.customSoftwarePage.faq], `English FAQ should include ${faqKey}`);
   assert.ok(es.customSoftwarePage.faq[faqKey as keyof typeof es.customSoftwarePage.faq], `Spanish FAQ should include ${faqKey}`);

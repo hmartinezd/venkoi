@@ -48,7 +48,7 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
   const capabilityItems = [1, 2, 3, 4, 5, 6, 7, 8] as const;
   const aiUseCaseItems = [1, 2, 3, 4, 5, 6] as const;
   const processStages = [1, 2, 3, 4] as const;
-  const faqItems = [1, 2, 3, 4, 5, 6, 7] as const;
+  const faqItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
 
   return (
     <>
