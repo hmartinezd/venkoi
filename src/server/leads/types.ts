@@ -1,5 +1,5 @@
 export type LeadType = 'DEMO' | 'CUSTOM_PROJECT' | 'GENERAL_CONTACT';
-export type LeadStatus = 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'CONVERTED' | 'CLOSED';
+export type LeadStatus = 'NEW' | 'QUALIFIED' | 'DISQUALIFIED' | 'WON' | 'LOST';
 
 export type LocationCountEnum = '1' | '2_5' | '6_20' | '20_plus';
 export type CurrentSystemEnum = 'none' | 'spreadsheet' | 'pos_tools' | 'other';
@@ -27,6 +27,10 @@ export interface LeadInput {
   utm_medium?: string | null;
   utm_campaign?: string | null;
   utm_content?: string | null;
+  utm_term?: string | null;
+  gclid?: string | null;
+  gbraid?: string | null;
+  wbraid?: string | null;
   referrer?: string | null;
   website?: string | null; // Honeypot field
 }
@@ -53,6 +57,10 @@ export interface LeadRecord {
   utm_medium: string | null;
   utm_campaign: string | null;
   utm_content: string | null;
+  utm_term: string | null;
+  gclid: string | null;
+  gbraid: string | null;
+  wbraid: string | null;
   referrer: string | null;
   status: LeadStatus;
   created_at: string;

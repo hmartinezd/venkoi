@@ -37,6 +37,10 @@ function lead(overrides: Partial<LeadRecord> = {}): LeadRecord {
     utm_medium: 'email',
     utm_campaign: 'launch',
     utm_content: 'hero',
+    utm_term: 'restaurant inventory software',
+    gclid: 'internal-click-id',
+    gbraid: null,
+    wbraid: null,
     referrer: null,
     status: 'NEW',
     created_at: '2026-08-10T00:00:00.000Z',
@@ -78,6 +82,8 @@ assert.match(internalAccess.subject, new RegExp(`${FEATURED_PRODUCT.name} Access
 assert.match(internalAccess.text, /Access request: Yes/);
 assert.doesNotMatch(`${internalAccess.subject}\n${internalAccess.text}`, /Free Offer Demo|Free-offer interest/i);
 assert.match(buildInternalNotificationEmail(lead()).text, /UTM content: hero/);
+assert.match(buildInternalNotificationEmail(lead()).text, /UTM term: restaurant inventory software/);
+assert.doesNotMatch(buildUserAcknowledgementEmail(lead()).text, /internal-click-id/);
 
 const alternateResolver: LeadProductResolver = (slug) =>
   slug === 'rename-test'

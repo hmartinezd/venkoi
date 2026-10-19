@@ -14,7 +14,7 @@ assert.equal(
 
 for (const pathname of ['/en/contact', '/en/demo']) {
   const context = getLeadAcquisitionContext({
-    href: `https://venkoi.vercel.app${pathname}?utm_source=newsletter&utm_medium=email&utm_campaign=launch&utm_content=hero`,
+    href: `https://venkoi.vercel.app${pathname}?utm_source=newsletter&utm_medium=email&utm_campaign=launch&utm_content=hero&utm_term=restaurant%20inventory%20software&gclid=google-click&gbraid=google-branded&wbraid=google-web&unapproved=ignore`,
     pathname,
     referrer: 'https://www.google.com/search?q=restaurant+inventory'
   });
@@ -24,6 +24,11 @@ for (const pathname of ['/en/contact', '/en/demo']) {
   assert.equal(context.utm_medium, 'email');
   assert.equal(context.utm_campaign, 'launch');
   assert.equal(context.utm_content, 'hero');
+  assert.equal(context.utm_term, 'restaurant inventory software');
+  assert.equal(context.gclid, 'google-click');
+  assert.equal(context.gbraid, 'google-branded');
+  assert.equal(context.wbraid, 'google-web');
+  assert.equal('unapproved' in context, false);
 }
 
 console.log('Lead acquisition regression checks passed.');

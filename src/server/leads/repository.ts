@@ -39,6 +39,10 @@ export async function createLead(payload: ValidatedLeadPayload): Promise<LeadRec
     utm_medium: payload.utm_medium ?? null,
     utm_campaign: payload.utm_campaign ?? null,
     utm_content: payload.utm_content ?? null,
+    utm_term: payload.utm_term ?? null,
+    gclid: payload.gclid ?? null,
+    gbraid: payload.gbraid ?? null,
+    wbraid: payload.wbraid ?? null,
     referrer: payload.referrer ?? null,
     status: 'NEW',
     created_at: createdAt
@@ -74,6 +78,10 @@ export async function createLead(payload: ValidatedLeadPayload): Promise<LeadRec
       utm_medium,
       utm_campaign,
       utm_content,
+      utm_term,
+      gclid,
+      gbraid,
+      wbraid,
       referrer,
       status,
       created_at
@@ -99,6 +107,10 @@ export async function createLead(payload: ValidatedLeadPayload): Promise<LeadRec
       ${leadRecord.utm_medium},
       ${leadRecord.utm_campaign},
       ${leadRecord.utm_content},
+      ${leadRecord.utm_term},
+      ${leadRecord.gclid},
+      ${leadRecord.gbraid},
+      ${leadRecord.wbraid},
       ${leadRecord.referrer},
       ${leadRecord.status},
       ${leadRecord.created_at}

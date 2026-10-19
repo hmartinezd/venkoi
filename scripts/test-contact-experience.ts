@@ -14,6 +14,7 @@ const form = read("src/components/forms/ContactProjectForm.tsx");
 const page = read("src/app/[locale]/contact/page.tsx");
 const demoPage = read("src/app/[locale]/demo/page.tsx");
 const nextSteps = read("src/components/shared/NextSteps.tsx");
+const demoForm = read("src/components/forms/DemoRequestForm.tsx");
 
 assert.match(page, /buildProductDemoHref\(currentLocale, FEATURED_PRODUCT, \{ source: 'contact_escape' \}\)/);
 assert.match(page, /eventName="serve_demo_cta"/);
@@ -135,6 +136,11 @@ assert.match(
 assert.match(form, /\? ["']CUSTOM_PROJECT["']\s*:\s*["']GENERAL_CONTACT["']/);
 assert.match(form, /interest: initialInterest/);
 assert.match(form, /interest: formData\.interest/);
+
+for (const acquisitionField of ["utm_term", "gclid", "gbraid", "wbraid"]) {
+  assert.match(form, new RegExp(`${acquisitionField}:`), `${acquisitionField} must remain in Contact acquisition state`);
+  assert.match(demoForm, new RegExp(`${acquisitionField}:`), `${acquisitionField} must remain in Demo acquisition state`);
+}
 
 for (const event of [
   "contact_form_start",

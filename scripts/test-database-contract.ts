@@ -28,9 +28,13 @@ assert.match(repository, /product:\s*payload\.product \?\? null/);
 assert.match(repository, /\$\{leadRecord\.product\}/);
 assert.doesNotMatch(repository, /Product\.name|FEATURED_PRODUCT\.name/);
 
-const migrations = [1, 2, 3].map((number) =>
-  `db/migrations/00${number}_${['create_leads', 'harden_leads', 'update_service_interests'][number - 1]}.sql`
-);
+const migrations = [
+  'db/migrations/001_create_leads.sql',
+  'db/migrations/002_harden_leads.sql',
+  'db/migrations/003_update_service_interests.sql',
+  'db/migrations/004_migrate_legacy_product_slug.sql',
+  'db/migrations/005_add_paid_attribution_and_lifecycle.sql'
+];
 for (const migration of migrations) assert.ok(existsSync(resolve(root, migration)), `${migration} must exist`);
 
 const migrationSql = migrations.map(read).join('\n');
@@ -47,6 +51,13 @@ for (const interest of ['mobile', 'web', 'unsure']) {
   assert.match(validation, new RegExp(`['"]${interest}['"]`));
   assert.match(migrationSql, new RegExp(`['"]${interest}['"]`));
 }
+
+for (const field of ['utm_term', 'gclid', 'gbraid', 'wbraid']) {
+  assert.match(validation, new RegExp(`\\b${field}\\b`), `Validation must include ${field}`);
+  assert.match(repository, new RegExp(`\\b${field}\\b`), `Repository must include ${field}`);
+  assert.match(migrationSql, new RegExp(`\\b${field}\\b`), `Migration must include ${field}`);
+}
+assert.match(migrationSql, /status IN \('NEW', 'QUALIFIED', 'DISQUALIFIED', 'WON', 'LOST'\)/);
 
 assert.doesNotMatch(packageJson, /migrat|db:verify/i, 'Build, start, and quality scripts must not mutate or require the database');
 assert.doesNotMatch(workflow, /DATABASE_URL|NEXT_PUBLIC_(?:DATABASE|NEON|DB)_URL/);

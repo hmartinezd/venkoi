@@ -48,6 +48,12 @@ assert.match(dataHandling, /Request Access[^\n]*early_access_interest = true/i, 
 assert.match(dataHandling, /\{product\} Access Request/i, 'DATA-HANDLING must document Access Request notification subjects');
 assert.match(dataHandling, /Access request: Yes/i, 'DATA-HANDLING must document the human-readable access field');
 assert.match(dataHandling, /does not guarantee acceptance or timing/i, 'DATA-HANDLING must preserve Access Request qualification');
+for (const field of ['source_path', 'referrer', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'gbraid', 'wbraid']) {
+  assert.match(dataHandling, new RegExp('`' + field + '`'), `DATA-HANDLING must document ${field}`);
+}
+assert.match(dataHandling, /submitted lead.*qualified lead.*won\/converted lead/i, 'DATA-HANDLING must document the advertising funnel');
+assert.match(dataHandling, /Custom Software Lead Submitted[\s\S]*successful lead persistence/i, 'DATA-HANDLING must document the primary conversion boundary');
+assert.match(dataHandling, /NEW.*QUALIFIED.*DISQUALIFIED.*WON.*LOST/i, 'DATA-HANDLING must document canonical lifecycle values');
 
 const envLines = read('.env.example').split(/\r?\n/);
 const env = new Map<string, string>();
@@ -75,7 +81,8 @@ const migrations = [
   'db/migrations/001_create_leads.sql',
   'db/migrations/002_harden_leads.sql',
   'db/migrations/003_update_service_interests.sql',
-  'db/migrations/004_migrate_legacy_product_slug.sql'
+  'db/migrations/004_migrate_legacy_product_slug.sql',
+  'db/migrations/005_add_paid_attribution_and_lifecycle.sql'
 ];
 for (const migration of migrations) assert.ok(existsSync(resolve(root, migration)), `${migration} must exist`);
 const migrationPositions = migrations.map((migration) => {

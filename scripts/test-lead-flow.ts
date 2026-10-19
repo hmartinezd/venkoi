@@ -1,6 +1,7 @@
 import { leadSubmissionSchema } from '../src/server/leads/validation';
 import { processLeadSubmission } from '../src/server/leads/service';
 import { testSiteConfig } from './test-site-config';
+import type { LeadStatus } from '../src/server/leads/types';
 
 async function runTests() {
   testSiteConfig();
@@ -151,6 +152,51 @@ async function runTests() {
     current_system: 'pos_tools'
   });
   assert(t5.success, 'Accept DEMO with valid demo product & stable enums');
+
+  const attributionResult = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Paid Search Lead',
+    email: 'paid@example.com',
+    message: 'A project attributed to paid search.',
+    utm_source: 'google',
+    utm_medium: 'cpc',
+    utm_campaign: 'custom-software',
+    utm_content: 'responsive-search-ad',
+    utm_term: 'restaurant inventory software',
+    gclid: 'gclid-value',
+    gbraid: 'gbraid-value',
+    wbraid: 'wbraid-value'
+  });
+  assert(attributionResult.success, 'Accept valid optional paid attribution fields');
+  if (attributionResult.success) {
+    assert(attributionResult.data.utm_term === 'restaurant inventory software', 'Preserve utm_term attribution');
+    assert(attributionResult.data.gclid === 'gclid-value', 'Preserve gclid attribution');
+    assert(attributionResult.data.gbraid === 'gbraid-value', 'Preserve gbraid attribution');
+    assert(attributionResult.data.wbraid === 'wbraid-value', 'Preserve wbraid attribution');
+  }
+
+  const excessiveAttribution = leadSubmissionSchema.safeParse({
+    lead_type: 'CUSTOM_PROJECT',
+    name: 'Oversized Attribution',
+    email: 'oversized@example.com',
+    message: 'A project with an oversized attribution value.',
+    utm_term: 'x'.repeat(101),
+    gclid: 'x'.repeat(201)
+  });
+  assert(!excessiveAttribution.success, 'Reject oversized attribution values');
+  if (!excessiveAttribution.success) {
+    assert(
+      excessiveAttribution.error.issues.some((issue) => issue.path[0] === 'utm_term'),
+      'Oversized utm_term is rejected'
+    );
+    assert(
+      excessiveAttribution.error.issues.some((issue) => issue.path[0] === 'gclid'),
+      'Oversized gclid is rejected'
+    );
+  }
+
+  const canonicalStatuses = ['NEW', 'QUALIFIED', 'DISQUALIFIED', 'WON', 'LOST'] satisfies LeadStatus[];
+  assert(canonicalStatuses.length === 5, 'Canonical lead lifecycle has five statuses');
 
   const optionalDemoBase = {
     lead_type: 'DEMO' as const,

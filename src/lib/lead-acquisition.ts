@@ -5,6 +5,10 @@ export type LeadAcquisitionContext = {
   utm_medium: string;
   utm_campaign: string;
   utm_content: string;
+  utm_term: string;
+  gclid: string;
+  gbraid: string;
+  wbraid: string;
 };
 
 export function normalizeExternalReferrer(referrer: string, currentOrigin: string): string {
@@ -39,6 +43,10 @@ export function getLeadAcquisitionContext({ href, pathname, referrer }: {
     utm_source: currentUrl?.searchParams.get('utm_source') || '',
     utm_medium: currentUrl?.searchParams.get('utm_medium') || '',
     utm_campaign: currentUrl?.searchParams.get('utm_campaign') || '',
-    utm_content: currentUrl?.searchParams.get('utm_content') || ''
+    utm_content: currentUrl?.searchParams.get('utm_content') || '',
+    utm_term: currentUrl?.searchParams.get('utm_term') || '',
+    gclid: currentUrl?.searchParams.get('gclid') || '',
+    gbraid: currentUrl?.searchParams.get('gbraid') || '',
+    wbraid: currentUrl?.searchParams.get('wbraid') || ''
   };
 }

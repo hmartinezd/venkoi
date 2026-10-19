@@ -24,7 +24,7 @@ The marketing site renders locally without production lead-service secrets.
 
 ## Lead infrastructure status
 
-Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. New Demo persistence uses the `serve` product slug; migration `004` is prepared to convert previously persisted legacy product values and must be applied by the owner after review.
+Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. New Demo persistence uses the `serve` product slug; migrations `004` and `005` are prepared for owner review and must not be applied to Production by this coding task.
 
 Standard Demo and Request Access share the product lead architecture without changing persistence types: both store `lead_type = DEMO`; `early_access_interest = false` represents Demo and `true` represents Request Access. The field name is a stable technical identifier, not the public program label.
 
@@ -33,6 +33,8 @@ Resend production transactional delivery is configured and manually verified. Li
 Database persistence is required for a successful submission. A database failure produces `SUBMISSION_ERROR`. If persistence succeeds but email delivery is unavailable or fails, the submission remains successful because the lead has already been stored; the email issue is logged.
 
 Lead attribution uses `source_path` for the form submission route without its query string. `referrer` is a normalized external HTTP(S) document referrer with query and fragment removed; same-origin Venkoi referrers are intentionally discarded. It is not a previous SPA route, and V1 does not implement internal customer-journey tracking.
+
+The persisted acquisition contract is `source_path`, `referrer`, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `gclid`, `gbraid`, and `wbraid`. Lead status uses the canonical lifecycle `NEW`, `QUALIFIED`, `DISQUALIFIED`, `WON`, and `LOST`; qualification and business outcomes are owner-operated, not automatically inferred.
 
 See the [launch runbook](docs/LAUNCH.md) for the environment contract, migration sequence, service configuration, and manual production verification. The [technical data-handling inventory](docs/DATA-HANDLING.md) records the V1 lead-data flow and unresolved governance decisions; it is not a legal policy.
 

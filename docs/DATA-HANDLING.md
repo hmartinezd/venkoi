@@ -26,7 +26,8 @@ The Contact UI submits either `GENERAL_CONTACT` or `CUSTOM_PROJECT`. Blank optio
 | Context | `locale` | `en` or `es`; the form supplies its current locale. |
 | Context | `source_path` | Optional submission route. |
 | Context | `referrer` | Optional normalized external HTTP(S) referrer. |
-| Context | `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` | Optional values read from the current submission URL; each maximum 100 characters. |
+| Context | `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term` | Optional values read from the current submission URL; each maximum 100 characters. |
+| Context | `gclid`, `gbraid`, `wbraid` | Optional advertising click identifiers read from the current submission URL; each maximum 200 characters and retained as internal attribution fields. |
 | Technical/internal | `id` | Server-generated lead ID. |
 | Technical/internal | `lead_type` | `GENERAL_CONTACT` or `CUSTOM_PROJECT`. |
 | Technical/internal | `status` | Created as `NEW`. |
@@ -51,7 +52,7 @@ The Demo UI submits `DEMO`. Blank optional strings are normalized to `null` befo
 | Product/funnel | `product` | Required for Demo and must resolve to a Demo-enabled registry product. The stored stable technical slug is `serve`; it is distinct from the registry-driven human-facing display name and must not be renamed by presentation changes. |
 | Product/funnel | `early_access_interest` | Boolean Request Access intent flag; defaults to `false`. Standard Demo stores `false`; Request Access stores `true`. The technical field name is intentionally stable. |
 | Context | `locale` | `en` or `es`. |
-| Context | `source_path`, `referrer`, UTM fields | Same behavior and limits as Contact. |
+| Context | `source_path`, `referrer`, UTM fields, advertising click identifiers | Same behavior and limits as Contact. |
 | Technical/internal | `id`, `lead_type`, `status`, `created_at` | Server ID; `DEMO`; initial `NEW`; creation timestamp. |
 
 The repository also derives and persists the composite `name` for Demo from first and last name. The `website` honeypot has the same validation-only behavior as Contact.
@@ -77,13 +78,13 @@ Persistence is required for API success. Email is attempted after persistence; m
 
 ## Neon persistence facts
 
-The insert persists: `id`, `lead_type`, `product`, `first_name`, `last_name`, derived `name`, `email`, `phone`, `company`, `location_count`, `current_system`, `interest`, `project_stage`, `message`, `early_access_interest`, `locale`, `source_path`, four UTM fields, `referrer`, `status`, and `created_at`.
+The insert persists: `id`, `lead_type`, `product`, `first_name`, `last_name`, derived `name`, `email`, `phone`, `company`, `location_count`, `current_system`, `interest`, `project_stage`, `message`, `early_access_interest`, `locale`, `source_path`, five UTM fields, `gclid`, `gbraid`, `wbraid`, `referrer`, `status`, and `created_at`.
 
 The application creates IDs with a `lead_` prefix, time component, and random bytes; creates every record with status `NEW`; and supplies an ISO creation timestamp. The database also defaults `early_access_interest` to false, `status` to `NEW`, and `created_at` to the current timestamp. Migrations make those three columns non-null and constrain lead type, locale, status, location count, current system, interest, and project stage. Email is non-null. Length limits are represented in both validation and applicable `VARCHAR` columns; `message` is `TEXT` with the application enforcing 5,000 characters.
 
 The database permits current canonical interests plus specified historical compatibility values. Application validation emits `mobile`, `web`, or `unsure`. Demo product validation is registry-driven; current production verification records the stable `serve` slug, not the display name.
 
-No repository-managed deletion job, anonymization job, or lead administration interface was found. **Recorded operational decision:** unconverted Contact, Demo, and Access Request lead records should ordinarily be retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. Customer conversion may place the record under a later customer/business-record policy. Automated enforcement is not implemented; an owner-operated review and deletion/anonymization process remains required. Product identity migration `004` is prepared separately and is not applied automatically or against Production by this milestone.
+No repository-managed deletion job, anonymization job, or lead administration interface was found. **Recorded operational decision:** unconverted Contact, Demo, and Access Request lead records should ordinarily be retained for up to 24 months from the last meaningful interaction, then deleted or anonymized unless a legitimate legal, security, dispute, or ongoing-business reason requires longer retention. Customer conversion may place the record under a later customer/business-record policy. Automated enforcement is not implemented; an owner-operated review and deletion/anonymization process remains required. Product identity migration `004` and attribution/lifecycle migration `005` are prepared separately and are not applied automatically or against Production by this milestone.
 
 The shared product lead architecture intentionally keeps both intents under `lead_type = DEMO`:
 
@@ -141,8 +142,21 @@ Attribution contract:
 - `referrer` is a normalized external HTTP(S) `document.referrer`, when available.
 - Same-origin Venkoi referrers are discarded.
 - External referrer query strings and fragments are discarded; only origin and pathname remain.
-- UTM values are read from the current Venkoi URL and stored only in `utm_source`, `utm_medium`, `utm_campaign`, and `utm_content`.
+- UTM values are read from the current Venkoi URL and stored only in `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, and `utm_term`.
+- Google Ads click identifiers are read only from the explicitly approved `gclid`, `gbraid`, and `wbraid` parameters. They are stored as internal lead attribution fields when present; arbitrary query parameters are ignored.
 - There is no previous-SPA-page tracking, session journey tracking, fingerprinting, or cross-session attribution.
+
+## Advertising measurement foundation
+
+The intended advertising funnel is:
+
+`submitted lead` → `qualified lead` → `won/converted lead`
+
+The primary online conversion is `Custom Software Lead Submitted`, emitted only after the backend confirms successful lead persistence. A button click or form-submit attempt is not a conversion. Future `Qualified Lead` and `Won`/converted events are owner-operated outcomes: a human decides whether a lead is commercially qualified and whether it became business. The current website does not automatically assign `QUALIFIED`, send Google Ads conversion events, or implement Enhanced Conversions.
+
+The canonical lifecycle values are `NEW` (submitted and not meaningfully reviewed), `QUALIFIED` (legitimate prospect with fit worth pursuing), `DISQUALIFIED` (not a viable prospect), `WON` (paying business or accepted commercial engagement), and `LOST` (legitimate/qualified lead that did not become business). No status-management UI is included in this milestone.
+
+Storing an advertising click identifier in Venkoi's database is separate from actively sending customer data to Google or another advertising provider. No Google tag, Google Ads account ID, conversion label, or Enhanced Conversions payload is configured by this milestone. Customer email, phone, and other submitted personal information are not sent to Google.
 
 ## Environment and secret contract
 

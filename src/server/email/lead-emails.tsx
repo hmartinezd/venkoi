@@ -49,6 +49,7 @@ export function getInternalEmailFields(lead: LeadRecord, resolver: LeadProductRe
     ['UTM medium', lead.utm_medium],
     ['UTM campaign', lead.utm_campaign],
     ['UTM content', lead.utm_content],
+    ['UTM term', lead.utm_term],
     ['Referrer', lead.referrer],
     ['Lead ID', lead.id],
     ['Created', lead.created_at]

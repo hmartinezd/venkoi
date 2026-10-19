@@ -64,6 +64,10 @@ export const leadSubmissionSchema = z
     utm_medium: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
     utm_campaign: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
     utm_content: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
+    utm_term: z.preprocess(normalizeString, z.string().max(100).nullable().optional()),
+    gclid: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
+    gbraid: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
+    wbraid: z.preprocess(normalizeString, z.string().max(200).nullable().optional()),
     referrer: z.preprocess(normalizeString, z.string().max(500).nullable().optional()),
     website: z.preprocess(normalizeString, z.string().nullable().optional()) // Honeypot
   })

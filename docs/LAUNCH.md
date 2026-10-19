@@ -86,7 +86,9 @@ psql "$DATABASE_URL" -f db/migrations/003_update_service_interests.sql
 
 4. `004_migrate_legacy_product_slug.sql` converts previously persisted legacy product values to the current `serve` value. Review this migration before applying it; it must not be applied automatically by the application or by this coding task.
 
-The Neon SQL Editor/Console may be used instead, preserving the same `001` → `002` → `003` → `004` order. For an existing database, first determine its actual migration and schema state. Do not assume migration 002 was applied merely because the database exists; apply only the missing migrations in order and verify the resulting table, indexes, defaults, nullability, named checks, and the narrow product-value conversion against the SQL files.
+5. `005_add_paid_attribution_and_lifecycle.sql` adds nullable `utm_term`, `gclid`, `gbraid`, and `wbraid` columns, then maps legacy `CONTACTED`, `CONVERTED`, and `CLOSED` statuses to the canonical `NEW`, `WON`, and `LOST` values before replacing the status check with `NEW`, `QUALIFIED`, `DISQUALIFIED`, `WON`, and `LOST`. Review this migration before applying it; it must not be applied automatically or against Production by this coding task.
+
+The Neon SQL Editor/Console may be used instead, preserving the same `001` → `002` → `003` → `004` → `005` order. For an existing database, first determine its actual migration and schema state. Do not assume migration 002 was applied merely because the database exists; apply only the missing migrations in order and verify the resulting table, indexes, defaults, nullability, named checks, attribution columns, canonical lifecycle values, and the narrow product-value conversion against the SQL files.
 
 ## Resend setup
 
@@ -97,6 +99,10 @@ The code treats missing or invalid email configuration as a logged skip after pe
 ## Lead attribution semantics
 
 `source_path` is the form submission route without a query string. `referrer` is the normalized external HTTP(S) document referrer when available, with query and fragment removed. Same-origin Venkoi referrers are intentionally discarded and must not be interpreted as the previous SPA route. Internal customer-journey tracking is not implemented in V1.
+
+The approved persisted acquisition fields are `source_path`, `referrer`, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `gclid`, `gbraid`, and `wbraid`. The paid-search identifiers are internal attribution metadata; arbitrary query-string values are not persisted.
+
+The planned conversion hierarchy is `Custom Software Lead Submitted` after successful persistence, followed by a future human-operated `Qualified Lead` outcome and a future `Won`/converted outcome. Google Ads configuration, conversion labels, advertising scripts, and Enhanced Conversions remain deferred until the owner has an account, conversion action, privacy review, and approval.
 
 ## Established production services
 
