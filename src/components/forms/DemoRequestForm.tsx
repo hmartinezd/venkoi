@@ -12,6 +12,7 @@ import type { Locale } from '@/i18n/config';
 import { getLocalizedPath, internalRoutes } from '@/i18n/routing';
 import { LocalizedLink } from '@/i18n/navigation';
 import type { DemoConversionSource } from '@/lib/product-links';
+import type { DemoIntent } from '@/lib/demo-intent';
 
 interface DemoRequestFormProps {
   locale: Locale;
@@ -35,12 +36,21 @@ export function DemoRequestForm({
   conversionSource
 }: DemoRequestFormProps) {
   const activeProduct = initialProduct || getDefaultDemoProduct().slug;
+  const initialIntent: DemoIntent = fixedEarlyAccessIntent || (earlyAccessEnabled && initialInterest === 'early-access')
+    ? 'early-access'
+    : 'demo';
   const t = useTranslations('demoPage.form');
   const tp = useTranslations('demoPage');
   const formRef = useRef<HTMLFormElement>(null);
   const optionalDetailsRef = useRef<HTMLDetailsElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
+  const [manualIntent, setManualIntent] = useState<DemoIntent | null>(
+    initialIntent === 'early-access' ? 'early-access' : null
+  );
+  const requestIntent: DemoIntent = fixedEarlyAccessIntent
+    ? 'early-access'
+    : (manualIntent ?? 'demo');
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -50,7 +60,6 @@ export function DemoRequestForm({
     location_count: '',
     current_system: '',
     message: '',
-    early_access_interest: earlyAccessEnabled && initialInterest === 'early-access',
     website: '' // Honeypot
   });
 
@@ -72,6 +81,19 @@ export function DemoRequestForm({
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
   const hasStartedRef = useRef(false);
+
+  // The page owns the URL intent. The form clears intent-specific UI after a
+  // client-side demo/access navigation without discarding entered fields.
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      setManualIntent(null);
+      setErrors({});
+      setStatus('idle');
+      setStatusMessage('');
+      hasStartedRef.current = false;
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [fixedEarlyAccessIntent, locale, activeProduct]);
 
   useEffect(() => {
     if (status === 'success') {
@@ -120,7 +142,7 @@ export function DemoRequestForm({
 
     if (!hasStartedRef.current) {
       hasStartedRef.current = true;
-      const effectiveEarlyAccess = name === 'early_access_interest' ? checked : formData.early_access_interest;
+      const effectiveEarlyAccess = name === 'early_access_interest' ? checked : requestIntent === 'early-access';
       trackCustomEvent('demo_form_start', {
         locale,
         product: activeProduct,
@@ -129,11 +151,11 @@ export function DemoRequestForm({
       });
     }
 
-    if (isCheckbox) {
+    if (isCheckbox && name === 'early_access_interest') {
       setErrors({});
       setStatus('idle');
       setStatusMessage('');
-      setFormData((prev) => ({ ...prev, [name]: checked }));
+      setManualIntent(checked ? 'early-access' : 'demo');
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -157,7 +179,7 @@ export function DemoRequestForm({
     trackCustomEvent('demo_form_submit', {
       locale,
       product: activeProduct,
-      earlyAccess: formData.early_access_interest,
+      earlyAccess: requestIntent === 'early-access',
       source: conversionSource
     });
 
@@ -190,7 +212,7 @@ export function DemoRequestForm({
       location_count: formData.location_count,
       current_system: formData.current_system,
       message: formData.message,
-      early_access_interest: formData.early_access_interest,
+      early_access_interest: requestIntent === 'early-access',
       locale,
       website: formData.website,
       ...acquisitionRef.current
@@ -241,7 +263,7 @@ export function DemoRequestForm({
         trackCustomEvent('demo_form_success', {
           locale,
           product: activeProduct,
-          earlyAccess: formData.early_access_interest,
+          earlyAccess: requestIntent === 'early-access',
           source: conversionSource
         });
       }
@@ -254,11 +276,11 @@ export function DemoRequestForm({
   };
 
   if (status === 'success') {
-    const successTitle = formData.early_access_interest
+    const successTitle = requestIntent === 'early-access'
       ? tp('earlyAccess.successTitle')
       : tp('standard.successTitle');
 
-    const successMessage = formData.early_access_interest
+    const successMessage = requestIntent === 'early-access'
       ? tp('earlyAccess.successMessage', { productName, freeMonths })
       : tp('standard.successMessage', { productName });
 
@@ -442,7 +464,7 @@ export function DemoRequestForm({
             id="demo-early-access"
             type="checkbox"
             name="early_access_interest"
-            checked={formData.early_access_interest}
+            checked={requestIntent === 'early-access'}
             onChange={handleChange}
             className="mt-1 h-4 w-4 rounded border-border text-orange focus:ring-orange"
           />
@@ -450,7 +472,7 @@ export function DemoRequestForm({
             {t('earlyAccess', { productName, freeMonths })}
           </label>
         </div>
-        {formData.early_access_interest && (
+        {requestIntent === 'early-access' && (
           <p className="text-[11px] text-orange-text font-bold pl-7 animate-in fade-in slide-in-from-left-1">
             {tp('earlyAccess.badge', { freeMonths })}
           </p>
@@ -467,7 +489,7 @@ export function DemoRequestForm({
         >
           {pending
             ? t('submitting')
-            : formData.early_access_interest
+            : requestIntent === 'early-access'
               ? t('submitEarlyAccess')
               : t('submit')}
         </Button>

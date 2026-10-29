@@ -23,9 +23,10 @@ assert.ok(!story.includes('overflow-x-auto'), 'Workflow should wrap rather than 
 assert.ok(page.includes('filterMarketableEntries'), 'Product chapters should consult shared marketing availability');
 assert.ok(page.includes('getWorkflowMarketingState'), 'Workflow copy should derive its availability state');
 assert.ok(nav.includes('filterProductNavigationItems'), 'Navigation should use shared filtering for hidden chapters');
-assert.match(nav, /grid-cols-\[minmax\(0,1fr\)_auto\][\s\S]*lg:grid-cols-\[auto_minmax\(0,1fr\)_auto\]/, 'Product navigation should use two mobile rows and retain a desktop single row');
-assert.match(nav, /<nav[\s\S]*col-span-2[\s\S]*row-start-2[\s\S]*overflow-x-auto/, 'Mobile anchor navigation should have a distinct, horizontally scrollable full-width row');
+assert.match(nav, /grid-cols-1[\s\S]*lg:grid-cols-\[auto_minmax\(0,1fr\)\]/, 'Product navigation should use two mobile rows and a compact desktop row without a duplicate CTA');
+assert.match(nav, /<nav[\s\S]*row-start-2[\s\S]*overflow-x-auto/, 'Mobile anchor navigation should have a distinct, horizontally scrollable full-width row');
 assert.match(nav, /<TrackedButton[\s\S]*source: 'product_nav'[\s\S]*eventName="serve_demo_cta"/, 'Product Nav Request Demo analytics should remain intact');
+assert.match(nav, /lg:hidden/, 'The product-bar demo CTA should be mobile-only');
 assert.doesNotMatch(nav, /flex-wrap|Request Access/, 'Product anchor links should not wrap and Product Nav should not add Request Access');
 assert.match(page, /visibleChapterIds=\{chapters\.map\(\(\{ id \}\) => id\)\}/, 'Navigation visibility should use the rendered chapters');
 assert.match(read('src/components/product/serve/ServeHero.tsx'), /id="overview"/, 'Overview navigation must retain its hero target');

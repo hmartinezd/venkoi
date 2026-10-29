@@ -3,6 +3,12 @@ import { isEarlyAccessInterest } from './products';
 
 export type DemoIntent = 'demo' | 'early-access';
 
+export type RequestIntent =
+  | 'serve-demo'
+  | 'serve-access'
+  | 'custom-software'
+  | 'general-contact';
+
 export function resolveDemoIntent(
   product: Pick<Product, 'earlyAccess'>,
   interest: string | string[] | undefined

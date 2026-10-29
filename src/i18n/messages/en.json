@@ -15,7 +15,6 @@
     "about": "About",
     "contact": "Contact",
     "insights": "Insights",
-    "customSoftware": "Custom Software",
     "mobileApplications": "Mobile Applications",
     "webApplications": "Websites & Web Applications"
   },
@@ -55,7 +54,7 @@
       "availability": {
         "available": "These workflows are part of the current product experience. Accepted participants can use {productName} free for {freeMonths} months.",
         "early-access": "Some workflows are currently available to accepted participants, who can use {productName} free for {freeMonths} months.",
-        "launch-release": "The first release is planned to include these workflows. Accepted participants can use {productName} free for {freeMonths} months.",
+        "launch-release": "These workflows define the product scope. Accepted participants can use {productName} free for {freeMonths} months.",
         "not-marketed": "Accepted participants can use {productName} free for {freeMonths} months."
       },
     "heading": "Follow the information from an invoice to the decisions that follow.",
@@ -229,7 +228,7 @@
     "ai": {
       "eyebrow": "AI IN REAL WORKFLOWS",
       "heading": "AI is most useful when it solves a specific problem inside a real process.",
-      "body": "AI (artificial intelligence) can be one tool inside a broader software solution. Venkoi can help identify where it makes sense, integrate it into an existing workflow where feasible, or include it directly in custom software we build. That may mean a new application with AI capabilities, a connection to existing systems where technical access permits, or a controlled workflow instead of a raw chatbot.",
+      "body": "AI (artificial intelligence) can be one tool inside a broader software solution. Venkoi can help identify where it makes sense, integrate it into an existing workflow where feasible, or include it directly in custom software we build. That may mean a dedicated application with AI capabilities, a connection to existing systems where technical access permits, or a controlled workflow instead of a raw chatbot.",
       "useCase1Title": "Document and data extraction",
       "useCase1Body": "Extract structured information from invoices, receipts, forms, PDFs, emails, and other business documents.",
       "useCase2Title": "Internal knowledge assistants",
@@ -332,7 +331,7 @@
     "body": "Venkoi is a software company based in Tampa Bay. We create our own products and accept selected custom projects when the problem and scope fit how we work.",
     "strategicDirectionEyebrow": "WHAT WE BUILD",
     "productDirectionHeading": "Venkoi creates software products and accepts selected custom projects.",
-    "productDirectionBody": "Our featured product addresses restaurant inventory and food cost. For selected mobile and web projects, we define the problem and first useful scope before moving through design, development, and testing.",
+    "productDirectionBody": "Our featured product addresses restaurant inventory and food cost. For selected mobile and web projects, we define the problem and essential scope before moving through design, development, and testing.",
     "primaryPillarBadge": "FEATURED PRODUCT",
     "venkoiProductsTitle": "Venkoi Products",
     "venkoiProductsDesc": "Our featured product, {productName}, connects restaurant invoices, purchases, inventory changes, food cost, physical counts, and reorder preparation.",
@@ -490,7 +489,7 @@
       "successTitle": "Thanks — we received your access request.",
       "successMessage": "We'll review the information you shared. If accepted, you can use {productName} free for {freeMonths} months. Acceptance and timing are not guaranteed.",
       "agendaEyebrow": "ACCESS REQUEST",
-      "agendaHeading": "An access request starts with the restaurant operation, current workflow, and fit for the initial release."
+      "agendaHeading": "An access request starts with the restaurant operation, current workflow, and fit with the product's current scope."
     },
     "nextSteps": {
       "heading": "What happens next?",
@@ -587,12 +586,13 @@
       "counts": "Counts & Reorder",
       "owner": "Owner View",
       "earlyAccess": "{freeMonths} Months Free",
-      "requestDemo": "Request a Demo"
+      "requestDemo": "Request a Demo",
+      "overflowHint": "More Serve sections continue to the right. Use Tab or horizontal scrolling to explore them."
     },
     "hero": {
       "eyebrow": "{productName} · RESTAURANT INVENTORY",
       "heading": "Know what came in.\nKnow what you have.\nKnow what it costs.\nKnow what needs attention.",
-      "body": "{productName} connects purchasing, inventory movement, supplier prices, food cost, physical counts, and reorder preparation for independent restaurants. It is local-first, starts on Android, and initially focuses on one restaurant location.",
+      "body": "{productName} connects purchasing, inventory movement, supplier prices, food cost, physical counts, and reorder preparation for independent restaurants. It is local-first, starts on Android, and focuses on one restaurant location.",
       "primaryCta": "Request a Demo",
       "secondaryCta": "Request Access",
       "microcopy": "{freeMonths} months free for accepted participants.",
@@ -606,7 +606,7 @@
         "availability": {
           "available": "These workflows are part of the current product experience.",
           "early-access": "Some of these workflows are currently available to participating restaurants.",
-          "launch-release": "The initial release is planned to include the workflows described below.",
+          "launch-release": "The product focuses on the workflows described below.",
           "not-marketed": ""
         },
         "steps": ["Setup", "Invoice", "Review", "Purchase", "Inventory & Activity", "Costing", "Count", "Reorder", "Owner Review"]
@@ -637,7 +637,7 @@
           "heading": "Count the operation, review variance, then prepare what to buy.",
         "body": "A count is not just data entry. Enter and resume practical count units, compare expected with counted, review variance, and explicitly post. Below-par items can then be calculated to par using package configuration and grouped by supplier for a shopping list.",
           "points": ["Search, filter, progress, and resume", "Transparent count-unit conversions", "Expected, counted, and variance review", "Package-aware quantities and a shareable CSV shopping list"],
-          "trust": "0 means counted and found zero; uncounted means not counted yet. The product helps prepare the order; the initial release does not place supplier orders electronically."
+          "trust": "0 means counted and found zero; uncounted means not counted yet. The product helps prepare the order; it does not place supplier orders electronically."
         },
         "owner": {
           "eyebrow": "OWNER VIEW",
@@ -670,7 +670,7 @@
       "details": [
         "Use the product in one restaurant location",
         "Share feedback directly with Venkoi",
-        "Work directly with Venkoi while the initial release develops",
+        "Work directly with Venkoi as the product improves",
         "Help us learn what needs to work better in the operation"
       ],
       "primaryCta": "Request a Demo",
@@ -681,14 +681,14 @@
       "items": [
         {"q":"What is {productName}?","a":"{productName} is local-first restaurant inventory and food-cost software for independent restaurants."},
         {"q":"Does it automatically post invoices?","a":"No. Detection creates a reviewable draft. The restaurant reviews, corrects, and explicitly posts the purchase."},
-        {"q":"Can it track supplier price changes?","a":"The launch release compares current and previous prices using normalized base-unit cost and retains the source purchase line. If package conversion data is insufficient, it shows that the comparison is incomplete."},
-        {"q":"Can it calculate preparation and menu-item cost?","a":"The launch release covers preparation batch and yield cost, plus menu plate cost, food-cost percentage, and gross profit before labor and overhead."},
+        {"q":"Can it track supplier price changes?","a":"Venkoi Serve compares current and previous prices using normalized base-unit cost and retains the source purchase line. If package conversion data is insufficient, it shows that the comparison is incomplete."},
+        {"q":"Can it calculate preparation and menu-item cost?","a":"Venkoi Serve covers preparation batch and yield cost, plus menu plate cost, food-cost percentage, and gross profit before labor and overhead."},
         {"q":"What happens when costs are missing?","a":"The product labels cost coverage as Complete, Partial, or Missing costs. It does not invent precision when source costs are unavailable."},
-        {"q":"Does it support physical counts?","a":"The launch release includes count units, numeric entry, progress and resume, variance review, and explicit posting. Zero remains different from uncounted."},
-        {"q":"Does it help with reordering?","a":"Yes. It identifies below-par ingredients and prepares a supplier-grouped, package-aware shopping list. The initial release does not electronically place supplier orders."},
-        {"q":"Does it connect to POS or accounting systems?","a":"Not in the first release. No integration date is being promised."},
-        {"q":"What platform is the initial release?","a":"Android. The product is local-first; Web, iOS, and cloud sync are not first-release availability claims."},
-        {"q":"Is it designed for multi-location chains?","a":"The initial focus is one restaurant and one location, not enterprise multi-location management."}
+        {"q":"Does it support physical counts?","a":"Venkoi Serve includes count units, numeric entry, progress and resume, variance review, and explicit posting. Zero remains different from uncounted."},
+        {"q":"Does it help with reordering?","a":"Yes. It identifies below-par ingredients and prepares a supplier-grouped, package-aware shopping list. It does not electronically place supplier orders."},
+        {"q":"Does it connect to POS or accounting systems?","a":"Not currently. No integration date is being promised."},
+        {"q":"What platform does Venkoi Serve support?","a":"Android. The product is local-first; Web, iOS, and cloud sync are not promised."},
+        {"q":"Is it designed for multi-location chains?","a":"Venkoi Serve is designed for one restaurant and one location, not enterprise multi-location management."}
       ],
       "gettingStartedDemoOnly": "Request a demo to get started."
     },
@@ -749,13 +749,13 @@
   "mobileServicePage": {
     "eyebrow": "MOBILE APPLICATIONS",
     "heroHeading": "What should the app help someone do?",
-    "heroBody": "Bring the business problem, who will use the app, what exists today, and what the first useful version must accomplish. Venkoi defines, designs, builds, and tests selected iOS and Android projects.",
+    "heroBody": "Bring the business problem, who will use the app, what exists today, and what the core experience must accomplish. Venkoi defines, designs, builds, and tests selected iOS and Android projects.",
     "primaryCta": "Tell us about your mobile app",
     "rangeHeading": "Mobile applications for different kinds of ideas.",
     "rangeItem1": "Customer-facing experiences",
     "rangeItem2": "Internal tools",
     "rangeItem3": "Workflow-driven applications",
-    "rangeItem4": "New applications",
+    "rangeItem4": "Dedicated applications",
     "rangeItem5": "Existing applications that need improvement",
     "platformHeading": "Built for iOS and Android.",
     "platformBody": "The right technical approach depends on the product. We focus first on the experience, requirements, and long-term needs, then choose an implementation approach that fits the project.",
@@ -768,7 +768,7 @@
       "prompt1": "What should the application help someone do?",
       "prompt2": "Who will use it?",
       "prompt3": "What exists today, if anything?",
-      "prompt4": "What matters most in the first useful version?",
+      "prompt4": "What matters most in the core experience?",
       "cta": "Tell us about your mobile app"
     },
     "faq": {
@@ -910,7 +910,7 @@
         "traceTitle": "Keep the adjustment connected to the count",
         "traceBody": "After posting, the adjustment should remain linked to the physical-count event. Later, an operator can see what changed, where it came from, when it happened, and which operational action caused it. History is a trust layer, not just a log.",
         "productTitle": "How {productName} approaches physical counts",
-        "productAvailability": {"available":"{productName} supports numeric count entry, visible count units and conversions, saved progress, and expected-versus-counted review. The restaurant explicitly posts the reviewed adjustment, and insufficient conversion information remains visible.","early-access":"Some of these physical-count workflows are currently available to participating restaurants. They include reviewable numeric counts, visible units and conversions, saved progress, and explicit adjustment posting, with limitations shown when conversion information is insufficient.","launch-release":"The initial release of {productName} is planned to include numeric count entry, visible count units and conversions, saved progress, and expected-versus-counted review. The restaurant will explicitly post the reviewed adjustment, and insufficient conversion information will remain visible."},
+        "productAvailability": {"available":"{productName} supports numeric count entry, visible count units and conversions, saved progress, and expected-versus-counted review. The restaurant explicitly posts the reviewed adjustment, and insufficient conversion information remains visible.","early-access":"Some of these physical-count workflows are currently available to participating restaurants. They include reviewable numeric counts, visible units and conversions, saved progress, and explicit adjustment posting, with limitations shown when conversion information is insufficient.","launch-release":"{productName} focuses on numeric count entry, visible count units and conversions, saved progress, and expected-versus-counted review. The restaurant explicitly posts the reviewed adjustment, and insufficient conversion information remains visible."},
         "ctaDemo": "Request a Demo",
         "ctaExplore": "Explore {productName}"
       }
@@ -940,7 +940,7 @@
         "coverageTitle": "Missing source costs must stay visible",
         "coverageBody": "If an ingredient has no supported cost, any preparation or menu item that depends on it is incomplete. Cost coverage can be described as Complete, Partial, or Missing costs. If source costs are missing, show the gap instead of inventing precision.",
         "productTitle": "How {productName} connects the cost chain",
-        "productAvailability": {"available":"{productName} connects supplier purchase cost to ingredient cost, preparation and batch cost, yield, and menu-item cost. It presents food-cost percentage, gross profit before labor and overhead, and cost coverage while keeping source gaps visible.","early-access":"Some of these connected costing workflows are currently available to participating restaurants. They connect supported source costs through ingredients, preparations, yield, and menu items while keeping missing-cost coverage visible.","launch-release":"For the initial release, {productName} is planned to connect supplier purchase cost to ingredient cost, preparation and batch cost, yield, and menu-item cost. It is planned to show food-cost percentage, gross profit before labor and overhead, and cost coverage while keeping source gaps visible."},
+        "productAvailability": {"available":"{productName} connects supplier purchase cost to ingredient cost, preparation and batch cost, yield, and menu-item cost. It presents food-cost percentage, gross profit before labor and overhead, and cost coverage while keeping source gaps visible.","early-access":"Some of these connected costing workflows are currently available to participating restaurants. They connect supported source costs through ingredients, preparations, yield, and menu items while keeping missing-cost coverage visible.","launch-release":"{productName} focuses on connecting supplier purchase cost to ingredient cost, preparation and batch cost, yield, and menu-item cost. It focuses on food-cost percentage, gross profit before labor and overhead, and cost coverage while keeping source gaps visible."},
         "ctaDemo": "Request a Demo",
         "ctaExplore": "Explore {productName}"
       }
@@ -966,7 +966,7 @@
         "sourceTitle": "Keep the number connected to its source",
         "sourceBody": "An operator reviewing a change should be able to see the supplier, package, purchase date, source purchase line, and previous comparable purchase. That context makes price history verifiable and helps reveal a packaging change or data-entry issue.",
         "productTitle": "How {productName} approaches supplier price history",
-        "productAvailability": {"available":"{productName} connects the latest comparable price with the previous comparable price, shows absolute and percentage changes, and preserves package price, normalized cost, source purchase context, and supplier history. Insufficient conversion information leaves the comparison incomplete. It does not negotiate with suppliers or electronically place orders.","early-access":"Some supplier-price workflows are currently available to participating restaurants, including supported comparable prices and source purchase context. Insufficient conversion information leaves the comparison incomplete. The product does not negotiate with suppliers or electronically place orders.","launch-release":"The initial release of {productName} is planned to connect comparable supplier prices, show absolute and percentage changes, and preserve package price, normalized cost, source purchase context, and supplier history. Insufficient conversion information will leave the comparison incomplete. It will not negotiate with suppliers or electronically place orders."},
+        "productAvailability": {"available":"{productName} connects the latest comparable price with the previous comparable price, shows absolute and percentage changes, and preserves package price, normalized cost, source purchase context, and supplier history. Insufficient conversion information leaves the comparison incomplete. It does not negotiate with suppliers or electronically place orders.","early-access":"Some supplier-price workflows are currently available to participating restaurants, including supported comparable prices and source purchase context. Insufficient conversion information leaves the comparison incomplete. The product does not negotiate with suppliers or electronically place orders.","launch-release":"{productName} focuses on comparable supplier prices, absolute and percentage changes, package price, normalized cost, source purchase context, and supplier history. Insufficient conversion information leaves the comparison incomplete. It does not negotiate with suppliers or electronically place orders."},
         "ctaDemo": "Request a Demo",
         "ctaExplore": "Explore {productName}"
       }
@@ -988,7 +988,7 @@
         "existingTitle": "Share what already exists",
         "existingBody": "Whether it's a stack of paper forms, a complicated spreadsheet, or an aging piece of software, showing how the process works today gives us the best starting point for improvement.",
         "prioritiesTitle": "Separate what matters now from what can come later",
-        "prioritiesBody": "You don't need every feature on day one. Bringing an idea of what is essential for the first version allows us to focus on delivering value quickly.",
+        "prioritiesBody": "You don't need every feature on day one. Bringing an idea of the essential scope allows us to focus on delivering value quickly.",
         "processTitle": "From idea to design, development and testing",
         "processBody": "Our four-stage lifecycle—Idea & Direction, Design, Development, and Testing & Quality—is designed to take your goal and turn it into a high-quality product, even if you don't have the technical details figured out yet.",
         "cta": "Tell us about your idea"

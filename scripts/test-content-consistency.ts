@@ -45,6 +45,12 @@ for (const [locale, messages] of [['en', en], ['es', es]] as const) {
   assert.deepEqual(violations, [], `${locale} public copy must not imply an available product is provisional`);
 }
 
+const launchStageCopy = /first release|initial release|first version|initial version|first useful (?:version|scope)|initially focuses|launch release|new applications?|pre-launch|primera versión|versión inicial|primer lanzamiento|enfoque inicial|aplicaciones? nuevas|lanzamiento inicial/i;
+for (const [locale, messages] of [['en', en], ['es', es]] as const) {
+  const violations = strings(messages).filter((value) => launchStageCopy.test(value));
+  assert.deepEqual(violations, [], `${locale} public copy must describe current scope rather than launch stage`);
+}
+
 const marketingMessages = [en.home, en.servicesPage, en.aboutPage, en.contactPage, en.demoPage, en.servePage, en.footer];
 const stockSaasCopy = /unlock powerful insights|streamline your operations|transform your workflow|seamless end-to-end experience|empower your business|turn complexity into clarity|game-changing/i;
 assert.deepEqual(
@@ -127,7 +133,7 @@ assert.match(header, /buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source:
 assert.match(header, /routeKey === 'customSoftware'/);
 assert.match(header, /trackCustomEvent\('custom_software_cta'/);
 assert.match(header, /tCommon\('startConversation'\)/);
-assert.match(header, /tNav\('customSoftware'\)/);
+assert.doesNotMatch(header, /tNav\('customSoftware'\)/, 'Custom Software must not be a global navigation item');
 assert.match(header, /isEarlyAccessActive/);
 assert.match(header, /tCommon\('requestAccess'\)/);
 assert.match(header, /serve_early_access_cta/);

@@ -34,7 +34,9 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
   const isProductsActive = routeKey === 'productsServe';
   const isInsightsActive = isInsightRoute(routeKey);
   const isServicesActive = isServiceRoute(routeKey);
-  const isCustomSoftwareActive = routeKey === 'customSoftware';
+  // Custom Software is a campaign route, not a primary navigation section.
+  // Keep its contextual header CTA without treating it as an active nav item.
+  const isCustomSoftwarePage = routeKey === 'customSoftware';
   const isEarlyAccessActive = routeKey === 'demo' && searchParams.get('interest') === 'early-access';
   const isAboutActive = routeKey === 'about';
   const isContactActive = routeKey === 'contact';
@@ -152,18 +154,6 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
           </LocalizedLink>
 
           <LocalizedLink
-            href={internalRoutes.customSoftware}
-            locale={locale}
-            aria-current={isCustomSoftwareActive ? 'page' : undefined}
-            className={cn(
-              'text-sm font-medium transition hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
-              isCustomSoftwareActive ? 'text-orange-text' : 'text-ink'
-            )}
-          >
-            {tNav('customSoftware')}
-          </LocalizedLink>
-
-          <LocalizedLink
             href={internalRoutes.contact}
             locale={locale}
             aria-current={isContactActive ? 'page' : undefined}
@@ -180,11 +170,11 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <LanguageSwitcher locale={locale} variant="header" />
           <Button
-            href={isCustomSoftwareActive ? '#custom-software-form' : productCtaHref}
+            href={isCustomSoftwarePage ? '#custom-software-form' : productCtaHref}
             variant="primary"
             className="text-xs"
             onClick={() => {
-              if (isCustomSoftwareActive) {
+              if (isCustomSoftwarePage) {
                 trackCustomEvent('custom_software_cta', { locale, source: 'custom_software_header' });
               } else if (isEarlyAccessActive) {
                 trackCustomEvent('serve_early_access_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header', earlyAccess: true });
@@ -193,7 +183,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               }
             }}
           >
-            {isCustomSoftwareActive ? tCommon('startConversation') : productCtaLabel}
+            {isCustomSoftwarePage ? tCommon('startConversation') : productCtaLabel}
           </Button>
         </div>
 
@@ -279,18 +269,6 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               {tNav('services')}
             </LocalizedLink>
             <LocalizedLink
-              href={internalRoutes.customSoftware}
-              locale={locale}
-              onClick={() => setMenuOpen(false)}
-              aria-current={isCustomSoftwareActive ? 'page' : undefined}
-              className={cn(
-                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
-                isCustomSoftwareActive ? 'text-orange-text' : 'text-ink'
-              )}
-            >
-              {tNav('customSoftware')}
-            </LocalizedLink>
-            <LocalizedLink
               href={internalRoutes.contact}
               locale={locale}
               onClick={() => setMenuOpen(false)}
@@ -304,25 +282,27 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             </LocalizedLink>
           </nav>
 
-          <div className="mt-6 pt-4 border-t border-border">
-            <Button
-              href={isCustomSoftwareActive ? '#custom-software-form' : productCtaHref}
-              variant="primary"
-              className="w-full justify-center"
-              onClick={() => {
-                if (isCustomSoftwareActive) {
-                  trackCustomEvent('custom_software_cta', { locale, source: 'custom_software_mobile_header' });
-                } else if (isEarlyAccessActive) {
-                  trackCustomEvent('serve_early_access_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header', earlyAccess: true });
-                } else {
-                  trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
-                }
-                setMenuOpen(false);
-              }}
-            >
-              {isCustomSoftwareActive ? tCommon('startConversation') : productCtaLabel}
-            </Button>
-          </div>
+          {!isProductsActive ? (
+            <div className="mt-6 pt-4 border-t border-border">
+              <Button
+                href={isCustomSoftwarePage ? '#custom-software-form' : productCtaHref}
+                variant="primary"
+                className="w-full justify-center"
+                onClick={() => {
+                  if (isCustomSoftwarePage) {
+                    trackCustomEvent('custom_software_cta', { locale, source: 'custom_software_mobile_header' });
+                  } else if (isEarlyAccessActive) {
+                    trackCustomEvent('serve_early_access_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header', earlyAccess: true });
+                  } else {
+                    trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
+                  }
+                  setMenuOpen(false);
+                }}
+              >
+                {isCustomSoftwarePage ? tCommon('startConversation') : productCtaLabel}
+              </Button>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </header>

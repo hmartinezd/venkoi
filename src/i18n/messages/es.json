@@ -15,7 +15,6 @@
     "about": "Nosotros",
     "contact": "Contacto",
     "insights": "Recursos",
-    "customSoftware": "Software a medida",
     "mobileApplications": "Aplicaciones Móviles",
     "webApplications": "Páginas Web y Aplicaciones Web"
   },
@@ -55,7 +54,7 @@
       "availability": {
         "available": "Estas funciones ya forman parte de la experiencia actual. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
         "early-access": "Algunas funciones ya están disponibles para participantes aceptados, quienes pueden usar {productName} gratis durante {freeMonths} meses.",
-        "launch-release": "La primera versión está prevista para incluir estas funciones. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
+        "launch-release": "Estas funciones definen el alcance del producto. Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses.",
         "not-marketed": "Los participantes aceptados pueden usar {productName} gratis durante {freeMonths} meses."
       },
       "heading": "Sigue la información desde la factura hasta las decisiones que vienen después.",
@@ -229,7 +228,7 @@
     "ai": {
       "eyebrow": "IA EN PROCESOS REALES",
       "heading": "La IA aporta más valor cuando resuelve un problema concreto dentro de un proceso real.",
-      "body": "La inteligencia artificial (IA) puede ser una herramienta dentro de una solución de software más amplia. Venkoi puede ayudarte a identificar dónde tiene sentido aplicarla, integrarla en un flujo existente cuando sea viable o incorporarla directamente al software a medida que desarrollamos. Puede tratarse de una aplicación nueva con capacidades de IA, una conexión con sistemas existentes cuando haya acceso técnico o un flujo controlado en lugar de un chatbot abierto.",
+      "body": "La inteligencia artificial (IA) puede ser una herramienta dentro de una solución de software más amplia. Venkoi puede ayudarte a identificar dónde tiene sentido aplicarla, integrarla en un flujo existente cuando sea viable o incorporarla directamente al software a medida que desarrollamos. Puede tratarse de una aplicación dedicada con capacidades de IA, una conexión con sistemas existentes cuando haya acceso técnico o un flujo controlado en lugar de un chatbot abierto.",
       "useCase1Title": "Extracción de documentos y datos",
       "useCase1Body": "Extraer información estructurada de facturas, recibos, formularios, PDFs, correos electrónicos y otros documentos empresariales.",
       "useCase2Title": "Asistentes de conocimiento interno",
@@ -356,7 +355,7 @@
         "body": "La tecnología no es el punto de partida. Primero entendemos el problema, las personas involucradas y qué debe mejorar o ser más sencillo."
       },
       "p2": {
-        "title": "Crea la versión útil primero.",
+      "title": "Define primero el alcance esencial.",
         "body": "Nos enfocamos en el proceso y resultado más importante antes de añadir complejidad innecesaria."
       },
       "p3": {
@@ -490,7 +489,7 @@
       "successTitle": "Gracias — recibimos tu solicitud de acceso.",
       "successMessage": "Revisaremos la información que compartiste. Si tu solicitud es aceptada, podrás usar {productName} gratis durante {freeMonths} meses. La aceptación y las fechas no están garantizadas.",
       "agendaEyebrow": "SOLICITUD DE ACCESO",
-      "agendaHeading": "Una solicitud de acceso comienza con la operación del restaurante, el flujo de trabajo actual y el encaje con la versión inicial."
+      "agendaHeading": "Una solicitud de acceso comienza con la operación del restaurante, el flujo de trabajo actual y el encaje con el alcance actual del producto."
     },
     "nextSteps": {
       "heading": "¿Qué pasa después?",
@@ -587,12 +586,13 @@
       "counts": "Conteo y Reposición",
       "owner": "Vista del Dueño",
       "earlyAccess": "{freeMonths} Meses Gratis",
-      "requestDemo": "Solicita una demo"
+      "requestDemo": "Solicita una demo",
+      "overflowHint": "Hay más secciones de Serve a la derecha. Usa Tab o desplázate horizontalmente para explorarlas."
     },
     "hero": {
       "eyebrow": "{productName} · INVENTARIO DE RESTAURANTES",
       "heading": "Sabes qué llegó.\nSabes qué tienes.\nSabes cuánto cuesta.\nSabes qué requiere atención.",
-      "body": "{productName} conecta compras, movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de compras para restaurantes independientes. Funciona localmente, comienza en Android y se enfoca inicialmente en un solo local.",
+      "body": "{productName} conecta compras, movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de compras para restaurantes independientes. Funciona localmente, comienza en Android y se enfoca en un solo local.",
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Solicitar Acceso",
       "microcopy": "{freeMonths} meses gratis para participantes aceptados.",
@@ -606,7 +606,7 @@
         "availability": {
           "available": "Estas funciones ya forman parte de la experiencia actual.",
           "early-access": "Algunas de estas funciones están disponibles para restaurantes participantes.",
-          "launch-release": "La primera versión está prevista para incluir las funciones descritas a continuación.",
+          "launch-release": "El producto se enfoca en las funciones descritas a continuación.",
           "not-marketed": ""
         },
         "steps": ["Configuración", "Factura", "Revisión", "Compra", "Inventario y Actividad", "Costeo", "Conteo", "Reposición", "Revisión del Dueño"]
@@ -615,7 +615,7 @@
         "invoice": {"eyebrow":"CAPTURA DE FACTURAS","heading":"Captura la factura. Revisa lo detectado. Registra cuando esté correcto.","body":"Una factura debe servir para más que guardar un documento. {productName} detecta datos desde una foto o archivo, crea un borrador de compra revisable y conserva el original para que el restaurante lo corrija antes del registro explícito.","points":["Detecta datos, líneas y totales de la factura","Conecta artículos del proveedor con ingredientes","Revisa empaques y conversiones","Corrige el borrador antes del registro explícito"],"trust":"La detección sugiere. El restaurante decide qué se registra."},
         "inventory": {"eyebrow":"INVENTARIO Y TRAZABILIDAD","heading":"Ve qué cambió y por qué.","body":"Actividad responde dos preguntas: qué cambió y por qué. Cada movimiento conserva su conexión con una compra, recepción, merma, producción, conteo físico o ajuste manual cuando existe ese origen.","points":["Compras y recepción","Merma y producción","Ajustes por conteo físico","Ajustes manuales con historial de origen"]},
         "costing": {"eyebrow":"PRECIOS Y COSTO DE ALIMENTOS","heading":"Sigue los precios del proveedor hasta el costo de preparaciones y platos.","body":"Un precio válido del proveedor puede respaldar el costo usado para revisar ingredientes, preparaciones y platos. Las comparaciones necesitan datos suficientes de empaque y conversión, y la ganancia bruta sigue siendo antes de mano de obra y gastos generales.","points":["Precio comparable actual y anterior","Costo normalizado por unidad base y línea de compra de origen","Costo por lote, rendimiento y costo por unidad de rendimiento","Costo del plato, precio de venta, porcentaje de costo y ganancia bruta antes de mano de obra y gastos generales"],"trust":"Completo, Parcial o Costos faltantes: si faltan precios de compra que respalden el cálculo, el producto muestra el vacío en vez de inventar precisión. No compara empaques distintos sin datos suficientes de conversión."},
-        "counts": {"eyebrow":"CONTEOS FÍSICOS Y REPOSICIÓN","heading":"Cuenta la operación, revisa la variación y prepara lo que hay que comprar.","body":"Un conteo no termina al ingresar cantidades. Registra y reanuda unidades prácticas, compara lo esperado con lo contado, revisa la variación y registra explícitamente. Después, los artículos por debajo del nivel definido pueden calcularse hasta la cantidad objetivo, considerar empaques y agruparse por proveedor.","points":["Búsqueda, filtros, progreso y reanudación","Conversiones transparentes de unidades de conteo","Revisión de esperado, contado y variación","Cantidades según empaque y lista CSV compartible"],"trust":"0 significa contado y se encontraron cero; sin contar significa que aún no se contó. El producto ayuda a preparar el pedido; la versión inicial no envía pedidos electrónicos a proveedores."},
+        "counts": {"eyebrow":"CONTEOS FÍSICOS Y REPOSICIÓN","heading":"Cuenta la operación, revisa la variación y prepara lo que hay que comprar.","body":"Un conteo no termina al ingresar cantidades. Registra y reanuda unidades prácticas, compara lo esperado con lo contado, revisa la variación y registra explícitamente. Después, los artículos por debajo del nivel definido pueden calcularse hasta la cantidad objetivo, considerar empaques y agruparse por proveedor.","points":["Búsqueda, filtros, progreso y reanudación","Conversiones transparentes de unidades de conteo","Revisión de esperado, contado y variación","Cantidades según empaque y lista CSV compartible"],"trust":"0 significa contado y se encontraron cero; sin contar significa que aún no se contó. El producto ayuda a preparar el pedido; no envía pedidos electrónicos a proveedores."},
         "owner": {"eyebrow":"VISTA DEL DUEÑO","heading":"Revisa las señales que requieren atención operativa.","body":"Aquí el operador puede ver qué merece revisión: compras recientes, merma, cambios de precios, costos incompletos, variaciones de conteo, artículos por debajo del nivel definido, valor del inventario y actividad reciente. No completa vacíos con estimaciones ni presenta la ganancia bruta como neta.","points":["Valor del inventario y compras recientes","Merma y cambios de precios","Costos de preparaciones y platos y cobertura incompleta","Artículos por debajo del nivel definido y actividad reciente útil"]}
       },
       "dataSafety": {"eyebrow":"SEGURIDAD DE DATOS","heading":"Los datos operativos deben poder recuperarse.","body":"Las copias de seguridad, la restauración y la recuperación en un dispositivo limpio forman parte del trabajo de recuperación. No afirmamos que la copia automática esté disponible actualmente.","points":["Respaldo","Restauración y recuperación","Validación de recuperación en un dispositivo limpio","Soporte y diagnóstico"]}
@@ -637,7 +637,7 @@
       "details": [
         "Usa el producto en un solo local",
         "Comparte tus comentarios directamente con Venkoi",
-        "Trabaja directamente con Venkoi mientras avanza la versión inicial",
+        "Trabaja directamente con Venkoi mientras el producto mejora",
         "Ayúdanos a entender qué debe funcionar mejor en la operación"
       ],
       "primaryCta": "Solicita una demo",
@@ -648,14 +648,14 @@
       "items": [
         {"q":"¿Qué es {productName}?","a":"{productName} es software de inventario y costo de alimentos para restaurantes independientes, diseñado para funcionar localmente."},
         {"q":"¿Registra las facturas automáticamente?","a":"No. La detección crea un borrador revisable. El restaurante lo revisa, corrige y registra la compra explícitamente."},
-        {"q":"¿Puede seguir cambios de precios de proveedores?","a":"La primera versión compara precios actuales y anteriores mediante el costo normalizado por unidad base y conserva la línea de compra de origen. Si faltan datos de conversión, indica que la comparación está incompleta."},
-        {"q":"¿Puede calcular el costo de preparaciones y platos?","a":"La primera versión cubre costo por lote y rendimiento de preparaciones, además de costo del plato, porcentaje de costo y ganancia bruta antes de mano de obra y gastos generales."},
+        {"q":"¿Puede seguir cambios de precios de proveedores?","a":"Compara precios actuales y anteriores mediante el costo normalizado por unidad base y conserva la línea de compra de origen. Si faltan datos de conversión, indica que la comparación está incompleta."},
+        {"q":"¿Puede calcular el costo de preparaciones y platos?","a":"Cubre el costo por lote y el rendimiento de preparaciones, además del costo del plato, el porcentaje de costo y la ganancia bruta antes de mano de obra y gastos generales."},
         {"q":"¿Qué ocurre cuando faltan costos?","a":"El producto muestra la cobertura como Completa, Parcial o Costos faltantes. No inventa precisión cuando faltan precios de compra que respalden el cálculo."},
-        {"q":"¿Admite conteos físicos?","a":"La primera versión incluye unidades, entrada numérica, progreso y reanudación, revisión de variaciones y registro explícito. Cero sigue siendo distinto de sin contar."},
-        {"q":"¿Ayuda con la reposición?","a":"Sí. Identifica ingredientes por debajo del nivel definido y prepara una lista por proveedor considerando empaques. La versión inicial no envía pedidos electrónicos a proveedores."},
-        {"q":"¿Se conecta con sistemas POS o contables?","a":"No en la primera versión. No se promete una fecha de integración."},
-        {"q":"¿Cuál es la plataforma inicial?","a":"Android. El producto está diseñado para funcionar localmente; Web, iOS y sincronización en la nube no son promesas de disponibilidad de la primera versión."},
-        {"q":"¿Está diseñado para cadenas con varias ubicaciones?","a":"El enfoque inicial es un restaurante y una ubicación, no la gestión empresarial de múltiples locales."}
+        {"q":"¿Admite conteos físicos?","a":"Incluye unidades, entrada numérica, progreso y reanudación, revisión de variaciones y registro explícito. Cero sigue siendo distinto de sin contar."},
+        {"q":"¿Ayuda con la reposición?","a":"Sí. Identifica ingredientes por debajo del nivel definido y prepara una lista por proveedor considerando empaques. No envía pedidos electrónicos a proveedores."},
+        {"q":"¿Se conecta con sistemas POS o contables?","a":"Actualmente no. No se promete una fecha de integración."},
+        {"q":"¿Qué plataforma admite Venkoi Serve?","a":"Android. El producto está diseñado para funcionar localmente; no se promete Web, iOS ni sincronización en la nube."},
+        {"q":"¿Está diseñado para cadenas con varias ubicaciones?","a":"Venkoi Serve está pensado para un restaurante y una ubicación, no para la gestión empresarial de múltiples locales."}
       ],
       "gettingStartedDemoOnly": "Solicita una demo para comenzar."
     },
@@ -716,13 +716,13 @@
   "mobileServicePage": {
     "eyebrow": "APLICACIONES MÓVILES",
     "heroHeading": "¿Qué debe ayudar a hacer la aplicación?",
-    "heroBody": "Cuéntanos el problema del negocio, quién usará la aplicación, qué existe hoy y qué debe lograr la primera versión útil. Venkoi define, diseña, desarrolla y prueba proyectos seleccionados para iOS y Android.",
+    "heroBody": "Cuéntanos el problema del negocio, quién usará la aplicación, qué existe hoy y qué debe lograr la experiencia esencial. Venkoi define, diseña, desarrolla y prueba proyectos seleccionados para iOS y Android.",
     "primaryCta": "Cuéntanos sobre tu aplicación",
     "rangeHeading": "Aplicaciones móviles para diferentes tipos de ideas.",
     "rangeItem1": "Experiencias para clientes",
     "rangeItem2": "Herramientas internas",
     "rangeItem3": "Aplicaciones basadas en flujos de trabajo",
-    "rangeItem4": "Nuevas aplicaciones",
+    "rangeItem4": "Aplicaciones dedicadas",
     "rangeItem5": "Aplicaciones existentes que necesitan mejoras",
     "platformHeading": "Para iOS y Android.",
     "platformBody": "El enfoque técnico adecuado depende del producto. Primero entendemos la experiencia, los requerimientos y las necesidades a largo plazo, y a partir de ahí elegimos la forma de desarrollo que mejor se adapte al proyecto.",
@@ -735,7 +735,7 @@
       "prompt1": "¿Qué debería ayudar a hacer la aplicación?",
       "prompt2": "¿Quién la usará?",
       "prompt3": "¿Qué existe actualmente, si es que hay algo?",
-      "prompt4": "¿Qué es lo más importante en la primera versión útil?",
+      "prompt4": "¿Qué es lo más importante en la experiencia esencial?",
       "cta": "Cuéntanos sobre tu aplicación móvil"
     },
     "faq": {
@@ -862,7 +862,7 @@
         "varianceTitle": "La variación compara esperado y contado", "varianceBody": "La diferencia es una señal operativa, no una explicación. Puede indicar actividad faltante, una unidad incorrecta, desperdicio o un error de conteo.", "varianceBody2": "Antes de ajustar, conviene revisar la entrada, la unidad, las compras recientes, el desperdicio y la actividad registrada.",
         "reviewTitle": "Primero se revisa; luego se registra", "reviewBody": "Terminar el conteo no debería reescribir el inventario de forma silenciosa. El restaurante revisa la variación y registra explícitamente el ajuste aprobado.",
         "traceTitle": "El ajuste queda conectado al conteo", "traceBody": "La relación permite entender después qué cambió, de dónde vino, cuándo ocurrió y qué acción lo causó. El historial es una capa de confianza.",
-        "productTitle": "Cómo aborda {productName} los conteos", "productAvailability": {"available":"{productName} admite entradas numéricas, unidades y conversiones visibles, progreso guardado y revisión de esperado frente a contado. El restaurante registra explícitamente el ajuste revisado y las limitaciones de conversión permanecen visibles.","early-access":"Algunas de estas funciones de conteo físico están disponibles actualmente para restaurantes participantes. Incluyen conteos numéricos revisables, unidades y conversiones visibles, progreso guardado y registro explícito del ajuste.","launch-release":"La primera versión de {productName} está prevista para incluir entradas numéricas, unidades y conversiones visibles, progreso guardado y revisión de esperado frente a contado. El restaurante registrará explícitamente el ajuste revisado y las limitaciones de conversión permanecerán visibles."}, "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
+        "productTitle": "Cómo aborda {productName} los conteos", "productAvailability": {"available":"{productName} admite entradas numéricas, unidades y conversiones visibles, progreso guardado y revisión de esperado frente a contado. El restaurante registra explícitamente el ajuste revisado y las limitaciones de conversión permanecen visibles.","early-access":"Algunas de estas funciones de conteo físico están disponibles actualmente para restaurantes participantes. Incluyen conteos numéricos revisables, unidades y conversiones visibles, progreso guardado y registro explícito del ajuste.","launch-release":"{productName} se enfoca en entradas numéricas, unidades y conversiones visibles, progreso guardado y revisión de esperado frente a contado. El restaurante registra explícitamente el ajuste revisado y las limitaciones de conversión permanecen visibles."}, "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
       }
     },
     "restaurantFoodCost": {
@@ -876,7 +876,7 @@
         "menuTitle": "Un plato combina ingredientes y preparaciones", "menuBody": "El costo puede incluir ingredientes directos, porciones de preparaciones y otros componentes. Cada uno debe aportar un costo respaldado que pueda seguirse hasta su origen.",
         "percentageTitle": "El porcentaje no describe todo el negocio", "percentageBody": "El porcentaje de costo es costo del plato dividido entre precio de venta. No existe un número universalmente correcto para todos los restaurantes.", "percentageBody2": "Precio menos costo del plato muestra ganancia bruta antes de mano de obra y gastos generales. Ganancia bruta no es ganancia neta.",
         "coverageTitle": "Los costos faltantes permanecen visibles", "coverageBody": "Si falta el costo de un ingrediente, las preparaciones y platos que dependen de él están incompletos. La cobertura puede ser Completa, Parcial o Costos faltantes. No se inventa precisión.",
-        "productTitle": "Cómo conecta {productName} los costos", "productAvailability": {"available":"{productName} conecta compra, ingrediente, preparación, rendimiento y plato. Muestra porcentaje de costo, ganancia bruta antes de mano de obra y gastos generales, y cobertura, manteniendo visibles los vacíos de origen.","early-access":"Algunos de estos flujos de costos están disponibles actualmente para restaurantes participantes. Conectan costos respaldados con ingredientes, preparaciones, rendimiento y platos, y mantienen visible la cobertura de costos faltantes.","launch-release":"Para la primera versión, está previsto que {productName} conecte compra, ingrediente, preparación, rendimiento y plato. Está previsto que muestre porcentaje de costo, ganancia bruta antes de mano de obra y gastos generales, y cobertura, manteniendo visibles los vacíos de origen."}, "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
+        "productTitle": "Cómo conecta {productName} los costos", "productAvailability": {"available":"{productName} conecta compra, ingrediente, preparación, rendimiento y plato. Muestra porcentaje de costo, ganancia bruta antes de mano de obra y gastos generales, y cobertura, manteniendo visibles los vacíos de origen.","early-access":"Algunos de estos flujos de costos están disponibles actualmente para restaurantes participantes. Conectan costos respaldados con ingredientes, preparaciones, rendimiento y platos, y mantienen visible la cobertura de costos faltantes.","launch-release":"{productName} se enfoca en conectar compra, ingrediente, preparación, rendimiento y plato. Se enfoca en porcentaje de costo, ganancia bruta antes de mano de obra y gastos generales, y cobertura, manteniendo visibles los vacíos de origen."}, "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
       }
     },
     "restaurantSupplierPrices": {
@@ -889,7 +889,7 @@
         "incompleteTitle": "No fuerces la comparación", "incompleteBody": "Si falta peso o cantidad, los empaques quizá no puedan normalizarse. Un sistema confiable marca el análisis como incompleto en vez de calcular un porcentaje con totales incompatibles.",
         "changesTitle": "Muestra cambio absoluto y porcentual", "changesBody": "Cuando los costos base son comparables, el cambio absoluto muestra la diferencia por unidad y el porcentaje la relaciona con el costo anterior. La unidad debe quedar clara.",
         "sourceTitle": "Conserva el contexto de origen", "sourceBody": "Proveedor, empaque, fecha, línea de compra y compra comparable anterior vuelven verificable el historial y ayudan a detectar cambios de presentación o errores.",
-        "productTitle": "Cómo aborda {productName} el historial", "productAvailability": {"available":"{productName} muestra precios comparables, cambios absolutos y porcentuales, precio de empaque, costo normalizado, contexto de compra e historial del proveedor. Si falta información de conversión, la comparación queda incompleta. No negocia ni envía pedidos electrónicamente.","early-access":"Algunas funciones de precios de proveedores están disponibles actualmente para restaurantes participantes, incluidos precios comparables respaldados y contexto de la compra de origen. Si falta información de conversión, la comparación queda incompleta. El producto no negocia ni envía pedidos electrónicamente.","launch-release":"La primera versión de {productName} está prevista para mostrar precios comparables, cambios absolutos y porcentuales, precio de empaque, costo normalizado, contexto de compra e historial del proveedor. Si falta información de conversión, la comparación quedará incompleta. No negociará ni enviará pedidos electrónicamente."}, "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
+        "productTitle": "Cómo aborda {productName} el historial", "productAvailability": {"available":"{productName} muestra precios comparables, cambios absolutos y porcentuales, precio de empaque, costo normalizado, contexto de compra e historial del proveedor. Si falta información de conversión, la comparación queda incompleta. No negocia ni envía pedidos electrónicamente.","early-access":"Algunas funciones de precios de proveedores están disponibles actualmente para restaurantes participantes, incluidos precios comparables respaldados y contexto de la compra de origen. Si falta información de conversión, la comparación queda incompleta. El producto no negocia ni envía pedidos electrónicamente.","launch-release":"{productName} se enfoca en precios comparables, cambios absolutos y porcentuales, precio de empaque, costo normalizado, contexto de compra e historial del proveedor. Si falta información de conversión, la comparación queda incompleta. No negocia ni envía pedidos electrónicamente."}, "ctaDemo": "Solicitar una demostración", "ctaExplore": "Explorar {productName}"
       }
     },
     "startSoftwareProject": {
@@ -909,7 +909,7 @@
         "existingTitle": "Comparte lo que ya existe",
         "existingBody": "Ya sea una pila de formularios en papel, una hoja de cálculo complicada o un software antiguo, mostrar cómo funciona el proceso hoy nos da el mejor punto de partida para mejorar.",
         "prioritiesTitle": "Separa lo que importa ahora de lo que puede venir después",
-        "prioritiesBody": "No necesitas todas las funciones desde el primer día. Traer una idea de lo que es esencial para la primera versión nos permite centrarnos en entregar valor rápidamente.",
+        "prioritiesBody": "No necesitas todas las funciones desde el primer día. Traer una idea del alcance esencial nos permite centrarnos en entregar valor rápidamente.",
         "processTitle": "De la idea al diseño, desarrollo y pruebas",
         "processBody": "Nuestro ciclo de vida de cuatro etapas —Idea y Dirección, Diseño, Desarrollo, y Pruebas y Calidad— está diseñado para tomar tu objetivo y convertirlo en un producto de alta calidad, incluso si aún no tienes los detalles técnicos definidos.",
         "cta": "Cuéntanos tu idea"
