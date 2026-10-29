@@ -44,9 +44,9 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "INVENTARIO Y COSTO DE ALIMENTOS",
+      "eyebrow": "VENKOI SERVE · INVENTARIO Y COSTO DE ALIMENTOS",
       "heading": "Conoce qué llegó, qué cambió, cuánto cuesta y qué requiere atención.",
-      "body": "El producto principal de Venkoi conecta facturas y compras con movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de compras. Venkoi también acepta algunos proyectos móviles y web a medida.",
+      "body": "Venkoi Serve conecta facturas y compras con movimientos de inventario, precios de proveedores, costo de alimentos, conteos físicos y preparación de compras. Venkoi también acepta algunos proyectos móviles y web a medida.",
       "primaryCta": "Conoce {productName}"
     },
     "serve": {
@@ -81,7 +81,10 @@
       "mobileTitle": "APLICACIONES MÓVILES",
       "mobileDesc": "Aplicaciones móviles para iOS y Android diseñadas según las necesidades de usuarios, objetivos y procesos reales.",
       "webTitle": "PÁGINAS WEB Y APLICACIONES WEB",
-      "webDesc": "Páginas web y aplicaciones web adaptadas a lo que quieres lograr, desde una presencia web sencilla hasta experiencias más interactivas."
+      "webDesc": "Páginas web y aplicaciones web adaptadas a lo que quieres lograr, desde una presencia web sencilla hasta experiencias más interactivas.",
+      "customTitle": "SOFTWARE A MEDIDA",
+      "customDesc": "Herramientas internas, automatización, integraciones y software operativo adaptados a la forma en que trabaja el negocio.",
+      "customLink": "Explora el software a medida"
     },
     "local": {
       "eyebrow": "PRESENCIA LOCAL",
@@ -372,8 +375,8 @@
   },
   "contactPage": {
     "eyebrow": "CONTACTO VENKOI",
-    "heading": "Cuéntanos qué necesitas crear.",
-    "body": "Este es el camino para un proyecto móvil o web a medida. Si te interesa nuestro producto de inventario para restaurantes, solicita una demo del producto.",
+    "heading": "Cuéntanos qué necesitas.",
+    "body": "Empieza con una pregunta, una idea de proyecto, un problema con un producto existente o un proceso que necesita funcionar mejor. Podemos orientarte hacia el siguiente paso adecuado.",
     "direct": {
       "eyebrow": "CONTACTO DIRECTO",
       "heading": "¿Prefieres hablar directamente?",
@@ -485,7 +488,9 @@
       "formTitle": "Solicita acceso a {productName}",
       "badge": "{freeMonths} meses gratis.",
       "successTitle": "Gracias — recibimos tu solicitud de acceso.",
-      "successMessage": "Revisaremos la información que compartiste. Si tu solicitud es aceptada, podrás usar {productName} gratis durante {freeMonths} meses. La aceptación y las fechas no están garantizadas."
+      "successMessage": "Revisaremos la información que compartiste. Si tu solicitud es aceptada, podrás usar {productName} gratis durante {freeMonths} meses. La aceptación y las fechas no están garantizadas.",
+      "agendaEyebrow": "SOLICITUD DE ACCESO",
+      "agendaHeading": "Una solicitud de acceso comienza con la operación del restaurante, el flujo de trabajo actual y el encaje con la versión inicial."
     },
     "nextSteps": {
       "heading": "¿Qué pasa después?",
@@ -511,9 +516,11 @@
     "direct": {
       "heading": "¿Prefieres escribirnos directamente?",
       "body": "WhatsApp está disponible como alternativa al formulario de demo.",
+      "earlyAccessBody": "WhatsApp está disponible si quieres preguntar sobre la solicitud de acceso antes de enviar el formulario.",
       "whatsappLabel": "Hablar por WhatsApp",
       "whatsappAriaLabel": "Hablar con Venkoi por WhatsApp",
-      "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}."
+      "productMessage": "Hola, encontré Venkoi en línea y me gustaría saber más sobre {productName}.",
+      "productEarlyAccessMessage": "Hola, encontré Venkoi en línea y me gustaría preguntar sobre el acceso a {productName}."
     },
     "contactEscape": {
       "prompt": "¿Tienes otra pregunta?",
@@ -551,12 +558,18 @@
       "earlyAccessFixed": "Estás solicitando acceso a {productName}. Los participantes aceptados reciben {freeMonths} meses gratis.",
       "earlyAccessFixedHelp": "Esta es una solicitud. Revisaremos si el programa es adecuado para tu restaurante y te contactaremos sobre el siguiente paso; la aceptación y los plazos no están garantizados.",
       "required": "Campo obligatorio",
+      "firstNameRequired": "Escribe tu nombre.",
+      "lastNameRequired": "Escribe tu apellido.",
+      "emailRequired": "Escribe tu email de trabajo.",
+      "companyRequired": "Escribe el nombre de tu restaurante o negocio.",
       "invalidEmail": "Por favor ingresa un email de trabajo válido",
       "submissionError": "No pudimos enviar tu solicitud en este momento. Inténtalo nuevamente.",
       "networkError": "Error de red. Inténtalo más tarde.",
       "tooLong": "El texto excede la longitud máxima.",
       "invalidOption": "Opción seleccionada no válida.",
-      "botBlocked": "Solicitud bloqueada por comprobaciones de seguridad."
+      "botBlocked": "Solicitud bloqueada por comprobaciones de seguridad.",
+      "privacyNote": "Usamos estos datos para revisar tu solicitud y darte seguimiento sobre el siguiente paso adecuado.",
+      "privacyLink": "Lee la Política de Privacidad de Venkoi"
     },
     "successActions": {
       "product": "Explorar las capacidades del producto",
@@ -622,10 +635,10 @@
       "heading": "Solicita acceso a {productName}.",
       "body": "Los participantes aceptados podrán usar {productName} sin costo durante {freeMonths} meses y compartir sus comentarios directamente con Venkoi. El acceso es limitado; la aceptación y las fechas no están garantizadas.",
       "details": [
-        "Los participantes aceptados reciben {freeMonths} meses gratis",
         "Usa el producto en un solo local",
         "Comparte tus comentarios directamente con Venkoi",
-        "Trabaja directamente con Venkoi mientras avanza la versión inicial"
+        "Trabaja directamente con Venkoi mientras avanza la versión inicial",
+        "Ayúdanos a entender qué debe funcionar mejor en la operación"
       ],
       "primaryCta": "Solicita una demo",
       "secondaryCta": "Solicitar Acceso"
@@ -798,6 +811,7 @@
     "eyebrow": "RECURSOS",
     "heading": "Guías prácticas para crear y usar mejor software.",
     "body": "Ideas claras sobre productos de software, experiencias digitales y los procesos reales que hay detrás de ellos.",
+    "categoryNavigationLabel": "Explora las categorías de recursos",
     "readMore": "Leer más",
     "families": { "restaurantOperations": "Operaciones de restaurantes", "buildingSoftware": "Desarrollo de software" },
     "categories": {
@@ -933,6 +947,7 @@
     "seoDescription": "Conoce cómo Venkoi LLC recopila, utiliza, comparte y conserva información en el sitio web de Venkoi.",
     "eyebrow": "LEGAL",
     "title": "Política de Privacidad",
+    "contentsLabel": "En esta página",
     "introduction": "Esta Política explica cómo Venkoi LLC maneja información mediante el sitio web de mercadeo de Venkoi, los formularios de Contacto y Demo, y el flujo actual de interés en la oferta gratuita. No rige un futuro producto autenticado de Venkoi o {productName}.",
     "effectiveDate": "Vigente desde el 11 de agosto de 2026",
     "sections": [
@@ -955,6 +970,7 @@
     "seoDescription": "Términos que rigen el uso del sitio web de Venkoi LLC, incluidas solicitudes de Demo y oferta gratuita.",
     "eyebrow": "LEGAL",
     "title": "Términos de Uso del Sitio Web",
+    "contentsLabel": "En esta página",
     "introduction": "Estos Términos aplican al sitio web de mercadeo de Venkoi LLC en https://venkoi.com. Son términos del sitio, no términos para un producto autenticado o pagado de {productName} u otro producto de Venkoi.",
     "effectiveDate": "Vigentes desde el 11 de agosto de 2026",
     "sections": [

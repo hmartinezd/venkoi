@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { LocalizedLink, usePathname } from '@/i18n/navigation';
 import {
   getRouteKeyFromPath,
@@ -20,6 +21,7 @@ import { trackCustomEvent } from '@/lib/analytics';
 
 export function Header({ locale, productName }: { locale: Locale; productName: string }) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const routeKey = getRouteKeyFromPath(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -33,8 +35,13 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
   const isInsightsActive = isInsightRoute(routeKey);
   const isServicesActive = isServiceRoute(routeKey);
   const isCustomSoftwareActive = routeKey === 'customSoftware';
+  const isEarlyAccessActive = routeKey === 'demo' && searchParams.get('interest') === 'early-access';
   const isAboutActive = routeKey === 'about';
   const isContactActive = routeKey === 'contact';
+  const productCtaHref = isEarlyAccessActive
+    ? buildProductDemoHref(locale, FEATURED_PRODUCT, { interest: 'early-access', source: 'header' })
+    : buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' });
+  const productCtaLabel = isEarlyAccessActive ? tCommon('requestAccess') : tCommon('demo');
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 12);
@@ -173,18 +180,20 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <LanguageSwitcher locale={locale} variant="header" />
           <Button
-            href={isCustomSoftwareActive ? '#custom-software-form' : buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })}
+            href={isCustomSoftwareActive ? '#custom-software-form' : productCtaHref}
             variant="primary"
             className="text-xs"
             onClick={() => {
               if (isCustomSoftwareActive) {
                 trackCustomEvent('custom_software_cta', { locale, source: 'custom_software_header' });
+              } else if (isEarlyAccessActive) {
+                trackCustomEvent('serve_early_access_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header', earlyAccess: true });
               } else {
                 trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
               }
             }}
           >
-            {isCustomSoftwareActive ? tCommon('startConversation') : tCommon('demo')}
+            {isCustomSoftwareActive ? tCommon('startConversation') : productCtaLabel}
           </Button>
         </div>
 
@@ -297,19 +306,21 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
 
           <div className="mt-6 pt-4 border-t border-border">
             <Button
-              href={isCustomSoftwareActive ? '#custom-software-form' : buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })}
+              href={isCustomSoftwareActive ? '#custom-software-form' : productCtaHref}
               variant="primary"
               className="w-full justify-center"
               onClick={() => {
                 if (isCustomSoftwareActive) {
                   trackCustomEvent('custom_software_cta', { locale, source: 'custom_software_mobile_header' });
+                } else if (isEarlyAccessActive) {
+                  trackCustomEvent('serve_early_access_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header', earlyAccess: true });
                 } else {
                   trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
                 }
                 setMenuOpen(false);
               }}
             >
-              {isCustomSoftwareActive ? tCommon('startConversation') : tCommon('demo')}
+              {isCustomSoftwareActive ? tCommon('startConversation') : productCtaLabel}
             </Button>
           </div>
         </div>

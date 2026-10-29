@@ -24,5 +24,5 @@ export default async function TermsPage({ params }: PageProps) {
     paragraphs: section.paragraphs?.map((text) => text.split('{privacyEmail}').join(PRIVACY_CONTACT_EMAIL).split('{productName}').join(FEATURED_PRODUCT.name)),
     bullets: section.bullets?.map((text) => text.split('{privacyEmail}').join(PRIVACY_CONTACT_EMAIL).split('{productName}').join(FEATURED_PRODUCT.name))
   }));
-  return <LegalPage eyebrow={t('eyebrow')} title={t('title')} introduction={t('introduction', { productName: FEATURED_PRODUCT.name })} effectiveDate={t('effectiveDate')} sections={sections} contactEmail={PRIVACY_CONTACT_EMAIL} />;
+  return <LegalPage eyebrow={t('eyebrow')} title={t('title')} introduction={t('introduction', { productName: FEATURED_PRODUCT.name })} effectiveDate={t('effectiveDate')} contentsLabel={t('contentsLabel')} sections={sections} contactEmail={PRIVACY_CONTACT_EMAIL} />;
 }

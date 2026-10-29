@@ -56,7 +56,7 @@ export function ServiceStartingPoint({
           <div className="pt-2">
             <TrackedButton
               href={`${getLocalizedPath('contact', locale)}?type=services&interest=${ctaInterest}`}
-              variant="secondary"
+              variant="primary"
               eventName="services_cta"
               properties={{ locale, source: ctaSource, interest: ctaInterest }}
             >

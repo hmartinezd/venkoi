@@ -111,7 +111,7 @@ assert.match(en.aboutPage.productDirectionHeading, /software products[\s\S]*sele
 assert.match(en.aboutPage.venkoiProductsDesc, /\{productName\}/i);
 assert.match(en.aboutPage.servicesDesc, /Mobile applications[\s\S]*web applications/i);
 assert.doesNotMatch(strings([en.aboutPage, es.aboutPage]).join('\n'), /STRATEGIC DIRECTION|PRIMARY DIRECTION|ORIENTACIÓN ESTRATÉGICA|DIRECCIÓN PRINCIPAL|PRODUCT-FIRST SOFTWARE COMPANY/i);
-assert.match(en.contactPage.body, /custom mobile or web project/i);
+assert.match(en.contactPage.body, /question|project idea|existing product/i);
 
 for (const messages of [en, es]) {
   assert.match(messages.servePage.visuals.sampleData, /Representative|representativa/i, 'Product previews must disclose representative sample data');
@@ -128,6 +128,9 @@ assert.match(header, /routeKey === 'customSoftware'/);
 assert.match(header, /trackCustomEvent\('custom_software_cta'/);
 assert.match(header, /tCommon\('startConversation'\)/);
 assert.match(header, /tNav\('customSoftware'\)/);
+assert.match(header, /isEarlyAccessActive/);
+assert.match(header, /tCommon\('requestAccess'\)/);
+assert.match(header, /serve_early_access_cta/);
 
 const homeFinal = read('src/components/home/FinalCta.tsx');
 assert.match(homeFinal, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'home_final_cta' \}\)\}/);

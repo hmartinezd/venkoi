@@ -102,13 +102,21 @@ export default async function InsightsPage({ params }: PageProps) {
             <p className="text-lg text-foreground-muted leading-relaxed max-w-3xl">
               {t('body')}
             </p>
+            <nav aria-label={t('categoryNavigationLabel')} className="flex flex-wrap gap-2 pt-2">
+              <a href="#restaurant-operations" className="rounded-full border border-border px-3 py-2 text-sm font-semibold text-ink outline-none transition hover:border-orange hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2">
+                {t('families.restaurantOperations')}
+              </a>
+              <a href="#building-software" className="rounded-full border border-border px-3 py-2 text-sm font-semibold text-ink outline-none transition hover:border-orange hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2">
+                {t('families.buildingSoftware')}
+              </a>
+            </nav>
           </div>
         </Container>
       </Section>
 
       <Section variant="surface" spacing="compact" className="border-t border-border">
         <Container className="space-y-14">
-          <div className="space-y-6">
+          <div id="restaurant-operations" className="scroll-mt-24 space-y-6">
             <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{t('families.restaurantOperations')}</h2>
           <div className="grid gap-6 lg:grid-cols-12">
             {restaurantArticles[0] ? (
@@ -139,7 +147,7 @@ export default async function InsightsPage({ params }: PageProps) {
             </div>
           </div>
           </div>
-          <div className="space-y-6 border-t border-border pt-12">
+          <div id="building-software" className="scroll-mt-24 space-y-6 border-t border-border pt-12">
             <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{t('families.buildingSoftware')}</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {softwareArticles.map((article) => <InsightCard key={article.routeKey} locale={currentLocale} category={article.category} title={article.title} description={article.description} routeKey={article.routeKey} readMoreLabel={t('readMore')} headingLevel="h3" />)}

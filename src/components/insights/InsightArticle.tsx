@@ -71,6 +71,17 @@ export function InsightArticle({
     }
   };
 
+  const sectionLinks = sections.map((section) => (
+    <li key={section.id}>
+      <a
+        href={`#${section.id}`}
+        className="block rounded-md px-2 py-2 text-sm leading-snug text-foreground-muted outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+      >
+        {section.label}
+      </a>
+    </li>
+  ));
+
   return (
     <>
       <script
@@ -103,25 +114,24 @@ export function InsightArticle({
             </header>
 
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+              <div className="lg:hidden">
+                <details className="group rounded-2xl border border-border bg-surface">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl p-5 text-xs font-bold uppercase tracking-[0.2em] text-ink outline-none transition hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset [&::-webkit-details-marker]:hidden">
+                    {guideNavigationLabel}
+                    <span aria-hidden="true" className="text-lg font-normal text-orange-text transition group-open:rotate-45">+</span>
+                  </summary>
+                  <nav aria-label={guideNavigationLabel} className="border-t border-border p-4">
+                    <ol className="grid gap-1">{sectionLinks}</ol>
+                  </nav>
+                </details>
+              </div>
+
               <nav
                 aria-label={guideNavigationLabel}
-                className="rounded-2xl border border-border bg-surface p-5 lg:col-span-3 lg:self-start lg:sticky lg:top-24"
+                className="hidden rounded-2xl border border-border bg-surface p-5 lg:col-span-3 lg:self-start lg:sticky lg:top-24 lg:block"
               >
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-ink">
-                  {guideNavigationLabel}
-                </p>
-                <ol className="mt-4 grid gap-1 sm:grid-cols-2 lg:grid-cols-1">
-                  {sections.map((section) => (
-                    <li key={section.id}>
-                      <a
-                        href={`#${section.id}`}
-                        className="block rounded-md px-2 py-2 text-sm leading-snug text-foreground-muted outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
-                      >
-                        {section.label}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-ink">{guideNavigationLabel}</p>
+                <ol className="mt-4 grid gap-1">{sectionLinks}</ol>
               </nav>
 
               <div className="max-w-3xl lg:col-span-8 lg:col-start-5">

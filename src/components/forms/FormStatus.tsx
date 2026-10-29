@@ -19,6 +19,7 @@ export function FormStatus({ status, title, message, className }: FormStatusProp
     <div
       role={role}
       aria-live={ariaLive}
+      aria-atomic="true"
       className={cn(
         'rounded-2xl p-6 border transition-all duration-200 space-y-2',
         isSuccess

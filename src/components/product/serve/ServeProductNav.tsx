@@ -40,7 +40,7 @@ export function ServeProductNav({
 
   return (
     <div className="sticky top-[72px] z-40 border-b border-border bg-surface/95 backdrop-blur-md transition-all">
-      <div className="mx-auto grid w-full max-w-[1240px] grid-cols-[minmax(0,1fr)_auto] items-center lg:h-14 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:px-8">
+      <div className="relative mx-auto grid w-full max-w-[1240px] grid-cols-[minmax(0,1fr)_auto] items-center lg:h-14 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:px-8">
         {/* Brand/Product Identity */}
         <div className="flex h-12 min-w-0 items-center gap-2.5 pl-4 sm:pl-6 lg:h-auto lg:shrink-0 lg:pl-0">
           <span className="truncate text-sm font-bold uppercase tracking-tight text-ink">{productName}</span>
@@ -51,7 +51,7 @@ export function ServeProductNav({
         </div>
 
         {/* Anchor Links */}
-        <nav aria-label={navigationLabel} className="no-scrollbar col-span-2 row-start-2 flex h-11 w-full items-center gap-1 overflow-x-auto whitespace-nowrap border-t border-border px-1 text-xs font-medium text-foreground-muted sm:gap-2 sm:px-3 lg:col-span-1 lg:row-start-auto lg:h-auto lg:border-t-0 lg:px-2 lg:py-2">
+        <nav aria-label={navigationLabel} className="no-scrollbar col-span-2 row-start-2 flex h-11 w-full items-center gap-1 overflow-x-auto whitespace-nowrap border-t border-border px-1 text-xs font-medium text-foreground-muted focus-visible:outline-none sm:gap-2 sm:px-3 lg:col-span-1 lg:row-start-auto lg:h-auto lg:border-t-0 lg:px-2 lg:py-2">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -62,6 +62,7 @@ export function ServeProductNav({
             </a>
           ))}
         </nav>
+        <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-0 h-11 w-10 bg-gradient-to-l from-surface to-transparent lg:hidden" />
 
         {/* Action CTA */}
         <div className="col-start-2 row-start-1 shrink-0 px-4 sm:pr-6 lg:col-start-auto lg:row-start-auto lg:pl-2 lg:pr-0">

@@ -10,6 +10,7 @@ interface InsightCardProps {
   description: string;
   routeKey: RouteKey;
   readMoreLabel: string;
+  readMoreAriaLabel?: string;
   featured?: boolean;
   headingLevel?: 'h2' | 'h3';
 }
@@ -21,6 +22,7 @@ export function InsightCard({
   description,
   routeKey,
   readMoreLabel,
+  readMoreAriaLabel,
   featured = false,
   headingLevel: Heading = 'h3'
 }: InsightCardProps) {
@@ -37,7 +39,9 @@ export function InsightCard({
           'text-xl font-bold leading-tight text-ink transition-colors group-hover:text-orange-text',
           featured && 'sm:text-2xl lg:text-3xl'
         )}>
-          {title}
+          <LocalizedLink href={internalRoutes[routeKey]} locale={locale} className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2">
+            {title}
+          </LocalizedLink>
         </Heading>
         <p className={cn(
           'text-sm leading-relaxed text-foreground-muted',
@@ -50,6 +54,7 @@ export function InsightCard({
         <LocalizedLink
           href={internalRoutes[routeKey]}
           locale={locale}
+          aria-label={readMoreAriaLabel ?? `${readMoreLabel}: ${title}`}
           className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-ink transition hover:text-orange-text outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-4 rounded-sm"
         >
           {readMoreLabel}

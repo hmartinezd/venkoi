@@ -10,7 +10,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getSiteOrigin } from '@/lib/site-config';
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import { Suspense, type ReactNode } from 'react';
 import { FEATURED_PRODUCT } from '@/lib/products';
 
 const globalClientMessageNamespaces = [
@@ -61,7 +61,9 @@ export default async function LocaleLayout({ params, children }: PageProps) {
     <html lang={currentLocale} className={geist.variable} suppressHydrationWarning data-scroll-behavior="smooth">
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         <NextIntlClientProvider messages={clientMessages} locale={currentLocale}>
-          <Header locale={currentLocale} productName={FEATURED_PRODUCT.name} />
+          <Suspense fallback={null}>
+            <Header locale={currentLocale} productName={FEATURED_PRODUCT.name} />
+          </Suspense>
           <main id="content" tabIndex={-1} className="outline-hidden">
             {children}
           </main>

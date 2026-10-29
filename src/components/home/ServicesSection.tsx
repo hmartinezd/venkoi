@@ -3,6 +3,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
 import { getLocalizedPath } from '@/i18n/routing';
+import { LocalizedLink } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
 
 export function ServicesSection({
@@ -15,7 +16,10 @@ export function ServicesSection({
   mobileTitle,
   mobileDesc,
   webTitle,
-  webDesc
+  webDesc,
+  customTitle,
+  customDesc,
+  customLink
 }: {
   locale: Locale;
   eyebrow: string;
@@ -27,6 +31,9 @@ export function ServicesSection({
   mobileDesc: string;
   webTitle: string;
   webDesc: string;
+  customTitle: string;
+  customDesc: string;
+  customLink: string;
 }) {
   return (
     <Section variant="dark" spacing="compact">
@@ -48,7 +55,7 @@ export function ServicesSection({
             </Button>
             <TrackedButton
               href={getLocalizedPath('contact', locale) + '?type=services'}
-              variant="inverse"
+              variant="brand"
               eventName="services_cta"
               properties={{ locale, source: 'home' }}
             >
@@ -87,6 +94,23 @@ export function ServicesSection({
                 {webDesc}
               </p>
             </div>
+          </div>
+
+          <div className="rounded-xl border border-orange/30 bg-orange/10 p-5 space-y-3">
+            <div className="space-y-4">
+              <span className="inline-flex items-center gap-2 rounded-lg px-3 py-1 text-xs font-bold text-orange">
+                03
+              </span>
+              <h3 className="text-base font-bold text-white">{customTitle}</h3>
+              <p className="text-sm text-white/70 leading-relaxed">{customDesc}</p>
+            </div>
+            <LocalizedLink
+              href="/custom-software"
+              locale={locale}
+              className="inline-flex rounded-sm text-xs font-bold uppercase tracking-wider text-orange outline-none transition hover:text-white focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            >
+              {customLink}
+            </LocalizedLink>
           </div>
         </div>
       </Container>

@@ -44,9 +44,9 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "RESTAURANT INVENTORY & FOOD COST",
+      "eyebrow": "VENKOI SERVE · RESTAURANT INVENTORY & FOOD COST",
       "heading": "Know what came in, what changed, what it costs, and what needs attention.",
-      "body": "Venkoi's featured product connects invoices and purchases to inventory movement, supplier prices, food cost, physical counts, and reorder preparation. Venkoi also takes on selected custom mobile and web projects.",
+      "body": "Venkoi Serve connects invoices and purchases to inventory movement, supplier prices, food cost, physical counts, and reorder preparation. Venkoi also takes on selected custom mobile and web projects.",
       "primaryCta": "Explore {productName}"
     },
     "serve": {
@@ -81,7 +81,10 @@
       "mobileTitle": "MOBILE APPLICATIONS",
       "mobileDesc": "Mobile applications for iOS and Android built around real users, goals, and workflows.",
       "webTitle": "WEBSITES & WEB APPLICATIONS",
-      "webDesc": "Websites and web applications shaped around what you want to accomplish, from a simple web presence to more interactive experiences."
+      "webDesc": "Websites and web applications shaped around what you want to accomplish, from a simple web presence to more interactive experiences.",
+      "customTitle": "CUSTOM SOFTWARE",
+      "customDesc": "Internal tools, workflow automation, integrations, and operations software shaped around how the business works.",
+      "customLink": "Explore custom software"
     },
     "local": {
       "eyebrow": "LOCAL BY CHOICE",
@@ -372,8 +375,8 @@
   },
   "contactPage": {
     "eyebrow": "CONTACT VENKOI",
-    "heading": "Tell us what you need to build.",
-    "body": "This is the path for a custom mobile or web project. If you're interested in our restaurant inventory product, request a product demo instead.",
+    "heading": "Tell us what you need.",
+    "body": "Start with a question, a project idea, an existing product problem, or a workflow that needs to work better. We can route you to the right next step.",
     "direct": {
       "eyebrow": "DIRECT CONTACT",
       "heading": "Prefer to talk directly?",
@@ -485,7 +488,9 @@
       "formTitle": "Request access to {productName}",
       "badge": "{freeMonths} months free.",
       "successTitle": "Thanks — we received your access request.",
-      "successMessage": "We'll review the information you shared. If accepted, you can use {productName} free for {freeMonths} months. Acceptance and timing are not guaranteed."
+      "successMessage": "We'll review the information you shared. If accepted, you can use {productName} free for {freeMonths} months. Acceptance and timing are not guaranteed.",
+      "agendaEyebrow": "ACCESS REQUEST",
+      "agendaHeading": "An access request starts with the restaurant operation, current workflow, and fit for the initial release."
     },
     "nextSteps": {
       "heading": "What happens next?",
@@ -511,9 +516,11 @@
     "direct": {
       "heading": "Prefer to message us directly?",
       "body": "WhatsApp is available as an alternative to the demo form.",
+      "earlyAccessBody": "WhatsApp is available if you want to ask about the access request before submitting the form.",
       "whatsappLabel": "Chat on WhatsApp",
       "whatsappAriaLabel": "Chat with Venkoi on WhatsApp",
-      "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}."
+      "productMessage": "Hi, I found Venkoi online and would like to learn more about {productName}.",
+      "productEarlyAccessMessage": "Hi, I found Venkoi online and would like to ask about access to {productName}."
     },
     "contactEscape": {
       "prompt": "Have another question?",
@@ -550,13 +557,19 @@
       "successMessage": "We'll be in touch to learn more about your restaurant and coordinate your demo.",
       "earlyAccessFixed": "You're requesting access to {productName}. Accepted participants receive {freeMonths} free months.",
       "earlyAccessFixedHelp": "This is a request. We'll review your restaurant's fit and follow up about the next step; acceptance and timing are not guaranteed.",
-      "required": "Required field",
+    "required": "Required field",
+    "firstNameRequired": "Enter your first name.",
+    "lastNameRequired": "Enter your last name.",
+    "emailRequired": "Enter your work email address.",
+    "companyRequired": "Enter your restaurant or business name.",
       "invalidEmail": "Please enter a valid work email address",
       "submissionError": "We couldn't submit your request right now. Please try again.",
       "networkError": "Network error. Please try again later.",
       "tooLong": "Text exceeds maximum length.",
       "invalidOption": "Invalid option selected.",
-      "botBlocked": "Request blocked by security checks."
+    "botBlocked": "Request blocked by security checks.",
+    "privacyNote": "We use these details to review your request and follow up about the appropriate next step.",
+    "privacyLink": "Read Venkoi's Privacy Policy"
     },
     "successActions": {
       "product": "Explore product capabilities",
@@ -655,10 +668,10 @@
       "heading": "Request access to {productName}.",
       "body": "Accepted participants can use {productName} with no product fee for {freeMonths} months and share feedback directly with Venkoi. Access is limited; acceptance and timing are not guaranteed.",
       "details": [
-        "Accepted participants receive {freeMonths} free months",
         "Use the product in one restaurant location",
         "Share feedback directly with Venkoi",
-        "Work directly with Venkoi while the initial release develops"
+        "Work directly with Venkoi while the initial release develops",
+        "Help us learn what needs to work better in the operation"
       ],
       "primaryCta": "Request a Demo",
       "secondaryCta": "Request Access"
@@ -831,6 +844,7 @@
     "eyebrow": "INSIGHTS",
     "heading": "Practical guides for building and using better software.",
     "body": "Clear thinking around software products, digital experiences, and the real workflows behind them.",
+    "categoryNavigationLabel": "Browse insight categories",
     "readMore": "Read more",
     "families": {
       "restaurantOperations": "Restaurant operations",
@@ -1012,6 +1026,7 @@
     "seoDescription": "Learn how Venkoi LLC collects, uses, shares, and retains information on the Venkoi marketing website.",
     "eyebrow": "LEGAL",
     "title": "Privacy Policy",
+    "contentsLabel": "On this page",
     "introduction": "This Privacy Policy explains how Venkoi LLC handles information through the Venkoi marketing website, Contact and Demo forms, and current free-offer interest flow. It does not govern a future authenticated Venkoi or {productName} software product.",
     "effectiveDate": "Effective August 11, 2026",
     "sections": [
@@ -1071,6 +1086,7 @@
     "seoDescription": "Terms governing use of the Venkoi LLC marketing website, including Demo and free-offer interest requests.",
     "eyebrow": "LEGAL",
     "title": "Website Terms of Use",
+    "contentsLabel": "On this page",
     "introduction": "These Terms apply to the Venkoi LLC marketing website at https://venkoi.com. They are website terms, not terms for an authenticated or paid {productName} or other Venkoi software product.",
     "effectiveDate": "Effective August 11, 2026",
     "sections": [

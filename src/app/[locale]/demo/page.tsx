@@ -6,7 +6,8 @@ import { ProductDemoAgenda } from '@/components/demo/ProductDemoAgenda';
 import { NextSteps } from '@/components/shared/NextSteps';
 import { locales, type Locale } from '@/i18n/config';
 import { createMetadata } from '@/lib/seo';
-import { isEarlyAccessInterest, resolveDemoProduct } from '@/lib/products';
+import { resolveDemoProduct } from '@/lib/products';
+import { isEarlyAccessIntent, resolveDemoIntent } from '@/lib/demo-intent';
 import { getLocalizedPath } from '@/i18n/routing';
 import { normalizeDemoConversionSource } from '@/lib/product-links';
 import type { Metadata } from 'next';
@@ -27,13 +28,26 @@ function parseLocale(locale: string): Locale {
   notFound();
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  const { product, interest } = await searchParams;
   const currentLocale = parseLocale(locale);
   const t = await getTranslations({ locale: currentLocale, namespace: 'demoPage' });
   const seo = await getTranslations({ locale: currentLocale, namespace: 'seo' });
+  const resolvedProduct = resolveDemoProduct(product);
+  const intent = resolveDemoIntent(resolvedProduct, interest);
+  const values = {
+    productName: resolvedProduct.name,
+    freeMonths: resolvedProduct.earlyAccess.freeMonths
+  };
+  const title = isEarlyAccessIntent(intent)
+    ? t('earlyAccess.heading', values)
+    : resolvedProduct.slug === 'serve'
+      ? t('serve.heading', values)
+      : t('heading');
+
   return createMetadata({
-    title: `${t('eyebrow')} | ${seo('title')}`,
+    title: `${title} | ${seo('title')}`,
     description: t('body'),
     routeKey: 'demo',
     locale: currentLocale,
@@ -51,7 +65,8 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
   const resolvedProduct = resolveDemoProduct(product);
   const selectedProduct = resolvedProduct.slug;
-  const isEarlyAccess = isEarlyAccessInterest(resolvedProduct, interest);
+  const intent = resolveDemoIntent(resolvedProduct, interest);
+  const isEarlyAccess = isEarlyAccessIntent(intent);
   const selectedInterest = isEarlyAccess ? 'early-access' : '';
   const conversionSource = normalizeDemoConversionSource(source);
 
@@ -79,6 +94,14 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
     ? t('earlyAccess.badge', productProgramValues)
     : (isServe ? t('serve.formDescription', productProgramValues) : t('badgeText', productProgramValues));
 
+  const directBody = isEarlyAccess ? t('direct.earlyAccessBody') : t('direct.body');
+  const directMessage = isEarlyAccess
+    ? t('direct.productEarlyAccessMessage', productProgramValues)
+    : t('direct.productMessage', { productName: resolvedProduct.name });
+  const agendaHeading = isEarlyAccess
+    ? t('earlyAccess.agendaHeading', productProgramValues)
+    : t('agenda.heading', { productName: resolvedProduct.name });
+
   return (
     <Section variant="light" spacing="hero">
       <Container className="space-y-10">
@@ -105,10 +128,10 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
         <div className="flex flex-col gap-4 rounded-2xl border border-border bg-surface-muted p-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <h2 className="font-bold text-ink">{t('direct.heading')}</h2>
-            <p className="text-sm text-foreground-muted">{t('direct.body')}</p>
+            <p className="text-sm text-foreground-muted">{directBody}</p>
           </div>
           <DirectContactChannels
-            whatsappMessage={t('direct.productMessage', { productName: resolvedProduct.name })}
+            whatsappMessage={directMessage}
             whatsappLabel={t('direct.whatsappLabel')}
             whatsappAriaLabel={t('direct.whatsappAriaLabel')}
             showEmail={false}
@@ -161,8 +184,8 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
 
           <aside className="rounded-2xl border border-border bg-surface-muted/50 p-6 sm:p-8 lg:col-span-5">
             <ProductDemoAgenda
-              eyebrow={t('agenda.eyebrow')}
-              heading={t('agenda.heading', { productName: resolvedProduct.name })}
+              eyebrow={isEarlyAccess ? t('earlyAccess.agendaEyebrow') : t('agenda.eyebrow')}
+              heading={agendaHeading}
               items={(isServe ? filterMarketableEntries(DEMO_AGENDA) : DEMO_AGENDA).map(({ key }) => ({
                 title: t(`agenda.items.${key}.title`),
                 description: t(`agenda.items.${key}.description`)

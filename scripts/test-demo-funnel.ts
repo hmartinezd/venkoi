@@ -43,6 +43,11 @@ assert.match(form, /if \(pending\) return;/, 'pending submissions have a synchro
 assert.match(form, /disabled=\{pending\}/, 'submit is disabled while pending');
 assert.match(form, /submitEarlyAccess/, 'Early Access uses an intent-aware submit label');
 assert.match(form, /fixedEarlyAccessIntent/, 'URL-selected Early Access cannot contradict page intent');
+assert.match(form, /scrollIntoView\(\{[\s\S]*block: ['"]start['"]/, 'Demo validation should reveal fields below fixed headers');
+assert.match(form, /focus\(\{ preventScroll: true \}\)/, 'Demo validation should focus after explicit scrolling');
+for (const key of ['firstNameRequired', 'lastNameRequired', 'emailRequired', 'companyRequired', 'privacyNote', 'privacyLink']) {
+  assert.match(form, new RegExp(key), `Demo form should use ${key}`);
+}
 assert.match(form, /demo_form_start/);
 assert.match(form, /demo_form_submit/);
 assert.match(form, /demo_form_success/);
@@ -52,6 +57,10 @@ assert.match(form, /optionalDetailsRef\.current\.open = true/, 'hidden optional 
 assert.match(form, /successActions\.product/);
 assert.match(form, /successActions\.guide/);
 assert.match(page, /normalizeDemoConversionSource\(source\)/, 'Demo page normalizes source before client analytics');
+assert.match(page, /resolveDemoIntent\(resolvedProduct, interest\)/, 'Demo page should derive one authoritative request intent');
+assert.match(page, /generateMetadata\(\{ params, searchParams \}/, 'Demo metadata should follow the request intent');
+assert.match(page, /direct\.productEarlyAccessMessage/, 'Early Access should have distinct direct-contact copy');
+assert.match(page, /earlyAccess\.agendaHeading/, 'Early Access should have distinct sidebar copy');
 assert.match(page, /fixedEarlyAccessIntent=\{isEarlyAccess\}/);
 for (const agendaKey of ['setupInventory', 'invoicePurchase', 'costIntelligence', 'countsReorder', 'ownerView']) {
   assert.match(productMarketing, new RegExp(agendaKey), `Demo agenda should include ${agendaKey}`);

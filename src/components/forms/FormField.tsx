@@ -36,7 +36,7 @@ export function FormField({ label, required = false, error, descriptionId, class
       })}
 
       {error ? (
-        <p id={errorId} className="text-xs font-medium text-red-600 animate-in fade-in-50" role="alert">
+        <p id={errorId} className="text-sm font-medium text-red-600 animate-in fade-in-50" role="alert">
           {error}
         </p>
       ) : null}

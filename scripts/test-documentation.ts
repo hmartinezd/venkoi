@@ -12,6 +12,7 @@ const launch = read('docs/LAUNCH.md');
 const dataHandlingPath = resolve(root, 'docs/DATA-HANDLING.md');
 assert.ok(existsSync(dataHandlingPath), 'docs/DATA-HANDLING.md must exist');
 const dataHandling = read('docs/DATA-HANDLING.md');
+const legalPage = read('src/components/legal/LegalPage.tsx');
 
 for (const term of ['Node.js 24', 'Next.js 16', 'React 19']) {
   assert.ok(readme.includes(term), `README must document ${term}`);
@@ -54,6 +55,8 @@ for (const field of ['source_path', 'referrer', 'utm_source', 'utm_medium', 'utm
 assert.match(dataHandling, /submitted lead.*qualified lead.*won\/converted lead/i, 'DATA-HANDLING must document the advertising funnel');
 assert.match(dataHandling, /Custom Software Lead Submitted[\s\S]*successful lead persistence/i, 'DATA-HANDLING must document the primary conversion boundary');
 assert.match(dataHandling, /NEW.*QUALIFIED.*DISQUALIFIED.*WON.*LOST/i, 'DATA-HANDLING must document canonical lifecycle values');
+assert.match(legalPage, /aria-labelledby="legal-contents-title"/, 'Legal pages must expose an in-page contents navigation');
+assert.match(legalPage, /scroll-mt-24/, 'Legal section anchors must clear the fixed header');
 
 const envLines = read('.env.example').split(/\r?\n/);
 const env = new Map<string, string>();
@@ -82,7 +85,8 @@ const migrations = [
   'db/migrations/002_harden_leads.sql',
   'db/migrations/003_update_service_interests.sql',
   'db/migrations/004_migrate_legacy_product_slug.sql',
-  'db/migrations/005_add_paid_attribution_and_lifecycle.sql'
+  'db/migrations/005_add_paid_attribution_and_lifecycle.sql',
+  'db/migrations/006_add_custom_software_interests.sql'
 ];
 for (const migration of migrations) assert.ok(existsSync(resolve(root, migration)), `${migration} must exist`);
 const migrationPositions = migrations.map((migration) => {
@@ -105,6 +109,7 @@ assert.match(launch, /Domain cutover — historical owner checklist/, 'Runbook m
 assert.match(launch, /Exact record values[^\n]*Vercel's project-specific instructions/i, 'Runbook must defer exact DNS values to Vercel');
 assert.match(launch, /Make `venkoi\.com` the primary production domain/, 'Runbook must identify the apex primary domain');
 assert.match(launch, /`www\.venkoi\.com` is attached[\s\S]*redirect to `venkoi\.com`/, 'Runbook must document the optional www redirect');
+assert.match(launch, /006_add_custom_software_interests\.sql/, 'Runbook must document the current lead-interest migration');
 assert.match(launch, /Live domain, SEO, and platform verification — recorded after cutover/, 'Runbook must preserve the dated post-cutover verification');
 assert.match(launch, /Final owner go\/no-go/, 'Runbook must provide one authoritative remaining-action checklist');
 assert.match(launch, /Confirm Vercel Analytics receives real production traffic/, 'Runbook must require live Analytics verification');

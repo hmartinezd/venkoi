@@ -24,7 +24,7 @@ The marketing site renders locally without production lead-service secrets.
 
 ## Lead infrastructure status
 
-Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. New Demo persistence uses the `serve` product slug; migrations `004` and `005` are prepared for owner review and must not be applied to Production by this coding task.
+Production Contact and Demo persistence is operationally configured and manually verified: Vercel Production receives the server-only `DATABASE_URL` through the Neon integration, migrations `001` → `002` → `003` are applied, and controlled production submissions produced the expected Neon rows. New Demo persistence uses the `serve` product slug; migrations `004`, `005`, and `006` are prepared for owner review and must not be applied to Production by this coding task.
 
 Standard Demo and Request Access share the product lead architecture without changing persistence types: both store `lead_type = DEMO`; `early_access_interest = false` represents Demo and `true` represents Request Access. The field name is a stable technical identifier, not the public program label.
 

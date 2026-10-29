@@ -9,7 +9,8 @@ import { trackCustomEvent } from '@/lib/analytics';
 import { getLeadAcquisitionContext } from '@/lib/lead-acquisition';
 import { getDefaultDemoProduct } from '@/lib/products';
 import type { Locale } from '@/i18n/config';
-import { getLocalizedPath } from '@/i18n/routing';
+import { getLocalizedPath, internalRoutes } from '@/i18n/routing';
+import { LocalizedLink } from '@/i18n/navigation';
 import type { DemoConversionSource } from '@/lib/product-links';
 
 interface DemoRequestFormProps {
@@ -89,14 +90,23 @@ export function DemoRequestForm({
   }, []);
 
   const focusFirstError = (errObj: Record<string, string>) => {
-    const firstFieldKey = Object.keys(errObj)[0];
+    const fieldOrder = ['first_name', 'last_name', 'email', 'company', 'phone', 'location_count', 'current_system', 'message'];
+    const firstFieldKey = fieldOrder.find((fieldName) => errObj[fieldName]);
     if (firstFieldKey && formRef.current) {
       if (['phone', 'location_count', 'current_system', 'message'].includes(firstFieldKey)) {
         if (optionalDetailsRef.current) optionalDetailsRef.current.open = true;
       }
       const inputElement = formRef.current.querySelector<HTMLElement>(`[name="${firstFieldKey}"]`);
       if (inputElement) {
-        inputElement.focus();
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+          inputElement.scrollIntoView({
+            block: 'start',
+            inline: 'nearest',
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+          });
+          inputElement.focus({ preventScroll: true });
+        }));
       }
     }
   };
@@ -120,6 +130,9 @@ export function DemoRequestForm({
     }
 
     if (isCheckbox) {
+      setErrors({});
+      setStatus('idle');
+      setStatusMessage('');
       setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
@@ -150,14 +163,14 @@ export function DemoRequestForm({
 
     // Inline client validation
     const clientErrors: Record<string, string> = {};
-    if (!formData.first_name.trim()) clientErrors.first_name = t('required');
-    if (!formData.last_name.trim()) clientErrors.last_name = t('required');
+    if (!formData.first_name.trim()) clientErrors.first_name = t('firstNameRequired');
+    if (!formData.last_name.trim()) clientErrors.last_name = t('lastNameRequired');
     if (!formData.email.trim()) {
-      clientErrors.email = t('required');
+      clientErrors.email = t('emailRequired');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       clientErrors.email = t('invalidEmail');
     }
-    if (!formData.company.trim()) clientErrors.company = t('required');
+    if (!formData.company.trim()) clientErrors.company = t('companyRequired');
 
     if (Object.keys(clientErrors).length > 0) {
       setErrors(clientErrors);
@@ -199,7 +212,17 @@ export function DemoRequestForm({
         if (data.fieldErrors) {
           const mappedFieldErrors: Record<string, string> = {};
           for (const [key, code] of Object.entries(data.fieldErrors as Record<string, string>)) {
-            if (code === 'REQUIRED') mappedFieldErrors[key] = t('required');
+            if (code === 'REQUIRED') {
+              mappedFieldErrors[key] = key === 'first_name'
+                ? t('firstNameRequired')
+                : key === 'last_name'
+                  ? t('lastNameRequired')
+                  : key === 'email'
+                    ? t('emailRequired')
+                    : key === 'company'
+                      ? t('companyRequired')
+                      : t('required');
+            }
             else if (code === 'INVALID_EMAIL') mappedFieldErrors[key] = t('invalidEmail');
             else if (code === 'TOO_LONG') mappedFieldErrors[key] = t('tooLong');
             else if (code === 'INVALID_OPTION') mappedFieldErrors[key] = t('invalidOption');
@@ -289,7 +312,7 @@ export function DemoRequestForm({
               autoComplete="given-name"
               value={formData.first_name}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             />
           )}
         </FormField>
@@ -304,7 +327,7 @@ export function DemoRequestForm({
               autoComplete="family-name"
               value={formData.last_name}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             />
           )}
         </FormField>
@@ -322,7 +345,7 @@ export function DemoRequestForm({
               inputMode="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             />
           )}
         </FormField>
@@ -337,7 +360,7 @@ export function DemoRequestForm({
               autoComplete="organization"
               value={formData.company}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             />
           )}
         </FormField>
@@ -362,7 +385,7 @@ export function DemoRequestForm({
                 inputMode="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+                className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
               />
             )}
           </FormField>
@@ -370,7 +393,7 @@ export function DemoRequestForm({
           <div className="grid gap-6 sm:grid-cols-2">
             <FormField label={t('locationCount')} error={errors.location_count}>
               {(fieldProps) => (
-                <select {...fieldProps} name="location_count" value={formData.location_count} onChange={handleChange} className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden">
+                <select {...fieldProps} name="location_count" value={formData.location_count} onChange={handleChange} className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden">
                   <option value="">{t('selectPlaceholder')}</option>
                   <option value="1">{t('locationOptions.1')}</option>
                   <option value="2_5">{t('locationOptions.2-5')}</option>
@@ -387,7 +410,7 @@ export function DemoRequestForm({
               name="current_system"
               value={formData.current_system}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             >
               <option value="">{t('selectPlaceholder')}</option>
               <option value="none">{t('systemOptions.none')}</option>
@@ -401,7 +424,7 @@ export function DemoRequestForm({
 
           <FormField label={t('message')} error={errors.message}>
             {(fieldProps) => (
-              <textarea {...fieldProps} name="message" rows={4} maxLength={5000} value={formData.message} onChange={handleChange} className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y" />
+              <textarea {...fieldProps} name="message" rows={4} maxLength={5000} value={formData.message} onChange={handleChange} className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y" />
             )}
           </FormField>
         </div>
@@ -449,6 +472,16 @@ export function DemoRequestForm({
               : t('submit')}
         </Button>
       </div>
+      <p className="text-sm leading-relaxed text-foreground-muted">
+        {t('privacyNote')}{' '}
+        <LocalizedLink
+          href={internalRoutes.privacy}
+          locale={locale}
+          className="font-semibold text-ink underline decoration-border-strong underline-offset-4 outline-none transition hover:text-orange-text focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+        >
+          {t('privacyLink')}
+        </LocalizedLink>
+      </p>
     </form>
   );
 }

@@ -187,6 +187,9 @@ export default async function HomePage({ params }: PageProps) {
         mobileDesc={tHome('services.mobileDesc')}
         webTitle={tHome('services.webTitle')}
         webDesc={tHome('services.webDesc')}
+        customTitle={tHome('services.customTitle')}
+        customDesc={tHome('services.customDesc')}
+        customLink={tHome('services.customLink')}
       />
 
       <FinalCta

@@ -72,6 +72,11 @@ const restaurant = read(articles[0].file);
 assert.ok(restaurant.indexOf('<TrackedButton') < restaurant.indexOf('<Button'), 'Restaurant Demo should precede Explore Product in DOM order');
 assert.ok(restaurant.includes('eventName="serve_demo_cta"'), 'Restaurant Demo analytics event should remain stable');
 assert.ok(shell.includes('href={`#${section.id}`}') && shell.includes('scroll-mt-24'), 'TOC anchors and header offset should remain connected');
+assert.match(shell, /<details className="group rounded-2xl border border-border bg-surface">/, 'Article contents should be collapsed by default on mobile');
+assert.match(shell, /className="hidden rounded-2xl border border-border bg-surface/, 'Article contents should remain visible on desktop');
+const insightCard = read('src/components/insights/InsightCard.tsx');
+assert.match(insightCard, /aria-label=\{readMoreAriaLabel \?\?/, 'Read-more links should identify the article');
+assert.ok(insightCard.includes('${readMoreLabel}: ${title}'), 'Read-more links should include the article title');
 assert.ok(!/^\s*(['"])use client\1;/m.test(shell), 'InsightArticle should remain a Server Component');
 assert.ok(!/^\s*(['"])use client\1;/m.test(related), 'RelatedInsights should remain a Server Component');
 

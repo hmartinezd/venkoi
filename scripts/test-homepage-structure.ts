@@ -45,6 +45,8 @@ assert.ok(!read('src/components/home/FinalCta.tsx').includes('locationLine'), 'F
 assert.ok(!read('src/components/home/CompanyContext.tsx').includes('regions.map'), 'Company context should not present geography as a regional framework');
 assert.ok(feature.includes('<ServeProductVisual type="inventory"'), 'Featured product should show concrete inventory proof');
 assert.match(home, /cta: tCommon\('requestAccess'\)/, 'Homepage should pass the localized public access label to the featured product');
+assert.match(home, /customTitle=\{tHome\('services\.customTitle'\)\}/, 'Homepage should expose Custom Software as a clear service path');
+assert.match(read('src/components/home/ServicesSection.tsx'), /href="\/custom-software"/, 'Homepage Custom Software path should be directly discoverable');
 assert.match(feature, /interest: 'early-access', source: 'home_product'/, 'Homepage access should use the fixed access intent and controlled source');
 assert.match(feature, /eventName="serve_early_access_cta"/, 'Homepage access should preserve the access CTA analytics event');
 assert.ok(
