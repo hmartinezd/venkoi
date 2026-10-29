@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useId, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { FormField } from "./FormField";
 import { FormStatus } from "./FormStatus";
@@ -28,6 +28,7 @@ export function ContactProjectForm({
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const optionalDetailsRef = useRef<HTMLDetailsElement>(null);
+  const messageHintId = useId();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -81,7 +82,8 @@ export function ContactProjectForm({
   }, []);
 
   const focusFirstError = (errObj: Record<string, string>) => {
-    const firstFieldKey = Object.keys(errObj)[0];
+    const fieldOrder = ["name", "email", "message", "phone", "company", "interest", "project_stage"];
+    const firstFieldKey = fieldOrder.find((fieldName) => errObj[fieldName]);
     if (firstFieldKey && formRef.current) {
       const optionalFieldNames = new Set([
         "phone",
@@ -92,13 +94,36 @@ export function ContactProjectForm({
       if (optionalFieldNames.has(firstFieldKey) && optionalDetailsRef.current) {
         optionalDetailsRef.current.open = true;
       }
-      const inputElement = formRef.current.querySelector<HTMLElement>(
-        `[name="${firstFieldKey}"]`
-      );
-      if (inputElement) {
-        inputElement.focus();
-      }
+      const inputElement = formRef.current.querySelector<HTMLElement>(`[name="${firstFieldKey}"]`);
+      if (!inputElement) return;
+
+      const revealAndFocus = () => {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        inputElement.scrollIntoView({
+          block: 'start',
+          inline: 'nearest',
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        });
+        inputElement.focus({ preventScroll: true });
+      };
+
+      // Opening <details> changes layout. Two frames make the reveal deterministic
+      // before focus is applied, while preventScroll keeps the explicit position.
+      window.requestAnimationFrame(() => window.requestAnimationFrame(revealAndFocus));
     }
+  };
+
+  const getFieldError = (field: string, code: string): string => {
+    if (code === "INVALID_EMAIL") return t("invalidEmail");
+    if (code === "REQUIRED") {
+      if (field === "name") return t("nameRequired");
+      if (field === "email") return t("emailRequired");
+      if (field === "message") return t("messageRequired");
+      return t("required");
+    }
+    if (code === "TOO_LONG") return t("tooLong");
+    if (code === "INVALID_OPTION") return t("invalidOption");
+    return t("submissionError");
   };
 
   const handleChange = (
@@ -145,13 +170,13 @@ export function ContactProjectForm({
 
     // Client inline validation
     const clientErrors: Record<string, string> = {};
-    if (!formData.name.trim()) clientErrors.name = t("required");
+    if (!formData.name.trim()) clientErrors.name = t("nameRequired");
     if (!formData.email.trim()) {
-      clientErrors.email = t("required");
+      clientErrors.email = t("emailRequired");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       clientErrors.email = t("invalidEmail");
     }
-    if (!formData.message.trim()) clientErrors.message = t("required");
+    if (!formData.message.trim()) clientErrors.message = t("messageRequired");
 
     if (Object.keys(clientErrors).length > 0) {
       setErrors(clientErrors);
@@ -192,13 +217,7 @@ export function ContactProjectForm({
           for (const [key, code] of Object.entries(
             data.fieldErrors as Record<string, string>
           )) {
-            if (code === "REQUIRED") mappedFieldErrors[key] = t("required");
-            else if (code === "INVALID_EMAIL")
-              mappedFieldErrors[key] = t("invalidEmail");
-            else if (code === "TOO_LONG") mappedFieldErrors[key] = t("tooLong");
-            else if (code === "INVALID_OPTION")
-              mappedFieldErrors[key] = t("invalidOption");
-            else mappedFieldErrors[key] = t("submissionError");
+            mappedFieldErrors[key] = getFieldError(key, code);
           }
           setErrors(mappedFieldErrors);
           setTimeout(() => focusFirstError(mappedFieldErrors), 50);
@@ -284,7 +303,7 @@ export function ContactProjectForm({
               autoComplete="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             />
           )}
         </FormField>
@@ -300,13 +319,13 @@ export function ContactProjectForm({
               inputMode="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
             />
           )}
         </FormField>
       </div>
 
-      <FormField label={t("message")} required error={errors.message}>
+      <FormField label={t("message")} required error={errors.message} descriptionId={messageHintId}>
         {(fieldProps) => (
           <div className="space-y-2">
             <textarea
@@ -316,9 +335,9 @@ export function ContactProjectForm({
               maxLength={5000}
               value={formData.message}
               onChange={handleChange}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y"
+              className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-background px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden resize-y"
             />
-            <p className="text-[11px] text-foreground-muted leading-relaxed italic">
+            <p id={messageHintId} className="text-sm text-foreground-muted leading-relaxed italic">
               {t("messageHint")}
             </p>
           </div>
@@ -361,7 +380,7 @@ export function ContactProjectForm({
                   inputMode="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+                  className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
                 />
               )}
             </FormField>
@@ -375,7 +394,7 @@ export function ContactProjectForm({
                   autoComplete="organization"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+                  className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
                 />
               )}
             </FormField>
@@ -389,11 +408,15 @@ export function ContactProjectForm({
                   name="interest"
                   value={formData.interest}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+                  className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
                 >
                   <option value="">{t("interestOptions.select")}</option>
                   <option value="mobile">{t("interestOptions.mobile")}</option>
                   <option value="web">{t("interestOptions.web")}</option>
+                  <option value="internal_tools">{t("interestOptions.internalTools")}</option>
+                  <option value="workflow_automation">{t("interestOptions.workflowAutomation")}</option>
+                  <option value="integrations">{t("interestOptions.integrations")}</option>
+                  <option value="operations_software">{t("interestOptions.operationsSoftware")}</option>
                   <option value="unsure">{t("interestOptions.unsure")}</option>
                 </select>
               )}
@@ -405,7 +428,7 @@ export function ContactProjectForm({
                   name="project_stage"
                   value={formData.project_stage}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
+                  className="form-control-boundary scroll-mt-24 w-full rounded-xl border bg-surface px-4 py-3 text-sm text-ink transition focus:border-orange focus:outline-hidden"
                 >
                   <option value="">{t("stageOptions.select")}</option>
                   <option value="idea">{t("stageOptions.idea")}</option>

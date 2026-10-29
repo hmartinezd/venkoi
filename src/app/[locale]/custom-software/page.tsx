@@ -9,9 +9,12 @@ import { ServiceFaqList } from '@/components/services/ServiceFaqList';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
+import { LocalizedLink } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/routing';
 import { FEATURED_PRODUCT } from '@/lib/products';
+import { buildServeVisualLabels } from '@/lib/serve-visual-labels';
+import { ServeProductVisual } from '@/components/product/serve/ServeProductVisual';
 import { createMetadata } from '@/lib/seo';
 
 interface PageProps {
@@ -43,10 +46,12 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
     form: AbstractIntlMessages;
     projectTypeIndicator: string;
   };
+  const serveVisualLabels = buildServeVisualLabels(await getTranslations('servePage.visuals'));
 
   const problemItems = [1, 2, 3, 4, 5, 6] as const;
-  const capabilityItems = [1, 2, 3, 4, 5, 6, 7, 8] as const;
-  const aiUseCaseItems = [1, 2, 3, 4, 5, 6] as const;
+  const capabilityItems = [1, 2, 3, 4] as const;
+  const aiUseCaseItems = [1, 2, 3] as const;
+  const additionalAiUseCaseItems = [4, 5, 6] as const;
   const processStages = [1, 2, 3, 4] as const;
   const faqItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
 
@@ -75,7 +80,10 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
                 {[1, 2, 3].map((item, index) => (
                   <div key={item} className="flex items-start gap-4 rounded-2xl border border-border bg-background p-4">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-subtle text-sm font-bold text-orange-text">0{index + 1}</span>
-                    <p className="pt-1 text-sm font-semibold leading-relaxed text-ink">{t(`hero.panel${item}`)}</p>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-orange-text">{t(`hero.panel${item}Label`)}</p>
+                      <p className="mt-1 text-sm font-semibold leading-relaxed text-ink">{t(`hero.panel${item}`)}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -99,6 +107,30 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
               </article>
             ))}
           </div>
+          <div className="grid gap-6 rounded-2xl border border-orange/30 bg-orange-subtle/40 p-6 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-orange-text">{t('fit.eyebrow')}</p>
+              <h3 className="mt-3 text-2xl font-bold tracking-tight text-ink">{t('fit.heading')}</h3>
+            </div>
+            <div className="space-y-3 text-sm leading-relaxed text-ink">
+              <p>{t('fit.body')}</p>
+              <p className="font-semibold">{t('fit.trust')}</p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section variant="dark" spacing="spacious">
+        <Container className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+          <div className="space-y-5 lg:col-span-6">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">{t('proof.eyebrow')}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{t('proof.heading', { productName: FEATURED_PRODUCT.name })}</h2>
+            <p className="max-w-3xl text-base leading-relaxed text-white/70">{t('proof.body', { productName: FEATURED_PRODUCT.name })}</p>
+            <TrackedButton href={getLocalizedPath('productsServe', currentLocale)} variant="brand" eventName="custom_software_cta" properties={{ locale: currentLocale, source: 'custom_software_proof', product: FEATURED_PRODUCT.analyticsProduct }}>{t('proof.cta', { productName: FEATURED_PRODUCT.name })}</TrackedButton>
+          </div>
+          <div className="lg:col-span-6">
+            <ServeProductVisual type="workflow" labels={serveVisualLabels} />
+          </div>
         </Container>
       </Section>
 
@@ -109,7 +141,7 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t('capabilities.heading')}</h2>
             <p className="text-base leading-relaxed text-foreground-muted">{t('capabilities.body')}</p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {capabilityItems.map((item) => (
               <article key={item} className="rounded-2xl border border-border bg-background p-6">
                 <h3 className="text-lg font-bold text-ink">{t(`capabilities.item${item}Title`)}</h3>
@@ -130,10 +162,24 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
               {aiUseCaseItems.map((item) => (
                 <article key={item} className="rounded-xl border border-border bg-surface p-4">
                   <h3 className="text-sm font-bold text-ink">{t(`ai.useCase${item}Title`)}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-foreground-muted">{t(`ai.useCase${item}Body`)}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground-muted">{t(`ai.useCase${item}Body`)}</p>
                 </article>
               ))}
             </div>
+            <details className="group rounded-xl border border-border bg-surface px-4">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 py-3 text-sm font-semibold text-ink outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange [&::-webkit-details-marker]:hidden">
+                <span>{t('ai.moreUseCases')}</span>
+                <span aria-hidden="true" className="text-xl text-foreground-muted transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <div className="grid gap-3 border-t border-border py-4 sm:grid-cols-3">
+                {additionalAiUseCaseItems.map((item) => (
+                  <article key={item}>
+                    <h3 className="text-sm font-bold text-ink">{t(`ai.useCase${item}Title`)}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground-muted">{t(`ai.useCase${item}Body`)}</p>
+                  </article>
+                ))}
+              </div>
+            </details>
             <TrackedButton href="#custom-software-form" variant="secondary" eventName="ai_software_cta" properties={{ locale: currentLocale, source: 'custom_software_ai_section' }}>{t('ai.cta')}</TrackedButton>
           </div>
           <div className="rounded-[24px] border border-border bg-surface p-6 shadow-card sm:p-8 lg:col-span-5">
@@ -149,46 +195,9 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
               ))}
             </div>
             <p className="mt-5 border-t border-border pt-5 text-sm font-semibold leading-relaxed text-ink">{t('ai.trust')}</p>
-            <p className="mt-3 text-xs leading-relaxed text-foreground-muted">{t('ai.safeguards')}</p>
-            <p className="mt-3 text-xs leading-relaxed text-foreground-muted">{t('ai.automationNote')}</p>
+            <p className="mt-3 text-sm leading-relaxed text-foreground-muted">{t('ai.safeguards')}</p>
+            <p className="mt-3 text-sm leading-relaxed text-foreground-muted">{t('ai.automationNote')}</p>
           </div>
-        </Container>
-      </Section>
-
-      <Section variant="muted" className="border-y border-border">
-        <Container className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
-          <div className="space-y-4 lg:col-span-5">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange-text">{t('fit.eyebrow')}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t('fit.heading')}</h2>
-            <p className="text-base leading-relaxed text-foreground-muted">{t('fit.body')}</p>
-          </div>
-          <div className="space-y-4 lg:col-span-7">
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {problemItems.map((item) => (
-                <li key={item} className="flex gap-3 rounded-xl border border-border bg-surface p-4 text-sm leading-relaxed text-ink">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-orange" aria-hidden="true" />
-                  <span>{t(`fit.item${item}`)}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="rounded-2xl border border-orange/30 bg-orange-subtle/40 p-5 text-sm font-semibold leading-relaxed text-ink">{t('fit.trust')}</p>
-          </div>
-        </Container>
-      </Section>
-
-      <Section variant="dark" spacing="spacious">
-        <Container className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-          <div className="space-y-5 lg:col-span-7">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-orange">{t('proof.eyebrow')}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{t('proof.heading', { productName: FEATURED_PRODUCT.name })}</h2>
-            <p className="max-w-3xl text-base leading-relaxed text-white/70">{t('proof.body', { productName: FEATURED_PRODUCT.name })}</p>
-            <TrackedButton href={getLocalizedPath('productsServe', currentLocale)} variant="brand" eventName="custom_software_cta" properties={{ locale: currentLocale, source: 'custom_software_proof', product: FEATURED_PRODUCT.analyticsProduct }}>{t('proof.cta', { productName: FEATURED_PRODUCT.name })}</TrackedButton>
-          </div>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-5">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <li key={item} className="rounded-xl border border-white/15 bg-white/5 px-4 py-4 text-sm font-semibold text-white/90">{t(`proof.capability${item}`)}</li>
-            ))}
-          </ul>
         </Container>
       </Section>
 
@@ -218,6 +227,10 @@ export default async function CustomSoftwarePage({ params }: PageProps) {
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t('form.heading')}</h2>
             <p className="text-base leading-relaxed text-foreground-muted">{t('form.body')}</p>
             <p className="border-l-2 border-orange pl-4 text-sm leading-relaxed text-foreground-muted">{t('form.note')}</p>
+            <p className="text-sm leading-relaxed text-foreground-muted">{t('form.nextSteps')}</p>
+            <LocalizedLink href="/privacy" locale={currentLocale} className="inline-flex min-h-11 items-center rounded-lg text-sm font-semibold text-orange-text underline decoration-orange/40 underline-offset-4 outline-none hover:text-ink focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2">
+              {t('form.privacyLink')}
+            </LocalizedLink>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:col-span-7">
             <NextIntlClientProvider

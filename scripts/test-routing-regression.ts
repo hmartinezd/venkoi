@@ -109,8 +109,8 @@ nonInsightRoutes.forEach((routeKey) => {
   assert(!isInsightRoute(routeKey), `${routeKey} does not belong to the Insights family`);
 });
 
-const serviceRoutes: RouteKey[] = ['services', 'servicesMobile', 'servicesWeb'];
-const nonServiceRoutes: RouteKey[] = ['home', 'productsServe', 'customSoftware', 'insights', 'contact'];
+const serviceRoutes: RouteKey[] = ['services', 'customSoftware', 'servicesMobile', 'servicesWeb'];
+const nonServiceRoutes: RouteKey[] = ['home', 'productsServe', 'insights', 'contact'];
 
 serviceRoutes.forEach((routeKey) => {
   assert(isServiceRoute(routeKey), `${routeKey} belongs to the Services family`);

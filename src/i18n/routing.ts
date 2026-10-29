@@ -37,6 +37,7 @@ export const insightRouteKeys = [
 
 export const serviceRouteKeys = [
   'services',
+  'customSoftware',
   'servicesMobile',
   'servicesWeb'
 ] as const satisfies readonly RouteKey[];

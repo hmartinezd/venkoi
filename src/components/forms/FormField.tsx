@@ -5,6 +5,7 @@ interface FormFieldProps {
   label: string;
   required?: boolean;
   error?: string;
+  descriptionId?: string;
   className?: string;
   children: (props: {
     id: string;
@@ -15,9 +16,10 @@ interface FormFieldProps {
   }) => React.ReactNode;
 }
 
-export function FormField({ label, required = false, error, className, children }: FormFieldProps) {
+export function FormField({ label, required = false, error, descriptionId, className, children }: FormFieldProps) {
   const fieldId = useId();
   const errorId = error ? `${fieldId}-error` : undefined;
+  const describedBy = [descriptionId, errorId].filter(Boolean).join(' ') || undefined;
 
   return (
     <div className={cn('space-y-1.5', className)}>
@@ -30,7 +32,7 @@ export function FormField({ label, required = false, error, className, children 
         required: required || undefined,
         'aria-required': required || undefined,
         'aria-invalid': error ? true : undefined,
-        'aria-describedby': errorId
+        'aria-describedby': describedBy
       })}
 
       {error ? (

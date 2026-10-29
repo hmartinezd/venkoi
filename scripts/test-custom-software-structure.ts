@@ -45,8 +45,11 @@ assert.deepEqual(
 assert.ok(en.customSoftwarePage.proof.cta.includes('{productName}'), 'English proof CTA should use the product registry placeholder');
 assert.ok(es.customSoftwarePage.proof.cta.includes('{productName}'), 'Spanish proof CTA should use the product registry placeholder');
 assert.equal(FEATURED_PRODUCT.name, 'Venkoi Serve', 'Product registry should preserve the public Venkoi Serve name');
-assert.match(en.customSoftwarePage.capabilities.item8Title, /AI/i, 'English capabilities should include AI-enabled workflows');
-assert.match(es.customSoftwarePage.capabilities.item8Title, /IA/i, 'Spanish capabilities should include workflows with IA');
+assert.equal(Object.keys(en.customSoftwarePage.capabilities).filter((key) => key.endsWith('Title')).length, 4, 'English capabilities should be grouped into four categories');
+assert.equal(Object.keys(es.customSoftwarePage.capabilities).filter((key) => key.endsWith('Title')).length, 4, 'Spanish capabilities should be grouped into four categories');
+assert.ok(page.includes("additionalAiUseCaseItems"), 'Secondary AI use cases should use an accessible disclosure');
+assert.ok(page.includes('<ServeProductVisual type="workflow"'), 'Serve proof should use the existing truthful product visual');
+assert.ok(page.indexOf('proof.eyebrow') < page.indexOf('<Section id="custom-software-capabilities"'), 'Serve proof should appear before the capability section');
 assert.match(en.customSoftwarePage.ai.trust, /Not every problem needs AI/i, 'English AI section should reject one-size-fits-all AI');
 assert.match(es.customSoftwarePage.ai.trust, /No todos los problemas necesitan IA/i, 'Spanish AI section should reject one-size-fits-all AI');
 assert.match(en.customSoftwarePage.ai.safeguards, /review|data boundaries|validation/i, 'English AI section should mention practical safeguards');

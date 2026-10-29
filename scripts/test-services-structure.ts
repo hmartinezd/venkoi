@@ -20,7 +20,8 @@ function assertOrder(source: string, components: string[], page: string) {
 assertOrder(overview, ['ServiceOfferings', 'ServiceProcess'], 'Services overview');
 for (const marker of ['projectFit.heading', 'relatedGuides', 'services_overview_footer']) assert.ok(overview.includes(marker), `Overview should preserve ${marker}`);
 assert.ok(overview.indexOf('<ServiceProcess') < overview.indexOf('projectFit.heading'), 'Process should precede Project Fit');
-assert.ok(overview.includes("routeKey: 'servicesMobile'") && overview.includes("routeKey: 'servicesWeb'"), 'Overview should contain exactly the two approved service routes');
+assert.ok(overview.includes("routeKey: 'servicesMobile'") && overview.includes("routeKey: 'servicesWeb'") && overview.includes("routeKey: 'customSoftware'"), 'Overview should expose all three service routes');
+assert.ok(!overview.includes('customSoftwareCue'), 'Custom Software should not remain a secondary strip below the service cards');
 
 const detailOrder = ['ServiceDetailHero', 'ServiceScope', 'ServiceProcess', 'ServiceStartingPoint', 'ServiceDecisionSupport', 'ServiceCta'];
 assertOrder(mobile, detailOrder, 'Mobile detail');

@@ -123,8 +123,11 @@ assert.doesNotMatch(navigation, /headerNavigation|footerNavigation|NavigationIte
 
 const header = read('src/components/layout/Header.tsx');
 assert.match(header, /href=\{internalRoutes\.productsServe\}/);
-assert.match(header, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'header' \}\)\}/);
-assert.match(header, /\{tCommon\('demo'\)\}/);
+assert.match(header, /buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'header' \}\)/);
+assert.match(header, /routeKey === 'customSoftware'/);
+assert.match(header, /trackCustomEvent\('custom_software_cta'/);
+assert.match(header, /tCommon\('startConversation'\)/);
+assert.match(header, /tNav\('customSoftware'\)/);
 
 const homeFinal = read('src/components/home/FinalCta.tsx');
 assert.match(homeFinal, /href=\{buildProductDemoHref\(locale, FEATURED_PRODUCT, \{ source: 'home_final_cta' \}\)\}/);

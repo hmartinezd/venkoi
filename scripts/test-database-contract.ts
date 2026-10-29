@@ -33,7 +33,8 @@ const migrations = [
   'db/migrations/002_harden_leads.sql',
   'db/migrations/003_update_service_interests.sql',
   'db/migrations/004_migrate_legacy_product_slug.sql',
-  'db/migrations/005_add_paid_attribution_and_lifecycle.sql'
+  'db/migrations/005_add_paid_attribution_and_lifecycle.sql',
+  'db/migrations/006_add_custom_software_interests.sql'
 ];
 for (const migration of migrations) assert.ok(existsSync(resolve(root, migration)), `${migration} must exist`);
 
@@ -47,7 +48,7 @@ for (const column of insertColumns) {
   assert.match(migrationSql, new RegExp(`\\b${column}\\b`), `Migration schema must include ${column}`);
 }
 
-for (const interest of ['mobile', 'web', 'unsure']) {
+for (const interest of ['mobile', 'web', 'internal_tools', 'workflow_automation', 'integrations', 'operations_software', 'unsure']) {
   assert.match(validation, new RegExp(`['"]${interest}['"]`));
   assert.match(migrationSql, new RegExp(`['"]${interest}['"]`));
 }

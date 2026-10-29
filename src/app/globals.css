@@ -12,6 +12,7 @@
   --color-foreground-muted: #5c6470;
   --color-border: #e5e7eb;
   --color-border-strong: #cbd2db;
+  --color-form-border: #7f8a99;
   --color-orange-subtle: rgba(248, 77, 37, 0.12);
   --color-focus: #f84d25;
 
@@ -36,6 +37,7 @@
   --venkoi-foreground-muted: #5c6470;
   --venkoi-border: #e5e7eb;
   --venkoi-border-strong: #cbd2db;
+  --venkoi-form-border: #7f8a99;
   --venkoi-orange-subtle: rgba(248, 77, 37, 0.12);
   --venkoi-focus: #f84d25;
 }
@@ -58,6 +60,31 @@ body {
 
 #content {
   scroll-margin-top: 72px;
+}
+
+/* Keep form controls legible without changing the border treatment site-wide. */
+.form-control-boundary {
+  border-color: var(--venkoi-form-border);
+}
+
+/* Explicit button surfaces keep the primary action visibly dominant even when
+ * a generated utility is not emitted by the current Tailwind compiler pass. */
+.venkoi-button-primary {
+  background-color: var(--venkoi-ink);
+  color: #ffffff;
+}
+
+.venkoi-button-primary:hover {
+  background-color: color-mix(in srgb, var(--venkoi-ink) 90%, transparent);
+}
+
+.venkoi-button-brand {
+  background-color: var(--venkoi-orange);
+  color: var(--venkoi-ink);
+}
+
+.venkoi-button-brand:hover {
+  background-color: var(--venkoi-orange);
 }
 
 @media (prefers-reduced-motion: reduce) {

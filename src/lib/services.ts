@@ -1,4 +1,11 @@
-export type ServiceInterest = 'mobile' | 'web' | 'unsure';
+export type ServiceInterest =
+  | 'mobile'
+  | 'web'
+  | 'internal_tools'
+  | 'workflow_automation'
+  | 'integrations'
+  | 'operations_software'
+  | 'unsure';
 
 /**
  * Normalizes a service interest value from query parameters or form inputs.
@@ -20,6 +27,11 @@ export function normalizeServiceInterest(value: unknown): ServiceInterest | '' {
   }
 
   if (normalized === 'unsure') return 'unsure';
+
+  if (normalized === 'internal_tools') return 'internal_tools';
+  if (normalized === 'workflow_automation') return 'workflow_automation';
+  if (normalized === 'integrations') return 'integrations';
+  if (normalized === 'operations_software') return 'operations_software';
 
   return '';
 }

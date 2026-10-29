@@ -5,7 +5,7 @@ import { isDemoEnabledProduct } from '@/lib/products';
 const ALLOWED_LEAD_TYPES: [LeadType, ...LeadType[]] = ['DEMO', 'CUSTOM_PROJECT', 'GENERAL_CONTACT'];
 const LOCATION_COUNTS = ['1', '2_5', '6_20', '20_plus'] as const;
 const CURRENT_SYSTEMS = ['none', 'spreadsheet', 'pos_tools', 'other'] as const;
-const INTERESTS = ['mobile', 'web', 'unsure'] as const;
+const INTERESTS = ['mobile', 'web', 'internal_tools', 'workflow_automation', 'integrations', 'operations_software', 'unsure'] as const;
 const PROJECT_STAGES = ['idea', 'planning', 'existing_product', 'needs_improvement'] as const;
 
 const normalizeString = (val: unknown): string | null => {

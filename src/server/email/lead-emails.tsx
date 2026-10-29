@@ -23,6 +23,10 @@ function subjectTagForLead(lead: LeadRecord, resolver: LeadProductResolver): str
   if (lead.lead_type === 'CUSTOM_PROJECT') {
     if (lead.interest === 'mobile') return 'Mobile Application Inquiry';
     if (lead.interest === 'web' || lead.interest === 'website' || lead.interest === 'web_application') return 'Web Project Inquiry';
+    if (lead.interest === 'internal_tools') return 'Internal Tools Inquiry';
+    if (lead.interest === 'workflow_automation') return 'Workflow Automation Inquiry';
+    if (lead.interest === 'integrations') return 'Integration Inquiry';
+    if (lead.interest === 'operations_software') return 'Operations Software Inquiry';
     return 'Services Inquiry';
   }
   return 'General Inquiry';

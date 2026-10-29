@@ -77,7 +77,7 @@ assert.match(nextSteps, /<section/);
 assert.match(nextSteps, /<ol/);
 assert.match(nextSteps, /md:grid-cols-3/);
 
-const detailsStart = form.indexOf("<details");
+const detailsStart = form.indexOf("<details\n");
 const detailsEnd = form.indexOf("</details>");
 const detailsSource = form.slice(detailsStart, detailsEnd);
 
@@ -116,18 +116,25 @@ for (const lead_type of ["CUSTOM_PROJECT", "GENERAL_CONTACT"] as const) {
 
 assert.ok(
   form.indexOf("optionalDetailsRef.current.open = true") <
-    form.indexOf("inputElement.focus()"),
-  "Optional details must open before focus moves to a hidden field"
+    form.indexOf("window.requestAnimationFrame"),
+  "Optional details must open before the deterministic reveal/focus sequence"
 );
+assert.match(form, /scrollIntoView\(\{[\s\S]*block: ['"]start['"]/);
+assert.match(form, /focus\(\{ preventScroll: true \}\)/);
+assert.match(form, /prefers-reduced-motion/);
+assert.match(form, /nameRequired/);
+assert.match(form, /messageRequired/);
+assert.match(form, /descriptionId=\{messageHintId\}/);
+assert.match(form, /className="text-sm text-foreground-muted leading-relaxed italic"/);
 for (const optionalField of ["phone", "company", "interest", "project_stage"]) {
   assert.match(form, new RegExp(`["']${optionalField}["']`));
 }
 
 assert.deepEqual(
-  ["mobile", "web", "unsure", "website", "web_application"].map(
+  ["mobile", "web", "internal_tools", "workflow_automation", "integrations", "operations_software", "unsure", "website", "web_application"].map(
     normalizeServiceInterest
   ),
-  ["mobile", "web", "unsure", "web", "web"]
+  ["mobile", "web", "internal_tools", "workflow_automation", "integrations", "operations_software", "unsure", "web", "web"]
 );
 assert.match(
   form,

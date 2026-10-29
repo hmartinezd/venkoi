@@ -318,7 +318,7 @@ async function runTests() {
   }
 
   // 11. Valid CUSTOM_PROJECT payloads with active canonical interests
-  const canonicalInterests = ['mobile', 'web', 'unsure'] as const;
+  const canonicalInterests = ['mobile', 'web', 'internal_tools', 'workflow_automation', 'integrations', 'operations_software', 'unsure'] as const;
   canonicalInterests.forEach((interestVal) => {
     const res = leadSubmissionSchema.safeParse({
       lead_type: 'CUSTOM_PROJECT',

@@ -41,15 +41,9 @@ export default async function ServicesPage({ params }: PageProps) {
 
     <ServiceOfferings locale={currentLocale} offerings={[
       { eyebrow: t('mobileEyebrow'), title: t('mobileTitle'), body: t('mobileBody'), cue: t('mobileSupporting'), cta: t('exploreMobile'), routeKey: 'servicesMobile', source: 'services_overview_mobile' },
-      { eyebrow: t('webEyebrow'), title: t('webTitle'), body: t('webBody'), cue: t('webSupporting'), cta: t('exploreWeb'), routeKey: 'servicesWeb', source: 'services_overview_web' }
+      { eyebrow: t('webEyebrow'), title: t('webTitle'), body: t('webBody'), cue: t('webSupporting'), cta: t('exploreWeb'), routeKey: 'servicesWeb', source: 'services_overview_web' },
+      { eyebrow: t('customSoftwareEyebrow'), title: t('customSoftwareTitle'), body: t('customSoftwareBody'), cue: t('customSoftwareSupporting'), cta: t('customSoftwareCta'), routeKey: 'customSoftware', source: 'services_overview_custom_software' }
     ]} />
-
-    <Section variant="surface" spacing="compact" className="border-b border-border">
-      <Container className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-2xl text-sm leading-relaxed text-foreground-muted">{t('customSoftwareCue')}</p>
-        <TrackedButton href={getLocalizedPath('customSoftware', currentLocale)} variant="secondary" eventName="custom_software_cta" properties={{ locale: currentLocale, source: 'services_overview' }}>{t('customSoftwareCta')}</TrackedButton>
-      </Container>
-    </Section>
 
     <ServiceProcess eyebrow={t('howWeWork.eyebrow')} heading={t('howWeWork.heading')} stages={stages} testingPrinciple={t('howWeWork.testingPrinciple')} />
 

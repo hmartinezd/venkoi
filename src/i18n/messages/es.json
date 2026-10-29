@@ -15,6 +15,7 @@
     "about": "Nosotros",
     "contact": "Contacto",
     "insights": "Recursos",
+    "customSoftware": "Software a medida",
     "mobileApplications": "Aplicaciones Móviles",
     "webApplications": "Páginas Web y Aplicaciones Web"
   },
@@ -174,7 +175,11 @@
     "seoDescription": "Venkoi diseña, desarrolla y prueba aplicaciones móviles para iOS y Android, páginas web y aplicaciones web en Tampa Bay, South Florida y más allá.",
     "relatedGuides": "Recursos útiles",
     "customSoftwareCue": "¿Buscas software para un proceso de negocio, en lugar de un paquete de servicios genérico? Conoce nuestro enfoque de software a medida.",
-    "customSoftwareCta": "Conoce el software a medida"
+    "customSoftwareCta": "Conoce el software a medida",
+    "customSoftwareEyebrow": "SOFTWARE A MEDIDA",
+    "customSoftwareTitle": "Software diseñado para tu operación",
+    "customSoftwareBody": "Crea herramientas internas, automatizaciones, integraciones o software operativo alrededor de la forma en que realmente trabaja tu equipo.",
+    "customSoftwareSupporting": "Empieza por el proceso que necesita funcionar mejor."
   },
   "customSoftwarePage": {
     "seoTitle": "Desarrollo de Software a Medida para Empresas | Venkoi",
@@ -187,9 +192,12 @@
       "secondaryCta": "Conoce lo que creamos",
       "trustLine": "Empieza con una consulta inicial sin costo. Primero entendemos el problema y te ayudamos a determinar si el software a medida tiene sentido.",
       "panelLabel": "DEL OBSTÁCULO AL FLUJO DE TRABAJO",
-      "panel1": "Un proceso es difícil de seguir",
-      "panel2": "La información se registra más de una vez",
-      "panel3": "Es más fácil ver cuál es el siguiente paso"
+      "panel1Label": "PROBLEMA",
+      "panel1": "La misma información se registra en varias herramientas",
+      "panel2Label": "SOLUCIÓN",
+      "panel2": "Conecta el proceso para que una actualización aprobada avance",
+      "panel3Label": "RESULTADO",
+      "panel3": "Las personas ven la siguiente acción sin buscar el contexto"
     },
     "problems": {
       "eyebrow": "RECONOCE EL PATRÓN",
@@ -212,16 +220,8 @@
       "item2Body": "Reemplaza pasos manuales repetitivos y entregas desconectadas con un proceso que el equipo pueda seguir y revisar.",
       "item3Title": "Portales para clientes y proveedores",
       "item3Body": "Ofrece flujos de autoservicio estructurados cuando el correo electrónico y las hojas de cálculo ya no son suficientes.",
-      "item4Title": "Sistemas de operaciones e inventario",
-      "item4Body": "Registra datos operativos, inventario, actividad, costos y estados del flujo en un sistema pensado para la empresa.",
-      "item5Title": "Aplicaciones web",
-      "item5Body": "Crea software para navegador enfocado en usuarios, decisiones y procesos empresariales específicos.",
-      "item6Title": "Aplicaciones móviles",
-      "item6Body": "Desarrolla experiencias Android o móviles a medida cuando el trabajo debe estar en las manos de quienes lo realizan.",
-      "item7Title": "Integraciones",
-      "item7Body": "Conecta las herramientas existentes y reduce la duplicación de datos cuando las APIs y el acceso a los sistemas lo permiten.",
-      "item8Title": "Flujos de trabajo con IA",
-      "item8Body": "Integramos IA cuando puede reducir de forma significativa el trabajo manual, entender información no estructurada, apoyar decisiones o hacer más útil el software a medida."
+      "item4Title": "Software operativo conectado",
+      "item4Body": "Integra datos operativos, aplicaciones enfocadas, experiencias móviles o web e integraciones cuando ayudan al proceso."
     },
     "ai": {
       "eyebrow": "IA EN PROCESOS REALES",
@@ -247,6 +247,7 @@
       "trust": "No todos los problemas necesitan IA.",
       "safeguards": "Cuando la IA influye en decisiones importantes o acciones del negocio, diseñamos con revisión adecuada, límites claros para los datos, controles de acceso, privacidad y validación cuando las consecuencias lo requieren.",
       "automationNote": "Las reglas confiables deben resolverse con software convencional. La IA puede ayudar cuando intervienen lenguaje, documentos, imágenes, clasificación, extracción o resúmenes.",
+      "moreUseCases": "Ver más usos adecuados para la IA",
       "cta": "Hablemos de un proceso con IA"
     },
     "fit": {
@@ -290,7 +291,9 @@
       "eyebrow": "CONSULTA INICIAL SIN COSTO",
       "heading": "Cuéntanos qué quieres resolver.",
       "body": "Comparte el proceso que está frenando a la empresa, cómo lo hacen hoy y qué quieres que funcione mejor. Te ayudaremos a determinar si el software a medida es realmente la solución adecuada.",
-      "note": "Esta conversación inicial sirve para entender el problema. No requiere ningún pago ni garantiza una propuesta."
+      "note": "Esta conversación inicial sirve para entender el problema. No requiere ningún pago ni garantiza una propuesta.",
+      "nextSteps": "Venkoi revisará los detalles del proyecto. La siguiente conversación sirve para entender el problema, las limitaciones y si encaja; enviar este formulario no te compromete con un proyecto.",
+      "privacyLink": "Lee la Política de Privacidad de Venkoi"
     },
     "faq": {
       "heading": "Preguntas sobre software a medida",
@@ -428,6 +431,10 @@
         "select": "Selecciona una opción",
         "mobile": "Aplicación móvil",
         "web": "Página web / aplicación web",
+        "internalTools": "Herramientas internas",
+        "workflowAutomation": "Automatización de procesos",
+        "integrations": "Integraciones",
+        "operationsSoftware": "Software operativo",
         "unsure": "Aún no estoy seguro"
       },
       "projectStage": "Etapa del proyecto",
@@ -445,6 +452,9 @@
       "successTitle": "Gracias — recibimos tu mensaje.",
       "successMessage": "Revisaremos la información que compartiste sobre tu proyecto y nos pondremos en contacto contigo.",
       "required": "Campo obligatorio",
+      "nameRequired": "Escribe tu nombre.",
+      "emailRequired": "Escribe tu dirección de correo electrónico.",
+      "messageRequired": "Cuéntanos qué quieres mejorar.",
       "invalidEmail": "Por favor ingresa un email válido",
       "submissionError": "No pudimos enviar tu solicitud en este momento. Inténtalo nuevamente.",
       "networkError": "Error de red. Inténtalo más tarde.",

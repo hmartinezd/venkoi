@@ -32,6 +32,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
   const isProductsActive = routeKey === 'productsServe';
   const isInsightsActive = isInsightRoute(routeKey);
   const isServicesActive = isServiceRoute(routeKey);
+  const isCustomSoftwareActive = routeKey === 'customSoftware';
   const isAboutActive = routeKey === 'about';
   const isContactActive = routeKey === 'contact';
 
@@ -144,6 +145,18 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
           </LocalizedLink>
 
           <LocalizedLink
+            href={internalRoutes.customSoftware}
+            locale={locale}
+            aria-current={isCustomSoftwareActive ? 'page' : undefined}
+            className={cn(
+              'text-sm font-medium transition hover:text-orange-text focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-8 rounded-sm',
+              isCustomSoftwareActive ? 'text-orange-text' : 'text-ink'
+            )}
+          >
+            {tNav('customSoftware')}
+          </LocalizedLink>
+
+          <LocalizedLink
             href={internalRoutes.contact}
             locale={locale}
             aria-current={isContactActive ? 'page' : undefined}
@@ -160,17 +173,23 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <LanguageSwitcher locale={locale} variant="header" />
           <Button
-            href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })}
+            href={isCustomSoftwareActive ? '#custom-software-form' : buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })}
             variant="primary"
             className="text-xs"
-            onClick={() => trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' })}
+            onClick={() => {
+              if (isCustomSoftwareActive) {
+                trackCustomEvent('custom_software_cta', { locale, source: 'custom_software_header' });
+              } else {
+                trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
+              }
+            }}
           >
-            {tCommon('demo')}
+            {isCustomSoftwareActive ? tCommon('startConversation') : tCommon('demo')}
           </Button>
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-4 lg:hidden">
           <LanguageSwitcher locale={locale} variant="mobile" />
           <button
             type="button"
@@ -179,7 +198,7 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((current) => !current)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-ink outline-none transition hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-ink outline-none transition hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
           >
             {menuOpen ? (
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -251,6 +270,18 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
               {tNav('services')}
             </LocalizedLink>
             <LocalizedLink
+              href={internalRoutes.customSoftware}
+              locale={locale}
+              onClick={() => setMenuOpen(false)}
+              aria-current={isCustomSoftwareActive ? 'page' : undefined}
+              className={cn(
+                'block rounded-xl px-4 py-3 transition hover:bg-surface-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-inset',
+                isCustomSoftwareActive ? 'text-orange-text' : 'text-ink'
+              )}
+            >
+              {tNav('customSoftware')}
+            </LocalizedLink>
+            <LocalizedLink
               href={internalRoutes.contact}
               locale={locale}
               onClick={() => setMenuOpen(false)}
@@ -266,15 +297,19 @@ export function Header({ locale, productName }: { locale: Locale; productName: s
 
           <div className="mt-6 pt-4 border-t border-border">
             <Button
-              href={buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })}
+              href={isCustomSoftwareActive ? '#custom-software-form' : buildProductDemoHref(locale, FEATURED_PRODUCT, { source: 'header' })}
               variant="primary"
               className="w-full justify-center"
               onClick={() => {
-                trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
+                if (isCustomSoftwareActive) {
+                  trackCustomEvent('custom_software_cta', { locale, source: 'custom_software_mobile_header' });
+                } else {
+                  trackCustomEvent('serve_demo_cta', { locale, product: FEATURED_PRODUCT.analyticsProduct, source: 'header' });
+                }
                 setMenuOpen(false);
               }}
             >
-              {tCommon('demo')}
+              {isCustomSoftwareActive ? tCommon('startConversation') : tCommon('demo')}
             </Button>
           </div>
         </div>
